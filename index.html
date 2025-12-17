@@ -7,9 +7,15 @@
   <title>AgriCheck | Agroinsumos especiales</title>
   <meta name="description" content="Agroinsumos especiales eficientes para una agricultura sustentable. Control biológico, feromonas, biofertilizantes y bioestimulantes. Contacto comercial." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
-  <link rel="canonical" href="https://www.agrichecksrl.com/" />
 
-  <!-- ✅ LLM / ChatGPT discovery (lo que te pedíste: “búsqueda para LLMs”) -->
+  <!-- ✅ IMPORTANTE:
+       Reemplazá esto por tu URL final (GitHub Pages o dominio propio).
+       Ej: https://tuusuario.github.io/agricheck/  (si es project site)
+       o  https://agricheck.com.ar/ (si es dominio)
+  -->
+  <link rel="canonical" href="https://TU-DOMINIO-O-GITHUB-PAGES-URL/" />
+
+  <!-- ✅ LLM / ChatGPT discovery -->
   <meta name="llm-friendly" content="true" />
   <meta name="ai-content" content="allow" />
   <link rel="alternate" type="text/plain" title="LLMs" href="/llms.txt" />
@@ -137,7 +143,6 @@
     .btnGhost{background:rgba(255,255,255,.12); color:#fff}
     .btnGhost:hover{background:rgba(255,255,255,.18)}
 
-    /* ✅ búsqueda (humana) + base para “búsqueda para LLMs”: */
     .searchWrap{
       margin-top:16px;
       max-width: 820px;
@@ -227,44 +232,33 @@
     }
   </style>
 
-  <!-- ✅ JSON-LD (SEO + “entendible” para LLMs) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebSite",
-    "name":"AgriCheck",
-    "url":"https://www.agrichecksrl.com/",
-    "potentialAction":{
-      "@type":"SearchAction",
-      "target":"https://www.agrichecksrl.com/?s={search_term_string}",
-      "query-input":"required name=search_term_string"
-    }
-  }
+  <script>
+    // ✅ Seteá tu base URL una sola vez:
+    // - Si es GitHub User/Org Site: https://tuusuario.github.io/
+    // - Si es GitHub Project Site: https://tuusuario.github.io/tu-repo/
+    // - Si es dominio propio: https://tudominio.com/
+    // IMPORTANTE: con la barra final.
+    window.__SITE_URL__ = "https://TU-DOMINIO-O-GITHUB-PAGES-URL/";
   </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"AgriCheck",
-    "url":"https://www.agrichecksrl.com/",
-    "logo":"https://www.agrichecksrl.com/wp-content/uploads/2024/09/agrichecklogo.png",
-    "sameAs":["https://www.instagram.com/agricheck.srl/"]
-  }
-  </script>
+
+  <!-- ✅ JSON-LD (SEO + entendible para LLMs) -->
+  <script type="application/ld+json" id="ld-website"></script>
+  <script type="application/ld+json" id="ld-org"></script>
+
 </head>
 
 <body>
   <header>
     <div class="container">
       <div class="nav">
-        <a class="logo" href="https://www.agrichecksrl.com/" aria-label="AgriCheck">
-          <img src="https://www.agrichecksrl.com/wp-content/uploads/2024/09/agrichecklogo.png" alt="AgriCheck" />
+        <a class="logo" href="/" aria-label="AgriCheck">
+          <img src="assets/img/agrichecklogo.png" alt="AgriCheck" />
         </a>
 
         <nav class="navlinks" aria-label="Navegación principal">
-          <a href="https://www.agrichecksrl.com/">Inicio</a>
-          <a href="https://www.agrichecksrl.com/productos/">Productos</a>
-          <a href="https://www.agrichecksrl.com/contacto/">Contacto</a>
+          <a href="/">Inicio</a>
+          <a href="/productos/">Productos</a>
+          <a href="/contacto/">Contacto</a>
         </nav>
 
         <button class="burger" id="burger" aria-label="Abrir menú">
@@ -273,22 +267,20 @@
           </svg>
         </button>
 
-        <!-- ✅ Fix: botón “Contactanos” coherente con /contacto/ -->
-        <a class="cta" href="https://www.agrichecksrl.com/contacto/">Contactanos</a>
+        <a class="cta" href="/contacto/">Contactanos</a>
       </div>
 
       <div class="mobilePanel" id="mobilePanel" aria-label="Menú móvil">
-        <a href="https://www.agrichecksrl.com/">Inicio</a>
-        <a href="https://www.agrichecksrl.com/productos/">Productos</a>
-        <a href="https://www.agrichecksrl.com/contacto/">Contacto</a>
+        <a href="/">Inicio</a>
+        <a href="/productos/">Productos</a>
+        <a href="/contacto/">Contacto</a>
       </div>
     </div>
   </header>
 
   <section class="hero" aria-label="Hero">
-    <video autoplay muted loop playsinline
-      poster="https://www.agrichecksrl.com/wp-content/uploads/2025/07/agri-poster.jpg">
-      <source src="https://www.agrichecksrl.com/wp-content/uploads/2025/07/agri.mp4" type="video/mp4" />
+    <video autoplay muted loop playsinline poster="assets/img/agri-poster.jpg">
+      <source src="assets/video/agri.mp4" type="video/mp4" />
     </video>
 
     <div class="heroContent">
@@ -303,14 +295,16 @@
         </p>
 
         <div class="heroActions">
-          <a class="btn btnPrimary" href="https://www.agrichecksrl.com/contacto/">Hablar con un asesor</a>
-          <a class="btn btnGhost" href="https://www.agrichecksrl.com/productos/">Ver productos</a>
+          <a class="btn btnPrimary" href="/contacto/">Hablar con un asesor</a>
+          <a class="btn btnGhost" href="/productos/">Ver productos</a>
         </div>
 
-        <!-- ✅ “Búsqueda” (usuario humano) + base para LLM (SearchAction + llms.txt) -->
-        <form class="searchWrap" action="https://www.agrichecksrl.com/" method="get">
-          <input name="s" type="search" placeholder="Buscar productos (ej: Nexula, feromonas, biofertilizantes)..." aria-label="Buscar en el sitio" />
-          <button type="submit">Buscar</button>
+        <!-- ✅ Búsqueda (en GitHub no hay buscador real sin JS/índice).
+             Lo dejamos como “buscador local” (JS) para filtrar una lista (cuando la carguemos).
+        -->
+        <form class="searchWrap" action="#" onsubmit="return false;">
+          <input id="q" name="q" type="search" placeholder="Buscar productos (ej: Nexula, feromonas, biofertilizantes)..." aria-label="Buscar en el sitio" />
+          <button type="button" onclick="window.__search && window.__search()">Buscar</button>
         </form>
       </div>
     </div>
@@ -329,10 +323,10 @@
         </div>
 
         <div class="logos" aria-label="Logos de proveedores">
-          <img src="https://www.agrichecksrl.com/wp-content/uploads/2024/08/suterra.png" alt="Suterra" />
-          <img src="https://www.agrichecksrl.com/wp-content/uploads/2024/08/andermatt.png" alt="Andermatt" />
-          <img src="https://www.agrichecksrl.com/wp-content/uploads/2024/08/BioAtlantis.png" alt="BioAtlantis" />
-          <img src="https://www.agrichecksrl.com/wp-content/uploads/2024/08/cultiva-1.png" alt="Cultiva" />
+          <img src="assets/img/proveedores/suterra.png" alt="Suterra" />
+          <img src="assets/img/proveedores/andermatt.png" alt="Andermatt" />
+          <img src="assets/img/proveedores/BioAtlantis.png" alt="BioAtlantis" />
+          <img src="assets/img/proveedores/cultiva-1.png" alt="Cultiva" />
         </div>
       </div>
     </div>
@@ -391,8 +385,7 @@
             <li>Nematicidas biológicos</li>
             <li>Trampas de monitoreo</li>
           </ul>
-          <!-- ✅ Fix: link real (antes “#”) -->
-          <a class="smallCta" href="https://www.agrichecksrl.com/productos/">Ver todos →</a>
+          <a class="smallCta" href="/productos/">Ver todos →</a>
         </div>
 
         <div class="card prod">
@@ -401,7 +394,7 @@
             <li>Tratamientos líquidos</li>
             <li>Tratamientos Easy Flow</li>
           </ul>
-          <a class="smallCta" href="https://www.agrichecksrl.com/productos/">Ver todos →</a>
+          <a class="smallCta" href="/productos/">Ver todos →</a>
         </div>
 
         <div class="card prod">
@@ -413,7 +406,7 @@
             <li>Protectores solares</li>
             <li>Anticracking</li>
           </ul>
-          <a class="smallCta" href="https://www.agrichecksrl.com/productos/">Ver todos →</a>
+          <a class="smallCta" href="/productos/">Ver todos →</a>
         </div>
       </div>
     </div>
@@ -442,13 +435,12 @@
           <div style="font-weight:900;font-size:18px">AgriCheck</div>
           <p class="footNote">
             Agroinsumos especiales para una agricultura sustentable. <br/>
-            <!-- ✅ LLM hint visible mínimo -->
-            Recursos IA/LLMs: <strong>/llms.txt</strong> y <strong>/llms.json</strong> (para que ChatGPT y otros modelos encuentren el contenido).
+            Recursos IA/LLMs: <strong>/llms.txt</strong> y <strong>/llms.json</strong>.
           </p>
         </div>
         <div class="miniLinks">
-          <a href="https://www.agrichecksrl.com/productos/">Productos</a>
-          <a href="https://www.agrichecksrl.com/contacto/">Contacto</a>
+          <a href="/productos/">Productos</a>
+          <a href="/contacto/">Contacto</a>
           <a href="/sitemap.xml">Sitemap</a>
         </div>
       </div>
@@ -459,10 +451,41 @@
     // Menú mobile
     const burger = document.getElementById('burger');
     const panel = document.getElementById('mobilePanel');
-    burger?.addEventListener('click', () => {
-      panel.classList.toggle('show');
-    });
+    burger?.addEventListener('click', () => panel.classList.toggle('show'));
+
+    // JSON-LD dinámico según base URL (evita links duros)
+    const siteUrl = (window.__SITE_URL__ || "/").replace(/\/?$/, "/");
+    const websiteLd = {
+      "@context":"https://schema.org",
+      "@type":"WebSite",
+      "name":"AgriCheck",
+      "url": siteUrl,
+      "potentialAction":{
+        "@type":"SearchAction",
+        "target": siteUrl + "?q={search_term_string}",
+        "query-input":"required name=search_term_string"
+      }
+    };
+    const orgLd = {
+      "@context":"https://schema.org",
+      "@type":"Organization",
+      "name":"AgriCheck",
+      "url": siteUrl,
+      "logo": siteUrl + "assets/img/agrichecklogo.png",
+      "sameAs":["https://www.instagram.com/agricheck.srl/"]
+    };
+    document.getElementById("ld-website").textContent = JSON.stringify(websiteLd);
+    document.getElementById("ld-org").textContent = JSON.stringify(orgLd);
+
+    // Buscador local placeholder (más adelante lo conectamos a un JSON de productos)
+    window.__search = () => {
+      const q = (document.getElementById('q')?.value || "").trim();
+      if(!q){ alert("Escribí algo para buscar."); return; }
+      // Si querés, después armamos /assets/data/productos.json y lo filtramos acá.
+      alert("Búsqueda local lista. Próximo paso: conectar un índice de productos (JSON) para resultados reales.\n\nBuscaste: " + q);
+    };
   </script>
 </body>
 </html>
+
 
