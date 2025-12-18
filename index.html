@@ -98,29 +98,115 @@
       -webkit-backdrop-filter: blur(6px);
       border-bottom:1px solid rgba(255,255,255,.15);
     }
+
+    /* ✅ Nav centrada */
     .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:8px 0; gap:14px;
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center; /* ✅ centra “las secciones” (links) */
+      padding:8px 0;
+      gap:14px;
+      min-height:48px;
     }
-    .logo img{height:32px}
-    .navlinks{display:flex;gap:14px}
+
+    /* Logo en header: se deja en el HTML pero oculto (logo vive en el hero) */
+    header .logo{display:none;} /* solicitado: sacar logo del header */
+
+    .navlinks{
+      display:flex;
+      gap:14px;
+      justify-content:center;
+      align-items:center;
+    }
     .navlinks a{
-      padding:8px 12px; border-radius:999px;
-      font-weight:600; color:#e0e7ff;
+      padding:8px 12px;
+      border-radius:999px;
+      font-weight:600;
+      color:#e0e7ff;
     }
     .navlinks a:hover{background:rgba(255,255,255,.15)}
+
     .cta{
-      background:#89C444; color:#0b1a08;
-      padding:8px 16px; border-radius:999px;
-      font-weight:900; white-space:nowrap;
+      background:#89C444;
+      color:#0b1a08;
+      padding:8px 16px;
+      border-radius:999px;
+      font-weight:900;
+      white-space:nowrap;
       box-shadow:0 4px 14px rgba(0,0,0,.25);
     }
-    .burger{display:none}
+    /* ✅ Quitar botón de contacto en la barra (sin borrar markup) */
+    header .cta{display:none;} /* solicitado: quitar “Contactanos” del header */
+    /* spacer */
+    /* spacer */
 
-    /* ✅ Sacar logo de la barra de navegación (sin borrar markup) */
-    header .logo{display:none;} /* solicitado: logo solo en el hero */
-    /* spacer */
-    /* spacer */
+    /* ================= BURGER + MOBILE MENU ================= */
+    .burger{
+      position:absolute;
+      right:12px;
+      top:50%;
+      transform:translateY(-50%);
+      width:44px;
+      height:44px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.10);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display:none; /* desktop oculto */
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+    }
+    .burger:focus{
+      outline:3px solid rgba(137,196,68,.65);
+      outline-offset:2px;
+    }
+    .burgerLines{
+      width:18px;
+      height:12px;
+      position:relative;
+      display:block;
+    }
+    .burgerLines span{
+      position:absolute;
+      left:0;
+      width:100%;
+      height:2px;
+      background:#e0e7ff;
+      border-radius:999px;
+      transition:transform .18s ease, top .18s ease, opacity .18s ease;
+    }
+    .burgerLines span:nth-child(1){top:0}
+    .burgerLines span:nth-child(2){top:5px}
+    .burgerLines span:nth-child(3){top:10px}
+
+    .mobileMenu{
+      display:none;
+      padding:10px 0 14px;
+      border-top:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(30,64,175,.92), rgba(30,58,138,.96));
+    }
+    .mobileMenu .container{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .mobileMenu a{
+      color:#e0e7ff;
+      font-weight:700;
+      padding:12px 12px;
+      border-radius:14px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.14);
+    }
+    .mobileMenu a:active{transform:translateY(1px)}
+
+    body.menuOpen .mobileMenu{display:block}
+    body.menuOpen .burgerLines span:nth-child(1){top:5px; transform:rotate(45deg)}
+    body.menuOpen .burgerLines span:nth-child(2){opacity:0}
+    body.menuOpen .burgerLines span:nth-child(3){top:5px; transform:rotate(-45deg)}
 
     /* ================= HERO ================= */
     .hero{
@@ -140,28 +226,28 @@
     .hero::after{display:none}
     .heroContent{position:relative; z-index:2; width:100%; padding:64px 0;}
 
-    /* ✅ Logo en hero: bien arriba a la izquierda, un poco más grande, sin competir */
+    /* ✅ Logo en hero */
     .heroLogo{
       position:absolute;
-      left:18px;
-      top: calc(64px + 12px); /* debajo del header fijo */
+      left:14px;
+      top: calc(64px + 6px);
       z-index:4;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:10px 12px;
-      border-radius:16px;
+      padding:8px 10px;
+      border-radius:14px;
       background: linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.14));
       border: 1px solid rgba(255,255,255,.24);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       box-shadow: 0 14px 30px rgba(0,0,0,.16);
-      opacity:.90;                 /* sutil */
+      opacity:.90;
       transition: opacity .2s ease, transform .2s ease;
     }
     .heroLogo:hover{opacity:1; transform: translateY(-1px)}
     .heroLogo img{
-      height:58px;                 /* ✅ más grande */
+      height:64px;
       width:auto;
       display:block;
     }
@@ -187,7 +273,7 @@
       align-items:center;
       justify-content:flex-start;
       max-width:980px;
-      margin-top:48px; /* deja aire respecto al logo del hero */
+      margin-top:48px;
     }
 
     .badgeTitle{
@@ -393,12 +479,8 @@
       padding:18px;
     }
 
-    /* ================= INSTAGRAM: CARROUSEL AUTOMÁTICO (sin destacadas) ================= */
-    .igCarousel{
-      margin-top:16px;
-      position:relative;
-    }
-
+    /* ================= INSTAGRAM: CARROUSEL AUTOMÁTICO ================= */
+    .igCarousel{margin-top:16px; position:relative;}
     .igTrack{
       display:flex;
       gap:14px;
@@ -408,12 +490,8 @@
       -webkit-overflow-scrolling: touch;
       scrollbar-width: thin;
     }
-
     .igTrack::-webkit-scrollbar{height:10px}
-    .igTrack::-webkit-scrollbar-thumb{
-      background: rgba(15,23,42,.18);
-      border-radius: 999px;
-    }
+    .igTrack::-webkit-scrollbar-thumb{background: rgba(15,23,42,.18); border-radius: 999px;}
 
     .igItem{
       scroll-snap-align:start;
@@ -487,29 +565,6 @@
     .igNext{right:-6px}
     .igNavBtn svg{width:18px;height:18px}
 
-    @media(max-width:900px){
-      .grid4{grid-template-columns:repeat(2,1fr)}
-      .grid3{grid-template-columns:1fr}
-      .navlinks{display:none}
-      .burger{display:block}
-      .sectionCard{padding:20px}
-
-      .badgeTitle{flex: 1 1 100%;}
-      .heroBadges{margin-top:56px;}
-
-      .heroLogo{
-        left:12px;
-        top: calc(64px + 10px);
-        padding:8px 10px;
-        border-radius:14px;
-      }
-      .heroLogo img{height:48px}
-
-      .igItem{flex: 0 0 92%;}
-      .igPrev{left:6px}
-      .igNext{right:6px}
-    }
-
     /* Contacto */
     .contactGrid{
       margin-top:18px;
@@ -540,9 +595,6 @@
     }
     .contactLink:hover{transform: translateY(-1px)}
     .contactLink .btnIcon{width:18px;height:18px}
-    @media(max-width:900px){
-      .contactGrid{grid-template-columns:1fr}
-    }
 
     footer{
       background: rgba(15, 23, 42, .62);
@@ -581,6 +633,32 @@
     }
     .whatsapp-float img{width:26px;height:26px;display:block}
     .whatsapp-float:hover{transform:translateY(-2px); box-shadow:0 12px 30px rgba(0,0,0,.32)}
+
+    /* ================= RESPONSIVE ================= */
+    @media(max-width:900px){
+      .grid4{grid-template-columns:repeat(2,1fr)}
+      .grid3{grid-template-columns:1fr}
+      .navlinks{display:none} /* ✅ se ocultan links y se usa el menú hamburguesa */
+      .burger{display:flex}  /* ✅ se ve bien el botón */
+      .sectionCard{padding:20px}
+
+      .badgeTitle{flex: 1 1 100%;}
+      .heroBadges{margin-top:56px;}
+
+      .heroLogo{
+        left:12px;
+        top: calc(64px + 8px);
+        padding:8px 10px;
+        border-radius:14px;
+      }
+      .heroLogo img{height:52px}
+
+      .igItem{flex: 0 0 92%;}
+      .igPrev{left:6px}
+      .igNext{right:6px}
+
+      .contactGrid{grid-template-columns:1fr}
+    }
   </style>
 </head>
 
@@ -590,12 +668,31 @@
   <div class="container">
     <div class="nav">
       <a class="logo" href="/"><img src="agrichecklogo.png" alt="AgriCheck"></a>
-      <nav class="navlinks">
+
+      <nav class="navlinks" aria-label="Navegación principal">
         <a href="/">Inicio</a>
         <a href="#productos">Productos</a>
         <a href="#contacto">Contacto</a>
       </nav>
+
       <a class="cta" href="#contacto">Contactanos</a>
+
+      <!-- ✅ Hamburguesa (mobile) -->
+      <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+        <span class="burgerLines" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ✅ Menú mobile -->
+  <div class="mobileMenu" id="mobileMenu" aria-label="Menú mobile">
+    <div class="container">
+      <a href="/" data-close-menu>Inicio</a>
+      <a href="#productos" data-close-menu>Productos</a>
+      <a href="#contacto" data-close-menu>Contacto</a>
+      <!-- TODO: si querés agregar un CTA distinto en mobile, lo sumamos acá -->
     </div>
   </div>
 </header>
@@ -605,7 +702,6 @@
     <source src="hero.mp4" type="video/mp4">
   </video>
 
-  <!-- ✅ Logo en el hero (arriba-izquierda) -->
   <a class="heroLogo" href="/" aria-label="Ir al inicio">
     <img src="agrichecklogo.png" alt="AgriCheck" />
   </a>
@@ -633,7 +729,6 @@
 
 <section class="heroBelow" id="agroinsumos">
   <div class="container">
-
     <div class="card sectionCard">
 
       <div class="card agroCard">
@@ -674,7 +769,6 @@
       </div>
 
     </div>
-
   </div>
 </section>
 
@@ -775,14 +869,12 @@
           Novedades, recorridas a campo y contenido técnico.
         </p>
 
-        <!-- ✅ Carrousel automático (sin destacadas) -->
         <div class="igCarousel" aria-label="Carrousel de reels de Instagram">
           <button class="igNavBtn igPrev" type="button" aria-label="Anterior">
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M15.5 19.1 8.4 12l7.1-7.1 1.4 1.4L11.2 12l5.7 5.7z"/></svg>
           </button>
 
           <div class="igTrack" id="igTrack" aria-label="Reels de Instagram">
-
             <div class="igItem" data-ig="https://www.instagram.com/reel/DSKOxSQDWeh/">
               <div class="igPreview">
                 <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DSKOxSQDWeh/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
@@ -838,7 +930,6 @@
               </div>
               <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DRiLwi_jExD/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
             </div>
-
           </div>
 
           <button class="igNavBtn igNext" type="button" aria-label="Siguiente">
@@ -950,15 +1041,17 @@
 </a>
 
 <script>
+  // Año automático
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  // Buscador local placeholder
   window.__search = () => {
     const q = (document.getElementById('q')?.value || "").trim();
     if(!q){ alert("Escribí algo para buscar."); return; }
     alert("Búsqueda local lista. Próximo paso: conectar un índice de productos (JSON) para resultados reales.\n\nBuscaste: " + q);
   };
 
-  // ✅ Instagram: fallback si el iframe no carga + carrousel auto
+  // ✅ Instagram: fallback + carrousel auto
   (function(){
     const items = document.querySelectorAll('#instagram .igItem');
     items.forEach((item) => {
@@ -1028,7 +1121,41 @@
       if(document.hidden) stop(); else start();
     });
   })();
+
+  // ✅ Menú hamburguesa (mobile)
+  (function(){
+    const burger = document.querySelector('.burger');
+    const menu = document.getElementById('mobileMenu');
+    if(!burger || !menu) return;
+
+    const setOpen = (open) => {
+      document.body.classList.toggle('menuOpen', open);
+      burger.setAttribute('aria-expanded', String(open));
+      burger.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    };
+
+    burger.addEventListener('click', () => {
+      const open = !document.body.classList.contains('menuOpen');
+      setOpen(open);
+    });
+
+    // Cerrar al hacer click en links
+    menu.querySelectorAll('[data-close-menu]').forEach((a) => {
+      a.addEventListener('click', () => setOpen(false));
+    });
+
+    // Cerrar con ESC
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape') setOpen(false);
+    });
+
+    // Cerrar si se agranda a desktop
+    const mq = window.matchMedia('(min-width: 901px)');
+    const onChange = () => { if(mq.matches) setOpen(false); };
+    mq.addEventListener ? mq.addEventListener('change', onChange) : mq.addListener(onChange);
+  })();
 </script>
 
 </body>
 </html>
+```
