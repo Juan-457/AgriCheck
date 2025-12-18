@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="es-AR">
 <head>
@@ -42,6 +41,9 @@
       --glassMuted: rgba(15,23,42,.72);
 
       --section: 56px;
+
+      /* ✅ Zona segura para que el logo NUNCA pise el hero en mobile */
+      --hero-logo-safe: 0px;
     }
 
     *{box-sizing:border-box}
@@ -196,6 +198,8 @@
       z-index:2;
       width:100%;
       padding: 44px 0 54px;
+      /* ✅ Reserva vertical (solo se activa en mobile via variable) */
+      padding-top: calc(44px + var(--hero-logo-safe));
     }
 
     .heroGrid{
@@ -630,17 +634,26 @@
 
       .hero{ padding-top: 72px; }
 
-      /* ✅ FIX MOBILE: subimos el logo y lo achicamos para que no se pise con el título */
+      /*
+        ✅ FIX DEFINITIVO MOBILE:
+        - Bajamos el contenido del hero con una "zona segura" igual al alto del logo.
+        - Subimos el logo lo más arriba posible sin chocar con la barra.
+        - Achicamos el logo un toque para que sea prolijo.
+      */
+      :root{
+        --hero-logo-safe: calc(66px + env(safe-area-inset-top)); /* reserva vertical real */
+      }
+
       .heroLogo{
-        top: 66px;           /* antes: calc(72px + 10px) */
+        top: calc(56px + env(safe-area-inset-top)); /* pegado bajo la barra */
         left: 12px;
-        padding: 8px 10px;   /* un poco más compacto */
+        padding: 8px 10px;
         border-radius: 16px;
       }
-      .heroLogo img{ height: 52px; } /* antes: 60px */
+      .heroLogo img{ height: 52px; } /* tamaño que no compite y no pisa */
 
-      /* ✅ opcional: un toque más de aire arriba del contenido */
-      .heroContent{ padding-top: 54px; } /* antes: 44px */
+      /* Extra: evitamos que el card se acerque demasiado arriba */
+      .heroCard{ margin-top: 6px; } /* mínimo, por si algún browser redondea raro */
 
       section{ padding: 46px 0; }
       .chips{ grid-template-columns: 1fr; }
@@ -1183,5 +1196,3 @@
 
 </body>
 </html>
-```
-
