@@ -180,6 +180,26 @@
         rgba(255,255,255,.42),
         rgba(255,255,255,.26)
       );
+      /* ================= HERO BADGES (TÍTULO + SUBTÍTULO) ================= */
+.heroBadges{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  align-items:flex-start;
+}
+
+.badgeTitle{
+  font-size: clamp(18px, 2.6vw, 24px);
+  font-weight:900;
+  padding:12px 18px;
+}
+
+.badgeSub{
+  font-size:14px;
+  font-weight:700;
+  padding:10px 16px;
+  opacity:.95;
+}
       border: 1px solid var(--glass-border);
       box-shadow: var(--glass-shadow);
       backdrop-filter: blur(12px);
@@ -692,8 +712,15 @@
 
   <div class="heroContent">
     <div class="container">
-      <div class="badge">Agroinsumos especiales eficientes para una agricultura sustentable. Control biológico, feromonas, biofertilizantes y bioestimulantes.</div>
+      <div class="heroBadges">
+  <div class="badge badgeTitle">
+    Agroinsumos especiales eficientes para una agricultura sustentable
+  </div>
 
+  <div class="badge badgeSub">
+    Control biológico, feromonas, biofertilizantes y bioestimulantes
+  </div>
+</div>
       <div class="heroActions">
         <a class="btn btnPrimary" href="https://wa.me/+5492984763055?text=Hola%20AgriCheck!%20Quiero%20hablar%20con%20un%20asesor." target="_blank" rel="noopener">Hablar con un asesor</a>
         <a class="btn btnGhost" href="#productos">Ver productos</a>
