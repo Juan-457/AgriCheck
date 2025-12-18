@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es-AR">
 <head>
@@ -168,7 +169,7 @@
       pointer-events:none;
     }
 
-    /* logo in hero (arriba izquierda, un poco más grande, sin competir) */
+    /* logo in hero */
     .heroLogo{
       position:absolute;
       top: calc(76px + 12px);
@@ -197,7 +198,6 @@
       padding: 44px 0 54px;
     }
 
-    /* AJUSTE CLAVE: evitar “raro” el layout */
     .heroGrid{
       display:grid;
       grid-template-columns: minmax(320px, 720px) 1fr;
@@ -214,7 +214,6 @@
       border-radius: var(--radius);
     }
 
-    /* Card principal: ancho controlado y padding consistente */
     .heroCard{
       padding: 18px 18px 16px;
       max-width: 720px;
@@ -240,7 +239,6 @@
       box-shadow: 0 0 0 6px rgba(137,196,68,.14);
     }
 
-    /* ✅ FIX: título SIN burbuja interna, SIN duplicación, con mejor lectura */
     .heroTitle{
       margin: 12px 0 10px;
       color: rgba(15,23,42,.92);
@@ -307,7 +305,6 @@
       border-color: rgba(255,255,255,.22);
     }
 
-    /* ✅ FIX: buscador alineado (no “volado” a otro lado) */
     .searchWrap{
       margin-top: 12px;
       display:flex;
@@ -343,7 +340,6 @@
       box-shadow: 0 10px 18px rgba(0,0,0,.14);
     }
 
-    /* right hero “stats” */
     .heroSide{
       padding: 18px;
       max-width: 520px;
@@ -627,25 +623,38 @@
       .contactGrid{ grid-template-columns: 1fr; }
       .chips{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
+
     @media(max-width: 900px){
       .navlinks{ display:none; }
       .burger{ display:flex; }
+
       .hero{ padding-top: 72px; }
-      .heroLogo{ top: calc(72px + 10px); left: 12px; padding: 10px 12px; border-radius: 18px; }
-      .heroLogo img{ height: 60px; }
+
+      /* ✅ FIX MOBILE: subimos el logo y lo achicamos para que no se pise con el título */
+      .heroLogo{
+        top: 66px;           /* antes: calc(72px + 10px) */
+        left: 12px;
+        padding: 8px 10px;   /* un poco más compacto */
+        border-radius: 16px;
+      }
+      .heroLogo img{ height: 52px; } /* antes: 60px */
+
+      /* ✅ opcional: un toque más de aire arriba del contenido */
+      .heroContent{ padding-top: 54px; } /* antes: 44px */
+
       section{ padding: 46px 0; }
       .chips{ grid-template-columns: 1fr; }
     }
+
     @media(max-width: 520px){
       .heroTitle{ font-size: clamp(28px, 8vw, 42px); }
       .searchWrap{ flex-direction:column; }
       .searchWrap button{ width:100%; }
     }
 
-    /* spacer (no-op) */
-    <!-- spacer -->
-    <!-- spacer -->
-    <!-- spacer -->
+    /* spacer */
+    /* spacer */
+    /* spacer */
   </style>
 </head>
 
@@ -694,7 +703,6 @@
         <div class="glass heroCard">
           <div class="kicker"><span class="kickerDot" aria-hidden="true"></span> AgriCheck</div>
 
-          <!-- ✅ FIX: NO duplicado, NO burbuja interna rara -->
           <h1 class="heroTitle">Agroinsumos especiales eficientes para una agricultura sustentable</h1>
 
           <p class="heroSub">Control biológico, feromonas, biofertilizantes y bioestimulantes.</p>
@@ -1175,4 +1183,5 @@
 
 </body>
 </html>
+```
 
