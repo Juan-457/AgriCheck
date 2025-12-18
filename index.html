@@ -32,7 +32,8 @@
     body{
       margin:0;
       font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:var(--bg);
+      /* ✅ Fondo único continuo para TODO el sitio */
+      background: url("fondo.png") center top / cover no-repeat fixed;
       color:var(--brand-dark);
     }
 
@@ -156,9 +157,8 @@
       cursor:pointer;
     }
 
-    /* ================= SECCIONES CON FONDO ================= */
+    /* ✅ Secciones SIN fondo propio (para que no se reinicie) */
     section:not(.hero){
-      background:url("fondo.png") center/cover no-repeat;
       padding:64px 0;
     }
 
@@ -172,20 +172,24 @@
     .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
     .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 
-  footer{
-  background:#0f172a; /* oscuro elegante */
-  color:rgba(255,255,255,.85);
-  padding:40px 0;
-}
+    /* ================= FOOTER ================= */
+    footer{
+      background:#0f172a;
+      color:rgba(255,255,255,.85);
+      padding:40px 0;
+      text-align:center; /* ✅ Centrado */
+    }
 
-footer a{
-  color:rgba(255,255,255,.85);
-}
+    footer a{color:rgba(255,255,255,.85)}
+    footer a:hover{color:#89C444}
 
-footer a:hover{
-  color:#89C444; /* verde marca */
-}
-
+    .footGrid{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+    }
 
     /* ================= WHATSAPP ================= */
     .whatsapp-float{
@@ -248,14 +252,13 @@ footer a:hover{
       </div>
 
       <form class="searchWrap" onsubmit="return false;">
-        <input type="search" placeholder="Buscar productos (ej: Nexula, feromonas...)">
-        <button>Buscar</button>
+        <input id="q" type="search" placeholder="Buscar productos (ej: Nexula, feromonas...)">
+        <button type="button" onclick="window.__search && window.__search()">Buscar</button>
       </form>
     </div>
   </div>
-</section>  
+</section>
 
-  <!-- ✅ NUEVA SECCIÓN “AGROINSUMOS ESPECIALES” debajo del hero -->
   <section class="heroBelow" id="agroinsumos">
     <div class="container">
       <div class="card" style="padding:22px">
@@ -272,7 +275,6 @@ footer a:hover{
     </div>
   </section>
 
-  <!-- Proveedores -->
   <section>
     <div class="container">
       <div class="card" style="padding:22px">
@@ -295,7 +297,6 @@ footer a:hover{
     </div>
   </section>
 
-  <!-- Beneficios -->
   <section id="beneficios">
     <div class="container">
       <div class="center">
@@ -331,7 +332,6 @@ footer a:hover{
     </div>
   </section>
 
-  <!-- Productos -->
   <section id="productos">
     <div class="container">
       <div class="center">
@@ -377,7 +377,6 @@ footer a:hover{
     </div>
   </section>
 
-  <!-- Instagram -->
   <section id="instagram">
     <div class="container">
       <div class="card" style="padding:22px">
@@ -396,48 +395,24 @@ footer a:hover{
 
   <footer>
     <div class="container">
-    <div class="footGrid">
-  © <span id="year"></span> AgriCheck SRL · Todos los derechos reservados.
+      <div class="footGrid">
+        © <span id="year"></span> AgriCheck SRL · Todos los derechos reservados.
 
-  <div class="footer-designed" style="margin-top:8px;">
-    <p style="display:flex; justify-content:center; align-items:center; gap:6px; margin:0;">
-      Diseñado por UmanoAI
-      <a href="https://umanoai.com.ar" target="_blank" style="display:inline-block;">
-        <img src="umanoai.png" alt="UmanoAI" style="height:18px;">
-      </a>
-    </p>
-  </div>
-</footer>
+        <div class="footer-designed" style="margin-top:8px;">
+          <p style="display:flex; justify-content:center; align-items:center; gap:6px; margin:0;">
+            Diseñado por UmanoAI
+            <a href="https://umanoai.com.ar" target="_blank" rel="noopener" style="display:inline-block;">
+              <img src="umanoai.png" alt="UmanoAI" style="height:18px;">
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <script>
-    // Menú mobile
-    const burger = document.getElementById('burger');
-    const panel = document.getElementById('mobilePanel');
-    burger?.addEventListener('click', () => panel.classList.toggle('show'));
-
-    // JSON-LD dinámico según base URL
-    const siteUrl = (window.__SITE_URL__ || "/").replace(/\/?$/, "/");
-    const websiteLd = {
-      "@context":"https://schema.org",
-      "@type":"WebSite",
-      "name":"AgriCheck",
-      "url": siteUrl,
-      "potentialAction":{
-        "@type":"SearchAction",
-        "target": siteUrl + "?q={search_term_string}",
-        "query-input":"required name=search_term_string"
-      }
-    };
-    const orgLd = {
-      "@context":"https://schema.org",
-      "@type":"Organization",
-      "name":"AgriCheck",
-      "url": siteUrl,
-      "logo": siteUrl + "assets/img/agrichecklogo.png",
-      "sameAs":["https://www.instagram.com/agricheck.srl/"]
-    };
-    document.getElementById("ld-website").textContent = JSON.stringify(websiteLd);
-    document.getElementById("ld-org").textContent = JSON.stringify(orgLd);
+    // Año automático
+    document.getElementById('year').textContent = new Date().getFullYear();
 
     // Buscador local placeholder
     window.__search = () => {
@@ -448,3 +423,4 @@ footer a:hover{
   </script>
 </body>
 </html>
+
