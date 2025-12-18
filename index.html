@@ -40,6 +40,29 @@
     a{text-decoration:none;color:inherit}
     .container{max-width:var(--max);margin:0 auto;padding:0 18px}
 
+    /* Helpers mínimos (no rompen nada) */
+    .center{text-align:center}
+    .kicker{font-weight:900; letter-spacing:.12em; text-transform:uppercase; font-size:12px; color:rgba(31,41,55,.7)}
+    .muted{color:rgba(31,41,55,.72); line-height:1.7}
+    .agroTitle{margin:10px 0 8px; font-size: clamp(28px, 3.6vw, 44px); letter-spacing:-0.02em; line-height:1.1}
+    .agroLead{margin:0 auto; max-width:820px}
+    .logos{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;align-items:center;padding:20px}
+    .logos img{height:46px;width:auto;filter:grayscale(.1)}
+    .pill{
+      display:inline-flex;align-items:center;justify-content:center;
+      height:54px;width:54px;border-radius:999px;
+      background:#f0f7ea;border:1px solid rgba(0,0,0,.06);
+      font-weight:900;margin-bottom:10px;color:#1b3d10;
+    }
+    .benefit{padding:18px}
+    .benefit h3{margin:6px 0 8px;font-size:16px}
+    .benefit p{margin:0;color:rgba(31,41,55,.70);line-height:1.55}
+    .prod{padding:18px}
+    .prod h3{margin:0 0 10px}
+    .prod ul{margin:0 0 14px;padding-left:18px;color:rgba(31,41,55,.78);line-height:1.6}
+    .smallCta{display:inline-flex;align-items:center;gap:10px;font-weight:900;color:var(--brand-green-dark)}
+    .smallCta:hover{text-decoration:underline}
+
     /* ================= HEADER ================= */
     header{
       position:fixed;
@@ -123,6 +146,9 @@
       border-radius:999px;
       font-weight:800;
       border:1px solid rgba(255,255,255,.2);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
     }
 
     .btnPrimary{background:var(--brand-green);color:#0b1a08}
@@ -172,23 +198,101 @@
     .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
     .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 
-    /* ================= FOOTER ================= */
-    footer{
-      background:#0f172a;
-      color:rgba(255,255,255,.85);
-      padding:40px 0;
-      text-align:center; /* ✅ Centrado */
+    /* ================= NUEVO: AGROINSUMOS CON IMAGEN ================= */
+    .agroCard{
+      display:grid;
+      grid-template-columns:1.35fr .65fr;
+      gap:18px;
+      align-items:center;
+    }
+    .agroMedia img{
+      width:100%;
+      height:260px;
+      object-fit:cover;
+      border-radius:14px;
+      border:1px solid rgba(0,0,0,.06);
+    }
+    @media(max-width:900px){
+      .agroCard{grid-template-columns:1fr}
+      .agroMedia img{height:220px}
     }
 
-    footer a{color:rgba(255,255,255,.85)}
-    footer a:hover{color:#89C444}
+    /* ================= NUEVO: CARRUSEL LOGOS PROVEEDORES ================= */
+    .logoCarousel{position:relative;margin-top:18px}
+    .logoTrack{
+      display:flex;
+      gap:16px;
+      overflow:auto;
+      scroll-behavior:smooth;
+      padding:12px 48px;
+      scrollbar-width:none;
+    }
+    .logoTrack::-webkit-scrollbar{display:none}
 
+    .logoItem{
+      flex:0 0 auto;
+      width:170px;
+      height:86px;
+      background:rgba(255,255,255,.90);
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid rgba(0,0,0,.06);
+    }
+    .logoItem img{
+      max-width:130px;
+      max-height:48px;
+      width:auto;
+      height:auto;
+      object-fit:contain;
+      filter:saturate(1.05);
+    }
+
+    .carBtn{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      width:34px;
+      height:34px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.15);
+      background:rgba(255,255,255,.92);
+      cursor:pointer;
+      font-size:20px;
+      font-weight:900;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:2;
+    }
+    .carBtn.prev{left:8px}
+    .carBtn.next{right:8px}
+
+    @media(max-width:700px){
+      .logoItem{width:150px;height:80px}
+      .logoTrack{padding:12px 42px}
+    }
+
+    /* ================= FOOTER (más finito y semi-transparente) ================= */
+    footer{
+      background: rgba(15, 23, 42, .62);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: rgba(255,255,255,.88);
+      padding: 14px 0; /* ✅ más finito */
+      text-align:center;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+    footer a{color:rgba(255,255,255,.88)}
+    footer a:hover{color:#89C444}
     .footGrid{
       display:flex;
       flex-direction:column;
       align-items:center;
       justify-content:center;
-      gap:10px;
+      gap:6px;
+      font-size:14px;
     }
 
     /* ================= WHATSAPP ================= */
@@ -259,168 +363,245 @@
   </div>
 </section>
 
-  <section class="heroBelow" id="agroinsumos">
-    <div class="container">
-      <div class="card" style="padding:22px">
+<section class="heroBelow" id="agroinsumos">
+  <div class="container">
+    <!-- NUEVO: agroCard texto + imagen -->
+    <div class="card agroCard">
+      <div>
         <div class="center">
           <div class="kicker">AgriCheck</div>
           <h2 class="agroTitle">AGROINSUMOS ESPECIALES</h2>
-          <p class="muted agroLead" style="margin-top:10px">
-            Desde 2001, en AgriCheck trabajamos con una misión clara: Desarrollar y ofrecer agroinsumos especiales eficientes para una agricultura sustentable y ecológica en el país.
+        </div>
+
+        <p class="muted agroLead" style="margin-top:10px">
+          Desde 2001, en AgriCheck trabajamos con una misión clara: Desarrollar y ofrecer agroinsumos especiales eficientes para una agricultura sustentable y ecológica en el país.
 
 Con origen en General Roca, Río Negro, comenzamos enfocados en el desarrollo de soluciones para la producción de frutales. Con el tiempo, incorporamos representaciones de proveedores líderes mundiales en su segmento, lo que nos permite ofrecer el porfolio de soluciones sustentables más amplias de Argentina. No sólo brindamos herramientas para el control de plagas y enfermedades de los cultivos, sino que proveemos promotores de rendimiento a través de nuestra exclusiva línea de microorganismos benéficos (Biofertilizantes). Asimismo, preocupados por el cada vez más desafiante entorno climático para la agricultura, desarrollamos agentes anti estresantes de marcada eficacia.
-            <strong>Desde 2019 somos parte de Andermatt Group.</strong>
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <div class="card" style="padding:22px">
-        <div class="center">
-          <div class="kicker">Representaciones exclusivas en Argentina</div>
-          <h2>Proveedores líderes</h2>
-          <p class="muted" style="margin:10px auto 0; max-width:820px">
-            Incorporamos representaciones de proveedores líderes mundiales para ofrecer uno de los portafolios más amplios
-            de soluciones sustentables en Argentina.
-          </p>
-        </div>
-
-        <div class="logos" aria-label="Logos de proveedores">
-          <img src="suterra.png" alt="Suterra" />
-          <img src="andermatt.png" alt="Andermatt" />
-          <img src="BioAtlantis.png" alt="BioAtlantis" />
-          <img src="cultiva-1.png" alt="Cultiva" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="beneficios">
-    <div class="container">
-      <div class="center">
-        <div class="kicker">Por qué AgriCheck</div>
-        <h2>Beneficios</h2>
-        <p class="muted" style="margin:10px auto 0; max-width:820px">
-          Enfoque técnico-comercial claro, soluciones sustentables y asesoramiento para implementar tecnologías sin fricción.
+          <strong>Desde 2019 somos parte de Andermatt Group.</strong>
         </p>
       </div>
 
-      <div class="grid4" style="margin-top:18px">
-        <div class="card benefit">
-          <div class="pill">✓</div>
-          <h3>Agricultura sustentable</h3>
-          <p>Soluciones eficientes orientadas a sistemas productivos más responsables.</p>
-        </div>
-        <div class="card benefit">
-          <div class="pill">🔬</div>
-          <h3>Soporte técnico</h3>
-          <p>Acompañamiento en adopción, uso y mejores prácticas en campo.</p>
-        </div>
-        <div class="card benefit">
-          <div class="pill">🌱</div>
-          <h3>Biológicos</h3>
-          <p>Microorganismos benéficos, biofertilizantes y bioestimulantes.</p>
-        </div>
-        <div class="card benefit">
-          <div class="pill">🧩</div>
-          <h3>Portafolio amplio</h3>
-          <p>Control de plagas, enfermedades y promotores de rendimiento.</p>
-        </div>
+      <div class="agroMedia">
+        <img src="agroinsumosespeciales.jpg" alt="Agroinsumos especiales" loading="lazy" />
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="productos">
-    <div class="container">
+<section>
+  <div class="container">
+    <div class="card" style="padding:22px">
       <div class="center">
-        <div class="kicker">Agroinsumos</div>
-        <h2>Productos</h2>
+        <div class="kicker">Representaciones exclusivas en Argentina</div>
+        <h2>Proveedores líderes</h2>
+        <p class="muted" style="margin:10px auto 0; max-width:820px">
+          Incorporamos representaciones de proveedores líderes mundiales para ofrecer uno de los portafolios más amplios
+          de soluciones sustentables en Argentina.
+        </p>
       </div>
 
-      <div class="grid3" style="margin-top:18px">
-        <div class="card prod">
-          <h3>Control de plagas y enfermedades</h3>
-          <ul>
-            <li>Feromonas</li>
-            <li>Insecticidas biológicos</li>
-            <li>Atracción y muerte</li>
-            <li>Fungicidas biológicos</li>
-            <li>Nematicidas biológicos</li>
-            <li>Trampas de monitoreo</li>
-          </ul>
-          <a class="smallCta" href="/productos/">Ver todos →</a>
+      <!-- NUEVO: carrusel -->
+      <div class="logoCarousel" aria-label="Logos de proveedores"
+           id="logoCarousel"
+           onmouseenter="pauseLogoAuto()"
+           onmouseleave="resumeLogoAuto()"
+           ontouchstart="pauseLogoAuto()">
+        <button class="carBtn prev" type="button" aria-label="Anterior" onclick="scrollLogos(-1)">‹</button>
+
+        <div class="logoTrack" id="logoTrack">
+          <div class="logoItem"><img src="suterra.png" alt="Suterra" loading="lazy" /></div>
+          <div class="logoItem"><img src="andermatt.png" alt="Andermatt" loading="lazy" /></div>
+          <div class="logoItem"><img src="BioAtlantis.png" alt="BioAtlantis" loading="lazy" /></div>
+          <div class="logoItem"><img src="cultiva-1.png" alt="Cultiva" loading="lazy" /></div>
         </div>
 
-        <div class="card prod">
-          <h3>Tratamientos de semilla</h3>
-          <ul>
-            <li>Tratamientos líquidos</li>
-            <li>Tratamientos Easy Flow</li>
-          </ul>
-          <a class="smallCta" href="/productos/">Ver todos →</a>
-        </div>
+        <button class="carBtn next" type="button" aria-label="Siguiente" onclick="scrollLogos(1)">›</button>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <div class="card prod">
-          <h3>Rendimiento y calidad</h3>
-          <ul>
-            <li>Fertilizantes biológicos</li>
-            <li>Potenciadores de fertilidad biológica</li>
-            <li>Antiestrés / Bioestimulantes</li>
-            <li>Protectores solares</li>
-            <li>Anticracking</li>
-          </ul>
-          <a class="smallCta" href="/productos/">Ver todos →</a>
+<section id="beneficios">
+  <div class="container">
+    <div class="center">
+      <div class="kicker">Por qué AgriCheck</div>
+      <h2>Beneficios</h2>
+      <p class="muted" style="margin:10px auto 0; max-width:820px">
+        Enfoque técnico-comercial claro, soluciones sustentables y asesoramiento para implementar tecnologías sin fricción.
+      </p>
+    </div>
+
+    <div class="grid4" style="margin-top:18px">
+      <div class="card benefit">
+        <div class="pill">✓</div>
+        <h3>Agricultura sustentable</h3>
+        <p>Soluciones eficientes orientadas a sistemas productivos más responsables.</p>
+      </div>
+      <div class="card benefit">
+        <div class="pill">🔬</div>
+        <h3>Soporte técnico</h3>
+        <p>Acompañamiento en adopción, uso y mejores prácticas en campo.</p>
+      </div>
+      <div class="card benefit">
+        <div class="pill">🌱</div>
+        <h3>Biológicos</h3>
+        <p>Microorganismos benéficos, biofertilizantes y bioestimulantes.</p>
+      </div>
+      <div class="card benefit">
+        <div class="pill">🧩</div>
+        <h3>Portafolio amplio</h3>
+        <p>Control de plagas, enfermedades y promotores de rendimiento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="productos">
+  <div class="container">
+    <div class="center">
+      <div class="kicker">Agroinsumos</div>
+      <h2>Productos</h2>
+    </div>
+
+    <div class="grid3" style="margin-top:18px">
+      <div class="card prod">
+        <h3>Control de plagas y enfermedades</h3>
+        <ul>
+          <li>Feromonas</li>
+          <li>Insecticidas biológicos</li>
+          <li>Atracción y muerte</li>
+          <li>Fungicidas biológicos</li>
+          <li>Nematicidas biológicos</li>
+          <li>Trampas de monitoreo</li>
+        </ul>
+        <a class="smallCta" href="/productos/">Ver todos →</a>
+      </div>
+
+      <div class="card prod">
+        <h3>Tratamientos de semilla</h3>
+        <ul>
+          <li>Tratamientos líquidos</li>
+          <li>Tratamientos Easy Flow</li>
+        </ul>
+        <a class="smallCta" href="/productos/">Ver todos →</a>
+      </div>
+
+      <div class="card prod">
+        <h3>Rendimiento y calidad</h3>
+        <ul>
+          <li>Fertilizantes biológicos</li>
+          <li>Potenciadores de fertilidad biológica</li>
+          <li>Antiestrés / Bioestimulantes</li>
+          <li>Protectores solares</li>
+          <li>Anticracking</li>
+        </ul>
+        <a class="smallCta" href="/productos/">Ver todos →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="instagram">
+  <div class="container">
+    <div class="card" style="padding:22px">
+      <div class="center">
+        <h2>Seguinos en Instagram</h2>
+        <p class="muted" style="margin:10px auto 0; max-width:820px">
+          Novedades, recorridas a campo y contenido técnico.
+        </p>
+        <div style="margin-top:14px">
+          <a class="btn btnPrimary" href="https://www.instagram.com/agricheck.srl/" target="_blank" rel="noopener">Ver Instagram</a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="instagram">
-    <div class="container">
-      <div class="card" style="padding:22px">
-        <div class="center">
-          <h2>Seguinos en Instagram</h2>
-          <p class="muted" style="margin:10px auto 0; max-width:820px">
-            Novedades, recorridas a campo y contenido técnico.
-          </p>
-          <div style="margin-top:14px">
-            <a class="btn btnPrimary" href="https://www.instagram.com/agricheck.srl/" target="_blank" rel="noopener">Ver Instagram</a>
-          </div>
-        </div>
+<footer>
+  <div class="container">
+    <div class="footGrid">
+      <div>Copyright © Agricheck <span id="year"></span>.</div>
+      <div class="footer-designed">
+        <p style="display:flex; justify-content:center; align-items:center; gap:6px; margin:0;">
+          Diseñado por UmanoAI
+          <a href="https://umanoai.com.ar" target="_blank" rel="noopener" style="display:inline-block;">
+            <img src="umanoai.png" alt="UmanoAI" style="height:18px;">
+          </a>
+        </p>
       </div>
     </div>
-  </section>
+  </div>
+</footer>
 
-  <footer>
-    <div class="container">
-      <div class="footGrid">
-        Copyright © Agricheck <span id="year"></span> .
-        <div class="footer-designed" style="margin-top:8px;">
-          <p style="display:flex; justify-content:center; align-items:center; gap:6px; margin:0;">
-            Diseñado por UmanoAI
-            <a href="https://umanoai.com.ar" target="_blank" rel="noopener" style="display:inline-block;">
-              <img src="umanoai.png" alt="UmanoAI" style="height:18px;">
-            </a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </footer>
+<!-- WhatsApp bubble (si no querés imagen, lo reemplazo por SVG) -->
+<a class="whatsapp-float"
+   href="https://wa.me/5490000000000?text=Hola%20AgriCheck!%20Quiero%20hacer%20una%20consulta."
+   target="_blank" rel="noopener" aria-label="WhatsApp">
+  <img src="whatsapp.png" alt="WhatsApp">
+</a>
 
-  <script>
-    // Año automático
-    document.getElementById('year').textContent = new Date().getFullYear();
+<script>
+  // Año automático
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Buscador local placeholder
-    window.__search = () => {
-      const q = (document.getElementById('q')?.value || "").trim();
-      if(!q){ alert("Escribí algo para buscar."); return; }
-      alert("Búsqueda local lista. Próximo paso: conectar un índice de productos (JSON) para resultados reales.\n\nBuscaste: " + q);
-    };
-  </script>
+  // Buscador local placeholder
+  window.__search = () => {
+    const q = (document.getElementById('q')?.value || "").trim();
+    if(!q){ alert("Escribí algo para buscar."); return; }
+    alert("Búsqueda local lista. Próximo paso: conectar un índice de productos (JSON) para resultados reales.\n\nBuscaste: " + q);
+  };
+
+  // Carrusel logos: flechas + auto-scroll + pausa
+  const track = document.getElementById('logoTrack');
+  let logoAutoTimer = null;
+  let logoPaused = false;
+
+  function scrollLogos(dir){
+    if(!track) return;
+    const step = Math.min(320, track.clientWidth * 0.7);
+    track.scrollBy({ left: dir * step, behavior: 'smooth' });
+  }
+
+  function startLogoAuto(){
+    if(!track) return;
+    stopLogoAuto();
+    logoAutoTimer = setInterval(() => {
+      if(logoPaused) return;
+
+      // si llegamos al final, volvemos al inicio suave
+      const nearEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 6;
+      if(nearEnd){
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+      }else{
+        scrollLogos(1);
+      }
+    }, 2600);
+  }
+
+  function stopLogoAuto(){
+    if(logoAutoTimer){
+      clearInterval(logoAutoTimer);
+      logoAutoTimer = null;
+    }
+  }
+
+  function pauseLogoAuto(){
+    logoPaused = true;
+  }
+
+  function resumeLogoAuto(){
+    logoPaused = false;
+  }
+
+  // Pausa también cuando el usuario hace scroll manual (touch/trackpad)
+  if(track){
+    track.addEventListener('wheel', () => { pauseLogoAuto(); setTimeout(resumeLogoAuto, 1600); }, {passive:true});
+    track.addEventListener('touchmove', () => { pauseLogoAuto(); setTimeout(resumeLogoAuto, 1600); }, {passive:true});
+  }
+
+  startLogoAuto();
+</script>
+
 </body>
 </html>
 
