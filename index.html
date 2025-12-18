@@ -200,9 +200,18 @@
     }
 
     /* ✅ Secciones SIN fondo propio (para que no se reinicie) */
-    section:not(.hero){
-      padding:64px 0;
-    }
+   section:not(.hero){
+  padding:38px 0; /* antes 64 */
+}
+
+/* ✅ junta específicamente Agroinsumos + Proveedores */
+#agroinsumos{
+  padding-bottom:14px; /* casi pegado con la siguiente */
+}
+#proveedores{
+  padding-top:14px; /* casi pegado con la anterior */
+}
+
 
     .card{
       background:rgba(255,255,255,.95);
@@ -235,35 +244,37 @@
 
     /* ================= NUEVO: CARRUSEL LOGOS PROVEEDORES ================= */
     .logoCarousel{position:relative;margin-top:18px}
-    .logoTrack{
-      display:flex;
-      gap:16px;
-      overflow:auto;
-      scroll-behavior:smooth;
-      padding:12px 48px;
-      scrollbar-width:none;
-    }
+   .logoTrack{
+  display:flex;
+  gap:12px;                 /* antes 16 */
+  overflow:auto;
+  scroll-behavior:smooth;
+  padding:10px 44px;        /* más chico */
+  scrollbar-width:none;
+}
     .logoTrack::-webkit-scrollbar{display:none}
 
-    .logoItem{
-      flex:0 0 auto;
-      width:170px;
-      height:86px;
-      background:rgba(255,255,255,.90);
-      border-radius:14px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      border:1px solid rgba(0,0,0,.06);
-    }
-    .logoItem img{
-      max-width:130px;
-      max-height:48px;
-      width:auto;
-      height:auto;
-      object-fit:contain;
-      filter:saturate(1.05);
-    }
+   .logoItem{
+  flex:0 0 auto;
+  width:130px;      /* antes 170 */
+  height:64px;      /* antes 86 */
+  background:rgba(255,255,255,.88);
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(0,0,0,.06);
+}
+
+.logoItem img{
+  max-width:98px;   /* antes 130 */
+  max-height:34px;  /* antes 48 */
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  filter:saturate(1.05);
+}
+
 
     .carBtn{
       position:absolute;
@@ -577,7 +588,7 @@ Con origen en General Roca, Río Negro, comenzamos enfocados en el desarrollo de
 
   function scrollLogos(dir){
     if(!track) return;
-    const step = Math.min(320, track.clientWidth * 0.7);
+   const step = 220; // más chico => pasa logos más seguido
     track.scrollBy({ left: dir * step, behavior: 'smooth' });
   }
 
@@ -594,7 +605,7 @@ Con origen en General Roca, Río Negro, comenzamos enfocados en el desarrollo de
       }else{
         scrollLogos(1);
       }
-    }, 2600);
+   }, 1700); // más rápido y “vivo”
   }
 
   function stopLogoAuto(){
