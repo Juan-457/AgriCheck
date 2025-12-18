@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es-AR">
 <head>
@@ -430,7 +431,7 @@
       margin-top:18px;
     }
 
-    /* ================= INSTAGRAM: PREVISUALIZACIÓN (embed) + link ================= */
+    /* ================= INSTAGRAM: PREVISUALIZACIÓN (embed) SIN TEXTO NI BOTÓN VISIBLE ================= */
     .igGrid{
       margin-top:16px;
       display:grid;
@@ -444,7 +445,7 @@
       border-radius: calc(var(--radius) - 2px);
       padding:14px;
       display:flex;
-      flex-direction:column; /* ✅ para que la preview quede arriba y el CTA abajo */
+      flex-direction:column;
       align-items:stretch;
       gap:12px;
       overflow:hidden;
@@ -474,51 +475,22 @@
       background:#fff;
     }
 
-    .igMetaRow{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      min-width:0;
+    /* ✅ Link "invisible" para abrir el reel sin mostrar botón/texto */
+    .igPreviewLink{
+      position:absolute;
+      inset:0;
+      z-index:3;
+      display:block;
+      border-radius:14px;
+      background: transparent;
+      /* deja el iframe visible debajo */
     }
-    .igLeft{
-      display:flex;
-      flex-direction:column;
-      gap:4px;
-      min-width:0;
-    }
-    .igTag{
-      font-size:12px;
-      font-weight:900;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      color:rgba(15,23,42,.70);
-    }
-    .igTitle{
-      font-size:14px;
-      font-weight:800;
-      color:rgba(15,23,42,.92);
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-    .igBtn{
-      flex:0 0 auto;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:10px 12px;
-      border-radius:999px;
-      font-weight:900;
-      border:1px solid rgba(15,23,42,.10);
-      background:rgba(255,255,255,.92);
-      color:rgba(15,23,42,.92);
-      box-shadow: 0 10px 18px rgba(0,0,0,.10);
-    }
-    .igBtn:hover{
-      background:rgba(255,255,255,.98);
+    .igPreviewLink:focus{
+      outline:3px solid rgba(137,196,68,.65);
+      outline-offset:2px;
     }
 
+    /* fallback visible sólo si el embed falla */
     .igFallback{
       display:none; /* por defecto oculto; se muestra si el iframe falla vía JS */
       font-size:13px;
@@ -626,7 +598,7 @@
 
   <div class="heroContent">
     <div class="container">
-      <div class="badge">Agroinsumos especiales eficientes para una agricultura sustentable. </div>
+      <div class="badge">Agroinsumos especiales eficientes para una agricultura sustentable. Control biológico, feromonas, biofertilizantes y bioestimulantes.</div>
 
       <div class="heroActions">
         <a class="btn btnPrimary" href="/contacto/">Hablar con un asesor</a>
@@ -792,161 +764,119 @@
           Novedades, recorridas a campo y contenido técnico.
         </p>
 
-        <!-- ✅ Previsualización de Reels vía embed (iframe). Si el navegador/IG bloquea el embed, queda link fallback. -->
+        <!-- ✅ Previsualización de Reels vía embed (iframe) SIN "Reel 1" ni botón/link visible -->
         <div class="igGrid" aria-label="Reels destacados de Instagram">
           <div class="igItem" data-ig="https://www.instagram.com/reel/DSLSnStAoCV/">
             <div class="igPreview">
               <iframe
-                title="Previsualización Reel 1"
+                title="Previsualización Reel"
                 src="https://www.instagram.com/reel/DSLSnStAoCV/embed"
                 loading="lazy"
                 allowfullscreen
                 referrerpolicy="strict-origin-when-cross-origin"
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
               ></iframe>
-            </div>
-
-            <div class="igMetaRow">
-              <div class="igLeft">
-                <div class="igTag">Reel 1</div>
-                <div class="igTitle">DSLSnStAoCV</div>
-              </div>
-              <a class="igBtn" href="https://www.instagram.com/reel/DSLSnStAoCV/" target="_blank" rel="noopener" aria-label="Abrir Reel 1 en Instagram">Ver reel</a>
+              <a class="igPreviewLink" href="https://www.instagram.com/reel/DSLSnStAoCV/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
             </div>
 
             <div class="igFallback" aria-live="polite">
               No se pudo cargar la previsualización en este navegador.
-              <a href="https://www.instagram.com/reel/DSLSnStAoCV/" target="_blank" rel="noopener">Abrir Reel 1 en Instagram</a>.
+              <a href="https://www.instagram.com/reel/DSLSnStAoCV/" target="_blank" rel="noopener">Abrir en Instagram</a>.
             </div>
           </div>
 
           <div class="igItem" data-ig="https://www.instagram.com/reel/DSGOYXgEoRh/">
             <div class="igPreview">
               <iframe
-                title="Previsualización Reel 2"
+                title="Previsualización Reel"
                 src="https://www.instagram.com/reel/DSGOYXgEoRh/embed"
                 loading="lazy"
                 allowfullscreen
                 referrerpolicy="strict-origin-when-cross-origin"
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
               ></iframe>
-            </div>
-
-            <div class="igMetaRow">
-              <div class="igLeft">
-                <div class="igTag">Reel 2</div>
-                <div class="igTitle">DSGOYXgEoRh</div>
-              </div>
-              <a class="igBtn" href="https://www.instagram.com/reel/DSGOYXgEoRh/" target="_blank" rel="noopener" aria-label="Abrir Reel 2 en Instagram">Ver reel</a>
+              <a class="igPreviewLink" href="https://www.instagram.com/reel/DSGOYXgEoRh/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
             </div>
 
             <div class="igFallback" aria-live="polite">
               No se pudo cargar la previsualización en este navegador.
-              <a href="https://www.instagram.com/reel/DSGOYXgEoRh/" target="_blank" rel="noopener">Abrir Reel 2 en Instagram</a>.
+              <a href="https://www.instagram.com/reel/DSGOYXgEoRh/" target="_blank" rel="noopener">Abrir en Instagram</a>.
             </div>
           </div>
 
           <div class="igItem" data-ig="https://www.instagram.com/reel/DR2xqZEEpfH/">
             <div class="igPreview">
               <iframe
-                title="Previsualización Reel 3"
+                title="Previsualización Reel"
                 src="https://www.instagram.com/reel/DR2xqZEEpfH/embed"
                 loading="lazy"
                 allowfullscreen
                 referrerpolicy="strict-origin-when-cross-origin"
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
               ></iframe>
-            </div>
-
-            <div class="igMetaRow">
-              <div class="igLeft">
-                <div class="igTag">Reel 3</div>
-                <div class="igTitle">DR2xqZEEpfH</div>
-              </div>
-              <a class="igBtn" href="https://www.instagram.com/reel/DR2xqZEEpfH/" target="_blank" rel="noopener" aria-label="Abrir Reel 3 en Instagram">Ver reel</a>
+              <a class="igPreviewLink" href="https://www.instagram.com/reel/DR2xqZEEpfH/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
             </div>
 
             <div class="igFallback" aria-live="polite">
               No se pudo cargar la previsualización en este navegador.
-              <a href="https://www.instagram.com/reel/DR2xqZEEpfH/" target="_blank" rel="noopener">Abrir Reel 3 en Instagram</a>.
+              <a href="https://www.instagram.com/reel/DR2xqZEEpfH/" target="_blank" rel="noopener">Abrir en Instagram</a>.
             </div>
           </div>
 
           <div class="igItem" data-ig="https://www.instagram.com/reel/DRxolFXk56S/">
             <div class="igPreview">
               <iframe
-                title="Previsualización Reel 4"
+                title="Previsualización Reel"
                 src="https://www.instagram.com/reel/DRxolFXk56S/embed"
                 loading="lazy"
                 allowfullscreen
                 referrerpolicy="strict-origin-when-cross-origin"
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
               ></iframe>
-            </div>
-
-            <div class="igMetaRow">
-              <div class="igLeft">
-                <div class="igTag">Reel 4</div>
-                <div class="igTitle">DRxolFXk56S</div>
-              </div>
-              <a class="igBtn" href="https://www.instagram.com/reel/DRxolFXk56S/" target="_blank" rel="noopener" aria-label="Abrir Reel 4 en Instagram">Ver reel</a>
+              <a class="igPreviewLink" href="https://www.instagram.com/reel/DRxolFXk56S/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
             </div>
 
             <div class="igFallback" aria-live="polite">
               No se pudo cargar la previsualización en este navegador.
-              <a href="https://www.instagram.com/reel/DRxolFXk56S/" target="_blank" rel="noopener">Abrir Reel 4 en Instagram</a>.
+              <a href="https://www.instagram.com/reel/DRxolFXk56S/" target="_blank" rel="noopener">Abrir en Instagram</a>.
             </div>
           </div>
 
           <div class="igItem" data-ig="https://www.instagram.com/reel/DRvDMyAkY61/">
             <div class="igPreview">
               <iframe
-                title="Previsualización Reel 5"
+                title="Previsualización Reel"
                 src="https://www.instagram.com/reel/DRvDMyAkY61/embed"
                 loading="lazy"
                 allowfullscreen
                 referrerpolicy="strict-origin-when-cross-origin"
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
               ></iframe>
-            </div>
-
-            <div class="igMetaRow">
-              <div class="igLeft">
-                <div class="igTag">Reel 5</div>
-                <div class="igTitle">DRvDMyAkY61</div>
-              </div>
-              <a class="igBtn" href="https://www.instagram.com/reel/DRvDMyAkY61/" target="_blank" rel="noopener" aria-label="Abrir Reel 5 en Instagram">Ver reel</a>
+              <a class="igPreviewLink" href="https://www.instagram.com/reel/DRvDMyAkY61/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
             </div>
 
             <div class="igFallback" aria-live="polite">
               No se pudo cargar la previsualización en este navegador.
-              <a href="https://www.instagram.com/reel/DRvDMyAkY61/" target="_blank" rel="noopener">Abrir Reel 5 en Instagram</a>.
+              <a href="https://www.instagram.com/reel/DRvDMyAkY61/" target="_blank" rel="noopener">Abrir en Instagram</a>.
             </div>
           </div>
 
           <div class="igItem" data-ig="https://www.instagram.com/reel/DRiLwi_jExD/">
             <div class="igPreview">
               <iframe
-                title="Previsualización Reel 6"
+                title="Previsualización Reel"
                 src="https://www.instagram.com/reel/DRiLwi_jExD/embed"
                 loading="lazy"
                 allowfullscreen
                 referrerpolicy="strict-origin-when-cross-origin"
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
               ></iframe>
-            </div>
-
-            <div class="igMetaRow">
-              <div class="igLeft">
-                <div class="igTag">Reel 6</div>
-                <div class="igTitle">DRiLwi_jExD</div>
-              </div>
-              <a class="igBtn" href="https://www.instagram.com/reel/DRiLwi_jExD/" target="_blank" rel="noopener" aria-label="Abrir Reel 6 en Instagram">Ver reel</a>
+              <a class="igPreviewLink" href="https://www.instagram.com/reel/DRiLwi_jExD/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
             </div>
 
             <div class="igFallback" aria-live="polite">
               No se pudo cargar la previsualización en este navegador.
-              <a href="https://www.instagram.com/reel/DRiLwi_jExD/" target="_blank" rel="noopener">Abrir Reel 6 en Instagram</a>.
+              <a href="https://www.instagram.com/reel/DRiLwi_jExD/" target="_blank" rel="noopener">Abrir en Instagram</a>.
             </div>
           </div>
         </div>
@@ -1011,13 +941,11 @@
 
       let loaded = false;
 
-      // Si llega a cargar, oculto fallback
       iframe.addEventListener('load', () => {
         loaded = true;
         fallback.style.display = 'none';
       });
 
-      // Timeout: si no cargó en X ms, muestro fallback
       setTimeout(() => {
         if(!loaded){
           fallback.style.display = 'block';
@@ -1029,4 +957,4 @@
 
 </body>
 </html>
-
+```
