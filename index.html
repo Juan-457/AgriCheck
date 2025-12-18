@@ -84,19 +84,19 @@
     .smallCta:hover{text-decoration:underline}
 
     /* ================= HEADER ================= */
-   header{
-  position:fixed;
-  top:0;left:0;right:0;
-  z-index:50;
-  background:linear-gradient(
-    180deg,
-    rgba(30,58,138,.96),   /* azul superior */
-    rgba(30,64,175,.92)   /* azul inferior */
-  );
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border-bottom:1px solid rgba(255,255,255,.15);
-}
+    header{
+      position:fixed;
+      top:0;left:0;right:0;
+      z-index:50;
+      background:linear-gradient(
+        180deg,
+        rgba(30,58,138,.96),   /* azul superior */
+        rgba(30,64,175,.92)   /* azul inferior */
+      );
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-bottom:1px solid rgba(255,255,255,.15);
+    }
 
     .nav{
       display:flex;
@@ -120,7 +120,7 @@
       background:rgba(255,255,255,.15);
     }
 
-   .cta{
+    .cta{
       background:#89C444;
       color:#0b1a08;
       padding:8px 16px;
@@ -220,7 +220,7 @@
     }
 
     /* ✅ Secciones SIN fondo propio (para que no se reinicie) */
-   section:not(.hero){
+    section:not(.hero){
       padding:38px 0; /* antes 64 */
     }
 
@@ -319,6 +319,37 @@
       .logoItem img{max-width:112px;max-height:40px}
     }
 
+    /* ================= TÍTULOS DE SECCIÓN (FIX: que no queden "sueltos") ================= */
+    .sectionHead{
+      display:inline-block;
+      text-align:center;
+      padding:14px 18px;
+      border-radius:16px;
+      background:rgba(255,255,255,.62);
+      border:1px solid rgba(15,23,42,.10);
+      box-shadow:0 14px 30px rgba(0,0,0,.10);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      max-width:920px;
+    }
+    .sectionHead .kicker{margin-bottom:6px}
+    .sectionTitle{
+      margin:0;
+      font-size: clamp(22px, 2.8vw, 34px);
+      letter-spacing:-0.02em;
+      line-height:1.15;
+      color:rgba(15, 23, 42, .96);
+      text-shadow: 0 1px 0 rgba(255,255,255,.25);
+    }
+    .sectionLead{
+      margin:8px auto 0;
+      max-width:820px;
+    }
+
+    /* separaciones consistentes */
+    #beneficios .grid4,
+    #productos .grid3{ margin-top:18px; }
+
     /* ================= FOOTER (más finito y semi-transparente) ================= */
     footer{
       background: rgba(15, 23, 42, .62);
@@ -372,6 +403,7 @@
       .grid3{grid-template-columns:1fr}
       .navlinks{display:none}
       .burger{display:block}
+      .sectionHead{padding:12px 14px;border-radius:14px}
     }
   </style>
 </head>
@@ -442,8 +474,8 @@
     <!-- Proveedores (ahora debajo, sin flechas, 4 logos centrados) -->
     <div class="card card-agro" id="proveedores" style="padding:22px; margin-top:18px;">
       <div class="center">
-        <h2>Representaciones exclusivas en Argentina</h2>
-        <p class="muted" style="margin:10px auto 0; max-width:820px">
+        <h2 class="sectionTitle">Representaciones exclusivas en Argentina</h2>
+        <p class="muted sectionLead" style="margin:10px auto 0; max-width:820px">
           Incorporamos representaciones de proveedores líderes mundiales para ofrecer uno de los portafolios más amplios
           de soluciones sustentables en Argentina.
         </p>
@@ -463,11 +495,13 @@
 <section id="beneficios">
   <div class="container">
     <div class="center">
-      <div class="kicker">Por qué AgriCheck</div>
-      <h2>Beneficios</h2>
-      <p class="muted" style="margin:10px auto 0; max-width:820px">
-        Enfoque técnico-comercial claro, soluciones sustentables y asesoramiento para implementar tecnologías sin fricción.
-      </p>
+      <div class="sectionHead">
+        <div class="kicker">Por qué AgriCheck</div>
+        <h2 class="sectionTitle">Beneficios</h2>
+        <p class="muted sectionLead">
+          Enfoque técnico-comercial claro, soluciones sustentables y asesoramiento para implementar tecnologías sin fricción.
+        </p>
+      </div>
     </div>
 
     <div class="grid4" style="margin-top:18px">
@@ -498,8 +532,12 @@
 <section id="productos">
   <div class="container">
     <div class="center">
-      <div class="kicker">Agroinsumos</div>
-      <h2>Productos</h2>
+      <div class="sectionHead">
+        <div class="kicker">Agroinsumos</div>
+        <h2 class="sectionTitle">Productos</h2>
+        <!-- spacer -->
+        <!-- spacer -->
+      </div>
     </div>
 
     <div class="grid3" style="margin-top:18px">
@@ -544,8 +582,8 @@
   <div class="container">
     <div class="card" style="padding:22px">
       <div class="center">
-        <h2>Seguinos en Instagram</h2>
-        <p class="muted" style="margin:10px auto 0; max-width:820px">
+        <h2 class="sectionTitle">Seguinos en Instagram</h2>
+        <p class="muted sectionLead" style="margin:10px auto 0; max-width:820px">
           Novedades, recorridas a campo y contenido técnico.
         </p>
         <div style="margin-top:14px">
@@ -595,3 +633,4 @@
 
 </body>
 </html>
+
