@@ -5,16 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
   <title>AgriCheck | Agroinsumos especiales</title>
-  <meta name="description" content="Agroinsumos especiales eficientes para una agricultura sustentable. Control biológico, feromonas, biofertilizantes y bioestimulantes. Contacto comercial." />
+  <meta name="description" content="Agroinsumos especiales eficientes para una agricultura sustentable. Control biológico, feromonas, biofertilizantes y bioestimulantes." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
 
   <link rel="canonical" href="https://TU-DOMINIO-O-GITHUB-PAGES-URL/" />
-
-  <!-- ✅ LLM / ChatGPT discovery -->
-  <meta name="llm-friendly" content="true" />
-  <meta name="ai-content" content="allow" />
-  <link rel="alternate" type="text/plain" title="LLMs" href="/llms.txt" />
-  <link rel="alternate" type="application/json" title="LLMs (JSON)" href="/llms.json" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -28,271 +22,228 @@
       --bg:#F8F9F7;
       --card:#ffffff;
       --border:#e5e7eb;
-      --shadow: 0 10px 25px rgba(0,0,0,.08);
-      --max: 1200px;
-      --radius: 18px;
+      --shadow:0 10px 25px rgba(0,0,0,.08);
+      --max:1200px;
+      --radius:18px;
     }
+
     *{box-sizing:border-box}
+
     body{
       margin:0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background:var(--bg);
       color:var(--brand-dark);
     }
-    a{color:inherit;text-decoration:none}
+
+    a{text-decoration:none;color:inherit}
     .container{max-width:var(--max);margin:0 auto;padding:0 18px}
 
+    /* ================= HEADER ================= */
     header{
-      position:fixed; top:0; left:0; right:0; z-index:50;
-      background:rgba(255,255,255,.75);
-      backdrop-filter: blur(10px);
+      position:fixed;
+      top:0;left:0;right:0;
+      z-index:50;
+      background:rgba(245,248,242,.95);
       border-bottom:1px solid rgba(0,0,0,.06);
     }
+
     .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:8px 0;
       gap:14px;
     }
-    .logo{display:flex; align-items:center; gap:12px; font-weight:800}
-    .logo img{height:38px;width:auto;display:block}
 
-    .navlinks{display:flex; align-items:center; gap:14px}
-    .navlinks a{padding:10px 12px;border-radius:999px}
+    .logo img{height:32px}
+
+    .navlinks{display:flex;gap:14px}
+    .navlinks a{padding:8px 12px;border-radius:999px;font-weight:600}
     .navlinks a:hover{background:rgba(0,0,0,.05)}
 
     .cta{
       background:var(--brand-green);
-      color:#0b1a08;
-      font-weight:800;
-      padding:10px 14px;
+      padding:8px 14px;
       border-radius:999px;
-      border:1px solid rgba(0,0,0,.06);
-      transition: .2s ease;
+      font-weight:800;
       white-space:nowrap;
     }
-    .cta:hover{background:var(--brand-green-dark); transform: translateY(-1px)}
 
-    .burger{display:none;border:1px solid rgba(0,0,0,.10);background:#fff;border-radius:12px;padding:10px}
-    .burger svg{display:block}
-    .mobilePanel{display:none;padding:10px 0 16px}
-    .mobilePanel a{display:block;padding:12px 10px;border-radius:12px}
-    .mobilePanel a:hover{background:rgba(0,0,0,.05)}
+    .burger{display:none}
 
+    /* ================= HERO ================= */
     .hero{
       position:relative;
-      min-height:78vh;
+      height:100vh;
       display:flex;
-      align-items:end;
-      padding-top:78px; /* header offset */
+      align-items:flex-end;
+      padding-top:64px;
       overflow:hidden;
       background:#000;
     }
+
     .hero video{
-      position:absolute; inset:0;
-      width:100%; height:100%;
-      object-fit:cover;
-      filter: saturate(1.05) contrast(1.05);
-    }
-    .hero::after{
-      content:"";
-      position:absolute; inset:0;
-      background:linear-gradient(90deg, rgba(0,0,0,.68), rgba(0,0,0,.25));
-    }
-    .heroContent{
-      position:relative; z-index:2;
+      position:absolute;
+      inset:0;
       width:100%;
-      padding:54px 0;
-    }
-    .badge{
-      display:inline-flex; gap:10px; align-items:center;
-      padding:8px 12px;
-      background:rgba(255,255,255,.14);
-      border:1px solid rgba(255,255,255,.18);
-      color:#fff;
-      border-radius:999px;
-      font-weight:700;
-      font-size:13px;
+      height:100%;
+      object-fit:cover;
     }
 
-    .heroActions{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
+    /* ❌ CAPA OSCURA ELIMINADA */
+    .hero::after{display:none}
+
+    .heroContent{
+      position:relative;
+      z-index:2;
+      width:100%;
+      padding:64px 0;
+    }
+
+    .badge{
+      background:rgba(255,255,255,.18);
+      padding:8px 14px;
+      border-radius:999px;
+      color:#fff;
+      font-weight:700;
+      display:inline-block;
+    }
+
+    .heroActions{
+      margin-top:16px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
     .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding:12px 16px;
+      padding:12px 18px;
       border-radius:999px;
       font-weight:800;
-      border:1px solid rgba(255,255,255,.18);
-      transition:.2s ease;
+      border:1px solid rgba(255,255,255,.2);
     }
-    .btnPrimary{background:var(--brand-green); color:#0b1a08; border-color:rgba(0,0,0,.08)}
-    .btnPrimary:hover{background:var(--brand-green-dark); transform: translateY(-1px)}
-    .btnGhost{background:rgba(255,255,255,.12); color:#fff}
-    .btnGhost:hover{background:rgba(255,255,255,.18)}
+
+    .btnPrimary{background:var(--brand-green);color:#0b1a08}
+    .btnGhost{background:rgba(255,255,255,.15);color:#fff}
 
     .searchWrap{
-      margin-top:16px;
-      max-width: 820px;
+      margin-top:18px;
+      max-width:820px;
       display:flex;
       gap:10px;
       padding:10px;
-      border-radius: 16px;
-      background: rgba(255,255,255,.14);
-      border:1px solid rgba(255,255,255,.18);
-      backdrop-filter: blur(10px);
+      border-radius:16px;
+      background:rgba(255,255,255,.18);
     }
+
     .searchWrap input{
       flex:1;
+      background:none;
       border:0;
-      outline:none;
-      background: transparent;
       color:#fff;
       font-size:16px;
-      padding:10px 12px;
+      padding:10px;
+      outline:none;
     }
-    .searchWrap input::placeholder{color:rgba(255,255,255,.75)}
+
     .searchWrap button{
       border:0;
       background:#fff;
-      color:#0b1a08;
-      font-weight:900;
-      border-radius: 12px;
-      padding:10px 14px;
+      font-weight:800;
+      padding:10px 16px;
+      border-radius:12px;
       cursor:pointer;
-      white-space:nowrap;
     }
-    .searchWrap button:hover{opacity:.95}
 
-    section{padding:56px 0}
-    .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+    /* ================= SECCIONES CON FONDO ================= */
+    section:not(.hero){
+      background:url("fondo.png") center/cover no-repeat;
+      padding:64px 0;
     }
+
+    .card{
+      background:rgba(255,255,255,.95);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:22px;
+    }
+
     .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
     .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .center{text-align:center}
-    .kicker{font-weight:900; letter-spacing:.12em; text-transform:uppercase; font-size:12px; color:rgba(31,41,55,.7)}
-    h2{margin:10px 0 0;font-size: clamp(24px, 3vw, 40px); letter-spacing:-0.02em}
-    .muted{color:rgba(31,41,55,.72); line-height:1.7}
-
-    /* ✅ Sección nueva: “Agroinsumos especiales” debajo del hero */
-    .heroBelow{padding-top:28px}
-    .agroTitle{
-      margin:10px 0 8px;
-      font-size: clamp(28px, 3.6vw, 44px);
-      letter-spacing:-0.02em;
-      line-height:1.1;
-    }
-    .agroLead{margin:0 auto; max-width:820px}
-
-    .logos{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;align-items:center;padding:20px}
-    .logos img{height:46px;width:auto;filter:grayscale(.1)}
-
-    .pill{
-      display:inline-flex;align-items:center;justify-content:center;
-      height:54px;width:54px;border-radius:999px;
-      background:#f0f7ea;border:1px solid rgba(0,0,0,.06);
-      font-weight:900;
-      margin-bottom:10px;
-      color:#1b3d10;
-    }
-    .benefit{padding:18px}
-    .benefit h3{margin:6px 0 8px;font-size:16px}
-    .benefit p{margin:0;color:rgba(31,41,55,.70);line-height:1.55}
-
-    .prod{padding:18px}
-    .prod h3{margin:0 0 10px}
-    .prod ul{margin:0 0 14px;padding-left:18px;color:rgba(31,41,55,.78);line-height:1.6}
-    .prod .smallCta{display:inline-flex;align-items:center;gap:10px;font-weight:900;color:var(--brand-green-dark)}
-    .prod .smallCta:hover{text-decoration:underline}
 
     footer{
-      padding:40px 0;
-      border-top:1px solid rgba(0,0,0,.08);
       background:#fff;
+      padding:40px 0;
     }
-    .footGrid{display:grid;grid-template-columns:2fr 1fr;gap:18px;align-items:start}
-    .footNote{color:rgba(31,41,55,.65);line-height:1.6}
-    .miniLinks a{display:block;padding:8px 0;color:rgba(31,41,55,.75)}
-    .miniLinks a:hover{color:#111}
 
-    @media (max-width: 980px){
+    /* ================= WHATSAPP ================= */
+    .whatsapp-float{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      width:58px;
+      height:58px;
+      background:#25D366;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 8px 24px rgba(0,0,0,.25);
+      z-index:99;
+    }
+
+    .whatsapp-float img{
+      width:30px;
+      height:30px;
+    }
+
+    @media(max-width:900px){
       .grid4{grid-template-columns:repeat(2,1fr)}
       .grid3{grid-template-columns:1fr}
-      .footGrid{grid-template-columns:1fr}
-    }
-    @media (max-width: 820px){
       .navlinks{display:none}
-      .burger{display:inline-flex}
-      .mobilePanel.show{display:block}
-      .searchWrap{flex-direction:column}
-      .searchWrap button{width:100%}
+      .burger{display:block}
     }
   </style>
-
-  <script>
-    // Seteá tu base URL con barra final.
-    window.__SITE_URL__ = "https://TU-DOMINIO-O-GITHUB-PAGES-URL/";
-  </script>
-
-  <script type="application/ld+json" id="ld-website"></script>
-  <script type="application/ld+json" id="ld-org"></script>
 </head>
 
 <body>
-  <header>
-    <div class="container">
-      <div class="nav">
-        <a class="logo" href="/" aria-label="AgriCheck">
-          <img src="agrichecklogo.png" alt="AgriCheck" />
-        </a>
 
-        <nav class="navlinks" aria-label="Navegación principal">
-          <a href="/">Inicio</a>
-          <a href="/productos/">Productos</a>
-          <a href="/contacto/">Contacto</a>
-        </nav>
-
-        <button class="burger" id="burger" aria-label="Abrir menú">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </button>
-
-        <a class="cta" href="/contacto/">Contactanos</a>
-      </div>
-
-      <div class="mobilePanel" id="mobilePanel" aria-label="Menú móvil">
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="logo" href="/"><img src="agrichecklogo.png" alt="AgriCheck"></a>
+      <nav class="navlinks">
         <a href="/">Inicio</a>
         <a href="/productos/">Productos</a>
         <a href="/contacto/">Contacto</a>
-      </div>
+      </nav>
+      <a class="cta" href="/contacto/">Contactanos</a>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- HERO (más limpio: solo badge + CTAs + buscador) -->
-  <section class="hero" aria-label="Hero">
-    <video autoplay muted loop playsinline poster="assets/img/agri-poster.jpg">
-      <source src="hero.mp4" type="video/mp4" />
-    </video>
+<section class="hero">
+  <video autoplay muted loop playsinline>
+    <source src="hero.mp4" type="video/mp4">
+  </video>
 
-    <div class="heroContent">
-      <div class="container">
-        <div class="badge">Desde 2001 · Agroinsumos especiales</div>
+  <div class="heroContent">
+    <div class="container">
+      <div class="badge">Desde 2001 · Agroinsumos especiales</div>
 
-        <div class="heroActions" style="margin-top:14px">
-          <a class="btn btnPrimary" href="/contacto/">Hablar con un asesor</a>
-          <a class="btn btnGhost" href="/productos/">Ver productos</a>
-        </div>
-
-        <form class="searchWrap" action="#" onsubmit="return false;">
-          <input id="q" name="q" type="search" placeholder="Buscar productos (ej: Nexula, feromonas, biofertilizantes)..." aria-label="Buscar en el sitio" />
-          <button type="button" onclick="window.__search && window.__search()">Buscar</button>
-        </form>
+      <div class="heroActions">
+        <a class="btn btnPrimary" href="/contacto/">Hablar con un asesor</a>
+        <a class="btn btnGhost" href="/productos/">Ver productos</a>
       </div>
+
+      <form class="searchWrap" onsubmit="return false;">
+        <input type="search" placeholder="Buscar productos (ej: Nexula, feromonas...)">
+        <button>Buscar</button>
+      </form>
     </div>
-  </section>
+  </div>
+</section>  
 
   <!-- ✅ NUEVA SECCIÓN “AGROINSUMOS ESPECIALES” debajo del hero -->
   <section class="heroBelow" id="agroinsumos">
