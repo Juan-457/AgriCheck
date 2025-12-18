@@ -1,0 +1,1176 @@
+```html
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+  <title>AgriCheck | Agroinsumos especiales</title>
+  <meta name="description" content="Agroinsumos especiales eficientes para una agricultura sustentable. Control biológico, feromonas, biofertilizantes y bioestimulantes." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+
+  <link rel="canonical" href="https://TU-DOMINIO-O-GITHUB-PAGES-URL/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --brand-green:#89C444;
+      --brand-green-dark:#76b033;
+      --ink:#0b1220;
+      --ink2:#1f2937;
+      --bg:#F8F9F7;
+      --border: rgba(255,255,255,.18);
+      --border2: rgba(15,23,42,.10);
+      --shadow: 0 18px 50px rgba(0,0,0,.16);
+      --shadow2: 0 12px 28px rgba(0,0,0,.12);
+      --max:1200px;
+      --radius:22px;
+      --radius2:16px;
+
+      --glassA: rgba(255,255,255,.20);
+      --glassB: rgba(255,255,255,.10);
+      --glassC: rgba(255,255,255,.30);
+      --glassTxt: rgba(15,23,42,.92);
+      --glassMuted: rgba(15,23,42,.72);
+
+      --section: 56px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink2);
+      background: url("fondo.png") center top / cover no-repeat fixed;
+      background: url("fondo.jpg") center top / cover no-repeat fixed; /* TODO: esta línea pisa la anterior; dejar solo una si corresponde */
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max);margin:0 auto;padding:0 18px}
+    .sr{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+    /* ================== TOPBAR (premium / minimal) ================== */
+    header{
+      position:fixed; inset:0 0 auto 0;
+      z-index:60;
+      padding: 10px 0;
+      background: linear-gradient(180deg, rgba(10, 21, 56, .78), rgba(10, 21, 56, .55));
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      min-height: 44px;
+    }
+    .navlinks{
+      display:flex;
+      gap: 6px;
+      padding: 6px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 10px 26px rgba(0,0,0,.18);
+    }
+    .navlinks a{
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      color: rgba(226,232,240,.95);
+      letter-spacing: -.01em;
+      transition: background .15s ease, transform .15s ease;
+    }
+    .navlinks a:hover{ background: rgba(255,255,255,.12); transform: translateY(-1px); }
+
+    /* burger */
+    .burger{
+      position:absolute;
+      right: 4px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px; height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.10);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 10px 24px rgba(0,0,0,.18);
+    }
+    .burger:focus{ outline: 3px solid rgba(137,196,68,.65); outline-offset: 2px; }
+    .burgerLines{ width: 18px; height: 12px; position:relative; display:block; }
+    .burgerLines span{
+      position:absolute; left:0; width:100%; height:2px; background: rgba(226,232,240,.95);
+      border-radius: 999px;
+      transition: transform .18s ease, top .18s ease, opacity .18s ease;
+    }
+    .burgerLines span:nth-child(1){ top:0 }
+    .burgerLines span:nth-child(2){ top:5px }
+    .burgerLines span:nth-child(3){ top:10px }
+
+    .mobileMenu{
+      display:none;
+      padding: 10px 0 14px;
+      background: linear-gradient(180deg, rgba(10, 21, 56, .70), rgba(10, 21, 56, .86));
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+    .mobileMenu .container{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .mobileMenu a{
+      padding: 12px 14px;
+      border-radius: 16px;
+      font-weight: 900;
+      color: rgba(226,232,240,.95);
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.14);
+    }
+
+    body.menuOpen .mobileMenu{ display:block; }
+    body.menuOpen .burgerLines span:nth-child(1){ top:5px; transform: rotate(45deg); }
+    body.menuOpen .burgerLines span:nth-child(2){ opacity:0; }
+    body.menuOpen .burgerLines span:nth-child(3){ top:5px; transform: rotate(-45deg); }
+
+    /* ================== HERO (premium split overlay) ================== */
+    .hero{
+      position:relative;
+      min-height: 100vh;
+      display:flex;
+      align-items: flex-end;
+      padding-top: 76px;
+      overflow:hidden;
+      background:#000;
+    }
+    .hero video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .hero::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(1200px 500px at 20% 75%, rgba(137,196,68,.22), rgba(137,196,68,0) 60%),
+        linear-gradient(180deg, rgba(0,0,0,.28), rgba(0,0,0,.40));
+      z-index:1;
+      pointer-events:none;
+    }
+
+    /* logo in hero, “premium badge” */
+    .heroLogo{
+      position:absolute;
+      top: calc(76px + 12px);
+      left: 18px;
+      z-index: 3;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 12px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.10));
+      border: 1px solid rgba(255,255,255,.22);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: var(--shadow2);
+      opacity: .92;
+      transition: transform .18s ease, opacity .18s ease;
+    }
+    .heroLogo:hover{ opacity: 1; transform: translateY(-1px); }
+    .heroLogo img{ height: 72px; width:auto; display:block; }
+
+    .heroContent{
+      position:relative;
+      z-index:2;
+      width:100%;
+      padding: 44px 0 54px;
+    }
+
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      align-items:end;
+    }
+
+    .glass{
+      background: linear-gradient(135deg, rgba(255,255,255,.26), rgba(255,255,255,.12));
+      border: 1px solid rgba(255,255,255,.22);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: var(--radius);
+    }
+
+    .heroCard{
+      padding: 18px 18px 16px;
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.18);
+      color: rgba(226,232,240,.92);
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+    .kickerDot{
+      width:8px;height:8px;border-radius:50%;
+      background: var(--brand-green);
+      box-shadow: 0 0 0 6px rgba(137,196,68,.16);
+    }
+
+    .heroTitle{
+      margin: 14px 0 10px;
+      color: rgba(15,23,42,.92);
+      text-shadow: 0 1px 0 rgba(255,255,255,.18);
+      font-weight: 900;
+      letter-spacing: -.03em;
+      font-size: clamp(30px, 4.2vw, 58px);
+      line-height: 1.05;
+    }
+
+    .heroTitleWrap{
+      background: linear-gradient(135deg, rgba(255,255,255,.44), rgba(255,255,255,.24));
+      border: 1px solid rgba(255,255,255,.36);
+      padding: 16px 18px;
+      border-radius: 999px;
+      box-shadow: 0 14px 30px rgba(0,0,0,.16);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .heroSub{
+      margin: 10px 0 0;
+      display:inline-flex;
+      align-items:center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(255,255,255,.38), rgba(255,255,255,.18));
+      border: 1px solid rgba(255,255,255,.26);
+      box-shadow: 0 12px 26px rgba(0,0,0,.14);
+      color: rgba(15,23,42,.88);
+      font-weight: 800;
+      font-size: 14px;
+      max-width: 100%;
+    }
+
+    .muted{
+      color: rgba(15,23,42,.76);
+      line-height: 1.75;
+      font-size: 16px;
+    }
+
+    .heroActions{
+      margin-top: 14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      border-radius: 999px;
+      padding: 12px 16px;
+      font-weight: 900;
+      border: 1px solid rgba(255,255,255,.22);
+      box-shadow: 0 14px 26px rgba(0,0,0,.14);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: transform .15s ease, filter .15s ease;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); filter: brightness(1.02); }
+    .btnPrimary{
+      background: var(--brand-green);
+      color: #0b1a08;
+      border-color: rgba(0,0,0,.10);
+    }
+    .btnGhost{
+      background: linear-gradient(135deg, rgba(255,255,255,.34), rgba(255,255,255,.16));
+      color: rgba(15,23,42,.92);
+      border-color: rgba(255,255,255,.28);
+    }
+
+    .searchWrap{
+      margin-top: 12px;
+      display:flex;
+      gap: 10px;
+      padding: 10px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(255,255,255,.26), rgba(255,255,255,.12));
+      border: 1px solid rgba(255,255,255,.22);
+      box-shadow: 0 16px 34px rgba(0,0,0,.16);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .searchWrap input{
+      flex:1;
+      border:0;
+      outline:none;
+      background: transparent;
+      padding: 10px 12px;
+      font-size: 16px;
+      color: rgba(15,23,42,.92);
+    }
+    .searchWrap input::placeholder{ color: rgba(15,23,42,.60); }
+    .searchWrap button{
+      border: 1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.92);
+      color: rgba(15,23,42,.92);
+      font-weight: 900;
+      padding: 10px 16px;
+      border-radius: 14px;
+      cursor:pointer;
+      box-shadow: 0 10px 18px rgba(0,0,0,.14);
+    }
+
+    /* right hero “stats” */
+    .heroSide{
+      padding: 18px;
+    }
+    .sideTitle{
+      margin:0 0 10px;
+      font-weight: 900;
+      color: rgba(15,23,42,.92);
+      letter-spacing: -.02em;
+      font-size: 18px;
+    }
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+    }
+    .chip{
+      flex: 1 1 160px;
+      padding: 12px 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.62);
+      border: 1px solid rgba(15,23,42,.10);
+      box-shadow: 0 12px 22px rgba(0,0,0,.10);
+    }
+    .chipK{ font-weight: 900; color: rgba(15,23,42,.92); font-size: 12px; letter-spacing:.12em; text-transform: uppercase; }
+    .chipV{ margin-top: 6px; font-weight: 900; font-size: 18px; letter-spacing:-.02em; color: rgba(15,23,42,.92); }
+    .chipP{ margin-top: 4px; color: rgba(15,23,42,.70); font-size: 13px; line-height:1.45; }
+
+    /* ================== SECTIONS ================== */
+    section{ padding: var(--section) 0; }
+    .panel{
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(236, 252, 242, .92), rgba(245, 255, 248, .92));
+      border: 1px solid rgba(137,196,68,.28);
+      box-shadow: 0 18px 38px rgba(0,0,0,.10);
+      padding: 22px;
+    }
+    .panelHead{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .hKicker{
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: rgba(15,23,42,.70);
+    }
+    .hTitle{
+      margin: 6px 0 0;
+      font-size: clamp(22px, 2.8vw, 34px);
+      font-weight: 900;
+      letter-spacing: -.02em;
+      color: rgba(15,23,42,.92);
+    }
+    .hLead{
+      margin: 0;
+      color: rgba(15,23,42,.70);
+      line-height: 1.7;
+      max-width: 720px;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 16px;
+      align-items:start;
+    }
+
+    .card{
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(15,23,42,.10);
+      box-shadow: 0 14px 26px rgba(0,0,0,.10);
+      padding: 18px;
+    }
+
+    .media img{
+      width:100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,.06);
+    }
+
+    .logosGrid{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap: 14px;
+      flex-wrap:wrap;
+      padding-top: 6px;
+    }
+    .logoItem{
+      width: 150px; height: 78px;
+      background: rgba(255,255,255,.86);
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,.06);
+      display:flex;align-items:center;justify-content:center;
+    }
+    .logoItem img{ max-width: 116px; max-height: 40px; width:auto; height:auto; object-fit:contain; filter:saturate(1.05); }
+
+    /* Benefits */
+    .grid4{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .pill{
+      display:inline-flex;align-items:center;justify-content:center;
+      width: 52px;height: 52px;border-radius: 999px;
+      background: rgba(137,196,68,.16);
+      border: 1px solid rgba(137,196,68,.22);
+      font-weight: 900;
+      color: rgba(15,23,42,.92);
+      box-shadow: 0 10px 18px rgba(0,0,0,.08);
+      margin-bottom: 10px;
+    }
+    .benefit h3{ margin: 0 0 6px; font-size: 16px; color: rgba(15,23,42,.92); }
+    .benefit p{ margin:0; color: rgba(15,23,42,.72); line-height:1.6; }
+
+    /* Products */
+    .grid3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .prod h3{ margin:0 0 10px; color: rgba(15,23,42,.92); }
+    .prod ul{ margin:0 0 12px; padding-left: 18px; color: rgba(15,23,42,.76); line-height: 1.65; }
+    .smallCta{
+      display:inline-flex;align-items:center;gap:10px;
+      font-weight: 900;
+      color: var(--brand-green-dark);
+    }
+    .smallCta:hover{ text-decoration: underline; }
+
+    /* Instagram carousel */
+    .igCarousel{ margin-top: 14px; position:relative; }
+    .igTrack{
+      display:flex;
+      gap: 14px;
+      overflow-x:auto;
+      scroll-snap-type: x mandatory;
+      padding: 2px 2px 10px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+    }
+    .igTrack::-webkit-scrollbar{ height: 10px; }
+    .igTrack::-webkit-scrollbar-thumb{ background: rgba(15,23,42,.18); border-radius: 999px; }
+
+    .igItem{
+      scroll-snap-align:start;
+      flex: 0 0 calc((100% - 28px) / 3);
+      min-width: 260px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(15,23,42,.10);
+      box-shadow: 0 14px 26px rgba(0,0,0,.10);
+      padding: 14px;
+    }
+    .igPreview{
+      position:relative;
+      width:100%;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,.06);
+      background: rgba(255,255,255,.92);
+      overflow:hidden;
+      box-shadow: 0 10px 18px rgba(0,0,0,.08);
+    }
+    .igPreview::before{ content:""; display:block; padding-top: 177.78%; }
+    .igPreview iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; background:#fff; }
+    .igPreviewLink{ position:absolute; inset:0; z-index:3; display:block; border-radius:16px; background:transparent; }
+    .igPreviewLink:focus{ outline:3px solid rgba(137,196,68,.65); outline-offset:2px; }
+
+    .igFallback{
+      display:none;
+      margin-top: 10px;
+      font-size: 13px;
+      color: rgba(15,23,42,.78);
+      line-height:1.45;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px dashed rgba(15,23,42,.18);
+      background: rgba(255,255,255,.78);
+    }
+    .igFallback a{ font-weight: 900; color: var(--brand-green-dark); }
+    .igFallback a:hover{ text-decoration: underline; }
+
+    .igNavBtn{
+      position:absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 5;
+      width: 42px; height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.30);
+      background: linear-gradient(135deg, rgba(255,255,255,.60), rgba(255,255,255,.28));
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 14px 30px rgba(0,0,0,.16);
+      cursor:pointer;
+      display:flex;align-items:center;justify-content:center;
+      color: rgba(15,23,42,.92);
+    }
+    .igNavBtn:hover{ transform: translateY(-50%) translateY(-1px); }
+    .igNavBtn:focus{ outline:3px solid rgba(137,196,68,.65); outline-offset:2px; }
+    .igPrev{ left: -6px; }
+    .igNext{ right: -6px; }
+    .igNavBtn svg{ width: 18px; height: 18px; }
+
+    /* Contact */
+    .contactGrid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 14px;
+      align-items:start;
+      margin-top: 16px;
+    }
+    .contactList{ margin:0; padding-left: 18px; color: rgba(15,23,42,.76); line-height:1.75; }
+    .contactActions{ display:flex; flex-wrap:wrap; gap: 10px; margin-top: 10px; }
+    .contactLink{
+      display:inline-flex;align-items:center;gap:10px;
+      font-weight: 900;
+      color: rgba(15,23,42,.92);
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.84);
+      border: 1px solid rgba(15,23,42,.10);
+      box-shadow: 0 10px 18px rgba(0,0,0,.10);
+      transition: transform .15s ease;
+    }
+    .contactLink:hover{ transform: translateY(-1px); }
+    .btnIcon{ width: 18px; height: 18px; display:inline-block; flex: 0 0 auto; }
+
+    /* Footer */
+    footer{
+      background: rgba(10, 21, 56, .78);
+      color: rgba(255,255,255,.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255,255,255,.10);
+      padding: 16px 0;
+      text-align:center;
+    }
+    footer a{ color: rgba(255,255,255,.88); }
+    footer a:hover{ color: var(--brand-green); }
+    .footGrid{
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    /* WhatsApp float */
+    .whatsapp-float{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      width:56px;
+      height:56px;
+      background:#25D366;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 10px 26px rgba(0,0,0,.28);
+      z-index:999;
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+    .whatsapp-float img{ width:26px;height:26px;display:block }
+    .whatsapp-float:hover{ transform: translateY(-2px); box-shadow:0 14px 34px rgba(0,0,0,.32) }
+
+    /* ================== RESPONSIVE ================== */
+    @media(max-width: 980px){
+      .heroGrid{ grid-template-columns: 1fr; }
+      .heroSide{ order: 2; }
+      .heroCard{ order: 1; }
+      .heroLogo img{ height: 60px; }
+      .split{ grid-template-columns: 1fr; }
+      .media img{ height: 260px; }
+      .grid4{ grid-template-columns: repeat(2, 1fr); }
+      .grid3{ grid-template-columns: 1fr; }
+      .igItem{ flex: 0 0 92%; }
+      .igPrev{ left: 6px; }
+      .igNext{ right: 6px; }
+      .contactGrid{ grid-template-columns: 1fr; }
+    }
+    @media(max-width: 900px){
+      .navlinks{ display:none; }
+      .burger{ display:flex; }
+      .hero{ padding-top: 72px; }
+      .heroLogo{ top: calc(72px + 10px); left: 12px; padding: 10px 12px; border-radius: 18px; }
+      .heroLogo img{ height: 58px; }
+      section{ padding: 46px 0; }
+    }
+    @media(max-width: 520px){
+      .heroTitleWrap{ border-radius: 22px; }
+      .heroTitle{ font-size: clamp(28px, 8vw, 42px); }
+      .heroSub{ border-radius: 18px; }
+      .searchWrap{ flex-direction:column; }
+      .searchWrap button{ width:100%; }
+    }
+
+    /* spacer (no-op) */
+    /* spacer */
+    /* spacer */
+    /* spacer */
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <div class="topbar">
+      <nav class="navlinks" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#productos">Productos</a>
+        <a href="#instagram">Instagram</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+        <span class="burgerLines" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobileMenu" id="mobileMenu" aria-label="Menú mobile">
+    <div class="container">
+      <a href="#inicio" data-close-menu>Inicio</a>
+      <a href="#productos" data-close-menu>Productos</a>
+      <a href="#instagram" data-close-menu>Instagram</a>
+      <a href="#contacto" data-close-menu>Contacto</a>
+      <!-- TODO: si querés sumar un CTA extra en mobile, lo agregamos acá -->
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <video autoplay muted loop playsinline>
+    <source src="hero.mp4" type="video/mp4">
+  </video>
+
+  <a class="heroLogo" href="#inicio" aria-label="Ir al inicio">
+    <img src="agrichecklogo.png" alt="AgriCheck" />
+  </a>
+
+  <div class="heroContent">
+    <div class="container">
+      <div class="heroGrid">
+
+        <div class="glass heroCard">
+          <div class="kicker"><span class="kickerDot" aria-hidden="true"></span> AgriCheck</div>
+
+          <div class="heroTitleWrap" aria-label="Título principal">
+            <div class="heroTitle">Agroinsumos especiales eficientes para una agricultura sustentable</div>
+          </div>
+
+          <div class="heroSub">Control biológico, feromonas, biofertilizantes y bioestimulantes.</div>
+
+          <div class="heroActions" aria-label="Acciones principales">
+            <a class="btn btnPrimary" href="https://wa.me/+5492984763055?text=Hola%20AgriCheck!%20Quiero%20hablar%20con%20un%20asesor." target="_blank" rel="noopener">Hablar con un asesor</a>
+            <a class="btn btnGhost" href="#productos">Ver productos</a>
+          </div>
+
+          <form class="searchWrap" onsubmit="return false;" aria-label="Buscar productos">
+            <input id="q" type="search" placeholder="Buscar productos (ej: Nexula, feromonas...)">
+            <button type="button" onclick="window.__search && window.__search()">Buscar</button>
+          </form>
+
+          <p class="muted" style="margin:12px 0 0">
+            Desde 2001, desarrollamos y comercializamos soluciones eficientes para una agricultura sustentable y ecológica en Argentina.
+          </p>
+        </div>
+
+        <aside class="glass heroSide" aria-label="Resumen rápido">
+          <h3 class="sideTitle">Lo esencial, en un vistazo</h3>
+          <div class="chips">
+            <div class="chip">
+              <div class="chipK">Desde</div>
+              <div class="chipV">2001</div>
+              <div class="chipP">Experiencia aplicada a campo.</div>
+            </div>
+            <div class="chip">
+              <div class="chipK">Enfoque</div>
+              <div class="chipV">Sustentable</div>
+              <div class="chipP">Tecnologías con impacto real.</div>
+            </div>
+            <div class="chip">
+              <div class="chipK">Alcance</div>
+              <div class="chipV">Argentina</div>
+              <div class="chipP">General Roca como origen.</div>
+            </div>
+            <div class="chip">
+              <div class="chipK">Grupo</div>
+              <div class="chipV">Andermatt</div>
+              <div class="chipP">Desde 2019, parte del grupo.</div>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="agroinsumos">
+  <div class="container">
+    <div class="panel">
+      <div class="panelHead">
+        <div>
+          <div class="hKicker">AgriCheck</div>
+          <h2 class="hTitle">Agroinsumos especiales</h2>
+        </div>
+        <p class="hLead">
+          Desarrollo y representaciones de proveedores líderes para un portafolio sustentable amplio en Argentina.
+        </p>
+      </div>
+
+      <div class="split">
+        <div class="card">
+          <p class="muted" style="margin:0">
+            Desde 2001, en AgriCheck trabajamos con una misión clara: Desarrollar y ofrecer agroinsumos especiales eficientes para una agricultura sustentable y ecológica en el país.
+            <br><br>
+            Con origen en General Roca, Río Negro, comenzamos enfocados en el desarrollo de soluciones para la producción de frutales. Con el tiempo, incorporamos representaciones de proveedores líderes mundiales en su segmento, lo que nos permite ofrecer el porfolio de soluciones sustentables más amplias de Argentina. No sólo brindamos herramientas para el control de plagas y enfermedades de los cultivos, sino que proveemos promotores de rendimiento a través de nuestra exclusiva línea de microorganismos benéficos (Biofertilizantes). Asimismo, preocupados por el cada vez más desafiante entorno climático para la agricultura, desarrollamos agentes anti estresantes de marcada eficacia.
+            <strong>Desde 2019 somos parte de Andermatt Group.</strong>
+          </p>
+        </div>
+
+        <div class="card media" aria-label="Imagen de agroinsumos">
+          <img src="agroinsumosespeciales.jpg" alt="Agroinsumos especiales" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="card" id="proveedores" style="margin-top:14px;">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap;">
+          <div>
+            <div class="hKicker">Representaciones</div>
+            <h3 class="hTitle" style="font-size: clamp(18px, 2.2vw, 24px); margin-top:6px;">Representaciones exclusivas en Argentina</h3>
+          </div>
+          <p class="hLead" style="max-width:520px;">
+            Proveedores líderes mundiales para ampliar la oferta de soluciones sustentables.
+          </p>
+        </div>
+
+        <div class="logosGrid" aria-label="Logos de proveedores">
+          <div class="logoItem"><img src="suterra.png" alt="Suterra" loading="lazy" /></div>
+          <div class="logoItem"><img src="andermatt.png" alt="Andermatt" loading="lazy" /></div>
+          <div class="logoItem"><img src="BioAtlantis.png" alt="BioAtlantis" loading="lazy" /></div>
+          <div class="logoItem"><img src="cultiva-1.png" alt="Cultiva" loading="lazy" /></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="beneficios">
+  <div class="container">
+    <div class="panel">
+      <div class="panelHead">
+        <div>
+          <div class="hKicker">Por qué AgriCheck</div>
+          <h2 class="hTitle">Beneficios</h2>
+        </div>
+        <p class="hLead">Enfoque técnico-comercial claro y acompañamiento para implementar tecnologías sin fricción.</p>
+      </div>
+
+      <div class="grid4">
+        <div class="card benefit">
+          <div class="pill" aria-hidden="true">✓</div>
+          <h3>Agricultura sustentable</h3>
+          <p>Soluciones eficientes orientadas a sistemas productivos más responsables.</p>
+        </div>
+        <div class="card benefit">
+          <div class="pill" aria-hidden="true">🔬</div>
+          <h3>Soporte técnico</h3>
+          <p>Acompañamiento en adopción, uso y mejores prácticas en campo.</p>
+        </div>
+        <div class="card benefit">
+          <div class="pill" aria-hidden="true">🌱</div>
+          <h3>Biológicos</h3>
+          <p>Microorganismos benéficos, biofertilizantes y bioestimulantes.</p>
+        </div>
+        <div class="card benefit">
+          <div class="pill" aria-hidden="true">🧩</div>
+          <h3>Portafolio amplio</h3>
+          <p>Control de plagas, enfermedades y promotores de rendimiento.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="productos">
+  <div class="container">
+    <div class="panel">
+      <div class="panelHead">
+        <div>
+          <div class="hKicker">Agroinsumos</div>
+          <h2 class="hTitle">Productos</h2>
+        </div>
+        <p class="hLead">Líneas principales para cubrir control, tratamientos y promotores de rendimiento.</p>
+      </div>
+
+      <div class="grid3">
+        <div class="card prod">
+          <h3>Control de plagas y enfermedades</h3>
+          <ul>
+            <li>Feromonas</li>
+            <li>Insecticidas biológicos</li>
+            <li>Atracción y muerte</li>
+            <li>Fungicidas biológicos</li>
+            <li>Nematicidas biológicos</li>
+            <li>Trampas de monitoreo</li>
+          </ul>
+          <a class="smallCta" href="/productos/">Ver todos →</a>
+        </div>
+
+        <div class="card prod">
+          <h3>Tratamientos de semilla</h3>
+          <ul>
+            <li>Tratamientos líquidos</li>
+            <li>Tratamientos Easy Flow</li>
+          </ul>
+          <a class="smallCta" href="/productos/">Ver todos →</a>
+        </div>
+
+        <div class="card prod">
+          <h3>Rendimiento y calidad</h3>
+          <ul>
+            <li>Fertilizantes biológicos</li>
+            <li>Potenciadores de fertilidad biológica</li>
+            <li>Antiestrés / Bioestimulantes</li>
+            <li>Protectores solares</li>
+            <li>Anticracking</li>
+          </ul>
+          <a class="smallCta" href="/productos/">Ver todos →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="instagram">
+  <div class="container">
+    <div class="panel">
+      <div class="panelHead">
+        <div>
+          <div class="hKicker">Social</div>
+          <h2 class="hTitle">Instagram</h2>
+        </div>
+        <p class="hLead">Novedades, recorridas a campo y contenido técnico.</p>
+      </div>
+
+      <div class="igCarousel" aria-label="Carrousel de reels de Instagram">
+        <button class="igNavBtn igPrev" type="button" aria-label="Anterior">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M15.5 19.1 8.4 12l7.1-7.1 1.4 1.4L11.2 12l5.7 5.7z"/></svg>
+        </button>
+
+        <div class="igTrack" id="igTrack" aria-label="Reels de Instagram">
+          <div class="igItem" data-ig="https://www.instagram.com/reel/DSKOxSQDWeh/">
+            <div class="igPreview">
+              <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DSKOxSQDWeh/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+              <a class="igPreviewLink" href="https://www.instagram.com/reel/DSKOxSQDWeh/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+            </div>
+            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización. <a href="https://www.instagram.com/reel/DSKOxSQDWeh/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+          </div>
+
+          <div class="igItem" data-ig="https://www.instagram.com/reel/DSLSnStAoCV/">
+            <div class="igPreview">
+              <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DSLSnStAoCV/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+              <a class="igPreviewLink" href="https://www.instagram.com/reel/DSLSnStAoCV/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+            </div>
+            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización. <a href="https://www.instagram.com/reel/DSLSnStAoCV/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+          </div>
+
+          <div class="igItem" data-ig="https://www.instagram.com/reel/DSGOYXgEoRh/">
+            <div class="igPreview">
+              <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DSGOYXgEoRh/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+              <a class="igPreviewLink" href="https://www.instagram.com/reel/DSGOYXgEoRh/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+            </div>
+            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización. <a href="https://www.instagram.com/reel/DSGOYXgEoRh/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+          </div>
+
+          <div class="igItem" data-ig="https://www.instagram.com/reel/DR2xqZEEpfH/">
+            <div class="igPreview">
+              <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DR2xqZEEpfH/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+              <a class="igPreviewLink" href="https://www.instagram.com/reel/DR2xqZEEpfH/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+            </div>
+            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización. <a href="https://www.instagram.com/reel/DR2xqZEEpfH/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+          </div>
+
+          <div class="igItem" data-ig="https://www.instagram.com/reel/DRxolFXk56S/">
+            <div class="igPreview">
+              <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DRxolFXk56S/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+              <a class="igPreviewLink" href="https://www.instagram.com/reel/DRxolFXk56S/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+            </div>
+            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización. <a href="https://www.instagram.com/reel/DRxolFXk56S/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+          </div>
+
+          <div class="igItem" data-ig="https://www.instagram.com/reel/DRvDMyAkY61/">
+            <div class="igPreview">
+              <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DRvDMyAkY61/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+              <a class="igPreviewLink" href="https://www.instagram.com/reel/DRvDMyAkY61/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+            </div>
+            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización. <a href="https://www.instagram.com/reel/DRvDMyAkY61/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+          </div>
+
+          <div class="igItem" data-ig="https://www.instagram.com/reel/DRiLwi_jExD/">
+            <div class="igPreview">
+              <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DRiLwi_jExD/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+              <a class="igPreviewLink" href="https://www.instagram.com/reel/DRiLwi_jExD/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+            </div>
+            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización. <a href="https://www.instagram.com/reel/DRiLwi_jExD/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+          </div>
+        </div>
+
+        <button class="igNavBtn igNext" type="button" aria-label="Siguiente">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8.5 19.1 7.1 17.7 12.8 12 7.1 6.3l1.4-1.4L15.6 12z"/></svg>
+        </button>
+      </div>
+
+      <div style="margin-top:16px; display:flex; justify-content:center;">
+        <a class="btn btnPrimary" href="https://www.instagram.com/agricheck.srl/" target="_blank" rel="noopener" aria-label="Ver Instagram de AgriCheck">
+          <svg class="btnIcon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM18 6.2a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+          </svg>
+          Ver Instagram
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="container">
+    <div class="panel">
+      <div class="panelHead">
+        <div>
+          <div class="hKicker">AgriCheck</div>
+          <h2 class="hTitle">Contacto</h2>
+        </div>
+        <p class="hLead">
+          Desde 2001, en AgriCheck trabajamos con una misión clara: Desarrollar y comercializar agroinsumos especiales eficientes para una agricultura sustentable y ecológica en el país.
+        </p>
+      </div>
+
+      <div class="contactGrid">
+        <div class="card">
+          <h3 style="margin:0 0 10px; color: rgba(15,23,42,.92);">Datos</h3>
+          <ul class="contactList">
+            <li><strong>Dirección:</strong> San Juan 50, General Roca, Argentina</li>
+            <li><strong>Email:</strong> <a href="mailto:info@agrichecksrl.com">info@agrichecksrl.com</a></li>
+            <li><strong>Teléfono:</strong> <a href="tel:+5492984763055">+54 9 2984 76-3055</a></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 10px; color: rgba(15,23,42,.92);">Canales</h3>
+          <div class="contactActions">
+            <a class="contactLink" href="https://www.instagram.com/agricheck.srl/" target="_blank" rel="noopener" aria-label="Abrir Instagram de AgriCheck">
+              <svg class="btnIcon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM18 6.2a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+              </svg>
+              Instagram
+            </a>
+
+            <a class="contactLink" href="https://www.facebook.com/profile.php?id=100071954765421" target="_blank" rel="noopener" aria-label="Abrir Facebook de AgriCheck">
+              <svg class="btnIcon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M13.5 22v-8h2.7l.4-3h-3.1V9.2c0-.9.2-1.5 1.6-1.5h1.7V5.1c-.3 0-1.4-.1-2.7-.1-2.7 0-4.5 1.6-4.5 4.6V11H7v3h2.9v8h3.6z"/>
+              </svg>
+              Facebook
+            </a>
+
+            <a class="contactLink" href="https://wa.me/+5492984763055?text=Hola%20AgriCheck!%20Quiero%20hacer%20una%20consulta." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+              <svg class="btnIcon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M12 2a9.7 9.7 0 0 0-8.5 14.4L2 22l5.8-1.5A9.7 9.7 0 1 0 12 2zm0 2a7.7 7.7 0 0 1 0 15.4c-1.4 0-2.7-.4-3.9-1l-.3-.2-3.4.9.9-3.3-.2-.3A7.7 7.7 0 0 1 12 4zm4.2 9.6c-.2-.1-1.2-.6-1.4-.7-.2-.1-.4-.1-.6.1-.2.2-.7.7-.8.9-.1.1-.3.2-.5.1-.2-.1-.9-.3-1.7-1.1-.6-.5-1-1.2-1.1-1.4-.1-.2 0-.4.1-.5l.4-.4c.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5 0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.4-.2.3-1 1-1 2.4 0 1.4 1 2.7 1.2 2.9.1.2 2 3 4.9 4.2.7.3 1.2.4 1.6.5.7.2 1.4.2 1.9.1.6-.1 1.2-.5 1.4-.9.2-.4.2-.8.1-.9 0-.1-.2-.2-.4-.3z"/>
+              </svg>
+              WhatsApp
+            </a>
+          </div>
+
+          <p class="muted" style="margin:12px 0 0; font-size:14px;">
+            Seguinos para ver novedades, recorridas a campo y contenido técnico.
+          </p>
+          <!-- TODO: si querés sumar horarios de atención, agregamos una línea acá -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footGrid">
+      <div>Copyright © Agricheck <span id="year"></span>.</div>
+      <div class="footer-designed">
+        <p style="display:flex; justify-content:center; align-items:center; gap:6px; margin:0;">
+          Diseñado por UmanoAI
+          <a href="https://umanoai.com.ar" target="_blank" rel="noopener" style="display:inline-block;">
+            <img src="umanoai.png" alt="UmanoAI" style="height:18px;">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a
+  class="whatsapp-float"
+  href="https://wa.me/+5492984763055?text=Hola%20AgriCheck!%20Quiero%20hacer%20una%20consulta."
+  target="_blank"
+  rel="noopener"
+  aria-label="Contactar por WhatsApp"
+>
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+    alt="WhatsApp"
+  />
+</a>
+
+<script>
+  // Año automático
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Buscador local placeholder
+  window.__search = () => {
+    const q = (document.getElementById('q')?.value || "").trim();
+    if(!q){ alert("Escribí algo para buscar."); return; }
+    alert("Búsqueda local lista. Próximo paso: conectar un índice de productos (JSON) para resultados reales.\n\nBuscaste: " + q);
+  };
+
+  // Instagram: fallback + carrousel auto
+  (function(){
+    const items = document.querySelectorAll('#instagram .igItem');
+    items.forEach((item) => {
+      const iframe = item.querySelector('iframe');
+      const fallback = item.querySelector('.igFallback');
+      if(!iframe || !fallback) return;
+
+      let loaded = false;
+
+      iframe.addEventListener('load', () => {
+        loaded = true;
+        fallback.style.display = 'none';
+      });
+
+      setTimeout(() => {
+        if(!loaded){
+          fallback.style.display = 'block';
+        }
+      }, 2200);
+    });
+
+    const track = document.getElementById('igTrack');
+    const prevBtn = document.querySelector('#instagram .igPrev');
+    const nextBtn = document.querySelector('#instagram .igNext');
+    if(!track) return;
+
+    const getStep = () => {
+      const first = track.querySelector('.igItem');
+      if(!first) return 320;
+      const rect = first.getBoundingClientRect();
+      const gap = 14;
+      return Math.max(260, rect.width + gap);
+    };
+
+    const scrollByStep = (dir) => {
+      const step = getStep();
+      track.scrollBy({ left: dir * step, behavior: 'smooth' });
+    };
+
+    prevBtn && prevBtn.addEventListener('click', () => scrollByStep(-1));
+    nextBtn && nextBtn.addEventListener('click', () => scrollByStep(1));
+
+    let timer = null;
+    const start = () => {
+      if(timer) return;
+      timer = setInterval(() => {
+        const step = getStep();
+        const max = track.scrollWidth - track.clientWidth;
+        const next = Math.min(max, track.scrollLeft + step);
+        if(track.scrollLeft >= max - 4){
+          track.scrollTo({ left: 0, behavior: 'smooth' });
+        }else{
+          track.scrollTo({ left: next, behavior: 'smooth' });
+        }
+      }, 4200);
+    };
+    const stop = () => { if(timer){ clearInterval(timer); timer = null; } };
+
+    start();
+    track.addEventListener('mouseenter', stop);
+    track.addEventListener('mouseleave', start);
+    track.addEventListener('focusin', stop);
+    track.addEventListener('focusout', start);
+    document.addEventListener('visibilitychange', () => { if(document.hidden) stop(); else start(); });
+  })();
+
+  // Menú hamburguesa (mobile)
+  (function(){
+    const burger = document.querySelector('.burger');
+    const menu = document.getElementById('mobileMenu');
+    if(!burger || !menu) return;
+
+    const setOpen = (open) => {
+      document.body.classList.toggle('menuOpen', open);
+      burger.setAttribute('aria-expanded', String(open));
+      burger.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    };
+
+    burger.addEventListener('click', () => {
+      const open = !document.body.classList.contains('menuOpen');
+      setOpen(open);
+    });
+
+    menu.querySelectorAll('[data-close-menu]').forEach((a) => {
+      a.addEventListener('click', () => setOpen(false));
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape') setOpen(false);
+    });
+
+    const mq = window.matchMedia('(min-width: 901px)');
+    const onChange = () => { if(mq.matches) setOpen(false); };
+    mq.addEventListener ? mq.addEventListener('change', onChange) : mq.addListener(onChange);
+  })();
+</script>
+
+</body>
+</html>
+```
