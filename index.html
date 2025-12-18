@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es-AR">
 <head>
@@ -134,6 +135,40 @@
     .hero::after{display:none}
     .heroContent{position:relative; z-index:2; width:100%; padding:64px 0;}
 
+    /* ✅ IMPORTANTE: para posicionar el logo dentro del hero sin competir */
+    .heroContent .container{
+      position:relative;
+    }
+
+    /* ✅ Logo en hero: arriba-izquierda, un poco más grande, sutil */
+    .heroLogo{
+      position:absolute;
+      left:0;
+      top:-6px; /* queda pegadito arriba del bloque del hero, sin chocar con el header */
+      z-index:3;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 12px;
+      border-radius:14px;
+      background: linear-gradient(135deg, rgba(255,255,255,.26), rgba(255,255,255,.16));
+      border: 1px solid rgba(255,255,255,.28);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 12px 26px rgba(0,0,0,.16);
+      opacity:.92;            /* ✅ no compite: más sutil */
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .heroLogo:hover{
+      opacity:1;
+      transform: translateY(-1px);
+    }
+    .heroLogo img{
+      height:46px;            /* ✅ un poco más grande que el header (32px) */
+      width:auto;
+      display:block;
+    }
+
     .badge{
       background: linear-gradient(135deg, rgba(255,255,255,.42), rgba(255,255,255,.26));
       border: 1px solid rgba(255,255,255,.40);
@@ -148,23 +183,23 @@
       text-shadow:none;
     }
 
-    /* ✅ NUEVO: 2 burbujas (título + subtítulo) con jerarquía real */
     .heroBadges{
       display:flex;
-      flex-wrap:wrap;            /* ✅ permite que el título “respire” y baje si hace falta */
+      flex-wrap:wrap;
       gap:10px;
       align-items:center;
       justify-content:flex-start;
-      max-width:980px;           /* ✅ evita que queden demasiado separadas en pantallas grandes */
+      max-width:980px;
+      margin-top:56px; /* ✅ deja espacio visual para el logo del hero */
     }
 
     .badgeTitle{
-      font-size: clamp(26px, 3.6vw, 40px);  /* ✅ más grande (antes quedaba similar) */
+      font-size: clamp(26px, 3.6vw, 40px);
       font-weight:900;
       padding:14px 22px;
       line-height:1.15;
       letter-spacing:-0.01em;
-      flex: 1 1 560px;          /* ✅ ocupa más ancho para que se perciba como “título” */
+      flex: 1 1 560px;
       white-space:normal;
     }
 
@@ -420,8 +455,16 @@
       .burger{display:block}
       .sectionCard{padding:20px}
 
-      /* ✅ en mobile: el título sigue grande pero controlado */
       .badgeTitle{flex: 1 1 100%;}
+      .heroBadges{margin-top:58px;}
+
+      /* ✅ en mobile: logo del hero un poco más chico para no tapar */
+      .heroLogo{
+        top:-10px;
+        padding:8px 10px;
+        border-radius:12px;
+      }
+      .heroLogo img{height:38px;}
     }
 
     /* Contacto */
@@ -521,6 +564,11 @@
 
   <div class="heroContent">
     <div class="container">
+
+      <!-- ✅ NUEVO: logo en el hero, arriba a la izquierda (más grande y sutil) -->
+      <a class="heroLogo" href="/" aria-label="Ir al inicio">
+        <img src="agrichecklogo.png" alt="AgriCheck" />
+      </a>
 
       <!-- ✅ 2 burbujas -->
       <div class="heroBadges">
@@ -893,3 +941,5 @@
 
 </body>
 </html>
+```
+
