@@ -350,6 +350,38 @@
     #beneficios .grid4,
     #productos .grid3{ margin-top:18px; }
 
+    /* ================= SECCIÓN "GRANDE" QUE CONTIENE LAS CHICAS (FIX) ================= */
+    .sectionCard{
+      padding:26px;
+    }
+    /* El título ya no “flota”: vive dentro del contenedor grande */
+    .sectionCard .sectionHead{
+      display:block;
+      background:transparent;
+      border:0;
+      box-shadow:none;
+      backdrop-filter:none;
+      -webkit-backdrop-filter:none;
+      padding:0;
+      max-width:none;
+    }
+    /* Tarjetitas internas (chicas) dentro del contenedor grande */
+    .subCard{
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(137,196,68,.28);
+      box-shadow: 0 14px 26px rgba(0,0,0,.10);
+      border-radius: calc(var(--radius) - 2px);
+      padding:18px;
+    }
+    .subCard.benefit{ padding:18px; }
+    .subCard.prod{ padding:18px; }
+
+    /* Un poco de aire entre header y grillas dentro del contenedor */
+    .sectionCard .grid4,
+    .sectionCard .grid3{
+      margin-top:18px;
+    }
+
     /* ================= FOOTER (más finito y semi-transparente) ================= */
     footer{
       background: rgba(15, 23, 42, .62);
@@ -404,6 +436,7 @@
       .navlinks{display:none}
       .burger{display:block}
       .sectionHead{padding:12px 14px;border-radius:14px}
+      .sectionCard{padding:20px}
     }
   </style>
 </head>
@@ -494,87 +527,97 @@
 
 <section id="beneficios">
   <div class="container">
-    <div class="center">
-      <div class="sectionHead">
-        <div class="kicker">Por qué AgriCheck</div>
-        <h2 class="sectionTitle">Beneficios</h2>
-        <p class="muted sectionLead">
-          Enfoque técnico-comercial claro, soluciones sustentables y asesoramiento para implementar tecnologías sin fricción.
-        </p>
+
+    <!-- ✅ Contenedor grande que incluye título + 4 burbujas chicas -->
+    <div class="card sectionCard">
+      <div class="center">
+        <div class="sectionHead">
+          <div class="kicker">Por qué AgriCheck</div>
+          <h2 class="sectionTitle">Beneficios</h2>
+          <p class="muted sectionLead">
+            Enfoque técnico-comercial claro, soluciones sustentables y asesoramiento para implementar tecnologías sin fricción.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid4" style="margin-top:18px">
+        <div class="subCard benefit">
+          <div class="pill">✓</div>
+          <h3>Agricultura sustentable</h3>
+          <p>Soluciones eficientes orientadas a sistemas productivos más responsables.</p>
+        </div>
+        <div class="subCard benefit">
+          <div class="pill">🔬</div>
+          <h3>Soporte técnico</h3>
+          <p>Acompañamiento en adopción, uso y mejores prácticas en campo.</p>
+        </div>
+        <div class="subCard benefit">
+          <div class="pill">🌱</div>
+          <h3>Biológicos</h3>
+          <p>Microorganismos benéficos, biofertilizantes y bioestimulantes.</p>
+        </div>
+        <div class="subCard benefit">
+          <div class="pill">🧩</div>
+          <h3>Portafolio amplio</h3>
+          <p>Control de plagas, enfermedades y promotores de rendimiento.</p>
+        </div>
       </div>
     </div>
 
-    <div class="grid4" style="margin-top:18px">
-      <div class="card benefit">
-        <div class="pill">✓</div>
-        <h3>Agricultura sustentable</h3>
-        <p>Soluciones eficientes orientadas a sistemas productivos más responsables.</p>
-      </div>
-      <div class="card benefit">
-        <div class="pill">🔬</div>
-        <h3>Soporte técnico</h3>
-        <p>Acompañamiento en adopción, uso y mejores prácticas en campo.</p>
-      </div>
-      <div class="card benefit">
-        <div class="pill">🌱</div>
-        <h3>Biológicos</h3>
-        <p>Microorganismos benéficos, biofertilizantes y bioestimulantes.</p>
-      </div>
-      <div class="card benefit">
-        <div class="pill">🧩</div>
-        <h3>Portafolio amplio</h3>
-        <p>Control de plagas, enfermedades y promotores de rendimiento.</p>
-      </div>
-    </div>
   </div>
 </section>
 
 <section id="productos">
   <div class="container">
-    <div class="center">
-      <div class="sectionHead">
-        <div class="kicker">Agroinsumos</div>
-        <h2 class="sectionTitle">Productos</h2>
-        <!-- spacer -->
-        <!-- spacer -->
+
+    <!-- ✅ Mismo criterio: contenedor grande para que no queden sueltos -->
+    <div class="card sectionCard">
+      <div class="center">
+        <div class="sectionHead">
+          <div class="kicker">Agroinsumos</div>
+          <h2 class="sectionTitle">Productos</h2>
+          <!-- spacer -->
+          <!-- spacer -->
+        </div>
+      </div>
+
+      <div class="grid3" style="margin-top:18px">
+        <div class="subCard prod">
+          <h3>Control de plagas y enfermedades</h3>
+          <ul>
+            <li>Feromonas</li>
+            <li>Insecticidas biológicos</li>
+            <li>Atracción y muerte</li>
+            <li>Fungicidas biológicos</li>
+            <li>Nematicidas biológicos</li>
+            <li>Trampas de monitoreo</li>
+          </ul>
+          <a class="smallCta" href="/productos/">Ver todos →</a>
+        </div>
+
+        <div class="subCard prod">
+          <h3>Tratamientos de semilla</h3>
+          <ul>
+            <li>Tratamientos líquidos</li>
+            <li>Tratamientos Easy Flow</li>
+          </ul>
+          <a class="smallCta" href="/productos/">Ver todos →</a>
+        </div>
+
+        <div class="subCard prod">
+          <h3>Rendimiento y calidad</h3>
+          <ul>
+            <li>Fertilizantes biológicos</li>
+            <li>Potenciadores de fertilidad biológica</li>
+            <li>Antiestrés / Bioestimulantes</li>
+            <li>Protectores solares</li>
+            <li>Anticracking</li>
+          </ul>
+          <a class="smallCta" href="/productos/">Ver todos →</a>
+        </div>
       </div>
     </div>
 
-    <div class="grid3" style="margin-top:18px">
-      <div class="card prod">
-        <h3>Control de plagas y enfermedades</h3>
-        <ul>
-          <li>Feromonas</li>
-          <li>Insecticidas biológicos</li>
-          <li>Atracción y muerte</li>
-          <li>Fungicidas biológicos</li>
-          <li>Nematicidas biológicos</li>
-          <li>Trampas de monitoreo</li>
-        </ul>
-        <a class="smallCta" href="/productos/">Ver todos →</a>
-      </div>
-
-      <div class="card prod">
-        <h3>Tratamientos de semilla</h3>
-        <ul>
-          <li>Tratamientos líquidos</li>
-          <li>Tratamientos Easy Flow</li>
-        </ul>
-        <a class="smallCta" href="/productos/">Ver todos →</a>
-      </div>
-
-      <div class="card prod">
-        <h3>Rendimiento y calidad</h3>
-        <ul>
-          <li>Fertilizantes biológicos</li>
-          <li>Potenciadores de fertilidad biológica</li>
-          <li>Antiestrés / Bioestimulantes</li>
-          <li>Protectores solares</li>
-          <li>Anticracking</li>
-        </ul>
-        <a class="smallCta" href="/productos/">Ver todos →</a>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -615,9 +658,17 @@
    href="https://wa.me/5490000000000?text=Hola%20AgriCheck!%20Quiero%20hacer%20una%20consulta."
    target="_blank" rel="noopener" aria-label="WhatsApp">
   <!-- Icono WhatsApp más limpio (círculo + teléfono) -->
-  <a class="whatsapp-float" href="https://wa.me/5491162763084" target="_blank" rel="noopener">
+  <svg viewBox="0 0 32 32" aria-hidden="true">
+    <path fill="#fff" d="M19.11 17.09c-.29-.15-1.71-.84-1.97-.93-.26-.1-.45-.15-.64.15-.19.29-.74.93-.91 1.12-.17.19-.34.22-.63.07-.29-.15-1.22-.45-2.32-1.43-.86-.77-1.44-1.72-1.61-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.64-1.55-.88-2.12-.23-.56-.47-.48-.64-.49h-.55c-.19 0-.48.07-.73.36-.26.29-.96.93-.96 2.27 0 1.34.99 2.64 1.13 2.82.14.19 1.95 2.98 4.73 4.18.66.28 1.17.45 1.57.58.66.21 1.26.18 1.74.11.53-.08 1.71-.7 1.95-1.38.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.34z"/>
+    <path fill="#fff" d="M16.01 3C9.38 3 4 8.38 4 15c0 2.62.85 5.04 2.29 7.01L4 29l7.18-2.28A11.94 11.94 0 0 0 16 27c6.63 0 12-5.38 12-12S22.63 3 16.01 3zm0 21.7c-2.18 0-4.21-.64-5.91-1.73l-.42-.27-4.26 1.35 1.39-4.15-.28-.43A9.7 9.7 0 0 1 6.3 15c0-5.37 4.36-9.72 9.71-9.72 5.36 0 9.7 4.35 9.7 9.72s-4.34 9.7-9.7 9.7z"/>
+  </svg>
+
+  <!-- Mantengo tu intención de usar el SVG externo, pero SIN anidar <a> dentro de <a> (HTML inválido) -->
+  <!-- TODO: si querés usar este ícono en vez del SVG de arriba, reemplazamos el SVG por esta <img> (y sacamos el SVG) -->
+  <span style="display:none;">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Contactar a DigiAgro por WhatsApp" />
-  </a>
+  </span>
+</a>
 
 <script>
   // Año automático
@@ -633,4 +684,3 @@
 
 </body>
 </html>
-
