@@ -172,10 +172,20 @@
     .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
     .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 
-    footer{
-      background:#fff;
-      padding:40px 0;
-    }
+  footer{
+  background:#0f172a; /* oscuro elegante */
+  color:rgba(255,255,255,.85);
+  padding:40px 0;
+}
+
+footer a{
+  color:rgba(255,255,255,.85);
+}
+
+footer a:hover{
+  color:#89C444; /* verde marca */
+}
+
 
     /* ================= WHATSAPP ================= */
     .whatsapp-float{
@@ -385,7 +395,9 @@
   </section>
 
   <footer>
-  © <span id="year"></span> Lectura saludable · Todos los derechos reservados.
+    <div class="container">
+    <div class="footGrid">
+  © <span id="year"></span> AgriCheck SRL · Todos los derechos reservados.
 
   <div class="footer-designed" style="margin-top:8px;">
     <p style="display:flex; justify-content:center; align-items:center; gap:6px; margin:0;">
