@@ -64,13 +64,19 @@
     .smallCta:hover{text-decoration:underline}
 
     /* ================= HEADER ================= */
-    header{
-      position:fixed;
-      top:0;left:0;right:0;
-      z-index:50;
-      background:rgba(245,248,242,.95);
-      border-bottom:1px solid rgba(0,0,0,.06);
-    }
+   header{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:50;
+  background:linear-gradient(
+    180deg,
+    rgba(30,58,138,.96),   /* azul superior */
+    rgba(30,64,175,.92)   /* azul inferior */
+  );
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-bottom:1px solid rgba(255,255,255,.15);
+}
 
     .nav{
       display:flex;
@@ -83,16 +89,26 @@
     .logo img{height:32px}
 
     .navlinks{display:flex;gap:14px}
-    .navlinks a{padding:8px 12px;border-radius:999px;font-weight:600}
-    .navlinks a:hover{background:rgba(0,0,0,.05)}
+    .navlinks a{
+  padding:8px 12px;
+  border-radius:999px;
+  font-weight:600;
+  color:#e0e7ff; /* texto claro */
+}
 
-    .cta{
-      background:var(--brand-green);
-      padding:8px 14px;
-      border-radius:999px;
-      font-weight:800;
-      white-space:nowrap;
-    }
+.navlinks a:hover{
+  background:rgba(255,255,255,.15);
+}
+
+   .cta{
+  background:#89C444;
+  color:#0b1a08;
+  padding:8px 16px;
+  border-radius:999px;
+  font-weight:900;
+  white-space:nowrap;
+  box-shadow:0 4px 14px rgba(0,0,0,.25);
+}
 
     .burger{display:none}
 
@@ -537,7 +553,10 @@ Con origen en General Roca, Río Negro, comenzamos enfocados en el desarrollo de
 <a class="whatsapp-float"
    href="https://wa.me/5490000000000?text=Hola%20AgriCheck!%20Quiero%20hacer%20una%20consulta."
    target="_blank" rel="noopener" aria-label="WhatsApp">
-  <img src="whatsapp.png" alt="WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 32 32" fill="white" aria-hidden="true">
+    <path d="M19.11 17.09c-.29-.15-1.71-.84-1.97-.93-.26-.1-.45-.15-.64.15-.19.29-.74.93-.91 1.12-.17.19-.34.22-.63.07-.29-.15-1.22-.45-2.32-1.43-.86-.77-1.44-1.72-1.61-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.64-1.55-.88-2.12-.23-.56-.47-.48-.64-.49h-.55c-.19 0-.48.07-.73.36-.26.29-.96.93-.96 2.27 0 1.34.99 2.64 1.13 2.82.14.19 1.95 2.98 4.73 4.18.66.28 1.17.45 1.57.58.66.21 1.26.18 1.74.11.53-.08 1.71-.7 1.95-1.38.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.34z"/>
+    <path d="M16.01 3C9.38 3 4 8.38 4 15c0 2.62.85 5.04 2.29 7.01L4 29l7.18-2.28A11.94 11.94 0 0 0 16 27c6.63 0 12-5.38 12-12S22.63 3 16.01 3zm0 21.7c-2.18 0-4.21-.64-5.91-1.73l-.42-.27-4.26 1.35 1.39-4.15-.28-.43A9.7 9.7 0 0 1 6.3 15c0-5.37 4.36-9.72 9.71-9.72 5.36 0 9.7 4.35 9.7 9.72s-4.34 9.7-9.7 9.7z"/>
+  </svg>
 </a>
 
 <script>
