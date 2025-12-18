@@ -117,6 +117,11 @@
     }
     .burger{display:none}
 
+    /* ✅ Sacar logo de la barra de navegación (sin borrar markup) */
+    header .logo{display:none;} /* solicitado: logo solo en el hero */
+    /* spacer */
+    /* spacer */
+
     /* ================= HERO ================= */
     .hero{
       position:relative;
@@ -135,36 +140,28 @@
     .hero::after{display:none}
     .heroContent{position:relative; z-index:2; width:100%; padding:64px 0;}
 
-    /* ✅ IMPORTANTE: para posicionar el logo dentro del hero sin competir */
-    .heroContent .container{
-      position:relative;
-    }
-
-    /* ✅ Logo en hero: arriba-izquierda, un poco más grande, sutil */
+    /* ✅ Logo en hero: bien arriba a la izquierda, un poco más grande, sin competir */
     .heroLogo{
       position:absolute;
-      left:0;
-      top:-6px; /* queda pegadito arriba del bloque del hero, sin chocar con el header */
-      z-index:3;
+      left:18px;
+      top: calc(64px + 12px); /* debajo del header fijo */
+      z-index:4;
       display:inline-flex;
       align-items:center;
       justify-content:center;
       padding:10px 12px;
-      border-radius:14px;
-      background: linear-gradient(135deg, rgba(255,255,255,.26), rgba(255,255,255,.16));
-      border: 1px solid rgba(255,255,255,.28);
+      border-radius:16px;
+      background: linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.14));
+      border: 1px solid rgba(255,255,255,.24);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 12px 26px rgba(0,0,0,.16);
-      opacity:.92;            /* ✅ no compite: más sutil */
+      box-shadow: 0 14px 30px rgba(0,0,0,.16);
+      opacity:.90;                 /* sutil */
       transition: opacity .2s ease, transform .2s ease;
     }
-    .heroLogo:hover{
-      opacity:1;
-      transform: translateY(-1px);
-    }
+    .heroLogo:hover{opacity:1; transform: translateY(-1px)}
     .heroLogo img{
-      height:46px;            /* ✅ un poco más grande que el header (32px) */
+      height:58px;                 /* ✅ más grande */
       width:auto;
       display:block;
     }
@@ -190,7 +187,7 @@
       align-items:center;
       justify-content:flex-start;
       max-width:980px;
-      margin-top:56px; /* ✅ deja espacio visual para el logo del hero */
+      margin-top:48px; /* deja aire respecto al logo del hero */
     }
 
     .badgeTitle{
@@ -396,14 +393,31 @@
       padding:18px;
     }
 
-    /* Instagram */
-    .igGrid{
+    /* ================= INSTAGRAM: CARROUSEL AUTOMÁTICO (sin destacadas) ================= */
+    .igCarousel{
       margin-top:16px;
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:14px;
+      position:relative;
     }
+
+    .igTrack{
+      display:flex;
+      gap:14px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      padding: 2px 2px 10px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+    }
+
+    .igTrack::-webkit-scrollbar{height:10px}
+    .igTrack::-webkit-scrollbar-thumb{
+      background: rgba(15,23,42,.18);
+      border-radius: 999px;
+    }
+
     .igItem{
+      scroll-snap-align:start;
+      flex: 0 0 calc((100% - 28px) / 3);
       background: rgba(255,255,255,.72);
       border: 1px solid rgba(137,196,68,.28);
       box-shadow: 0 14px 26px rgba(0,0,0,.10);
@@ -414,8 +428,9 @@
       align-items:stretch;
       gap:12px;
       overflow:hidden;
+      min-width: 260px;
     }
-    .igItemDestacada{grid-column: 1 / -1;}
+
     .igPreview{
       position:relative;
       width:100%;
@@ -447,8 +462,32 @@
     .igFallback a{font-weight:900;color: var(--brand-green-dark)}
     .igFallback a:hover{ text-decoration:underline; }
 
+    .igNavBtn{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      z-index:5;
+      width:42px;
+      height:42px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.35);
+      background: linear-gradient(135deg, rgba(255,255,255,.58), rgba(255,255,255,.28));
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 14px 30px rgba(0,0,0,.16);
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color: rgba(15,23,42,.92);
+    }
+    .igNavBtn:hover{transform:translateY(-50%) translateY(-1px)}
+    .igNavBtn:focus{outline:3px solid rgba(137,196,68,.65); outline-offset:2px}
+    .igPrev{left:-6px}
+    .igNext{right:-6px}
+    .igNavBtn svg{width:18px;height:18px}
+
     @media(max-width:900px){
-      .igGrid{grid-template-columns:1fr}
       .grid4{grid-template-columns:repeat(2,1fr)}
       .grid3{grid-template-columns:1fr}
       .navlinks{display:none}
@@ -456,15 +495,19 @@
       .sectionCard{padding:20px}
 
       .badgeTitle{flex: 1 1 100%;}
-      .heroBadges{margin-top:58px;}
+      .heroBadges{margin-top:56px;}
 
-      /* ✅ en mobile: logo del hero un poco más chico para no tapar */
       .heroLogo{
-        top:-10px;
+        left:12px;
+        top: calc(64px + 10px);
         padding:8px 10px;
-        border-radius:12px;
+        border-radius:14px;
       }
-      .heroLogo img{height:38px;}
+      .heroLogo img{height:48px}
+
+      .igItem{flex: 0 0 92%;}
+      .igPrev{left:6px}
+      .igNext{right:6px}
     }
 
     /* Contacto */
@@ -562,15 +605,14 @@
     <source src="hero.mp4" type="video/mp4">
   </video>
 
+  <!-- ✅ Logo en el hero (arriba-izquierda) -->
+  <a class="heroLogo" href="/" aria-label="Ir al inicio">
+    <img src="agrichecklogo.png" alt="AgriCheck" />
+  </a>
+
   <div class="heroContent">
     <div class="container">
 
-      <!-- ✅ NUEVO: logo en el hero, arriba a la izquierda (más grande y sutil) -->
-      <a class="heroLogo" href="/" aria-label="Ir al inicio">
-        <img src="agrichecklogo.png" alt="AgriCheck" />
-      </a>
-
-      <!-- ✅ 2 burbujas -->
       <div class="heroBadges">
         <div class="badge badgeTitle">Agroinsumos especiales eficientes para una agricultura sustentable</div>
         <div class="badge badgeSub">Control biológico, feromonas, biofertilizantes y bioestimulantes.</div>
@@ -733,75 +775,75 @@
           Novedades, recorridas a campo y contenido técnico.
         </p>
 
-        <div class="igGrid" aria-label="Reels destacados de Instagram">
+        <!-- ✅ Carrousel automático (sin destacadas) -->
+        <div class="igCarousel" aria-label="Carrousel de reels de Instagram">
+          <button class="igNavBtn igPrev" type="button" aria-label="Anterior">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M15.5 19.1 8.4 12l7.1-7.1 1.4 1.4L11.2 12l5.7 5.7z"/></svg>
+          </button>
 
-          <div class="igItem igItemDestacada" data-ig="https://www.instagram.com/reel/DSKOxSQDWeh/?igsh=MWZkcGUxd2xhNGNuZw==">
-            <div class="igPreview">
-              <iframe
-                title="Previsualización Reel destacada"
-                src="https://www.instagram.com/reel/DSKOxSQDWeh/embed"
-                loading="lazy"
-                allowfullscreen
-                referrerpolicy="strict-origin-when-cross-origin"
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-              ></iframe>
-              <a class="igPreviewLink" href="https://www.instagram.com/reel/DSKOxSQDWeh/?igsh=MWZkcGUxd2xhNGNuZw==" target="_blank" rel="noopener" aria-label="Abrir reel destacada en Instagram"></a>
+          <div class="igTrack" id="igTrack" aria-label="Reels de Instagram">
+
+            <div class="igItem" data-ig="https://www.instagram.com/reel/DSKOxSQDWeh/">
+              <div class="igPreview">
+                <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DSKOxSQDWeh/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <a class="igPreviewLink" href="https://www.instagram.com/reel/DSKOxSQDWeh/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+              </div>
+              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DSKOxSQDWeh/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
             </div>
 
-            <div class="igFallback" aria-live="polite">
-              No se pudo cargar la previsualización en este navegador.
-              <a href="https://www.instagram.com/reel/DSKOxSQDWeh/?igsh=MWZkcGUxd2xhNGNuZw==" target="_blank" rel="noopener">Abrir en Instagram</a>.
+            <div class="igItem" data-ig="https://www.instagram.com/reel/DSLSnStAoCV/">
+              <div class="igPreview">
+                <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DSLSnStAoCV/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <a class="igPreviewLink" href="https://www.instagram.com/reel/DSLSnStAoCV/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+              </div>
+              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DSLSnStAoCV/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
             </div>
+
+            <div class="igItem" data-ig="https://www.instagram.com/reel/DSGOYXgEoRh/">
+              <div class="igPreview">
+                <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DSGOYXgEoRh/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <a class="igPreviewLink" href="https://www.instagram.com/reel/DSGOYXgEoRh/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+              </div>
+              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DSGOYXgEoRh/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+            </div>
+
+            <div class="igItem" data-ig="https://www.instagram.com/reel/DR2xqZEEpfH/">
+              <div class="igPreview">
+                <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DR2xqZEEpfH/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <a class="igPreviewLink" href="https://www.instagram.com/reel/DR2xqZEEpfH/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+              </div>
+              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DR2xqZEEpfH/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+            </div>
+
+            <div class="igItem" data-ig="https://www.instagram.com/reel/DRxolFXk56S/">
+              <div class="igPreview">
+                <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DRxolFXk56S/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <a class="igPreviewLink" href="https://www.instagram.com/reel/DRxolFXk56S/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+              </div>
+              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DRxolFXk56S/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+            </div>
+
+            <div class="igItem" data-ig="https://www.instagram.com/reel/DRvDMyAkY61/">
+              <div class="igPreview">
+                <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DRvDMyAkY61/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <a class="igPreviewLink" href="https://www.instagram.com/reel/DRvDMyAkY61/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+              </div>
+              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DRvDMyAkY61/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+            </div>
+
+            <div class="igItem" data-ig="https://www.instagram.com/reel/DRiLwi_jExD/">
+              <div class="igPreview">
+                <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DRiLwi_jExD/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <a class="igPreviewLink" href="https://www.instagram.com/reel/DRiLwi_jExD/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+              </div>
+              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DRiLwi_jExD/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+            </div>
+
           </div>
 
-          <div class="igItem" data-ig="https://www.instagram.com/reel/DSLSnStAoCV/">
-            <div class="igPreview">
-              <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DSLSnStAoCV/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-              <a class="igPreviewLink" href="https://www.instagram.com/reel/DSLSnStAoCV/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-            </div>
-            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DSLSnStAoCV/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-          </div>
-
-          <div class="igItem" data-ig="https://www.instagram.com/reel/DSGOYXgEoRh/">
-            <div class="igPreview">
-              <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DSGOYXgEoRh/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-              <a class="igPreviewLink" href="https://www.instagram.com/reel/DSGOYXgEoRh/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-            </div>
-            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DSGOYXgEoRh/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-          </div>
-
-          <div class="igItem" data-ig="https://www.instagram.com/reel/DR2xqZEEpfH/">
-            <div class="igPreview">
-              <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DR2xqZEEpfH/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-              <a class="igPreviewLink" href="https://www.instagram.com/reel/DR2xqZEEpfH/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-            </div>
-            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DR2xqZEEpfH/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-          </div>
-
-          <div class="igItem" data-ig="https://www.instagram.com/reel/DRxolFXk56S/">
-            <div class="igPreview">
-              <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DRxolFXk56S/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-              <a class="igPreviewLink" href="https://www.instagram.com/reel/DRxolFXk56S/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-            </div>
-            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DRxolFXk56S/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-          </div>
-
-          <div class="igItem" data-ig="https://www.instagram.com/reel/DRvDMyAkY61/">
-            <div class="igPreview">
-              <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DRvDMyAkY61/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-              <a class="igPreviewLink" href="https://www.instagram.com/reel/DRvDMyAkY61/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-            </div>
-            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DRvDMyAkY61/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-          </div>
-
-          <div class="igItem" data-ig="https://www.instagram.com/reel/DRiLwi_jExD/">
-            <div class="igPreview">
-              <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DRiLwi_jExD/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-              <a class="igPreviewLink" href="https://www.instagram.com/reel/DRiLwi_jExD/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-            </div>
-            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DRiLwi_jExD/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-          </div>
-
+          <button class="igNavBtn igNext" type="button" aria-label="Siguiente">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8.5 19.1 7.1 17.7 12.8 12 7.1 6.3l1.4-1.4L15.6 12z"/></svg>
+          </button>
         </div>
 
         <div style="margin-top:16px">
@@ -916,6 +958,7 @@
     alert("Búsqueda local lista. Próximo paso: conectar un índice de productos (JSON) para resultados reales.\n\nBuscaste: " + q);
   };
 
+  // ✅ Instagram: fallback si el iframe no carga + carrousel auto
   (function(){
     const items = document.querySelectorAll('#instagram .igItem');
     items.forEach((item) => {
@@ -936,10 +979,56 @@
         }
       }, 2200);
     });
+
+    const track = document.getElementById('igTrack');
+    const prevBtn = document.querySelector('#instagram .igPrev');
+    const nextBtn = document.querySelector('#instagram .igNext');
+    if(!track) return;
+
+    const getStep = () => {
+      const first = track.querySelector('.igItem');
+      if(!first) return 320;
+      const rect = first.getBoundingClientRect();
+      const gap = 14;
+      return Math.max(260, rect.width + gap);
+    };
+
+    const scrollByStep = (dir) => {
+      const step = getStep();
+      track.scrollBy({ left: dir * step, behavior: 'smooth' });
+    };
+
+    prevBtn && prevBtn.addEventListener('click', () => scrollByStep(-1));
+    nextBtn && nextBtn.addEventListener('click', () => scrollByStep(1));
+
+    let timer = null;
+    const start = () => {
+      if(timer) return;
+      timer = setInterval(() => {
+        const step = getStep();
+        const max = track.scrollWidth - track.clientWidth;
+        const next = Math.min(max, track.scrollLeft + step);
+        if(track.scrollLeft >= max - 4){
+          track.scrollTo({ left: 0, behavior: 'smooth' });
+        }else{
+          track.scrollTo({ left: next, behavior: 'smooth' });
+        }
+      }, 4200);
+    };
+    const stop = () => {
+      if(timer){ clearInterval(timer); timer = null; }
+    };
+
+    start();
+    track.addEventListener('mouseenter', stop);
+    track.addEventListener('mouseleave', start);
+    track.addEventListener('focusin', stop);
+    track.addEventListener('focusout', start);
+    document.addEventListener('visibilitychange', () => {
+      if(document.hidden) stop(); else start();
+    });
   })();
 </script>
 
 </body>
 </html>
-```
-
