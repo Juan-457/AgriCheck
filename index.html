@@ -403,34 +403,33 @@
       font-size:14px;
     }
 
-   /* ================= WHATSAPP (FIX DEFINITIVO) ================= */
-    .whatsapp-float{
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      width:58px;
-      height:58px;
-      background: linear-gradient(180deg, #25D366, #1fb357);
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow:0 10px 28px rgba(0,0,0,.28);
-      z-index:99;
-      border:2px solid rgba(255,255,255,.95);
-    }
+  /* ================= WHATSAPP FLOAT (FIX FINAL) ================= */
+.whatsapp-float{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:56px;
+  height:56px;
+  background:#25D366; /* color WhatsApp real */
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 8px 22px rgba(0,0,0,.28);
+  z-index:999;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
 
-    .whatsapp-float img{
-      width:30px;
-      height:30px;
-      display:block;
-      filter: brightness(0) invert(1);
-    }
+.whatsapp-float img{
+  width:26px;
+  height:26px;
+  display:block;
+}
 
-    .whatsapp-float:hover{
-      transform: translateY(-2px);
-      box-shadow:0 14px 34px rgba(0,0,0,.32);
-    }
+.whatsapp-float:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(0,0,0,.32);
+}
 
     @media(max-width:900px){
       .grid4{grid-template-columns:repeat(2,1fr)}
