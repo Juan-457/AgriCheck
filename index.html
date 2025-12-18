@@ -42,12 +42,32 @@
 
     /* Helpers mínimos (no rompen nada) */
     .center{text-align:center}
-    .kicker{font-weight:900; letter-spacing:.12em; text-transform:uppercase; font-size:12px; color:rgba(31,41,55,.7)}
-    .muted{color:rgba(31,41,55,.72); line-height:1.7}
-    .agroTitle{margin:10px 0 8px; font-size: clamp(28px, 3.6vw, 44px); letter-spacing:-0.02em; line-height:1.1}
+
+    /* ✅ Legibilidad mejorada */
+    .kicker{
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-size:12px;
+      color:rgba(15, 23, 42, .72);
+    }
+    .muted{
+      color:rgba(15, 23, 42, .74);
+      line-height:1.75;
+      font-size:16px;
+    }
+    .agroTitle{
+      margin:10px 0 8px;
+      font-size: clamp(28px, 3.6vw, 44px);
+      letter-spacing:-0.02em;
+      line-height:1.1;
+      color:rgba(15, 23, 42, .95);
+    }
     .agroLead{margin:0 auto; max-width:820px}
+
     .logos{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;align-items:center;padding:20px}
     .logos img{height:46px;width:auto;filter:grayscale(.1)}
+
     .pill{
       display:inline-flex;align-items:center;justify-content:center;
       height:54px;width:54px;border-radius:999px;
@@ -90,25 +110,25 @@
 
     .navlinks{display:flex;gap:14px}
     .navlinks a{
-  padding:8px 12px;
-  border-radius:999px;
-  font-weight:600;
-  color:#e0e7ff; /* texto claro */
-}
+      padding:8px 12px;
+      border-radius:999px;
+      font-weight:600;
+      color:#e0e7ff; /* texto claro */
+    }
 
-.navlinks a:hover{
-  background:rgba(255,255,255,.15);
-}
+    .navlinks a:hover{
+      background:rgba(255,255,255,.15);
+    }
 
    .cta{
-  background:#89C444;
-  color:#0b1a08;
-  padding:8px 16px;
-  border-radius:999px;
-  font-weight:900;
-  white-space:nowrap;
-  box-shadow:0 4px 14px rgba(0,0,0,.25);
-}
+      background:#89C444;
+      color:#0b1a08;
+      padding:8px 16px;
+      border-radius:999px;
+      font-weight:900;
+      white-space:nowrap;
+      box-shadow:0 4px 14px rgba(0,0,0,.25);
+    }
 
     .burger{display:none}
 
@@ -201,29 +221,49 @@
 
     /* ✅ Secciones SIN fondo propio (para que no se reinicie) */
    section:not(.hero){
-  padding:38px 0; /* antes 64 */
-}
+      padding:38px 0; /* antes 64 */
+    }
 
-/* ✅ junta específicamente Agroinsumos + Proveedores */
-#agroinsumos{
-  padding-bottom:14px; /* casi pegado con la siguiente */
-}
-#proveedores{
-  padding-top:14px; /* casi pegado con la anterior */
-}
+    /* ✅ junta específicamente Agroinsumos + Proveedores (ahora van dentro del mismo section) */
+    #agroinsumos{
+      padding-bottom:14px;
+    }
+    #proveedores{
+      padding-top:14px;
+    }
 
-
+    /* ✅ TODAS LAS BURBUJAS VERDOSAS */
     .card{
-      background:rgba(255,255,255,.95);
+      background: linear-gradient(
+        135deg,
+        rgba(236, 252, 242, .94),
+        rgba(245, 255, 248, .94)
+      );
       border-radius:var(--radius);
-      box-shadow:var(--shadow);
+      border:1px solid rgba(137,196,68,.30);
+      box-shadow:
+        0 20px 40px rgba(0,0,0,.08),
+        inset 0 0 0 1px rgba(255,255,255,.65);
       padding:22px;
+    }
+
+    /* ===== BLOQUE DESTACADO AGROINSUMOS (se mantiene pero coherente verdoso) ===== */
+    .card-agro{
+      background: linear-gradient(
+        135deg,
+        rgba(232, 250, 240, 0.96),
+        rgba(245, 255, 250, 0.96)
+      );
+      border: 1px solid rgba(137,196,68,.35);
+      box-shadow:
+        0 20px 40px rgba(0,0,0,.08),
+        inset 0 0 0 1px rgba(255,255,255,.6);
     }
 
     .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
     .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 
-    /* ================= NUEVO: AGROINSUMOS CON IMAGEN ================= */
+    /* ================= AGROINSUMOS CON IMAGEN ================= */
     .agroCard{
       display:grid;
       grid-template-columns:1.35fr .65fr;
@@ -242,63 +282,41 @@
       .agroMedia img{height:220px}
     }
 
-    /* ================= NUEVO: CARRUSEL LOGOS PROVEEDORES ================= */
-    .logoCarousel{position:relative;margin-top:18px}
-   .logoTrack{
-  display:flex;
-  gap:12px;                 /* antes 16 */
-  overflow:auto;
-  scroll-behavior:smooth;
-  padding:10px 44px;        /* más chico */
-  scrollbar-width:none;
-}
-    .logoTrack::-webkit-scrollbar{display:none}
+    /* ================= PROVEEDORES: 4 LOGOS CENTRADOS (SIN FLECHAS) ================= */
+    .logosGrid{
+      margin-top:18px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+      padding:6px 0 0;
+    }
 
-   .logoItem{
-  flex:0 0 auto;
-  width:130px;      /* antes 170 */
-  height:64px;      /* antes 86 */
-  background:rgba(255,255,255,.88);
-  border-radius:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:1px solid rgba(0,0,0,.06);
-}
-
-.logoItem img{
-  max-width:98px;   /* antes 130 */
-  max-height:34px;  /* antes 48 */
-  width:auto;
-  height:auto;
-  object-fit:contain;
-  filter:saturate(1.05);
-}
-
-
-    .carBtn{
-      position:absolute;
-      top:50%;
-      transform:translateY(-50%);
-      width:34px;
-      height:34px;
-      border-radius:999px;
-      border:1px solid rgba(0,0,0,.15);
-      background:rgba(255,255,255,.92);
-      cursor:pointer;
-      font-size:20px;
-      font-weight:900;
+    /* reutilizo tu .logoItem, pero lo hago un toque más prolijo */
+    .logoItem{
+      flex:0 0 auto;
+      width:140px;
+      height:70px;
+      background:rgba(255,255,255,.88);
+      border-radius:12px;
       display:flex;
       align-items:center;
       justify-content:center;
-      z-index:2;
+      border:1px solid rgba(0,0,0,.06);
     }
-    .carBtn.prev{left:8px}
-    .carBtn.next{right:8px}
+    .logoItem img{
+      max-width:110px;
+      max-height:38px;
+      width:auto;
+      height:auto;
+      object-fit:contain;
+      filter:saturate(1.05);
+    }
 
     @media(max-width:700px){
-      .logoItem{width:150px;height:80px}
-      .logoTrack{padding:12px 42px}
+      .logoItem{width:150px;height:76px}
+      .logoItem img{max-width:112px;max-height:40px}
     }
 
     /* ================= FOOTER (más finito y semi-transparente) ================= */
@@ -322,25 +340,31 @@
       font-size:14px;
     }
 
-    /* ================= WHATSAPP ================= */
+    /* ================= WHATSAPP (mejorado) ================= */
     .whatsapp-float{
       position:fixed;
       right:18px;
       bottom:18px;
-      width:58px;
-      height:58px;
-      background:#25D366;
+      width:60px;
+      height:60px;
+      background: linear-gradient(180deg, #25D366, #1fb357);
       border-radius:50%;
       display:flex;
       align-items:center;
       justify-content:center;
-      box-shadow:0 8px 24px rgba(0,0,0,.25);
+      box-shadow:0 10px 28px rgba(0,0,0,.28);
       z-index:99;
+      border:2px solid rgba(255,255,255,.92);
+      transform: translateZ(0);
     }
-
-    .whatsapp-float img{
+    .whatsapp-float svg{
       width:30px;
       height:30px;
+      display:block;
+    }
+    .whatsapp-float:hover{
+      transform: translateY(-2px);
+      box-shadow:0 14px 34px rgba(0,0,0,.32);
     }
 
     @media(max-width:900px){
@@ -390,9 +414,11 @@
   </div>
 </section>
 
+<!-- ✅ AGROINSUMOS + PROVEEDORES JUNTOS -->
 <section class="heroBelow" id="agroinsumos">
   <div class="container">
-    <!-- NUEVO: agroCard texto + imagen -->
+
+    <!-- Agroinsumos -->
     <div class="card agroCard">
       <div>
         <div class="center">
@@ -403,7 +429,7 @@
         <p class="muted agroLead" style="margin-top:10px">
           Desde 2001, en AgriCheck trabajamos con una misión clara: Desarrollar y ofrecer agroinsumos especiales eficientes para una agricultura sustentable y ecológica en el país.
 
-Con origen en General Roca, Río Negro, comenzamos enfocados en el desarrollo de soluciones para la producción de frutales. Con el tiempo, incorporamos representaciones de proveedores líderes mundiales en su segmento, lo que nos permite ofrecer el porfolio de soluciones sustentables más amplias de Argentina. No sólo brindamos herramientas para el control de plagas y enfermedades de los cultivos, sino que proveemos promotores de rendimiento a través de nuestra exclusiva línea de microorganismos benéficos (Biofertilizantes). Asimismo, preocupados por el cada vez más desafiante entorno climático para la agricultura, desarrollamos agentes anti estresantes de marcada eficacia.
+          Con origen en General Roca, Río Negro, comenzamos enfocados en el desarrollo de soluciones para la producción de frutales. Con el tiempo, incorporamos representaciones de proveedores líderes mundiales en su segmento, lo que nos permite ofrecer el porfolio de soluciones sustentables más amplias de Argentina. No sólo brindamos herramientas para el control de plagas y enfermedades de los cultivos, sino que proveemos promotores de rendimiento a través de nuestra exclusiva línea de microorganismos benéficos (Biofertilizantes). Asimismo, preocupados por el cada vez más desafiante entorno climático para la agricultura, desarrollamos agentes anti estresantes de marcada eficacia.
           <strong>Desde 2019 somos parte de Andermatt Group.</strong>
         </p>
       </div>
@@ -412,12 +438,9 @@ Con origen en General Roca, Río Negro, comenzamos enfocados en el desarrollo de
         <img src="agroinsumosespeciales.jpg" alt="Agroinsumos especiales" loading="lazy" />
       </div>
     </div>
-  </div>
-</section>
 
-<section>
-  <div class="container">
-    <div class="card" style="padding:22px">
+    <!-- Proveedores (ahora debajo, sin flechas, 4 logos centrados) -->
+    <div class="card card-agro" id="proveedores" style="padding:22px; margin-top:18px;">
       <div class="center">
         <div class="kicker">Representaciones exclusivas en Argentina</div>
         <h2>Proveedores líderes</h2>
@@ -427,24 +450,14 @@ Con origen en General Roca, Río Negro, comenzamos enfocados en el desarrollo de
         </p>
       </div>
 
-      <!-- NUEVO: carrusel -->
-      <div class="logoCarousel" aria-label="Logos de proveedores"
-           id="logoCarousel"
-           onmouseenter="pauseLogoAuto()"
-           onmouseleave="resumeLogoAuto()"
-           ontouchstart="pauseLogoAuto()">
-        <button class="carBtn prev" type="button" aria-label="Anterior" onclick="scrollLogos(-1)">‹</button>
-
-        <div class="logoTrack" id="logoTrack">
-          <div class="logoItem"><img src="suterra.png" alt="Suterra" loading="lazy" /></div>
-          <div class="logoItem"><img src="andermatt.png" alt="Andermatt" loading="lazy" /></div>
-          <div class="logoItem"><img src="BioAtlantis.png" alt="BioAtlantis" loading="lazy" /></div>
-          <div class="logoItem"><img src="cultiva-1.png" alt="Cultiva" loading="lazy" /></div>
-        </div>
-
-        <button class="carBtn next" type="button" aria-label="Siguiente" onclick="scrollLogos(1)">›</button>
+      <div class="logosGrid" aria-label="Logos de proveedores">
+        <div class="logoItem"><img src="suterra.png" alt="Suterra" loading="lazy" /></div>
+        <div class="logoItem"><img src="andermatt.png" alt="Andermatt" loading="lazy" /></div>
+        <div class="logoItem"><img src="BioAtlantis.png" alt="BioAtlantis" loading="lazy" /></div>
+        <div class="logoItem"><img src="cultiva-1.png" alt="Cultiva" loading="lazy" /></div>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -560,13 +573,14 @@ Con origen en General Roca, Río Negro, comenzamos enfocados en el desarrollo de
   </div>
 </footer>
 
-<!-- WhatsApp bubble (si no querés imagen, lo reemplazo por SVG) -->
+<!-- WhatsApp bubble -->
 <a class="whatsapp-float"
    href="https://wa.me/5490000000000?text=Hola%20AgriCheck!%20Quiero%20hacer%20una%20consulta."
    target="_blank" rel="noopener" aria-label="WhatsApp">
-  <svg width="30" height="30" viewBox="0 0 32 32" fill="white" aria-hidden="true">
-    <path d="M19.11 17.09c-.29-.15-1.71-.84-1.97-.93-.26-.1-.45-.15-.64.15-.19.29-.74.93-.91 1.12-.17.19-.34.22-.63.07-.29-.15-1.22-.45-2.32-1.43-.86-.77-1.44-1.72-1.61-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.64-1.55-.88-2.12-.23-.56-.47-.48-.64-.49h-.55c-.19 0-.48.07-.73.36-.26.29-.96.93-.96 2.27 0 1.34.99 2.64 1.13 2.82.14.19 1.95 2.98 4.73 4.18.66.28 1.17.45 1.57.58.66.21 1.26.18 1.74.11.53-.08 1.71-.7 1.95-1.38.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.34z"/>
-    <path d="M16.01 3C9.38 3 4 8.38 4 15c0 2.62.85 5.04 2.29 7.01L4 29l7.18-2.28A11.94 11.94 0 0 0 16 27c6.63 0 12-5.38 12-12S22.63 3 16.01 3zm0 21.7c-2.18 0-4.21-.64-5.91-1.73l-.42-.27-4.26 1.35 1.39-4.15-.28-.43A9.7 9.7 0 0 1 6.3 15c0-5.37 4.36-9.72 9.71-9.72 5.36 0 9.7 4.35 9.7 9.72s-4.34 9.7-9.7 9.7z"/>
+  <!-- Icono WhatsApp más limpio (círculo + teléfono) -->
+  <svg viewBox="0 0 32 32" aria-hidden="true">
+    <path fill="#fff" d="M19.11 17.09c-.29-.15-1.71-.84-1.97-.93-.26-.1-.45-.15-.64.15-.19.29-.74.93-.91 1.12-.17.19-.34.22-.63.07-.29-.15-1.22-.45-2.32-1.43-.86-.77-1.44-1.72-1.61-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.64-1.55-.88-2.12-.23-.56-.47-.48-.64-.49h-.55c-.19 0-.48.07-.73.36-.26.29-.96.93-.96 2.27 0 1.34.99 2.64 1.13 2.82.14.19 1.95 2.98 4.73 4.18.66.28 1.17.45 1.57.58.66.21 1.26.18 1.74.11.53-.08 1.71-.7 1.95-1.38.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.34z"/>
+    <path fill="#fff" d="M16.01 3C9.38 3 4 8.38 4 15c0 2.62.85 5.04 2.29 7.01L4 29l7.18-2.28A11.94 11.94 0 0 0 16 27c6.63 0 12-5.38 12-12S22.63 3 16.01 3zm0 21.7c-2.18 0-4.21-.64-5.91-1.73l-.42-.27-4.26 1.35 1.39-4.15-.28-.43A9.7 9.7 0 0 1 6.3 15c0-5.37 4.36-9.72 9.71-9.72 5.36 0 9.7 4.35 9.7 9.72s-4.34 9.7-9.7 9.7z"/>
   </svg>
 </a>
 
@@ -580,58 +594,7 @@ Con origen en General Roca, Río Negro, comenzamos enfocados en el desarrollo de
     if(!q){ alert("Escribí algo para buscar."); return; }
     alert("Búsqueda local lista. Próximo paso: conectar un índice de productos (JSON) para resultados reales.\n\nBuscaste: " + q);
   };
-
-  // Carrusel logos: flechas + auto-scroll + pausa
-  const track = document.getElementById('logoTrack');
-  let logoAutoTimer = null;
-  let logoPaused = false;
-
-  function scrollLogos(dir){
-    if(!track) return;
-   const step = 220; // más chico => pasa logos más seguido
-    track.scrollBy({ left: dir * step, behavior: 'smooth' });
-  }
-
-  function startLogoAuto(){
-    if(!track) return;
-    stopLogoAuto();
-    logoAutoTimer = setInterval(() => {
-      if(logoPaused) return;
-
-      // si llegamos al final, volvemos al inicio suave
-      const nearEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 6;
-      if(nearEnd){
-        track.scrollTo({ left: 0, behavior: 'smooth' });
-      }else{
-        scrollLogos(1);
-      }
-   }, 1700); // más rápido y “vivo”
-  }
-
-  function stopLogoAuto(){
-    if(logoAutoTimer){
-      clearInterval(logoAutoTimer);
-      logoAutoTimer = null;
-    }
-  }
-
-  function pauseLogoAuto(){
-    logoPaused = true;
-  }
-
-  function resumeLogoAuto(){
-    logoPaused = false;
-  }
-
-  // Pausa también cuando el usuario hace scroll manual (touch/trackpad)
-  if(track){
-    track.addEventListener('wheel', () => { pauseLogoAuto(); setTimeout(resumeLogoAuto, 1600); }, {passive:true});
-    track.addEventListener('touchmove', () => { pauseLogoAuto(); setTimeout(resumeLogoAuto, 1600); }, {passive:true});
-  }
-
-  startLogoAuto();
 </script>
 
 </body>
 </html>
-
