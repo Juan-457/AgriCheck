@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="es-AR">
 <head>
@@ -19,20 +18,25 @@
     :root{
       --brand-green:#89C444;
       --brand-green-dark:#76b033;
+
       --ink:#0b1220;
       --ink2:#1f2937;
+
       --bg:#F8F9F7;
       --border: rgba(255,255,255,.18);
       --border2: rgba(15,23,42,.10);
+
       --shadow: 0 18px 50px rgba(0,0,0,.16);
       --shadow2: 0 12px 28px rgba(0,0,0,.12);
+
       --max:1200px;
       --radius:22px;
       --radius2:16px;
 
-      --glassA: rgba(255,255,255,.20);
-      --glassB: rgba(255,255,255,.10);
+      --glassA: rgba(255,255,255,.22);
+      --glassB: rgba(255,255,255,.12);
       --glassC: rgba(255,255,255,.30);
+
       --glassTxt: rgba(15,23,42,.92);
       --glassMuted: rgba(15,23,42,.72);
 
@@ -143,7 +147,7 @@
     body.menuOpen .burgerLines span:nth-child(2){ opacity:0; }
     body.menuOpen .burgerLines span:nth-child(3){ top:5px; transform: rotate(-45deg); }
 
-    /* ================== HERO (premium split overlay) ================== */
+    /* ================== HERO ================== */
     .hero{
       position:relative;
       min-height: 100vh;
@@ -158,13 +162,13 @@
       content:"";
       position:absolute; inset:0;
       background:
-        radial-gradient(1200px 500px at 20% 75%, rgba(137,196,68,.22), rgba(137,196,68,0) 60%),
-        linear-gradient(180deg, rgba(0,0,0,.28), rgba(0,0,0,.40));
+        radial-gradient(1200px 500px at 18% 78%, rgba(137,196,68,.18), rgba(137,196,68,0) 58%),
+        linear-gradient(180deg, rgba(0,0,0,.22), rgba(0,0,0,.42));
       z-index:1;
       pointer-events:none;
     }
 
-    /* logo in hero, “premium badge” */
+    /* logo in hero (arriba izquierda, un poco más grande, sin competir) */
     .heroLogo{
       position:absolute;
       top: calc(76px + 12px);
@@ -175,8 +179,8 @@
       justify-content:center;
       padding: 10px 12px;
       border-radius: 18px;
-      background: linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.10));
-      border: 1px solid rgba(255,255,255,.22);
+      background: linear-gradient(135deg, rgba(255,255,255,.20), rgba(255,255,255,.10));
+      border: 1px solid rgba(255,255,255,.20);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       box-shadow: var(--shadow2);
@@ -184,7 +188,7 @@
       transition: transform .18s ease, opacity .18s ease;
     }
     .heroLogo:hover{ opacity: 1; transform: translateY(-1px); }
-    .heroLogo img{ height: 72px; width:auto; display:block; }
+    .heroLogo img{ height: 74px; width:auto; display:block; }
 
     .heroContent{
       position:relative;
@@ -193,24 +197,27 @@
       padding: 44px 0 54px;
     }
 
+    /* AJUSTE CLAVE: evitar “raro” el layout */
     .heroGrid{
       display:grid;
-      grid-template-columns: 1.1fr .9fr;
+      grid-template-columns: minmax(320px, 720px) 1fr;
       gap: 18px;
       align-items:end;
     }
 
     .glass{
-      background: linear-gradient(135deg, rgba(255,255,255,.26), rgba(255,255,255,.12));
-      border: 1px solid rgba(255,255,255,.22);
+      background: linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.10));
+      border: 1px solid rgba(255,255,255,.20);
       box-shadow: var(--shadow);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-radius: var(--radius);
     }
 
+    /* Card principal: ancho controlado y padding consistente */
     .heroCard{
       padding: 18px 18px 16px;
+      max-width: 720px;
     }
 
     .kicker{
@@ -219,8 +226,8 @@
       gap:10px;
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(255,255,255,.14);
-      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.16);
       color: rgba(226,232,240,.92);
       font-weight: 900;
       letter-spacing: .12em;
@@ -230,39 +237,29 @@
     .kickerDot{
       width:8px;height:8px;border-radius:50%;
       background: var(--brand-green);
-      box-shadow: 0 0 0 6px rgba(137,196,68,.16);
+      box-shadow: 0 0 0 6px rgba(137,196,68,.14);
     }
 
+    /* ✅ FIX: título SIN burbuja interna, SIN duplicación, con mejor lectura */
     .heroTitle{
-  margin: 6px 0 10px;
-  font-weight: 900;
-  letter-spacing: -.03em;
-  line-height: 1.05;
-  font-size: clamp(32px, 4.5vw, 60px);
-  color: rgba(15,23,42,.92);
-  text-shadow: 0 2px 18px rgba(0,0,0,.18);
-}
-
-
-    .heroTitleWrap{
-      background: linear-gradient(135deg, rgba(255,255,255,.44), rgba(255,255,255,.24));
-      border: 1px solid rgba(255,255,255,.36);
-      padding: 16px 18px;
-      border-radius: 999px;
-      box-shadow: 0 14px 30px rgba(0,0,0,.16);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      margin: 12px 0 10px;
+      color: rgba(15,23,42,.92);
+      text-shadow: 0 2px 18px rgba(0,0,0,.18);
+      font-weight: 900;
+      letter-spacing: -.03em;
+      font-size: clamp(32px, 4.6vw, 60px);
+      line-height: 1.03;
     }
 
     .heroSub{
-      margin: 10px 0 0;
+      margin: 0;
       display:inline-flex;
       align-items:center;
       padding: 10px 14px;
       border-radius: 999px;
-      background: linear-gradient(135deg, rgba(255,255,255,.38), rgba(255,255,255,.18));
-      border: 1px solid rgba(255,255,255,.26);
-      box-shadow: 0 12px 26px rgba(0,0,0,.14);
+      background: linear-gradient(135deg, rgba(255,255,255,.32), rgba(255,255,255,.14));
+      border: 1px solid rgba(255,255,255,.22);
+      box-shadow: 0 12px 26px rgba(0,0,0,.12);
       color: rgba(15,23,42,.88);
       font-weight: 800;
       font-size: 14px;
@@ -270,7 +267,7 @@
     }
 
     .muted{
-      color: rgba(15,23,42,.76);
+      color: rgba(15,23,42,.74);
       line-height: 1.75;
       font-size: 16px;
     }
@@ -305,22 +302,24 @@
       border-color: rgba(0,0,0,.10);
     }
     .btnGhost{
-      background: linear-gradient(135deg, rgba(255,255,255,.34), rgba(255,255,255,.16));
+      background: linear-gradient(135deg, rgba(255,255,255,.30), rgba(255,255,255,.12));
       color: rgba(15,23,42,.92);
-      border-color: rgba(255,255,255,.28);
+      border-color: rgba(255,255,255,.22);
     }
 
+    /* ✅ FIX: buscador alineado (no “volado” a otro lado) */
     .searchWrap{
       margin-top: 12px;
       display:flex;
       gap: 10px;
       padding: 10px;
       border-radius: 18px;
-      background: linear-gradient(135deg, rgba(255,255,255,.26), rgba(255,255,255,.12));
-      border: 1px solid rgba(255,255,255,.22);
-      box-shadow: 0 16px 34px rgba(0,0,0,.16);
+      background: linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.10));
+      border: 1px solid rgba(255,255,255,.20);
+      box-shadow: 0 16px 34px rgba(0,0,0,.14);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
+      max-width: 100%;
     }
     .searchWrap input{
       flex:1;
@@ -330,6 +329,7 @@
       padding: 10px 12px;
       font-size: 16px;
       color: rgba(15,23,42,.92);
+      min-width: 180px;
     }
     .searchWrap input::placeholder{ color: rgba(15,23,42,.60); }
     .searchWrap button{
@@ -346,6 +346,8 @@
     /* right hero “stats” */
     .heroSide{
       padding: 18px;
+      max-width: 520px;
+      justify-self: end;
     }
     .sideTitle{
       margin:0 0 10px;
@@ -355,12 +357,11 @@
       font-size: 18px;
     }
     .chips{
-      display:flex;
-      flex-wrap:wrap;
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
     }
     .chip{
-      flex: 1 1 160px;
       padding: 12px 12px;
       border-radius: 16px;
       background: rgba(255,255,255,.62);
@@ -373,6 +374,7 @@
 
     /* ================== SECTIONS ================== */
     section{ padding: var(--section) 0; }
+
     .panel{
       border-radius: var(--radius);
       background: linear-gradient(135deg, rgba(236, 252, 242, .92), rgba(245, 255, 248, .92));
@@ -386,6 +388,7 @@
       justify-content:space-between;
       gap: 16px;
       margin-bottom: 16px;
+      flex-wrap:wrap;
     }
     .hKicker{
       font-weight: 900;
@@ -612,9 +615,8 @@
     /* ================== RESPONSIVE ================== */
     @media(max-width: 980px){
       .heroGrid{ grid-template-columns: 1fr; }
-      .heroSide{ order: 2; }
-      .heroCard{ order: 1; }
-      .heroLogo img{ height: 60px; }
+      .heroSide{ justify-self: start; max-width: 720px; }
+      .heroLogo img{ height: 62px; }
       .split{ grid-template-columns: 1fr; }
       .media img{ height: 260px; }
       .grid4{ grid-template-columns: repeat(2, 1fr); }
@@ -623,27 +625,27 @@
       .igPrev{ left: 6px; }
       .igNext{ right: 6px; }
       .contactGrid{ grid-template-columns: 1fr; }
+      .chips{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media(max-width: 900px){
       .navlinks{ display:none; }
       .burger{ display:flex; }
       .hero{ padding-top: 72px; }
       .heroLogo{ top: calc(72px + 10px); left: 12px; padding: 10px 12px; border-radius: 18px; }
-      .heroLogo img{ height: 58px; }
+      .heroLogo img{ height: 60px; }
       section{ padding: 46px 0; }
+      .chips{ grid-template-columns: 1fr; }
     }
     @media(max-width: 520px){
-      .heroTitleWrap{ border-radius: 22px; }
       .heroTitle{ font-size: clamp(28px, 8vw, 42px); }
-      .heroSub{ border-radius: 18px; }
       .searchWrap{ flex-direction:column; }
       .searchWrap button{ width:100%; }
     }
 
     /* spacer (no-op) */
-    /* spacer */
-    /* spacer */
-    /* spacer */
+    <!-- spacer -->
+    <!-- spacer -->
+    <!-- spacer -->
   </style>
 </head>
 
@@ -692,13 +694,10 @@
         <div class="glass heroCard">
           <div class="kicker"><span class="kickerDot" aria-hidden="true"></span> AgriCheck</div>
 
-        <div class="heroTitle">
-  Agroinsumos especiales eficientes para una agricultura sustentable
-</div>
-            <div class="heroTitle">Agroinsumos especiales eficientes para una agricultura sustentable</div>
-          </div>
+          <!-- ✅ FIX: NO duplicado, NO burbuja interna rara -->
+          <h1 class="heroTitle">Agroinsumos especiales eficientes para una agricultura sustentable</h1>
 
-          <div class="heroSub">Control biológico, feromonas, biofertilizantes y bioestimulantes.</div>
+          <p class="heroSub">Control biológico, feromonas, biofertilizantes y bioestimulantes.</p>
 
           <div class="heroActions" aria-label="Acciones principales">
             <a class="btn btnPrimary" href="https://wa.me/+5492984763055?text=Hola%20AgriCheck!%20Quiero%20hablar%20con%20un%20asesor." target="_blank" rel="noopener">Hablar con un asesor</a>
@@ -1176,4 +1175,4 @@
 
 </body>
 </html>
-```
+
