@@ -481,18 +481,8 @@
       display:flex;
       align-items:center;
       gap:16px;
-      scroll-behavior:smooth;
       padding:2px;
       min-width:max-content;
-    }
-    .logoTrack.is-marquee{
-      animation: logo-marquee var(--logo-marquee-duration, 40s) linear infinite;
-      will-change: transform;
-    }
-    .logoViewport.is-paused .logoTrack{ animation-play-state: paused; }
-    @keyframes logo-marquee{
-      from{ transform: translateX(0); }
-      to{ transform: translateX(calc(-1 * var(--logo-marquee-distance, 820px))); }
     }
     .logoItem{
       flex:0 0 auto;
@@ -1198,7 +1188,7 @@
     alert("Búsqueda local lista. Próximo paso: conectar un índice de productos (JSON) para resultados reales.\n\nBuscaste: " + q);
   };
 
-  // ✅ Carrusel de logos de representaciones
+  // ✅ Carrusel de logos de representaciones (marquee infinito accesible)
   (function(){
     const carousel = document.querySelector('[data-logo-carousel]');
     if(!carousel) return;
@@ -1209,11 +1199,15 @@
     const nextBtn = carousel.querySelector('.logoNext');
     if(!viewport || !track) return;
 
-    const originals = Array.from(track.children);
+    const originals = Array.from(track.children).map((node) => node.cloneNode(true));
     if(!originals.length) return;
 
     let baseWidth = 0;
-    const speedPxPerMs = 0.04; // ~40px/segundo hacia la izquierda
+    let rafId = null;
+    let lastTs = null;
+    let isPaused = false;
+    const speedPxPerMs = 0.045; // ~45px/segundo hacia la izquierda
+    const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     const getGap = () => {
       const style = getComputedStyle(track);
@@ -1225,26 +1219,39 @@
       const slice = Array.from(track.children).slice(0, originals.length);
       if(!slice.length) return 0;
       const gap = getGap();
-      const widths = slice.reduce((acc, item) => acc + item.getBoundingClientRect().width, 0);
-      return widths + gap * Math.max(0, slice.length - 1);
+      const widths = slice.reduce((acc, item, idx) => {
+        const rect = item.getBoundingClientRect();
+        const addGap = idx === slice.length - 1 ? 0 : gap;
+        return acc + rect.width + addGap;
+      }, 0);
+      return widths;
     };
 
     const rebuildClones = () => {
+      const scrollSnapshot = viewport.scrollLeft;
       track.innerHTML = '';
-      originals.forEach((node) => track.appendChild(node));
-      originals.forEach((node) => track.appendChild(node.cloneNode(true)));
 
-      while(track.scrollWidth < viewport.clientWidth * 2.2){
-        originals.forEach((node) => track.appendChild(node.cloneNode(true)));
+      const addSet = () => originals.forEach((node) => track.appendChild(node.cloneNode(true)));
+      addSet();
+      baseWidth = measureBaseWidth();
+
+      while(track.scrollWidth < viewport.clientWidth + baseWidth){
+        addSet();
+      }
+
+      if(track.scrollWidth < baseWidth * 2){
+        addSet();
       }
 
       baseWidth = measureBaseWidth();
-      viewport.scrollLeft = 0;
+      viewport.scrollLeft = baseWidth > 0 ? scrollSnapshot % baseWidth : 0;
+    };
 
-      const pxPerSec = 40;
-      const duration = baseWidth ? baseWidth / pxPerSec : 30;
-      track.style.setProperty('--logo-marquee-distance', `${baseWidth || 820}px`);
-      track.style.setProperty('--logo-marquee-duration', `${Math.max(12, duration)}s`);
+    const normalize = () => {
+      const limit = baseWidth || track.scrollWidth;
+      if(limit <= 0) return;
+      const normalized = viewport.scrollLeft % limit;
+      viewport.scrollLeft = normalized;
     };
 
     const getStep = () => {
@@ -1255,25 +1262,25 @@
       return Math.max(160, rect.width + gap);
     };
 
-    const scrollStep = (dir, smooth = true) => {
+    const scrollStep = (dir) => {
       const step = getStep();
       const limit = baseWidth || track.scrollWidth;
       let next = viewport.scrollLeft + dir * step;
       if(limit > 0){
-        while(next < 0){ next += limit; }
-        while(next >= limit){ next -= limit; }
+        next = ((next % limit) + limit) % limit;
       }
-      viewport.scrollTo({ left: next, behavior: smooth ? 'smooth' : 'auto' });
+      viewport.scrollTo({ left: next, behavior: 'smooth' });
     };
 
     prevBtn && prevBtn.addEventListener('click', () => scrollStep(-1));
     nextBtn && nextBtn.addEventListener('click', () => scrollStep(1));
 
-    let rafId = null;
-    let lastTs = null;
-
     const tick = (ts) => {
-      if(lastTs === null){ lastTs = ts; rafId = requestAnimationFrame(tick); return; }
+      if(lastTs === null){
+        lastTs = ts;
+        rafId = requestAnimationFrame(tick);
+        return;
+      }
 
       const delta = ts - lastTs;
       lastTs = ts;
@@ -1282,7 +1289,7 @@
 
       let next = viewport.scrollLeft + delta * speedPxPerMs;
       if(next >= limit){
-        next = next - limit;
+        next = next % limit;
       }
 
       viewport.scrollLeft = next;
@@ -1290,13 +1297,26 @@
     };
 
     const start = () => {
-      if(rafId) return;
+      if(prefersReduce.matches || isPaused || rafId) return;
       lastTs = null;
       rafId = requestAnimationFrame(tick);
     };
+
     const stop = () => {
       if(rafId){ cancelAnimationFrame(rafId); rafId = null; }
       lastTs = null;
+    };
+
+    const pause = () => {
+      isPaused = true;
+      viewport.classList.add('is-paused');
+      stop();
+    };
+
+    const resume = () => {
+      isPaused = false;
+      viewport.classList.remove('is-paused');
+      start();
     };
 
     rebuildClones();
@@ -1311,15 +1331,28 @@
       }, 160);
     });
 
-    const pause = () => { viewport.classList.add('is-paused'); stop(); };
-    const resume = () => { viewport.classList.remove('is-paused'); start(); };
-
     viewport.addEventListener('mouseenter', pause);
     viewport.addEventListener('mouseleave', resume);
     viewport.addEventListener('focusin', pause);
     viewport.addEventListener('focusout', resume);
+
+    viewport.addEventListener('scroll', () => {
+      if(!rafId){
+        normalize();
+      }
+    });
+
     document.addEventListener('visibilitychange', () => {
-      if(document.hidden) stop(); else start();
+      if(document.hidden){ stop(); } else { start(); }
+    });
+
+    prefersReduce.addEventListener('change', (event) => {
+      if(event.matches){
+        stop();
+      }else{
+        normalize();
+        start();
+      }
     });
   })();
 
