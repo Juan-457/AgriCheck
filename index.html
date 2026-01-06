@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="es-AR">
 <head>
@@ -91,102 +90,75 @@
 
     /* ================= HEADER ================= */
     header{
-      position:fixed; top:0; left:0; right:0;
-      z-index:50;
-      background:linear-gradient(180deg, rgba(30,58,138,.96), rgba(30,64,175,.92));
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      border-bottom:1px solid rgba(255,255,255,.15);
+      position:fixed; inset:0 0 auto 0;
+      z-index:60;
+      padding: 10px 0;
+      background: linear-gradient(180deg, rgba(10, 21, 56, .78), rgba(10, 21, 56, .55));
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
-    /* ✅ Nav centrada */
-    .nav{
-      position:relative;
+    .topbar{
       display:flex;
       align-items:center;
-      justify-content:center; /* ✅ centra “las secciones” (links) */
-      padding:8px 0;
-      gap:14px;
-      min-height:48px;
+      justify-content:center;
+      position:relative;
+      min-height: 44px;
     }
-
-    /* Logo en header: se deja en el HTML pero oculto (logo vive en el hero) */
-    header .logo{display:none;} /* solicitado: sacar logo del header */
-
     .navlinks{
       display:flex;
-      gap:14px;
-      justify-content:center;
-      align-items:center;
+      gap: 6px;
+      padding: 6px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 10px 26px rgba(0,0,0,.18);
     }
     .navlinks a{
-      padding:8px 12px;
-      border-radius:999px;
-      font-weight:600;
-      color:#e0e7ff;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      color: rgba(226,232,240,.95);
+      letter-spacing: -.01em;
+      transition: background .15s ease, transform .15s ease;
     }
-    .navlinks a:hover{background:rgba(255,255,255,.15)}
+    .navlinks a:hover{ background: rgba(255,255,255,.12); transform: translateY(-1px); }
 
-    .cta{
-      background:#89C444;
-      color:#0b1a08;
-      padding:8px 16px;
-      border-radius:999px;
-      font-weight:900;
-      white-space:nowrap;
-      box-shadow:0 4px 14px rgba(0,0,0,.25);
-    }
-    /* ✅ Quitar botón de contacto en la barra (sin borrar markup) */
-    header .cta{display:none;} /* solicitado: quitar “Contactanos” del header */
-    /* spacer */
-    /* spacer */
-
-    /* ================= BURGER + MOBILE MENU ================= */
+    /* burger */
     .burger{
       position:absolute;
-      right:12px;
-      top:50%;
-      transform:translateY(-50%);
-      width:44px;
-      height:44px;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,.18);
-      background:rgba(255,255,255,.10);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      display:none; /* desktop oculto */
+      right: 4px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px; height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.10);
+      display:none;
       align-items:center;
       justify-content:center;
       cursor:pointer;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 10px 24px rgba(0,0,0,.18);
     }
-    .burger:focus{
-      outline:3px solid rgba(137,196,68,.65);
-      outline-offset:2px;
-    }
-    .burgerLines{
-      width:18px;
-      height:12px;
-      position:relative;
-      display:block;
-    }
+    .burger:focus{ outline: 3px solid rgba(137,196,68,.65); outline-offset: 2px; }
+    .burgerLines{ width: 18px; height: 12px; position:relative; display:block; }
     .burgerLines span{
-      position:absolute;
-      left:0;
-      width:100%;
-      height:2px;
-      background:#e0e7ff;
-      border-radius:999px;
-      transition:transform .18s ease, top .18s ease, opacity .18s ease;
+      position:absolute; left:0; width:100%; height:2px; background: rgba(226,232,240,.95);
+      border-radius: 999px;
+      transition: transform .18s ease, top .18s ease, opacity .18s ease;
     }
-    .burgerLines span:nth-child(1){top:0}
-    .burgerLines span:nth-child(2){top:5px}
-    .burgerLines span:nth-child(3){top:10px}
+    .burgerLines span:nth-child(1){ top:0 }
+    .burgerLines span:nth-child(2){ top:5px }
+    .burgerLines span:nth-child(3){ top:10px }
 
     .mobileMenu{
       display:none;
-      padding:10px 0 14px;
-      border-top:1px solid rgba(255,255,255,.12);
-      background: linear-gradient(180deg, rgba(30,64,175,.92), rgba(30,58,138,.96));
+      padding: 10px 0 14px;
+      background: linear-gradient(180deg, rgba(10, 21, 56, .70), rgba(10, 21, 56, .86));
+      border-top: 1px solid rgba(255,255,255,.10);
     }
     .mobileMenu .container{
       display:flex;
@@ -194,19 +166,18 @@
       gap:10px;
     }
     .mobileMenu a{
-      color:#e0e7ff;
-      font-weight:700;
-      padding:12px 12px;
-      border-radius:14px;
-      background:rgba(255,255,255,.10);
-      border:1px solid rgba(255,255,255,.14);
+      padding: 12px 14px;
+      border-radius: 16px;
+      font-weight: 900;
+      color: rgba(226,232,240,.95);
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.14);
     }
-    .mobileMenu a:active{transform:translateY(1px)}
 
-    body.menuOpen .mobileMenu{display:block}
-    body.menuOpen .burgerLines span:nth-child(1){top:5px; transform:rotate(45deg)}
-    body.menuOpen .burgerLines span:nth-child(2){opacity:0}
-    body.menuOpen .burgerLines span:nth-child(3){top:5px; transform:rotate(-45deg)}
+    body.menuOpen .mobileMenu{ display:block; }
+    body.menuOpen .burgerLines span:nth-child(1){ top:5px; transform: rotate(45deg); }
+    body.menuOpen .burgerLines span:nth-child(2){ opacity:0; }
+    body.menuOpen .burgerLines span:nth-child(3){ top:5px; transform: rotate(-45deg); }
 
     /* ================= HERO ================= */
     .hero{
@@ -666,43 +637,37 @@
 
 <header>
   <div class="container">
-    <div class="nav">
-      <a class="logo" href="/"><img src="agrichecklogo.png" alt="AgriCheck"></a>
-
+    <div class="topbar">
       <nav class="navlinks" aria-label="Navegación principal">
-        <a href="/">Inicio</a>
+        <a href="#inicio">Inicio</a>
         <a href="#productos">Productos</a>
+        <a href="#instagram">Instagram</a>
         <a href="#contacto">Contacto</a>
       </nav>
 
-      <a class="cta" href="#contacto">Contactanos</a>
-
-      <!-- ✅ Hamburguesa (mobile) -->
       <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
-        <span class="burgerLines" aria-hidden="true">
-          <span></span><span></span><span></span>
-        </span>
+        <span class="burgerLines" aria-hidden="true"><span></span><span></span><span></span></span>
       </button>
     </div>
   </div>
 
-  <!-- ✅ Menú mobile -->
   <div class="mobileMenu" id="mobileMenu" aria-label="Menú mobile">
     <div class="container">
-      <a href="/" data-close-menu>Inicio</a>
+      <a href="#inicio" data-close-menu>Inicio</a>
       <a href="#productos" data-close-menu>Productos</a>
+      <a href="#instagram" data-close-menu>Instagram</a>
       <a href="#contacto" data-close-menu>Contacto</a>
-      <!-- TODO: si querés agregar un CTA distinto en mobile, lo sumamos acá -->
+      <!-- TODO: si querés sumar un CTA extra en mobile, lo agregamos acá -->
     </div>
   </div>
 </header>
 
-<section class="hero">
+<section class="hero" id="inicio">
   <video autoplay muted loop playsinline>
     <source src="hero.mp4" type="video/mp4">
   </video>
 
-  <a class="heroLogo" href="/" aria-label="Ir al inicio">
+  <a class="heroLogo" href="#inicio" aria-label="Ir al inicio">
     <img src="agrichecklogo.png" alt="AgriCheck" />
   </a>
 
@@ -1208,4 +1173,3 @@
 
 </body>
 </html>
-```
