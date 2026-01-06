@@ -294,7 +294,7 @@
     .contactLink:hover{transform: translateY(-1px)}
     .contactLink .btnIcon{width:18px;height:18px}
 
-    footer { background: rgba(15, 23, 42, .62); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: rgba(255,255,255,.88); padding: 14px 0; text-align:center; border-top: 1px solid rgba(255,255,255,.10); margin-top: 32px; }
+    footer { background: rgba(15, 23, 42, .62); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: rgba(255,255,255,.88); padding: 14px 0; text-align:center; border-top: 1px solid rgba(255,255,255,.10); }
     footer a{color:rgba(255,255,255,.88)}
     footer a:hover{color:#89C444}
     .footGrid{
@@ -528,9 +528,18 @@
   </section>
 
   <footer>
-    <div class="container footGrid">
-      <div>AgriCheck © <span id="year"></span>. Todos los derechos reservados.</div>
-      <div><a href="mailto:info@agrichecksrl.com">info@agrichecksrl.com</a> · <a href="tel:+5492984763055">+54 9 2984 76-3055</a></div>
+    <div class="container">
+      <div class="footGrid">
+        <div>Copyright © Agricheck <span id="year"></span>.</div>
+        <div class="footer-designed">
+          <p style="display:flex; justify-content:center; align-items:center; gap:6px; margin:0;">
+            Diseñado por UmanoAI
+            <a href="https://umanoai.com.ar" target="_blank" rel="noopener" style="display:inline-block;">
+              <img src="umanoai.png" alt="UmanoAI" style="height:18px;">
+            </a>
+          </p>
+        </div>
+      </div>
     </div>
   </footer>
 
