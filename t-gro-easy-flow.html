@@ -130,6 +130,7 @@
       overflow: hidden;
       background: linear-gradient(120deg, rgba(17,24,39,0.84), rgba(17,24,39,0.55)), url('tgro2.png') center/cover no-repeat;
       color: #fff;
+      min-height: 100vh;
     }
     .hero::before{
       content:"";
@@ -143,7 +144,8 @@
       z-index: 1;
       max-width: var(--max);
       margin: 0 auto;
-      padding: 80px 18px 64px;
+      padding: 120px 18px 90px;
+      min-height: calc(100vh - 80px);
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 32px;
@@ -167,7 +169,16 @@
       backdrop-filter: blur(6px);
       text-align: center;
     }
-    .product-card img { width: 100%; max-width: 520px; border-radius: 12px; background: #fff; padding: 12px; box-shadow: 0 18px 40px rgba(0,0,0,0.14); }
+    .product-card img {
+      width: 100%;
+      max-width: 760px;
+      border-radius: 12px;
+      background: #fff;
+      padding: 14px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+      transform: scale(1.06);
+      transform-origin: center;
+    }
     .product-meta { margin-top: 14px; font-weight: 700; color: rgba(255,255,255,0.9); }
 
     .section { max-width: var(--max); margin: 0 auto; padding: 56px 18px; }
