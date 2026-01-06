@@ -187,6 +187,40 @@
       max-width: 950px;
       margin: 0 auto 28px;
     }
+
+    .brandBadge {
+      margin-top: 18px;
+    }
+    .brandBadge a {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+      color: var(--dark);
+      font-weight: 800;
+    }
+    .brandBadge img {
+      height: 54px;
+      width: auto;
+      display: block;
+    }
+    .brandText {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      line-height: 1.2;
+    }
+    .brandLabel {
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      font-weight: 700;
+    }
     .highlight-bubble h2{ margin:0 0 10px; }
     .highlight-bubble .lead{ color: #1f2937; margin:0; }
 
@@ -461,6 +495,15 @@
         <h2>Un Producto de Confianza</h2>
         <p>T-Gro Easy Flow es desarrollado por Andermatt, líder mundial en soluciones biológicas con base en Suiza.</p>
         <p class="lead">Nuestro equipo está listo para ayudarte a diseñar un plan de aplicación a medida para lograr una cosecha más eficiente y rentable.</p>
+        <div class="brandBadge">
+          <a href="https://www.andermatt.com/es/" target="_blank" rel="noopener">
+            <img src="andermatt.png" alt="Andermatt" loading="lazy">
+            <div class="brandText">
+              <span class="brandLabel">Desarrollado por</span>
+              <span>Andermatt</span>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
   </section>
