@@ -874,13 +874,13 @@
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M15.5 19.1 8.4 12l7.1-7.1 1.4 1.4L11.2 12l5.7 5.7z"/></svg>
           </button>
 
-          <div class="igTrack" id="igTrack" aria-label="Reels de Instagram">
-            <div class="igItem" data-ig="https://www.instagram.com/reel/DSKOxSQDWeh/">
+          <div class="igTrack" id="igTrack" aria-label="Reels de Instagram" data-ig-token="" data-ig-limit="8">
+            <div class="igItem" data-ig="https://www.instagram.com/p/DS7yeHCDQkX/">
               <div class="igPreview">
-                <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DSKOxSQDWeh/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                <a class="igPreviewLink" href="https://www.instagram.com/reel/DSKOxSQDWeh/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+                <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DS7yeHCDQkX/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <a class="igPreviewLink" href="https://www.instagram.com/p/DS7yeHCDQkX/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
               </div>
-              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DSKOxSQDWeh/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/p/DS7yeHCDQkX/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
             </div>
 
             <div class="igItem" data-ig="https://www.instagram.com/reel/DSLSnStAoCV/">
@@ -1051,75 +1051,125 @@
     alert("Búsqueda local lista. Próximo paso: conectar un índice de productos (JSON) para resultados reales.\n\nBuscaste: " + q);
   };
 
-  // ✅ Instagram: fallback + carrousel auto
+  // ✅ Instagram: feed automático (con token) + fallback + carrousel auto
   (function(){
-    const items = document.querySelectorAll('#instagram .igItem');
-    items.forEach((item) => {
-      const iframe = item.querySelector('iframe');
-      const fallback = item.querySelector('.igFallback');
-      if(!iframe || !fallback) return;
-
-      let loaded = false;
-
-      iframe.addEventListener('load', () => {
-        loaded = true;
-        fallback.style.display = 'none';
-      });
-
-      setTimeout(() => {
-        if(!loaded){
-          fallback.style.display = 'block';
-        }
-      }, 2200);
-    });
-
     const track = document.getElementById('igTrack');
-    const prevBtn = document.querySelector('#instagram .igPrev');
-    const nextBtn = document.querySelector('#instagram .igNext');
     if(!track) return;
 
-    const getStep = () => {
-      const first = track.querySelector('.igItem');
-      if(!first) return 320;
-      const rect = first.getBoundingClientRect();
-      const gap = 14;
-      return Math.max(260, rect.width + gap);
+    const igToken = (track.dataset.igToken || '').trim();
+    const igLimit = Number(track.dataset.igLimit || 8) || 8;
+
+    const createIgItem = (permalink) => {
+      const cleanUrl = permalink.endsWith('/') ? permalink.slice(0, -1) : permalink;
+      const embedUrl = `${cleanUrl}/embed`;
+      const wrapper = document.createElement('div');
+      wrapper.className = 'igItem';
+      wrapper.dataset.ig = permalink;
+      wrapper.innerHTML = `
+        <div class="igPreview">
+          <iframe title="Previsualización Reel" src="${embedUrl}" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+          <a class="igPreviewLink" href="${permalink}/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+        </div>
+        <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="${permalink}/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+      `;
+      return wrapper;
     };
 
-    const scrollByStep = (dir) => {
-      const step = getStep();
-      track.scrollBy({ left: dir * step, behavior: 'smooth' });
-    };
+    const hydrateWithApi = async () => {
+      if(!igToken) return false;
+      const apiUrl = `https://graph.instagram.com/me/media?fields=id,permalink,media_type,thumbnail_url,media_url,caption&limit=${igLimit}&access_token=${encodeURIComponent(igToken)}`;
+      try{
+        const res = await fetch(apiUrl);
+        if(!res.ok) throw new Error('Respuesta no OK');
+        const data = await res.json();
+        if(!data || !Array.isArray(data.data)) throw new Error('Sin data válida');
 
-    prevBtn && prevBtn.addEventListener('click', () => scrollByStep(-1));
-    nextBtn && nextBtn.addEventListener('click', () => scrollByStep(1));
+        const items = data.data
+          .filter((item) => item.permalink)
+          .map((item) => item.permalink)
+          .slice(0, igLimit)
+          .map(createIgItem);
 
-    let timer = null;
-    const start = () => {
-      if(timer) return;
-      timer = setInterval(() => {
-        const step = getStep();
-        const max = track.scrollWidth - track.clientWidth;
-        const next = Math.min(max, track.scrollLeft + step);
-        if(track.scrollLeft >= max - 4){
-          track.scrollTo({ left: 0, behavior: 'smooth' });
-        }else{
-          track.scrollTo({ left: next, behavior: 'smooth' });
+        if(items.length){
+          track.innerHTML = '';
+          items.forEach((node) => track.appendChild(node));
+          return true;
         }
-      }, 4200);
-    };
-    const stop = () => {
-      if(timer){ clearInterval(timer); timer = null; }
+      }catch(err){
+        console.warn('Instagram feed automático no disponible:', err);
+      }
+      return false;
     };
 
-    start();
-    track.addEventListener('mouseenter', stop);
-    track.addEventListener('mouseleave', start);
-    track.addEventListener('focusin', stop);
-    track.addEventListener('focusout', start);
-    document.addEventListener('visibilitychange', () => {
-      if(document.hidden) stop(); else start();
-    });
+    const setupCarousel = () => {
+      const items = track.querySelectorAll('.igItem');
+      items.forEach((item) => {
+        const iframe = item.querySelector('iframe');
+        const fallback = item.querySelector('.igFallback');
+        if(!iframe || !fallback) return;
+
+        let loaded = false;
+
+        iframe.addEventListener('load', () => {
+          loaded = true;
+          fallback.style.display = 'none';
+        });
+
+        setTimeout(() => {
+          if(!loaded){
+            fallback.style.display = 'block';
+          }
+        }, 2200);
+      });
+
+      const prevBtn = document.querySelector('#instagram .igPrev');
+      const nextBtn = document.querySelector('#instagram .igNext');
+
+      const getStep = () => {
+        const first = track.querySelector('.igItem');
+        if(!first) return 320;
+        const rect = first.getBoundingClientRect();
+        const gap = 14;
+        return Math.max(260, rect.width + gap);
+      };
+
+      const scrollByStep = (dir) => {
+        const step = getStep();
+        track.scrollBy({ left: dir * step, behavior: 'smooth' });
+      };
+
+      prevBtn && prevBtn.addEventListener('click', () => scrollByStep(-1));
+      nextBtn && nextBtn.addEventListener('click', () => scrollByStep(1));
+
+      let timer = null;
+      const start = () => {
+        if(timer) return;
+        timer = setInterval(() => {
+          const step = getStep();
+          const max = track.scrollWidth - track.clientWidth;
+          const next = Math.min(max, track.scrollLeft + step);
+          if(track.scrollLeft >= max - 4){
+            track.scrollTo({ left: 0, behavior: 'smooth' });
+          }else{
+            track.scrollTo({ left: next, behavior: 'smooth' });
+          }
+        }, 4200);
+      };
+      const stop = () => {
+        if(timer){ clearInterval(timer); timer = null; }
+      };
+
+      start();
+      track.addEventListener('mouseenter', stop);
+      track.addEventListener('mouseleave', start);
+      track.addEventListener('focusin', stop);
+      track.addEventListener('focusout', start);
+      document.addEventListener('visibilitychange', () => {
+        if(document.hidden) stop(); else start();
+      });
+    };
+
+    hydrateWithApi().finally(setupCarousel);
   })();
 
   // ✅ Menú hamburguesa (mobile)
