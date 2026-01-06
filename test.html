@@ -161,20 +161,6 @@
       background:#000;
     }
     .hero video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-    .heroBubbles{ position:absolute; inset:0; z-index:2; pointer-events:none; }
-    .heroBubble{
-      position:absolute;
-      border-radius:50%;
-      background: linear-gradient(135deg, rgba(255,255,255,.26), rgba(10,25,60,.60));
-      border: 1px solid rgba(255,255,255,.22);
-      box-shadow: 0 20px 48px rgba(0,0,0,.22);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      opacity: .78;
-    }
-    .heroBubble:nth-child(1){ width: 220px; height: 220px; top: 12%; left: 8%; background: linear-gradient(150deg, rgba(255,255,255,.30), rgba(12,32,82,.70)); }
-    .heroBubble:nth-child(2){ width: 160px; height: 160px; top: 26%; right: 12%; }
-    .heroBubble:nth-child(3){ width: 280px; height: 280px; bottom: -6%; right: 4%; background: linear-gradient(120deg, rgba(255,255,255,.28), rgba(8,20,60,.64)); }
     .hero::before{
       content:"";
       position:absolute; inset:0;
@@ -648,6 +634,7 @@
 
       .hero{ padding-top: 72px; }
 
+      /* ✅ FIX MOBILE: subimos el logo y lo achicamos para que no se pise con el título */
       /*
         ✅ FIX DEFINITIVO MOBILE:
         - Bajamos el contenido del hero con una "zona segura" igual al alto del logo.
@@ -659,13 +646,18 @@
       }
 
       .heroLogo{
+        top: 66px;           /* antes: calc(72px + 10px) */
         top: calc(56px + env(safe-area-inset-top)); /* pegado bajo la barra */
         left: 12px;
+        padding: 8px 10px;   /* un poco más compacto */
         padding: 8px 10px;
         border-radius: 16px;
       }
+      .heroLogo img{ height: 52px; } /* antes: 60px */
       .heroLogo img{ height: 52px; } /* tamaño que no compite y no pisa */
 
+      /* ✅ opcional: un toque más de aire arriba del contenido */
+      .heroContent{ padding-top: 54px; } /* antes: 44px */
       /* Extra: evitamos que el card se acerque demasiado arriba */
       .heroCard{ margin-top: 6px; } /* mínimo, por si algún browser redondea raro */
 
@@ -718,12 +710,6 @@
   <video autoplay muted loop playsinline>
     <source src="hero.mp4" type="video/mp4">
   </video>
-
-  <div class="heroBubbles" aria-hidden="true">
-    <span class="heroBubble"></span>
-    <span class="heroBubble"></span>
-    <span class="heroBubble"></span>
-  </div>
 
   <a class="heroLogo" href="#inicio" aria-label="Ir al inicio">
     <img src="agrichecklogo.png" alt="AgriCheck" />
