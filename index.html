@@ -218,7 +218,7 @@
     }
     .heroLogo:hover{opacity:1; transform: translateY(-1px)}
     .heroLogo img{
-      height:64px;
+      height:74px;
       width:auto;
       display:block;
     }
@@ -606,6 +606,10 @@
     .whatsapp-float:hover{transform:translateY(-2px); box-shadow:0 12px 30px rgba(0,0,0,.32)}
 
     /* ================= RESPONSIVE ================= */
+    @media(max-width:980px){
+      .heroLogo img{height:62px}
+    }
+
     @media(max-width:900px){
       .grid4{grid-template-columns:repeat(2,1fr)}
       .grid3{grid-template-columns:1fr}
