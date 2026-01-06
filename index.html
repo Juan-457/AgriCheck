@@ -1188,173 +1188,143 @@
     alert("Búsqueda local lista. Próximo paso: conectar un índice de productos (JSON) para resultados reales.\n\nBuscaste: " + q);
   };
 
-  // ✅ Carrusel de logos de representaciones (marquee infinito accesible)
-  (function(){
-    const carousel = document.querySelector('[data-logo-carousel]');
-    if(!carousel) return;
+/* =========================================================
+   ✅ Carrusel de logos – marquee infinito ROBUSTO
+   (sin reduced-motion, sin pause por hover, con rebuild seguro)
+   ========================================================= */
+(function () {
+  const carousel = document.querySelector('[data-logo-carousel]');
+  if (!carousel) return;
 
-    const viewport = carousel.querySelector('.logoViewport');
-    const track = carousel.querySelector('.logoTrack');
-    const prevBtn = carousel.querySelector('.logoPrev');
-    const nextBtn = carousel.querySelector('.logoNext');
-    if(!viewport || !track) return;
+  const viewport = carousel.querySelector('.logoViewport');
+  const track = carousel.querySelector('.logoTrack');
+  const prevBtn = carousel.querySelector('.logoPrev');
+  const nextBtn = carousel.querySelector('.logoNext');
+  if (!viewport || !track) return;
 
-    const originals = Array.from(track.children).map((node) => node.cloneNode(true));
-    if(!originals.length) return;
+  /* ---- Clon base ---- */
+  const originals = Array.from(track.children).map(n => n.cloneNode(true));
+  if (!originals.length) return;
 
-    let baseWidth = 0;
-    let rafId = null;
-    let lastTs = null;
-    let isPaused = false;
-    const speedPxPerMs = 0.045; // ~45px/segundo hacia la izquierda
-    const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let baseWidth = 0;
+  let rafId = null;
+  let lastTs = null;
 
-    const getGap = () => {
-      const style = getComputedStyle(track);
-      const gapVal = parseFloat(style.columnGap || style.gap || '16');
-      return Number.isFinite(gapVal) ? gapVal : 16;
-    };
+  const SPEED = 0.045; // px por ms (~45px/s)
 
-    const measureBaseWidth = () => {
-      const slice = Array.from(track.children).slice(0, originals.length);
-      if(!slice.length) return 0;
-      const gap = getGap();
-      const widths = slice.reduce((acc, item, idx) => {
-        const rect = item.getBoundingClientRect();
-        const addGap = idx === slice.length - 1 ? 0 : gap;
-        return acc + rect.width + addGap;
-      }, 0);
-      return widths;
-    };
+  const getGap = () => {
+    const cs = getComputedStyle(track);
+    return parseFloat(cs.gap || cs.columnGap || 16) || 16;
+  };
 
-    const rebuildClones = () => {
-      const scrollSnapshot = viewport.scrollLeft;
-      track.innerHTML = '';
+  const measureBaseWidth = () => {
+    const items = Array.from(track.children).slice(0, originals.length);
+    if (!items.length) return 0;
+    const gap = getGap();
+    return items.reduce((acc, el, i) => {
+      const w = el.getBoundingClientRect().width;
+      return acc + w + (i < items.length - 1 ? gap : 0);
+    }, 0);
+  };
 
-      const addSet = () => originals.forEach((node) => track.appendChild(node.cloneNode(true)));
-      addSet();
-      baseWidth = measureBaseWidth();
+  const rebuild = () => {
+    const prevScroll = viewport.scrollLeft;
+    track.innerHTML = '';
 
-      while(track.scrollWidth < viewport.clientWidth + baseWidth){
-        addSet();
-      }
+    const addSet = () => originals.forEach(n => track.appendChild(n.cloneNode(true)));
 
-      if(track.scrollWidth < baseWidth * 2){
-        addSet();
-      }
+    addSet();
+    baseWidth = measureBaseWidth();
 
-      baseWidth = measureBaseWidth();
-      viewport.scrollLeft = baseWidth > 0 ? scrollSnapshot % baseWidth : 0;
-    };
+    while (track.scrollWidth < viewport.clientWidth + baseWidth) addSet();
+    if (track.scrollWidth < baseWidth * 2) addSet();
 
-    const normalize = () => {
-      const limit = baseWidth || track.scrollWidth;
-      if(limit <= 0) return;
-      const normalized = viewport.scrollLeft % limit;
-      viewport.scrollLeft = normalized;
-    };
+    baseWidth = measureBaseWidth();
+    viewport.scrollLeft = baseWidth ? prevScroll % baseWidth : 0;
+  };
 
-    const getStep = () => {
-      const first = track.querySelector('.logoItem');
-      if(!first) return 180;
-      const rect = first.getBoundingClientRect();
-      const gap = getGap();
-      return Math.max(160, rect.width + gap);
-    };
+  const tick = (ts) => {
+    if (!lastTs) lastTs = ts;
+    const delta = ts - lastTs;
+    lastTs = ts;
 
-    const scrollStep = (dir) => {
-      const step = getStep();
-      const limit = baseWidth || track.scrollWidth;
-      let next = viewport.scrollLeft + dir * step;
-      if(limit > 0){
-        next = ((next % limit) + limit) % limit;
-      }
-      viewport.scrollTo({ left: next, behavior: 'smooth' });
-    };
-
-    prevBtn && prevBtn.addEventListener('click', () => scrollStep(-1));
-    nextBtn && nextBtn.addEventListener('click', () => scrollStep(1));
-
-    const tick = (ts) => {
-      if(lastTs === null){
-        lastTs = ts;
-        rafId = requestAnimationFrame(tick);
-        return;
-      }
-
-      const delta = ts - lastTs;
-      lastTs = ts;
-      const limit = baseWidth || track.scrollWidth;
-      if(limit <= 0){ stop(); return; }
-
-      let next = viewport.scrollLeft + delta * speedPxPerMs;
-      if(next >= limit){
-        next = next % limit;
-      }
-
-      viewport.scrollLeft = next;
-      rafId = requestAnimationFrame(tick);
-    };
-
-    const start = () => {
-      if(prefersReduce.matches || isPaused || rafId) return;
-      lastTs = null;
-      rafId = requestAnimationFrame(tick);
-    };
-
-    const stop = () => {
-      if(rafId){ cancelAnimationFrame(rafId); rafId = null; }
-      lastTs = null;
-    };
-
-    const pause = () => {
-      isPaused = true;
-      viewport.classList.add('is-paused');
+    if (!baseWidth) {
       stop();
-    };
+      return;
+    }
 
-    const resume = () => {
-      isPaused = false;
-      viewport.classList.remove('is-paused');
+    let next = viewport.scrollLeft + delta * SPEED;
+    if (next >= baseWidth) next %= baseWidth;
+
+    viewport.scrollLeft = next;
+    rafId = requestAnimationFrame(tick);
+  };
+
+  const start = () => {
+    if (rafId) return;
+    lastTs = null;
+    rafId = requestAnimationFrame(tick);
+  };
+
+  const stop = () => {
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = null;
+    lastTs = null;
+  };
+
+  /* ---- Botones ---- */
+  const stepSize = () => {
+    const first = track.querySelector('.logoItem');
+    if (!first) return 180;
+    return first.getBoundingClientRect().width + getGap();
+  };
+
+  prevBtn?.addEventListener('click', () => {
+    viewport.scrollLeft = (viewport.scrollLeft - stepSize() + baseWidth) % baseWidth;
+  });
+
+  nextBtn?.addEventListener('click', () => {
+    viewport.scrollLeft = (viewport.scrollLeft + stepSize()) % baseWidth;
+  });
+
+  /* ---- Init seguro ---- */
+  rebuild();
+  start();
+
+  /* ---- Rebuild al cargar imágenes (CLAVE) ---- */
+  const imgs = track.querySelectorAll('img');
+  let pending = 0;
+
+  imgs.forEach(img => {
+    if (!img.complete || img.naturalWidth === 0) {
+      pending++;
+      img.addEventListener('load', () => {
+        pending--;
+        if (pending === 0) {
+          rebuild();
+          start();
+        }
+      }, { once: true });
+    }
+  });
+
+  /* ---- Rebuild al resize ---- */
+  let rT;
+  window.addEventListener('resize', () => {
+    clearTimeout(rT);
+    rT = setTimeout(() => {
+      rebuild();
       start();
-    };
+    }, 150);
+  });
 
-    rebuildClones();
-    start();
+  /* ---- Visibilidad ---- */
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stop();
+    else start();
+  });
 
-    let resizeTimer = null;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        rebuildClones();
-        start();
-      }, 160);
-    });
-
-    viewport.addEventListener('mouseenter', pause);
-    viewport.addEventListener('mouseleave', resume);
-    viewport.addEventListener('focusin', pause);
-    viewport.addEventListener('focusout', resume);
-
-    viewport.addEventListener('scroll', () => {
-      if(!rafId){
-        normalize();
-      }
-    });
-
-    document.addEventListener('visibilitychange', () => {
-      if(document.hidden){ stop(); } else { start(); }
-    });
-
-    prefersReduce.addEventListener('change', (event) => {
-      if(event.matches){
-        stop();
-      }else{
-        normalize();
-        start();
-      }
-    });
-  })();
+})();
 
   // ✅ Instagram: feed automático (con token) + fallback + carrousel auto
   (function(){
