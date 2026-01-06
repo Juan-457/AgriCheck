@@ -134,17 +134,49 @@
       border-radius: 18px;
       background: rgba(255,255,255,.06);
       border: 1px solid rgba(255,255,255,.12);
+      position: relative;
     }
-    .navGroupLabel{
+    .navGroupToggle{
       color: rgba(226,232,240,.85);
       font-weight: 900;
       letter-spacing: -.01em;
       white-space: nowrap;
+      background: none;
+      border: none;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-family: inherit;
     }
+    .navGroupToggle:focus{ outline: 3px solid rgba(137,196,68,.65); outline-offset: 2px; }
+    .navGroupToggle::after{
+      content: '';
+      width: 10px;
+      height: 6px;
+      background: rgba(226,232,240,.85);
+      mask: conic-gradient(from 135deg at 50% 40%, #000 0 90deg, transparent 0 360deg);
+      mask-size: 10px 6px;
+      transition: transform .15s ease;
+    }
+    .navGroup.is-open .navGroupToggle::after{ transform: rotate(180deg); }
     .navGroupLinks{
-      display:flex;
-      gap:6px;
+      display:none;
+      flex-direction: column;
+      gap:8px;
+      position: absolute;
+      left: 0;
+      top: calc(100% + 10px);
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 18px 36px rgba(0,0,0,.28);
+      min-width: 210px;
+      z-index: 70;
     }
+    .navGroup.is-open .navGroupLinks{ display:flex; }
     .navGroupLinks a{
       padding: 8px 12px;
       border-radius: 14px;
@@ -693,8 +725,8 @@
         <a href="#productos">Productos</a>
         <a href="#instagram">Instagram</a>
         <a href="#contacto">Contacto</a>
-        <div class="navGroup" aria-label="Tratamientos de semillas">
-          <span class="navGroupLabel">Tratamientos de semillas</span>
+        <div class="navGroup" aria-label="Tratamientos de semillas" data-nav-dropdown>
+          <button class="navGroupToggle" type="button" aria-expanded="false">Tratamientos de semillas</button>
           <div class="navGroupLinks" role="list">
             <a href="nexula.html" role="listitem">Nexula</a>
             <a href="t-gro-easy-flow.html" role="listitem">T-Gro Easy Flow</a>
@@ -1247,6 +1279,38 @@
     const mq = window.matchMedia('(min-width: 901px)');
     const onChange = () => { if(mq.matches) setOpen(false); };
     mq.addEventListener ? mq.addEventListener('change', onChange) : mq.addListener(onChange);
+  })();
+
+  // ✅ Dropdown para "Tratamientos de semillas" en desktop
+  (function(){
+    const navGroup = document.querySelector('[data-nav-dropdown]');
+    if(!navGroup) return;
+
+    const toggle = navGroup.querySelector('.navGroupToggle');
+    const links = navGroup.querySelector('.navGroupLinks');
+    if(!toggle || !links) return;
+
+    const setOpen = (open) => {
+      navGroup.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    };
+
+    toggle.addEventListener('click', () => {
+      const nextState = !navGroup.classList.contains('is-open');
+      setOpen(nextState);
+    });
+
+    document.addEventListener('click', (e) => {
+      if(!navGroup.contains(e.target)) setOpen(false);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape') setOpen(false);
+    });
+
+    links.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setOpen(false));
+    });
   })();
 </script>
 
