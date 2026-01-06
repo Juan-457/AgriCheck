@@ -1219,13 +1219,32 @@
     prevBtn && prevBtn.addEventListener('click', () => scrollStep(-1));
     nextBtn && nextBtn.addEventListener('click', () => scrollStep(1));
 
-    let timer = null;
+    // Movimiento automático continuo del carrusel
+    let rafId = null;
+    let lastTs = null;
+    const speedPxPerMs = 0.04; // ~40px/segundo
+
+    const tick = (ts) => {
+      if(lastTs === null){ lastTs = ts; rafId = requestAnimationFrame(tick); return; }
+
+      const delta = ts - lastTs;
+      lastTs = ts;
+      const max = Math.max(0, track.scrollWidth - viewport.clientWidth);
+      if(max <= 0){ stop(); return; }
+
+      const next = viewport.scrollLeft + delta * speedPxPerMs;
+      viewport.scrollLeft = (next >= max) ? 0 : next;
+      rafId = requestAnimationFrame(tick);
+    };
+
     const start = () => {
-      if(timer) return;
-      timer = setInterval(() => scrollStep(1), 3600);
+      if(rafId) return;
+      lastTs = null;
+      rafId = requestAnimationFrame(tick);
     };
     const stop = () => {
-      if(timer){ clearInterval(timer); timer = null; }
+      if(rafId){ cancelAnimationFrame(rafId); rafId = null; }
+      lastTs = null;
     };
 
     start();
