@@ -602,6 +602,9 @@
         const data = chartData[key];
         if (!data) return;
 
+        const maxValue = Math.max(...data.data);
+        const padding = Math.max(150, Math.round(maxValue * 0.08));
+
         if (resultsChart) resultsChart.destroy();
 
         resultsChart = new Chart(ctx, {
@@ -648,6 +651,7 @@
             scales: {
               y: {
                 beginAtZero: true,
+                suggestedMax: maxValue + padding,
                 grid: { color: '#e5e7eb' },
                 ticks: { color: '#374151' }
               },
