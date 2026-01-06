@@ -1199,8 +1199,19 @@
     const nextBtn = carousel.querySelector('.logoNext');
     if(!viewport || !track) return;
 
-    const clones = Array.from(track.children).map((node) => node.cloneNode(true));
-    clones.forEach((clone) => track.appendChild(clone));
+    const originals = Array.from(track.children);
+
+    const ensureOverflow = () => {
+      const minWidth = viewport.clientWidth * 2.4; // que haya espacio suficiente para ver el movimiento
+      let guard = 0;
+      while(track.scrollWidth < minWidth && guard < 6){
+        originals.forEach((node) => track.appendChild(node.cloneNode(true)));
+        guard++;
+      }
+    };
+
+    ensureOverflow();
+    window.addEventListener('resize', ensureOverflow);
 
     const getStep = () => {
       const first = track.querySelector('.logoItem');
