@@ -470,10 +470,13 @@
       padding:0 36px;
     }
     .logoViewport{
-      overflow:hidden;
+      overflow-x:auto;
+      overflow-y:hidden;
       padding:6px 0 0;
       scroll-snap-type:x mandatory;
+      scrollbar-width:none;
     }
+    .logoViewport::-webkit-scrollbar{ display:none; }
     .logoTrack{
       display:flex;
       align-items:center;
