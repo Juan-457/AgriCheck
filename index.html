@@ -483,6 +483,16 @@
       gap:16px;
       scroll-behavior:smooth;
       padding:2px;
+      min-width:max-content;
+    }
+    .logoTrack.is-marquee{
+      animation: logo-marquee var(--logo-marquee-duration, 40s) linear infinite;
+      will-change: transform;
+    }
+    .logoViewport.is-paused .logoTrack{ animation-play-state: paused; }
+    @keyframes logo-marquee{
+      from{ transform: translateX(0); }
+      to{ transform: translateX(calc(-1 * var(--logo-marquee-distance, 820px))); }
     }
     .logoItem{
       flex:0 0 auto;
@@ -1200,54 +1210,82 @@
     if(!viewport || !track) return;
 
     const originals = Array.from(track.children);
+    if(!originals.length) return;
 
-    const ensureOverflow = () => {
-      const minWidth = viewport.clientWidth * 2.4; // que haya espacio suficiente para ver el movimiento
-      let guard = 0;
-      while(track.scrollWidth < minWidth && guard < 6){
-        originals.forEach((node) => track.appendChild(node.cloneNode(true)));
-        guard++;
-      }
+    let baseWidth = 0;
+    const speedPxPerMs = 0.04; // ~40px/segundo hacia la izquierda
+
+    const getGap = () => {
+      const style = getComputedStyle(track);
+      const gapVal = parseFloat(style.columnGap || style.gap || '16');
+      return Number.isFinite(gapVal) ? gapVal : 16;
     };
 
-    ensureOverflow();
-    window.addEventListener('resize', ensureOverflow);
+    const measureBaseWidth = () => {
+      const slice = Array.from(track.children).slice(0, originals.length);
+      if(!slice.length) return 0;
+      const gap = getGap();
+      const widths = slice.reduce((acc, item) => acc + item.getBoundingClientRect().width, 0);
+      return widths + gap * Math.max(0, slice.length - 1);
+    };
+
+    const rebuildClones = () => {
+      track.innerHTML = '';
+      originals.forEach((node) => track.appendChild(node));
+      originals.forEach((node) => track.appendChild(node.cloneNode(true)));
+
+      while(track.scrollWidth < viewport.clientWidth * 2.2){
+        originals.forEach((node) => track.appendChild(node.cloneNode(true)));
+      }
+
+      baseWidth = measureBaseWidth();
+      viewport.scrollLeft = 0;
+
+      const pxPerSec = 40;
+      const duration = baseWidth ? baseWidth / pxPerSec : 30;
+      track.style.setProperty('--logo-marquee-distance', `${baseWidth || 820}px`);
+      track.style.setProperty('--logo-marquee-duration', `${Math.max(12, duration)}s`);
+    };
 
     const getStep = () => {
       const first = track.querySelector('.logoItem');
       if(!first) return 180;
       const rect = first.getBoundingClientRect();
-      const gap = 16;
+      const gap = getGap();
       return Math.max(160, rect.width + gap);
     };
 
     const scrollStep = (dir, smooth = true) => {
       const step = getStep();
-      const max = track.scrollWidth - viewport.clientWidth;
+      const limit = baseWidth || track.scrollWidth;
       let next = viewport.scrollLeft + dir * step;
-      if(next < 0){ next = max; }
-      if(next > max){ next = 0; }
+      if(limit > 0){
+        while(next < 0){ next += limit; }
+        while(next >= limit){ next -= limit; }
+      }
       viewport.scrollTo({ left: next, behavior: smooth ? 'smooth' : 'auto' });
     };
 
     prevBtn && prevBtn.addEventListener('click', () => scrollStep(-1));
     nextBtn && nextBtn.addEventListener('click', () => scrollStep(1));
 
-    // Movimiento automático continuo del carrusel
     let rafId = null;
     let lastTs = null;
-    const speedPxPerMs = 0.04; // ~40px/segundo
 
     const tick = (ts) => {
       if(lastTs === null){ lastTs = ts; rafId = requestAnimationFrame(tick); return; }
 
       const delta = ts - lastTs;
       lastTs = ts;
-      const max = Math.max(0, track.scrollWidth - viewport.clientWidth);
-      if(max <= 0){ stop(); return; }
+      const limit = baseWidth || track.scrollWidth;
+      if(limit <= 0){ stop(); return; }
 
-      const next = viewport.scrollLeft + delta * speedPxPerMs;
-      viewport.scrollLeft = (next >= max) ? 0 : next;
+      let next = viewport.scrollLeft + delta * speedPxPerMs;
+      if(next >= limit){
+        next = next - limit;
+      }
+
+      viewport.scrollLeft = next;
       rafId = requestAnimationFrame(tick);
     };
 
@@ -1261,11 +1299,25 @@
       lastTs = null;
     };
 
+    rebuildClones();
     start();
-    viewport.addEventListener('mouseenter', stop);
-    viewport.addEventListener('mouseleave', start);
-    viewport.addEventListener('focusin', stop);
-    viewport.addEventListener('focusout', start);
+
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        rebuildClones();
+        start();
+      }, 160);
+    });
+
+    const pause = () => { viewport.classList.add('is-paused'); stop(); };
+    const resume = () => { viewport.classList.remove('is-paused'); start(); };
+
+    viewport.addEventListener('mouseenter', pause);
+    viewport.addEventListener('mouseleave', resume);
+    viewport.addEventListener('focusin', pause);
+    viewport.addEventListener('focusout', resume);
     document.addEventListener('visibilitychange', () => {
       if(document.hidden) stop(); else start();
     });
