@@ -108,6 +108,7 @@
     }
     .navlinks{
       display:flex;
+      align-items:center;
       gap: 6px;
       padding: 6px;
       border-radius: 999px;
@@ -124,6 +125,36 @@
       transition: background .15s ease, transform .15s ease;
     }
     .navlinks a:hover{ background: rgba(255,255,255,.12); transform: translateY(-1px); }
+
+    .navGroup{
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .navGroupLabel{
+      color: rgba(226,232,240,.85);
+      font-weight: 900;
+      letter-spacing: -.01em;
+      white-space: nowrap;
+    }
+    .navGroupLinks{
+      display:flex;
+      gap:6px;
+    }
+    .navGroupLinks a{
+      padding: 8px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.14);
+      font-weight: 800;
+      color: rgba(226,232,240,.95);
+      transition: background .15s ease, transform .15s ease;
+    }
+    .navGroupLinks a:hover{ background: rgba(255,255,255,.16); transform: translateY(-1px); }
 
     /* burger */
     .burger{
@@ -172,6 +203,21 @@
       color: rgba(226,232,240,.95);
       background: rgba(255,255,255,.10);
       border: 1px solid rgba(255,255,255,.14);
+    }
+
+    .mobileSubnav{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .mobileSubnavLabel{
+      color: rgba(226,232,240,.82);
+      font-weight: 800;
+      letter-spacing: -.01em;
     }
 
     body.menuOpen .mobileMenu{ display:block; }
@@ -647,6 +693,13 @@
         <a href="#productos">Productos</a>
         <a href="#instagram">Instagram</a>
         <a href="#contacto">Contacto</a>
+        <div class="navGroup" aria-label="Tratamientos de semillas">
+          <span class="navGroupLabel">Tratamientos de semillas</span>
+          <div class="navGroupLinks" role="list">
+            <a href="nexula.html" role="listitem">Nexula</a>
+            <a href="t-gro-easy-flow.html" role="listitem">T-Gro Easy Flow</a>
+          </div>
+        </div>
       </nav>
 
       <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
@@ -661,6 +714,11 @@
       <a href="#productos" data-close-menu>Productos</a>
       <a href="#instagram" data-close-menu>Instagram</a>
       <a href="#contacto" data-close-menu>Contacto</a>
+      <div class="mobileSubnav" aria-label="Tratamientos de semillas">
+        <div class="mobileSubnavLabel">Tratamientos de semillas</div>
+        <a href="nexula.html" data-close-menu>Nexula</a>
+        <a href="t-gro-easy-flow.html" data-close-menu>T-Gro Easy Flow</a>
+      </div>
       <!-- TODO: si querés sumar un CTA extra en mobile, lo agregamos acá -->
     </div>
   </div>
@@ -1017,6 +1075,23 @@
   window.__search = () => {
     const q = (document.getElementById('q')?.value || "").trim();
     if(!q){ alert("Escribí algo para buscar."); return; }
+
+    const normalized = q
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '');
+    const compact = normalized.replace(/[\s\-_.]/g, '');
+
+    if(normalized.includes('nexula') || compact.includes('nexula')){
+      window.location.href = 'nexula.html';
+      return;
+    }
+
+    if(compact.includes('tgro') || normalized.includes('t gro') || normalized.includes('t-gro')){
+      window.location.href = 't-gro-easy-flow.html';
+      return;
+    }
+
     alert("Búsqueda local lista. Próximo paso: conectar un índice de productos (JSON) para resultados reales.\n\nBuscaste: " + q);
   };
 
