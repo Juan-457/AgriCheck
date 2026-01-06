@@ -464,37 +464,79 @@
       .agroMedia img{height:220px}
     }
 
-    .logosGrid{
+    .logoCarousel{
       margin-top:18px;
+      position:relative;
+      padding:0 36px;
+    }
+    .logoViewport{
+      overflow:hidden;
+      padding:6px 0 0;
+      scroll-snap-type:x mandatory;
+    }
+    .logoTrack{
       display:flex;
-      justify-content:center;
       align-items:center;
       gap:16px;
-      flex-wrap:wrap;
-      padding:6px 0 0;
+      scroll-behavior:smooth;
+      padding:2px;
     }
     .logoItem{
       flex:0 0 auto;
-      width:140px;
-      height:70px;
-      background:rgba(255,255,255,.88);
+      width:150px;
+      height:74px;
+      background:rgba(255,255,255,.92);
       border-radius:12px;
       display:flex;
       align-items:center;
       justify-content:center;
       border:1px solid rgba(0,0,0,.06);
+      box-shadow:0 12px 24px rgba(0,0,0,.06);
+      scroll-snap-align:center;
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .logoItem:hover{
+      transform:translateY(-2px) scale(1.02);
+      box-shadow:0 16px 30px rgba(0,0,0,.10);
     }
     .logoItem img{
-      max-width:110px;
-      max-height:38px;
+      max-width:118px;
+      max-height:42px;
       width:auto;
       height:auto;
       object-fit:contain;
       filter:saturate(1.05);
     }
-    @media(max-width:700px){
-      .logoItem{width:150px;height:76px}
-      .logoItem img{max-width:112px;max-height:40px}
+    .logoNav{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      width:36px;
+      height:36px;
+      border-radius:999px;
+      border:1px solid rgba(15,23,42,.12);
+      background:rgba(255,255,255,.92);
+      box-shadow:0 12px 26px rgba(0,0,0,.10);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      color:rgba(31,41,55,.90);
+      cursor:pointer;
+      transition: transform .14s ease, box-shadow .14s ease, background .14s ease;
+    }
+    .logoNav:hover{
+      transform:translateY(-50%) translateY(-1px);
+      box-shadow:0 16px 32px rgba(0,0,0,.14);
+      background:#fff;
+    }
+    .logoNav:focus{ outline:3px solid rgba(137,196,68,.55); outline-offset:2px; }
+    .logoNav.logoPrev{ left:4px; }
+    .logoNav.logoNext{ right:4px; }
+    @media(max-width:800px){
+      .logoCarousel{ padding:0 12px; }
+      .logoNav{ display:none; }
+      .logoItem{ width:150px; }
     }
 
     .sectionHead{
@@ -829,11 +871,17 @@
           </p>
         </div>
 
-        <div class="logosGrid" aria-label="Logos de proveedores">
-          <div class="logoItem"><img src="suterra.png" alt="Suterra" loading="lazy" /></div>
-          <div class="logoItem"><img src="andermatt.png" alt="Andermatt" loading="lazy" /></div>
-          <div class="logoItem"><img src="BioAtlantis.png" alt="BioAtlantis" loading="lazy" /></div>
-          <div class="logoItem"><img src="cultiva-1.png" alt="Cultiva" loading="lazy" /></div>
+        <div class="logoCarousel" data-logo-carousel aria-label="Logos de proveedores">
+          <button class="logoNav logoPrev" type="button" aria-label="Logo anterior">‹</button>
+          <div class="logoViewport" tabindex="0">
+            <div class="logoTrack">
+              <div class="logoItem"><img src="suterra.png" alt="Suterra" loading="lazy" /></div>
+              <div class="logoItem"><img src="andermatt.png" alt="Andermatt" loading="lazy" /></div>
+              <div class="logoItem"><img src="BioAtlantis.png" alt="BioAtlantis" loading="lazy" /></div>
+              <div class="logoItem"><img src="cultiva-1.png" alt="Cultiva" loading="lazy" /></div>
+            </div>
+          </div>
+          <button class="logoNav logoNext" type="button" aria-label="Logo siguiente">›</button>
         </div>
       </div>
 
@@ -1136,6 +1184,59 @@
 
     alert("Búsqueda local lista. Próximo paso: conectar un índice de productos (JSON) para resultados reales.\n\nBuscaste: " + q);
   };
+
+  // ✅ Carrusel de logos de representaciones
+  (function(){
+    const carousel = document.querySelector('[data-logo-carousel]');
+    if(!carousel) return;
+
+    const viewport = carousel.querySelector('.logoViewport');
+    const track = carousel.querySelector('.logoTrack');
+    const prevBtn = carousel.querySelector('.logoPrev');
+    const nextBtn = carousel.querySelector('.logoNext');
+    if(!viewport || !track) return;
+
+    const clones = Array.from(track.children).map((node) => node.cloneNode(true));
+    clones.forEach((clone) => track.appendChild(clone));
+
+    const getStep = () => {
+      const first = track.querySelector('.logoItem');
+      if(!first) return 180;
+      const rect = first.getBoundingClientRect();
+      const gap = 16;
+      return Math.max(160, rect.width + gap);
+    };
+
+    const scrollStep = (dir, smooth = true) => {
+      const step = getStep();
+      const max = track.scrollWidth - viewport.clientWidth;
+      let next = viewport.scrollLeft + dir * step;
+      if(next < 0){ next = max; }
+      if(next > max){ next = 0; }
+      viewport.scrollTo({ left: next, behavior: smooth ? 'smooth' : 'auto' });
+    };
+
+    prevBtn && prevBtn.addEventListener('click', () => scrollStep(-1));
+    nextBtn && nextBtn.addEventListener('click', () => scrollStep(1));
+
+    let timer = null;
+    const start = () => {
+      if(timer) return;
+      timer = setInterval(() => scrollStep(1), 3600);
+    };
+    const stop = () => {
+      if(timer){ clearInterval(timer); timer = null; }
+    };
+
+    start();
+    viewport.addEventListener('mouseenter', stop);
+    viewport.addEventListener('mouseleave', start);
+    viewport.addEventListener('focusin', stop);
+    viewport.addEventListener('focusout', start);
+    document.addEventListener('visibilitychange', () => {
+      if(document.hidden) stop(); else start();
+    });
+  })();
 
   // ✅ Instagram: feed automático (con token) + fallback + carrousel auto
   (function(){
