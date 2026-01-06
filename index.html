@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es-AR">
-<head>
+<head><head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
@@ -464,19 +464,36 @@
       .agroMedia img{height:220px}
     }
 
+    /* ======================
+       ✅ LOGO CAROUSEL (ACTUALIZADO)
+       ====================== */
     .logoCarousel{
       margin-top:18px;
       position:relative;
       padding:0 36px;
     }
+
     .logoViewport{
       overflow-x:auto;
       overflow-y:hidden;
       padding:6px 0 0;
-      scroll-snap-type:x mandatory;
+      scroll-snap-type:x mandatory;   /* ✅ snap manual */
+      scroll-behavior:smooth;         /* ✅ botones / scroll manual */
+      -webkit-overflow-scrolling: touch;
       scrollbar-width:none;
     }
     .logoViewport::-webkit-scrollbar{ display:none; }
+
+    /* ✅ Mientras el autoplay corre, apagamos el snap */
+    .logoViewport.is-animating{
+      scroll-snap-type:none !important;
+      scroll-behavior:auto !important;
+    }
+    /* ✅ Mientras el autoplay corre, evitamos snap por item */
+    .logoViewport.is-animating .logoItem{
+      scroll-snap-align:none !important;
+    }
+
     .logoTrack{
       display:flex;
       align-items:center;
@@ -495,7 +512,7 @@
       justify-content:center;
       border:1px solid rgba(0,0,0,.06);
       box-shadow:0 12px 24px rgba(0,0,0,.06);
-      scroll-snap-align:center;
+      scroll-snap-align:center; /* ✅ snap manual */
       transition:transform .18s ease, box-shadow .18s ease;
     }
     .logoItem:hover{
@@ -995,6 +1012,7 @@
           </button>
 
           <div class="igTrack" id="igTrack" aria-label="Reels de Instagram" data-ig-token="" data-ig-limit="8">
+            <!-- (tu contenido IG igual) -->
             <div class="igItem" data-ig="https://www.instagram.com/p/DS7yeHCDQkX/">
               <div class="igPreview">
                 <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DS7yeHCDQkX/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
@@ -1188,143 +1206,146 @@
     alert("Búsqueda local lista. Próximo paso: conectar un índice de productos (JSON) para resultados reales.\n\nBuscaste: " + q);
   };
 
-/* =========================================================
-   ✅ Carrusel de logos – marquee infinito ROBUSTO
-   (sin reduced-motion, sin pause por hover, con rebuild seguro)
-   ========================================================= */
-(function () {
-  const carousel = document.querySelector('[data-logo-carousel]');
-  if (!carousel) return;
+  /* =========================================================
+     ✅ Carrusel de logos – marquee infinito (snap OFF al animar)
+     ========================================================= */
+  (function () {
+    const carousel = document.querySelector('[data-logo-carousel]');
+    if (!carousel) return;
 
-  const viewport = carousel.querySelector('.logoViewport');
-  const track = carousel.querySelector('.logoTrack');
-  const prevBtn = carousel.querySelector('.logoPrev');
-  const nextBtn = carousel.querySelector('.logoNext');
-  if (!viewport || !track) return;
+    const viewport = carousel.querySelector('.logoViewport');
+    const track = carousel.querySelector('.logoTrack');
+    const prevBtn = carousel.querySelector('.logoPrev');
+    const nextBtn = carousel.querySelector('.logoNext');
+    if (!viewport || !track) return;
 
-  /* ---- Clon base ---- */
-  const originals = Array.from(track.children).map(n => n.cloneNode(true));
-  if (!originals.length) return;
+    const originals = Array.from(track.children).map(n => n.cloneNode(true));
+    if (!originals.length) return;
 
-  let baseWidth = 0;
-  let rafId = null;
-  let lastTs = null;
+    let baseWidth = 0;
+    let rafId = null;
+    let lastTs = null;
 
-  const SPEED = 0.045; // px por ms (~45px/s)
+    const SPEED = 0.045; // px/ms (~45px/s)
 
-  const getGap = () => {
-    const cs = getComputedStyle(track);
-    return parseFloat(cs.gap || cs.columnGap || 16) || 16;
-  };
+    const getGap = () => {
+      const cs = getComputedStyle(track);
+      return parseFloat(cs.gap || cs.columnGap || 16) || 16;
+    };
 
-  const measureBaseWidth = () => {
-    const items = Array.from(track.children).slice(0, originals.length);
-    if (!items.length) return 0;
-    const gap = getGap();
-    return items.reduce((acc, el, i) => {
-      const w = el.getBoundingClientRect().width;
-      return acc + w + (i < items.length - 1 ? gap : 0);
-    }, 0);
-  };
+    const measureBaseWidth = () => {
+      const items = Array.from(track.children).slice(0, originals.length);
+      if (!items.length) return 0;
+      const gap = getGap();
+      return items.reduce((acc, el, i) => {
+        const w = el.getBoundingClientRect().width;
+        return acc + w + (i < items.length - 1 ? gap : 0);
+      }, 0);
+    };
 
-  const rebuild = () => {
-    const prevScroll = viewport.scrollLeft;
-    track.innerHTML = '';
+    const rebuild = () => {
+      const prevScroll = viewport.scrollLeft;
+      track.innerHTML = '';
 
-    const addSet = () => originals.forEach(n => track.appendChild(n.cloneNode(true)));
+      const addSet = () => originals.forEach(n => track.appendChild(n.cloneNode(true)));
 
-    addSet();
-    baseWidth = measureBaseWidth();
+      addSet();
+      baseWidth = measureBaseWidth();
 
-    while (track.scrollWidth < viewport.clientWidth + baseWidth) addSet();
-    if (track.scrollWidth < baseWidth * 2) addSet();
+      while (track.scrollWidth < viewport.clientWidth + baseWidth) addSet();
+      if (track.scrollWidth < baseWidth * 2) addSet();
 
-    baseWidth = measureBaseWidth();
-    viewport.scrollLeft = baseWidth ? prevScroll % baseWidth : 0;
-  };
+      baseWidth = measureBaseWidth();
+      viewport.scrollLeft = baseWidth ? (prevScroll % baseWidth) : 0;
+    };
 
-  const tick = (ts) => {
-    if (!lastTs) lastTs = ts;
-    const delta = ts - lastTs;
-    lastTs = ts;
+    const stop = () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = null;
+      lastTs = null;
+      viewport.classList.remove('is-animating'); // ✅ vuelve snap para manual
+    };
 
-    if (!baseWidth) {
-      stop();
-      return;
-    }
+    const tick = (ts) => {
+      if (lastTs == null) lastTs = ts;
+      const delta = ts - lastTs;
+      lastTs = ts;
 
-    let next = viewport.scrollLeft + delta * SPEED;
-    if (next >= baseWidth) next %= baseWidth;
+      if (!baseWidth || baseWidth <= 0) { stop(); return; }
 
-    viewport.scrollLeft = next;
-    rafId = requestAnimationFrame(tick);
-  };
+      let next = viewport.scrollLeft + delta * SPEED;
+      if (next >= baseWidth) next %= baseWidth;
 
-  const start = () => {
-    if (rafId) return;
-    lastTs = null;
-    rafId = requestAnimationFrame(tick);
-  };
+      viewport.scrollLeft = next;
+      rafId = requestAnimationFrame(tick);
+    };
 
-  const stop = () => {
-    if (rafId) cancelAnimationFrame(rafId);
-    rafId = null;
-    lastTs = null;
-  };
+    const start = () => {
+      if (rafId) return;
 
-  /* ---- Botones ---- */
-  const stepSize = () => {
-    const first = track.querySelector('.logoItem');
-    if (!first) return 180;
-    return first.getBoundingClientRect().width + getGap();
-  };
+      // ✅ durante autoplay: snap OFF
+      viewport.classList.add('is-animating');
+      viewport.style.scrollBehavior = 'auto';
 
-  prevBtn?.addEventListener('click', () => {
-    viewport.scrollLeft = (viewport.scrollLeft - stepSize() + baseWidth) % baseWidth;
-  });
+      lastTs = null;
+      rafId = requestAnimationFrame(tick);
+    };
 
-  nextBtn?.addEventListener('click', () => {
-    viewport.scrollLeft = (viewport.scrollLeft + stepSize()) % baseWidth;
-  });
+    // Botones (acá sí queremos smooth)
+    const stepSize = () => {
+      const first = track.querySelector('.logoItem');
+      if (!first) return 180;
+      return first.getBoundingClientRect().width + getGap();
+    };
 
-  /* ---- Init seguro ---- */
-  rebuild();
-  start();
+    prevBtn?.addEventListener('click', () => {
+      viewport.classList.remove('is-animating'); // snap ON
+      viewport.style.scrollBehavior = 'smooth';
+      viewport.scrollLeft = (viewport.scrollLeft - stepSize() + baseWidth) % baseWidth;
+    });
 
-  /* ---- Rebuild al cargar imágenes (CLAVE) ---- */
-  const imgs = track.querySelectorAll('img');
-  let pending = 0;
+    nextBtn?.addEventListener('click', () => {
+      viewport.classList.remove('is-animating'); // snap ON
+      viewport.style.scrollBehavior = 'smooth';
+      viewport.scrollLeft = (viewport.scrollLeft + stepSize()) % baseWidth;
+    });
 
-  imgs.forEach(img => {
-    if (!img.complete || img.naturalWidth === 0) {
-      pending++;
-      img.addEventListener('load', () => {
-        pending--;
-        if (pending === 0) {
-          rebuild();
-          start();
-        }
-      }, { once: true });
-    }
-  });
+    // Init
+    rebuild();
+    start();
 
-  /* ---- Rebuild al resize ---- */
-  let rT;
-  window.addEventListener('resize', () => {
-    clearTimeout(rT);
-    rT = setTimeout(() => {
-      rebuild();
-      start();
-    }, 150);
-  });
+    // Rebuild cuando cargan imágenes (clave)
+    const imgs = track.querySelectorAll('img');
+    let pending = 0;
+    imgs.forEach(img => {
+      if (!img.complete || img.naturalWidth === 0) {
+        pending++;
+        img.addEventListener('load', () => {
+          pending--;
+          if (pending === 0) {
+            rebuild();
+            start();
+          }
+        }, { once: true });
+      }
+    });
 
-  /* ---- Visibilidad ---- */
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) stop();
-    else start();
-  });
+    // Resize
+    let rT;
+    window.addEventListener('resize', () => {
+      clearTimeout(rT);
+      rT = setTimeout(() => {
+        rebuild();
+        start();
+      }, 150);
+    });
 
-})();
+    // Visibilidad
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stop();
+      else start();
+    });
+  })();
 
   // ✅ Instagram: feed automático (con token) + fallback + carrousel auto
   (function(){
