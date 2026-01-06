@@ -131,7 +131,16 @@
       background: linear-gradient(120deg, rgba(17,24,39,0.84), rgba(17,24,39,0.55)), url('maiz.png') center/cover no-repeat;
       color: #fff;
     }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(120deg, rgba(17,24,39,0.82), rgba(17,24,39,0.48));
+      pointer-events:none;
+    }
     .hero-inner {
+      position: relative;
+      z-index: 1;
       max-width: var(--max);
       margin: 0 auto;
       padding: 80px 18px 64px;
@@ -164,6 +173,20 @@
     .section { max-width: var(--max); margin: 0 auto; padding: 56px 18px; }
     .section h2 { font-size: clamp(26px, 3vw, 36px); margin: 0 0 12px; }
     .section p.lead { color: var(--muted); margin: 0 0 24px; font-size: 17px; }
+
+    .highlight-bubble{
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(17,24,39,0.08);
+      box-shadow: 0 18px 34px rgba(0,0,0,0.14);
+      border-radius: 18px;
+      padding: 18px 20px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      max-width: 950px;
+      margin: 0 auto 28px;
+    }
+    .highlight-bubble h2{ margin:0 0 10px; }
+    .highlight-bubble .lead{ color: #1f2937; margin:0; }
 
     .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
     .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
@@ -359,8 +382,10 @@
   </section>
 
   <section class="section" id="beneficios">
-    <h2>Inocular y Lubricar en un Solo Paso</h2>
-    <p class="lead">Nuestra tecnología única en talco y grafito combina la inoculación con la lubricación, ahorrando tiempo y simplificando la siembra mientras protege el potencial del cultivo.</p>
+    <div class="highlight-bubble">
+      <h2>Inocular y Lubricar en un Solo Paso</h2>
+      <p class="lead">Nuestra tecnología única en talco y grafito combina la inoculación con la lubricación, ahorrando tiempo y simplificando la siembra mientras protege el potencial del cultivo.</p>
+    </div>
     <div class="cards">
       <div class="card">
         <h3>Mejor Emergencia y Stand</h3>
