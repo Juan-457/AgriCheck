@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es-AR">
-<head>
+<head><head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
@@ -18,48 +18,77 @@
     :root{
       --brand-green:#89C444;
       --brand-green-dark:#76b033;
-
-      --ink:#0b1220;
-      --ink2:#1f2937;
-
+      --brand-dark:#1f2937;
       --bg:#F8F9F7;
-      --border: rgba(255,255,255,.18);
-      --border2: rgba(15,23,42,.10);
-
-      --shadow: 0 18px 50px rgba(0,0,0,.16);
-      --shadow2: 0 12px 28px rgba(0,0,0,.12);
-
+      --card:#ffffff;
+      --border:#e5e7eb;
+      --shadow:0 10px 25px rgba(0,0,0,.08);
       --max:1200px;
-      --radius:22px;
-      --radius2:16px;
+      --radius:18px;
 
-      --glassA: rgba(255,255,255,.22);
-      --glassB: rgba(255,255,255,.12);
-      --glassC: rgba(255,255,255,.30);
+      /* ✅ Hero glass (espejado) */
+      --glass-bg: rgba(255,255,255,.30);
+      --glass-bg-strong: rgba(255,255,255,.38);
+      --glass-border: rgba(255,255,255,.40);
+      --glass-shadow: 0 18px 40px rgba(0,0,0,.22);
+      --glass-text: rgba(15, 23, 42, .92);
+      --glass-muted: rgba(15, 23, 42, .70);
 
-      --glassTxt: rgba(15,23,42,.92);
-      --glassMuted: rgba(15,23,42,.72);
-
-      --section: 56px;
-
-      /* ✅ Zona segura para que el logo NUNCA pise el hero en mobile */
-      --hero-logo-safe: 0px;
+      /* ✅ Separación consistente entre secciones */
+      --section-pad: 44px;
     }
 
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+
     body{
       margin:0;
       font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--ink2);
       background: url("fondo.png") center top / cover no-repeat fixed;
       background: url("fondo.jpg") center top / cover no-repeat fixed; /* TODO: esta línea pisa la anterior; dejar solo una si corresponde */
+      color:var(--brand-dark);
     }
-    a{color:inherit;text-decoration:none}
-    .container{max-width:var(--max);margin:0 auto;padding:0 18px}
-    .sr{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 
-    /* ================== TOPBAR (premium / minimal) ================== */
+    a{text-decoration:none;color:inherit}
+    .container{max-width:var(--max);margin:0 auto;padding:0 18px}
+    .center{text-align:center}
+
+    .kicker{
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-size:12px;
+      color:rgba(15, 23, 42, .72);
+    }
+    .muted{
+      color:rgba(15, 23, 42, .74);
+      line-height:1.75;
+      font-size:16px;
+    }
+    .agroTitle{
+      margin:10px 0 8px;
+      font-size: clamp(28px, 3.6vw, 44px);
+      letter-spacing:-0.02em;
+      line-height:1.1;
+      color:rgba(15, 23, 42, .95);
+    }
+    .agroLead{margin:0 auto; max-width:820px}
+
+    .pill{
+      display:inline-flex;align-items:center;justify-content:center;
+      height:54px;width:54px;border-radius:999px;
+      background:#f0f7ea;border:1px solid rgba(0,0,0,.06);
+      font-weight:900;margin-bottom:10px;color:#1b3d10;
+    }
+    .benefit{padding:18px}
+    .benefit h3{margin:6px 0 8px;font-size:16px}
+    .benefit p{margin:0;color:rgba(31,41,55,.70);line-height:1.55}
+    .prod{padding:18px}
+    .prod h3{margin:0 0 10px}
+    .prod ul{margin:0 0 14px;padding-left:18px;color:rgba(31,41,55,.78);line-height:1.6}
+    .smallCta{display:inline-flex;align-items:center;gap:10px;font-weight:900;color:var(--brand-green-dark)}
+    .smallCta:hover{text-decoration:underline}
+
+    /* ================= HEADER ================= */
     header{
       position:fixed; inset:0 0 auto 0;
       z-index:60;
@@ -79,6 +108,7 @@
     }
     .navlinks{
       display:flex;
+      align-items:center;
       gap: 6px;
       padding: 6px;
       border-radius: 999px;
@@ -95,6 +125,78 @@
       transition: background .15s ease, transform .15s ease;
     }
     .navlinks a:hover{ background: rgba(255,255,255,.12); transform: translateY(-1px); }
+
+    .navGroup{
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      position: relative;
+    }
+    .navGroup.is-open{
+      background: linear-gradient(180deg, rgba(10, 21, 56, .90), rgba(10, 21, 56, .78));
+      border-color: rgba(255,255,255,.22);
+      box-shadow: 0 12px 28px rgba(0,0,0,.26);
+    }
+    .navGroupToggle{
+      color: rgba(226,232,240,.85);
+      font-weight: 900;
+      letter-spacing: -.01em;
+      white-space: nowrap;
+      background: none;
+      border: none;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .navGroupToggle:focus{ outline: 3px solid rgba(137,196,68,.65); outline-offset: 2px; }
+    .navGroupToggle::after{
+      content: '';
+      width: 10px;
+      height: 6px;
+      background: rgba(226,232,240,.85);
+      mask: conic-gradient(from 135deg at 50% 40%, #000 0 90deg, transparent 0 360deg);
+      mask-size: 10px 6px;
+      transition: transform .15s ease;
+    }
+    .navGroup.is-open .navGroupToggle::after{ transform: rotate(180deg); }
+    .navGroupLinks{
+      display:none;
+      flex-direction: column;
+      gap:8px;
+      position: absolute;
+      left: 0;
+      top: calc(100% + 10px);
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 18px 36px rgba(0,0,0,.28);
+      min-width: 210px;
+      z-index: 70;
+    }
+    .navGroup.is-open .navGroupLinks{
+      background: linear-gradient(180deg, rgba(10, 21, 56, .92), rgba(10, 21, 56, .82));
+      border-color: rgba(255,255,255,.26);
+      box-shadow: 0 16px 32px rgba(0,0,0,.32);
+    }
+    .navGroup.is-open .navGroupLinks{ display:flex; }
+    .navGroupLinks a{
+      padding: 8px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.14);
+      font-weight: 800;
+      color: rgba(226,232,240,.95);
+      transition: background .15s ease, transform .15s ease;
+    }
+    .navGroupLinks a:hover{ background: rgba(255,255,255,.16); transform: translateY(-1px); }
 
     /* burger */
     .burger{
@@ -145,455 +247,496 @@
       border: 1px solid rgba(255,255,255,.14);
     }
 
+    .mobileSubnav{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .mobileSubnavLabel{
+      color: rgba(226,232,240,.82);
+      font-weight: 800;
+      letter-spacing: -.01em;
+    }
+
     body.menuOpen .mobileMenu{ display:block; }
     body.menuOpen .burgerLines span:nth-child(1){ top:5px; transform: rotate(45deg); }
     body.menuOpen .burgerLines span:nth-child(2){ opacity:0; }
     body.menuOpen .burgerLines span:nth-child(3){ top:5px; transform: rotate(-45deg); }
 
-    /* ================== HERO ================== */
+    /* ================= HERO ================= */
     .hero{
       position:relative;
-      min-height: 100vh;
+      height:100vh;
       display:flex;
-      align-items: flex-end;
-      padding-top: 76px;
+      align-items:flex-end;
+      padding-top:64px;
       overflow:hidden;
       background:#000;
     }
-    .hero video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-    .hero::before{
-      content:"";
+    .hero video{
       position:absolute; inset:0;
-      background:
-        radial-gradient(1200px 500px at 18% 78%, rgba(137,196,68,.18), rgba(137,196,68,0) 58%),
-        linear-gradient(180deg, rgba(0,0,0,.22), rgba(0,0,0,.42));
-      z-index:1;
-      pointer-events:none;
+      width:100%; height:100%;
+      object-fit:cover;
     }
+    .hero::after{display:none}
+    .heroContent{position:relative; z-index:2; width:100%; padding:64px 0;}
 
-    /* logo in hero */
+    /* ✅ Logo en hero */
     .heroLogo{
       position:absolute;
-      top: calc(76px + 12px);
-      left: 18px;
-      z-index: 3;
+      left:14px;
+      top: calc(64px + 14px);
+      z-index:4;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding: 10px 12px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(255,255,255,.20), rgba(255,255,255,.10));
-      border: 1px solid rgba(255,255,255,.20);
+      padding:8px 10px;
+      border-radius:14px;
+      background: linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.14));
+      border: 1px solid rgba(255,255,255,.24);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 14px 30px rgba(0,0,0,.16);
+      opacity:.90;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .heroLogo:hover{opacity:1; transform: translateY(-1px)}
+    .heroLogo img{
+      height:74px;
+      width:auto;
+      display:block;
+    }
+
+    .badge{
+      background: linear-gradient(135deg, rgba(255,255,255,.42), rgba(255,255,255,.26));
+      border: 1px solid rgba(255,255,255,.40);
+      box-shadow: 0 18px 40px rgba(0,0,0,.22);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      box-shadow: var(--shadow2);
-      opacity: .92;
-      transition: transform .18s ease, opacity .18s ease;
-    }
-    .heroLogo:hover{ opacity: 1; transform: translateY(-1px); }
-    .heroLogo img{ height: 74px; width:auto; display:block; }
-
-    .heroContent{
-      position:relative;
-      z-index:2;
-      width:100%;
-      padding: 44px 0 54px;
-      /* ✅ Reserva vertical (solo se activa en mobile via variable) */
-      padding-top: calc(44px + var(--hero-logo-safe));
+      padding:10px 16px;
+      border-radius:999px;
+      color:rgba(15, 23, 42, .92);
+      font-weight:800;
+      display:inline-block;
+      text-shadow:none;
     }
 
-    .heroGrid{
-      display:grid;
-      grid-template-columns: minmax(320px, 720px) 1fr;
-      gap: 18px;
-      align-items:end;
-    }
-
-    .glass{
-      background: linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.10));
-      border: 1px solid rgba(255,255,255,.20);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-radius: var(--radius);
-    }
-
-    .heroCard{
-      padding: 18px 18px 16px;
-      max-width: 720px;
-    }
-
-    .kicker{
-      display:inline-flex;
-      align-items:center;
+    .heroBadges{
+      display:flex;
+      flex-wrap:wrap;
       gap:10px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.16);
-      color: rgba(226,232,240,.92);
-      font-weight: 900;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      font-size: 12px;
-    }
-    .kickerDot{
-      width:8px;height:8px;border-radius:50%;
-      background: var(--brand-green);
-      box-shadow: 0 0 0 6px rgba(137,196,68,.14);
-    }
-
-    .heroTitle{
-      margin: 12px 0 10px;
-      color: rgba(15,23,42,.92);
-      text-shadow: 0 2px 18px rgba(0,0,0,.18);
-      font-weight: 900;
-      letter-spacing: -.03em;
-      font-size: clamp(32px, 4.6vw, 60px);
-      line-height: 1.03;
-    }
-
-    .heroSub{
-      margin: 0;
-      display:inline-flex;
       align-items:center;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, rgba(255,255,255,.32), rgba(255,255,255,.14));
-      border: 1px solid rgba(255,255,255,.22);
-      box-shadow: 0 12px 26px rgba(0,0,0,.12);
-      color: rgba(15,23,42,.88);
-      font-weight: 800;
-      font-size: 14px;
-      max-width: 100%;
+      justify-content:flex-start;
+      max-width:980px;
+      margin-top:48px;
     }
 
-    .muted{
-      color: rgba(15,23,42,.74);
-      line-height: 1.75;
-      font-size: 16px;
+    .badgeTitle{
+      font-size: clamp(26px, 3.6vw, 40px);
+      font-weight:900;
+      padding:14px 22px;
+      line-height:1.15;
+      letter-spacing:-0.01em;
+      flex: 1 1 560px;
+      white-space:normal;
+    }
+
+    .badgeSub{
+      font-size: 14px;
+      font-weight:700;
+      padding:10px 16px;
+      opacity:.96;
+      flex: 0 1 auto;
+      white-space:normal;
     }
 
     .heroActions{
-      margin-top: 14px;
+      margin-top:16px;
       display:flex;
+      gap:12px;
       flex-wrap:wrap;
-      gap: 10px;
     }
 
     .btn{
+      padding:12px 18px;
+      border-radius:999px;
+      font-weight:900;
+      border:1px solid rgba(255,255,255,.2);
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:10px;
-      border-radius: 999px;
-      padding: 12px 16px;
-      font-weight: 900;
-      border: 1px solid rgba(255,255,255,.22);
-      box-shadow: 0 14px 26px rgba(0,0,0,.14);
+      box-shadow: 0 14px 30px rgba(0,0,0,.18);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      transition: transform .15s ease, filter .15s ease;
-      user-select:none;
-      white-space:nowrap;
+      gap:10px;
     }
-    .btn:hover{ transform: translateY(-1px); filter: brightness(1.02); }
+    .btnIcon{width:18px;height:18px;display:inline-block;flex:0 0 auto}
     .btnPrimary{
-      background: var(--brand-green);
-      color: #0b1a08;
+      background:var(--brand-green);
+      color:#0b1a08;
       border-color: rgba(0,0,0,.10);
+      box-shadow: 0 14px 30px rgba(0,0,0,.20);
     }
     .btnGhost{
-      background: linear-gradient(135deg, rgba(255,255,255,.30), rgba(255,255,255,.12));
-      color: rgba(15,23,42,.92);
-      border-color: rgba(255,255,255,.22);
+      background: linear-gradient(135deg, rgba(255,255,255,.38), rgba(255,255,255,.30));
+      color:rgba(15, 23, 42, .92);
+      border-color: rgba(255,255,255,.40);
     }
 
     .searchWrap{
-      margin-top: 12px;
+      margin-top:18px;
+      max-width:820px;
       display:flex;
-      gap: 10px;
-      padding: 10px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.10));
-      border: 1px solid rgba(255,255,255,.20);
-      box-shadow: 0 16px 34px rgba(0,0,0,.14);
+      gap:10px;
+      padding:10px;
+      border-radius:16px;
+      background: linear-gradient(135deg, rgba(255,255,255,.42), rgba(255,255,255,.26));
+      border:1px solid rgba(255,255,255,.40);
+      box-shadow: 0 18px 40px rgba(0,0,0,.22);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      max-width: 100%;
     }
     .searchWrap input{
       flex:1;
-      border:0;
-      outline:none;
       background: transparent;
-      padding: 10px 12px;
-      font-size: 16px;
-      color: rgba(15,23,42,.92);
-      min-width: 180px;
+      border:0;
+      color:rgba(15, 23, 42, .92);
+      font-size:16px;
+      padding:10px;
+      outline:none;
     }
-    .searchWrap input::placeholder{ color: rgba(15,23,42,.60); }
+    .searchWrap input::placeholder{color: rgba(15, 23, 42, .70)}
     .searchWrap button{
-      border: 1px solid rgba(15,23,42,.10);
+      border:1px solid rgba(15,23,42,.10);
       background: rgba(255,255,255,.92);
       color: rgba(15,23,42,.92);
-      font-weight: 900;
-      padding: 10px 16px;
-      border-radius: 14px;
+      font-weight:900;
+      padding:10px 16px;
+      border-radius:12px;
       cursor:pointer;
-      box-shadow: 0 10px 18px rgba(0,0,0,.14);
+      box-shadow: 0 10px 18px rgba(0,0,0,.16);
     }
+    .searchWrap button:hover{background: rgba(255,255,255,.98)}
 
-    .heroSide{
-      padding: 18px;
-      max-width: 520px;
-      justify-self: end;
-    }
-    .sideTitle{
-      margin:0 0 10px;
-      font-weight: 900;
-      color: rgba(15,23,42,.92);
-      letter-spacing: -.02em;
-      font-size: 18px;
-    }
-    .chips{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-    }
-    .chip{
-      padding: 12px 12px;
-      border-radius: 16px;
-      background: rgba(255,255,255,.62);
-      border: 1px solid rgba(15,23,42,.10);
-      box-shadow: 0 12px 22px rgba(0,0,0,.10);
-    }
-    .chipK{ font-weight: 900; color: rgba(15,23,42,.92); font-size: 12px; letter-spacing:.12em; text-transform: uppercase; }
-    .chipV{ margin-top: 6px; font-weight: 900; font-size: 18px; letter-spacing:-.02em; color: rgba(15,23,42,.92); }
-    .chipP{ margin-top: 4px; color: rgba(15,23,42,.70); font-size: 13px; line-height:1.45; }
-
-    /* ================== SECTIONS ================== */
-    section{ padding: var(--section) 0; }
-
-    .panel{
-      border-radius: var(--radius);
-      background: linear-gradient(135deg, rgba(236, 252, 242, .92), rgba(245, 255, 248, .92));
-      border: 1px solid rgba(137,196,68,.28);
-      box-shadow: 0 18px 38px rgba(0,0,0,.10);
-      padding: 22px;
-    }
-    .panelHead{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap: 16px;
-      margin-bottom: 16px;
-      flex-wrap:wrap;
-    }
-    .hKicker{
-      font-weight: 900;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      font-size: 12px;
-      color: rgba(15,23,42,.70);
-    }
-    .hTitle{
-      margin: 6px 0 0;
-      font-size: clamp(22px, 2.8vw, 34px);
-      font-weight: 900;
-      letter-spacing: -.02em;
-      color: rgba(15,23,42,.92);
-    }
-    .hLead{
-      margin: 0;
-      color: rgba(15,23,42,.70);
-      line-height: 1.7;
-      max-width: 720px;
-    }
-
-    .split{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 16px;
-      align-items:start;
-    }
+    section:not(.hero){padding: var(--section-pad) 0}
+    #agroinsumos{padding-bottom: var(--section-pad)}
 
     .card{
-      border-radius: var(--radius2);
-      background: rgba(255,255,255,.72);
-      border: 1px solid rgba(15,23,42,.10);
-      box-shadow: 0 14px 26px rgba(0,0,0,.10);
-      padding: 18px;
+      background: linear-gradient(135deg, rgba(236, 252, 242, .94), rgba(245, 255, 248, .94));
+      border-radius:var(--radius);
+      border:1px solid rgba(137,196,68,.30);
+      box-shadow:
+        0 20px 40px rgba(0,0,0,.08),
+        inset 0 0 0 1px rgba(255,255,255,.65);
+      padding:22px;
     }
 
-    .media img{
-      width:100%;
-      height: 320px;
-      object-fit: cover;
-      border-radius: 16px;
-      border: 1px solid rgba(0,0,0,.06);
+    .card-agro{
+      background: linear-gradient(135deg, rgba(232, 250, 240, 0.96), rgba(245, 255, 250, 0.96));
+      border: 1px solid rgba(137,196,68,.35);
+      box-shadow:
+        0 20px 40px rgba(0,0,0,.08),
+        inset 0 0 0 1px rgba(255,255,255,.6);
     }
 
-    .logosGrid{
-      display:flex;
-      justify-content:center;
+    .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+    .agroCard{
+      display:grid;
+      grid-template-columns:1.35fr .65fr;
+      gap:18px;
       align-items:center;
-      gap: 14px;
-      flex-wrap:wrap;
-      padding-top: 6px;
+    }
+    .agroMedia img{
+      width:100%;
+      height:260px;
+      object-fit:cover;
+      border-radius:14px;
+      border:1px solid rgba(0,0,0,.06);
+    }
+    @media(max-width:900px){
+      .agroCard{grid-template-columns:1fr}
+      .agroMedia img{height:220px}
+    }
+
+    /* ======================
+       ✅ LOGO CAROUSEL (ACTUALIZADO)
+       ====================== */
+    .logoCarousel{
+      margin-top:18px;
+      position:relative;
+      padding:0 36px;
+    }
+
+    .logoViewport{
+      overflow-x:auto;
+      overflow-y:hidden;
+      padding:6px 0 0;
+      scroll-snap-type:x mandatory;   /* ✅ snap manual */
+      scroll-behavior:smooth;         /* ✅ botones / scroll manual */
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width:none;
+    }
+    .logoViewport::-webkit-scrollbar{ display:none; }
+
+    /* ✅ Mientras el autoplay corre, apagamos el snap */
+    .logoViewport.is-animating{
+      scroll-snap-type:none !important;
+      scroll-behavior:auto !important;
+    }
+    /* ✅ Mientras el autoplay corre, evitamos snap por item */
+    .logoViewport.is-animating .logoItem{
+      scroll-snap-align:none !important;
+    }
+
+    .logoTrack{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      padding:2px;
+      min-width:max-content;
     }
     .logoItem{
-      width: 150px; height: 78px;
-      background: rgba(255,255,255,.86);
-      border-radius: 14px;
-      border: 1px solid rgba(0,0,0,.06);
-      display:flex;align-items:center;justify-content:center;
+      flex:0 0 auto;
+      width:203px;
+      height:100px;
+      background:rgba(255,255,255,.92);
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid rgba(0,0,0,.06);
+      box-shadow:0 12px 24px rgba(0,0,0,.06);
+      scroll-snap-align:center; /* ✅ snap manual */
+      transition:transform .18s ease, box-shadow .18s ease;
     }
-    .logoItem img{ max-width: 116px; max-height: 40px; width:auto; height:auto; object-fit:contain; filter:saturate(1.05); }
-
-    /* Benefits */
-    .grid4{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    .pill{
-      display:inline-flex;align-items:center;justify-content:center;
-      width: 52px;height: 52px;border-radius: 999px;
-      background: rgba(137,196,68,.16);
-      border: 1px solid rgba(137,196,68,.22);
-      font-weight: 900;
-      color: rgba(15,23,42,.92);
-      box-shadow: 0 10px 18px rgba(0,0,0,.08);
-      margin-bottom: 10px;
+    .logoItem:hover{
+      transform:translateY(-2px) scale(1.02);
+      box-shadow:0 16px 30px rgba(0,0,0,.10);
     }
-    .benefit h3{ margin: 0 0 6px; font-size: 16px; color: rgba(15,23,42,.92); }
-    .benefit p{ margin:0; color: rgba(15,23,42,.72); line-height:1.6; }
-
-    /* Products */
-    .grid3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .prod h3{ margin:0 0 10px; color: rgba(15,23,42,.92); }
-    .prod ul{ margin:0 0 12px; padding-left: 18px; color: rgba(15,23,42,.76); line-height: 1.65; }
-    .smallCta{
-      display:inline-flex;align-items:center;gap:10px;
-      font-weight: 900;
-      color: var(--brand-green-dark);
+    .logoItem img{
+      max-width:159px;
+      max-height:57px;
+      width:auto;
+      height:auto;
+      object-fit:contain;
+      filter:saturate(1.05);
     }
-    .smallCta:hover{ text-decoration: underline; }
+    .logoNav{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      width:36px;
+      height:36px;
+      border-radius:999px;
+      border:1px solid rgba(15,23,42,.12);
+      background:rgba(255,255,255,.92);
+      box-shadow:0 12px 26px rgba(0,0,0,.10);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      color:rgba(31,41,55,.90);
+      cursor:pointer;
+      transition: transform .14s ease, box-shadow .14s ease, background .14s ease;
+    }
+    .logoNav:hover{
+      transform:translateY(-50%) translateY(-1px);
+      box-shadow:0 16px 32px rgba(0,0,0,.14);
+      background:#fff;
+    }
+    .logoNav:focus{ outline:3px solid rgba(137,196,68,.55); outline-offset:2px; }
+    .logoNav.logoPrev{ left:4px; }
+    .logoNav.logoNext{ right:4px; }
+    @media(max-width:800px){
+      .logoCarousel{ padding:0 12px; }
+      .logoNav{ display:none; }
+      .logoItem{ width:203px; }
+    }
 
-    /* Instagram carousel */
-    .igCarousel{ margin-top: 14px; position:relative; }
+    .sectionHead{
+      display:inline-block;
+      text-align:center;
+      padding:14px 18px;
+      border-radius:16px;
+      background:rgba(255,255,255,.62);
+      border:1px solid rgba(15,23,42,.10);
+      box-shadow:0 14px 30px rgba(0,0,0,.10);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      max-width:920px;
+    }
+    .sectionTitle{
+      margin:0;
+      font-size: clamp(22px, 2.8vw, 34px);
+      letter-spacing:-0.02em;
+      line-height:1.15;
+      color:rgba(15, 23, 42, .96);
+      text-shadow: 0 1px 0 rgba(255,255,255,.25);
+    }
+    .sectionLead{margin:8px auto 0; max-width:820px}
+
+    .sectionCard{padding:26px}
+    .sectionCard .sectionHead{
+      display:block;
+      background:transparent;
+      border:0;
+      box-shadow:none;
+      backdrop-filter:none;
+      -webkit-backdrop-filter:none;
+      padding:0;
+      max-width:none;
+    }
+    .subCard{
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(137,196,68,.28);
+      box-shadow: 0 14px 26px rgba(0,0,0,.10);
+      border-radius: calc(var(--radius) - 2px);
+      padding:18px;
+    }
+
+    /* ================= INSTAGRAM: CARROUSEL AUTOMÁTICO ================= */
+    .igCarousel{margin-top:16px; position:relative;}
     .igTrack{
       display:flex;
-      gap: 14px;
+      gap:14px;
       overflow-x:auto;
-      scroll-snap-type: x mandatory;
+      scroll-snap-type:x mandatory;
       padding: 2px 2px 10px;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: thin;
     }
-    .igTrack::-webkit-scrollbar{ height: 10px; }
-    .igTrack::-webkit-scrollbar-thumb{ background: rgba(15,23,42,.18); border-radius: 999px; }
+    .igTrack::-webkit-scrollbar{height:10px}
+    .igTrack::-webkit-scrollbar-thumb{background: rgba(15,23,42,.18); border-radius: 999px;}
 
     .igItem{
       scroll-snap-align:start;
       flex: 0 0 calc((100% - 28px) / 3);
-      min-width: 260px;
-      border-radius: 18px;
       background: rgba(255,255,255,.72);
-      border: 1px solid rgba(15,23,42,.10);
+      border: 1px solid rgba(137,196,68,.28);
       box-shadow: 0 14px 26px rgba(0,0,0,.10);
-      padding: 14px;
+      border-radius: calc(var(--radius) - 2px);
+      padding:14px;
+      display:flex;
+      flex-direction:column;
+      align-items:stretch;
+      gap:12px;
+      overflow:hidden;
+      min-width: 260px;
     }
+
     .igPreview{
       position:relative;
       width:100%;
-      border-radius: 16px;
-      border: 1px solid rgba(0,0,0,.06);
-      background: rgba(255,255,255,.92);
+      border-radius:14px;
+      border:1px solid rgba(0,0,0,.06);
+      background: rgba(255,255,255,.88);
       overflow:hidden;
       box-shadow: 0 10px 18px rgba(0,0,0,.08);
     }
-    .igPreview::before{ content:""; display:block; padding-top: 177.78%; }
-    .igPreview iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; background:#fff; }
-    .igPreviewLink{ position:absolute; inset:0; z-index:3; display:block; border-radius:16px; background:transparent; }
-    .igPreviewLink:focus{ outline:3px solid rgba(137,196,68,.65); outline-offset:2px; }
+    .igPreview::before{content:"";display:block;padding-top:177.78%}
+    .igPreview iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff}
+
+    .igPreviewLink{
+      position:absolute; inset:0; z-index:3;
+      display:block; border-radius:14px; background: transparent;
+    }
+    .igPreviewLink:focus{outline:3px solid rgba(137,196,68,.65); outline-offset:2px}
 
     .igFallback{
       display:none;
-      margin-top: 10px;
-      font-size: 13px;
-      color: rgba(15,23,42,.78);
+      font-size:13px;
+      color:rgba(15,23,42,.78);
       line-height:1.45;
-      padding: 10px 12px;
-      border-radius: 14px;
-      border: 1px dashed rgba(15,23,42,.18);
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px dashed rgba(15,23,42,.18);
       background: rgba(255,255,255,.78);
     }
-    .igFallback a{ font-weight: 900; color: var(--brand-green-dark); }
-    .igFallback a:hover{ text-decoration: underline; }
+    .igFallback a{font-weight:900;color: var(--brand-green-dark)}
+    .igFallback a:hover{ text-decoration:underline; }
 
     .igNavBtn{
       position:absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 5;
-      width: 42px; height: 42px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.30);
-      background: linear-gradient(135deg, rgba(255,255,255,.60), rgba(255,255,255,.28));
+      top:50%;
+      transform:translateY(-50%);
+      z-index:5;
+      width:42px;
+      height:42px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.35);
+      background: linear-gradient(135deg, rgba(255,255,255,.58), rgba(255,255,255,.28));
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       box-shadow: 0 14px 30px rgba(0,0,0,.16);
       cursor:pointer;
-      display:flex;align-items:center;justify-content:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       color: rgba(15,23,42,.92);
     }
-    .igNavBtn:hover{ transform: translateY(-50%) translateY(-1px); }
-    .igNavBtn:focus{ outline:3px solid rgba(137,196,68,.65); outline-offset:2px; }
-    .igPrev{ left: -6px; }
-    .igNext{ right: -6px; }
-    .igNavBtn svg{ width: 18px; height: 18px; }
+    .igNavBtn:hover{transform:translateY(-50%) translateY(-1px)}
+    .igNavBtn:focus{outline:3px solid rgba(137,196,68,.65); outline-offset:2px}
+    .igPrev{left:-6px}
+    .igNext{right:-6px}
+    .igNavBtn svg{width:18px;height:18px}
 
-    /* Contact */
+    /* Contacto */
     .contactGrid{
+      margin-top:18px;
       display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 14px;
+      grid-template-columns: 1.15fr .85fr;
+      gap:16px;
       align-items:start;
-      margin-top: 16px;
     }
-    .contactList{ margin:0; padding-left: 18px; color: rgba(15,23,42,.76); line-height:1.75; }
-    .contactActions{ display:flex; flex-wrap:wrap; gap: 10px; margin-top: 10px; }
+    .contactList{
+      margin:0;
+      padding-left:18px;
+      color:rgba(31,41,55,.78);
+      line-height:1.75;
+    }
+    .contactRow{display:flex;flex-direction:column;gap:10px}
+    .contactActions{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
     .contactLink{
-      display:inline-flex;align-items:center;gap:10px;
-      font-weight: 900;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
       color: rgba(15,23,42,.92);
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.84);
-      border: 1px solid rgba(15,23,42,.10);
+      padding:10px 14px;
+      border-radius:999px;
+      background: rgba(255,255,255,.78);
+      border:1px solid rgba(15,23,42,.10);
       box-shadow: 0 10px 18px rgba(0,0,0,.10);
-      transition: transform .15s ease;
     }
-    .contactLink:hover{ transform: translateY(-1px); }
-    .btnIcon{ width: 18px; height: 18px; display:inline-block; flex: 0 0 auto; }
+    .contactLink:hover{transform: translateY(-1px)}
+    .contactLink .btnIcon{width:18px;height:18px}
 
-    /* Footer */
     footer{
-      background: rgba(10, 21, 56, .78);
-      color: rgba(255,255,255,.88);
+      background: rgba(15, 23, 42, .62);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      border-top: 1px solid rgba(255,255,255,.10);
-      padding: 16px 0;
+      color: rgba(255,255,255,.88);
+      padding: 14px 0;
       text-align:center;
+      border-top: 1px solid rgba(255,255,255,.10);
     }
-    footer a{ color: rgba(255,255,255,.88); }
-    footer a:hover{ color: var(--brand-green); }
+    footer a{color:rgba(255,255,255,.88)}
+    footer a:hover{color:#89C444}
     .footGrid{
-      display:flex;flex-direction:column;align-items:center;justify-content:center;
-      gap: 8px;
-      font-size: 14px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      font-size:14px;
     }
 
-    /* WhatsApp float */
     .whatsapp-float{
       position:fixed;
       right:18px;
@@ -605,75 +748,42 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      box-shadow:0 10px 26px rgba(0,0,0,.28);
+      box-shadow:0 8px 22px rgba(0,0,0,.28);
       z-index:999;
       transition:transform .2s ease, box-shadow .2s ease;
     }
-    .whatsapp-float img{ width:26px;height:26px;display:block }
-    .whatsapp-float:hover{ transform: translateY(-2px); box-shadow:0 14px 34px rgba(0,0,0,.32) }
+    .whatsapp-float img{width:26px;height:26px;display:block}
+    .whatsapp-float:hover{transform:translateY(-2px); box-shadow:0 12px 30px rgba(0,0,0,.32)}
 
-    /* ================== RESPONSIVE ================== */
-    @media(max-width: 980px){
-      .heroGrid{ grid-template-columns: 1fr; }
-      .heroSide{ justify-self: start; max-width: 720px; }
-      .heroLogo img{ height: 62px; }
-      .split{ grid-template-columns: 1fr; }
-      .media img{ height: 260px; }
-      .grid4{ grid-template-columns: repeat(2, 1fr); }
-      .grid3{ grid-template-columns: 1fr; }
-      .igItem{ flex: 0 0 92%; }
-      .igPrev{ left: 6px; }
-      .igNext{ right: 6px; }
-      .contactGrid{ grid-template-columns: 1fr; }
-      .chips{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    /* ================= RESPONSIVE ================= */
+    @media(max-width:980px){
+      .heroLogo img{height:62px}
     }
 
-    @media(max-width: 900px){
-      .navlinks{ display:none; }
-      .burger{ display:flex; }
+    @media(max-width:900px){
+      .grid4{grid-template-columns:repeat(2,1fr)}
+      .grid3{grid-template-columns:1fr}
+      .navlinks{display:none} /* ✅ se ocultan links y se usa el menú hamburguesa */
+      .burger{display:flex}  /* ✅ se ve bien el botón */
+      .sectionCard{padding:20px}
 
-      .hero{ padding-top: 72px; }
-
-      /* ✅ FIX MOBILE: subimos el logo y lo achicamos para que no se pise con el título */
-      /*
-        ✅ FIX DEFINITIVO MOBILE:
-        - Bajamos el contenido del hero con una "zona segura" igual al alto del logo.
-        - Subimos el logo lo más arriba posible sin chocar con la barra.
-        - Achicamos el logo un toque para que sea prolijo.
-      */
-      :root{
-        --hero-logo-safe: calc(66px + env(safe-area-inset-top)); /* reserva vertical real */
-      }
+      .badgeTitle{flex: 1 1 100%;}
+      .heroBadges{margin-top:56px;}
 
       .heroLogo{
-        top: 66px;           /* antes: calc(72px + 10px) */
-        top: calc(56px + env(safe-area-inset-top)); /* pegado bajo la barra */
-        left: 12px;
-        padding: 8px 10px;   /* un poco más compacto */
-        padding: 8px 10px;
-        border-radius: 16px;
+        left:12px;
+        top: calc(64px + 8px);
+        padding:8px 10px;
+        border-radius:14px;
       }
-      .heroLogo img{ height: 52px; } /* antes: 60px */
-      .heroLogo img{ height: 52px; } /* tamaño que no compite y no pisa */
+      .heroLogo img{height:52px}
 
-      /* ✅ opcional: un toque más de aire arriba del contenido */
-      .heroContent{ padding-top: 54px; } /* antes: 44px */
-      /* Extra: evitamos que el card se acerque demasiado arriba */
-      .heroCard{ margin-top: 6px; } /* mínimo, por si algún browser redondea raro */
+      .igItem{flex: 0 0 92%;}
+      .igPrev{left:6px}
+      .igNext{right:6px}
 
-      section{ padding: 46px 0; }
-      .chips{ grid-template-columns: 1fr; }
+      .contactGrid{grid-template-columns:1fr}
     }
-
-    @media(max-width: 520px){
-      .heroTitle{ font-size: clamp(28px, 8vw, 42px); }
-      .searchWrap{ flex-direction:column; }
-      .searchWrap button{ width:100%; }
-    }
-
-    /* spacer */
-    /* spacer */
-    /* spacer */
   </style>
 </head>
 
@@ -684,9 +794,15 @@
     <div class="topbar">
       <nav class="navlinks" aria-label="Navegación principal">
         <a href="#inicio">Inicio</a>
-        <a href="#productos">Productos</a>
         <a href="#instagram">Instagram</a>
         <a href="#contacto">Contacto</a>
+        <div class="navGroup" aria-label="Tratamientos de semillas" data-nav-dropdown>
+          <button class="navGroupToggle" type="button" aria-expanded="false">Tratamientos de semillas</button>
+          <div class="navGroupLinks" role="list">
+            <a href="nexula.html" role="listitem">Nexula</a>
+            <a href="t-gro-easy-flow.html" role="listitem">T-Gro Easy Flow</a>
+          </div>
+        </div>
       </nav>
 
       <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
@@ -698,9 +814,13 @@
   <div class="mobileMenu" id="mobileMenu" aria-label="Menú mobile">
     <div class="container">
       <a href="#inicio" data-close-menu>Inicio</a>
-      <a href="#productos" data-close-menu>Productos</a>
       <a href="#instagram" data-close-menu>Instagram</a>
       <a href="#contacto" data-close-menu>Contacto</a>
+      <div class="mobileSubnav" aria-label="Tratamientos de semillas">
+        <div class="mobileSubnavLabel">Tratamientos de semillas</div>
+        <a href="nexula.html" data-close-menu>Nexula</a>
+        <a href="t-gro-easy-flow.html" data-close-menu>T-Gro Easy Flow</a>
+      </div>
       <!-- TODO: si querés sumar un CTA extra en mobile, lo agregamos acá -->
     </div>
   </div>
@@ -717,105 +837,69 @@
 
   <div class="heroContent">
     <div class="container">
-      <div class="heroGrid">
 
-        <div class="glass heroCard">
-          <div class="kicker"><span class="kickerDot" aria-hidden="true"></span> AgriCheck</div>
-
-          <h1 class="heroTitle">Agroinsumos especiales eficientes para una agricultura sustentable</h1>
-
-          <p class="heroSub">Control biológico, feromonas, biofertilizantes y bioestimulantes.</p>
-
-          <div class="heroActions" aria-label="Acciones principales">
-            <a class="btn btnPrimary" href="https://wa.me/+5492984763055?text=Hola%20AgriCheck!%20Quiero%20hablar%20con%20un%20asesor." target="_blank" rel="noopener">Hablar con un asesor</a>
-            <a class="btn btnGhost" href="#productos">Ver productos</a>
-          </div>
-
-          <form class="searchWrap" onsubmit="return false;" aria-label="Buscar productos">
-            <input id="q" type="search" placeholder="Buscar productos (ej: Nexula, feromonas...)">
-            <button type="button" onclick="window.__search && window.__search()">Buscar</button>
-          </form>
-
-          <p class="muted" style="margin:12px 0 0">
-            Desde 2001, desarrollamos y comercializamos soluciones eficientes para una agricultura sustentable y ecológica en Argentina.
-          </p>
-        </div>
-
-        <aside class="glass heroSide" aria-label="Resumen rápido">
-          <h3 class="sideTitle">Lo esencial, en un vistazo</h3>
-          <div class="chips">
-            <div class="chip">
-              <div class="chipK">Desde</div>
-              <div class="chipV">2001</div>
-              <div class="chipP">Experiencia aplicada a campo.</div>
-            </div>
-            <div class="chip">
-              <div class="chipK">Enfoque</div>
-              <div class="chipV">Sustentable</div>
-              <div class="chipP">Tecnologías con impacto real.</div>
-            </div>
-            <div class="chip">
-              <div class="chipK">Alcance</div>
-              <div class="chipV">Argentina</div>
-              <div class="chipP">General Roca como origen.</div>
-            </div>
-            <div class="chip">
-              <div class="chipK">Grupo</div>
-              <div class="chipV">Andermatt</div>
-              <div class="chipP">Desde 2019, parte del grupo.</div>
-            </div>
-          </div>
-        </aside>
-
+      <div class="heroBadges">
+        <div class="badge badgeTitle">Agroinsumos especiales eficientes para una agricultura sustentable</div>
+        <div class="badge badgeSub">Control biológico, feromonas, biofertilizantes y bioestimulantes.</div>
       </div>
+
+      <div class="heroActions">
+        <a class="btn btnPrimary" href="https://wa.me/+5492984763055?text=Hola%20AgriCheck!%20Quiero%20hablar%20con%20un%20asesor." target="_blank" rel="noopener">Hablar con un asesor</a>
+        <a class="btn btnGhost" href="#productos">Ver productos</a>
+      </div>
+
+      <form class="searchWrap" onsubmit="return false;">
+        <input id="q" type="search" placeholder="Buscar productos (ej: Nexula, feromonas...)">
+        <button type="button" onclick="window.__search && window.__search()">Buscar</button>
+      </form>
     </div>
   </div>
 </section>
 
-<section id="agroinsumos">
+<section class="heroBelow" id="agroinsumos">
   <div class="container">
-    <div class="panel">
-      <div class="panelHead">
-        <div>
-          <div class="hKicker">AgriCheck</div>
-          <h2 class="hTitle">Agroinsumos especiales</h2>
-        </div>
-        <p class="hLead">
-          Desarrollo y representaciones de proveedores líderes para un portafolio sustentable amplio en Argentina.
-        </p>
-      </div>
+    <div class="card sectionCard">
 
-      <div class="split">
-        <div class="card">
-          <p class="muted" style="margin:0">
+      <div class="card agroCard">
+        <div>
+          <div class="center">
+            <div class="kicker">AgriCheck</div>
+            <h2 class="agroTitle">AGROINSUMOS ESPECIALES</h2>
+          </div>
+
+          <p class="muted agroLead" style="margin-top:10px">
             Desde 2001, en AgriCheck trabajamos con una misión clara: Desarrollar y ofrecer agroinsumos especiales eficientes para una agricultura sustentable y ecológica en el país.
-            <br><br>
+
             Con origen en General Roca, Río Negro, comenzamos enfocados en el desarrollo de soluciones para la producción de frutales. Con el tiempo, incorporamos representaciones de proveedores líderes mundiales en su segmento, lo que nos permite ofrecer el porfolio de soluciones sustentables más amplias de Argentina. No sólo brindamos herramientas para el control de plagas y enfermedades de los cultivos, sino que proveemos promotores de rendimiento a través de nuestra exclusiva línea de microorganismos benéficos (Biofertilizantes). Asimismo, preocupados por el cada vez más desafiante entorno climático para la agricultura, desarrollamos agentes anti estresantes de marcada eficacia.
             <strong>Desde 2019 somos parte de Andermatt Group.</strong>
           </p>
         </div>
 
-        <div class="card media" aria-label="Imagen de agroinsumos">
+        <div class="agroMedia">
           <img src="agroinsumosespeciales.jpg" alt="Agroinsumos especiales" loading="lazy" />
         </div>
       </div>
 
-      <div class="card" id="proveedores" style="margin-top:14px;">
-        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap;">
-          <div>
-            <div class="hKicker">Representaciones</div>
-            <h3 class="hTitle" style="font-size: clamp(18px, 2.2vw, 24px); margin-top:6px;">Representaciones exclusivas en Argentina</h3>
-          </div>
-          <p class="hLead" style="max-width:520px;">
-            Proveedores líderes mundiales para ampliar la oferta de soluciones sustentables.
+      <div class="card card-agro" id="proveedores" style="padding:22px; margin-top:18px;">
+        <div class="center">
+          <h2 class="sectionTitle">Representaciones exclusivas en Argentina</h2>
+          <p class="muted sectionLead" style="margin:10px auto 0; max-width:820px">
+            Incorporamos representaciones de proveedores líderes mundiales para ofrecer uno de los portafolios más amplios
+            de soluciones sustentables en Argentina.
           </p>
         </div>
 
-        <div class="logosGrid" aria-label="Logos de proveedores">
-          <div class="logoItem"><img src="suterra.png" alt="Suterra" loading="lazy" /></div>
-          <div class="logoItem"><img src="andermatt.png" alt="Andermatt" loading="lazy" /></div>
-          <div class="logoItem"><img src="BioAtlantis.png" alt="BioAtlantis" loading="lazy" /></div>
-          <div class="logoItem"><img src="cultiva-1.png" alt="Cultiva" loading="lazy" /></div>
+        <div class="logoCarousel" data-logo-carousel aria-label="Logos de proveedores">
+          <button class="logoNav logoPrev" type="button" aria-label="Logo anterior">‹</button>
+          <div class="logoViewport" tabindex="0">
+            <div class="logoTrack">
+              <div class="logoItem"><img src="suterra.png" alt="Suterra" loading="lazy" /></div>
+              <div class="logoItem"><img src="andermatt.png" alt="Andermatt" loading="lazy" /></div>
+              <div class="logoItem"><img src="BioAtlantis.png" alt="BioAtlantis" loading="lazy" /></div>
+              <div class="logoItem"><img src="cultiva-1.png" alt="Cultiva" loading="lazy" /></div>
+            </div>
+          </div>
+          <button class="logoNav logoNext" type="button" aria-label="Logo siguiente">›</button>
         </div>
       </div>
 
@@ -825,33 +909,35 @@
 
 <section id="beneficios">
   <div class="container">
-    <div class="panel">
-      <div class="panelHead">
-        <div>
-          <div class="hKicker">Por qué AgriCheck</div>
-          <h2 class="hTitle">Beneficios</h2>
+    <div class="card sectionCard">
+      <div class="center">
+        <div class="sectionHead">
+          <div class="kicker">Por qué AgriCheck</div>
+          <h2 class="sectionTitle">Beneficios</h2>
+          <p class="muted sectionLead">
+            Enfoque técnico-comercial claro, soluciones sustentables y asesoramiento para implementar tecnologías sin fricción.
+          </p>
         </div>
-        <p class="hLead">Enfoque técnico-comercial claro y acompañamiento para implementar tecnologías sin fricción.</p>
       </div>
 
-      <div class="grid4">
-        <div class="card benefit">
-          <div class="pill" aria-hidden="true">✓</div>
+      <div class="grid4" style="margin-top:18px">
+        <div class="subCard benefit">
+          <div class="pill">✓</div>
           <h3>Agricultura sustentable</h3>
           <p>Soluciones eficientes orientadas a sistemas productivos más responsables.</p>
         </div>
-        <div class="card benefit">
-          <div class="pill" aria-hidden="true">🔬</div>
+        <div class="subCard benefit">
+          <div class="pill">🔬</div>
           <h3>Soporte técnico</h3>
           <p>Acompañamiento en adopción, uso y mejores prácticas en campo.</p>
         </div>
-        <div class="card benefit">
-          <div class="pill" aria-hidden="true">🌱</div>
+        <div class="subCard benefit">
+          <div class="pill">🌱</div>
           <h3>Biológicos</h3>
           <p>Microorganismos benéficos, biofertilizantes y bioestimulantes.</p>
         </div>
-        <div class="card benefit">
-          <div class="pill" aria-hidden="true">🧩</div>
+        <div class="subCard benefit">
+          <div class="pill">🧩</div>
           <h3>Portafolio amplio</h3>
           <p>Control de plagas, enfermedades y promotores de rendimiento.</p>
         </div>
@@ -860,165 +946,114 @@
   </div>
 </section>
 
-<section id="productos">
-  <div class="container">
-    <div class="panel">
-      <div class="panelHead">
-        <div>
-          <div class="hKicker">Agroinsumos</div>
-          <h2 class="hTitle">Productos</h2>
-        </div>
-        <p class="hLead">Líneas principales para cubrir control, tratamientos y promotores de rendimiento.</p>
-      </div>
-
-      <div class="grid3">
-        <div class="card prod">
-          <h3>Control de plagas y enfermedades</h3>
-          <ul>
-            <li>Feromonas</li>
-            <li>Insecticidas biológicos</li>
-            <li>Atracción y muerte</li>
-            <li>Fungicidas biológicos</li>
-            <li>Nematicidas biológicos</li>
-            <li>Trampas de monitoreo</li>
-          </ul>
-          <a class="smallCta" href="/productos/">Ver todos →</a>
-        </div>
-
-        <div class="card prod">
-          <h3>Tratamientos de semilla</h3>
-          <ul>
-            <li>Tratamientos líquidos</li>
-            <li>Tratamientos Easy Flow</li>
-          </ul>
-          <a class="smallCta" href="/productos/">Ver todos →</a>
-        </div>
-
-        <div class="card prod">
-          <h3>Rendimiento y calidad</h3>
-          <ul>
-            <li>Fertilizantes biológicos</li>
-            <li>Potenciadores de fertilidad biológica</li>
-            <li>Antiestrés / Bioestimulantes</li>
-            <li>Protectores solares</li>
-            <li>Anticracking</li>
-          </ul>
-          <a class="smallCta" href="/productos/">Ver todos →</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
 <section id="instagram">
   <div class="container">
-    <div class="panel">
-      <div class="panelHead">
-        <div>
-          <div class="hKicker">Social</div>
-          <h2 class="hTitle">Instagram</h2>
+    <div class="card" style="padding:22px">
+      <div class="center">
+        <h2 class="sectionTitle">Seguinos en Instagram</h2>
+        <p class="muted sectionLead" style="margin:10px auto 0; max-width:820px">
+          Novedades, recorridas a campo y contenido técnico.
+        </p>
+
+        <div class="igCarousel" aria-label="Carrousel de reels de Instagram">
+          <button class="igNavBtn igPrev" type="button" aria-label="Anterior">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M15.5 19.1 8.4 12l7.1-7.1 1.4 1.4L11.2 12l5.7 5.7z"/></svg>
+          </button>
+
+          <div class="igTrack" id="igTrack" aria-label="Reels de Instagram" data-ig-token="" data-ig-limit="8">
+            <!-- (tu contenido IG igual) -->
+            <div class="igItem" data-ig="https://www.instagram.com/p/DS7yeHCDQkX/">
+              <div class="igPreview">
+                <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DS7yeHCDQkX/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <a class="igPreviewLink" href="https://www.instagram.com/p/DS7yeHCDQkX/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+              </div>
+              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/p/DS7yeHCDQkX/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+            </div>
+
+            <div class="igItem" data-ig="https://www.instagram.com/reel/DSLSnStAoCV/">
+              <div class="igPreview">
+                <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DSLSnStAoCV/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <a class="igPreviewLink" href="https://www.instagram.com/reel/DSLSnStAoCV/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+              </div>
+              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DSLSnStAoCV/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+            </div>
+
+            <div class="igItem" data-ig="https://www.instagram.com/reel/DSGOYXgEoRh/">
+              <div class="igPreview">
+                <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DSGOYXgEoRh/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <a class="igPreviewLink" href="https://www.instagram.com/reel/DSGOYXgEoRh/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+              </div>
+              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DSGOYXgEoRh/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+            </div>
+
+            <div class="igItem" data-ig="https://www.instagram.com/reel/DR2xqZEEpfH/">
+              <div class="igPreview">
+                <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DR2xqZEEpfH/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <a class="igPreviewLink" href="https://www.instagram.com/reel/DR2xqZEEpfH/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+              </div>
+              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DR2xqZEEpfH/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+            </div>
+
+            <div class="igItem" data-ig="https://www.instagram.com/reel/DRxolFXk56S/">
+              <div class="igPreview">
+                <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DRxolFXk56S/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <a class="igPreviewLink" href="https://www.instagram.com/reel/DRxolFXk56S/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+              </div>
+              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DRxolFXk56S/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+            </div>
+
+            <div class="igItem" data-ig="https://www.instagram.com/reel/DRvDMyAkY61/">
+              <div class="igPreview">
+                <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DRvDMyAkY61/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <a class="igPreviewLink" href="https://www.instagram.com/reel/DRvDMyAkY61/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+              </div>
+              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DRvDMyAkY61/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+            </div>
+
+            <div class="igItem" data-ig="https://www.instagram.com/reel/DRiLwi_jExD/">
+              <div class="igPreview">
+                <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DRiLwi_jExD/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <a class="igPreviewLink" href="https://www.instagram.com/reel/DRiLwi_jExD/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+              </div>
+              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DRiLwi_jExD/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+            </div>
+          </div>
+
+          <button class="igNavBtn igNext" type="button" aria-label="Siguiente">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8.5 19.1 7.1 17.7 12.8 12 7.1 6.3l1.4-1.4L15.6 12z"/></svg>
+          </button>
         </div>
-        <p class="hLead">Novedades, recorridas a campo y contenido técnico.</p>
-      </div>
 
-      <div class="igCarousel" aria-label="Carrousel de reels de Instagram">
-        <button class="igNavBtn igPrev" type="button" aria-label="Anterior">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M15.5 19.1 8.4 12l7.1-7.1 1.4 1.4L11.2 12l5.7 5.7z"/></svg>
-        </button>
-
-        <div class="igTrack" id="igTrack" aria-label="Reels de Instagram">
-          <div class="igItem" data-ig="https://www.instagram.com/reel/DSKOxSQDWeh/">
-            <div class="igPreview">
-              <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DSKOxSQDWeh/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-              <a class="igPreviewLink" href="https://www.instagram.com/reel/DSKOxSQDWeh/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-            </div>
-            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización. <a href="https://www.instagram.com/reel/DSKOxSQDWeh/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-          </div>
-
-          <div class="igItem" data-ig="https://www.instagram.com/reel/DSLSnStAoCV/">
-            <div class="igPreview">
-              <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DSLSnStAoCV/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-              <a class="igPreviewLink" href="https://www.instagram.com/reel/DSLSnStAoCV/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-            </div>
-            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización. <a href="https://www.instagram.com/reel/DSLSnStAoCV/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-          </div>
-
-          <div class="igItem" data-ig="https://www.instagram.com/reel/DSGOYXgEoRh/">
-            <div class="igPreview">
-              <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DSGOYXgEoRh/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-              <a class="igPreviewLink" href="https://www.instagram.com/reel/DSGOYXgEoRh/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-            </div>
-            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización. <a href="https://www.instagram.com/reel/DSGOYXgEoRh/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-          </div>
-
-          <div class="igItem" data-ig="https://www.instagram.com/reel/DR2xqZEEpfH/">
-            <div class="igPreview">
-              <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DR2xqZEEpfH/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-              <a class="igPreviewLink" href="https://www.instagram.com/reel/DR2xqZEEpfH/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-            </div>
-            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización. <a href="https://www.instagram.com/reel/DR2xqZEEpfH/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-          </div>
-
-          <div class="igItem" data-ig="https://www.instagram.com/reel/DRxolFXk56S/">
-            <div class="igPreview">
-              <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DRxolFXk56S/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-              <a class="igPreviewLink" href="https://www.instagram.com/reel/DRxolFXk56S/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-            </div>
-            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización. <a href="https://www.instagram.com/reel/DRxolFXk56S/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-          </div>
-
-          <div class="igItem" data-ig="https://www.instagram.com/reel/DRvDMyAkY61/">
-            <div class="igPreview">
-              <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DRvDMyAkY61/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-              <a class="igPreviewLink" href="https://www.instagram.com/reel/DRvDMyAkY61/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-            </div>
-            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización. <a href="https://www.instagram.com/reel/DRvDMyAkY61/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-          </div>
-
-          <div class="igItem" data-ig="https://www.instagram.com/reel/DRiLwi_jExD/">
-            <div class="igPreview">
-              <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DRiLwi_jExD/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-              <a class="igPreviewLink" href="https://www.instagram.com/reel/DRiLwi_jExD/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-            </div>
-            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización. <a href="https://www.instagram.com/reel/DRiLwi_jExD/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-          </div>
+        <div style="margin-top:16px">
+          <a class="btn btnPrimary" href="https://www.instagram.com/agricheck.srl/" target="_blank" rel="noopener" aria-label="Ver Instagram de AgriCheck">
+            <svg class="btnIcon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM18 6.2a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </svg>
+            Ver Instagram
+          </a>
         </div>
 
-        <button class="igNavBtn igNext" type="button" aria-label="Siguiente">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8.5 19.1 7.1 17.7 12.8 12 7.1 6.3l1.4-1.4L15.6 12z"/></svg>
-        </button>
       </div>
-
-      <div style="margin-top:16px; display:flex; justify-content:center;">
-        <a class="btn btnPrimary" href="https://www.instagram.com/agricheck.srl/" target="_blank" rel="noopener" aria-label="Ver Instagram de AgriCheck">
-          <svg class="btnIcon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM18 6.2a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-          </svg>
-          Ver Instagram
-        </a>
-      </div>
-
     </div>
   </div>
 </section>
 
 <section id="contacto">
   <div class="container">
-    <div class="panel">
-      <div class="panelHead">
-        <div>
-          <div class="hKicker">AgriCheck</div>
-          <h2 class="hTitle">Contacto</h2>
+    <div class="card sectionCard">
+      <div class="center">
+        <div class="sectionHead">
+          <div class="kicker">AgriCheck</div>
+          <h2 class="sectionTitle">Contacto</h2>
+          <p class="muted sectionLead">
+            Desde 2001, en AgriCheck trabajamos con una misión clara: Desarrollar y comercializar agroinsumos especiales eficientes para una agricultura sustentable y ecológica en el país.
+          </p>
         </div>
-        <p class="hLead">
-          Desde 2001, en AgriCheck trabajamos con una misión clara: Desarrollar y comercializar agroinsumos especiales eficientes para una agricultura sustentable y ecológica en el país.
-        </p>
       </div>
 
       <div class="contactGrid">
-        <div class="card">
-          <h3 style="margin:0 0 10px; color: rgba(15,23,42,.92);">Datos</h3>
+        <div class="subCard">
+          <h3 style="margin:0 0 10px">Datos</h3>
           <ul class="contactList">
             <li><strong>Dirección:</strong> San Juan 50, General Roca, Argentina</li>
             <li><strong>Email:</strong> <a href="mailto:info@agrichecksrl.com">info@agrichecksrl.com</a></li>
@@ -1026,35 +1061,36 @@
           </ul>
         </div>
 
-        <div class="card">
-          <h3 style="margin:0 0 10px; color: rgba(15,23,42,.92);">Canales</h3>
-          <div class="contactActions">
-            <a class="contactLink" href="https://www.instagram.com/agricheck.srl/" target="_blank" rel="noopener" aria-label="Abrir Instagram de AgriCheck">
-              <svg class="btnIcon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM18 6.2a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-              </svg>
-              Instagram
-            </a>
+        <div class="subCard">
+          <h3 style="margin:0 0 10px">Redes</h3>
+          <div class="contactRow">
+            <div class="contactActions">
+              <a class="contactLink" href="https://www.instagram.com/agricheck.srl/" target="_blank" rel="noopener" aria-label="Abrir Instagram de AgriCheck">
+                <svg class="btnIcon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM18 6.2a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                </svg>
+                Instagram
+              </a>
 
-            <a class="contactLink" href="https://www.facebook.com/profile.php?id=100071954765421" target="_blank" rel="noopener" aria-label="Abrir Facebook de AgriCheck">
-              <svg class="btnIcon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path fill="currentColor" d="M13.5 22v-8h2.7l.4-3h-3.1V9.2c0-.9.2-1.5 1.6-1.5h1.7V5.1c-.3 0-1.4-.1-2.7-.1-2.7 0-4.5 1.6-4.5 4.6V11H7v3h2.9v8h3.6z"/>
-              </svg>
-              Facebook
-            </a>
+              <a class="contactLink" href="https://www.facebook.com/profile.php?id=100071954765421" target="_blank" rel="noopener" aria-label="Abrir Facebook de AgriCheck">
+                <svg class="btnIcon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path fill="currentColor" d="M13.5 22v-8h2.7l.4-3h-3.1V9.2c0-.9.2-1.5 1.6-1.5h1.7V5.1c-.3 0-1.4-.1-2.7-.1-2.7 0-4.5 1.6-4.5 4.6V11H7v3h2.9v8h3.6z"/>
+                </svg>
+                Facebook
+              </a>
 
-            <a class="contactLink" href="https://wa.me/+5492984763055?text=Hola%20AgriCheck!%20Quiero%20hacer%20una%20consulta." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
-              <svg class="btnIcon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path fill="currentColor" d="M12 2a9.7 9.7 0 0 0-8.5 14.4L2 22l5.8-1.5A9.7 9.7 0 1 0 12 2zm0 2a7.7 7.7 0 0 1 0 15.4c-1.4 0-2.7-.4-3.9-1l-.3-.2-3.4.9.9-3.3-.2-.3A7.7 7.7 0 0 1 12 4zm4.2 9.6c-.2-.1-1.2-.6-1.4-.7-.2-.1-.4-.1-.6.1-.2.2-.7.7-.8.9-.1.1-.3.2-.5.1-.2-.1-.9-.3-1.7-1.1-.6-.5-1-1.2-1.1-1.4-.1-.2 0-.4.1-.5l.4-.4c.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5 0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.4-.2.3-1 1-1 2.4 0 1.4 1 2.7 1.2 2.9.1.2 2 3 4.9 4.2.7.3 1.2.4 1.6.5.7.2 1.4.2 1.9.1.6-.1 1.2-.5 1.4-.9.2-.4.2-.8.1-.9 0-.1-.2-.2-.4-.3z"/>
-              </svg>
-              WhatsApp
-            </a>
+              <a class="contactLink" href="https://wa.me/+5492984763055?text=Hola%20AgriCheck!%20Quiero%20hacer%20una%20consulta." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+                <svg class="btnIcon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path fill="currentColor" d="M12 2a9.7 9.7 0 0 0-8.5 14.4L2 22l5.8-1.5A9.7 9.7 0 1 0 12 2zm0 2a7.7 7.7 0 0 1 0 15.4c-1.4 0-2.7-.4-3.9-1l-.3-.2-3.4.9.9-3.3-.2-.3A7.7 7.7 0 0 1 12 4zm4.2 9.6c-.2-.1-1.2-.6-1.4-.7-.2-.1-.4-.1-.6.1-.2.2-.7.7-.8.9-.1.1-.3.2-.5.1-.2-.1-.9-.3-1.7-1.1-.6-.5-1-1.2-1.1-1.4-.1-.2 0-.4.1-.5l.4-.4c.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5 0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.4-.2.3-1 1-1 2.4 0 1.4 1 2.7 1.2 2.9.1.2 2 3 4.9 4.2.7.3 1.2.4 1.6.5.7.2 1.4.2 1.9.1.6-.1 1.2-.5 1.4-.9.2-.4.2-.8.1-.9 0-.1-.2-.2-.4-.3z"/>
+                </svg>
+                WhatsApp
+              </a>
+            </div>
+
+            <div class="muted" style="font-size:14px; margin-top:2px">
+              Seguinos para ver novedades, recorridas a campo y contenido técnico.
+            </div>
           </div>
-
-          <p class="muted" style="margin:12px 0 0; font-size:14px;">
-            Seguinos para ver novedades, recorridas a campo y contenido técnico.
-          </p>
-          <!-- TODO: si querés sumar horarios de atención, agregamos una línea acá -->
         </div>
       </div>
 
@@ -1099,77 +1135,289 @@
   window.__search = () => {
     const q = (document.getElementById('q')?.value || "").trim();
     if(!q){ alert("Escribí algo para buscar."); return; }
+
+    const normalized = q
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '');
+    const compact = normalized.replace(/[\s\-_.]/g, '');
+
+    if(normalized.includes('nexula') || compact.includes('nexula')){
+      window.location.href = 'nexula.html';
+      return;
+    }
+
+    if(compact.includes('tgro') || normalized.includes('t gro') || normalized.includes('t-gro')){
+      window.location.href = 't-gro-easy-flow.html';
+      return;
+    }
+
     alert("Búsqueda local lista. Próximo paso: conectar un índice de productos (JSON) para resultados reales.\n\nBuscaste: " + q);
   };
 
-  // Instagram: fallback + carrousel auto
-  (function(){
-    const items = document.querySelectorAll('#instagram .igItem');
-    items.forEach((item) => {
-      const iframe = item.querySelector('iframe');
-      const fallback = item.querySelector('.igFallback');
-      if(!iframe || !fallback) return;
+  /* =========================================================
+     ✅ Carrusel de logos – marquee infinito (snap OFF al animar)
+     ========================================================= */
+  (function () {
+    const carousel = document.querySelector('[data-logo-carousel]');
+    if (!carousel) return;
 
-      let loaded = false;
+    const viewport = carousel.querySelector('.logoViewport');
+    const track = carousel.querySelector('.logoTrack');
+    const prevBtn = carousel.querySelector('.logoPrev');
+    const nextBtn = carousel.querySelector('.logoNext');
+    if (!viewport || !track) return;
 
-      iframe.addEventListener('load', () => {
-        loaded = true;
-        fallback.style.display = 'none';
-      });
+    const originals = Array.from(track.children).map(n => n.cloneNode(true));
+    if (!originals.length) return;
 
-      setTimeout(() => {
-        if(!loaded){
-          fallback.style.display = 'block';
-        }
-      }, 2200);
+    let baseWidth = 0;
+    let rafId = null;
+    let lastTs = null;
+
+    const SPEED = 0.045; // px/ms (~45px/s)
+
+    const getGap = () => {
+      const cs = getComputedStyle(track);
+      return parseFloat(cs.gap || cs.columnGap || 16) || 16;
+    };
+
+    const measureBaseWidth = () => {
+      const items = Array.from(track.children).slice(0, originals.length);
+      if (!items.length) return 0;
+      const gap = getGap();
+      return items.reduce((acc, el, i) => {
+        const w = el.getBoundingClientRect().width;
+        return acc + w + (i < items.length - 1 ? gap : 0);
+      }, 0);
+    };
+
+    const rebuild = () => {
+      const prevScroll = viewport.scrollLeft;
+      track.innerHTML = '';
+
+      const addSet = () => originals.forEach(n => track.appendChild(n.cloneNode(true)));
+
+      addSet();
+      baseWidth = measureBaseWidth();
+
+      while (track.scrollWidth < viewport.clientWidth + baseWidth) addSet();
+      if (track.scrollWidth < baseWidth * 2) addSet();
+
+      baseWidth = measureBaseWidth();
+      viewport.scrollLeft = baseWidth ? (prevScroll % baseWidth) : 0;
+    };
+
+    const stop = () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = null;
+      lastTs = null;
+      viewport.classList.remove('is-animating'); // ✅ vuelve snap para manual
+    };
+
+    const tick = (ts) => {
+      if (lastTs == null) lastTs = ts;
+      const delta = ts - lastTs;
+      lastTs = ts;
+
+      if (!baseWidth || baseWidth <= 0) { stop(); return; }
+
+      let next = viewport.scrollLeft + delta * SPEED;
+      if (next >= baseWidth) next %= baseWidth;
+
+      viewport.scrollLeft = next;
+      rafId = requestAnimationFrame(tick);
+    };
+
+    const start = () => {
+      if (rafId) return;
+
+      // ✅ durante autoplay: snap OFF
+      viewport.classList.add('is-animating');
+      viewport.style.scrollBehavior = 'auto';
+
+      lastTs = null;
+      rafId = requestAnimationFrame(tick);
+    };
+
+    // Botones (acá sí queremos smooth)
+    const stepSize = () => {
+      const first = track.querySelector('.logoItem');
+      if (!first) return 180;
+      return first.getBoundingClientRect().width + getGap();
+    };
+
+    prevBtn?.addEventListener('click', () => {
+      viewport.classList.remove('is-animating'); // snap ON
+      viewport.style.scrollBehavior = 'smooth';
+      viewport.scrollLeft = (viewport.scrollLeft - stepSize() + baseWidth) % baseWidth;
     });
 
-    const track = document.getElementById('igTrack');
-    const prevBtn = document.querySelector('#instagram .igPrev');
-    const nextBtn = document.querySelector('#instagram .igNext');
-    if(!track) return;
+    nextBtn?.addEventListener('click', () => {
+      viewport.classList.remove('is-animating'); // snap ON
+      viewport.style.scrollBehavior = 'smooth';
+      viewport.scrollLeft = (viewport.scrollLeft + stepSize()) % baseWidth;
+    });
 
-    const getStep = () => {
-      const first = track.querySelector('.igItem');
-      if(!first) return 320;
-      const rect = first.getBoundingClientRect();
-      const gap = 14;
-      return Math.max(260, rect.width + gap);
-    };
-
-    const scrollByStep = (dir) => {
-      const step = getStep();
-      track.scrollBy({ left: dir * step, behavior: 'smooth' });
-    };
-
-    prevBtn && prevBtn.addEventListener('click', () => scrollByStep(-1));
-    nextBtn && nextBtn.addEventListener('click', () => scrollByStep(1));
-
-    let timer = null;
-    const start = () => {
-      if(timer) return;
-      timer = setInterval(() => {
-        const step = getStep();
-        const max = track.scrollWidth - track.clientWidth;
-        const next = Math.min(max, track.scrollLeft + step);
-        if(track.scrollLeft >= max - 4){
-          track.scrollTo({ left: 0, behavior: 'smooth' });
-        }else{
-          track.scrollTo({ left: next, behavior: 'smooth' });
-        }
-      }, 4200);
-    };
-    const stop = () => { if(timer){ clearInterval(timer); timer = null; } };
-
+    // Init
+    rebuild();
     start();
-    track.addEventListener('mouseenter', stop);
-    track.addEventListener('mouseleave', start);
-    track.addEventListener('focusin', stop);
-    track.addEventListener('focusout', start);
-    document.addEventListener('visibilitychange', () => { if(document.hidden) stop(); else start(); });
+
+    // Rebuild cuando cargan imágenes (clave)
+    const imgs = track.querySelectorAll('img');
+    let pending = 0;
+    imgs.forEach(img => {
+      if (!img.complete || img.naturalWidth === 0) {
+        pending++;
+        img.addEventListener('load', () => {
+          pending--;
+          if (pending === 0) {
+            rebuild();
+            start();
+          }
+        }, { once: true });
+      }
+    });
+
+    // Resize
+    let rT;
+    window.addEventListener('resize', () => {
+      clearTimeout(rT);
+      rT = setTimeout(() => {
+        rebuild();
+        start();
+      }, 150);
+    });
+
+    // Visibilidad
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stop();
+      else start();
+    });
   })();
 
-  // Menú hamburguesa (mobile)
+  // ✅ Instagram: feed automático (con token) + fallback + carrousel auto
+  (function(){
+    const track = document.getElementById('igTrack');
+    if(!track) return;
+
+    const igToken = (track.dataset.igToken || '').trim();
+    const igLimit = Number(track.dataset.igLimit || 8) || 8;
+
+    const createIgItem = (permalink) => {
+      const cleanUrl = permalink.endsWith('/') ? permalink.slice(0, -1) : permalink;
+      const embedUrl = `${cleanUrl}/embed`;
+      const wrapper = document.createElement('div');
+      wrapper.className = 'igItem';
+      wrapper.dataset.ig = permalink;
+      wrapper.innerHTML = `
+        <div class="igPreview">
+          <iframe title="Previsualización Reel" src="${embedUrl}" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+          <a class="igPreviewLink" href="${permalink}/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+        </div>
+        <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="${permalink}/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+      `;
+      return wrapper;
+    };
+
+    const hydrateWithApi = async () => {
+      if(!igToken) return false;
+      const apiUrl = `https://graph.instagram.com/me/media?fields=id,permalink,media_type,thumbnail_url,media_url,caption&limit=${igLimit}&access_token=${encodeURIComponent(igToken)}`;
+      try{
+        const res = await fetch(apiUrl);
+        if(!res.ok) throw new Error('Respuesta no OK');
+        const data = await res.json();
+        if(!data || !Array.isArray(data.data)) throw new Error('Sin data válida');
+
+        const items = data.data
+          .filter((item) => item.permalink)
+          .map((item) => item.permalink)
+          .slice(0, igLimit)
+          .map(createIgItem);
+
+        if(items.length){
+          track.innerHTML = '';
+          items.forEach((node) => track.appendChild(node));
+          return true;
+        }
+      }catch(err){
+        console.warn('Instagram feed automático no disponible:', err);
+      }
+      return false;
+    };
+
+    const setupCarousel = () => {
+      const items = track.querySelectorAll('.igItem');
+      items.forEach((item) => {
+        const iframe = item.querySelector('iframe');
+        const fallback = item.querySelector('.igFallback');
+        if(!iframe || !fallback) return;
+
+        let loaded = false;
+
+        iframe.addEventListener('load', () => {
+          loaded = true;
+          fallback.style.display = 'none';
+        });
+
+        setTimeout(() => {
+          if(!loaded){
+            fallback.style.display = 'block';
+          }
+        }, 2200);
+      });
+
+      const prevBtn = document.querySelector('#instagram .igPrev');
+      const nextBtn = document.querySelector('#instagram .igNext');
+
+      const getStep = () => {
+        const first = track.querySelector('.igItem');
+        if(!first) return 320;
+        const rect = first.getBoundingClientRect();
+        const gap = 14;
+        return Math.max(260, rect.width + gap);
+      };
+
+      const scrollByStep = (dir) => {
+        const step = getStep();
+        track.scrollBy({ left: dir * step, behavior: 'smooth' });
+      };
+
+      prevBtn && prevBtn.addEventListener('click', () => scrollByStep(-1));
+      nextBtn && nextBtn.addEventListener('click', () => scrollByStep(1));
+
+      let timer = null;
+      const start = () => {
+        if(timer) return;
+        timer = setInterval(() => {
+          const step = getStep();
+          const max = track.scrollWidth - track.clientWidth;
+          const next = Math.min(max, track.scrollLeft + step);
+          if(track.scrollLeft >= max - 4){
+            track.scrollTo({ left: 0, behavior: 'smooth' });
+          }else{
+            track.scrollTo({ left: next, behavior: 'smooth' });
+          }
+        }, 4200);
+      };
+      const stop = () => {
+        if(timer){ clearInterval(timer); timer = null; }
+      };
+
+      start();
+      track.addEventListener('mouseenter', stop);
+      track.addEventListener('mouseleave', start);
+      track.addEventListener('focusin', stop);
+      track.addEventListener('focusout', start);
+      document.addEventListener('visibilitychange', () => {
+        if(document.hidden) stop(); else start();
+      });
+    };
+
+    hydrateWithApi().finally(setupCarousel);
+  })();
+
+  // ✅ Menú hamburguesa (mobile)
   (function(){
     const burger = document.querySelector('.burger');
     const menu = document.getElementById('mobileMenu');
@@ -1186,17 +1434,52 @@
       setOpen(open);
     });
 
+    // Cerrar al hacer click en links
     menu.querySelectorAll('[data-close-menu]').forEach((a) => {
       a.addEventListener('click', () => setOpen(false));
+    });
+
+    // Cerrar con ESC
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape') setOpen(false);
+    });
+
+    // Cerrar si se agranda a desktop
+    const mq = window.matchMedia('(min-width: 901px)');
+    const onChange = () => { if(mq.matches) setOpen(false); };
+    mq.addEventListener ? mq.addEventListener('change', onChange) : mq.addListener(onChange);
+  })();
+
+  // ✅ Dropdown para "Tratamientos de semillas" en desktop
+  (function(){
+    const navGroup = document.querySelector('[data-nav-dropdown]');
+    if(!navGroup) return;
+
+    const toggle = navGroup.querySelector('.navGroupToggle');
+    const links = navGroup.querySelector('.navGroupLinks');
+    if(!toggle || !links) return;
+
+    const setOpen = (open) => {
+      navGroup.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    };
+
+    toggle.addEventListener('click', () => {
+      const nextState = !navGroup.classList.contains('is-open');
+      setOpen(nextState);
+    });
+
+    document.addEventListener('click', (e) => {
+      if(!navGroup.contains(e.target)) setOpen(false);
     });
 
     document.addEventListener('keydown', (e) => {
       if(e.key === 'Escape') setOpen(false);
     });
 
-    const mq = window.matchMedia('(min-width: 901px)');
-    const onChange = () => { if(mq.matches) setOpen(false); };
-    mq.addEventListener ? mq.addEventListener('change', onChange) : mq.addListener(onChange);
+    links.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setOpen(false));
+    });
   })();
 </script>
 
