@@ -803,6 +803,12 @@
             <a href="t-gro-easy-flow.html" role="listitem">T-Gro Easy Flow</a>
           </div>
         </div>
+        <div class="navGroup" aria-label="Protección de cultivos" data-nav-dropdown>
+          <button class="navGroupToggle" type="button" aria-expanded="false">Protección de cultivos</button>
+          <div class="navGroupLinks" role="list">
+            <a href="Beauvisan.html" role="listitem">Beauvisan</a>
+          </div>
+        </div>
       </nav>
 
       <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
@@ -820,6 +826,10 @@
         <div class="mobileSubnavLabel">Tratamientos de semillas</div>
         <a href="nexula.html" data-close-menu>Nexula</a>
         <a href="t-gro-easy-flow.html" data-close-menu>T-Gro Easy Flow</a>
+      </div>
+      <div class="mobileSubnav" aria-label="Protección de cultivos">
+        <div class="mobileSubnavLabel">Protección de cultivos</div>
+        <a href="Beauvisan.html" data-close-menu>Beauvisan</a>
       </div>
       <!-- TODO: si querés sumar un CTA extra en mobile, lo agregamos acá -->
     </div>
@@ -1450,35 +1460,37 @@
     mq.addEventListener ? mq.addEventListener('change', onChange) : mq.addListener(onChange);
   })();
 
-  // ✅ Dropdown para "Tratamientos de semillas" en desktop
+  // ✅ Dropdowns de categorías en desktop
   (function(){
-    const navGroup = document.querySelector('[data-nav-dropdown]');
-    if(!navGroup) return;
+    const navGroups = document.querySelectorAll('[data-nav-dropdown]');
+    if(!navGroups.length) return;
 
-    const toggle = navGroup.querySelector('.navGroupToggle');
-    const links = navGroup.querySelector('.navGroupLinks');
-    if(!toggle || !links) return;
+    navGroups.forEach((navGroup) => {
+      const toggle = navGroup.querySelector('.navGroupToggle');
+      const links = navGroup.querySelector('.navGroupLinks');
+      if(!toggle || !links) return;
 
-    const setOpen = (open) => {
-      navGroup.classList.toggle('is-open', open);
-      toggle.setAttribute('aria-expanded', String(open));
-    };
+      const setOpen = (open) => {
+        navGroup.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+      };
 
-    toggle.addEventListener('click', () => {
-      const nextState = !navGroup.classList.contains('is-open');
-      setOpen(nextState);
-    });
+      toggle.addEventListener('click', () => {
+        const nextState = !navGroup.classList.contains('is-open');
+        setOpen(nextState);
+      });
 
-    document.addEventListener('click', (e) => {
-      if(!navGroup.contains(e.target)) setOpen(false);
-    });
+      document.addEventListener('click', (e) => {
+        if(!navGroup.contains(e.target)) setOpen(false);
+      });
 
-    document.addEventListener('keydown', (e) => {
-      if(e.key === 'Escape') setOpen(false);
-    });
+      document.addEventListener('keydown', (e) => {
+        if(e.key === 'Escape') setOpen(false);
+      });
 
-    links.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => setOpen(false));
+      links.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => setOpen(false));
+      });
     });
   })();
 </script>
