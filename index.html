@@ -801,10 +801,15 @@
     <div class="topbar">
       <nav class="navlinks" aria-label="Navegación principal">
         <a href="#inicio">Inicio</a>
-        <a href="tundrabac.html">Rendimiento</a>
-        <a href="tundrabac.html">Calidad</a>
         <a href="#instagram">Instagram</a>
         <a href="#contacto">Contacto</a>
+        <div class="navGroup" aria-label="Rendimiento y calidad" data-nav-dropdown>
+          <button class="navGroupToggle" type="button" aria-expanded="false">Rendimiento y calidad</button>
+          <div class="navGroupLinks" role="list">
+            <a href="tundrabac.html" role="listitem">Rendimiento</a>
+            <a href="tundrabac.html" role="listitem">Calidad</a>
+          </div>
+        </div>
         <div class="navGroup" aria-label="Tratamientos de semillas" data-nav-dropdown>
           <button class="navGroupToggle" type="button" aria-expanded="false">Tratamientos de semillas</button>
           <div class="navGroupLinks" role="list">
@@ -830,10 +835,13 @@
   <div class="mobileMenu" id="mobileMenu" aria-label="Menú mobile">
     <div class="container">
       <a href="#inicio" data-close-menu>Inicio</a>
-      <a href="tundrabac.html" data-close-menu>Rendimiento</a>
-      <a href="tundrabac.html" data-close-menu>Calidad</a>
       <a href="#instagram" data-close-menu>Instagram</a>
       <a href="#contacto" data-close-menu>Contacto</a>
+      <div class="mobileSubnav" aria-label="Rendimiento y calidad">
+        <div class="mobileSubnavLabel">Rendimiento y calidad</div>
+        <a href="tundrabac.html" data-close-menu>Rendimiento</a>
+        <a href="tundrabac.html" data-close-menu>Calidad</a>
+      </div>
       <div class="mobileSubnav" aria-label="Tratamientos de semillas">
         <div class="mobileSubnavLabel">Tratamientos de semillas</div>
         <a href="nexula.html" data-close-menu>Nexula</a>
