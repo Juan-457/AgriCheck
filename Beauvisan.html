@@ -177,7 +177,22 @@
             justify-self: center;
             text-align: center;
         }
-        .product-card img { width: 100%; max-width: 380px; border-radius: 16px; background: #fff; padding: 16px; box-shadow: 0 18px 40px rgba(0,0,0,0.14); }
+        .product-image {
+            width: 100%;
+            max-width: 380px;
+            border-radius: 16px;
+            background: #fff;
+            padding: 16px;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.14);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .product-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
         .product-meta { margin-top: 14px; font-weight: 700; color: rgba(226, 232, 240, 0.9); }
 
         .section-title {
@@ -281,7 +296,9 @@
                     </div>
                 </div>
                 <div class="product-card">
-                    <img src="Beavisan 1Kg.png" alt="Beauvisan 1 kg" />
+                    <div class="product-image">
+                        <img src="Beavisan 1Kg.png" alt="Beauvisan 1 kg" />
+                    </div>
                     <div class="product-meta">Presentación 1 kg | Polvo mojable con alta concentración de conidios</div>
                 </div>
             </div>
