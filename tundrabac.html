@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
@@ -16,12 +17,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --green: #8bc34a;
-      --green-strong: #6aa334;
-      --dark: #111827;
-      --muted: #4b5563;
+      --green: #16a34a;
+      --green-strong: #166534;
+      --dark: #1f2937;
+      --muted: #475569;
       --card: #ffffff;
-      --bg: #f7f8f6;
+      --bg: #f8f9f7;
       --border: #e5e7eb;
       --radius: 16px;
       --shadow: 0 16px 40px rgba(0,0,0,0.08);
@@ -32,7 +33,7 @@
     body {
       margin: 0;
       font-family: 'Inter', system-ui, -apple-system, Segoe UI, sans-serif;
-      background: url('fondo.png') center/cover fixed no-repeat, #0f172a;
+      background: var(--bg);
       color: var(--dark);
       line-height: 1.6;
     }
@@ -41,13 +42,15 @@
     .container { max-width: var(--max); margin: 0 auto; padding: 0 18px; }
 
     header{
-      position:fixed; inset:0 0 auto 0;
+      position:sticky;
+      top:0;
       z-index:60;
       padding: 10px 0;
-      background: linear-gradient(180deg, rgba(10, 21, 56, .78), rgba(10, 21, 56, .55));
-      border-bottom: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.92);
+      border-bottom: 1px solid rgba(15, 23, 42, .08);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
     }
 
     .topbar{
@@ -57,26 +60,36 @@
       position:relative;
       min-height: 44px;
     }
-    .brandLogo img{ height:48px; width:auto; display:block; }
-    .brandLogo{ position:absolute; left:0; top:50%; transform:translateY(-50%); padding:6px 10px; border-radius:14px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); box-shadow:0 10px 22px rgba(0,0,0,.24); }
+    .brandLogo img{ height:44px; width:auto; display:block; }
+    .brandLogo{
+      position:absolute;
+      left:0;
+      top:50%;
+      transform:translateY(-50%);
+      padding:6px 12px;
+      border-radius:14px;
+      background:#ffffff;
+      border:1px solid rgba(15, 23, 42, .08);
+      box-shadow:0 10px 22px rgba(15, 23, 42, .08);
+    }
     .navlinks{
       display:flex;
-      gap: 6px;
+      gap: 10px;
       padding: 6px;
       border-radius: 999px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.10);
-      box-shadow: 0 10px 26px rgba(0,0,0,.18);
+      background: rgba(15, 23, 42, .04);
+      border: 1px solid rgba(15, 23, 42, .08);
+      box-shadow: 0 10px 26px rgba(15, 23, 42, .08);
     }
     .navlinks a{
-      padding: 10px 14px;
+      padding: 10px 16px;
       border-radius: 999px;
       font-weight: 800;
-      color: rgba(226,232,240,.95);
+      color: #475569;
       letter-spacing: -.01em;
-      transition: background .15s ease, transform .15s ease;
+      transition: background .15s ease, transform .15s ease, color .15s ease;
     }
-    .navlinks a:hover{ background: rgba(255,255,255,.12); transform: translateY(-1px); }
+    .navlinks a:hover{ background: rgba(22, 163, 74, .12); transform: translateY(-1px); color: var(--green-strong); }
 
     .burger{
       position:absolute;
@@ -85,20 +98,20 @@
       transform: translateY(-50%);
       width: 44px; height: 44px;
       border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(15, 23, 42, .12);
+      background: rgba(255,255,255,.86);
       display:none;
       align-items:center;
       justify-content:center;
       cursor:pointer;
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
-      box-shadow: 0 10px 24px rgba(0,0,0,.18);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, .12);
     }
     .burger:focus{ outline: 3px solid rgba(137,196,68,.65); outline-offset: 2px; }
     .burgerLines{ width: 18px; height: 12px; position:relative; display:block; }
     .burgerLines span{
-      position:absolute; left:0; width:100%; height:2px; background: rgba(226,232,240,.95);
+      position:absolute; left:0; width:100%; height:2px; background: #1f2937;
       border-radius: 999px;
       transition: transform .18s ease, top .18s ease, opacity .18s ease;
     }
@@ -109,8 +122,8 @@
     .mobileMenu{
       display:none;
       padding: 10px 0 14px;
-      background: linear-gradient(180deg, rgba(10, 21, 56, .70), rgba(10, 21, 56, .86));
-      border-top: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.98);
+      border-top: 1px solid rgba(15, 23, 42, .08);
     }
     .mobileMenu .container{
       display:flex;
@@ -121,9 +134,9 @@
       padding: 12px 14px;
       border-radius: 16px;
       font-weight: 900;
-      color: rgba(226,232,240,.95);
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.14);
+      color: #475569;
+      background: rgba(15, 23, 42, .04);
+      border: 1px solid rgba(15, 23, 42, .08);
     }
 
     body.menuOpen .mobileMenu{ display:block; }
@@ -134,7 +147,7 @@
     .hero {
       position: relative;
       overflow: hidden;
-      background: linear-gradient(120deg, rgba(17,24,39,0.62), rgba(17,24,39,0.32)), url('fondo.jpg') center/cover no-repeat;
+      background: linear-gradient(120deg, rgba(10, 28, 54, 0.82), rgba(10, 28, 54, 0.4)), url('fondo.jpg') center/cover no-repeat;
       color: #fff;
       min-height: 100vh;
     }
@@ -142,7 +155,7 @@
       content:"";
       position:absolute;
       inset:0;
-      background: linear-gradient(120deg, rgba(17,24,39,0.40), rgba(17,24,39,0.18));
+      background: linear-gradient(120deg, rgba(10, 28, 54, 0.4), rgba(10, 28, 54, 0.18));
       pointer-events:none;
     }
     .hero-inner {
@@ -157,33 +170,33 @@
       gap: 32px;
       align-items: center;
     }
-    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,0.12); font-weight: 800; letter-spacing: 0.02em; }
-    .hero h1 { margin: 14px 0 12px; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; }
-    .hero p { margin: 0 0 16px; color: rgba(255,255,255,0.86); }
+    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: rgba(125, 211, 252, 0.18); color: #bae6fd; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; font-size: 12px; }
+    .hero h1 { margin: 14px 0 12px; font-size: clamp(34px, 5vw, 54px); line-height: 1.1; }
+    .hero p { margin: 0 0 16px; color: rgba(226, 232, 240, 0.92); font-size: 18px; }
     .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px; }
-    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 18px; border-radius: 12px; font-weight: 800; border: 2px solid transparent; cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; }
-    .btn-primary { background: var(--green); color: #0b1e07; box-shadow: var(--shadow); }
-    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 18px 44px rgba(137,195,74,0.3); }
-    .btn-ghost { background: rgba(255,255,255,0.12); color: #fff; border-color: rgba(255,255,255,0.24); }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 999px; font-weight: 800; border: 2px solid transparent; cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+    .btn-primary { background: #ffffff; color: var(--green-strong); box-shadow: 0 18px 40px rgba(15, 23, 42, 0.2); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 20px 46px rgba(15, 23, 42, 0.26); }
+    .btn-ghost { background: rgba(255,255,255,0.14); color: #fff; border-color: rgba(255,255,255,0.24); }
 
     .product-card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: 0 16px 30px rgba(0,0,0,0.2);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 18px 34px rgba(0,0,0,0.18);
       backdrop-filter: blur(6px);
       text-align: center;
     }
-    .product-card img { width: 100%; max-width: 640px; border-radius: 12px; background: #fff; padding: 12px; box-shadow: 0 18px 40px rgba(0,0,0,0.14); }
-    .product-meta { margin-top: 14px; font-weight: 700; color: rgba(255,255,255,0.9); }
+    .product-card img { width: 100%; max-width: 380px; border-radius: 16px; background: #fff; padding: 16px; box-shadow: 0 18px 40px rgba(0,0,0,0.14); }
+    .product-meta { margin-top: 14px; font-weight: 700; color: rgba(226, 232, 240, 0.9); }
 
     .section { max-width: var(--max); margin: 0 auto; padding: 56px 18px; }
     .section h2 { font-size: clamp(26px, 3vw, 36px); margin: 0 0 12px; }
     .section p.lead { color: var(--muted); margin: 0 0 24px; font-size: 17px; }
 
     .highlight-bubble{
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.95);
       border: 1px solid rgba(17,24,39,0.08);
       box-shadow: 0 18px 34px rgba(0,0,0,0.14);
       border-radius: 18px;
@@ -205,6 +218,11 @@
       border: 1px solid var(--border);
       padding: 20px;
       box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 34px rgba(22, 163, 74, 0.15);
     }
     .card h3 { margin-top: 0; }
 
@@ -312,8 +330,8 @@
 
     .results { background: linear-gradient(180deg, #fdfdfc, #eef4e6); border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow); }
     .tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
-    .tabs button { border: 1px solid var(--border); background: #fff; padding: 10px 14px; border-radius: 999px; font-weight: 800; cursor: pointer; transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease; }
-    .tabs button.active { background: var(--green); border-color: var(--green-strong); color: #0b1e07; }
+    .tabs button { border: 1px solid var(--border); background: #f3f4f6; padding: 10px 16px; border-radius: 999px; font-weight: 800; cursor: pointer; transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease; color: #475569; }
+    .tabs button.active { background: var(--green-strong); border-color: var(--green-strong); color: #fff; }
     .chart-wrap { background: #fff; border-radius: 14px; border: 1px solid var(--border); padding: 18px; box-shadow: var(--shadow); position: relative; }
     #resultsChart { width: 100% !important; height: 360px !important; max-height: 420px; }
     #chart-footer { text-align: center; color: var(--muted); font-weight: 600; margin-top: 12px; }
@@ -368,9 +386,9 @@
   <section class="hero" id="producto">
     <div class="hero-inner">
       <div>
-        <div class="pill">Bioestimulante para cereales de invierno</div>
-        <h1>Tundrabac</h1>
-        <p>Bioestimulante microbiano a base de <em>Bacillus atrophaeus</em> cepa ABi05, patentado por activar el vigor de la semilla desde los 8°C y asegurar un establecimiento superior en trigo y cebada.</p>
+        <div class="pill">El biológico para cultivos de invierno</div>
+        <h1>El único bioestimulante que despierta sus cereales de invierno.</h1>
+        <p>Tundrabac es un estimulante biológico microbiano a base de <em>Bacillus atrophaeus</em> cepa ABi05, patentado por activar el vigor de la semilla desde los 8°C y asegurar un establecimiento superior en trigo y cebada.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#contacto">Solicitar asesoramiento</a>
           <a class="btn btn-ghost" href="#resultados">Ver resultados</a>
