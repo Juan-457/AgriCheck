@@ -29,11 +29,51 @@
             color: var(--brand-dark-gray);
         }
 
-        .hero-bg {
-            background-image: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url('https://storage.googleapis.com/gemini-generative-ai-public-data/images/b8017325-a135-4d66-8566-f3883f314f33');
-            background-size: cover;
-            background-position: center;
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(120deg, rgba(10, 28, 54, 0.82), rgba(10, 28, 54, 0.4)), url('https://storage.googleapis.com/gemini-generative-ai-public-data/images/b8017325-a135-4d66-8566-f3883f314f33') center/cover no-repeat;
+            color: #fff;
+            min-height: 100vh;
         }
+        .hero::before{
+            content:"";
+            position:absolute;
+            inset:0;
+            background: linear-gradient(120deg, rgba(10, 28, 54, 0.4), rgba(10, 28, 54, 0.18));
+            pointer-events:none;
+        }
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 120px 18px 90px;
+            min-height: calc(100vh - 80px);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            align-items: center;
+        }
+        .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: rgba(125, 211, 252, 0.18); color: #bae6fd; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; font-size: 12px; }
+        .hero h1 { margin: 14px 0 12px; font-size: clamp(34px, 5vw, 54px); line-height: 1.1; }
+        .hero p { margin: 0 0 16px; color: rgba(226, 232, 240, 0.92); font-size: 18px; }
+        .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px; }
+        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 999px; font-weight: 800; border: 2px solid transparent; cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+        .btn-primary { background: #ffffff; color: var(--brand-green); box-shadow: 0 18px 40px rgba(15, 23, 42, 0.2); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 20px 46px rgba(15, 23, 42, 0.26); }
+        .btn-ghost { background: rgba(255,255,255,0.14); color: #fff; border-color: rgba(255,255,255,0.24); }
+        .product-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 22px;
+            padding: 22px;
+            box-shadow: 0 18px 34px rgba(0,0,0,0.18);
+            backdrop-filter: blur(6px);
+            text-align: center;
+        }
+        .product-card img { width: 100%; max-width: 380px; border-radius: 16px; background: #fff; padding: 16px; box-shadow: 0 18px 40px rgba(0,0,0,0.14); }
+        .product-meta { margin-top: 14px; font-weight: 700; color: rgba(226, 232, 240, 0.9); }
 
         .section-title {
             color: var(--brand-dark-gray);
@@ -113,24 +153,20 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="hero-bg text-white">
-            <div class="container mx-auto px-6 py-24 md:py-32 text-center md:text-left max-w-7xl">
-                <div class="flex flex-col items-center gap-10 md:flex-row md:items-center md:justify-between">
-                    <div class="md:w-3/5">
-                    <span class="font-bold text-brand-green tracking-widest">POTENCIÁ EL SISTEMA RADICULAR DE TU CULTIVO</span>
-                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight my-4">
-                        El Comienzo Saludable que su Cultivo Merece.
-                    </h1>
-                    <p class="text-lg md:text-xl mb-8 max-w-2xl text-gray-200">
-                        T-Gro WP es un fertilizante biológico a base de nuestra exclusiva cepa kd de <i>Trichoderma asperellum</i> en polvo mojable, diseñado para potenciar y proteger el sistema radicular de tus cultivos.
-                    </p>
-                    <a href="#contacto" class="cta-button inline-block bg-white font-bold text-lg py-4 px-8 rounded-full" style="color: var(--brand-dark-gray);">
-                        Solicitar Asesoramiento
-                    </a>
+        <section class="hero">
+            <div class="hero-inner">
+                <div>
+                    <div class="pill">Potenciá el sistema radicular de tu cultivo</div>
+                    <h1>El Comienzo Saludable que su Cultivo Merece.</h1>
+                    <p>T-Gro WP es un fertilizante biológico a base de nuestra exclusiva cepa kd de <i>Trichoderma asperellum</i> en polvo mojable, diseñado para potenciar y proteger el sistema radicular de tus cultivos.</p>
+                    <div class="hero-actions">
+                        <a href="#contacto" class="btn btn-primary">Solicitar asesoramiento</a>
+                        <a href="#beneficios" class="btn btn-ghost">Ver beneficios</a>
                     </div>
-                    <div class="md:w-2/5">
-                        <img src="T-Gro%20WP.png" alt="Presentación del producto T-Gro WP" class="mx-auto w-full max-w-xs rounded-2xl bg-white/10 p-4 shadow-xl backdrop-blur">
-                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="T-Gro%20WP.png" alt="Presentación del producto T-Gro WP">
+                    <div class="product-meta">Fertilizante biológico | Tratamiento de semillas</div>
                 </div>
             </div>
         </section>
