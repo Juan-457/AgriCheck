@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
+    <title>T-Gro WP – AgriCheck | Tratamiento Biológico para Semillas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Paleta de Colores de Marca AgriCheck */
+        :root {
+            --brand-green: #89C444;
+            --brand-brown: #9A7A4E;
+            --brand-dark-gray: #4B4B4D;
+            --brand-background: #F8F9F7;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--brand-background);
+            color: var(--brand-dark-gray);
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url('https://storage.googleapis.com/gemini-generative-ai-public-data/images/b8017325-a135-4d66-8566-f3883f314f33');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .section-title {
+            color: var(--brand-dark-gray);
+        }
+
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        .cta-button.cta-brand {
+            background-color: var(--brand-green);
+            color: white;
+        }
+
+        .cta-button.cta-brand:hover {
+            filter: brightness(1.1);
+        }
+
+        .benefit-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #ffffff;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(46, 91, 58, 0.15);
+        }
+
+        .text-brand-green {
+            color: var(--brand-green);
+        }
+
+        .text-brand-brown {
+            color: var(--brand-brown);
+        }
+
+        .section-dark {
+            background-color: var(--brand-dark-gray);
+        }
+
+        .benefit-icon {
+            background-color: #f1f8e9;
+            color: var(--brand-green);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center max-w-7xl">
+            <a href="index.html">
+                <img src="agrichecklogo.png" alt="Logo de AgriCheck" class="h-10 w-auto">
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#beneficios" class="font-semibold text-gray-600 hover:text-brand-green transition">Beneficios</a>
+                <a href="#como-funciona" class="font-semibold text-gray-600 hover:text-brand-green transition">¿Cómo Funciona?</a>
+                <a href="#aplicacion" class="font-semibold text-gray-600 hover:text-brand-green transition">Aplicación</a>
+                <a href="#especificaciones" class="font-semibold text-gray-600 hover:text-brand-green transition">Especificaciones</a>
+                <a href="#contacto" class="cta-button cta-brand font-bold py-2 px-5 rounded-full">
+                    Contactar
+                </a>
+            </div>
+            <div class="md:hidden">
+                 <a href="#contacto" class="cta-button cta-brand font-bold py-2 px-4 rounded-full">
+                    Contacto
+                 </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg text-white">
+            <div class="container mx-auto px-6 py-24 md:py-32 text-center md:text-left max-w-7xl">
+                <div class="md:w-3/5">
+                    <span class="font-bold text-brand-green tracking-widest">POTENCIÁ EL SISTEMA RADICULAR DE TU CULTIVO</span>
+                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight my-4">
+                        El Comienzo Saludable que su Cultivo Merece.
+                    </h1>
+                    <p class="text-lg md:text-xl mb-8 max-w-2xl text-gray-200">
+                        T-Gro WP es un fertilizante biológico a base de nuestra exclusiva cepa kd de <i>Trichoderma asperellum</i> en polvo mojable, diseñado para potenciar y proteger el sistema radicular de tus cultivos.
+                    </p>
+                    <a href="#contacto" class="cta-button inline-block bg-white font-bold text-lg py-4 px-8 rounded-full" style="color: var(--brand-dark-gray);">
+                        Solicitar Asesoramiento
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Beneficios Clave -->
+        <section id="beneficios" class="py-20 bg-white">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold section-title">Protección y Vigor Desde el Comienzo.</h2>
+                    <p class="mt-4 text-lg max-w-3xl mx-auto text-gray-600">T-Gro WP es una herramienta integral que mejora la eficiencia y la salud de sus cultivos desde el día uno.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="benefit-card p-8 rounded-xl border border-gray-200 text-center">
+                         <div class="flex items-center justify-center h-16 w-16 rounded-full benefit-icon mx-auto mb-5 text-3xl">🌱</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Mejor Emergencia y Stand</h3>
+                        <p class="text-gray-600">Asegura una germinación y establecimiento uniforme del cultivo, sentando las bases para un rendimiento óptimo.</p>
+                    </div>
+                    <div class="benefit-card p-8 rounded-xl border border-gray-200 text-center">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full benefit-icon mx-auto mb-5 text-3xl">💧</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Aplicación Fácil y Homogénea</h3>
+                        <p class="text-gray-600">Su formulación como polvo mojable permite una mezcla rápida y una cobertura uniforme de las semillas.</p>
+                    </div>
+                    <div class="benefit-card p-8 rounded-xl border border-gray-200 text-center">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full benefit-icon mx-auto mb-5 text-3xl">🛡️</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Protección Radicular</h3>
+                        <p class="text-gray-600">Coloniza la rizosfera, protegiendo las raíces de patógenos del suelo y mejorando la tolerancia al estrés.</p>
+                    </div>
+                    <div class="benefit-card p-8 rounded-xl border border-gray-200 text-center">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full benefit-icon mx-auto mb-5 text-3xl">📈</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Mayor Desarrollo Vegetal</h3>
+                        <p class="text-gray-600">Plantas más sanas, con un sistema radicular superior y resilientes al estrés se traducen en un mayor potencial de rendimiento.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cómo Funciona -->
+        <section id="como-funciona" class="py-20" style="background-color: var(--brand-background);">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold section-title">La Ciencia Detrás de T-Gro WP</h2>
+                    <p class="mt-4 text-lg max-w-3xl mx-auto text-gray-600">El ingrediente activo es la <strong>cepa exclusiva kd</strong> de <i>Trichoderma asperellum</i>, seleccionada rigurosamente tras un screening de más de 1000 cepas por su excepcional capacidad de colonización y promoción del crecimiento. Este hongo benéfico forma una relación simbiótica con las raíces, ofreciendo múltiples beneficios de protección y crecimiento.</p>
+                </div>
+                <div class="bg-white p-8 md:p-12 rounded-xl shadow-lg border border-gray-200 max-w-5xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3" style="color: var(--brand-dark-gray);">Competencia y Parasitismo</h3>
+                        <p class="text-gray-600"><i>T. asperellum</i> es un colonizador agresivo. Crece rápidamente y ocupa espacio en la zona de las raíces, superando a los hongos patógenos en la competencia por nutrientes. Además, parasita a otros hongos dañinos, los penetra y finalmente los destruye.</p>
+                    </div>
+                     <div>
+                        <h3 class="text-2xl font-bold mb-3" style="color: var(--brand-dark-gray);">Resistencia Sistémica (SAR)</h3>
+                        <p class="text-gray-600">La presencia de <i>T. asperellum</i> activa la Resistencia Sistémica Adquirida (SAR) de la planta. Esto funciona como una vacuna, fortaleciendo las defensas en toda la planta y haciéndola más resistente a futuras infecciones.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guía de Aplicación -->
+        <section id="aplicacion" class="py-20 bg-white">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="text-center">
+                        <img src="https://placehold.co/500x400/F0FDF4/89C444?text=Tratamiento+de+Semillas" alt="Tratamiento de semillas" class="rounded-lg inline-block shadow-lg">
+                    </div>
+                    <div>
+                        <span class="font-bold text-brand-brown">APLICACIÓN SIMPLE Y VERSÁTIL</span>
+                        <h2 class="text-4xl font-extrabold section-title mt-2 mb-6">Mezclar con Agua y Aplicar.</h2>
+                        <p class="text-lg text-gray-600 mb-4">T-Gro WP se mezcla fácilmente con un bajo volumen de agua para formar una suspensión. Ésta se aplica directamente sobre las semillas en un tambor giratorio o cualquier otro equipo de tratamiento, asegurando una cobertura completa y uniforme.</p>
+                        <p class="text-lg text-gray-600">La dosis varía según el cultivo y el método de siembra. <strong>Consulte a nuestro equipo técnico para una recomendación a medida.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Especificaciones Técnicas -->
+        <section id="especificaciones" class="py-20" style="background-color: var(--brand-background);">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold section-title">Especificaciones Técnicas</h2>
+                </div>
+                <div class="overflow-x-auto bg-white p-6 rounded-xl shadow-lg border border-gray-200 max-w-4xl mx-auto">
+                    <table class="w-full text-left">
+                        <tbody class="divide-y divide-gray-200">
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-gray-700">Ingrediente Activo</td>
+                                <td class="p-4 text-gray-600">Hongo benéfico <i>Trichoderma asperellum</i> (cepa exclusiva kd)</td>
+                            </tr>
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-gray-700">Concentración</td>
+                                <td class="p-4 text-gray-600">&gt; 2 × 10⁹ esporas por gramo</td>
+                            </tr>
+                             <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-gray-700">Formulación</td>
+                                <td class="p-4 text-gray-600">Polvo Mojable (WP)</td>
+                            </tr>
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-gray-700">Dosis Recomendada</td>
+                                <td class="p-4 text-gray-600">Variable según cultivo. Consultar con un asesor técnico.</td>
+                            </tr>
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-gray-700">Cultivos</td>
+                                <td class="p-4 text-gray-600">Hortícolas, frutales, y otros cultivos intensivos.</td>
+                            </tr>
+                             <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-gray-700">Presentación</td>
+                                <td class="p-4 text-gray-600">Bolsa de 250gr</td>
+                            </tr>
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-gray-700">Almacenamiento</td>
+                                <td class="p-4 text-gray-600">2 años a temperatura de heladera (4-10°C), 6 meses a temperatura ambiente.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Confianza Andermatt -->
+        <section id="confianza" class="py-20 bg-white">
+             <div class="container mx-auto px-6 max-w-4xl text-center">
+                 <img src="andermatt.png" alt="Logo Andermatt" class="mx-auto mb-6 h-12">
+                 <h2 class="text-4xl font-extrabold section-title mb-4">Un Producto de Confianza</h2>
+                 <p class="text-lg text-gray-600 mb-8 max-w-3xl mx-auto">T-Gro WP es desarrollado por Andermatt, líder en soluciones biológicas para la agricultura con sede en Suiza y el mayor productor mundial de insecticidas a base de virus. Un portfolio de soluciones compatibles con la producción orgánica que garantizan calidad y resultados.</p>
+                 <a href="https://www.andermatt.com" target="_blank" rel="noopener noreferrer" class="cta-button cta-brand inline-block text-white font-bold text-lg py-3 px-6 rounded-full">
+                    Conocer más sobre Andermatt
+                 </a>
+            </div>
+        </section>
+
+        <!-- Contacto / CTA Final -->
+        <section id="contacto" class="section-dark text-white">
+            <div class="container mx-auto px-6 py-20 max-w-4xl text-center">
+                <h2 class="text-4xl font-extrabold mb-4">¿Listo para Ver la Diferencia?</h2>
+                <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">Nuestro equipo de expertos está listo para ayudarle a diseñar un plan de aplicación a la medida de sus necesidades. Contáctenos hoy y dé el primer paso hacia una cosecha más eficiente y rentable.</p>
+                <a href="mailto:ventas@agricheck.com" class="cta-button cta-brand inline-block font-bold text-lg py-4 px-8 rounded-full">
+                    Contactar a un Experto
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="section-dark text-gray-300">
+        <div class="container mx-auto px-6 py-8 max-w-7xl text-center">
+            <p>&copy; 2025 T-Gro WP – AgriCheck. Todos los derechos reservados.</p>
+            <p class="text-sm mt-2">Potenciando la agricultura del futuro, hoy.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
