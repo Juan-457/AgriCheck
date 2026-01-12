@@ -1,770 +1,735 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-  <link rel="shortcut icon" href="favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png" />
-  <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png" />
-  <title>T-Gro Easy Flow | AgriCheck</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --green: #8bc34a;
-      --green-strong: #6aa334;
-      --dark: #111827;
-      --muted: #4b5563;
-      --card: #ffffff;
-      --bg: #f7f8f6;
-      --border: #e5e7eb;
-      --radius: 16px;
-      --shadow: 0 16px 40px rgba(0,0,0,0.08);
-      --max: 1100px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png" />
+    <title>T-Gro Easy Flow – AgriCheck | Inocular y Lubricar en un Solo Paso</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-green: #89C444;
+            --brand-brown: #9A7A4E;
+            --brand-dark-gray: #4B4B4D;
+            --brand-background: #F8F9F7;
+        }
 
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, sans-serif;
-      background: url('maiz.png') center/cover fixed no-repeat;
-      color: var(--dark);
-      line-height: 1.6;
-    }
-    a { color: inherit; text-decoration: none; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--brand-background);
+            color: var(--brand-dark-gray);
+        }
 
-    .container { max-width: var(--max); margin: 0 auto; padding: 0 18px; }
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 60;
+            padding: 10px 0;
+            background: rgba(255,255,255,.92);
+            border-bottom: 1px solid rgba(15, 23, 42, .08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+        }
 
-    header{
-      position:sticky;
-      top:0;
-      z-index:60;
-      padding: 10px 0;
-      background: rgba(255,255,255,.92);
-      border-bottom: 1px solid rgba(15, 23, 42, .08);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
-    }
+        header a { color: inherit; text-decoration: none; }
 
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      position:relative;
-      min-height: 44px;
-    }
-    .brandLogo img{ height:44px; width:auto; display:block; }
-    .brandLogo{
-      position:absolute;
-      left:0;
-      top:50%;
-      transform:translateY(-50%);
-      padding:6px 12px;
-      border-radius:14px;
-      background:#ffffff;
-      border:1px solid rgba(15, 23, 42, .08);
-      box-shadow:0 10px 22px rgba(15, 23, 42, .08);
-    }
-    .navlinks{
-      display:flex;
-      gap: 10px;
-      padding: 6px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, .04);
-      border: 1px solid rgba(15, 23, 42, .08);
-      box-shadow: 0 10px 26px rgba(15, 23, 42, .08);
-    }
-    .navlinks a{
-      padding: 10px 16px;
-      border-radius: 999px;
-      font-weight: 800;
-      color: #475569;
-      letter-spacing: -.01em;
-      transition: background .15s ease, transform .15s ease, color .15s ease;
-    }
-    .navlinks a:hover{ background: rgba(22, 163, 74, .12); transform: translateY(-1px); color: var(--green-strong); }
+        .nav-container { max-width: 1100px; margin: 0 auto; padding: 0 18px; }
 
-    .burger{
-      position:absolute;
-      right: 4px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 44px; height: 44px;
-      border-radius: 14px;
-      border: 1px solid rgba(15, 23, 42, .12);
-      background: rgba(255,255,255,.86);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      cursor:pointer;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      box-shadow: 0 10px 24px rgba(15, 23, 42, .12);
-    }
-    .burger:focus{ outline: 3px solid rgba(137,196,68,.65); outline-offset: 2px; }
-    .burgerLines{ width: 18px; height: 12px; position:relative; display:block; }
-    .burgerLines span{
-      position:absolute; left:0; width:100%; height:2px; background: #1f2937;
-      border-radius: 999px;
-      transition: transform .18s ease, top .18s ease, opacity .18s ease;
-    }
-    .burgerLines span:nth-child(1){ top:0 }
-    .burgerLines span:nth-child(2){ top:5px }
-    .burgerLines span:nth-child(3){ top:10px }
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            min-height: 44px;
+        }
+        .brandLogo img { height: 44px; width: auto; display: block; }
+        .brandLogo {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 6px 12px;
+            border-radius: 14px;
+            background: #ffffff;
+            border: 1px solid rgba(15, 23, 42, .08);
+            box-shadow: 0 10px 22px rgba(15, 23, 42, .08);
+        }
+        .navlinks {
+            display: flex;
+            gap: 10px;
+            padding: 6px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, .04);
+            border: 1px solid rgba(15, 23, 42, .08);
+            box-shadow: 0 10px 26px rgba(15, 23, 42, .08);
+        }
+        .navlinks a {
+            padding: 10px 16px;
+            border-radius: 999px;
+            font-weight: 800;
+            color: #475569;
+            letter-spacing: -.01em;
+            transition: background .15s ease, transform .15s ease, color .15s ease;
+        }
+        .navlinks a:hover { background: rgba(22, 163, 74, .12); transform: translateY(-1px); color: #166534; }
 
-    .mobileMenu{
-      display:none;
-      padding: 10px 0 14px;
-      background: rgba(255,255,255,.98);
-      border-top: 1px solid rgba(15, 23, 42, .08);
-    }
-    .mobileMenu .container{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-    }
-    .mobileMenu a{
-      padding: 12px 14px;
-      border-radius: 16px;
-      font-weight: 900;
-      color: #475569;
-      background: rgba(15, 23, 42, .04);
-      border: 1px solid rgba(15, 23, 42, .08);
-    }
+        .burger {
+            position: absolute;
+            right: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px; height: 44px;
+            border-radius: 14px;
+            border: 1px solid rgba(15, 23, 42, .12);
+            background: rgba(255,255,255,.86);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 10px 24px rgba(15, 23, 42, .12);
+        }
+        .burger:focus { outline: 3px solid rgba(137,196,68,.65); outline-offset: 2px; }
+        .burgerLines { width: 18px; height: 12px; position: relative; display: block; }
+        .burgerLines span {
+            position: absolute; left: 0; width: 100%; height: 2px; background: #1f2937;
+            border-radius: 999px;
+            transition: transform .18s ease, top .18s ease, opacity .18s ease;
+        }
+        .burgerLines span:nth-child(1) { top: 0 }
+        .burgerLines span:nth-child(2) { top: 5px }
+        .burgerLines span:nth-child(3) { top: 10px }
 
-    body.menuOpen .mobileMenu{ display:block; }
-    body.menuOpen .burgerLines span:nth-child(1){ top:5px; transform: rotate(45deg); }
-    body.menuOpen .burgerLines span:nth-child(2){ opacity:0; }
-    body.menuOpen .burgerLines span:nth-child(3){ top:5px; transform: rotate(-45deg); }
+        .mobileMenu {
+            display: none;
+            padding: 10px 0 14px;
+            background: rgba(255,255,255,.98);
+            border-top: 1px solid rgba(15, 23, 42, .08);
+        }
+        .mobileMenu .nav-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .mobileMenu a {
+            padding: 12px 14px;
+            border-radius: 16px;
+            font-weight: 900;
+            color: #475569;
+            background: rgba(15, 23, 42, .04);
+            border: 1px solid rgba(15, 23, 42, .08);
+        }
 
-    .hero {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(120deg, rgba(10, 28, 54, 0.82), rgba(10, 28, 54, 0.4)), url('tgro2.png') center/cover no-repeat;
-      color: #fff;
-      min-height: 100vh;
-    }
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: linear-gradient(120deg, rgba(10, 28, 54, 0.4), rgba(10, 28, 54, 0.18));
-      pointer-events:none;
-    }
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 120px 18px 90px;
-      min-height: calc(100vh - 80px);
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 32px;
-      align-items: center;
-    }
-    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: rgba(125, 211, 252, 0.18); color: #bae6fd; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; font-size: 12px; }
-    .hero h1 { margin: 14px 0 12px; font-size: clamp(34px, 5vw, 54px); line-height: 1.1; }
-    .hero p { margin: 0 0 16px; color: rgba(226, 232, 240, 0.92); font-size: 18px; }
-    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px; }
-    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 999px; font-weight: 800; border: 2px solid transparent; cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; }
-    .btn-primary { background: #ffffff; color: var(--green-strong); box-shadow: 0 18px 40px rgba(15, 23, 42, 0.2); }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 20px 46px rgba(15, 23, 42, 0.26); }
-    .btn-ghost { background: rgba(255,255,255,0.14); color: #fff; border-color: rgba(255,255,255,0.24); }
+        body.menuOpen .mobileMenu { display: block; }
+        body.menuOpen .burgerLines span:nth-child(1) { top: 5px; transform: rotate(45deg); }
+        body.menuOpen .burgerLines span:nth-child(2) { opacity: 0; }
+        body.menuOpen .burgerLines span:nth-child(3) { top: 5px; transform: rotate(-45deg); }
 
-    .product-card {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 22px;
-      padding: 22px;
-      box-shadow: 0 18px 34px rgba(0,0,0,0.18);
-      backdrop-filter: blur(6px);
-      text-align: center;
-    }
-    .product-card img { display: block; margin: 0 auto; width: 100%; max-width: 380px; border-radius: 16px; background: #fff; padding: 16px; box-shadow: 0 18px 40px rgba(0,0,0,0.14); }
-    .product-meta { margin-top: 14px; font-weight: 700; color: rgba(226, 232, 240, 0.9); }
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(120deg, rgba(10, 28, 54, 0.82), rgba(10, 28, 54, 0.4)), url('tgro2.png') center/cover no-repeat;
+            color: #fff;
+            min-height: 100vh;
+        }
+        .hero::before{
+            content:"";
+            position:absolute;
+            inset:0;
+            background: linear-gradient(120deg, rgba(10, 28, 54, 0.4), rgba(10, 28, 54, 0.18));
+            pointer-events:none;
+        }
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 120px 18px 90px;
+            min-height: calc(100vh - 80px);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            align-items: center;
+        }
+        .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: rgba(125, 211, 252, 0.18); color: #bae6fd; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; font-size: 12px; }
+        .hero h1 { margin: 14px 0 12px; font-size: clamp(34px, 5vw, 54px); line-height: 1.1; }
+        .hero p { margin: 0 0 16px; color: rgba(226, 232, 240, 0.92); font-size: 18px; }
+        .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px; }
+        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 999px; font-weight: 800; border: 2px solid transparent; cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+        .btn-primary { background: #ffffff; color: var(--brand-green); box-shadow: 0 18px 40px rgba(15, 23, 42, 0.2); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 20px 46px rgba(15, 23, 42, 0.26); }
+        .btn-ghost { background: rgba(255,255,255,0.14); color: #fff; border-color: rgba(255,255,255,0.24); }
+        .product-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 22px;
+            padding: 22px;
+            box-shadow: 0 18px 34px rgba(0,0,0,0.18);
+            backdrop-filter: blur(6px);
+            text-align: center;
+        }
+        .product-card img { display: block; margin: 0 auto; width: 100%; max-width: 380px; border-radius: 16px; background: #fff; padding: 16px; box-shadow: 0 18px 40px rgba(0,0,0,0.14); }
+        .product-meta { margin-top: 14px; font-weight: 700; color: rgba(226, 232, 240, 0.9); }
 
-    .section { max-width: var(--max); margin: 0 auto; padding: 56px 18px; }
-    .section h2 { font-size: clamp(26px, 3vw, 36px); margin: 0 0 12px; }
-    .section p.lead { color: var(--muted); margin: 0 0 24px; font-size: 17px; }
+        .section-title { color: var(--brand-dark-gray); }
 
-    .highlight-bubble{
-      background: rgba(255,255,255,0.9);
-      border: 1px solid rgba(17,24,39,0.08);
-      box-shadow: 0 18px 34px rgba(0,0,0,0.14);
-      border-radius: 18px;
-      padding: 18px 20px;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      max-width: 950px;
-      margin: 0 auto 28px;
-    }
+        .cta-button {
+            transition: all 0.3s ease;
+        }
 
-    .brandBadge {
-      margin-top: 18px;
-      display: flex;
-      justify-content: center;
-    }
-    .brandBadge a {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 14px;
-      border-radius: 16px;
-      background: #f8fafc;
-      border: 1px solid var(--border);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.08);
-      color: var(--dark);
-      font-weight: 800;
-    }
-    .brandBadge img {
-      height: 54px;
-      width: auto;
-      display: block;
-    }
-    .brandText {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      line-height: 1.2;
-    }
-    .brandLabel {
-      text-transform: uppercase;
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-      font-weight: 700;
-    }
-    .highlight-bubble h2{ margin:0 0 10px; }
-    .highlight-bubble .lead{ color: #1f2937; margin:0; }
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
 
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
-    .card h3 { margin: 8px 0 10px; font-size: 18px; }
-    .card p { margin: 0; color: var(--muted); }
+        .cta-button.cta-brand {
+            background-color: var(--brand-green);
+            color: white;
+        }
 
-    .grid-two { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
-    .list { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow); }
-    .list ul { margin: 10px 0 0; padding-left: 18px; color: var(--muted); line-height: 1.6; }
+        .cta-button.cta-brand:hover {
+            filter: brightness(1.1);
+        }
 
-    /* Contacto */
-    .kicker{
-      font-weight:900;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      font-size:12px;
-      color:rgba(17, 24, 39, .72);
-    }
-    .muted{
-      color:var(--muted);
-      line-height:1.75;
-      font-size:16px;
-    }
-    .sectionHead{
-      display:inline-block;
-      text-align:center;
-      padding:14px 18px;
-      border-radius:16px;
-      background:rgba(255,255,255,.62);
-      border:1px solid rgba(17,24,39,.10);
-      box-shadow:0 14px 30px rgba(0,0,0,.10);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      max-width:920px;
-    }
-    .sectionTitle{
-      margin:0;
-      font-size: clamp(22px, 2.8vw, 34px);
-      letter-spacing:-0.02em;
-      line-height:1.15;
-      color:rgba(17, 24, 39, .96);
-      text-shadow: 0 1px 0 rgba(255,255,255,.25);
-    }
-    .sectionLead{margin:8px auto 0; max-width:820px}
-    .sectionCard{padding:26px}
-    .sectionCard .sectionHead{
-      display:block;
-      background:transparent;
-      border:0;
-      box-shadow:none;
-      backdrop-filter:none;
-      -webkit-backdrop-filter:none;
-      padding:0;
-      max-width:none;
-    }
-    .subCard{
-      background: rgba(255,255,255,.72);
-      border: 1px solid rgba(137,196,68,.28);
-      box-shadow: 0 14px 26px rgba(0,0,0,.10);
-      border-radius: calc(var(--radius) - 2px);
-      padding:18px;
-    }
-    .contactGrid{
-      margin-top:18px;
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:16px;
-      align-items:start;
-    }
-    .contactList{
-      margin:0;
-      padding-left:18px;
-      color:rgba(31,41,55,.78);
-      line-height:1.75;
-    }
-    .contactRow{display:flex;flex-direction:column;gap:10px}
-    .contactActions{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
-    .btnIcon{width:18px;height:18px;display:inline-block;flex:0 0 auto}
-    .contactLink{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      font-weight:900;
-      color: rgba(17,24,39,.92);
-      padding:10px 14px;
-      border-radius:999px;
-      background: rgba(255,255,255,.78);
-      border:1px solid rgba(17,24,39,.10);
-      box-shadow: 0 10px 18px rgba(0,0,0,.10);
-    }
-    .contactLink:hover{transform: translateY(-1px)}
-    .contactLink .btnIcon{width:18px;height:18px}
+        .benefit-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #ffffff;
+        }
 
-    footer { background: rgba(15, 23, 42, .62); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: rgba(255,255,255,.88); padding: 14px 0; text-align:center; border-top: 1px solid rgba(255,255,255,.10); margin-top: 32px; }
-    footer a{color:rgba(255,255,255,.88)}
-    footer a:hover{color:#89C444}
-    .footGrid{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      gap:6px;
-      font-size:14px;
-    }
-    .whatsapp-float{
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      width:56px;
-      height:56px;
-      background:#25D366;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow:0 8px 22px rgba(0,0,0,.28);
-      z-index:999;
-      transition:transform .2s ease, box-shadow .2s ease;
-    }
-    .whatsapp-float img{width:26px;height:26px;display:block}
-    .whatsapp-float:hover{transform:translateY(-2px); box-shadow:0 12px 30px rgba(0,0,0,.32)}
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(46, 91, 58, 0.15);
+        }
 
-    .results { background: linear-gradient(180deg, #fdfdfc, #eef4e6); border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow); }
-    .tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
-    .tabs button { border: 1px solid var(--border); background: #fff; padding: 10px 14px; border-radius: 999px; font-weight: 800; cursor: pointer; transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease; }
-    .tabs button.active { background: var(--green); border-color: var(--green-strong); color: #0b1e07; }
-    .chart-wrap { background: #fff; border-radius: 14px; border: 1px solid var(--border); padding: 18px; box-shadow: var(--shadow); position: relative; }
-    #resultsChart { width: 100% !important; height: 360px !important; max-height: 420px; }
-    #chart-footer { text-align: center; color: var(--muted); font-weight: 600; margin-top: 12px; }
+        .text-brand-green { color: var(--brand-green); }
 
-    @media(max-width:900px){
-      .navlinks{display:none}
-      .burger{display:flex}
-    }
+        .text-brand-brown { color: var(--brand-brown); }
 
-    @media (max-width: 640px) {
-      .hero-inner { padding-top: 64px; }
-      #resultsChart { height: 320px !important; }
-      .brandLogo{left:12px;}
-      .contactGrid{grid-template-columns:1fr}
-    }
-  </style>
+        .section-dark { background-color: var(--brand-dark-gray); }
+
+        .benefit-icon { background-color: #f1f8e9; color: var(--brand-green); }
+
+        .tab-button {
+            background-color: #f3f4f6;
+            color: #4b5563;
+        }
+
+        .tab-button.active {
+            background-color: #166534;
+            color: #ffffff;
+        }
+
+        .results-card { background: #ffffff; border-radius: 1rem; box-shadow: 0 20px 35px rgba(15, 23, 42, 0.08); border: 1px solid #e5e7eb; }
+
+        .gallery-container {
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-container:hover .gallery-overlay { opacity: 1; }
+
+        #imageModal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+            align-items: center;
+            justify-content: center;
+        }
+
+        #modalImage {
+            margin: auto;
+            display: block;
+            max-width: 80%;
+            max-height: 80%;
+            transition: transform 0.3s ease;
+            cursor: zoom-in;
+        }
+
+        #modalImage.zoomed {
+            transform: scale(1.5);
+            cursor: zoom-out;
+        }
+
+        .modal-nav {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 30px;
+            transition: 0.3s ease;
+            user-select: none;
+        }
+
+        .modal-nav.prev { left: 10px; }
+        .modal-nav.next { right: 10px; }
+        .modal-nav:hover { color: #bbb; }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s ease;
+            cursor: pointer;
+        }
+
+        .close-modal:hover { color: #bbb; }
+
+        @media(max-width:900px){
+            .navlinks{display:none}
+            .burger{display:flex}
+        }
+
+        @media (max-width: 640px) {
+            .hero-inner { padding-top: 64px; }
+            .brandLogo{left:12px;}
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <div class="container">
-      <div class="topbar">
-        <a class="brandLogo" href="index.html" aria-label="Volver al inicio de AgriCheck">
-          <img src="agrichecklogo.png" alt="AgriCheck" />
-        </a>
+<body class="text-slate-800">
 
-        <nav class="navlinks" aria-label="Navegación principal">
-          <a href="#producto">Producto</a>
-          <a href="#beneficios">Beneficios</a>
-          <a href="#resultados">Resultados</a>
-          <a href="#ciencia">Ciencia</a>
-          <a href="#contacto">Contacto</a>
-        </nav>
+    <header>
+        <div class="nav-container">
+            <div class="topbar">
+                <a class="brandLogo" href="index.html" aria-label="Volver al inicio de AgriCheck">
+                    <img src="agrichecklogo.png" alt="AgriCheck" />
+                </a>
 
-        <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
-          <span class="burgerLines" aria-hidden="true"><span></span><span></span><span></span></span>
-        </button>
-      </div>
-    </div>
+                <nav class="navlinks" aria-label="Navegación principal">
+                    <a href="#beneficios">Beneficios</a>
+                    <a href="#resultados">Resultados</a>
+                    <a href="#como-funciona">¿Cómo Funciona?</a>
+                    <a href="#aplicacion">Aplicación</a>
+                    <a href="#especificaciones">Especificaciones</a>
+                    <a href="#contacto">Contacto</a>
+                </nav>
 
-    <div class="mobileMenu" id="mobileMenu" aria-label="Menú mobile">
-      <div class="container">
-        <a href="#producto" data-close-menu>Producto</a>
-        <a href="#beneficios" data-close-menu>Beneficios</a>
-        <a href="#resultados" data-close-menu>Resultados</a>
-        <a href="#ciencia" data-close-menu>Ciencia</a>
-        <a href="#contacto" data-close-menu>Contacto</a>
-      </div>
-    </div>
-  </header>
-
-  <section class="hero" id="producto">
-    <div class="hero-inner">
-      <div>
-        <div class="pill">El primer inoculante para maíz</div>
-        <h1>T-Gro Easy Flow</h1>
-        <p>Inocula y lubrica en un solo paso. La tecnología exclusiva que combina un potente inoculante biológico con un lubricante de alto rendimiento para sembrar sin complicaciones.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#contacto">Hablar con un asesor</a>
-          <a class="btn btn-ghost" href="#resultados">Ver resultados</a>
-        </div>
-      </div>
-      <div class="product-card">
-        <img src="tgro.png" alt="Bolsa T-Gro Easy Flow" />
-        <div class="product-meta">Bolsa de 1 kg | Aplicación directa en tolva</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="beneficios">
-    <div class="highlight-bubble">
-      <h2>Inocular y Lubricar en un Solo Paso</h2>
-      <p class="lead">Nuestra tecnología única en talco y grafito combina la inoculación con la lubricación, ahorrando tiempo y simplificando la siembra mientras protege el potencial del cultivo.</p>
-    </div>
-    <div class="cards">
-      <div class="card">
-        <h3>Mejor Emergencia y Stand</h3>
-        <p>Asegura una densidad de plantación uniforme, contribuyendo a alcanzar el potencial óptimo de las plantas.</p>
-      </div>
-      <div class="card">
-        <h3>Inocular y Lubricar en 1 Paso</h3>
-        <p>Inoculación y lubricación en la misma tarea para sembrar más rápido y con menos fricción.</p>
-      </div>
-      <div class="card">
-        <h3>Protección Radicular</h3>
-        <p>Coloniza la rizósfera, protegiendo las raíces de patógenos del suelo y mejorando la tolerancia al estrés.</p>
-      </div>
-      <div class="card">
-        <h3>Aumento de Rinde</h3>
-        <p>Plantas más sanas y resilientes se traducen en un mayor potencial de rendimiento.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section results" id="resultados">
-    <h2>Resultados Comprobados en Maíz</h2>
-    <p class="lead">Más de 20 ensayos en diferentes regiones muestran incrementos consistentes de productividad.</p>
-    <div class="tabs" id="tab-buttons">
-      <button class="active" data-crop="maiz_23_24_vertico">Maíz 23-24 (Vertico)</button>
-      <button data-crop="maiz_23_24_barrow">Maíz 23-24 (Barrow)</button>
-      <button data-crop="maiz_23_24_pergamino">Maíz 23-24 (Pergamino)</button>
-      <button data-crop="maiz_24_25_barrow">Maíz 24-25 (Barrow)</button>
-      <button data-crop="maiz_24_25_pergamino">Maíz 24-25 (Pergamino)</button>
-    </div>
-    <div class="chart-wrap">
-      <canvas id="resultsChart" height="320"></canvas>
-      <p id="chart-footer"></p>
-    </div>
-  </section>
-
-  <section class="section" id="ciencia">
-    <div class="grid-two">
-      <div class="list">
-        <h2>La Ciencia Detrás de T-Gro Easy Flow</h2>
-        <p class="lead">El ingrediente activo es la cepa exclusiva kd de <em>Trichoderma asperellum</em>, seleccionada entre más de 1000 cepas por su excepcional capacidad de colonización y promoción del crecimiento.</p>
-        <ul>
-          <li><strong>Competencia y parasitismo:</strong> coloniza agresivamente la zona de raíces, desplazando patógenos y parasitando hongos dañinos.</li>
-          <li><strong>Resistencia Sistémica (SAR):</strong> activa defensas naturales de la planta, fortaleciendo la tolerancia a futuras infecciones.</li>
-        </ul>
-      </div>
-      <div class="list">
-        <h2>Aplicación Simple y Efectiva</h2>
-        <p>Directo en la tolva. La agitación del equipo distribuye el polvo uniformemente sobre las semillas.</p>
-        <ul>
-          <li>Dosis recomendada: 2 gramos por kg de semilla.</li>
-          <li>Formulación en polvo: inoculante + lubricante listo para usar.</li>
-          <li>Compatible con maíz y otros cultivos.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="grid-two">
-      <div class="list">
-        <h2>Especificaciones Técnicas</h2>
-        <ul>
-          <li>Ingrediente activo: <em>Trichoderma asperellum</em> (cepa exclusiva kd).</li>
-          <li>Concentración: &gt; 1,2 × 10⁹ esporas por gramo.</li>
-          <li>Presentación: bolsa de 1 kg.</li>
-          <li>Formato: polvo seco a base de grafito y talco (inoculante + lubricante).</li>
-        </ul>
-      </div>
-      <div class="list">
-        <h2>Un Producto de Confianza</h2>
-        <p>T-Gro Easy Flow es desarrollado por Andermatt, líder mundial en soluciones biológicas con base en Suiza.</p>
-        <p class="lead">Nuestro equipo está listo para ayudarte a diseñar un plan de aplicación a medida para lograr una cosecha más eficiente y rentable.</p>
-        <div class="brandBadge">
-          <a href="https://www.andermatt.com/es/" target="_blank" rel="noopener">
-            <img src="andermatt.png" alt="Andermatt" loading="lazy">
-            <div class="brandText">
-              <span class="brandLabel">Desarrollado por</span>
-              <span>Andermatt</span>
+                <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+                    <span class="burgerLines" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
             </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contacto" class="section">
-    <div class="container">
-      <div class="card sectionCard">
-        <div class="center">
-          <div class="sectionHead">
-            <div class="kicker">AgriCheck</div>
-            <h2 class="sectionTitle">Contacto</h2>
-            <p class="muted sectionLead">
-              Desde 2001, en AgriCheck trabajamos con una misión clara: Desarrollar y comercializar agroinsumos especiales eficientes para una agricultura sustentable y ecológica en el país.
-            </p>
-          </div>
         </div>
 
-        <div class="contactGrid">
-          <div class="subCard">
-            <h3 style="margin:0 0 10px">Datos</h3>
-            <ul class="contactList">
-              <li><strong>Dirección:</strong> San Juan 50, General Roca, Argentina</li>
-              <li><strong>Email:</strong> <a href="mailto:info@agrichecksrl.com">info@agrichecksrl.com</a></li>
-              <li><strong>Teléfono:</strong> <a href="tel:+5492984763055">+54 9 2984 76-3055</a></li>
-            </ul>
-          </div>
-
-          <div class="subCard">
-            <h3 style="margin:0 0 10px">Redes</h3>
-            <div class="contactRow">
-              <div class="contactActions">
-                <a class="contactLink" href="https://www.instagram.com/agricheck.srl/" target="_blank" rel="noopener" aria-label="Abrir Instagram de AgriCheck">
-                  <svg class="btnIcon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                    <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM18 6.2a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                  </svg>
-                  Instagram
-                </a>
-
-                <a class="contactLink" href="https://www.facebook.com/profile.php?id=100071954765421" target="_blank" rel="noopener" aria-label="Abrir Facebook de AgriCheck">
-                  <svg class="btnIcon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                    <path fill="currentColor" d="M13.5 22v-8h2.7l.4-3h-3.1V9.2c0-.9.2-1.5 1.6-1.5h1.7V5.1c-.3 0-1.4-.1-2.7-.1-2.7 0-4.5 1.6-4.5 4.6V11H7v3h2.9v8h3.6z"/>
-                  </svg>
-                  Facebook
-                </a>
-
-                <a class="contactLink" href="https://wa.me/+5492984763055?text=Hola%20AgriCheck!%20Quiero%20hacer%20una%20consulta." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
-                  <svg class="btnIcon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                    <path fill="currentColor" d="M12 2a9.7 9.7 0 0 0-8.5 14.4L2 22l5.8-1.5A9.7 9.7 0 1 0 12 2zm0 2a7.7 7.7 0 0 1 0 15.4c-1.4 0-2.7-.4-3.9-1l-.3-.2-3.4.9.9-3.3-.2-.3A7.7 7.7 0 0 1 12 4zm4.2 9.6c-.2-.1-1.2-.6-1.4-.7-.2-.1-.4-.1-.6.1-.2.2-.7.7-.8.9-.1.1-.3.2-.5.1-.2-.1-.9-.3-1.7-1.1-.6-.5-1-1.2-1.1-1.4-.1-.2 0-.4.1-.5l.4-.4c.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5 0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.4-.2.3-1 1-1 2.4 0 1.4 1 2.7 1.2 2.9.1.2 2 3 4.9 4.2.7.3 1.2.4 1.6.5.7.2 1.4.2 1.9.1.6-.1 1.2-.5 1.4-.9.2-.4.2-.8.1-.9 0-.1-.2-.2-.4-.3z"/>
-                  </svg>
-                  WhatsApp
-                </a>
-              </div>
-
-              <div class="muted" style="font-size:14px; margin-top:2px">
-                Seguinos para ver novedades, recorridas a campo y contenido técnico.
-              </div>
+        <div class="mobileMenu" id="mobileMenu" aria-label="Menú mobile">
+            <div class="nav-container">
+                <a href="#beneficios" data-close-menu>Beneficios</a>
+                <a href="#resultados" data-close-menu>Resultados</a>
+                <a href="#como-funciona" data-close-menu>¿Cómo Funciona?</a>
+                <a href="#aplicacion" data-close-menu>Aplicación</a>
+                <a href="#especificaciones" data-close-menu>Especificaciones</a>
+                <a href="#contacto" data-close-menu>Contacto</a>
             </div>
-          </div>
         </div>
+    </header>
 
-      </div>
-    </div>
-  </section>
+    <main>
+        <section class="hero" id="producto">
+            <div class="hero-inner">
+                <div>
+                    <div class="pill">El primer inoculante para maíz</div>
+                    <h1>Inocular y Lubricar en un Solo Paso.</h1>
+                    <p>T-Gro Easy Flow revoluciona la inoculación del maíz con su tecnología exclusiva que fusiona un potente inoculante biológico con un lubricante de alto rendimiento. Directo en la sembradora, sin complicaciones.</p>
+                    <div class="hero-actions">
+                        <a href="#contacto" class="btn btn-primary">Solicitar asesoramiento</a>
+                        <a href="#resultados" class="btn btn-ghost">Ver resultados</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="tgro.png" alt="Bolsa T-Gro Easy Flow">
+                    <div class="product-meta">Bolsa de 1 kg | Aplicación directa en tolva</div>
+                </div>
+            </div>
+        </section>
 
-  <footer>
-    <div class="container">
-      <div class="footGrid">
-        <div>Copyright © Agricheck <span id="year"></span>.</div>
-        <div class="footer-designed">
-          <p style="display:flex; justify-content:center; align-items:center; gap:6px; margin:0;">
-            Diseñado por UmanoAI
-            <a href="https://umanoai.com.ar" target="_blank" rel="noopener" style="display:inline-block;">
-              <img src="umanoai.png" alt="UmanoAI" style="height:18px;">
-            </a>
-          </p>
+        <section id="beneficios" class="py-20 bg-white">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold section-title">Optimice su Siembra. Potencie su Cosecha.</h2>
+                    <p class="mt-4 text-lg max-w-3xl mx-auto text-gray-600">T-Gro Easy Flow es una herramienta integral que mejora la eficiencia en el campo y la salud de sus cultivos desde el día uno.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="benefit-card p-8 rounded-xl border border-gray-200 text-center">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full benefit-icon mx-auto mb-5 text-3xl">🌱</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Mejor Emergencia y Stand</h3>
+                        <p class="text-gray-600">Asegura una densidad de plantación uniforme, contribuyendo a alcanzar el potencial óptimo de las plantas.</p>
+                    </div>
+                    <div class="benefit-card p-8 rounded-xl border border-gray-200 text-center">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full benefit-icon mx-auto mb-5 text-3xl">✨</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Inocular y Lubricar en 1 Paso</h3>
+                        <p class="text-gray-600">Nuestra tecnología única en talco y grafito combina la inoculación con la lubricación, ahorrando tiempo y simplificando la siembra.</p>
+                    </div>
+                    <div class="benefit-card p-8 rounded-xl border border-gray-200 text-center">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full benefit-icon mx-auto mb-5 text-3xl">🛡️</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Protección Radicular</h3>
+                        <p class="text-gray-600">Coloniza la rizosfera, protegiendo las raíces de patógenos del suelo y mejorando la tolerancia al estrés.</p>
+                    </div>
+                    <div class="benefit-card p-8 rounded-xl border border-gray-200 text-center">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full benefit-icon mx-auto mb-5 text-3xl">📈</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Aumento de Rinde</h3>
+                        <p class="text-gray-600">Plantas más sanas, con un sistema radicular superior y resilientes al estrés se traducen en un mayor potencial de rendimiento.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resultados" class="py-20" style="background-color: var(--brand-background);">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold section-title">Resultados Comprobados en Maíz</h2>
+                    <p class="mt-4 text-lg max-w-3xl mx-auto text-gray-600">Más de 20 ensayos en diferentes regiones han comprobado aumentos consistentes en la productividad.</p>
+                </div>
+                <div id="tab-buttons" class="flex flex-wrap justify-center gap-2 md:gap-4 mb-8">
+                    <button class="tab-button active font-bold py-2 px-5 rounded-full" data-crop="maiz_23_24_vertico">Maíz 23-24 (Vertico)</button>
+                    <button class="tab-button font-bold py-2 px-5 rounded-full" data-crop="maiz_23_24_barrow">Maíz 23-24 (Barrow)</button>
+                    <button class="tab-button font-bold py-2 px-5 rounded-full" data-crop="maiz_23_24_pergamino">Maíz 23-24 (Pergamino)</button>
+                    <button class="tab-button font-bold py-2 px-5 rounded-full" data-crop="maiz_24_25_barrow">Maíz 24-25 (Barrow)</button>
+                    <button class="tab-button font-bold py-2 px-5 rounded-full" data-crop="maiz_24_25_pergamino">Maíz 24-25 (Pergamino)</button>
+                </div>
+                <div class="results-card p-6 md:p-8 max-w-4xl mx-auto">
+                    <div class="h-80 md:h-96">
+                        <canvas id="resultsChart"></canvas>
+                    </div>
+                    <p id="chart-footer" class="text-center text-slate-500 mt-4 font-medium"></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="como-funciona" class="py-20 bg-white">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold section-title">La Ciencia Detrás de T-Gro Easy Flow</h2>
+                    <p class="mt-4 text-lg max-w-3xl mx-auto text-gray-600">El ingrediente activo es la <strong>cepa exclusiva kd</strong> de <i>Trichoderma asperellum</i>, seleccionada rigurosamente tras un screening de más de 1000 cepas por su excepcional capacidad de colonización y promoción del crecimiento. Este hongo benéfico forma una relación simbiótica con las raíces, ofreciendo múltiples beneficios de protección y crecimiento.</p>
+                </div>
+                <div class="bg-gray-50 p-8 md:p-12 rounded-xl shadow-lg border border-gray-200 max-w-5xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3" style="color: var(--brand-dark-gray);">Competencia y Parasitismo</h3>
+                        <p class="text-gray-600"><i>T. asperellum</i> es un colonizador agresivo. Crece rápidamente y ocupa espacio en la zona de las raíces, superando a los hongos patógenos en la competencia por nutrientes. Además, parasita a otros hongos dañinos: se enrosca alrededor de sus hifas, secreta enzimas que penetran sus paredes celulares y finalmente los destruye.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3" style="color: var(--brand-dark-gray);">Resistencia Sistémica (SAR)</h3>
+                        <p class="text-gray-600">La presencia de <i>T. asperellum</i> activa la Resistencia Sistémica Adquirida (SAR) de la planta. Esto es como una vacuna: la planta entra en un estado de inmunidad mejorada y fortalece sus defensas ante futuras infecciones.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="aplicacion" class="py-20" style="background-color: var(--brand-background);">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div id="gallery-trigger" class="text-center">
+                        <div class="gallery-container inline-block shadow-lg">
+                            <img src="https://placehold.co/500x400/F0FDF4/166534?text=Tolva+de+Sembradora" alt="Aplicación en sembradora" class="rounded-lg w-full">
+                            <div class="gallery-overlay">
+                                <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="font-bold text-brand-brown">APLICACIÓN SIMPLE Y EFECTIVA</span>
+                        <h2 class="text-4xl font-extrabold section-title mt-2 mb-6">Directo en la Tolva. Sin Complicaciones.</h2>
+                        <p class="text-lg text-gray-600 mb-4">T-Gro Easy Flow se añade simplemente a la tolva de semillas. A medida que el tractor se mueve, la agitación de la tolva garantiza una distribución uniforme del polvo por toda la tolva, cubriendo las semillas de manera eficiente.</p>
+                        <p class="text-lg text-gray-600">La dosis recomendada es de <strong>2 gramos por kg de semilla</strong>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="especificaciones" class="py-20 bg-white">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold section-title">Especificaciones Técnicas</h2>
+                </div>
+                <div class="overflow-x-auto bg-gray-50 p-6 rounded-xl shadow-lg border border-gray-200 max-w-4xl mx-auto">
+                    <table class="w-full text-left">
+                        <tbody class="divide-y divide-gray-200">
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-gray-700">Ingrediente Activo</td>
+                                <td class="p-4 text-gray-600">Hongo benéfico <i>Trichoderma asperellum</i> (cepa exclusiva kd)</td>
+                            </tr>
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-gray-700">Concentración</td>
+                                <td class="p-4 text-gray-600">&gt; 1,2 × 10⁹ esporas por gramo</td>
+                            </tr>
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-gray-700">Formulación</td>
+                                <td class="p-4 text-gray-600">Polvo seco a base de grafito y talco (Inoculante + Lubricante)</td>
+                            </tr>
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-gray-700">Dosis Recomendada</td>
+                                <td class="p-4 text-gray-600">2 gramos por kg de semilla de Maíz</td>
+                            </tr>
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-gray-700">Cultivos</td>
+                                <td class="p-4 text-gray-600">Maíz y otros.</td>
+                            </tr>
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-gray-700">Presentación</td>
+                                <td class="p-4 text-gray-600">Bolsa de 1Kg</td>
+                            </tr>
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-gray-700">Almacenamiento</td>
+                                <td class="p-4 text-gray-600">2 años a temperatura de heladera (4-10°C), 6 meses a temperatura ambiente.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="confianza" class="py-20" style="background-color: var(--brand-background);">
+            <div class="container mx-auto px-6 max-w-4xl text-center">
+                <img src="andermatt.png" alt="Logo Andermatt" class="mx-auto mb-6 h-12">
+                <h2 class="text-4xl font-extrabold section-title mb-4">Un Producto de Confianza</h2>
+                <p class="text-lg text-gray-600 mb-8 max-w-3xl mx-auto">T-Gro Easy Flow es desarrollado por Andermatt, líder en soluciones biológicas para la agricultura con sede en Suiza y el mayor productor mundial de insecticidas a base de virus. Un portfolio de soluciones compatibles con la producción orgánica que garantizan calidad y resultados.</p>
+                <a href="https://www.andermatt.com" target="_blank" rel="noopener noreferrer" class="cta-button cta-brand inline-block text-white font-bold text-lg py-3 px-6 rounded-full">
+                    Conocer más sobre Andermatt
+                </a>
+            </div>
+        </section>
+
+        <section id="contacto" class="section-dark text-white">
+            <div class="container mx-auto px-6 py-20 max-w-4xl text-center">
+                <h2 class="text-4xl font-extrabold mb-4">¿Listo para Ver la Diferencia?</h2>
+                <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">Nuestro equipo de expertos está listo para ayudarle a diseñar un plan de aplicación a la medida de sus necesidades. Contáctenos hoy y dé el primer paso hacia una cosecha más eficiente y rentable.</p>
+                <a href="mailto:ventas@agricheck.com" class="cta-button cta-brand inline-block font-bold text-lg py-4 px-8 rounded-full">
+                    Contactar a un Experto
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="section-dark text-gray-300">
+        <div class="container mx-auto px-6 py-8 max-w-7xl text-center">
+            <p>&copy; 2025 T-Gro Easy Flow – AgriCheck. Todos los derechos reservados.</p>
+            <p class="text-sm mt-2">Potenciando la agricultura del futuro, hoy.</p>
         </div>
-      </div>
+    </footer>
+
+    <div id="imageModal" class="flex">
+        <span class="close-modal">&times;</span>
+        <span class="modal-nav prev">&#10094;</span>
+        <img id="modalImage" alt="Imagen ampliada de aplicación">
+        <span class="modal-nav next">&#10095;</span>
     </div>
-  </footer>
 
-  <a
-    class="whatsapp-float"
-    href="https://wa.me/+5492984763055?text=Hola%20AgriCheck!%20Quiero%20hacer%20una%20consulta."
-    target="_blank"
-    rel="noopener"
-    aria-label="Contactar por WhatsApp"
-  >
-    <img
-      src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-      alt="WhatsApp"
-    />
-  </a>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const burger = document.querySelector('.burger');
+            const menu = document.getElementById('mobileMenu');
+            const links = document.querySelectorAll('[data-close-menu]');
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const burger = document.querySelector('.burger');
-      const menu = document.getElementById('mobileMenu');
-      const links = document.querySelectorAll('[data-close-menu]');
-      const yearEl = document.getElementById('year');
-
-      if(yearEl){
-        yearEl.textContent = new Date().getFullYear();
-      }
-
-      function toggleMenu(open){
-        document.body.classList.toggle('menuOpen', open);
-        if(burger){
-          burger.setAttribute('aria-expanded', String(open));
-          burger.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
-        }
-      }
-
-      if(burger && menu){
-        burger.addEventListener('click', () => toggleMenu(!document.body.classList.contains('menuOpen')));
-        links.forEach(link => link.addEventListener('click', () => toggleMenu(false)));
-      }
-
-      Chart.register(ChartDataLabels);
-
-      const chartData = {
-        maiz_23_24_vertico: {
-          labels: ['Testigo', 'T-Gro EF 1gr/kg', 'T-Gro EF 2gr/kg'],
-          data: [5149, 5816, 6232],
-          dataLabels: ['ab', '12,95% bc\n+667Kg', '21,03% c\n+1083Kg'],
-          label: 'Rinde (Kg/ha)',
-          footer: 'Vertico SRL. Entre Ríos'
-        },
-        maiz_23_24_barrow: {
-          labels: ['Testigo', 'T-Gro EF 1gr/kg', 'T-Gro EF 2gr/kg'],
-          data: [4463, 4693, 4995],
-          dataLabels: ['b', '5,2% b\n+230Kg', '11,9% a\n+532Kg'],
-          label: 'Rinde (Kg/ha)',
-          footer: 'Ch. Experimental Barrow - INTA Tres Arroyos. Ing Agr (MSc) Martín Zamora'
-        },
-        maiz_23_24_pergamino: {
-          labels: ['Testigo', 'T-Gro EF 1gr/kg', 'T-Gro EF 2gr/kg'],
-          data: [9792, 10154, 10881],
-          dataLabels: ['b', '3,7% b\n+362Kg', '11,1% a\n+1089Kg'],
-          label: 'Rinde (Kg/ha)',
-          footer: 'INTA Pergamino - Gustavo N. Ferraris'
-        },
-        maiz_24_25_barrow: {
-          labels: ['Testigo', 'T-Gro EF 1gr/kg', 'T-Gro EF 2gr/kg'],
-          data: [8591, 9390, 9874],
-          dataLabels: ['b', '9,3% b\n+799Kg', '14,93% a\n+1283Kg'],
-          label: 'Rinde (Kg/ha)',
-          footer: 'Ch. Experimental Barrow - INTA Tres Arroyos. Ing Agr (MSc) Martín Zamora'
-        },
-        maiz_24_25_pergamino: {
-          labels: ['Testigo', 'T-Gro EF 1gr/kg', 'T-Gro EF 2gr/kg'],
-          data: [8939, 9216, 10231],
-          dataLabels: ['c', '3,10% b\n+277Kg', '14,45% a\n+1292Kg'],
-          label: 'Rinde (Kg/ha)',
-          footer: 'INTA Pergamino - Gustavo N. Ferrari'
-        }
-      };
-
-      const tabs = document.querySelectorAll('#tab-buttons button');
-      const chartFooter = document.getElementById('chart-footer');
-      const ctx = document.getElementById('resultsChart').getContext('2d');
-      let resultsChart;
-
-      function renderChart(key) {
-        const data = chartData[key];
-        if (!data) return;
-
-        const maxValue = Math.max(...data.data);
-        const padding = Math.max(150, Math.round(maxValue * 0.08));
-
-        if (resultsChart) resultsChart.destroy();
-
-        resultsChart = new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: data.labels,
-            datasets: [{
-              label: data.label,
-              data: data.data,
-              backgroundColor: [
-                'rgba(107, 114, 128, 0.7)',
-                'rgba(74, 222, 128, 0.8)',
-                'rgba(34, 197, 94, 0.8)'
-              ],
-              borderColor: [
-                'rgba(107, 114, 128, 1)',
-                'rgba(74, 222, 128, 1)',
-                'rgba(34, 197, 94, 1)'
-              ],
-              borderWidth: 2,
-              borderRadius: 8
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              legend: { display: false },
-              tooltip: {
-                callbacks: {
-                  label: (context) => `${context.dataset.label}: ${context.parsed.y} kg/ha`
+            function toggleMenu(open) {
+                document.body.classList.toggle('menuOpen', open);
+                if (burger) {
+                    burger.setAttribute('aria-expanded', String(open));
+                    burger.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
                 }
-              },
-              datalabels: {
-                color: '#111827',
-                font: { weight: 'bold', size: 13 },
-                anchor: 'end',
-                align: 'top',
-                offset: 6,
-                formatter: (_value, context) => data.dataLabels[context.dataIndex],
-                textAlign: 'center'
-              }
-            },
-            scales: {
-              y: {
-                beginAtZero: true,
-                suggestedMax: maxValue + padding,
-                grid: { color: '#e5e7eb' },
-                ticks: { color: '#374151' }
-              },
-              x: {
-                grid: { display: false },
-                ticks: { color: '#374151', font: { weight: 'bold' } }
-              }
             }
-          }
+
+            if (burger && menu) {
+                burger.addEventListener('click', () => toggleMenu(!document.body.classList.contains('menuOpen')));
+                links.forEach(link => link.addEventListener('click', () => toggleMenu(false)));
+            }
+
+            Chart.register(ChartDataLabels);
+            const chartData = {
+                maiz_23_24_vertico: {
+                    labels: ['Testigo', 'T-Gro EF 1gr/kg', 'T-Gro EF 2gr/kg'],
+                    data: [5149, 5816, 6232],
+                    dataLabels: ['ab', '12,95% bc\n+667Kg', '21,03% c\n+1083Kg'],
+                    label: 'Rinde (Kg/ha)',
+                    footer: 'Vertico SRL. Entre Ríos'
+                },
+                maiz_23_24_barrow: {
+                    labels: ['Testigo', 'T-Gro EF 1gr/kg', 'T-Gro EF 2gr/kg'],
+                    data: [4463, 4693, 4995],
+                    dataLabels: ['b', '5,2% b\n+230Kg', '11,9% a\n+532Kg'],
+                    label: 'Rinde (Kg/ha)',
+                    footer: 'Ch. Experimental Barrow - INTA Tres Arroyos. Ing Agr (MSc) Martín Zamora'
+                },
+                maiz_23_24_pergamino: {
+                    labels: ['Testigo', 'T-Gro EF 1gr/kg', 'T-Gro EF 2gr/kg'],
+                    data: [9792, 10154, 10881],
+                    dataLabels: ['b', '3,7% b\n+362Kg', '11,1% a\n+1089Kg'],
+                    label: 'Rinde (Kg/ha)',
+                    footer: 'INTA Pergamino - Gustavo N. Ferraris'
+                },
+                maiz_24_25_barrow: {
+                    labels: ['Testigo', 'T-Gro EF 1gr/kg', 'T-Gro EF 2gr/kg'],
+                    data: [8591, 9390, 9874],
+                    dataLabels: ['b', '9,3% b\n+799Kg', '14,93% a\n+1283Kg'],
+                    label: 'Rinde (Kg/ha)',
+                    footer: 'Ch. Experimental Barrow - INTA Tres Arroyos. Ing Agr (MSc) Martín Zamora'
+                },
+                maiz_24_25_pergamino: {
+                    labels: ['Testigo', 'T-Gro EF 1gr/kg', 'T-Gro EF 2gr/kg'],
+                    data: [8939, 9216, 10231],
+                    dataLabels: ['c', '3,10% b\n+277Kg', '14,45% a\n+1292Kg'],
+                    label: 'Rinde (Kg/ha)',
+                    footer: 'INTA Pergamino - Gustavo N. Ferrari'
+                }
+            };
+
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const chartFooter = document.getElementById('chart-footer');
+            const ctx = document.getElementById('resultsChart').getContext('2d');
+            let resultsChart = null;
+
+            function updateChart(crop) {
+                const data = chartData[crop];
+                if (!data) return;
+                if (resultsChart) { resultsChart.destroy(); }
+                const maxValue = Math.max(...data.data);
+                const newYMax = Math.ceil((maxValue + 1000) / 1000) * 1000;
+                resultsChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.labels,
+                        datasets: [{
+                            label: data.label,
+                            data: data.data,
+                            backgroundColor: ['rgba(107, 114, 128, 0.6)', 'rgba(22, 163, 74, 0.6)', 'rgba(34, 197, 94, 0.6)'],
+                            borderColor: ['rgba(107, 114, 128, 1)', 'rgba(22, 163, 74, 1)', 'rgba(34, 197, 94, 1)'],
+                            borderWidth: 2,
+                            borderRadius: 5
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: (context) => `${context.dataset.label}: ${context.parsed.y} kg/ha`
+                                }
+                            },
+                            datalabels: {
+                                color: '#1f2937',
+                                font: { weight: 'bold', size: 14 },
+                                anchor: 'end',
+                                align: 'top',
+                                offset: 5,
+                                formatter: (_value, context) => data.dataLabels[context.dataIndex],
+                                textAlign: 'center'
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: newYMax,
+                                grid: { color: '#e5e7eb' },
+                                ticks: { color: '#374151' }
+                            },
+                            x: {
+                                grid: { display: false },
+                                ticks: { color: '#374151', font: { size: 12, weight: 'bold' } }
+                            }
+                        }
+                    }
+                });
+                chartFooter.textContent = data.footer;
+            }
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    const crop = button.dataset.crop;
+                    updateChart(crop);
+                });
+            });
+            updateChart('maiz_23_24_vertico');
+
+            const galleryImages = [
+                { src: 'https://placehold.co/1200x800/F0FDF4/166534?text=1.+Producto+en+Tolva' },
+                { src: 'https://placehold.co/1200x800/E0F2F1/00796B?text=2.+Semilla+Tratada' },
+                { src: 'https://placehold.co/1200x800/E3F2FD/1E88E5?text=3.+Siembra+en+Campo' },
+                { src: 'https://placehold.co/1200x800/F1F8E9/689F38?text=4.+Planta+Emergiendo' }
+            ];
+            let currentImageIndex = 0;
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const galleryTrigger = document.getElementById('gallery-trigger');
+
+            function openModal(index) {
+                currentImageIndex = index;
+                modalImg.src = galleryImages[currentImageIndex].src;
+                modal.style.display = 'flex';
+                modalImg.classList.remove('zoomed');
+            }
+
+            function closeModal() {
+                modal.style.display = 'none';
+            }
+
+            function changeImage(direction) {
+                currentImageIndex += direction;
+                if (currentImageIndex >= galleryImages.length) {
+                    currentImageIndex = 0;
+                } else if (currentImageIndex < 0) {
+                    currentImageIndex = galleryImages.length - 1;
+                }
+                modalImg.src = galleryImages[currentImageIndex].src;
+                modalImg.classList.remove('zoomed');
+            }
+
+            if (galleryTrigger) {
+                galleryTrigger.addEventListener('click', () => openModal(0));
+            }
+
+            document.querySelector('.close-modal').addEventListener('click', closeModal);
+            document.querySelector('.modal-nav.prev').addEventListener('click', () => changeImage(-1));
+            document.querySelector('.modal-nav.next').addEventListener('click', () => changeImage(1));
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            modalImg.addEventListener('click', (e) => {
+                e.stopPropagation();
+                modalImg.classList.toggle('zoomed');
+            });
         });
-
-        chartFooter.textContent = data.footer;
-      }
-
-      tabs.forEach(button => {
-        button.addEventListener('click', () => {
-          tabs.forEach(btn => btn.classList.remove('active'));
-          button.classList.add('active');
-          renderChart(button.dataset.crop);
-        });
-      });
-
-      renderChart('maiz_23_24_vertico');
-    });
-  </script>
+    </script>
 </body>
 </html>
