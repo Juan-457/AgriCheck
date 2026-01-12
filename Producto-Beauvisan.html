@@ -145,7 +145,6 @@
             overflow: hidden;
             background: linear-gradient(120deg, rgba(10, 28, 54, 0.82), rgba(10, 28, 54, 0.4)), url('fondo.jpg') center/cover no-repeat;
             color: #fff;
-            min-height: 100vh;
         }
         .hero::before{
             content:"";
@@ -159,8 +158,7 @@
             z-index: 1;
             max-width: var(--max);
             margin: 0 auto;
-            padding: 120px 18px 90px;
-            min-height: calc(100vh - 80px);
+            padding: 96px 18px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 32px;
@@ -229,7 +227,7 @@
         }
 
         @media (max-width: 640px) {
-            .hero-inner { padding-top: 64px; }
+            .hero-inner { padding-top: 80px; }
             .brandLogo{left:12px;}
         }
 
