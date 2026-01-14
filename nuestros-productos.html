@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png" />
+
+  <title>Nuestros productos | AgriCheck</title>
+  <meta name="description" content="Marketplace minimalista para encontrar productos por cultivo o problemática." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #f6f7f4;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --accent: #89c444;
+      --accent-dark: #73ae37;
+      --shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      padding: 40px 0 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand img { height: 42px; }
+
+    .hero {
+      display: grid;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 4vw, 40px);
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 680px;
+      line-height: 1.6;
+    }
+
+    .filters {
+      margin: 28px 0 18px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #4b5563;
+    }
+
+    .input,
+    .select {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      font-size: 15px;
+      color: var(--text);
+      transition: border 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .input:focus,
+    .select:focus {
+      outline: none;
+      border-color: rgba(115, 174, 55, 0.6);
+      box-shadow: 0 0 0 3px rgba(137, 196, 68, 0.18);
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(137, 196, 68, 0.12);
+      color: #355c16;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .reset {
+      border: none;
+      background: #111827;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .reset:hover { background: #0b1220; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      padding-bottom: 60px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 100%;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      border-radius: 14px;
+      background: #f9fafb;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      padding: 10px;
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #f3f4f6;
+      color: #374151;
+    }
+
+    .cta {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 700;
+      color: var(--accent-dark);
+    }
+
+    .cta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .empty {
+      display: none;
+      padding: 30px;
+      border-radius: 16px;
+      border: 1px dashed var(--border);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 0 40px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 720px) {
+      header { padding-top: 26px; }
+      .hero { gap: 10px; }
+      .actions { flex-direction: column; align-items: flex-start; }
+      .reset { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="brand">
+        <img src="agrichecklogo.png" alt="AgriCheck" />
+        <span class="chip">Marketplace bio</span>
+      </div>
+      <div class="hero">
+        <h1>Nuestros productos</h1>
+        <p>
+          Encontrá soluciones biológicas de forma rápida. Filtrá por cultivo o por
+          problemática y accedé a cada ficha completa en un clic.
+        </p>
+      </div>
+      <div class="filters">
+        <label class="field">
+          Buscar producto
+          <input class="input" id="searchInput" type="search" placeholder="Ej: T-Gro, Beauvisan, bioestimulante" />
+        </label>
+        <label class="field">
+          Cultivo
+          <select class="select" id="cropSelect">
+            <option value="">Todos los cultivos</option>
+            <option value="maiz">Maíz</option>
+            <option value="girasol">Girasol</option>
+            <option value="trigo">Trigo</option>
+            <option value="cebada">Cebada</option>
+            <option value="hortalizas">Hortalizas</option>
+            <option value="frutales">Frutales</option>
+          </select>
+        </label>
+        <label class="field">
+          Problemática
+          <select class="select" id="issueSelect">
+            <option value="">Todas las problemáticas</option>
+            <option value="plagas">Plagas de insectos</option>
+            <option value="orugas">Orugas / lepidópteros</option>
+            <option value="hongos">Hongos del suelo</option>
+            <option value="nutricion">Nutrición y fijación de nitrógeno</option>
+            <option value="arranque">Arranque en frío</option>
+            <option value="estres">Estrés y vigor radicular</option>
+          </select>
+        </label>
+      </div>
+      <div class="actions">
+        <div class="chip" id="resultsCount">6 productos disponibles</div>
+        <button class="reset" id="resetFilters" type="button">Limpiar filtros</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="grid" id="productGrid">
+      <article class="card" data-crops="hortalizas,frutales" data-issues="plagas" data-search="beauvisan bioinsecticida control biologico">
+        <img src="Beavisan 1Kg.png" alt="Beauvisan" />
+        <h3>Beauvisan</h3>
+        <p>Bioinsecticida de amplio espectro para control biológico de plagas.</p>
+        <div class="tags">
+          <span class="tag">Hortalizas</span>
+          <span class="tag">Frutales</span>
+          <span class="tag">Plagas</span>
+        </div>
+        <a class="cta" href="Producto-Beauvisan.html">
+          <span>Ver ficha completa →</span>
+        </a>
+      </article>
+
+      <article class="card" data-crops="maiz,soja" data-issues="orugas,plagas" data-search="nomu protec bioinsecticida lepidopteros orugas">
+        <img src="Nomu.png" alt="Nomu-Protec" />
+        <h3>Nomu-Protec</h3>
+        <p>Bioinsecticida fúngico para el manejo de larvas de lepidópteros.</p>
+        <div class="tags">
+          <span class="tag">Maíz</span>
+          <span class="tag">Orugas</span>
+          <span class="tag">Plagas</span>
+        </div>
+        <a class="cta" href="Producto-Nomu-Protec.html">
+          <span>Ver ficha completa →</span>
+        </a>
+      </article>
+
+      <article class="card" data-crops="girasol" data-issues="nutricion" data-search="nexula easy flow inoculante nitrogeno girasol">
+        <img src="nexula.png" alt="Nexula-N Easy Flow" />
+        <h3>Nexula-N Easy Flow</h3>
+        <p>Inoculante biológico + lubricante para girasol con fijación de nitrógeno.</p>
+        <div class="tags">
+          <span class="tag">Girasol</span>
+          <span class="tag">Nutrición</span>
+        </div>
+        <a class="cta" href="Producto-nexula.html">
+          <span>Ver ficha completa →</span>
+        </a>
+      </article>
+
+      <article class="card" data-crops="maiz" data-issues="hongos,estres" data-search="t-gro easy flow trichoderma suelo maiz">
+        <img src="tgro.png" alt="T-Gro Easy Flow" />
+        <h3>T-Gro Easy Flow</h3>
+        <p>Inoculante y lubricante para proteger raíces y mejorar la siembra.</p>
+        <div class="tags">
+          <span class="tag">Maíz</span>
+          <span class="tag">Hongos del suelo</span>
+          <span class="tag">Estrés</span>
+        </div>
+        <a class="cta" href="Producto-t-gro-easy-flow.html">
+          <span>Ver ficha completa →</span>
+        </a>
+      </article>
+
+      <article class="card" data-crops="hortalizas,frutales" data-issues="hongos,estres" data-search="t-gro wp trichoderma sanidad suelo">
+        <img src="T-Gro WP.png" alt="T-Gro WP" />
+        <h3>T-Gro WP</h3>
+        <p>Trichoderma en polvo mojable para mejorar la sanidad del suelo.</p>
+        <div class="tags">
+          <span class="tag">Hortalizas</span>
+          <span class="tag">Frutales</span>
+          <span class="tag">Hongos del suelo</span>
+        </div>
+        <a class="cta" href="Producto-t-gro-wp.html">
+          <span>Ver ficha completa →</span>
+        </a>
+      </article>
+
+      <article class="card" data-crops="trigo,cebada" data-issues="arranque" data-search="tundrabac bioestimulante trigo cebada frio">
+        <img src="Tundrabac.png" alt="Tundrabac" />
+        <h3>Tundrabac</h3>
+        <p>Bioestimulante para semillas de invierno que activa la germinación en frío.</p>
+        <div class="tags">
+          <span class="tag">Trigo</span>
+          <span class="tag">Cebada</span>
+          <span class="tag">Arranque en frío</span>
+        </div>
+        <a class="cta" href="Producto-tundrabac.html">
+          <span>Ver ficha completa →</span>
+        </a>
+      </article>
+    </div>
+
+    <div class="empty" id="emptyState">
+      No encontramos productos con esos filtros. Probá limpiar o ajustar la búsqueda.
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>AgriCheck · Soluciones biológicas para una agricultura eficiente.</p>
+    </div>
+  </footer>
+
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const cropSelect = document.getElementById("cropSelect");
+    const issueSelect = document.getElementById("issueSelect");
+    const resetFilters = document.getElementById("resetFilters");
+    const productGrid = document.getElementById("productGrid");
+    const resultsCount = document.getElementById("resultsCount");
+    const emptyState = document.getElementById("emptyState");
+
+    const normalize = (text) =>
+      text
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
+    const filterProducts = () => {
+      const query = normalize(searchInput.value.trim());
+      const crop = normalize(cropSelect.value);
+      const issue = normalize(issueSelect.value);
+
+      let visibleCount = 0;
+
+      [...productGrid.children].forEach((card) => {
+        const crops = card.dataset.crops || "";
+        const issues = card.dataset.issues || "";
+        const search = card.dataset.search || "";
+
+        const matchesQuery = !query || normalize(search).includes(query);
+        const matchesCrop = !crop || normalize(crops).includes(crop);
+        const matchesIssue = !issue || normalize(issues).includes(issue);
+
+        const isVisible = matchesQuery && matchesCrop && matchesIssue;
+        card.style.display = isVisible ? "flex" : "none";
+        if (isVisible) visibleCount += 1;
+      });
+
+      resultsCount.textContent = `${visibleCount} productos disponibles`;
+      emptyState.style.display = visibleCount === 0 ? "block" : "none";
+    };
+
+    [searchInput, cropSelect, issueSelect].forEach((element) => {
+      element.addEventListener("input", filterProducts);
+    });
+
+    resetFilters.addEventListener("click", () => {
+      searchInput.value = "";
+      cropSelect.value = "";
+      issueSelect.value = "";
+      filterProducts();
+    });
+
+    filterProducts();
+  </script>
+</body>
+</html>
