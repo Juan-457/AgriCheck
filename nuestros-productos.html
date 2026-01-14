@@ -49,22 +49,140 @@
     }
 
     header {
-      padding: 40px 0 24px;
-      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      padding: 10px 0;
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
     }
 
-    .brand {
+    .topbar {
       display: flex;
       align-items: center;
-      gap: 12px;
+      justify-content: center;
+      position: relative;
+      min-height: 44px;
     }
 
-    .brand img { height: 42px; }
+    .brandLogo {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 6px 12px;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
+    }
+
+    .brandLogo img { height: 44px; width: auto; display: block; }
+
+    .navlinks {
+      display: flex;
+      gap: 10px;
+      padding: 6px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.04);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+    }
+
+    .navlinks a {
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 800;
+      color: #475569;
+      letter-spacing: -0.01em;
+      transition: background 0.15s ease, transform 0.15s ease, color 0.15s ease;
+    }
+
+    .navlinks a:hover {
+      background: rgba(22, 163, 74, 0.12);
+      transform: translateY(-1px);
+      color: var(--accent-dark);
+    }
+
+    .burger {
+      position: absolute;
+      right: 4px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      background: rgba(255, 255, 255, 0.86);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+    }
+
+    .burger:focus {
+      outline: 3px solid rgba(137, 196, 68, 0.65);
+      outline-offset: 2px;
+    }
+
+    .burgerLines {
+      width: 18px;
+      height: 12px;
+      position: relative;
+      display: block;
+    }
+
+    .burgerLines span {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #1f2937;
+      border-radius: 999px;
+      transition: transform 0.18s ease, top 0.18s ease, opacity 0.18s ease;
+    }
+
+    .burgerLines span:nth-child(1) { top: 0; }
+    .burgerLines span:nth-child(2) { top: 5px; }
+    .burgerLines span:nth-child(3) { top: 10px; }
+
+    .mobileMenu {
+      display: none;
+      padding: 10px 0 14px;
+      background: rgba(255, 255, 255, 0.98);
+      border-top: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    .mobileMenu .container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .mobileMenu a {
+      padding: 12px 14px;
+      border-radius: 16px;
+      font-weight: 900;
+      color: #475569;
+      background: rgba(15, 23, 42, 0.04);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    body.menuOpen .mobileMenu { display: block; }
+    body.menuOpen .burgerLines span:nth-child(1) { top: 5px; transform: rotate(45deg); }
+    body.menuOpen .burgerLines span:nth-child(2) { opacity: 0; }
+    body.menuOpen .burgerLines span:nth-child(3) { top: 5px; transform: rotate(-45deg); }
 
     .hero {
       display: grid;
       gap: 14px;
-      margin-top: 26px;
+      margin: 32px 0 18px;
     }
 
     .hero h1 {
@@ -229,35 +347,98 @@
     }
 
     footer {
-      border-top: 1px solid var(--border);
-      padding: 20px 0 40px;
-      color: var(--muted);
+      background: rgba(15, 23, 42, 0.62);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: rgba(255, 255, 255, 0.88);
+      padding: 14px 0;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    footer a { color: rgba(255, 255, 255, 0.88); }
+    footer a:hover { color: #89C444; }
+
+    .footGrid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
       font-size: 14px;
     }
 
+    .whatsapp-float {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 56px;
+      height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+      z-index: 999;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .whatsapp-float img { width: 26px; height: 26px; display: block; }
+    .whatsapp-float:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.32); }
+
     @media (max-width: 720px) {
-      header { padding-top: 26px; }
       .hero { gap: 10px; }
       .actions { flex-direction: column; align-items: flex-start; }
       .reset { width: 100%; text-align: center; }
+    }
+
+    @media (max-width: 900px) {
+      .navlinks { display: none; }
+      .burger { display: flex; }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="container">
-      <div class="brand">
-        <img src="agrichecklogo.png" alt="AgriCheck" />
-        <span class="chip">Marketplace bio</span>
+      <div class="topbar">
+        <a class="brandLogo" href="index.html" aria-label="Volver al inicio de AgriCheck">
+          <img src="agrichecklogo.png" alt="AgriCheck" />
+        </a>
+        <nav class="navlinks" aria-label="Navegación principal">
+          <a href="index.html">Inicio</a>
+          <a href="nuestros-productos.html" aria-current="page">Nuestros Productos</a>
+          <a href="#filtros">Filtros</a>
+          <a href="index.html#contacto">Contacto</a>
+        </nav>
+        <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+          <span class="burgerLines" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
       </div>
-      <div class="hero">
-        <h1>Nuestros productos</h1>
-        <p>
-          Encontrá soluciones biológicas de forma rápida. Filtrá por cultivo o por
-          problemática y accedé a cada ficha completa en un clic.
-        </p>
+    </div>
+
+    <div class="mobileMenu" id="mobileMenu" aria-label="Menú mobile">
+      <div class="container">
+        <a href="index.html" data-close-menu>Inicio</a>
+        <a href="nuestros-productos.html" data-close-menu>Nuestros Productos</a>
+        <a href="#filtros" data-close-menu>Filtros</a>
+        <a href="index.html#contacto" data-close-menu>Contacto</a>
       </div>
-      <div class="filters">
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="productos">
+      <span class="chip">Marketplace bio</span>
+      <h1>Nuestros productos</h1>
+      <p>
+        Encontrá soluciones biológicas de forma rápida. Filtrá por cultivo o por
+        problemática y accedé a cada ficha completa en un clic.
+      </p>
+    </section>
+
+    <div class="filters" id="filtros">
         <label class="field">
           Buscar producto
           <input class="input" id="searchInput" type="search" placeholder="Ej: T-Gro, Beauvisan, bioestimulante" />
@@ -287,14 +468,11 @@
           </select>
         </label>
       </div>
-      <div class="actions">
-        <div class="chip" id="resultsCount">6 productos disponibles</div>
-        <button class="reset" id="resetFilters" type="button">Limpiar filtros</button>
-      </div>
+    <div class="actions">
+      <div class="chip" id="resultsCount">6 productos disponibles</div>
+      <button class="reset" id="resetFilters" type="button">Limpiar filtros</button>
     </div>
-  </header>
 
-  <main class="container">
     <div class="grid" id="productGrid">
       <article class="card" data-crops="hortalizas,frutales" data-issues="plagas" data-search="beauvisan bioinsecticida control biologico">
         <img src="Beavisan 1Kg.png" alt="Beauvisan" />
@@ -387,11 +565,58 @@
 
   <footer>
     <div class="container">
-      <p>AgriCheck · Soluciones biológicas para una agricultura eficiente.</p>
+      <div class="footGrid">
+        <div>Copyright © Agricheck <span id="year"></span>.</div>
+        <div class="footer-designed">
+          <p style="display:flex; justify-content:center; align-items:center; gap:6px; margin:0;">
+            Diseñado por UmanoAI
+            <a href="https://umanoai.com.ar" target="_blank" rel="noopener" style="display:inline-block;">
+              <img src="umanoai.png" alt="UmanoAI" style="height:18px;">
+            </a>
+          </p>
+        </div>
+      </div>
     </div>
   </footer>
 
+  <a
+    class="whatsapp-float"
+    href="https://wa.me/+5492984763055?text=Hola%20AgriCheck!%20Quiero%20hacer%20una%20consulta."
+    target="_blank"
+    rel="noopener"
+    aria-label="Contactar por WhatsApp"
+  >
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+      alt="WhatsApp"
+    />
+  </a>
+
   <script>
+    const burger = document.querySelector(".burger");
+    const menu = document.getElementById("mobileMenu");
+    const links = document.querySelectorAll("[data-close-menu]");
+    const yearEl = document.getElementById("year");
+
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
+    }
+
+    const toggleMenu = (open) => {
+      document.body.classList.toggle("menuOpen", open);
+      if (burger) {
+        burger.setAttribute("aria-expanded", String(open));
+        burger.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+      }
+    };
+
+    if (burger && menu) {
+      burger.addEventListener("click", () =>
+        toggleMenu(!document.body.classList.contains("menuOpen"))
+      );
+      links.forEach((link) => link.addEventListener("click", () => toggleMenu(false)));
+    }
+
     const searchInput = document.getElementById("searchInput");
     const cropSelect = document.getElementById("cropSelect");
     const issueSelect = document.getElementById("issueSelect");
