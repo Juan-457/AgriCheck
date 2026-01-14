@@ -878,11 +878,12 @@
 
       <div class="heroActions">
         <a class="btn btnPrimary" href="https://wa.me/+5492984763055?text=Hola%20AgriCheck!%20Quiero%20hablar%20con%20un%20asesor." target="_blank" rel="noopener">Hablar con un asesor</a>
-        <a class="btn btnGhost" href="#productos">Ver productos</a>
+        <a class="btn btnGhost" href="nuestros-productos.html">Ver productos</a>
       </div>
 
       <form class="searchWrap" onsubmit="return false;">
-        <input id="q" type="search" placeholder="Buscar productos (ej: Nexula, feromonas...)">
+        <input id="cropQuery" type="search" placeholder="Cultivo (ej: Maíz, trigo)">
+        <input id="issueQuery" type="search" placeholder="Problemática (ej: plagas, hongos)">
         <button type="button" onclick="window.__search && window.__search()">Buscar</button>
       </form>
     </div>
@@ -1184,33 +1185,21 @@
   // Año automático
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Buscador local placeholder
+  // Buscador por cultivo y problemática
   window.__search = () => {
-    const q = (document.getElementById('q')?.value || "").trim();
-    if(!q){ alert("Escribí algo para buscar."); return; }
+    const crop = (document.getElementById('cropQuery')?.value || "").trim();
+    const issue = (document.getElementById('issueQuery')?.value || "").trim();
 
-    const normalized = q
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '');
-    const compact = normalized.replace(/[\s\-_.]/g, '');
-
-    if(normalized.includes('nexula') || compact.includes('nexula')){
-      window.location.href = 'nexula.html';
+    if (!crop && !issue) {
+      alert("Escribí un cultivo o una problemática para buscar.");
       return;
     }
 
-    if(compact.includes('tgrowp') || normalized.includes('t gro wp') || normalized.includes('t-gro wp')){
-      window.location.href = 't-gro-wp.html';
-      return;
-    }
+    const params = new URLSearchParams();
+    if (crop) params.set("crop", crop);
+    if (issue) params.set("issue", issue);
 
-    if(compact.includes('tgro') || normalized.includes('t gro') || normalized.includes('t-gro')){
-      window.location.href = 't-gro-easy-flow.html';
-      return;
-    }
-
-    alert("Búsqueda local lista. Próximo paso: conectar un índice de productos (JSON) para resultados reales.\n\nBuscaste: " + q);
+    window.location.href = `nuestros-productos.html?${params.toString()}`;
   };
 
   /* =========================================================
