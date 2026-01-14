@@ -631,6 +631,61 @@
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
 
+    const setSelectValueFromQuery = (select, rawValue, optionsMap = []) => {
+      if (!rawValue) return;
+      const normalizedValue = normalize(rawValue);
+      const optionMatch = [...select.options].find((option) => {
+        if (!option.value) return false;
+        const optionValue = normalize(option.value);
+        const optionLabel = normalize(option.textContent || "");
+        return optionValue === normalizedValue || optionLabel.includes(normalizedValue);
+      });
+
+      if (optionMatch) {
+        select.value = optionMatch.value;
+        return;
+      }
+
+      const mapped = optionsMap.find((item) => normalizedValue.includes(item.match));
+      if (mapped) {
+        select.value = mapped.value;
+        return;
+      }
+
+      searchInput.value = [searchInput.value, rawValue].filter(Boolean).join(" ");
+    };
+
+    const applyQueryFilters = () => {
+      const params = new URLSearchParams(window.location.search);
+      const cropParam = params.get("crop");
+      const issueParam = params.get("issue");
+
+      if (!cropParam && !issueParam) return;
+
+      setSelectValueFromQuery(cropSelect, cropParam, [
+        { match: "maiz", value: "maiz" },
+        { match: "girasol", value: "girasol" },
+        { match: "trigo", value: "trigo" },
+        { match: "cebada", value: "cebada" },
+        { match: "hortaliza", value: "hortalizas" },
+        { match: "frutal", value: "frutales" },
+      ]);
+
+      setSelectValueFromQuery(issueSelect, issueParam, [
+        { match: "plaga", value: "plagas" },
+        { match: "oruga", value: "orugas" },
+        { match: "lepidoptero", value: "orugas" },
+        { match: "hongo", value: "hongos" },
+        { match: "enfermedad", value: "hongos" },
+        { match: "nutricion", value: "nutricion" },
+        { match: "nitrogeno", value: "nutricion" },
+        { match: "arranque", value: "arranque" },
+        { match: "frio", value: "arranque" },
+        { match: "estres", value: "estres" },
+        { match: "vigor", value: "estres" },
+      ]);
+    };
+
     const filterProducts = () => {
       const query = normalize(searchInput.value.trim());
       const crop = normalize(cropSelect.value);
@@ -667,6 +722,7 @@
       filterProducts();
     });
 
+    applyQueryFilters();
     filterProducts();
   </script>
 </body>
