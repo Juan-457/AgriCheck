@@ -332,31 +332,41 @@
 
     .heroBadges{
       display:flex;
-      flex-wrap:wrap;
+      flex-direction:column;
       gap:10px;
-      align-items:center;
+      align-items:flex-start;
       justify-content:flex-start;
       max-width:980px;
       margin-top:48px;
     }
 
     .badgeTitle{
-      font-size: clamp(26px, 3.6vw, 40px);
+      font-size: clamp(28px, 3.8vw, 42px);
       font-weight:900;
       padding:14px 22px;
       line-height:1.15;
       letter-spacing:-0.01em;
-      flex: 1 1 560px;
-      white-space:normal;
+      width:fit-content;
+      white-space:nowrap;
     }
 
     .badgeSub{
-      font-size: 14px;
+      font-size: 15px;
       font-weight:700;
-      padding:10px 16px;
+      padding:10px 18px;
       opacity:.96;
-      flex: 0 1 auto;
+      width:fit-content;
       white-space:normal;
+    }
+
+    @media (max-width: 640px){
+      .badgeTitle{
+        white-space:normal;
+        width:100%;
+      }
+      .badgeSub{
+        width:100%;
+      }
     }
 
     .heroActions{
@@ -772,7 +782,6 @@
       .burger{display:flex}  /* ✅ se ve bien el botón */
       .sectionCard{padding:20px}
 
-      .badgeTitle{flex: 1 1 100%;}
       .heroBadges{margin-top:56px;}
 
       .heroLogo{
