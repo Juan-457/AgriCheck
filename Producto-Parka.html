@@ -36,6 +36,118 @@
             color: var(--brand-dark-gray);
         }
 
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 60;
+            padding: 10px 0;
+            background: rgba(255,255,255,.92);
+            border-bottom: 1px solid rgba(15, 23, 42, .08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+        }
+
+        header a { color: inherit; text-decoration: none; }
+
+        .navWrap{
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 18px;
+        }
+        .topbar{
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            position:relative;
+            min-height: 44px;
+            padding-left: 140px;
+            padding-right: 60px;
+        }
+        .brandLogo img{ height:44px; width:auto; display:block; }
+        .brandLogo{
+            position:absolute;
+            left:0;
+            top:50%;
+            transform:translateY(-50%);
+            padding:6px 12px;
+            border-radius:14px;
+            background:#ffffff;
+            border:1px solid rgba(15, 23, 42, .08);
+            box-shadow:0 10px 22px rgba(15, 23, 42, .08);
+        }
+        .navlinks{
+            display:flex;
+            gap: 10px;
+            padding: 6px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, .04);
+            border: 1px solid rgba(15, 23, 42, .08);
+            box-shadow: 0 10px 26px rgba(15, 23, 42, .08);
+        }
+        .navlinks a{
+            padding: 10px 16px;
+            border-radius: 999px;
+            font-weight: 800;
+            color: #475569;
+            letter-spacing: -.01em;
+            transition: background .15s ease, transform .15s ease, color .15s ease;
+        }
+        .navlinks a:hover{ background: rgba(22, 163, 74, .12); transform: translateY(-1px); color: #166534; }
+
+        .burger{
+            position:absolute;
+            right: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px; height: 44px;
+            border-radius: 14px;
+            border: 1px solid rgba(15, 23, 42, .12);
+            background: rgba(255,255,255,.86);
+            display:none;
+            align-items:center;
+            justify-content:center;
+            cursor:pointer;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 10px 24px rgba(15, 23, 42, .12);
+        }
+        .burger:focus{ outline: 3px solid rgba(137,196,68,.65); outline-offset: 2px; }
+        .burgerLines{ width: 18px; height: 12px; position:relative; display:block; }
+        .burgerLines span{
+            position:absolute; left:0; width:100%; height:2px; background: #1f2937;
+            border-radius: 999px;
+            transition: transform .18s ease, top .18s ease, opacity .18s ease;
+        }
+        .burgerLines span:nth-child(1){ top:0 }
+        .burgerLines span:nth-child(2){ top:5px }
+        .burgerLines span:nth-child(3){ top:10px }
+
+        .mobileMenu{
+            display:none;
+            padding: 10px 0 14px;
+            background: rgba(255,255,255,.98);
+            border-top: 1px solid rgba(15, 23, 42, .08);
+        }
+        .mobileMenu .navWrap{
+            display:flex;
+            flex-direction:column;
+            gap:10px;
+        }
+        .mobileMenu a{
+            padding: 12px 14px;
+            border-radius: 16px;
+            font-weight: 900;
+            color: #475569;
+            background: rgba(15, 23, 42, .04);
+            border: 1px solid rgba(15, 23, 42, .08);
+        }
+
+        body.menuOpen .mobileMenu{ display:block; }
+        body.menuOpen .burgerLines span:nth-child(1){ top:5px; transform: rotate(45deg); }
+        body.menuOpen .burgerLines span:nth-child(2){ opacity:0; }
+        body.menuOpen .burgerLines span:nth-child(3){ top:5px; transform: rotate(-45deg); }
+
         .hero-bg {
             background-image: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1595123550441-d377e017de6a?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
@@ -99,45 +211,121 @@
         }
 
         .scrollbar-hide::-webkit-scrollbar { display: none; }
+
+        .product-card {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 24px;
+            padding: 22px;
+            box-shadow: 0 18px 34px rgba(0,0,0,0.2);
+            backdrop-filter: blur(6px);
+            text-align: center;
+        }
+        .product-card img {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 380px;
+            border-radius: 16px;
+            background: #ffffff;
+            padding: 16px;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.14);
+        }
+        .product-meta {
+            margin-top: 14px;
+            font-weight: 700;
+            color: rgba(226, 232, 240, 0.9);
+        }
+
+        @media(max-width:900px){
+            .topbar{padding-left:0; padding-right:0;}
+            .navlinks{display:none}
+            .burger{display:flex}
+        }
+
+        @media (max-width: 640px) {
+            .brandLogo{left:12px;}
+        }
+
+        .whatsapp-float{
+            position:fixed;
+            right:18px;
+            bottom:18px;
+            width:56px;
+            height:56px;
+            background:#25D366;
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            box-shadow:0 8px 22px rgba(0,0,0,.28);
+            z-index:999;
+            transition:transform .2s ease, box-shadow .2s ease;
+        }
+        .whatsapp-float img{width:26px;height:26px;display:block}
+        .whatsapp-float:hover{transform:translateY(-2px); box-shadow:0 12px 30px rgba(0,0,0,.32)}
     </style>
 </head>
 <body>
 
     <!-- Header -->
-    <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-md">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center max-w-7xl">
-            <a href="https://www.agrichecksrl.com" target="_blank" class="flex items-center">
-                <img src="https://www.agrichecksrl.com/img/logo-agricheck.png" alt="Logo AgriCheck" class="h-10 w-auto mr-4">
-                <div class="h-8 w-px bg-gray-200 mx-3 hidden sm:block"></div>
-                <span class="text-xl font-extrabold tracking-tighter text-slate-700 uppercase">PARKA<span class="brand-text">®</span></span>
-            </a>
-            <div class="hidden lg:flex items-center space-x-8 text-sm font-bold">
-                <a href="#origen" class="text-gray-600 hover:text-green-600 transition">Origen</a>
-                <a href="#tecnologia" class="text-gray-600 hover:text-green-600 transition">Tecnología</a>
-                <a href="#cerezas-info" class="text-gray-600 hover:text-green-600 transition">Cerezas</a>
-                <a href="#proteccion-solar" class="text-gray-600 hover:text-green-600 transition text-brandGreen">Protección Solar</a>
-                <a href="#resultados" class="text-gray-600 hover:text-green-600 transition">Resultados</a>
-                <a href="#contacto" class="btn-primary py-2.5 px-6 rounded-full shadow-lg text-sm">Contactar</a>
+    <header>
+        <div class="navWrap">
+            <div class="topbar">
+                <a class="brandLogo" href="index.html" aria-label="Volver al inicio de AgriCheck">
+                    <img src="agrichecklogo.png" alt="AgriCheck" />
+                </a>
+
+                <nav class="navlinks" aria-label="Navegación principal">
+                    <a href="nuestros-productos.html">Nuestros Productos</a>
+                    <a href="#producto">Producto</a>
+                    <a href="#origen">Origen</a>
+                    <a href="#tecnologia">Tecnología</a>
+                    <a href="#cerezas-info">Cerezas</a>
+                    <a href="#proteccion-solar">Protección Solar</a>
+                    <a href="#resultados">Resultados</a>
+                    <a href="#contacto">Contacto</a>
+                </nav>
+
+                <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+                    <span class="burgerLines" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
             </div>
-            <div class="lg:hidden text-right">
-                <a href="#contacto" class="btn-primary py-2 px-4 rounded-full text-xs font-bold text-white uppercase">Contacto</a>
+        </div>
+
+        <div class="mobileMenu" id="mobileMenu" aria-label="Menú mobile">
+            <div class="navWrap">
+                <a href="nuestros-productos.html" data-close-menu>Nuestros Productos</a>
+                <a href="#producto" data-close-menu>Producto</a>
+                <a href="#origen" data-close-menu>Origen</a>
+                <a href="#tecnologia" data-close-menu>Tecnología</a>
+                <a href="#cerezas-info" data-close-menu>Cerezas</a>
+                <a href="#proteccion-solar" data-close-menu>Protección Solar</a>
+                <a href="#resultados" data-close-menu>Resultados</a>
+                <a href="#contacto" data-close-menu>Contacto</a>
             </div>
-        </nav>
+        </div>
     </header>
 
     <main>
         <!-- Hero Section -->
-        <section class="hero-bg text-white">
+        <section class="hero-bg text-white" id="producto">
             <div class="container mx-auto px-6 py-24 md:py-32 text-center md:text-left max-w-7xl">
-                <div class="md:w-3/5">
-                    <span class="font-bold tracking-widest uppercase text-sm text-brandGreen">Suplemento de Cutícula Premium</span>
-                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight my-4 uppercase">La ciencia que <br>protege su inversión.</h1>
-                    <p class="text-lg md:text-xl mb-10 text-gray-200 font-light leading-relaxed">
-                        Tecnología de <strong>Cultiva LLC</strong> distribuida por <strong>AgriCheck</strong> para elevar el estándar de calidad en frutos de exportación.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                        <a href="#origen" class="btn-primary font-bold text-lg py-4 px-8 rounded-full text-center">Descubrir Parka®</a>
-                        <a href="#resultados" class="btn-secondary font-bold text-lg py-4 px-8 rounded-full text-center text-brandGreen">Resultados Ensayos</a>
+                <div class="grid md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] gap-12 items-center">
+                    <div>
+                        <span class="font-bold tracking-widest uppercase text-sm text-brandGreen">Suplemento de Cutícula Premium</span>
+                        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight my-4 uppercase">La ciencia que <br>protege su inversión.</h1>
+                        <p class="text-lg md:text-xl mb-10 text-gray-200 font-light leading-relaxed">
+                            Tecnología de <strong>Cultiva LLC</strong> distribuida por <strong>AgriCheck</strong> para elevar el estándar de calidad en frutos de exportación.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                            <a href="#origen" class="btn-primary font-bold text-lg py-4 px-8 rounded-full text-center">Descubrir Parka®</a>
+                            <a href="#resultados" class="btn-secondary font-bold text-lg py-4 px-8 rounded-full text-center text-brandGreen">Resultados Ensayos</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="Parka.png" alt="Parka" />
+                        <div class="product-meta">Tecnología de cutícula premium para máxima calidad de exportación.</div>
                     </div>
                 </div>
             </div>
@@ -446,6 +634,19 @@
         <p>&copy; 2024 AgriCheck SRL | Parka® es Tecnología de Cultiva LLC</p>
     </footer>
 
+    <a
+        class="whatsapp-float"
+        href="https://wa.me/+5492984763055?text=Hola%20AgriCheck!%20Quiero%20hacer%20una%20consulta."
+        target="_blank"
+        rel="noopener"
+        aria-label="Contactar por WhatsApp"
+    >
+        <img
+            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+            alt="WhatsApp"
+        />
+    </a>
+
     <script>
         const deltaPlugin = {
             id: 'deltaPlugin',
@@ -513,6 +714,26 @@
             map.forEach(c => { const el = document.getElementById(c.id); if (el) new Chart(el, { type: 'bar', data: { labels: c.labels, datasets: [{ label: c.ds[0], data: c.data[0], backgroundColor: '#cbd5e1', borderRadius: 6 }, { label: c.ds[1], data: c.data[1], backgroundColor: '#89C444', borderRadius: 6 }] }, options: c.opts }); });
         }
         window.onload = () => { setupNavigation(); initCharts(); };
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const burger = document.querySelector('.burger');
+            const menu = document.getElementById('mobileMenu');
+            const links = document.querySelectorAll('[data-close-menu]');
+
+            function toggleMenu(open){
+                document.body.classList.toggle('menuOpen', open);
+                if(burger){
+                    burger.setAttribute('aria-expanded', String(open));
+                    burger.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+                }
+            }
+
+            if(burger && menu){
+                burger.addEventListener('click', () => toggleMenu(!document.body.classList.contains('menuOpen')));
+                links.forEach(link => link.addEventListener('click', () => toggleMenu(false)));
+            }
+        });
     </script>
 </body>
 </html>
