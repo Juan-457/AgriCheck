@@ -143,9 +143,16 @@
         body.menuOpen .burgerLines span:nth-child(3){ top:5px; transform: rotate(-45deg); }
 
         .hero-bg {
-            background-image: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1599394438349-20703c3e2e34?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(120deg, rgba(10, 28, 54, 0.82), rgba(10, 28, 54, 0.4)), url('fondo.jpg') center/cover no-repeat;
+        }
+        .hero-bg::before{
+            content:"";
+            position:absolute;
+            inset:0;
+            background: linear-gradient(120deg, rgba(10, 28, 54, 0.4), rgba(10, 28, 54, 0.18));
+            pointer-events:none;
         }
         .section-title {
             color: var(--brand-dark-gray);
