@@ -458,23 +458,33 @@
             <option value="cebada">Cebada</option>
             <option value="hortalizas">Hortalizas</option>
             <option value="frutales">Frutales</option>
+            <option value="soja">Soja</option>
+            <option value="vid">Vid</option>
+            <option value="manzano">Manzano</option>
+            <option value="pera">Pera</option>
+            <option value="ajo">Ajo</option>
+            <option value="cebolla">Cebolla</option>
+            <option value="papa">Papa</option>
+            <option value="poroto">Poroto</option>
+            <option value="naranja">Naranja</option>
+            <option value="limon">Limón</option>
+            <option value="cereza">Cereza</option>
+            <option value="peral">Peral</option>
+            <option value="durazno">Durazno</option>
           </select>
         </label>
         <label class="field">
           Problemática
           <select class="select" id="issueSelect">
             <option value="">Todas las problemáticas</option>
-            <option value="plagas">Plagas de insectos</option>
-            <option value="orugas">Orugas / lepidópteros</option>
-            <option value="hongos">Hongos del suelo</option>
-            <option value="nutricion">Nutrición y fijación de nitrógeno</option>
-            <option value="arranque">Arranque en frío</option>
-            <option value="estres">Estrés y vigor radicular</option>
+            <option value="estres">Estrés</option>
+            <option value="cuaje">Cuaje</option>
+            <option value="rendimiento">Rendimiento</option>
           </select>
         </label>
       </div>
     <div class="actions">
-      <div class="chip" id="resultsCount">7 productos disponibles</div>
+      <div class="chip" id="resultsCount">8 productos disponibles</div>
       <button class="reset" id="resetFilters" type="button">Limpiar filtros</button>
     </div>
 
@@ -617,6 +627,30 @@
         </a>
       </article>
 
+      <article class="card" data-crops="maiz,soja,trigo" data-issues="estres,cuaje,rendimiento" data-search="super fifty superfifty prime bioestimulante estres cuaje rendimiento ascophyllum nodosum">
+        <picture>
+          <source
+            type="image/webp"
+            srcset="Superfifty.webp 400w, Superfifty.webp 800w, Superfifty.webp 1200w"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 240px"
+          />
+          <img src="Superfifty.webp" alt="Super Fifty" loading="lazy" decoding="async" width="400" height="400" />
+        </picture>
+        <h3>Super Fifty</h3>
+        <p>Bioestimulante anti-estrés que mejora el cuaje y potencia el rendimiento del cultivo.</p>
+        <div class="tags">
+          <span class="tag">Maíz</span>
+          <span class="tag">Soja</span>
+          <span class="tag">Trigo</span>
+          <span class="tag">Estrés</span>
+          <span class="tag">Cuaje</span>
+          <span class="tag">Rendimiento</span>
+        </div>
+        <a class="cta" href="Producto-superfifty-prime.html">
+          <span>Ver ficha completa →</span>
+        </a>
+      </article>
+
       <article class="card" data-crops="cereza,manzano,peral,durazno" data-issues="cracking,asoleado" data-search="parka suplemento cuticula cereza manzano peral durazno cracking asoleado frutos exportacion calidad">
         <picture>
           <source
@@ -753,20 +787,27 @@
         { match: "cebada", value: "cebada" },
         { match: "hortaliza", value: "hortalizas" },
         { match: "frutal", value: "frutales" },
+        { match: "soja", value: "soja" },
+        { match: "vid", value: "vid" },
+        { match: "manzano", value: "manzano" },
+        { match: "pera", value: "pera" },
+        { match: "ajo", value: "ajo" },
+        { match: "cebolla", value: "cebolla" },
+        { match: "papa", value: "papa" },
+        { match: "poroto", value: "poroto" },
+        { match: "naranja", value: "naranja" },
+        { match: "limon", value: "limon" },
+        { match: "limón", value: "limon" },
+        { match: "cereza", value: "cereza" },
+        { match: "peral", value: "peral" },
+        { match: "durazno", value: "durazno" },
       ]);
 
       setSelectValueFromQuery(issueSelect, issueParam, [
-        { match: "plaga", value: "plagas" },
-        { match: "oruga", value: "orugas" },
-        { match: "lepidoptero", value: "orugas" },
-        { match: "hongo", value: "hongos" },
-        { match: "enfermedad", value: "hongos" },
-        { match: "nutricion", value: "nutricion" },
-        { match: "nitrogeno", value: "nutricion" },
-        { match: "arranque", value: "arranque" },
-        { match: "frio", value: "arranque" },
         { match: "estres", value: "estres" },
         { match: "vigor", value: "estres" },
+        { match: "cuaje", value: "cuaje" },
+        { match: "rendimiento", value: "rendimiento" },
       ]);
     };
 
