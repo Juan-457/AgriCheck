@@ -301,19 +301,17 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:8px 10px;
-      border-radius:14px;
-      background: linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.14));
-      border: 1px solid rgba(255,255,255,.24);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 14px 30px rgba(0,0,0,.16);
-      opacity:.90;
+      padding:0;
+      border-radius:0;
+      background: none;
+      border: none;
+      box-shadow:none;
+      opacity:.95;
       transition: opacity .2s ease, transform .2s ease;
     }
     .heroLogo:hover{opacity:1; transform: translateY(-1px)}
     .heroLogo img{
-      height:74px;
+      height:148px;
       width:auto;
       display:block;
     }
@@ -334,31 +332,41 @@
 
     .heroBadges{
       display:flex;
-      flex-wrap:wrap;
+      flex-direction:column;
       gap:10px;
-      align-items:center;
+      align-items:flex-start;
       justify-content:flex-start;
       max-width:980px;
       margin-top:48px;
     }
 
     .badgeTitle{
-      font-size: clamp(26px, 3.6vw, 40px);
+      font-size: clamp(28px, 3.8vw, 42px);
       font-weight:900;
       padding:14px 22px;
       line-height:1.15;
       letter-spacing:-0.01em;
-      flex: 1 1 560px;
-      white-space:normal;
+      width:fit-content;
+      white-space:nowrap;
     }
 
     .badgeSub{
-      font-size: 14px;
+      font-size: 15px;
       font-weight:700;
-      padding:10px 16px;
+      padding:10px 18px;
       opacity:.96;
-      flex: 0 1 auto;
+      width:fit-content;
       white-space:normal;
+    }
+
+    @media (max-width: 640px){
+      .badgeTitle{
+        white-space:normal;
+        width:100%;
+      }
+      .badgeSub{
+        width:100%;
+      }
     }
 
     .heroActions{
@@ -415,6 +423,10 @@
       font-size:16px;
       padding:10px;
       outline:none;
+    }
+    .searchWrap input + input{
+      border-left:1px solid rgba(15,23,42,.18);
+      padding-left:18px;
     }
     .searchWrap input::placeholder{color: rgba(15, 23, 42, .70)}
     .searchWrap button{
@@ -510,8 +522,8 @@
     }
     .logoItem{
       flex:0 0 auto;
-      width:203px;
-      height:100px;
+      width:456px;
+      height:224px;
       background:rgba(255,255,255,.92);
       border-radius:12px;
       display:flex;
@@ -527,8 +539,8 @@
       box-shadow:0 16px 30px rgba(0,0,0,.10);
     }
     .logoItem img{
-      max-width:159px;
-      max-height:57px;
+      max-width:356px;
+      max-height:136px;
       width:auto;
       height:auto;
       object-fit:contain;
@@ -563,7 +575,7 @@
     @media(max-width:800px){
       .logoCarousel{ padding:0 12px; }
       .logoNav{ display:none; }
-      .logoItem{ width:203px; }
+      .logoItem{ width:406px; }
     }
 
     .sectionHead{
@@ -764,7 +776,7 @@
 
     /* ================= RESPONSIVE ================= */
     @media(max-width:980px){
-      .heroLogo img{height:62px}
+      .heroLogo img{height:124px}
     }
 
     @media(max-width:900px){
@@ -774,16 +786,15 @@
       .burger{display:flex}  /* ✅ se ve bien el botón */
       .sectionCard{padding:20px}
 
-      .badgeTitle{flex: 1 1 100%;}
       .heroBadges{margin-top:56px;}
 
       .heroLogo{
         left:12px;
         top: calc(64px + 8px);
-        padding:8px 10px;
-        border-radius:14px;
+        padding:0;
+        border-radius:0;
       }
-      .heroLogo img{height:52px}
+      .heroLogo img{height:104px}
 
       .igItem{flex: 0 0 92%;}
       .igPrev{left:6px}
@@ -804,11 +815,27 @@
         <a href="nuestros-productos.html">Nuestros Productos</a>
         <a href="#instagram">Instagram</a>
         <a href="#contacto">Contacto</a>
+        <div class="navGroup" aria-label="Rendimiento y calidad" data-nav-dropdown>
+          <button class="navGroupToggle" type="button" aria-expanded="false">Rendimiento y calidad</button>
+          <div class="navGroupLinks" role="list">
+            <a href="Producto-tundrabac.html" role="listitem">Tundrabac</a>
+            <a href="Producto-t-gro-wp.html" role="listitem">T-Gro WP</a>
+            <a href="Producto-Parka.html" role="listitem">Parka</a>
+            <a href="Producto-superfifty-prime.html" role="listitem">Super Fifty</a>
+          </div>
+        </div>
         <div class="navGroup" aria-label="Tratamientos de semillas" data-nav-dropdown>
           <button class="navGroupToggle" type="button" aria-expanded="false">Tratamientos de semillas</button>
           <div class="navGroupLinks" role="list">
-            <a href="nexula.html" role="listitem">Nexula</a>
-            <a href="t-gro-easy-flow.html" role="listitem">T-Gro Easy Flow</a>
+            <a href="Producto-nexula.html" role="listitem">Nexula</a>
+            <a href="Producto-t-gro-easy-flow.html" role="listitem">T-Gro Easy Flow</a>
+          </div>
+        </div>
+        <div class="navGroup" aria-label="Protección de cultivos" data-nav-dropdown>
+          <button class="navGroupToggle" type="button" aria-expanded="false">Protección de cultivos</button>
+          <div class="navGroupLinks" role="list">
+            <a href="Producto-Beauvisan.html" role="listitem">Beauvisan</a>
+            <a href="Producto-Nomu-Protec.html" role="listitem">Nomu-Protec</a>
           </div>
         </div>
       </nav>
@@ -825,10 +852,22 @@
       <a href="nuestros-productos.html" data-close-menu>Nuestros Productos</a>
       <a href="#instagram" data-close-menu>Instagram</a>
       <a href="#contacto" data-close-menu>Contacto</a>
+      <div class="mobileSubnav" aria-label="Rendimiento y calidad">
+        <div class="mobileSubnavLabel">Rendimiento y calidad</div>
+        <a href="Producto-tundrabac.html" data-close-menu>Tundrabac</a>
+        <a href="Producto-t-gro-wp.html" data-close-menu>T-Gro WP</a>
+        <a href="Producto-Parka.html" data-close-menu>Parka</a>
+        <a href="Producto-superfifty-prime.html" data-close-menu>Super Fifty</a>
+      </div>
       <div class="mobileSubnav" aria-label="Tratamientos de semillas">
         <div class="mobileSubnavLabel">Tratamientos de semillas</div>
-        <a href="nexula.html" data-close-menu>Nexula</a>
-        <a href="t-gro-easy-flow.html" data-close-menu>T-Gro Easy Flow</a>
+        <a href="Producto-nexula.html" data-close-menu>Nexula</a>
+        <a href="Producto-t-gro-easy-flow.html" data-close-menu>T-Gro Easy Flow</a>
+      </div>
+      <div class="mobileSubnav" aria-label="Protección de cultivos">
+        <div class="mobileSubnavLabel">Protección de cultivos</div>
+        <a href="Producto-Beauvisan.html" data-close-menu>Beauvisan</a>
+        <a href="Producto-Nomu-Protec.html" data-close-menu>Nomu-Protec</a>
       </div>
       <!-- TODO: si querés sumar un CTA extra en mobile, lo agregamos acá -->
     </div>
@@ -837,7 +876,7 @@
 
 <section class="hero" id="inicio">
   <video autoplay muted loop playsinline>
-    <source src="ver2.mp4" type="video/mp4">
+    <source src="hero.mp4" type="video/mp4">
   </video>
 
   <a class="heroLogo" href="#inicio" aria-label="Ir al inicio">
@@ -848,17 +887,18 @@
     <div class="container">
 
       <div class="heroBadges">
-        <div class="badge badgeTitle">Agroinsumos especiales eficientes para una agricultura sustentable</div>
-        <div class="badge badgeSub">Control biológico, feromonas, biofertilizantes y bioestimulantes.</div>
+        <div class="badge badgeTitle">LÍDERES EN ESPECIALIDADES</div>
+        <div class="badge badgeSub">Alimentos y medio ambiente saludables para todos.</div>
       </div>
 
       <div class="heroActions">
         <a class="btn btnPrimary" href="https://wa.me/+5492984763055?text=Hola%20AgriCheck!%20Quiero%20hablar%20con%20un%20asesor." target="_blank" rel="noopener">Hablar con un asesor</a>
-        <a class="btn btnGhost" href="#productos">Ver productos</a>
+        <a class="btn btnGhost" href="nuestros-productos.html">Ver productos</a>
       </div>
 
       <form class="searchWrap" onsubmit="return false;">
-        <input id="q" type="search" placeholder="Buscar productos (ej: Nexula, feromonas...)">
+        <input id="cropQuery" type="search" placeholder="Cultivo (ej: Maíz, trigo)">
+        <input id="issueQuery" type="search" placeholder="Problemática (ej: plagas, hongos)">
         <button type="button" onclick="window.__search && window.__search()">Buscar</button>
       </form>
     </div>
@@ -903,7 +943,11 @@
           <div class="logoViewport" tabindex="0">
             <div class="logoTrack">
               <div class="logoItem"><img src="suterra.png" alt="Suterra" loading="lazy" /></div>
-              <div class="logoItem"><img src="andermatt.png" alt="Andermatt" loading="lazy" /></div>
+              <div class="logoItem">
+                <a href="tundrabac.html" aria-label="Ver Tundrabac de Andermatt">
+                  <img src="andermatt.png" alt="Andermatt" loading="lazy" />
+                </a>
+              </div>
               <div class="logoItem"><img src="BioAtlantis.png" alt="BioAtlantis" loading="lazy" /></div>
               <div class="logoItem"><img src="cultiva-1.png" alt="Cultiva" loading="lazy" /></div>
             </div>
@@ -971,6 +1015,22 @@
 
           <div class="igTrack" id="igTrack" aria-label="Reels de Instagram" data-ig-token="" data-ig-limit="8">
             <!-- (tu contenido IG igual) -->
+            <div class="igItem" data-ig="https://www.instagram.com/reel/DTQ5c7gDBnF/">
+              <div class="igPreview">
+                <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DTQ5c7gDBnF/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <a class="igPreviewLink" href="https://www.instagram.com/reel/DTQ5c7gDBnF/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+              </div>
+              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DTQ5c7gDBnF/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+            </div>
+
+            <div class="igItem" data-ig="https://www.instagram.com/p/DTTgSQzEtRs/">
+              <div class="igPreview">
+                <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DTTgSQzEtRs/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <a class="igPreviewLink" href="https://www.instagram.com/p/DTTgSQzEtRs/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+              </div>
+              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/p/DTTgSQzEtRs/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+            </div>
+
             <div class="igItem" data-ig="https://www.instagram.com/p/DS7yeHCDQkX/">
               <div class="igPreview">
                 <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DS7yeHCDQkX/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
@@ -1140,28 +1200,21 @@
   // Año automático
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Buscador local placeholder
+  // Buscador por cultivo y problemática
   window.__search = () => {
-    const q = (document.getElementById('q')?.value || "").trim();
-    if(!q){ alert("Escribí algo para buscar."); return; }
+    const crop = (document.getElementById('cropQuery')?.value || "").trim();
+    const issue = (document.getElementById('issueQuery')?.value || "").trim();
 
-    const normalized = q
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '');
-    const compact = normalized.replace(/[\s\-_.]/g, '');
-
-    if(normalized.includes('nexula') || compact.includes('nexula')){
-      window.location.href = 'nexula.html';
+    if (!crop && !issue) {
+      alert("Escribí un cultivo o una problemática para buscar.");
       return;
     }
 
-    if(compact.includes('tgro') || normalized.includes('t gro') || normalized.includes('t-gro')){
-      window.location.href = 't-gro-easy-flow.html';
-      return;
-    }
+    const params = new URLSearchParams();
+    if (crop) params.set("crop", crop);
+    if (issue) params.set("issue", issue);
 
-    alert("Búsqueda local lista. Próximo paso: conectar un índice de productos (JSON) para resultados reales.\n\nBuscaste: " + q);
+    window.location.href = `nuestros-productos.html?${params.toString()}`;
   };
 
   /* =========================================================
@@ -1459,35 +1512,37 @@
     mq.addEventListener ? mq.addEventListener('change', onChange) : mq.addListener(onChange);
   })();
 
-  // ✅ Dropdown para "Tratamientos de semillas" en desktop
+  // ✅ Dropdowns de categorías en desktop
   (function(){
-    const navGroup = document.querySelector('[data-nav-dropdown]');
-    if(!navGroup) return;
+    const navGroups = document.querySelectorAll('[data-nav-dropdown]');
+    if(!navGroups.length) return;
 
-    const toggle = navGroup.querySelector('.navGroupToggle');
-    const links = navGroup.querySelector('.navGroupLinks');
-    if(!toggle || !links) return;
+    navGroups.forEach((navGroup) => {
+      const toggle = navGroup.querySelector('.navGroupToggle');
+      const links = navGroup.querySelector('.navGroupLinks');
+      if(!toggle || !links) return;
 
-    const setOpen = (open) => {
-      navGroup.classList.toggle('is-open', open);
-      toggle.setAttribute('aria-expanded', String(open));
-    };
+      const setOpen = (open) => {
+        navGroup.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+      };
 
-    toggle.addEventListener('click', () => {
-      const nextState = !navGroup.classList.contains('is-open');
-      setOpen(nextState);
-    });
+      toggle.addEventListener('click', () => {
+        const nextState = !navGroup.classList.contains('is-open');
+        setOpen(nextState);
+      });
 
-    document.addEventListener('click', (e) => {
-      if(!navGroup.contains(e.target)) setOpen(false);
-    });
+      document.addEventListener('click', (e) => {
+        if(!navGroup.contains(e.target)) setOpen(false);
+      });
 
-    document.addEventListener('keydown', (e) => {
-      if(e.key === 'Escape') setOpen(false);
-    });
+      document.addEventListener('keydown', (e) => {
+        if(e.key === 'Escape') setOpen(false);
+      });
 
-    links.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => setOpen(false));
+      links.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => setOpen(false));
+      });
     });
   })();
 </script>
