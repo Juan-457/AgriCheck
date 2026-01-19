@@ -309,17 +309,19 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:0;
-      border-radius:0;
-      background: none;
-      border: none;
-      box-shadow:none;
+      padding:16px 18px;
+      border-radius:22px;
+      background: linear-gradient(135deg, var(--glass-bg), var(--glass-bg-strong));
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       opacity:.95;
       transition: opacity .2s ease, transform .2s ease;
     }
     .heroLogo:hover{opacity:1; transform: translateY(-1px)}
     .heroLogo img{
-      height:148px;
+      height:178px;
       width:auto;
       display:block;
     }
@@ -784,7 +786,7 @@
 
     /* ================= RESPONSIVE ================= */
     @media(max-width:980px){
-      .heroLogo img{height:124px}
+      .heroLogo img{height:149px}
     }
 
     @media(max-width:900px){
@@ -799,10 +801,10 @@
       .heroLogo{
         left:12px;
         top: calc(64px + 8px);
-        padding:0;
-        border-radius:0;
+        padding:12px 14px;
+        border-radius:18px;
       }
-      .heroLogo img{height:104px}
+      .heroLogo img{height:125px}
 
       .igItem{flex: 0 0 92%;}
       .igPrev{left:6px}
