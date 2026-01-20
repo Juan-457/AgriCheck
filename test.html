@@ -327,17 +327,17 @@
     }
 
     .badge{
-      background: linear-gradient(135deg, rgba(255,255,255,.42), rgba(255,255,255,.26));
-      border: 1px solid rgba(255,255,255,.40);
-      box-shadow: 0 18px 40px rgba(0,0,0,.22);
+      background: linear-gradient(135deg, var(--glass-bg), var(--glass-bg-strong));
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       padding:10px 16px;
       border-radius:999px;
-      color:rgba(15, 23, 42, .92);
+      color: rgba(255, 255, 255, .98);
       font-weight:800;
       display:inline-block;
-      text-shadow:none;
+      text-shadow: 0 2px 8px rgba(0,0,0,.25);
     }
 
     .heroBadges{
@@ -407,9 +407,10 @@
       box-shadow: 0 14px 30px rgba(0,0,0,.20);
     }
     .btnGhost{
-      background: linear-gradient(135deg, rgba(255,255,255,.38), rgba(255,255,255,.30));
-      color:rgba(15, 23, 42, .92);
-      border-color: rgba(255,255,255,.40);
+      background: linear-gradient(135deg, var(--glass-bg), var(--glass-bg-strong));
+      color: rgba(255, 255, 255, .98);
+      border-color: var(--glass-border);
+      text-shadow: 0 2px 8px rgba(0,0,0,.25);
     }
 
     .searchWrap{
@@ -419,9 +420,9 @@
       gap:10px;
       padding:10px;
       border-radius:16px;
-      background: linear-gradient(135deg, rgba(255,255,255,.42), rgba(255,255,255,.26));
-      border:1px solid rgba(255,255,255,.40);
-      box-shadow: 0 18px 40px rgba(0,0,0,.22);
+      background: linear-gradient(135deg, var(--glass-bg), var(--glass-bg-strong));
+      border:1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
     }
@@ -429,27 +430,27 @@
       flex:1;
       background: transparent;
       border:0;
-      color:rgba(15, 23, 42, .92);
+      color: rgba(255, 255, 255, .98);
       font-size:16px;
       padding:10px;
       outline:none;
     }
     .searchWrap input + input{
-      border-left:1px solid rgba(15,23,42,.18);
+      border-left:1px solid rgba(255,255,255,.28);
       padding-left:18px;
     }
-    .searchWrap input::placeholder{color: rgba(15, 23, 42, .70)}
+    .searchWrap input::placeholder{color: rgba(255, 255, 255, .75)}
     .searchWrap button{
-      border:1px solid rgba(15,23,42,.10);
-      background: rgba(255,255,255,.92);
-      color: rgba(15,23,42,.92);
+      border:1px solid rgba(96,165,250,.85);
+      background: rgba(255,255,255,.20);
+      color: rgba(255,255,255,.98);
       font-weight:900;
       padding:10px 16px;
       border-radius:12px;
       cursor:pointer;
       box-shadow: 0 10px 18px rgba(0,0,0,.16);
     }
-    .searchWrap button:hover{background: rgba(255,255,255,.98)}
+    .searchWrap button:hover{background: rgba(255,255,255,.28)}
 
     section:not(.hero){padding: var(--section-pad) 0}
     #agroinsumos{padding-bottom: var(--section-pad)}
