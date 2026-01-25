@@ -133,6 +133,29 @@
     }
     .navlinks a:hover{ background: rgba(255,255,255,.12); transform: translateY(-1px); }
 
+    .brand{
+      position:absolute;
+      left:0;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .brandLink{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:4px 8px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.08);
+      box-shadow: 0 10px 26px rgba(0,0,0,.18);
+    }
+    .brandLogo{
+      height:30px;
+      width:auto;
+      display:block;
+    }
+
     .navGroup{
       display:flex;
       align-items:center;
@@ -749,6 +772,7 @@
       .navlinks{display:none} /* ✅ se ocultan links y se usa el menú hamburguesa */
       .burger{display:flex}  /* ✅ se ve bien el botón */
       .sectionCard{padding:20px}
+      .brandLogo{height:26px}
 
       .heroBadges{margin-top:56px;}
 
@@ -766,6 +790,11 @@
 <header>
   <div class="container">
     <div class="topbar">
+      <div class="brand">
+        <a class="brandLink" href="#inicio" aria-label="Ir al inicio">
+          <img class="brandLogo" src="Agricheck white.png" alt="AgriCheck" loading="lazy" />
+        </a>
+      </div>
       <nav class="navlinks" aria-label="Navegación principal">
         <a href="#inicio">Inicio</a>
         <a href="nuestros-productos.html">Nuestros Productos</a>
