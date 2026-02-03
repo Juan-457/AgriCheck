@@ -43,6 +43,10 @@
 
       /* ✅ Separación consistente entre secciones */
       --section-pad: 44px;
+      --tone-sage: #f2f6ed;
+      --tone-sky: #f1f5fb;
+      --tone-sand: #f7f3eb;
+      --tone-mint: #eef6f3;
     }
 
     *{box-sizing:border-box}
@@ -472,6 +476,18 @@
 
     section:not(.hero){padding: var(--section-pad) 0}
     #agroinsumos{padding-bottom: var(--section-pad)}
+    .sectionBand{
+      width:100%;
+      position:relative;
+      background: var(--tone-sage);
+    }
+    .sectionBand.band-sage{background: var(--tone-sage)}
+    .sectionBand.band-sky{background: var(--tone-sky)}
+    .sectionBand.band-sand{background: var(--tone-sand)}
+    .sectionBand.band-mint{background: var(--tone-mint)}
+    .sectionBand .sectionCard{
+      background: rgba(255,255,255,.92);
+    }
 
     .card{
       background: #ffffff;
@@ -912,7 +928,7 @@
   </div>
 </section>
 
-<section class="heroBelow" id="agroinsumos">
+<section class="heroBelow sectionBand band-sage" id="agroinsumos">
   <div class="container">
     <div class="card sectionCard">
 
@@ -967,7 +983,7 @@
   </div>
 </section>
 
-<section id="beneficios">
+<section class="sectionBand band-sky" id="beneficios">
   <div class="container">
     <div class="card sectionCard">
       <div class="center">
@@ -1006,7 +1022,7 @@
   </div>
 </section>
 
-<section id="instagram">
+<section class="sectionBand band-sand" id="instagram">
   <div class="container">
     <div class="card" style="padding:22px">
       <div class="center">
@@ -1114,7 +1130,7 @@
   </div>
 </section>
 
-<section id="contacto">
+<section class="sectionBand band-mint" id="contacto">
   <div class="container">
     <div class="card sectionCard">
       <div class="center">
