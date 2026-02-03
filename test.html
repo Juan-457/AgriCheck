@@ -50,8 +50,7 @@
     body{
       margin:0;
       font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: url("fondo.png") center top / cover no-repeat fixed;
-      background: url("fondo.jpg") center top / cover no-repeat fixed; /* TODO: esta línea pisa la anterior; dejar solo una si corresponde */
+      background: var(--bg);
       color:var(--brand-dark);
     }
 
@@ -475,21 +474,17 @@
     #agroinsumos{padding-bottom: var(--section-pad)}
 
     .card{
-      background: linear-gradient(135deg, rgba(236, 252, 242, .94), rgba(245, 255, 248, .94));
+      background: #ffffff;
       border-radius:var(--radius);
-      border:1px solid rgba(137,196,68,.30);
-      box-shadow:
-        0 20px 40px rgba(0,0,0,.08),
-        inset 0 0 0 1px rgba(255,255,255,.65);
+      border:1px solid var(--border);
+      box-shadow: 0 10px 24px rgba(15,23,42,.06);
       padding:22px;
     }
 
     .card-agro{
-      background: linear-gradient(135deg, rgba(232, 250, 240, 0.96), rgba(245, 255, 250, 0.96));
-      border: 1px solid rgba(137,196,68,.35);
-      box-shadow:
-        0 20px 40px rgba(0,0,0,.08),
-        inset 0 0 0 1px rgba(255,255,255,.6);
+      background: #ffffff;
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 26px rgba(15,23,42,.06);
     }
 
     .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
@@ -611,13 +606,13 @@
     .sectionHead{
       display:inline-block;
       text-align:center;
-      padding:14px 18px;
-      border-radius:16px;
-      background:rgba(255,255,255,.62);
-      border:1px solid rgba(15,23,42,.10);
-      box-shadow:0 14px 30px rgba(0,0,0,.10);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      padding:0;
+      border-radius:0;
+      background:transparent;
+      border:0;
+      box-shadow:none;
+      backdrop-filter:none;
+      -webkit-backdrop-filter:none;
       max-width:920px;
     }
     .sectionTitle{
@@ -642,9 +637,9 @@
       max-width:none;
     }
     .subCard{
-      background: rgba(255,255,255,.72);
-      border: 1px solid rgba(137,196,68,.28);
-      box-shadow: 0 14px 26px rgba(0,0,0,.10);
+      background: #ffffff;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 18px rgba(15,23,42,.06);
       border-radius: calc(var(--radius) - 2px);
       padding:18px;
     }
@@ -666,9 +661,9 @@
     .igItem{
       scroll-snap-align:start;
       flex: 0 0 calc((100% - 28px) / 3);
-      background: rgba(255,255,255,.72);
-      border: 1px solid rgba(137,196,68,.28);
-      box-shadow: 0 14px 26px rgba(0,0,0,.10);
+      background: #ffffff;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 18px rgba(15,23,42,.06);
       border-radius: calc(var(--radius) - 2px);
       padding:14px;
       display:flex;
