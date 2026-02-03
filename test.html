@@ -56,6 +56,9 @@
       font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background: var(--bg);
       color:var(--brand-dark);
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
     }
 
     a{text-decoration:none;color:inherit}
@@ -474,33 +477,40 @@
     }
     .searchWrap button:hover{background: rgba(255,255,255,.28)}
 
+    .page{
+      flex:1;
+      display:flex;
+      flex-direction:column;
+    }
+
     section:not(.hero){padding: var(--section-pad) 0}
     #agroinsumos{padding-bottom: var(--section-pad)}
     .sectionBand{
       width:100%;
       position:relative;
-      background: var(--tone-sage);
+      background: transparent;
     }
-    .sectionBand.band-sage{background: var(--tone-sage)}
-    .sectionBand.band-sky{background: var(--tone-sky)}
-    .sectionBand.band-sand{background: var(--tone-sand)}
-    .sectionBand.band-mint{background: var(--tone-mint)}
+    .sectionBand + .sectionBand{border-top:1px solid var(--border)}
+    .sectionBand.band-sage{background: transparent}
+    .sectionBand.band-sky{background: transparent}
+    .sectionBand.band-sand{background: transparent}
+    .sectionBand.band-mint{background: transparent}
     .sectionBand .sectionCard{
-      background: rgba(255,255,255,.92);
+      background: transparent;
     }
 
     .card{
       background: #ffffff;
       border-radius:var(--radius);
       border:1px solid var(--border);
-      box-shadow: 0 10px 24px rgba(15,23,42,.06);
+      box-shadow:none;
       padding:22px;
     }
 
     .card-agro{
       background: #ffffff;
       border: 1px solid var(--border);
-      box-shadow: 0 12px 26px rgba(15,23,42,.06);
+      box-shadow:none;
     }
 
     .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
@@ -641,7 +651,11 @@
     }
     .sectionLead{margin:8px auto 0; max-width:820px}
 
-    .sectionCard{padding:26px}
+    .sectionCard{
+      padding:0;
+      border:0;
+      box-shadow:none;
+    }
     .sectionCard .sectionHead{
       display:block;
       background:transparent;
@@ -655,9 +669,23 @@
     .subCard{
       background: #ffffff;
       border: 1px solid var(--border);
-      box-shadow: 0 8px 18px rgba(15,23,42,.06);
+      box-shadow:none;
       border-radius: calc(var(--radius) - 2px);
       padding:18px;
+    }
+
+    .sectionIntro{
+      text-align:center;
+      max-width:900px;
+      margin:0 auto;
+    }
+
+    .panel{
+      margin-top:22px;
+      padding:26px;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
     }
 
     /* ================= INSTAGRAM: CARROUSEL AUTOMÁTICO ================= */
@@ -826,7 +854,7 @@
       .grid3{grid-template-columns:1fr}
       .navlinks{display:none} /* ✅ se ocultan links y se usa el menú hamburguesa */
       .burger{display:flex}  /* ✅ se ve bien el botón */
-      .sectionCard{padding:20px}
+      .panel{padding:20px}
       .brandLogo{height:26px}
 
       .heroBadges{margin-top:56px;}
@@ -915,6 +943,7 @@
   </div>
 </header>
 
+<main class="page">
 <section class="hero" id="inicio">
   <video autoplay muted loop playsinline>
     <source src="hero.mp4" type="video/mp4">
@@ -946,23 +975,27 @@
   </div>
 </section>
 
-<section class="heroBelow" id="agroinsumos">
-<section class="heroBelow sectionBand band-sage" id="agroinsumos">
+<section class="sectionBand band-sage" id="agroinsumos">
   <div class="container">
-    <div class="card sectionCard">
+    <div class="sectionIntro">
+      <div class="kicker">AgriCheck</div>
+      <h2 class="sectionTitle">Agroinsumos especiales</h2>
+      <p class="muted sectionLead">
+        Desde 2001 impulsamos soluciones sustentables para una agricultura más eficiente y resiliente en Argentina.
+      </p>
+    </div>
 
-      <div class="card agroCard">
+    <div class="panel">
+      <div class="agroCard">
         <div>
-          <div class="center">
-            <div class="kicker">AgriCheck</div>
-            <h2 class="agroTitle">AGROINSUMOS ESPECIALES</h2>
-          </div>
-
-          <p class="muted agroLead" style="margin-top:10px">
-            Desde 2001, en AgriCheck trabajamos con una misión clara: Desarrollar y ofrecer agroinsumos especiales eficientes para una agricultura sustentable y ecológica en el país.
-
-            Con origen en General Roca, Río Negro, comenzamos enfocados en el desarrollo de soluciones para la producción de frutales. Con el tiempo, incorporamos representaciones de proveedores líderes mundiales en su segmento, lo que nos permite ofrecer el porfolio de soluciones sustentables más amplias de Argentina. No sólo brindamos herramientas para el control de plagas y enfermedades de los cultivos, sino que proveemos promotores de rendimiento a través de nuestra exclusiva línea de microorganismos benéficos (Biofertilizantes). Asimismo, preocupados por el cada vez más desafiante entorno climático para la agricultura, desarrollamos agentes anti estresantes de marcada eficacia.
-            <strong>Desde 2019 somos parte de Andermatt Group.</strong>
+          <p class="muted" style="margin:0 0 12px">
+            Con origen en General Roca, Río Negro, comenzamos enfocados en la producción de frutales. Con el tiempo,
+            incorporamos representaciones de proveedores líderes mundiales en su segmento, lo que nos permite ofrecer el
+            porfolio de soluciones sustentables más amplio del país.
+          </p>
+          <p class="muted" style="margin:0">
+            Brindamos herramientas para el control de plagas y enfermedades, promotores de rendimiento con microorganismos
+            benéficos y agentes anti-estrés. <strong>Desde 2019 somos parte de Andermatt Group.</strong>
           </p>
         </div>
 
@@ -970,53 +1003,53 @@
           <img src="agroinsumosespeciales.jpg" alt="Agroinsumos especiales" loading="lazy" />
         </div>
       </div>
-
-      <div class="card card-agro" id="proveedores" style="padding:22px; margin-top:18px;">
-        <div class="center">
-          <h2 class="sectionTitle">Representaciones exclusivas en Argentina</h2>
-          <p class="muted sectionLead" style="margin:10px auto 0; max-width:820px">
-            Incorporamos representaciones de proveedores líderes mundiales para ofrecer uno de los portafolios más amplios
-            de soluciones sustentables en Argentina.
-          </p>
-        </div>
-
-        <div class="logoCarousel" data-logo-carousel aria-label="Logos de proveedores">
-          <button class="logoNav logoPrev" type="button" aria-label="Logo anterior">‹</button>
-          <div class="logoViewport" tabindex="0">
-            <div class="logoTrack">
-              <div class="logoItem"><img src="suterra.png" alt="Suterra" loading="lazy" /></div>
-              <div class="logoItem">
-                <a href="tundrabac.html" aria-label="Ver Tundrabac de Andermatt">
-                  <img src="andermatt.png" alt="Andermatt" loading="lazy" />
-                </a>
-              </div>
-              <div class="logoItem"><img src="BioAtlantis.png" alt="BioAtlantis" loading="lazy" /></div>
-              <div class="logoItem"><img src="cultiva-1.png" alt="Cultiva" loading="lazy" /></div>
-            </div>
-          </div>
-          <button class="logoNav logoNext" type="button" aria-label="Logo siguiente">›</button>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
-<section id="beneficios">
-<section class="sectionBand band-sky" id="beneficios">
+<section class="sectionBand band-sky" id="proveedores">
   <div class="container">
-    <div class="card sectionCard">
-      <div class="center">
-        <div class="sectionHead">
-          <div class="kicker">Por qué AgriCheck</div>
-          <h2 class="sectionTitle">Beneficios</h2>
-          <p class="muted sectionLead">
-            Enfoque técnico-comercial claro, soluciones sustentables y asesoramiento para implementar tecnologías sin fricción.
-          </p>
-        </div>
-      </div>
+    <div class="sectionIntro">
+      <div class="kicker">Aliados</div>
+      <h2 class="sectionTitle">Representaciones exclusivas en Argentina</h2>
+      <p class="muted sectionLead">
+        Incorporamos proveedores líderes mundiales para ofrecer uno de los portafolios más amplios de soluciones sustentables.
+      </p>
+    </div>
 
-      <div class="grid4" style="margin-top:18px">
+    <div class="panel">
+      <div class="logoCarousel" data-logo-carousel aria-label="Logos de proveedores">
+        <button class="logoNav logoPrev" type="button" aria-label="Logo anterior">‹</button>
+        <div class="logoViewport" tabindex="0">
+          <div class="logoTrack">
+            <div class="logoItem"><img src="suterra.png" alt="Suterra" loading="lazy" /></div>
+            <div class="logoItem">
+              <a href="tundrabac.html" aria-label="Ver Tundrabac de Andermatt">
+                <img src="andermatt.png" alt="Andermatt" loading="lazy" />
+              </a>
+            </div>
+            <div class="logoItem"><img src="BioAtlantis.png" alt="BioAtlantis" loading="lazy" /></div>
+            <div class="logoItem"><img src="cultiva-1.png" alt="Cultiva" loading="lazy" /></div>
+          </div>
+        </div>
+        <button class="logoNav logoNext" type="button" aria-label="Logo siguiente">›</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sectionBand band-sand" id="beneficios">
+  <div class="container">
+    <div class="sectionIntro">
+      <div class="kicker">Por qué AgriCheck</div>
+      <h2 class="sectionTitle">Beneficios</h2>
+      <p class="muted sectionLead">
+        Enfoque técnico-comercial claro, soluciones sustentables y asesoramiento para implementar tecnologías sin fricción.
+      </p>
+    </div>
+
+    <div class="panel">
+      <div class="grid4">
         <div class="subCard benefit">
           <div class="pill">✓</div>
           <h3>Agricultura sustentable</h3>
@@ -1042,129 +1075,124 @@
   </div>
 </section>
 
-<section id="instagram">
 <section class="sectionBand band-sand" id="instagram">
   <div class="container">
-    <div class="card" style="padding:22px">
-      <div class="center">
-        <h2 class="sectionTitle">Seguinos en Instagram</h2>
-        <p class="muted sectionLead" style="margin:10px auto 0; max-width:820px">
-          Novedades, recorridas a campo y contenido técnico.
-        </p>
+    <div class="sectionIntro">
+      <h2 class="sectionTitle">Seguinos en Instagram</h2>
+      <p class="muted sectionLead">
+        Novedades, recorridas a campo y contenido técnico.
+      </p>
+    </div>
 
-        <div class="igCarousel" aria-label="Carrousel de reels de Instagram">
-          <button class="igNavBtn igPrev" type="button" aria-label="Anterior">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M15.5 19.1 8.4 12l7.1-7.1 1.4 1.4L11.2 12l5.7 5.7z"/></svg>
-          </button>
+    <div class="panel">
+      <div class="igCarousel" aria-label="Carrousel de reels de Instagram">
+        <button class="igNavBtn igPrev" type="button" aria-label="Anterior">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M15.5 19.1 8.4 12l7.1-7.1 1.4 1.4L11.2 12l5.7 5.7z"/></svg>
+        </button>
 
-          <div class="igTrack" id="igTrack" aria-label="Reels de Instagram" data-ig-token="" data-ig-limit="8">
-            <!-- (tu contenido IG igual) -->
-            <div class="igItem" data-ig="https://www.instagram.com/reel/DTQ5c7gDBnF/">
-              <div class="igPreview">
-                <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DTQ5c7gDBnF/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                <a class="igPreviewLink" href="https://www.instagram.com/reel/DTQ5c7gDBnF/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-              </div>
-              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DTQ5c7gDBnF/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+        <div class="igTrack" id="igTrack" aria-label="Reels de Instagram" data-ig-token="" data-ig-limit="8">
+          <!-- (tu contenido IG igual) -->
+          <div class="igItem" data-ig="https://www.instagram.com/reel/DTQ5c7gDBnF/">
+            <div class="igPreview">
+              <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DTQ5c7gDBnF/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+              <a class="igPreviewLink" href="https://www.instagram.com/reel/DTQ5c7gDBnF/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
             </div>
-
-            <div class="igItem" data-ig="https://www.instagram.com/p/DTTgSQzEtRs/">
-              <div class="igPreview">
-                <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DTTgSQzEtRs/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                <a class="igPreviewLink" href="https://www.instagram.com/p/DTTgSQzEtRs/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-              </div>
-              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/p/DTTgSQzEtRs/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-            </div>
-
-            <div class="igItem" data-ig="https://www.instagram.com/p/DS7yeHCDQkX/">
-              <div class="igPreview">
-                <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DS7yeHCDQkX/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                <a class="igPreviewLink" href="https://www.instagram.com/p/DS7yeHCDQkX/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-              </div>
-              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/p/DS7yeHCDQkX/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-            </div>
-
-            <div class="igItem" data-ig="https://www.instagram.com/reel/DSLSnStAoCV/">
-              <div class="igPreview">
-                <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DSLSnStAoCV/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                <a class="igPreviewLink" href="https://www.instagram.com/reel/DSLSnStAoCV/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-              </div>
-              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DSLSnStAoCV/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-            </div>
-
-            <div class="igItem" data-ig="https://www.instagram.com/p/DTi6ySzD_K-/">
-              <div class="igPreview">
-                <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DTi6ySzD_K-/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                <a class="igPreviewLink" href="https://www.instagram.com/p/DTi6ySzD_K-/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-              </div>
-              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/p/DTi6ySzD_K-/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-            </div>
-
-            <div class="igItem" data-ig="https://www.instagram.com/p/DTyYxSekgLJ/">
-              <div class="igPreview">
-                <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DTyYxSekgLJ/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                <a class="igPreviewLink" href="https://www.instagram.com/p/DTyYxSekgLJ/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-              </div>
-              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/p/DTyYxSekgLJ/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-            </div>
-
-            <div class="igItem" data-ig="https://www.instagram.com/p/DT_RU91AFU5/">
-              <div class="igPreview">
-                <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DT_RU91AFU5/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                <a class="igPreviewLink" href="https://www.instagram.com/p/DT_RU91AFU5/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-              </div>
-              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/p/DT_RU91AFU5/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-            </div>
-
-            <div class="igItem" data-ig="https://www.instagram.com/p/DUG8UxUkQqh/">
-              <div class="igPreview">
-                <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DUG8UxUkQqh/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                <a class="igPreviewLink" href="https://www.instagram.com/p/DUG8UxUkQqh/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-              </div>
-              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/p/DUG8UxUkQqh/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-            </div>
-
-            <div class="igItem" data-ig="https://www.instagram.com/p/DUJiGiniTnm/">
-              <div class="igPreview">
-                <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DUJiGiniTnm/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                <a class="igPreviewLink" href="https://www.instagram.com/p/DUJiGiniTnm/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-              </div>
-              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/p/DUJiGiniTnm/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-            </div>
+            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DTQ5c7gDBnF/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
           </div>
 
-          <button class="igNavBtn igNext" type="button" aria-label="Siguiente">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8.5 19.1 7.1 17.7 12.8 12 7.1 6.3l1.4-1.4L15.6 12z"/></svg>
-          </button>
+          <div class="igItem" data-ig="https://www.instagram.com/p/DTTgSQzEtRs/">
+            <div class="igPreview">
+              <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DTTgSQzEtRs/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+              <a class="igPreviewLink" href="https://www.instagram.com/p/DTTgSQzEtRs/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+            </div>
+            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/p/DTTgSQzEtRs/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+          </div>
+
+          <div class="igItem" data-ig="https://www.instagram.com/p/DS7yeHCDQkX/">
+            <div class="igPreview">
+              <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DS7yeHCDQkX/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+              <a class="igPreviewLink" href="https://www.instagram.com/p/DS7yeHCDQkX/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+            </div>
+            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/p/DS7yeHCDQkX/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+          </div>
+
+          <div class="igItem" data-ig="https://www.instagram.com/reel/DSLSnStAoCV/">
+            <div class="igPreview">
+              <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DSLSnStAoCV/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+              <a class="igPreviewLink" href="https://www.instagram.com/reel/DSLSnStAoCV/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+            </div>
+            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DSLSnStAoCV/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+          </div>
+
+          <div class="igItem" data-ig="https://www.instagram.com/p/DTi6ySzD_K-/">
+            <div class="igPreview">
+              <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DTi6ySzD_K-/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+              <a class="igPreviewLink" href="https://www.instagram.com/p/DTi6ySzD_K-/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+            </div>
+            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/p/DTi6ySzD_K-/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+          </div>
+
+          <div class="igItem" data-ig="https://www.instagram.com/p/DTyYxSekgLJ/">
+            <div class="igPreview">
+              <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DTyYxSekgLJ/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+              <a class="igPreviewLink" href="https://www.instagram.com/p/DTyYxSekgLJ/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+            </div>
+            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/p/DTyYxSekgLJ/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+          </div>
+
+          <div class="igItem" data-ig="https://www.instagram.com/p/DT_RU91AFU5/">
+            <div class="igPreview">
+              <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DT_RU91AFU5/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+              <a class="igPreviewLink" href="https://www.instagram.com/p/DT_RU91AFU5/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+            </div>
+            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/p/DT_RU91AFU5/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+          </div>
+
+          <div class="igItem" data-ig="https://www.instagram.com/p/DUG8UxUkQqh/">
+            <div class="igPreview">
+              <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DUG8UxUkQqh/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+              <a class="igPreviewLink" href="https://www.instagram.com/p/DUG8UxUkQqh/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+            </div>
+            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/p/DUG8UxUkQqh/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+          </div>
+
+          <div class="igItem" data-ig="https://www.instagram.com/p/DUJiGiniTnm/">
+            <div class="igPreview">
+              <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DUJiGiniTnm/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+              <a class="igPreviewLink" href="https://www.instagram.com/p/DUJiGiniTnm/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
+            </div>
+            <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/p/DUJiGiniTnm/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
+          </div>
         </div>
 
-        <div style="margin-top:16px">
-          <a class="btn btnPrimary" href="https://www.instagram.com/agricheck.srl/" target="_blank" rel="noopener" aria-label="Ver Instagram de AgriCheck">
-            <svg class="btnIcon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM18 6.2a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-            </svg>
-            Ver Instagram
-          </a>
-        </div>
+        <button class="igNavBtn igNext" type="button" aria-label="Siguiente">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8.5 19.1 7.1 17.7 12.8 12 7.1 6.3l1.4-1.4L15.6 12z"/></svg>
+        </button>
+      </div>
 
+      <div style="margin-top:16px">
+        <a class="btn btnPrimary" href="https://www.instagram.com/agricheck.srl/" target="_blank" rel="noopener" aria-label="Ver Instagram de AgriCheck">
+          <svg class="btnIcon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM18 6.2a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+          </svg>
+          Ver Instagram
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="contacto">
 <section class="sectionBand band-mint" id="contacto">
   <div class="container">
-    <div class="card sectionCard">
-      <div class="center">
-        <div class="sectionHead">
-          <div class="kicker">AgriCheck</div>
-          <h2 class="sectionTitle">Contacto</h2>
-          <p class="muted sectionLead">
-            Desde 2001, en AgriCheck trabajamos con una misión clara: Desarrollar y comercializar agroinsumos especiales eficientes para una agricultura sustentable y ecológica en el país.
-          </p>
-        </div>
-      </div>
+    <div class="sectionIntro">
+      <div class="kicker">AgriCheck</div>
+      <h2 class="sectionTitle">Contacto</h2>
+      <p class="muted sectionLead">
+        Desde 2001, en AgriCheck trabajamos con una misión clara: Desarrollar y comercializar agroinsumos especiales eficientes para una agricultura sustentable y ecológica en el país.
+      </p>
+    </div>
 
+    <div class="panel">
       <div class="contactGrid">
         <div class="subCard">
           <h3 style="margin:0 0 10px">Datos</h3>
@@ -1207,10 +1235,11 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <div class="container">
