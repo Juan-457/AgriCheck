@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mapa de Zonas</title>
+  <style>
+    body{font-family:system-ui,Segoe UI,Roboto,Arial;margin:0;background:#fff}
+    .layout{display:grid;grid-template-columns:1fr 340px;gap:16px;padding:16px;align-items:start}
+    .card{border:1px solid #eee;border-radius:16px;padding:14px}
+    #mapWrap{position:relative}
+    svg{width:100%;height:auto;max-height:86vh}
+    .zone{cursor:pointer;transition:opacity .15s}
+    .zone:hover{opacity:.85}
+    .tooltip{
+      position:absolute;display:none;pointer-events:none;
+      background:#111;color:#fff;padding:10px 12px;border-radius:12px;
+      font-size:13px;gap:10px;align-items:center
+    }
+    .tooltip img{width:34px;height:34px;border-radius:50%;object-fit:cover;background:#333}
+    .pill{display:inline-block;background:#f3f4f6;border-radius:999px;padding:6px 10px;font-size:12px}
+    #panel img{width:96px;height:96px;border-radius:18px;object-fit:cover;background:#f3f4f6}
+    button{width:100%;padding:10px 12px;border-radius:12px;border:0;background:#111;color:#fff;cursor:pointer}
+    button:disabled{opacity:.4;cursor:not-allowed}
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <div id="mapWrap" class="card">
+      <div class="pill">Zonas comerciales</div>
+
+      <!-- ✅ PEGAR SVG ACA.
+           Requisito: cada zona debe tener class="zone" y data-zone="Nombre Exacto"
+           Ej: <path class="zone" data-zone="Marcelo Lizondo" d="..." />
+      -->
+      <!-- PEGAR SVG ACA -->
+
+      <div id="tt" class="tooltip">
+        <img id="ttImg" alt="">
+        <div>
+          <div id="ttName" style="font-weight:700"></div>
+          <div id="ttMeta" style="opacity:.85;font-size:12px"></div>
+        </div>
+      </div>
+    </div>
+
+    <aside id="panel" class="card">
+      <div class="pill">Detalle</div>
+      <h2 id="pName" style="margin:10px 0 6px">Seleccioná una zona</h2>
+      <img id="pImg" alt="">
+      <p id="pMeta" style="color:#444;margin:10px 0 6px"></p>
+      <p id="pPhone" style="margin:0 0 12px;color:#111"></p>
+      <button id="pWa" disabled>Enviar WhatsApp</button>
+    </aside>
+  </div>
+
+<script>
+  // ✅ Datos (editá a gusto). Las "keys" deben matchear EXACTO el data-zone del SVG
+  const sellers = {
+    "Marcelo Lizondo": { color:"#2F8F99", img:"/assets/img/vendors/marcelo.jpg", phone:"5491111111111", meta:"Zona Norte" },
+    "Miguel Utrera":   { color:"#3AA6B9", img:"/assets/img/vendors/miguel.jpg",  phone:"5492222222222", meta:"Zona Centro" },
+    "Evelyn Rivero-Daiana": { color:"#2E7D32", img:"/assets/img/vendors/evelyn.jpg", phone:"5493333333333", meta:"Zona Oeste" },
+    "Andres Perez":    { color:"#1B5E20", img:"/assets/img/vendors/andres.jpg",  phone:"5494444444444", meta:"Zona Sur" },
+    "Victoria Vianna": { color:"#FB8C00", img:"/assets/img/vendors/victoria.jpg",phone:"5495555555555", meta:"Zona Andina" },
+    "Anibal Epullan":  { color:"#FDD835", img:"/assets/img/vendors/anibal.jpg",  phone:"5496666666666", meta:"Zona Patagonia" }
+  };
+
+  const tt = document.getElementById("tt");
+  const ttImg = document.getElementById("ttImg");
+  const ttName = document.getElementById("ttName");
+  const ttMeta = document.getElementById("ttMeta");
+
+  const pName = document.getElementById("pName");
+  const pImg = document.getElementById("pImg");
+  const pMeta = document.getElementById("pMeta");
+  const pPhone = document.getElementById("pPhone");
+  const pWa = document.getElementById("pWa");
+
+  function moveTooltip(e){
+    const rect = document.getElementById("mapWrap").getBoundingClientRect();
+    tt.style.left = (e.clientX - rect.left + 12) + "px";
+    tt.style.top  = (e.clientY - rect.top + 12) + "px";
+  }
+
+  function openPanel(name){
+    const s = sellers[name];
+    if(!s) return;
+    pName.textContent = name;
+    pImg.src = s.img;
+    pMeta.textContent = s.meta || "";
+    pPhone.textContent = s.phone ? ("+" + s.phone) : "";
+    pWa.disabled = !s.phone;
+    pWa.onclick = () => {
+      const msg = encodeURIComponent(`Hola ${name}, te contacto por tu zona.`);
+      window.open(`https://wa.me/${s.phone}?text=${msg}`, "_blank");
+    };
+  }
+
+  // ✅ Inicializar zonas (se ejecuta cuando el SVG está en el DOM)
+  function initZones(){
+    const zones = document.querySelectorAll(".zone");
+    zones.forEach(z => {
+      const name = z.dataset.zone;
+      const s = sellers[name];
+      z.style.fill = s?.color ?? "#9ca3af";
+      z.style.stroke = "#ffffff";
+      z.style.strokeWidth = "3";
+
+      z.addEventListener("mouseenter", (e)=>{
+        ttName.textContent = name;
+        ttMeta.textContent = s?.meta ?? "Sin datos";
+        ttImg.src = s?.img ?? "";
+        tt.style.display = "flex";
+        moveTooltip(e);
+      });
+      z.addEventListener("mousemove", moveTooltip);
+      z.addEventListener("mouseleave", ()=> tt.style.display = "none");
+      z.addEventListener("click", ()=> openPanel(name));
+    });
+  }
+
+  // Espera un tick por si pegaste SVG grande
+  window.addEventListener("load", initZones);
+</script>
+</body>
+</html>
