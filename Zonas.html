@@ -29,11 +29,7 @@
     <div id="mapWrap" class="card">
       <div class="pill">Zonas comerciales</div>
 
-      <!-- ✅ PEGAR SVG ACA.
-           Requisito: cada zona debe tener class="zone" y data-zone="Nombre Exacto"
-           Ej: <path class="zone" data-zone="Marcelo Lizondo" d="..." />
-      -->
-      <!-- PEGAR SVG ACA -->
+      <div id="mapContainer" aria-label="Mapa de zonas"></div>
 
       <div id="tt" class="tooltip">
         <img id="ttImg" alt="">
@@ -59,7 +55,7 @@
   const sellers = {
     "Marcelo Lizondo": { color:"#2F8F99", img:"/assets/img/vendors/marcelo.jpg", phone:"5491111111111", meta:"Zona Norte" },
     "Miguel Utrera":   { color:"#3AA6B9", img:"/assets/img/vendors/miguel.jpg",  phone:"5492222222222", meta:"Zona Centro" },
-    "Evelyn Rivero-Daiana": { color:"#2E7D32", img:"/assets/img/vendors/evelyn.jpg", phone:"5493333333333", meta:"Zona Oeste" },
+    "Evelyn Rivero-Daiana Gonzalez": { color:"#2E7D32", img:"/assets/img/vendors/evelyn.jpg", phone:"5493333333333", meta:"Zona Oeste" },
     "Andres Perez":    { color:"#1B5E20", img:"/assets/img/vendors/andres.jpg",  phone:"5494444444444", meta:"Zona Sur" },
     "Victoria Vianna": { color:"#FB8C00", img:"/assets/img/vendors/victoria.jpg",phone:"5495555555555", meta:"Zona Andina" },
     "Anibal Epullan":  { color:"#FDD835", img:"/assets/img/vendors/anibal.jpg",  phone:"5496666666666", meta:"Zona Patagonia" }
@@ -96,6 +92,20 @@
     };
   }
 
+  async function loadMap(){
+    const mapContainer = document.getElementById("mapContainer");
+    const response = await fetch("./argentina-zonas.svg");
+    if(!response.ok) throw new Error("No se pudo cargar el mapa SVG");
+
+    const svgText = await response.text();
+    mapContainer.innerHTML = svgText;
+
+    mapContainer.querySelectorAll("polygon[title]").forEach(zone => {
+      zone.classList.add("zone");
+      zone.dataset.zone = zone.getAttribute("title");
+    });
+  }
+
   // ✅ Inicializar zonas (se ejecuta cuando el SVG está en el DOM)
   function initZones(){
     const zones = document.querySelectorAll(".zone");
@@ -119,8 +129,15 @@
     });
   }
 
-  // Espera un tick por si pegaste SVG grande
-  window.addEventListener("load", initZones);
+  window.addEventListener("load", async () => {
+    try {
+      await loadMap();
+      initZones();
+    } catch (error) {
+      document.getElementById("mapContainer").innerHTML = "<p>No se pudo cargar el mapa.</p>";
+      console.error(error);
+    }
+  });
 </script>
 </body>
 </html>
