@@ -148,7 +148,7 @@
   </main>
 
 <script>
-  // ✅ Datos (editá a gusto). Las "keys" deben matchear EXACTO el data-zone del SVG
+  // ✅ Datos (editá a gusto). Las "keys" deben matchear el title del SVG (normalizado)
   const sellers = {
     "Marcelo Lizondo": { color:"#2F8F99", img:"marcelo.jpg", phone:"5491111111111", meta:"Zona Norte" },
     "Miguel Utrera":   { color:"#3AA6B9", img:"miguel.jpg",  phone:"5492222222222", meta:"Zona Centro" },
@@ -197,9 +197,9 @@
     const svgText = await response.text();
     mapContainer.innerHTML = svgText;
 
-    mapContainer.querySelectorAll("polygon[title]").forEach(zone => {
+    mapContainer.querySelectorAll("path[title], polygon[title]").forEach(zone => {
       zone.classList.add("zone");
-      zone.dataset.zone = zone.getAttribute("title");
+      zone.dataset.zone = zone.getAttribute("title")?.trim() || "";
     });
   }
 
@@ -207,7 +207,7 @@
   function initZones(){
     const zones = document.querySelectorAll(".zone");
     zones.forEach(z => {
-      const name = z.dataset.zone;
+      const name = (z.dataset.zone || "").trim();
       const s = sellers[name];
       z.style.fill = "rgba(0, 0, 0, 0.55)";
       z.style.stroke = "#ffffff";
