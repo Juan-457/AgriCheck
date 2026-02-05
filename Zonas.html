@@ -92,7 +92,12 @@
     }
     .tooltip img{width:34px;height:34px;border-radius:50%;object-fit:cover;background:#333}
     .pill{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:6px 10px;font-size:12px;color:#fff}
+    .panelSection + .panelSection{margin-top:12px}
     #panel img{width:96px;height:96px;border-radius:18px;object-fit:cover;background:#f3f4f6}
+    .companyLogo{width:150px;height:auto !important;border-radius:12px !important;padding:6px;background:#fff}
+    .companyData{margin:10px 0;color:rgba(248,250,252,.88);line-height:1.5}
+    .companyData p{margin:0 0 6px}
+    .companyData a{color:#fff;text-decoration:underline}
     button{width:100%;padding:10px 12px;border-radius:12px;border:0;background:#111;color:#fff;cursor:pointer}
     button:disabled{opacity:.4;cursor:not-allowed}
 
@@ -138,11 +143,26 @@
 
       <aside id="panel" class="card">
         <div class="pill">Detalle</div>
-        <h2 id="pName" style="margin:10px 0 6px">Seleccioná una zona</h2>
-        <img id="pImg" alt="">
-        <p id="pMeta" style="color:rgba(248,250,252,.88);margin:10px 0 6px"></p>
-        <p id="pPhone" style="margin:0 0 12px;color:#fff"></p>
-        <button id="pWa" disabled>Enviar WhatsApp</button>
+
+        <div id="defaultPanel" class="panelSection">
+          <h2 style="margin:10px 0 6px">AgriCheck SRL</h2>
+          <img class="companyLogo" src="agrichecklogo.png" alt="Logo AgriCheck">
+          <div class="companyData">
+            <p><strong>Agroinsumos especiales</strong></p>
+            <p>San Juan 50, General Roca, Argentina</p>
+            <p><strong>Email:</strong> <a href="mailto:info@agrichecksrl.com">info@agrichecksrl.com</a></p>
+            <p><strong>WhatsApp:</strong> <a href="tel:+5492984763055">+54 9 2984 76-3055</a></p>
+          </div>
+          <button id="defaultWa">Enviar WhatsApp</button>
+        </div>
+
+        <div id="sellerPanel" class="panelSection" hidden>
+          <h2 id="pName" style="margin:10px 0 6px">Seleccioná una zona</h2>
+          <img id="pImg" alt="">
+          <p id="pMeta" style="color:rgba(248,250,252,.88);margin:10px 0 6px"></p>
+          <p id="pPhone" style="margin:0 0 12px;color:#fff"></p>
+          <button id="pWa" disabled>Enviar WhatsApp</button>
+        </div>
       </aside>
     </div>
   </main>
@@ -168,6 +188,16 @@
   const pMeta = document.getElementById("pMeta");
   const pPhone = document.getElementById("pPhone");
   const pWa = document.getElementById("pWa");
+  const defaultPanel = document.getElementById("defaultPanel");
+  const sellerPanel = document.getElementById("sellerPanel");
+  const defaultWa = document.getElementById("defaultWa");
+
+  const companyWhatsapp = "5492984763055";
+
+  defaultWa.addEventListener("click", () => {
+    const msg = encodeURIComponent("Hola AgriCheck, quiero hacer una consulta.");
+    window.open(`https://wa.me/${companyWhatsapp}?text=${msg}`, "_blank");
+  });
 
   function moveTooltip(e){
     const rect = document.getElementById("mapWrap").getBoundingClientRect();
@@ -178,6 +208,8 @@
   function openPanel(name){
     const s = sellers[name];
     if(!s) return;
+    defaultPanel.hidden = true;
+    sellerPanel.hidden = false;
     pName.textContent = name;
     pImg.src = s.img;
     pMeta.textContent = s.meta || "";
