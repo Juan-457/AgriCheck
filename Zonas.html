@@ -104,7 +104,7 @@
     .mapHint{display:none;font-size:13px;color:#fde68a}
     .mapHint.visible{display:block}
     #mapContainer{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:0}
-    #mapContainer svg{width:100%;height:auto;max-height:100%;display:block}
+    #mapContainer svg{width:100%;height:100%;max-width:100%;max-height:100%;display:block}
     .vendorColumn{display:flex;align-items:flex-start;justify-content:center;padding-top:24px}
     #panel{height:auto;max-height:100%;overflow:auto;padding:12px;align-self:flex-start;width:100%;max-width:380px}
     .zone{cursor:pointer;transition:fill .2s ease,opacity .15s}
@@ -178,8 +178,8 @@
         <img src="agrichecklogo.png" alt="AgriCheck" />
       </a>
       <nav class="navlinks" aria-label="Navegación principal">
-        <a href="#hero">Inicio</a>
-        <a href="#productos">Productos destacados</a>
+        <a href="index.html">Inicio</a>
+        <a href="nuestros-productos.html#productos">Nuestros Productos</a>
         <a href="#kpis" aria-current="page">Cobertura</a>
       </nav>
     </div>
@@ -200,7 +200,7 @@
             </ul>
           </div>
 
-          <section id="productos" class="productsSection" aria-label="Productos destacados">
+          <section id="productos" class="productsSection" aria-label="Nuestros productos">
             <div class="productShowcase">
               <div class="showcaseMedia">
                 <img id="productImage" src="Parka.webp" alt="Producto destacado" />
@@ -411,41 +411,15 @@
   function focusMapOnZones(){
     const svg = document.querySelector("#mapContainer svg");
     if(!svg) return;
-
-    const zones = svg.querySelectorAll(".zone");
-    if(zones.length){
-      let minX = Infinity;
-      let minY = Infinity;
-      let maxX = -Infinity;
-      let maxY = -Infinity;
-
-      zones.forEach((zone) => {
-        const box = zone.getBBox();
-        minX = Math.min(minX, box.x);
-        minY = Math.min(minY, box.y);
-        maxX = Math.max(maxX, box.x + box.width);
-        maxY = Math.max(maxY, box.y + box.height);
-      });
-
-      const padX = (maxX - minX) * 0.08;
-      const padY = (maxY - minY) * 0.08;
-      const viewX = minX - padX;
-      const viewY = minY - padY;
-      const viewW = (maxX - minX) + padX * 2;
-      const viewH = (maxY - minY) + padY * 2;
-
-      svg.setAttribute("viewBox", `${viewX} ${viewY} ${viewW} ${viewH}`);
-      svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
-      return;
-    }
-
-    if(svg.hasAttribute("viewBox")){
-      svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
-      return;
-    }
-
     const box = svg.getBBox();
-    svg.setAttribute("viewBox", `${box.x} ${box.y} ${box.width} ${box.height}`);
+    const padX = box.width * 0.03;
+    const padY = box.height * 0.03;
+    const viewX = box.x - padX;
+    const viewY = box.y - padY;
+    const viewW = box.width + padX * 2;
+    const viewH = box.height + padY * 2;
+
+    svg.setAttribute("viewBox", `${viewX} ${viewY} ${viewW} ${viewH}`);
     svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
   }
 
