@@ -15,11 +15,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;800&display=swap" rel="stylesheet">
   <title>Mapa de Zonas</title>
   <style>
-    html, body { height: 100%; }
+    html, body { min-height: 100%; }
     body{
       font-family:"Lato",system-ui,Segoe UI,Roboto,Arial,sans-serif;
       margin:0;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
       display: flex;
       flex-direction: column;
       background:#fff url("zonas.webp") center/cover no-repeat fixed;
@@ -80,8 +81,8 @@
       color: #ffffff;
     }
 
-    main{padding:12px 0;flex:1;overflow:hidden}
-    .pageFlow{display:flex;flex-direction:column;gap:0;height:100%}
+    main{padding:12px 0;flex:1;overflow:visible}
+    .pageFlow{display:flex;flex-direction:column;gap:0;min-height:100%}
     .heroLayout{display:grid;grid-template-columns:minmax(260px,.9fr) minmax(540px,1.55fr) minmax(250px,.68fr);gap:16px;align-items:stretch}
     .card{
       border:1px solid rgba(255,255,255,.2);
