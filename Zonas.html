@@ -150,6 +150,18 @@
     @keyframes blink{50%{opacity:0}}
 
 
+
+
+    @media (min-width: 961px){
+      body{overflow-y:hidden}
+      main.container{padding:0 8px 8px}
+      .pageFlow{min-height:calc(100vh - 86px)}
+      #hero.heroLayout{grid-template-columns:1fr;grid-template-areas:"map";height:100%}
+      .heroCopy,.vendorColumn{display:none}
+      #mapWrap{grid-area:map;min-height:0;height:100%;padding:12px}
+      #mapContainer{height:100%}
+    }
+
     @media (max-width: 1100px){
       .heroLayout{grid-template-columns:minmax(0,1fr) minmax(230px,.78fr);grid-template-areas:"copy copy" "map panel"}
       .heroCopy{grid-area:copy}
