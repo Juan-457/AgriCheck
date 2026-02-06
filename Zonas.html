@@ -80,15 +80,15 @@
     }
 
     main{padding:12px 0 16px;flex:1;min-height:0;overflow:hidden}
-    .layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;align-items:stretch;height:100%;min-height:0}
+    .layout{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:18px;align-items:stretch;height:100%;min-height:0}
     .card{
       border:1px solid rgba(255,255,255,.2);
-      border-radius:16px;
-      padding:14px;
-      background: rgba(0,0,0,.48);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      box-shadow: 0 16px 34px rgba(0,0,0,.25);
+      border-radius:18px;
+      padding:16px;
+      background: linear-gradient(170deg, rgba(6, 16, 40, 0.72), rgba(6, 16, 40, 0.58));
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 20px 36px rgba(0,0,0,.30);
       color: #f8fafc;
     }
     #mapWrap{position:relative;height:100%;display:flex;flex-direction:column;gap:12px;min-height:0}
@@ -103,13 +103,24 @@
     }
     .tooltip img{width:34px;height:34px;border-radius:50%;object-fit:cover;background:#333}
     .pill{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:6px 10px;font-size:12px;color:#fff}
-    .panelSection + .panelSection{margin-top:12px}
+    .panelSection + .panelSection{margin-top:14px}
+    .sectionTitle{margin:12px 0 8px;font-size:13px;letter-spacing:.04em;color:rgba(226,232,240,.84);text-transform:uppercase}
     #panel img{width:96px;height:96px;border-radius:18px;object-fit:cover;background:#f3f4f6}
     .companyLogo{width:150px;height:auto !important;border-radius:12px !important;padding:6px;background:#fff}
     .companyData{margin:10px 0;color:rgba(248,250,252,.88);line-height:1.5}
     .companyData p{margin:0 0 6px}
     .companyData a{color:#fff;text-decoration:underline}
-    button{width:100%;padding:10px 12px;border-radius:12px;border:0;background:#111;color:#fff;cursor:pointer}
+    .contactCard{display:flex;align-items:center;gap:12px;padding:10px;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14)}
+    .contactCard img{width:62px !important;height:62px !important;border-radius:14px}
+    .contactMain{display:flex;flex-direction:column;gap:2px;min-width:0}
+    .contactMain strong{font-size:20px;line-height:1.2}
+    .contactMain span{opacity:.86}
+    .contactList{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+    .contactItem{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
+    .contactItem p{margin:0;line-height:1.35}
+    .contactLinks{display:flex;gap:8px;flex-shrink:0}
+    .miniBtn{display:inline-flex;align-items:center;justify-content:center;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#fff;font-weight:700;font-size:12px}
+    button{width:100%;padding:11px 13px;border-radius:12px;border:0;background:#111;color:#fff;cursor:pointer;font-weight:700}
     button:disabled{opacity:.4;cursor:not-allowed}
 
 
@@ -171,10 +182,16 @@
 
         <div id="sellerPanel" class="panelSection" hidden>
           <h2 id="pName" style="margin:10px 0 6px">Seleccioná una zona</h2>
-          <img id="pImg" alt="">
-          <p id="pMeta" style="color:rgba(248,250,252,.88);margin:10px 0 6px"></p>
-          <p id="pPhone" style="margin:0 0 12px;color:#fff"></p>
-          <button id="pWa" disabled>Enviar WhatsApp</button>
+          <div class="contactCard">
+            <img id="pImg" alt="">
+            <div class="contactMain">
+              <strong id="pMainName"></strong>
+              <span id="pMeta"></span>
+            </div>
+          </div>
+          <div class="sectionTitle">Fuerza de ventas</div>
+          <div id="salesForce" class="contactList"></div>
+          <button id="pWa" disabled>Enviar WhatsApp principal</button>
         </div>
       </aside>
     </div>
@@ -183,13 +200,37 @@
 <script>
   // ✅ Datos (editá a gusto). Las "keys" deben matchear el title del SVG (normalizado)
   const sellers = {
-    "Marcelo Lizondo": { fill:"rgba(255, 238, 188, 0.45)", hover:"rgba(255, 225, 156, 0.56)", stroke:"#f5d684", img:"marcelo.jpg", phone:"5491111111111", meta:"Zona Norte" },
-    "Alan Schmidt":    { fill:"rgba(221, 241, 255, 0.45)", hover:"rgba(197, 231, 255, 0.56)", stroke:"#93c5f6", img:"agrichecklogo.png", phone:"",              meta:"Zona Los Umas" },
-    "Miguel Utrera":   { fill:"rgba(225, 246, 238, 0.45)", hover:"rgba(198, 237, 222, 0.56)", stroke:"#86d1bb", img:"Miguel.webp", phone:"5492222222222", meta:"Zona Centro" },
-    "Evelyn Rivero-Daiana Gozalez": { fill:"rgba(245, 232, 255, 0.45)", hover:"rgba(235, 214, 253, 0.56)", stroke:"#c7a5ef", img:"Diana.webp", phone:"5493333333333", meta:"Zona Oeste", displayName:"Evelyn Rivero-Daina Gonzalez" },
-    "Andres Perez":    { fill:"rgba(255, 233, 236, 0.45)", hover:"rgba(254, 209, 216, 0.56)", stroke:"#f2a8b3", img:"Andres.jpg",  phone:"5494444444444", meta:"Zona Sur" },
-    "Victoria Vianna": { fill:"rgba(255, 244, 224, 0.45)", hover:"rgba(255, 233, 196, 0.56)", stroke:"#f2c588", img:"victoria.jpg",phone:"5495555555555", meta:"Zona Andina" },
-    "Anibal Epullan":  { fill:"rgba(235, 240, 255, 0.45)", hover:"rgba(214, 224, 253, 0.56)", stroke:"#9cb0ef", img:"anibal.jpg",  phone:"5496666666666", meta:"Zona Patagonia" }
+    "Marcelo Lizondo": {
+      fill:"rgba(255, 238, 188, 0.45)", hover:"rgba(255, 225, 156, 0.56)", stroke:"#f5d684", img:"agrichecklogo.png", meta:"Zona Norte",
+      contacts:[{name:"Marcelo Lizondo", phone:"5493816083328", email:"marcelo.lizondo@agrichecksrl.com"}]
+    },
+    "Alan Schmidt": {
+      fill:"rgba(221, 241, 255, 0.45)", hover:"rgba(197, 231, 255, 0.56)", stroke:"#93c5f6", img:"agrichecklogo.png", meta:"Zona Los Umas",
+      contacts:[{name:"Alan Schmidt", phone:"5493455235949", email:"alan.schmidt@agrichecksrl.com"}]
+    },
+    "Miguel Utrera": {
+      fill:"rgba(225, 246, 238, 0.45)", hover:"rgba(198, 237, 222, 0.56)", stroke:"#86d1bb", img:"Miguel.webp", meta:"Zona Centro",
+      contacts:[{name:"Miguel Utrera", phone:"549372515563", email:"miguel.utrera@agrichecksrl.com"}]
+    },
+    "Evelyn Rivero-Daiana Gozalez": {
+      fill:"rgba(245, 232, 255, 0.45)", hover:"rgba(235, 214, 253, 0.56)", stroke:"#c7a5ef", img:"Diana.webp", meta:"Zona Oeste", displayName:"Evelyn Riveros y Daiana Gonzalez",
+      contacts:[
+        {name:"Evelyn Riveros", phone:"5492616076080", email:"evelyn.riveros@agrichecksrl.com"},
+        {name:"Daiana Gonzalez", phone:"5492617648050", email:"daiana.gonzalez@agrichecksrl.com"}
+      ]
+    },
+    "Andres Perez": {
+      fill:"rgba(255, 233, 236, 0.45)", hover:"rgba(254, 209, 216, 0.56)", stroke:"#f2a8b3", img:"Andres.jpg", meta:"Zona Sur",
+      contacts:[{name:"Andrés Perez", phone:"5492494151210", email:"andres.perez@agrichecksrl.com"}]
+    },
+    "Victoria Vianna": {
+      fill:"rgba(255, 244, 224, 0.45)", hover:"rgba(255, 233, 196, 0.56)", stroke:"#f2c588", img:"agrichecklogo.png", meta:"Zona Andina",
+      contacts:[{name:"Victoria Vianna", phone:"5492984308032", email:"victoria.vianna@agrichecksrl.com"}]
+    },
+    "Anibal Epullan": {
+      fill:"rgba(235, 240, 255, 0.45)", hover:"rgba(214, 224, 253, 0.56)", stroke:"#9cb0ef", img:"agrichecklogo.png", meta:"Zona Patagonia",
+      contacts:[{name:"Anibal Epullan", phone:"5492984309419", email:"anibal.epullan@agrichecksrl.com"}]
+    }
   };
 
   const normalizeZoneName = (value = "") =>
@@ -212,8 +253,9 @@
   const pName = document.getElementById("pName");
   const pImg = document.getElementById("pImg");
   const pMeta = document.getElementById("pMeta");
-  const pPhone = document.getElementById("pPhone");
+  const pMainName = document.getElementById("pMainName");
   const pWa = document.getElementById("pWa");
+  const salesForce = document.getElementById("salesForce");
   const defaultPanel = document.getElementById("defaultPanel");
   const sellerPanel = document.getElementById("sellerPanel");
   const defaultWa = document.getElementById("defaultWa");
@@ -233,6 +275,11 @@
 
   function getSeller(name){
     return sellers[name] || sellersByNormalizedName[normalizeZoneName(name)];
+  }
+
+  function formatPhone(phone){
+    if(!phone) return "";
+    return `+${phone}`;
   }
 
   function focusMapOnZones(){
@@ -278,12 +325,34 @@
     sellerPanel.hidden = false;
     pName.textContent = displayName;
     pImg.src = s.img;
+    pMainName.textContent = (s.contacts && s.contacts[0]?.name) || displayName;
     pMeta.textContent = s.meta || "";
-    pPhone.textContent = s.phone ? ("+" + s.phone) : "";
-    pWa.disabled = !s.phone;
+    salesForce.innerHTML = "";
+
+    (s.contacts || []).forEach((contact) => {
+      const phone = formatPhone(contact.phone);
+      const item = document.createElement("div");
+      item.className = "contactItem";
+      item.innerHTML = `
+        <div>
+          <p><strong>${contact.name}</strong></p>
+          <p>${phone}</p>
+          <p><a href="mailto:${contact.email}">${contact.email}</a></p>
+        </div>
+        <div class="contactLinks">
+          <a class="miniBtn" href="https://wa.me/${contact.phone}" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a class="miniBtn" href="mailto:${contact.email}">Email</a>
+        </div>
+      `;
+      salesForce.appendChild(item);
+    });
+
+    const primary = s.contacts && s.contacts[0];
+    pWa.disabled = !primary?.phone;
     pWa.onclick = () => {
+      if(!primary?.phone) return;
       const msg = encodeURIComponent(`Hola ${displayName}, te contacto por tu zona.`);
-      window.open(`https://wa.me/${s.phone}?text=${msg}`, "_blank");
+      window.open(`https://wa.me/${primary.phone}?text=${msg}`, "_blank");
     };
   }
 
