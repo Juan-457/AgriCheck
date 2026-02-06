@@ -80,7 +80,7 @@
     }
 
     main{padding:12px 0 16px;flex:1;min-height:0;overflow:hidden}
-    .layout{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:18px;align-items:stretch;height:100%;min-height:0}
+    .layout{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:32px;align-items:start;height:100%;min-height:0}
     .card{
       border:1px solid rgba(255,255,255,.2);
       border-radius:18px;
@@ -94,7 +94,7 @@
     #mapWrap{position:relative;height:100%;display:flex;flex-direction:column;gap:12px;min-height:0}
     #mapContainer{flex:1;min-height:0;display:flex}
     #mapContainer svg{width:100%;height:100%;max-height:none;display:block}
-    #panel{height:100%;overflow:auto}
+    #panel{height:auto;max-height:100%;overflow:auto}
      .zone{cursor:pointer;transition:fill .2s ease,opacity .15s}
     .tooltip{
       position:absolute;display:none;pointer-events:none;
@@ -116,17 +116,18 @@
     .contactMain strong{font-size:20px;line-height:1.2}
     .contactMain span{opacity:.86}
     .contactList{display:flex;flex-direction:column;gap:10px;margin-top:8px}
-    .contactItem{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
+    .contactItem{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
+    .contactInfo{min-width:0;flex:1}
     .contactItem p{margin:0;line-height:1.35}
-    .contactLinks{display:flex;gap:8px;flex-shrink:0}
-    .miniBtn{display:inline-flex;align-items:center;justify-content:center;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#fff;font-weight:700;font-size:12px}
+    .contactLinks{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;margin-left:auto}
+    .miniBtn{display:inline-flex;align-items:center;justify-content:center;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#fff;font-weight:700;font-size:12px;white-space:nowrap}
     button{width:100%;padding:11px 13px;border-radius:12px;border:0;background:#111;color:#fff;cursor:pointer;font-weight:700}
     button:disabled{opacity:.4;cursor:not-allowed}
 
 
     @media (max-width: 960px){
       main{padding:10px 0 12px}
-      .layout{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto}
+      .layout{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto;gap:16px}
       .topbar{justify-content:flex-end}
       .brandLogo{position:static;transform:none;margin-right:auto}
       .navlinks{gap:6px;padding:5px}
@@ -334,7 +335,7 @@
       const item = document.createElement("div");
       item.className = "contactItem";
       item.innerHTML = `
-        <div>
+        <div class="contactInfo">
           <p><strong>${contact.name}</strong></p>
           <p>${phone}</p>
           <p><a href="mailto:${contact.email}">${contact.email}</a></p>
