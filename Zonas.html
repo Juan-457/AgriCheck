@@ -408,16 +408,39 @@
     }, 4200);
   }
 
+  const hiddenSouthernZones = new Set([
+    "Andres Perez",
+    "Victoria Vianna",
+    "Anibal Epullan"
+  ]);
+
   function focusMapOnZones(){
     const svg = document.querySelector("#mapContainer svg");
     if(!svg) return;
-    const box = svg.getBBox();
-    const padX = box.width * 0.03;
-    const padY = box.height * 0.03;
-    const viewX = box.x - padX;
-    const viewY = box.y - padY;
-    const viewW = box.width + padX * 2;
-    const viewH = box.height + padY * 2;
+    const visibleZones = svg.querySelectorAll('.zone:not([data-hidden="true"])');
+    if(!visibleZones.length) return;
+
+    let minX = Infinity;
+    let minY = Infinity;
+    let maxX = -Infinity;
+    let maxY = -Infinity;
+
+    visibleZones.forEach((zone) => {
+      const box = zone.getBBox();
+      minX = Math.min(minX, box.x);
+      minY = Math.min(minY, box.y);
+      maxX = Math.max(maxX, box.x + box.width);
+      maxY = Math.max(maxY, box.y + box.height);
+    });
+
+    const width = maxX - minX;
+    const height = maxY - minY;
+    const padX = width * 0.03;
+    const padY = height * 0.03;
+    const viewX = minX - padX;
+    const viewY = minY - padY;
+    const viewW = width + padX * 2;
+    const viewH = height + padY * 2;
 
     svg.setAttribute("viewBox", `${viewX} ${viewY} ${viewW} ${viewH}`);
     svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
@@ -476,6 +499,11 @@
     mapContainer.querySelectorAll("path[title], polygon[title]").forEach(zone => {
       zone.classList.add("zone");
       zone.dataset.zone = zone.getAttribute("title")?.trim() || "";
+
+      if(hiddenSouthernZones.has(zone.dataset.zone)){
+        zone.dataset.hidden = "true";
+        zone.style.display = "none";
+      }
     });
   }
 
