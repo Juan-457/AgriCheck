@@ -80,8 +80,9 @@
       color: #ffffff;
     }
 
-    main{padding:12px 0 16px;flex:1;min-height:0;overflow:hidden}
-    .layout{display:grid;grid-template-columns:minmax(320px,1.16fr) minmax(280px,.95fr) minmax(220px,.72fr);gap:18px;align-items:stretch;height:100%;min-height:0}
+    main{padding:12px 0 16px;flex:1;overflow:auto}
+    .pageFlow{display:flex;flex-direction:column;gap:16px;min-height:100%}
+    .heroLayout{display:grid;grid-template-columns:minmax(260px,.9fr) minmax(540px,1.55fr) minmax(250px,.68fr);gap:16px;align-items:stretch}
     .card{
       border:1px solid rgba(255,255,255,.2);
       border-radius:18px;
@@ -92,11 +93,21 @@
       box-shadow: 0 20px 36px rgba(0,0,0,.30);
       color: #f8fafc;
     }
-    #mapWrap{position:relative;height:100%;display:flex;flex-direction:column;gap:12px;min-height:0;justify-self:start}
+    .heroCopy{display:flex;flex-direction:column;justify-content:center;gap:16px}
+    .heroCopy h1{margin:0;font-size:clamp(28px,3vw,40px);line-height:1.08;letter-spacing:-.02em}
+    .heroCopy p{margin:0;color:rgba(226,232,240,.9);line-height:1.45}
+    .heroList{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+    .heroList li{padding:8px 10px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);font-weight:700;color:rgba(248,250,252,.95)}
+    .heroBtn{align-self:flex-start;padding:11px 18px;border:none;border-radius:999px;font-weight:800;letter-spacing:.01em;background:linear-gradient(135deg,#f8b742,#f59e0b);color:#111827;cursor:pointer;box-shadow:0 10px 22px rgba(245,158,11,.35)}
+    .heroBtn:hover{transform:translateY(-1px)}
+    #mapWrap{position:relative;display:flex;flex-direction:column;gap:10px;min-height:560px;padding:12px}
+    .mapHint{display:none;font-size:13px;color:#fde68a}
+    .mapHint.visible{display:block}
     #mapContainer{flex:1;min-height:0;display:flex}
     #mapContainer svg{width:100%;height:100%;max-height:none;display:block}
+    .vendorColumn{display:flex;align-items:stretch}
     #panel{height:auto;max-height:100%;overflow:auto;padding:12px;align-self:start}
-     .zone{cursor:pointer;transition:fill .2s ease,opacity .15s}
+    .zone{cursor:pointer;transition:fill .2s ease,opacity .15s}
     .tooltip{
       position:absolute;display:none;pointer-events:none;
       background:#111;color:#fff;padding:10px 12px;border-radius:12px;
@@ -125,7 +136,7 @@
     button{width:100%;padding:11px 13px;border-radius:12px;border:0;background:#111;color:#fff;cursor:pointer;font-weight:700}
     button:disabled{opacity:.4;cursor:not-allowed}
 
-    .productShowcase{display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden;position:relative;max-width:320px;justify-self:end;align-self:end;margin-top:auto;margin-right:0}
+    .productShowcase{display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden;position:relative;max-width:540px;width:100%;margin:0 auto}
     .productShowcase::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(3,8,24,.18), rgba(3,8,24,.48));pointer-events:none}
     .showcaseMedia{position:relative;z-index:1;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.18);box-shadow:0 16px 28px rgba(0,0,0,.26);min-height:260px}
     .showcaseMedia img{width:100%;height:100%;display:block;object-fit:cover;transition:opacity .45s ease}
@@ -133,19 +144,33 @@
     .showcaseCaption p{margin:0 0 8px;font-size:12px;color:rgba(226,232,240,.82);text-transform:uppercase;letter-spacing:.06em}
     .typingName{margin:0;font-size:clamp(22px, 3vw, 34px);line-height:1.1;font-weight:800;display:inline-block;min-height:1.4em;color:#fff;text-shadow:0 6px 20px rgba(0,0,0,.35)}
     .typingName::after{content:"";display:inline-block;width:2px;height:1em;background:rgba(255,255,255,.92);margin-left:5px;vertical-align:-1px;animation:blink .95s steps(1,end) infinite}
+    .kpiStrip{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    .kpiChip{padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#f8fafc;font-weight:700}
+    .productsSection .sectionHead{display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+    .productCta{margin-top:14px}
 
     @keyframes blink{50%{opacity:0}}
 
 
+    @media (max-width: 1100px){
+      .heroLayout{grid-template-columns:minmax(0,1fr) minmax(230px,.78fr);grid-template-areas:"copy copy" "map panel"}
+      .heroCopy{grid-area:copy}
+      #mapWrap{grid-area:map;min-height:480px}
+      .vendorColumn{grid-area:panel}
+    }
+
     @media (max-width: 960px){
       main{padding:10px 0 12px}
-      .layout{grid-template-columns:1fr;grid-template-rows:auto auto auto;gap:16px}
       .topbar{justify-content:flex-end}
       .brandLogo{position:static;transform:none;margin-right:auto}
       .navlinks{gap:6px;padding:5px}
       .navlinks a{padding:8px 12px;font-size:14px}
-      #panel{max-height:34vh;align-self:stretch}
-      .productShowcase{max-width:none;justify-self:stretch;align-self:stretch;margin-top:0}
+      .heroLayout{grid-template-columns:1fr;grid-template-areas:"copy" "map" "panel";gap:14px}
+      #productos{order:4}
+      #kpis{order:5}
+      #mapWrap{min-height:430px}
+      #panel{max-height:none;align-self:stretch}
+      .productShowcase{max-width:none}
       .showcaseMedia{min-height:220px}
     }
   </style>
@@ -157,67 +182,94 @@
         <img src="agrichecklogo.png" alt="AgriCheck" />
       </a>
       <nav class="navlinks" aria-label="Navegación principal">
-        <a href="index.html">Inicio</a>
-        <a href="nuestros-productos.html">Nuestros productos</a>
-        <a href="Zonas.html" aria-current="page">Zonas</a>
+        <a href="#hero">Inicio</a>
+        <a href="#productos">Productos destacados</a>
+        <a href="#kpis" aria-current="page">Cobertura</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <div class="layout">
-      <div id="mapWrap" class="card">
-        <div class="pill">Seleecione la zona comercial para conocer al vendedor.</div>
+    <div class="pageFlow">
+      <section id="hero" class="heroLayout">
+        <article class="card heroCopy">
+          <div class="pill">AgriCheck · Bioinsumos</div>
+          <h1>Tecnología biológica para una agricultura más eficiente</h1>
+          <p>Seleccioná tu zona y conectá con el equipo comercial más cercano para acelerar decisiones en campo.</p>
+          <ul class="heroList">
+            <li>Bioinsumos</li>
+            <li>Feromonas</li>
+            <li>Nutrición vegetal</li>
+            <li>Control biológico</li>
+          </ul>
+          <button id="heroCta" class="heroBtn" type="button">Contactar asesor</button>
+        </article>
 
-        <div id="mapContainer" aria-label="Mapa de zonas"></div>
+        <div id="mapWrap" class="card">
+          <div class="pill">Seleecione la zona comercial para conocer al vendedor.</div>
+          <div id="mapHint" class="mapHint" role="status" aria-live="polite">Seleccioná una zona del mapa para habilitar contacto directo con tu asesor.</div>
+          <div id="mapContainer" aria-label="Mapa de zonas"></div>
 
-        <div id="tt" class="tooltip">
-          <img id="ttImg" alt="">
-          <div>
-            <div id="ttName" style="font-weight:700"></div>
-            <div id="ttMeta" style="opacity:.85;font-size:12px"></div>
-          </div>
-        </div>
-      </div>
-
-      <aside id="panel" class="card">
-        <div class="pill">Detalle</div>
-
-        <div id="defaultPanel" class="panelSection">
-          <h2 style="margin:10px 0 6px">AgriCheck SRL</h2>
-          <img class="companyLogo" src="agrichecklogo.png" alt="Logo AgriCheck">
-          <div class="companyData">
-            <p><strong>Agroinsumos especiales</strong></p>
-            <p>San Juan 50, General Roca, Argentina</p>
-            <p><strong>Email:</strong> <a href="mailto:info@agrichecksrl.com">info@agrichecksrl.com</a></p>
-            <p><strong>WhatsApp:</strong> <a href="tel:+5492984763055">+54 9 2984 76-3055</a></p>
-          </div>
-          <button id="defaultWa">Enviar WhatsApp</button>
-        </div>
-
-        <div id="sellerPanel" class="panelSection" hidden>
-          <h2 id="pName" style="margin:10px 0 6px">Seleccioná una zona</h2>
-          <div class="contactCard">
-            <img id="pImg" alt="">
-            <div class="contactMain">
-              <strong id="pMainName"></strong>
-              <span id="pMeta"></span>
+          <div id="tt" class="tooltip">
+            <img id="ttImg" alt="">
+            <div>
+              <div id="ttName" style="font-weight:700"></div>
+              <div id="ttMeta" style="opacity:.85;font-size:12px"></div>
             </div>
           </div>
-          <div class="sectionTitle">Fuerza de ventas</div>
-          <div id="salesForce" class="contactList"></div>
-          <button id="pWa" disabled>Enviar WhatsApp principal</button>
         </div>
-      </aside>
 
-      <section class="card productShowcase" aria-label="Productos destacados">
-        <div class="pill">Productos destacados</div>
-        <div class="showcaseMedia">
-          <img id="productImage" src="Parka.webp" alt="Producto destacado" />
+        <div class="vendorColumn">
+          <aside id="panel" class="card">
+            <div class="pill">Detalle</div>
+
+            <div id="defaultPanel" class="panelSection">
+              <h2 style="margin:10px 0 6px">AgriCheck SRL</h2>
+              <img class="companyLogo" src="agrichecklogo.png" alt="Logo AgriCheck">
+              <div class="companyData">
+                <p><strong>Agroinsumos especiales</strong></p>
+                <p>San Juan 50, General Roca, Argentina</p>
+                <p><strong>Email:</strong> <a href="mailto:info@agrichecksrl.com">info@agrichecksrl.com</a></p>
+                <p><strong>WhatsApp:</strong> <a href="tel:+5492984763055">+54 9 2984 76-3055</a></p>
+              </div>
+              <button id="defaultWa">Enviar WhatsApp</button>
+            </div>
+
+            <div id="sellerPanel" class="panelSection" hidden>
+              <h2 id="pName" style="margin:10px 0 6px">Seleccioná una zona</h2>
+              <div class="contactCard">
+                <img id="pImg" alt="">
+                <div class="contactMain">
+                  <strong id="pMainName"></strong>
+                  <span id="pMeta"></span>
+                </div>
+              </div>
+              <div class="sectionTitle">Fuerza de ventas</div>
+              <div id="salesForce" class="contactList"></div>
+              <button id="pWa" disabled>Enviar WhatsApp principal</button>
+            </div>
+          </aside>
         </div>
-        <div class="showcaseCaption">
-          <p>Línea AgriCheck</p>
-          <h2 class="typingName" id="productName"></h2>
+      </section>
+
+      <section id="kpis" class="kpiStrip" aria-label="Indicadores">
+        <span class="kpiChip">+120 productores activos</span>
+        <span class="kpiChip">Cobertura nacional</span>
+        <span class="kpiChip">+15 años en el agro</span>
+      </section>
+
+      <section id="productos" class="productsSection" aria-label="Productos destacados">
+        <div class="sectionHead"><div class="pill">Productos destacados</div></div>
+        <div class="card productShowcase">
+          <div class="showcaseMedia">
+            <img id="productImage" src="Parka.webp" alt="Producto destacado" />
+          </div>
+          <div class="showcaseCaption">
+            <p>Línea AgriCheck</p>
+            <h2 class="typingName" id="productName"></h2>
+            <p>Solución biológica de alta performance para potenciar la productividad del cultivo.</p>
+            <button id="productCta" class="heroBtn productCta" type="button">Consultar a mi asesor</button>
+          </div>
         </div>
       </section>
     </div>
@@ -285,6 +337,9 @@
   const defaultPanel = document.getElementById("defaultPanel");
   const sellerPanel = document.getElementById("sellerPanel");
   const defaultWa = document.getElementById("defaultWa");
+  const heroCta = document.getElementById("heroCta");
+  const productCta = document.getElementById("productCta");
+  const mapHint = document.getElementById("mapHint");
 
   const companyWhatsapp = "5492984763055";
   const productImage = document.getElementById("productImage");
@@ -303,11 +358,28 @@
   let productIndex = 0;
   let typingTimeout;
   let cycleInterval;
+  let selectedPrimaryContact = null;
+  let selectedDisplayName = "";
 
   defaultWa.addEventListener("click", () => {
     const msg = encodeURIComponent("Hola AgriCheck, quiero hacer una consulta.");
     window.open(`https://wa.me/${companyWhatsapp}?text=${msg}`, "_blank");
   });
+
+
+
+  function openAdvisorWhatsApp(){
+    if(!selectedPrimaryContact?.phone) return false;
+    const msg = encodeURIComponent(`Hola ${selectedDisplayName}, quiero una asesoría sobre productos AgriCheck.`);
+    window.open(`https://wa.me/${selectedPrimaryContact.phone}?text=${msg}`, "_blank");
+    return true;
+  }
+
+  function highlightMapSelectionHint(){
+    mapHint.classList.add("visible");
+    document.getElementById("mapWrap").scrollIntoView({ behavior:"smooth", block:"center" });
+    setTimeout(() => mapHint.classList.remove("visible"), 2600);
+  }
 
   function moveTooltip(e){
     const rect = document.getElementById("mapWrap").getBoundingClientRect();
@@ -400,6 +472,9 @@
     const s = getSeller(name);
     if(!s) return;
     const displayName = s.displayName || name;
+    selectedDisplayName = displayName;
+    selectedPrimaryContact = (s.contacts && s.contacts[0]) || null;
+    mapHint.classList.remove("visible");
     defaultPanel.hidden = true;
     sellerPanel.hidden = false;
     pName.textContent = displayName;
@@ -426,7 +501,7 @@
       salesForce.appendChild(item);
     });
 
-    const primary = s.contacts && s.contacts[0];
+    const primary = selectedPrimaryContact;
     pWa.disabled = !primary?.phone;
     pWa.onclick = () => {
       if(!primary?.phone) return;
@@ -479,6 +554,16 @@
       z.addEventListener("click", ()=> openPanel(name));
     });
   }
+
+  heroCta.addEventListener("click", () => {
+    if(openAdvisorWhatsApp()) return;
+    document.getElementById("panel").scrollIntoView({ behavior:"smooth", block:"start" });
+  });
+
+  productCta.addEventListener("click", () => {
+    if(openAdvisorWhatsApp()) return;
+    highlightMapSelectionHint();
+  });
 
   window.addEventListener("load", async () => {
     try {
