@@ -245,15 +245,19 @@
   // ✅ Inicializar zonas (se ejecuta cuando el SVG está en el DOM)
   function initZones(){
     const zones = document.querySelectorAll(".zone");
+    const baseZoneFill = "rgba(255, 232, 140, 0.45)";
+    const hoverZoneFill = "rgba(255, 241, 186, 0.62)";
+    const zoneStroke = "#ffe7a3";
+
     zones.forEach(z => {
       const name = (z.dataset.zone || "").trim();
       const s = sellers[name];
-      z.style.fill = "rgba(245, 208, 80, 0.32)";
-      z.style.stroke = "#f9d84c";
+      z.style.fill = baseZoneFill;
+      z.style.stroke = zoneStroke;
       z.style.strokeWidth = "2";
 
       z.addEventListener("mouseenter", (e)=>{
-        z.style.fill = "rgba(245, 208, 80, 0.42)";
+        z.style.fill = hoverZoneFill;
         ttName.textContent = name;
         ttMeta.textContent = s?.meta ?? "Sin datos";
         ttImg.src = s?.img ?? "";
@@ -262,7 +266,7 @@
       });
       z.addEventListener("mousemove", moveTooltip);
       z.addEventListener("mouseleave", ()=> {
-        z.style.fill = "rgba(245, 208, 80, 0.32)";
+        z.style.fill = baseZoneFill;
         tt.style.display = "none";
       });
       z.addEventListener("click", ()=> openPanel(name));
