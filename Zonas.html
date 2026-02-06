@@ -94,7 +94,7 @@
       box-shadow: 0 20px 36px rgba(0,0,0,.30);
       color: #f8fafc;
     }
-    .heroCopy{display:flex;flex-direction:column;justify-content:space-between;gap:16px;min-height:0}
+    .heroCopy{display:flex;flex-direction:column;justify-content:flex-start;gap:16px;min-height:0}
     .heroTop{display:flex;flex-direction:column;gap:16px}
     .heroCopy h1{margin:0;font-size:clamp(28px,3vw,40px);line-height:1.08;letter-spacing:-.02em}
     .heroCopy p{margin:0;color:rgba(226,232,240,.9);line-height:1.45}
@@ -102,13 +102,13 @@
     .heroList li{padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);font-weight:700;color:rgba(248,250,252,.95)}
     .heroBtn{align-self:flex-start;padding:11px 18px;border:none;border-radius:999px;font-weight:800;letter-spacing:.01em;background:linear-gradient(135deg,#f8b742,#f59e0b);color:#111827;cursor:pointer;box-shadow:0 10px 22px rgba(245,158,11,.35)}
     .heroBtn:hover{transform:translateY(-1px)}
-    #mapWrap{position:relative;display:flex;flex-direction:column;gap:10px;min-height:560px;padding:12px}
+    #mapWrap{position:relative;display:flex;flex-direction:column;gap:10px;min-height:500px;padding:12px}
     .mapHint{display:none;font-size:13px;color:#fde68a}
     .mapHint.visible{display:block}
-    #mapContainer{flex:1;min-height:0;display:flex}
-    #mapContainer svg{width:100%;height:100%;max-height:none;display:block}
-    .vendorColumn{display:flex;align-items:center;justify-content:center}
-    #panel{height:auto;max-height:100%;overflow:auto;padding:12px;align-self:center;width:100%;max-width:380px}
+    #mapContainer{flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
+    #mapContainer svg{width:100%;height:auto;max-height:100%;display:block}
+    .vendorColumn{display:flex;align-items:flex-start;justify-content:center}
+    #panel{height:auto;max-height:100%;overflow:auto;padding:12px;align-self:flex-start;width:100%;max-width:380px}
     .zone{cursor:pointer;transition:fill .2s ease,opacity .15s}
     .tooltip{
       position:absolute;display:none;pointer-events:none;
@@ -138,7 +138,7 @@
     button{width:100%;padding:11px 13px;border-radius:12px;border:0;background:#111;color:#fff;cursor:pointer;font-weight:700}
     button:disabled{opacity:.4;cursor:not-allowed}
 
-    .productsSection{margin-top:auto;padding-top:8px}
+    .productsSection{margin-top:0;padding-top:4px}
     .productShowcase{display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden;position:relative;max-width:250px;width:100%;margin:0 auto}
     .productShowcase::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(3,8,24,.18), rgba(3,8,24,.48));pointer-events:none}
     .showcaseMedia{position:relative;z-index:1;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.18);box-shadow:0 16px 28px rgba(0,0,0,.26);min-height:170px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.95);padding:10px}
@@ -421,38 +421,17 @@
   }
 
   function focusMapOnZones(){
-    const mapContainer = document.getElementById("mapContainer");
-    const svg = mapContainer.querySelector("svg");
+    const svg = document.querySelector("#mapContainer svg");
     if(!svg) return;
 
-    const zones = [...svg.querySelectorAll(".zone")].filter(zone => getSeller(zone.dataset.zone || ""));
-    if(!zones.length) return;
+    if(svg.hasAttribute("viewBox")){
+      svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
+      return;
+    }
 
-    const bounds = zones.reduce((acc, zone) => {
-      const box = zone.getBBox();
-      if(!acc) return { minX: box.x, minY: box.y, maxX: box.x + box.width, maxY: box.y + box.height };
-      acc.minX = Math.min(acc.minX, box.x);
-      acc.minY = Math.min(acc.minY, box.y);
-      acc.maxX = Math.max(acc.maxX, box.x + box.width);
-      acc.maxY = Math.max(acc.maxY, box.y + box.height);
-      return acc;
-    }, null);
-
-    const width = bounds.maxX - bounds.minX;
-    const height = bounds.maxY - bounds.minY;
-
-    const leftPad = width * 0.09;
-    const rightPad = width * 0.09;
-    const topPad = height * 0.14;
-    const bottomPad = height * 0.04;
-
-    const viewBoxX = Math.max(0, bounds.minX - leftPad);
-    const viewBoxY = Math.max(0, bounds.minY - topPad);
-    const viewBoxWidth = width + leftPad + rightPad;
-    const viewBoxHeight = height + topPad + bottomPad;
-
-    svg.setAttribute("viewBox", `${viewBoxX} ${viewBoxY} ${viewBoxWidth} ${viewBoxHeight}`);
-    svg.setAttribute("preserveAspectRatio", "xMidYMin meet");
+    const box = svg.getBBox();
+    svg.setAttribute("viewBox", `${box.x} ${box.y} ${box.width} ${box.height}`);
+    svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
   }
 
   function openPanel(name){
