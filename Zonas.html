@@ -174,7 +174,7 @@
   </main>
 
 <script>
-  // ✅ Datos (editá a gusto). Las "keys" deben matchear el title del SVG (normalizado)
+  // ✅ Datos (editá a gusto). Se comparan con el title/id del SVG usando normalización flexible.
   const sellers = {
     "Marcelo Lizondo": { color:"#2F8F99", img:"marcelo.jpg", phone:"5491111111111", meta:"Zona Norte" },
     "Alan Schmidt":    { color:"#00ACC1", img:"agrichecklogo.png", phone:"",              meta:"Zona Los Umas" },
@@ -201,6 +201,36 @@
 
   const companyWhatsapp = "5492984763055";
 
+  function normalizeZoneName(value){
+    return (value || "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, " ")
+      .trim();
+  }
+
+  const sellersNormalized = Object.fromEntries(
+    Object.entries(sellers).map(([name, data]) => [normalizeZoneName(name), { name, ...data }])
+  );
+
+  const sellersByZoneId = {
+    zona1: "Marcelo Lizondo",
+    zona2: "Alan Schmidt",
+    zona3: "Miguel Utrera",
+    zona4: "Evelyn Rivero-Daiana Gonzalez",
+    zona5: "Andres Perez",
+    zona6: "Victoria Vianna",
+    zona7: "Anibal Epullan"
+  };
+
+  function resolveSeller(rawName, zoneId){
+    const byName = sellersNormalized[normalizeZoneName(rawName)];
+    if(byName) return byName;
+    const mappedName = sellersByZoneId[zoneId];
+    return mappedName ? { name: mappedName, ...sellers[mappedName] } : null;
+  }
+
   defaultWa.addEventListener("click", () => {
     const msg = encodeURIComponent("Hola AgriCheck, quiero hacer una consulta.");
     window.open(`https://wa.me/${companyWhatsapp}?text=${msg}`, "_blank");
@@ -212,18 +242,19 @@
     tt.style.top  = (e.clientY - rect.top + 12) + "px";
   }
 
-  function openPanel(name){
-    const s = sellers[name];
+  function openPanel(zoneName, zoneId){
+    const resolved = resolveSeller(zoneName, zoneId);
+    const s = resolved;
     if(!s) return;
     defaultPanel.hidden = true;
     sellerPanel.hidden = false;
-    pName.textContent = name;
+    pName.textContent = resolved.name;
     pImg.src = s.img;
     pMeta.textContent = s.meta || "";
     pPhone.textContent = s.phone ? ("+" + s.phone) : "";
     pWa.disabled = !s.phone;
     pWa.onclick = () => {
-      const msg = encodeURIComponent(`Hola ${name}, te contacto por tu zona.`);
+      const msg = encodeURIComponent(`Hola ${resolved.name}, te contacto por tu zona.`);
       window.open(`https://wa.me/${s.phone}?text=${msg}`, "_blank");
     };
   }
@@ -239,6 +270,7 @@
     mapContainer.querySelectorAll("path[title], polygon[title]").forEach(zone => {
       zone.classList.add("zone");
       zone.dataset.zone = zone.getAttribute("title")?.trim() || "";
+      zone.dataset.zoneId = zone.getAttribute("id")?.trim() || "";
     });
   }
 
@@ -251,14 +283,16 @@
 
     zones.forEach(z => {
       const name = (z.dataset.zone || "").trim();
-      const s = sellers[name];
+      const zoneId = (z.dataset.zoneId || "").trim();
+      const resolved = resolveSeller(name, zoneId);
+      const s = resolved;
       z.style.fill = baseZoneFill;
       z.style.stroke = zoneStroke;
       z.style.strokeWidth = "2";
 
       z.addEventListener("mouseenter", (e)=>{
         z.style.fill = hoverZoneFill;
-        ttName.textContent = name;
+        ttName.textContent = resolved?.name || name || "Zona sin asignar";
         ttMeta.textContent = s?.meta ?? "Sin datos";
         ttImg.src = s?.img ?? "";
         tt.style.display = "flex";
@@ -269,7 +303,7 @@
         z.style.fill = baseZoneFill;
         tt.style.display = "none";
       });
-      z.addEventListener("click", ()=> openPanel(name));
+      z.addEventListener("click", ()=> openPanel(name, zoneId));
     });
   }
 
