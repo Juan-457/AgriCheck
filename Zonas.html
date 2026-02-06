@@ -80,7 +80,8 @@
     }
 
     main{padding:12px 0 16px;flex:1;min-height:0;overflow:hidden}
-    .layout{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:32px;align-items:start;height:100%;min-height:0}
+    .layout{display:grid;grid-template-columns:minmax(280px, 0.78fr) minmax(0, 1.22fr);gap:24px;align-items:stretch;height:100%;min-height:0}
+    .rightLayout{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:22px;height:100%;min-height:0}
     .card{
       border:1px solid rgba(255,255,255,.2);
       border-radius:18px;
@@ -124,15 +125,28 @@
     button{width:100%;padding:11px 13px;border-radius:12px;border:0;background:#111;color:#fff;cursor:pointer;font-weight:700}
     button:disabled{opacity:.4;cursor:not-allowed}
 
+    .productShowcase{display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative}
+    .productShowcase::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(3,8,24,.18), rgba(3,8,24,.48));pointer-events:none}
+    .showcaseMedia{position:relative;z-index:1;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.18);box-shadow:0 16px 28px rgba(0,0,0,.26);min-height:360px}
+    .showcaseMedia img{width:100%;height:100%;display:block;object-fit:cover;transition:opacity .45s ease}
+    .showcaseCaption{position:relative;z-index:1;margin-top:14px;padding:14px;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16)}
+    .showcaseCaption p{margin:0 0 8px;font-size:12px;color:rgba(226,232,240,.82);text-transform:uppercase;letter-spacing:.06em}
+    .typingName{margin:0;font-size:clamp(22px, 3vw, 34px);line-height:1.1;font-weight:800;display:inline-block;min-height:1.4em;color:#fff;text-shadow:0 6px 20px rgba(0,0,0,.35)}
+    .typingName::after{content:"";display:inline-block;width:2px;height:1em;background:rgba(255,255,255,.92);margin-left:5px;vertical-align:-1px;animation:blink .95s steps(1,end) infinite}
+
+    @keyframes blink{50%{opacity:0}}
+
 
     @media (max-width: 960px){
       main{padding:10px 0 12px}
-      .layout{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto;gap:16px}
+      .layout{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);gap:16px}
+      .rightLayout{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto;gap:16px}
       .topbar{justify-content:flex-end}
       .brandLogo{position:static;transform:none;margin-right:auto}
       .navlinks{gap:6px;padding:5px}
       .navlinks a{padding:8px 12px;font-size:14px}
       #panel{max-height:34vh}
+      .showcaseMedia{min-height:220px}
     }
   </style>
 </head>
@@ -152,49 +166,62 @@
 
   <main class="container">
     <div class="layout">
-      <div id="mapWrap" class="card">
-        <div class="pill">Zonas comerciales</div>
-
-      <div id="mapContainer" aria-label="Mapa de zonas"></div>
-
-      <div id="tt" class="tooltip">
-        <img id="ttImg" alt="">
-        <div>
-          <div id="ttName" style="font-weight:700"></div>
-          <div id="ttMeta" style="opacity:.85;font-size:12px"></div>
+      <section class="card productShowcase" aria-label="Productos destacados">
+        <div class="pill">Productos destacados</div>
+        <div class="showcaseMedia">
+          <img id="productImage" src="Parka.webp" alt="Producto destacado" />
         </div>
-      </div>
-    </div>
-
-      <aside id="panel" class="card">
-        <div class="pill">Detalle</div>
-
-        <div id="defaultPanel" class="panelSection">
-          <h2 style="margin:10px 0 6px">AgriCheck SRL</h2>
-          <img class="companyLogo" src="agrichecklogo.png" alt="Logo AgriCheck">
-          <div class="companyData">
-            <p><strong>Agroinsumos especiales</strong></p>
-            <p>San Juan 50, General Roca, Argentina</p>
-            <p><strong>Email:</strong> <a href="mailto:info@agrichecksrl.com">info@agrichecksrl.com</a></p>
-            <p><strong>WhatsApp:</strong> <a href="tel:+5492984763055">+54 9 2984 76-3055</a></p>
-          </div>
-          <button id="defaultWa">Enviar WhatsApp</button>
+        <div class="showcaseCaption">
+          <p>Línea AgriCheck</p>
+          <h2 class="typingName" id="productName"></h2>
         </div>
+      </section>
 
-        <div id="sellerPanel" class="panelSection" hidden>
-          <h2 id="pName" style="margin:10px 0 6px">Seleccioná una zona</h2>
-          <div class="contactCard">
-            <img id="pImg" alt="">
-            <div class="contactMain">
-              <strong id="pMainName"></strong>
-              <span id="pMeta"></span>
+      <div class="rightLayout">
+        <div id="mapWrap" class="card">
+          <div class="pill">Zonas comerciales</div>
+
+          <div id="mapContainer" aria-label="Mapa de zonas"></div>
+
+          <div id="tt" class="tooltip">
+            <img id="ttImg" alt="">
+            <div>
+              <div id="ttName" style="font-weight:700"></div>
+              <div id="ttMeta" style="opacity:.85;font-size:12px"></div>
             </div>
           </div>
-          <div class="sectionTitle">Fuerza de ventas</div>
-          <div id="salesForce" class="contactList"></div>
-          <button id="pWa" disabled>Enviar WhatsApp principal</button>
         </div>
-      </aside>
+
+        <aside id="panel" class="card">
+          <div class="pill">Detalle</div>
+
+          <div id="defaultPanel" class="panelSection">
+            <h2 style="margin:10px 0 6px">AgriCheck SRL</h2>
+            <img class="companyLogo" src="agrichecklogo.png" alt="Logo AgriCheck">
+            <div class="companyData">
+              <p><strong>Agroinsumos especiales</strong></p>
+              <p>San Juan 50, General Roca, Argentina</p>
+              <p><strong>Email:</strong> <a href="mailto:info@agrichecksrl.com">info@agrichecksrl.com</a></p>
+              <p><strong>WhatsApp:</strong> <a href="tel:+5492984763055">+54 9 2984 76-3055</a></p>
+            </div>
+            <button id="defaultWa">Enviar WhatsApp</button>
+          </div>
+
+          <div id="sellerPanel" class="panelSection" hidden>
+            <h2 id="pName" style="margin:10px 0 6px">Seleccioná una zona</h2>
+            <div class="contactCard">
+              <img id="pImg" alt="">
+              <div class="contactMain">
+                <strong id="pMainName"></strong>
+                <span id="pMeta"></span>
+              </div>
+            </div>
+            <div class="sectionTitle">Fuerza de ventas</div>
+            <div id="salesForce" class="contactList"></div>
+            <button id="pWa" disabled>Enviar WhatsApp principal</button>
+          </div>
+        </aside>
+      </div>
     </div>
   </main>
 
@@ -262,6 +289,22 @@
   const defaultWa = document.getElementById("defaultWa");
 
   const companyWhatsapp = "5492984763055";
+  const productImage = document.getElementById("productImage");
+  const productName = document.getElementById("productName");
+
+  const featuredProducts = [
+    { name: "Parka", image: "Parka.webp" },
+    { name: "T-Gro WP", image: "T-Gro WP.webp" },
+    { name: "Nexula", image: "nexula.webp" },
+    { name: "Nomu Protec", image: "Nomu.webp" },
+    { name: "Tundrabac", image: "Tundrabac.webp" },
+    { name: "Beauvisan", image: "Beavisan 1Kg.webp" },
+    { name: "Superfifty Prime", image: "Superfifty.webp" }
+  ];
+
+  let productIndex = 0;
+  let typingTimeout;
+  let cycleInterval;
 
   defaultWa.addEventListener("click", () => {
     const msg = encodeURIComponent("Hola AgriCheck, quiero hacer una consulta.");
@@ -281,6 +324,43 @@
   function formatPhone(phone){
     if(!phone) return "";
     return `+${phone}`;
+  }
+
+  function typeProductName(text, speed = 72){
+    clearTimeout(typingTimeout);
+    productName.textContent = "";
+    let i = 0;
+
+    const typeStep = () => {
+      productName.textContent = text.slice(0, i);
+      i += 1;
+      if(i <= text.length){
+        typingTimeout = setTimeout(typeStep, speed);
+      }
+    };
+
+    typeStep();
+  }
+
+  function showProduct(index){
+    const product = featuredProducts[index];
+    if(!product) return;
+    productImage.style.opacity = "0";
+    setTimeout(() => {
+      productImage.src = product.image;
+      productImage.alt = product.name;
+      productImage.style.opacity = "1";
+    }, 180);
+    typeProductName(product.name);
+  }
+
+  function startProductShowcase(){
+    showProduct(productIndex);
+    clearInterval(cycleInterval);
+    cycleInterval = setInterval(() => {
+      productIndex = (productIndex + 1) % featuredProducts.length;
+      showProduct(productIndex);
+    }, 4200);
   }
 
   function focusMapOnZones(){
@@ -407,6 +487,7 @@
       await loadMap();
       initZones();
       focusMapOnZones();
+      startProductShowcase();
     } catch (error) {
       document.getElementById("mapContainer").innerHTML = "<p>No se pudo cargar el mapa.</p>";
       console.error(error);
