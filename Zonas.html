@@ -261,7 +261,7 @@
         moveTooltip(e);
       });
       z.addEventListener("mousemove", moveTooltip);
-      ddEventListener("mouseleave", ()=> {
+      z.addEventListener("mouseleave", ()=> {
         z.style.fill = "rgba(245, 208, 80, 0.32)";
         tt.style.display = "none";
       });
