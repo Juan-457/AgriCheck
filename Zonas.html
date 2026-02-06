@@ -176,13 +176,13 @@
 <script>
   // ✅ Datos (editá a gusto). Las "keys" deben matchear el title del SVG (normalizado)
   const sellers = {
-    "Marcelo Lizondo": { color:"#2F8F99", img:"marcelo.jpg", phone:"5491111111111", meta:"Zona Norte" },
-    "Alan Schmidt":    { color:"#00ACC1", img:"agrichecklogo.png", phone:"",              meta:"Zona Los Umas" },
-    "Miguel Utrera":   { color:"#3AA6B9", img:"Miguel.webp", phone:"5492222222222", meta:"Zona Centro" },
-    "Evelyn Rivero-Daiana Gonzalez": { color:"#2E7D32", img:"Diana.webp", phone:"5493333333333", meta:"Zona Oeste" },
-    "Andres Perez":    { color:"#1B5E20", img:"Andres.jpg",  phone:"5494444444444", meta:"Zona Sur" },
-    "Victoria Vianna": { color:"#FB8C00", img:"victoria.jpg",phone:"5495555555555", meta:"Zona Andina" },
-    "Anibal Epullan":  { color:"#FDD835", img:"anibal.jpg",  phone:"5496666666666", meta:"Zona Patagonia" }
+    "Marcelo Lizondo": { fill:"rgba(255, 238, 188, 0.45)", hover:"rgba(255, 225, 156, 0.56)", stroke:"#f5d684", img:"marcelo.jpg", phone:"5491111111111", meta:"Zona Norte" },
+    "Alan Schmidt":    { fill:"rgba(221, 241, 255, 0.45)", hover:"rgba(197, 231, 255, 0.56)", stroke:"#93c5f6", img:"agrichecklogo.png", phone:"",              meta:"Zona Los Umas" },
+    "Miguel Utrera":   { fill:"rgba(225, 246, 238, 0.45)", hover:"rgba(198, 237, 222, 0.56)", stroke:"#86d1bb", img:"Miguel.webp", phone:"5492222222222", meta:"Zona Centro" },
+    "Evelyn Rivero-Daiana Gonzalez": { fill:"rgba(245, 232, 255, 0.45)", hover:"rgba(235, 214, 253, 0.56)", stroke:"#c7a5ef", img:"Diana.webp", phone:"5493333333333", meta:"Zona Oeste" },
+    "Andres Perez":    { fill:"rgba(255, 233, 236, 0.45)", hover:"rgba(254, 209, 216, 0.56)", stroke:"#f2a8b3", img:"Andres.jpg",  phone:"5494444444444", meta:"Zona Sur" },
+    "Victoria Vianna": { fill:"rgba(255, 244, 224, 0.45)", hover:"rgba(255, 233, 196, 0.56)", stroke:"#f2c588", img:"victoria.jpg",phone:"5495555555555", meta:"Zona Andina" },
+    "Anibal Epullan":  { fill:"rgba(235, 240, 255, 0.45)", hover:"rgba(214, 224, 253, 0.56)", stroke:"#9cb0ef", img:"anibal.jpg",  phone:"5496666666666", meta:"Zona Patagonia" }
   };
 
   const tt = document.getElementById("tt");
@@ -247,13 +247,17 @@
     const zones = document.querySelectorAll(".zone");
     zones.forEach(z => {
       const name = (z.dataset.zone || "").trim();
-      const s = sellers[name];
-        z.style.fill = "rgba(245, 208, 80, 0.32)";
-      z.style.stroke = "#f9d84c";
+      const s = sellers[name] || {};
+      const baseFill = s.fill || "rgba(245, 208, 80, 0.32)";
+      const hoverFill = s.hover || "rgba(245, 208, 80, 0.42)";
+      const stroke = s.stroke || "#f9d84c";
+
+      z.style.fill = baseFill;
+      z.style.stroke = stroke;
       z.style.strokeWidth = "2";
 
       z.addEventListener("mouseenter", (e)=>{
-        z.style.fill = "rgba(245, 208, 80, 0.42)";
+        z.style.fill = hoverFill;
         ttName.textContent = name;
         ttMeta.textContent = s?.meta ?? "Sin datos";
         ttImg.src = s?.img ?? "";
@@ -262,7 +266,7 @@
       });
       z.addEventListener("mousemove", moveTooltip);
       z.addEventListener("mouseleave", ()=> {
-        z.style.fill = "rgba(245, 208, 80, 0.32)";
+        z.style.fill = baseFill;
         tt.style.display = "none";
       });
       z.addEventListener("click", ()=> openPanel(name));
