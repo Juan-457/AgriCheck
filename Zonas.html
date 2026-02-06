@@ -90,8 +90,7 @@
     }
     #mapWrap{position:relative}
     svg{width:100%;height:auto;max-height:86vh}
-    .zone{cursor:pointer;transition:opacity .15s}
-    .zone:hover{opacity:.85}
+    .zone{cursor:pointer;transition:fill .2s ease,opacity .15s}
     .tooltip{
       position:absolute;display:none;pointer-events:none;
       background:#111;color:#fff;padding:10px 12px;border-radius:12px;
@@ -249,11 +248,12 @@
     zones.forEach(z => {
       const name = (z.dataset.zone || "").trim();
       const s = sellers[name];
-      z.style.fill = "rgba(0, 0, 0, 0.35)";
-      z.style.stroke = "#ffffff";
-      z.style.strokeWidth = "3";
+      z.style.fill = "rgba(245, 208, 80, 0.32)";
+      z.style.stroke = "#f9d84c";
+      z.style.strokeWidth = "2";
 
       z.addEventListener("mouseenter", (e)=>{
+        z.style.fill = "rgba(245, 208, 80, 0.42)";
         ttName.textContent = name;
         ttMeta.textContent = s?.meta ?? "Sin datos";
         ttImg.src = s?.img ?? "";
@@ -261,7 +261,10 @@
         moveTooltip(e);
       });
       z.addEventListener("mousemove", moveTooltip);
-      z.addEventListener("mouseleave", ()=> tt.style.display = "none");
+      z.addEventListener("mouseleave", ()=> {
+        z.style.fill = "rgba(245, 208, 80, 0.32)";
+        tt.style.display = "none";
+      });
       z.addEventListener("click", ()=> openPanel(name));
     });
   }
