@@ -80,8 +80,8 @@
       color: #ffffff;
     }
 
-    main{padding:12px 0 16px;flex:1;overflow:auto}
-    .pageFlow{display:flex;flex-direction:column;gap:16px;min-height:100%}
+    main{padding:12px 0;flex:1;overflow:hidden}
+    .pageFlow{display:flex;flex-direction:column;gap:0;height:100%}
     .heroLayout{display:grid;grid-template-columns:minmax(260px,.9fr) minmax(540px,1.55fr) minmax(250px,.68fr);gap:16px;align-items:stretch}
     .card{
       border:1px solid rgba(255,255,255,.2);
@@ -93,7 +93,8 @@
       box-shadow: 0 20px 36px rgba(0,0,0,.30);
       color: #f8fafc;
     }
-    .heroCopy{display:flex;flex-direction:column;justify-content:flex-start;gap:16px}
+    .heroCopy{display:flex;flex-direction:column;justify-content:space-between;gap:16px;min-height:0}
+    .heroTop{display:flex;flex-direction:column;gap:16px}
     .heroCopy h1{margin:0;font-size:clamp(28px,3vw,40px);line-height:1.08;letter-spacing:-.02em}
     .heroCopy p{margin:0;color:rgba(226,232,240,.9);line-height:1.45}
     .heroList{list-style:none;margin:0;padding:0;display:flex;gap:10px;flex-wrap:wrap}
@@ -136,19 +137,17 @@
     button{width:100%;padding:11px 13px;border-radius:12px;border:0;background:#111;color:#fff;cursor:pointer;font-weight:700}
     button:disabled{opacity:.4;cursor:not-allowed}
 
-    .productShowcase{display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden;position:relative;max-width:540px;width:100%;margin:0 auto}
+    .productsSection{margin-top:auto;padding-top:8px}
+    .productShowcase{display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden;position:relative;max-width:250px;width:100%;margin:0 auto}
     .productShowcase::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(3,8,24,.18), rgba(3,8,24,.48));pointer-events:none}
-    .showcaseMedia{position:relative;z-index:1;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.18);box-shadow:0 16px 28px rgba(0,0,0,.26);min-height:260px}
-    .showcaseMedia img{width:100%;height:100%;display:block;object-fit:cover;transition:opacity .45s ease}
-    .showcaseCaption{position:relative;z-index:1;margin-top:14px;padding:14px;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16)}
-    .showcaseCaption p{margin:0 0 8px;font-size:12px;color:rgba(226,232,240,.82);text-transform:uppercase;letter-spacing:.06em}
-    .typingName{margin:0;font-size:clamp(22px, 3vw, 34px);line-height:1.1;font-weight:800;display:inline-block;min-height:1.4em;color:#fff;text-shadow:0 6px 20px rgba(0,0,0,.35)}
+    .showcaseMedia{position:relative;z-index:1;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.18);box-shadow:0 16px 28px rgba(0,0,0,.26);min-height:170px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.95);padding:10px}
+    .showcaseMedia img{width:100%;height:100%;display:block;object-fit:contain;object-position:center;transition:opacity .45s ease}
+    .typingName{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);margin:0;font-size:clamp(15px, 1.6vw, 20px);line-height:1.1;font-weight:800;display:inline-block;min-height:1.2em;color:#0f172a;background:rgba(255,255,255,.86);padding:4px 10px;border-radius:999px;text-shadow:none;z-index:2;max-width:90%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .typingName::after{content:"";display:inline-block;width:2px;height:1em;background:rgba(255,255,255,.92);margin-left:5px;vertical-align:-1px;animation:blink .95s steps(1,end) infinite}
     .kpiStrip{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
     .kpiChip{padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#f8fafc;font-weight:700}
     .productsSection .sectionHead{display:flex;align-items:center;justify-content:center;margin-bottom:10px}
-    .productCta{margin-top:14px}
-
+    
     @keyframes blink{50%{opacity:0}}
 
 
@@ -160,18 +159,16 @@
     }
 
     @media (max-width: 960px){
-      main{padding:10px 0 12px}
+      main{padding:10px 0 12px;overflow:auto}
       .topbar{justify-content:flex-end}
       .brandLogo{position:static;transform:none;margin-right:auto}
       .navlinks{gap:6px;padding:5px}
       .navlinks a{padding:8px 12px;font-size:14px}
       .heroLayout{grid-template-columns:1fr;grid-template-areas:"copy" "map" "panel";gap:14px}
-      #productos{order:4}
-      #kpis{order:5}
       #mapWrap{min-height:430px}
       #panel{max-height:none;align-self:stretch}
-      .productShowcase{max-width:none}
-      .showcaseMedia{min-height:220px}
+      .productShowcase{max-width:none;margin:0 auto}
+      .showcaseMedia{min-height:200px}
     }
   </style>
 </head>
@@ -193,15 +190,26 @@
     <div class="pageFlow">
       <section id="hero" class="heroLayout">
         <article class="card heroCopy">
-          <div class="pill">AgriCheck · Bioinsumos</div>
-          <h1>Tecnología biológica para una agricultura más eficiente</h1>
-          <p>Seleccioná tu zona y conectá con el equipo comercial más cercano para acelerar decisiones en campo.</p>
-          <ul class="heroList">
-            <li>Rendimiento y calidad</li>
-            <li>Tratamientos de semillas</li>
-            <li>Protección de cultivos</li>
-          </ul>
-          <button id="heroCta" class="heroBtn" type="button">Contactar asesor</button>
+          <div class="heroTop">
+            <div class="pill">AgriCheck · Bioinsumos</div>
+            <h1>Tecnología biológica para una agricultura más eficiente</h1>
+            <p>Seleccioná tu zona y conectá con el equipo comercial más cercano para acelerar decisiones en campo.</p>
+            <ul class="heroList">
+              <li>Rendimiento y calidad</li>
+              <li>Tratamientos de semillas</li>
+              <li>Protección de cultivos</li>
+            </ul>
+            <button id="heroCta" class="heroBtn" type="button">Contactar asesor</button>
+          </div>
+
+          <section id="productos" class="productsSection" aria-label="Productos destacados">
+            <div class="productShowcase">
+              <div class="showcaseMedia">
+                <img id="productImage" src="Parka.webp" alt="Producto destacado" />
+                <h2 class="typingName" id="productName"></h2>
+              </div>
+            </div>
+          </section>
         </article>
 
         <div id="mapWrap" class="card">
@@ -251,19 +259,6 @@
         </div>
       </section>
 
-      <section id="productos" class="productsSection" aria-label="Productos destacados">
-        <div class="card productShowcase">
-          <div class="showcaseMedia">
-            <img id="productImage" src="Parka.webp" alt="Producto destacado" />
-          </div>
-          <div class="showcaseCaption">
-            <p>Línea AgriCheck</p>
-            <h2 class="typingName" id="productName"></h2>
-            <p>Solución biológica de alta performance para potenciar la productividad del cultivo.</p>
-            <button id="productCta" class="heroBtn productCta" type="button">Consultar a mi asesor</button>
-          </div>
-        </div>
-      </section>
     </div>
   </main>
 
@@ -330,7 +325,6 @@
   const sellerPanel = document.getElementById("sellerPanel");
   const defaultWa = document.getElementById("defaultWa");
   const heroCta = document.getElementById("heroCta");
-  const productCta = document.getElementById("productCta");
   const mapHint = document.getElementById("mapHint");
 
   const companyWhatsapp = "5492984763055";
@@ -552,10 +546,6 @@
     document.getElementById("panel").scrollIntoView({ behavior:"smooth", block:"start" });
   });
 
-  productCta.addEventListener("click", () => {
-    if(openAdvisorWhatsApp()) return;
-    highlightMapSelectionHint();
-  });
 
   window.addEventListener("load", async () => {
     try {
