@@ -93,11 +93,11 @@
       box-shadow: 0 20px 36px rgba(0,0,0,.30);
       color: #f8fafc;
     }
-    .heroCopy{display:flex;flex-direction:column;justify-content:center;gap:16px}
+    .heroCopy{display:flex;flex-direction:column;justify-content:flex-start;gap:16px}
     .heroCopy h1{margin:0;font-size:clamp(28px,3vw,40px);line-height:1.08;letter-spacing:-.02em}
     .heroCopy p{margin:0;color:rgba(226,232,240,.9);line-height:1.45}
-    .heroList{list-style:none;margin:0;padding:0;display:grid;gap:8px}
-    .heroList li{padding:8px 10px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);font-weight:700;color:rgba(248,250,252,.95)}
+    .heroList{list-style:none;margin:0;padding:0;display:flex;gap:10px;flex-wrap:wrap}
+    .heroList li{padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);font-weight:700;color:rgba(248,250,252,.95)}
     .heroBtn{align-self:flex-start;padding:11px 18px;border:none;border-radius:999px;font-weight:800;letter-spacing:.01em;background:linear-gradient(135deg,#f8b742,#f59e0b);color:#111827;cursor:pointer;box-shadow:0 10px 22px rgba(245,158,11,.35)}
     .heroBtn:hover{transform:translateY(-1px)}
     #mapWrap{position:relative;display:flex;flex-direction:column;gap:10px;min-height:560px;padding:12px}
@@ -105,8 +105,8 @@
     .mapHint.visible{display:block}
     #mapContainer{flex:1;min-height:0;display:flex}
     #mapContainer svg{width:100%;height:100%;max-height:none;display:block}
-    .vendorColumn{display:flex;align-items:stretch}
-    #panel{height:auto;max-height:100%;overflow:auto;padding:12px;align-self:start}
+    .vendorColumn{display:flex;align-items:center;justify-content:center}
+    #panel{height:auto;max-height:100%;overflow:auto;padding:12px;align-self:center;width:100%;max-width:380px}
     .zone{cursor:pointer;transition:fill .2s ease,opacity .15s}
     .tooltip{
       position:absolute;display:none;pointer-events:none;
@@ -197,10 +197,9 @@
           <h1>Tecnología biológica para una agricultura más eficiente</h1>
           <p>Seleccioná tu zona y conectá con el equipo comercial más cercano para acelerar decisiones en campo.</p>
           <ul class="heroList">
-            <li>Bioinsumos</li>
-            <li>Feromonas</li>
-            <li>Nutrición vegetal</li>
-            <li>Control biológico</li>
+            <li>Rendimiento y calidad</li>
+            <li>Tratamientos de semillas</li>
+            <li>Protección de cultivos</li>
           </ul>
           <button id="heroCta" class="heroBtn" type="button">Contactar asesor</button>
         </article>
@@ -252,14 +251,7 @@
         </div>
       </section>
 
-      <section id="kpis" class="kpiStrip" aria-label="Indicadores">
-        <span class="kpiChip">+120 productores activos</span>
-        <span class="kpiChip">Cobertura nacional</span>
-        <span class="kpiChip">+15 años en el agro</span>
-      </section>
-
       <section id="productos" class="productsSection" aria-label="Productos destacados">
-        <div class="sectionHead"><div class="pill">Productos destacados</div></div>
         <div class="card productShowcase">
           <div class="showcaseMedia">
             <img id="productImage" src="Parka.webp" alt="Producto destacado" />
