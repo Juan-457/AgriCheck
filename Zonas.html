@@ -185,6 +185,18 @@
     "Anibal Epullan":  { fill:"rgba(235, 240, 255, 0.45)", hover:"rgba(214, 224, 253, 0.56)", stroke:"#9cb0ef", img:"anibal.jpg",  phone:"5496666666666", meta:"Zona Patagonia" }
   };
 
+  const normalizeZoneName = (value = "") =>
+    value
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-zA-Z0-9]+/g, " ")
+      .trim()
+      .toLowerCase();
+
+  const sellersByNormalizedName = Object.fromEntries(
+    Object.entries(sellers).map(([name, info]) => [normalizeZoneName(name), info])
+  );
+
   const tt = document.getElementById("tt");
   const ttImg = document.getElementById("ttImg");
   const ttName = document.getElementById("ttName");
@@ -213,7 +225,7 @@
   }
 
   function openPanel(name){
-    const s = sellers[name];
+    const s = sellers[name] || sellersByNormalizedName[normalizeZoneName(name)];
     if(!s) return;
     defaultPanel.hidden = true;
     sellerPanel.hidden = false;
@@ -247,7 +259,7 @@
     const zones = document.querySelectorAll(".zone");
     zones.forEach(z => {
       const name = (z.dataset.zone || "").trim();
-      const s = sellers[name] || {};
+      const s = sellers[name] || sellersByNormalizedName[normalizeZoneName(name)] || {};
       const baseFill = s.fill || "rgba(245, 208, 80, 0.32)";
       const hoverFill = s.hover || "rgba(245, 208, 80, 0.42)";
       const stroke = s.stroke || "#f9d84c";
