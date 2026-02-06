@@ -179,7 +179,7 @@
     "Marcelo Lizondo": { fill:"rgba(255, 238, 188, 0.45)", hover:"rgba(255, 225, 156, 0.56)", stroke:"#f5d684", img:"marcelo.jpg", phone:"5491111111111", meta:"Zona Norte" },
     "Alan Schmidt":    { fill:"rgba(221, 241, 255, 0.45)", hover:"rgba(197, 231, 255, 0.56)", stroke:"#93c5f6", img:"agrichecklogo.png", phone:"",              meta:"Zona Los Umas" },
     "Miguel Utrera":   { fill:"rgba(225, 246, 238, 0.45)", hover:"rgba(198, 237, 222, 0.56)", stroke:"#86d1bb", img:"Miguel.webp", phone:"5492222222222", meta:"Zona Centro" },
-    "Evelyn Rivero-Daiana Gonzalez": { fill:"rgba(245, 232, 255, 0.45)", hover:"rgba(235, 214, 253, 0.56)", stroke:"#c7a5ef", img:"Diana.webp", phone:"5493333333333", meta:"Zona Oeste" },
+    "Evelyn Rivero-Daiana Gozalez": { fill:"rgba(245, 232, 255, 0.45)", hover:"rgba(235, 214, 253, 0.56)", stroke:"#c7a5ef", img:"Diana.webp", phone:"5493333333333", meta:"Zona Oeste", displayName:"Evelyn Rivero-Daina Gonzalez" },
     "Andres Perez":    { fill:"rgba(255, 233, 236, 0.45)", hover:"rgba(254, 209, 216, 0.56)", stroke:"#f2a8b3", img:"Andres.jpg",  phone:"5494444444444", meta:"Zona Sur" },
     "Victoria Vianna": { fill:"rgba(255, 244, 224, 0.45)", hover:"rgba(255, 233, 196, 0.56)", stroke:"#f2c588", img:"victoria.jpg",phone:"5495555555555", meta:"Zona Andina" },
     "Anibal Epullan":  { fill:"rgba(235, 240, 255, 0.45)", hover:"rgba(214, 224, 253, 0.56)", stroke:"#9cb0ef", img:"anibal.jpg",  phone:"5496666666666", meta:"Zona Patagonia" }
@@ -224,18 +224,23 @@
     tt.style.top  = (e.clientY - rect.top + 12) + "px";
   }
 
+  function getSeller(name){
+    return sellers[name] || sellersByNormalizedName[normalizeZoneName(name)];
+  }
+
   function openPanel(name){
-    const s = sellers[name] || sellersByNormalizedName[normalizeZoneName(name)];
+    const s = getSeller(name);
     if(!s) return;
+    const displayName = s.displayName || name;
     defaultPanel.hidden = true;
     sellerPanel.hidden = false;
-    pName.textContent = name;
+    pName.textContent = displayName;
     pImg.src = s.img;
     pMeta.textContent = s.meta || "";
     pPhone.textContent = s.phone ? ("+" + s.phone) : "";
     pWa.disabled = !s.phone;
     pWa.onclick = () => {
-      const msg = encodeURIComponent(`Hola ${name}, te contacto por tu zona.`);
+      const msg = encodeURIComponent(`Hola ${displayName}, te contacto por tu zona.`);
       window.open(`https://wa.me/${s.phone}?text=${msg}`, "_blank");
     };
   }
@@ -259,7 +264,7 @@
     const zones = document.querySelectorAll(".zone");
     zones.forEach(z => {
       const name = (z.dataset.zone || "").trim();
-      const s = sellers[name] || sellersByNormalizedName[normalizeZoneName(name)] || {};
+      const s = getSeller(name) || {};
       const baseFill = s.fill || "rgba(245, 208, 80, 0.32)";
       const hoverFill = s.hover || "rgba(245, 208, 80, 0.42)";
       const stroke = s.stroke || "#f9d84c";
@@ -270,7 +275,7 @@
 
       z.addEventListener("mouseenter", (e)=>{
         z.style.fill = hoverFill;
-        ttName.textContent = name;
+        ttName.textContent = s.displayName || name;
         ttMeta.textContent = s?.meta ?? "Sin datos";
         ttImg.src = s?.img ?? "";
         tt.style.display = "flex";
