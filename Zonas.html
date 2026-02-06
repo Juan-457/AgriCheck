@@ -408,16 +408,11 @@
     }, 4200);
   }
 
-  const hiddenSouthernZones = new Set([
-    "Andres Perez",
-    "Victoria Vianna",
-    "Anibal Epullan"
-  ]);
 
   function focusMapOnZones(){
     const svg = document.querySelector("#mapContainer svg");
     if(!svg) return;
-    const visibleZones = svg.querySelectorAll('.zone:not([data-hidden="true"])');
+    const visibleZones = svg.querySelectorAll('.zone');
     if(!visibleZones.length) return;
 
     let minX = Infinity;
@@ -500,10 +495,6 @@
       zone.classList.add("zone");
       zone.dataset.zone = zone.getAttribute("title")?.trim() || "";
 
-      if(hiddenSouthernZones.has(zone.dataset.zone)){
-        zone.dataset.hidden = "true";
-        zone.style.display = "none";
-      }
     });
   }
 
