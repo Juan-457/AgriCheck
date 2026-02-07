@@ -103,8 +103,8 @@
     #mapWrap{position:relative;display:flex;flex-direction:column;gap:10px;min-height:500px;padding:8px 8px 10px;overflow:hidden}
     .mapHint{display:none;font-size:13px;color:#fde68a}
     .mapHint.visible{display:block}
-    #mapContainer{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:0}
-    #mapContainer svg{width:72%;height:72%;max-width:72%;max-height:72%;display:block}
+    #mapContainer{flex:1;min-height:0;display:grid;place-items:center;padding:12px}
+    #mapContainer svg{width:min(92%,820px);height:auto;max-width:100%;max-height:100%;display:block;margin:0 auto}
     .vendorColumn{display:flex;align-items:flex-start;justify-content:center;padding-top:24px}
     #panel{height:auto;max-height:100%;overflow:auto;padding:12px;align-self:flex-start;width:100%;max-width:380px}
     .zone{cursor:pointer;transition:fill .2s ease,opacity .15s}
@@ -139,9 +139,9 @@
     .productsSection{margin-top:0;padding-top:4px}
     .productShowcase{display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden;position:relative;max-width:250px;width:100%;margin:0 auto}
     .productShowcase::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(3,8,24,.18), rgba(3,8,24,.48));pointer-events:none}
-    .showcaseMedia{position:relative;z-index:1;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.18);box-shadow:0 16px 28px rgba(0,0,0,.26);min-height:170px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.95);padding:10px}
+    .showcaseMedia{position:relative;z-index:1;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.18);box-shadow:0 16px 28px rgba(0,0,0,.26);min-height:170px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:rgba(255,255,255,.95);padding:10px}
     .showcaseMedia img{width:100%;height:100%;display:block;object-fit:contain;object-position:center;transition:opacity .45s ease}
-    .typingName{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);margin:0;font-size:clamp(15px, 1.6vw, 20px);line-height:1.1;font-weight:800;display:inline-block;min-height:1.2em;color:#0f172a;background:rgba(255,255,255,.86);padding:4px 10px;border-radius:999px;text-shadow:none;z-index:2;max-width:90%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .typingName{position:static;transform:none;margin:0;font-size:clamp(15px, 1.6vw, 20px);line-height:1.15;font-weight:800;display:inline-block;min-height:1.2em;color:#0f172a;background:rgba(255,255,255,.9);padding:4px 10px;border-radius:999px;text-shadow:none;z-index:2;max-width:90%;white-space:normal;overflow-wrap:anywhere;text-align:center}
     .typingName::after{content:"";display:inline-block;width:2px;height:1em;background:rgba(255,255,255,.92);margin-left:5px;vertical-align:-1px;animation:blink .95s steps(1,end) infinite}
     .kpiStrip{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
     .kpiChip{padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#f8fafc;font-weight:700}
@@ -208,7 +208,6 @@
       <section id="hero" class="heroLayout">
         <article class="card heroCopy">
           <div class="heroTop">
-            <div class="pill">AgriCheck · Bioinsumos</div>
             <h1>Tecnología biológica para una agricultura más eficiente</h1>
             <p>Seleccioná tu zona y conectá con el equipo comercial más cercano para acelerar decisiones en campo.</p>
             <ul class="heroList">
