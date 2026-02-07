@@ -35,6 +35,7 @@
     main.container{max-width:100%;padding:0 12px}
     header {
       position: relative;
+      pointer-events: auto;
       z-index: 60;
       padding: 10px 0;
       background: linear-gradient(180deg, rgba(10, 21, 56, .78), rgba(10, 21, 56, .55));
@@ -85,8 +86,8 @@
       color: #ffffff;
     }
 
-    main{position:relative;z-index:5;padding:22px 0 24px;flex:1;overflow:visible}
-    .pageFlow{display:flex;flex-direction:column;gap:0;min-height:100%}
+    main{position:relative;z-index:5;padding:22px 0 24px;flex:1;overflow:visible;pointer-events:none}
+    .pageFlow{display:flex;flex-direction:column;gap:0;min-height:100%;pointer-events:none}
     .heroLayout{display:grid;grid-template-columns:minmax(260px,.9fr) minmax(540px,1.55fr) minmax(250px,.68fr);gap:16px;align-items:start;margin-top:0.5cm;pointer-events:none}
     .card{
       border:1px solid rgba(255,255,255,.2);
@@ -99,6 +100,7 @@
       color: #f8fafc;
     }
     .heroCopy{display:flex;flex-direction:column;justify-content:flex-start;gap:16px;min-height:0;pointer-events:auto}
+    .heroCopy *{pointer-events:auto}
     .heroTop{display:flex;flex-direction:column;gap:16px}
     .heroCopy h1{margin:0;font-size:clamp(28px,3vw,40px);line-height:1.08;letter-spacing:-.02em}
     .heroCopy p{margin:0;color:rgba(226,232,240,.9);line-height:1.45}
@@ -108,6 +110,7 @@
     .mapHint{display:none;font-size:13px;color:#fde68a}
     .mapHint.visible{display:block}
     .vendorColumn{display:flex;align-items:flex-start;justify-content:center;padding-top:24px;pointer-events:auto}
+    .vendorColumn *{pointer-events:auto}
     #panel{height:auto;max-height:100%;overflow:auto;padding:12px;align-self:flex-start;width:100%;max-width:380px}
     .zone{cursor:pointer;transition:fill .2s ease,opacity .15s}
     .tooltip{
