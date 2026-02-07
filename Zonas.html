@@ -28,7 +28,7 @@
       color:#1f2937;
     }
     #bgMapLayer{position:fixed;inset:0;z-index:1;display:grid;place-items:center;pointer-events:none;overflow:hidden}
-    #bgMapContainer{width:min(100vw,1300px);height:min(100vh,1000px);opacity:.9;pointer-events:auto}
+    #bgMapContainer{width:100vw;height:100vh;opacity:.9;pointer-events:auto}
     #bgMapContainer svg{width:100%;height:100%;display:block}
     a { color: inherit; text-decoration: none; }
     .container{max-width:1320px;margin:0 auto;padding:0 6px}
@@ -104,7 +104,7 @@
     .heroCopy p{margin:0;color:rgba(226,232,240,.9);line-height:1.45}
     .heroList{list-style:none;margin:0;padding:0;display:flex;gap:10px;flex-wrap:wrap}
     .heroList li{padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);font-weight:700;color:rgba(248,250,252,.95)}
-    #mapWrap{position:relative;display:flex;flex-direction:column;gap:10px;min-height:500px;padding:8px 8px 10px;overflow:hidden}
+    #mapWrap{position:relative;display:flex;flex-direction:column;gap:10px;min-height:500px;padding:8px 8px 10px;overflow:hidden;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border-color:transparent;box-shadow:none;pointer-events:none}
     .mapHint{display:none;font-size:13px;color:#fde68a}
     .mapHint.visible{display:block}
     .vendorColumn{display:flex;align-items:flex-start;justify-content:center;padding-top:24px}
