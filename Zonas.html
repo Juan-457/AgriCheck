@@ -81,7 +81,7 @@
       color: #ffffff;
     }
 
-    main{padding:12px 0;flex:1;overflow:visible}
+    main{padding:34px 0 18px;flex:1;overflow:visible}
     .pageFlow{display:flex;flex-direction:column;gap:0;min-height:100%}
     .heroLayout{display:grid;grid-template-columns:minmax(260px,.9fr) minmax(540px,1.55fr) minmax(250px,.68fr);gap:16px;align-items:start}
     .card{
@@ -104,7 +104,7 @@
     .mapHint{display:none;font-size:13px;color:#fde68a}
     .mapHint.visible{display:block}
     #mapContainer{flex:1;min-height:0;display:grid;place-items:center;padding:12px}
-    #mapContainer svg{width:min(92%,820px);height:auto;max-width:100%;max-height:100%;display:block;margin:0 auto}
+    #mapContainer svg{width:min(64%,580px);height:auto;max-width:100%;max-height:100%;display:block;margin:0 auto}
     .vendorColumn{display:flex;align-items:flex-start;justify-content:center;padding-top:24px}
     #panel{height:auto;max-height:100%;overflow:auto;padding:12px;align-self:flex-start;width:100%;max-width:380px}
     .zone{cursor:pointer;transition:fill .2s ease,opacity .15s}
@@ -186,6 +186,28 @@
       #panel{max-height:none;align-self:stretch}
       .productShowcase{max-width:none;margin:0 auto}
       .showcaseMedia{min-height:200px}
+      #mapContainer svg{width:min(78%,520px)}
+    }
+
+    footer{
+      background: rgba(15, 23, 42, .62);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: rgba(255,255,255,.88);
+      padding: 14px 0;
+      text-align:center;
+      border-top: 1px solid rgba(255,255,255,.10);
+      margin-top: auto;
+    }
+    footer a{color:rgba(255,255,255,.88)}
+    footer a:hover{color:#89C444}
+    .footGrid{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      font-size:14px;
     }
   </style>
 </head>
@@ -276,7 +298,25 @@
     </div>
   </main>
 
+  <footer>
+    <div class="container">
+      <div class="footGrid">
+        <div>Copyright © Agricheck <span id="year"></span>.</div>
+        <div class="footer-designed">
+          <p style="display:flex; justify-content:center; align-items:center; gap:6px; margin:0;">
+            Diseñado por UmanoAI
+            <a href="https://umanoai.com.ar" target="_blank" rel="noopener" style="display:inline-block;">
+              <img src="umanoai.png" alt="UmanoAI" style="height:18px;">
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 <script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
   // ✅ Datos (editá a gusto). Las "keys" deben matchear el title del SVG (normalizado)
   const sellers = {
     "Marcelo Lizondo": {
