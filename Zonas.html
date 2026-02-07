@@ -104,7 +104,7 @@
     .mapHint{display:none;font-size:13px;color:#fde68a}
     .mapHint.visible{display:block}
     #mapContainer{flex:1;min-height:0;display:grid;place-items:center;padding:12px}
-    #mapContainer svg{width:min(64%,580px);height:auto;max-width:100%;max-height:100%;display:block;margin:0 auto}
+    #mapContainer svg{width:min(100%,760px);height:auto;max-width:100%;max-height:100%;display:block;margin:0 auto}
     .vendorColumn{display:flex;align-items:flex-start;justify-content:center;padding-top:24px}
     #panel{height:auto;max-height:100%;overflow:auto;padding:12px;align-self:flex-start;width:100%;max-width:380px}
     .zone{cursor:pointer;transition:fill .2s ease,opacity .15s}
@@ -186,7 +186,7 @@
       #panel{max-height:none;align-self:stretch}
       .productShowcase{max-width:none;margin:0 auto}
       .showcaseMedia{min-height:200px}
-      #mapContainer svg{width:min(78%,520px)}
+      #mapContainer svg{width:min(100%,600px)}
     }
 
   </style>
@@ -428,38 +428,6 @@
   }
 
 
-  function focusMapOnZones(){
-    const svg = document.querySelector("#mapContainer svg");
-    if(!svg) return;
-    const visibleZones = svg.querySelectorAll('.zone');
-    if(!visibleZones.length) return;
-
-    let minX = Infinity;
-    let minY = Infinity;
-    let maxX = -Infinity;
-    let maxY = -Infinity;
-
-    visibleZones.forEach((zone) => {
-      const box = zone.getBBox();
-      minX = Math.min(minX, box.x);
-      minY = Math.min(minY, box.y);
-      maxX = Math.max(maxX, box.x + box.width);
-      maxY = Math.max(maxY, box.y + box.height);
-    });
-
-    const width = maxX - minX;
-    const height = maxY - minY;
-    const padX = width * 0.03;
-    const padY = height * 0.03;
-    const viewX = minX - padX;
-    const viewY = minY - padY;
-    const viewW = width + padX * 2;
-    const viewH = height + padY * 2;
-
-    svg.setAttribute("viewBox", `${viewX} ${viewY} ${viewW} ${viewH}`);
-    svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
-  }
-
   function openPanel(name){
     const s = getSeller(name);
     if(!s) return;
@@ -553,7 +521,6 @@
     try {
       await loadMap();
       initZones();
-      focusMapOnZones();
       startProductShowcase();
     } catch (error) {
       document.getElementById("mapContainer").innerHTML = "<p>No se pudo cargar el mapa.</p>";
