@@ -83,7 +83,7 @@
 
     main{padding:44px 0 24px;flex:1;overflow:visible}
     .pageFlow{display:flex;flex-direction:column;gap:0;min-height:100%}
-    .heroLayout{display:grid;grid-template-columns:minmax(260px,.9fr) minmax(540px,1.55fr) minmax(250px,.68fr);gap:16px;align-items:start}
+    .heroLayout{display:grid;grid-template-columns:minmax(260px,.9fr) minmax(540px,1.55fr) minmax(250px,.68fr);gap:16px;align-items:start;margin-top:1cm}
     .card{
       border:1px solid rgba(255,255,255,.2);
       border-radius:18px;
@@ -189,26 +189,6 @@
       #mapContainer svg{width:min(78%,520px)}
     }
 
-    footer{
-      background: rgba(15, 23, 42, .62);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      color: rgba(255,255,255,.88);
-      padding: 14px 0;
-      text-align:center;
-      border-top: 1px solid rgba(255,255,255,.10);
-      margin-top: auto;
-    }
-    footer a{color:rgba(255,255,255,.88)}
-    footer a:hover{color:#89C444}
-    .footGrid{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      gap:6px;
-      font-size:14px;
-    }
   </style>
 </head>
 <body>
@@ -220,7 +200,6 @@
       <nav class="navlinks" aria-label="Navegación principal">
         <a href="index.html">Inicio</a>
         <a href="nuestros-productos.html#productos">Nuestros Productos</a>
-        <a href="#kpis" aria-current="page">Cobertura</a>
       </nav>
     </div>
   </header>
@@ -298,25 +277,8 @@
     </div>
   </main>
 
-  <footer>
-    <div class="container">
-      <div class="footGrid">
-        <div>Copyright © Agricheck <span id="year"></span>.</div>
-        <div class="footer-designed">
-          <p style="display:flex; justify-content:center; align-items:center; gap:6px; margin:0;">
-            Diseñado por UmanoAI
-            <a href="https://umanoai.com.ar" target="_blank" rel="noopener" style="display:inline-block;">
-              <img src="umanoai.png" alt="UmanoAI" style="height:18px;">
-            </a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </footer>
 
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-
   // ✅ Datos (editá a gusto). Las "keys" deben matchear el title del SVG (normalizado)
   const sellers = {
     "Marcelo Lizondo": {
