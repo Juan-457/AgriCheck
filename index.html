@@ -250,6 +250,11 @@
       padding: 10px 0 14px;
       background: linear-gradient(180deg, rgba(10, 21, 56, .70), rgba(10, 21, 56, .86));
       border-top: 1px solid rgba(255,255,255,.10);
+      max-height: calc(100vh - 74px);
+      max-height: calc(100dvh - 74px);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
     }
     .mobileMenu .container{
       display:flex;
