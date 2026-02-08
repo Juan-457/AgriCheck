@@ -144,6 +144,10 @@
     .vendorCard{padding:12px 14px;border-radius:12px;background:#13263A;border:1px solid #223046;transition:background .15s ease}
     .vendorCard:hover{background:#16314A}
     .vendorCard h3{margin:0 0 4px;font-size:14px;line-height:1.3}
+    @media (min-width: 961px){
+      .vendorCard h3.is-clickable{cursor:pointer}
+      .vendorCard h3.is-clickable:hover{text-decoration:underline}
+    }
     .vendorCard p{margin:0;color:#C9D3DD;font-size:12px}
     .vendorContactList{display:none}
     .vendorContactItem{padding:10px 0;border-top:1px solid rgba(159,176,193,.22)}
@@ -539,6 +543,25 @@
         <p>${info.meta || "Sin zona"}</p>
         <div class="vendorContactList">${contactsMarkup}</div>
       `;
+
+      const title = card.querySelector("h3");
+      title?.classList.add("is-clickable");
+      title?.addEventListener("click", () => {
+        if(!window.matchMedia("(min-width: 961px)").matches) return;
+        const zoneMatch = Array.from(document.querySelectorAll("#bgMapContainer .zone")).find((zoneEl) => {
+          const zoneName = (zoneEl.dataset.zone || "").trim();
+          return normalizeZoneName(zoneName) === normalizeZoneName(sellerName);
+        });
+
+        if(zoneMatch){
+          setSelectedZone(zoneMatch, (zoneMatch.dataset.zone || "").trim());
+          return;
+        }
+
+        openPanel(sellerName);
+        filterVendorCards(sellerName);
+      });
+
       vendorCards.appendChild(card);
     });
   }
