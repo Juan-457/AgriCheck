@@ -205,7 +205,9 @@
     }
 
     @media (max-width: 960px){
-      main{padding:10px 0 12px;overflow:auto}
+      body{display:block;min-height:100dvh;overflow-y:auto}
+      main{padding:10px 0 12px;overflow:visible;flex:0 0 auto;pointer-events:auto}
+      .pageFlow{min-height:0;pointer-events:auto}
       .topbar{justify-content:flex-end}
       .brandLogo{position:static;transform:none;margin-right:auto}
       .navlinks{gap:6px;padding:5px}
@@ -215,7 +217,7 @@
       .heroCopy,
       #mapWrap{display:none}
       .vendorColumn{padding-top:0}
-      #panel{max-height:none;align-self:stretch;max-width:none;padding:0;border:none;background:transparent;box-shadow:none}
+      #panel{max-height:none;overflow:visible;align-self:stretch;max-width:none;padding:0;border:none;background:transparent;box-shadow:none}
       #panel > .pill,
       #panel > #defaultPanel,
       #panel > #sellerPanel{display:none !important}
