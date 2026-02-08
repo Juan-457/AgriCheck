@@ -27,7 +27,7 @@
       background: radial-gradient(circle at 20% 20%, #12315f 0%, #0b1f3f 48%, #08162d 100%);
       color:#1f2937;
     }
-    #bgMapLayer{position:fixed;inset:0;z-index:1;display:grid;place-items:center;pointer-events:auto;overflow:hidden}
+    #bgMapLayer{position:fixed;inset:0;z-index:1;display:grid;place-items:start center;pointer-events:auto;overflow:hidden}
     #bgMapContainer{width:100vw;height:100vh;opacity:.9;pointer-events:auto}
     #bgMapContainer svg{width:100%;height:100%;display:block}
     a { color: inherit; text-decoration: none; }
@@ -555,7 +555,7 @@
 
     const backgroundSvg = mapContainer.querySelector("svg");
     if(backgroundSvg){
-      backgroundSvg.setAttribute("preserveAspectRatio", "xMidYMid slice");
+      backgroundSvg.setAttribute("preserveAspectRatio", "xMidYMin slice");
     }
 
     mapContainer.querySelectorAll("path[title], polygon[title]").forEach(zone => {
