@@ -27,7 +27,7 @@
       background: radial-gradient(circle at 20% 20%, #12315f 0%, #0b1f3f 48%, #08162d 100%);
       color:#1f2937;
     }
-    #bgMapLayer{position:fixed;inset:0;z-index:1;display:grid;place-items:start center;pointer-events:auto;overflow:hidden}
+    #bgMapLayer{position:fixed;top:var(--bg-offset, 72px);left:0;right:0;height:100vh;z-index:1;display:grid;place-items:start center;pointer-events:auto;overflow:hidden}
     #bgMapContainer{width:100vw;height:100vh;opacity:.9;pointer-events:auto}
     #bgMapContainer svg{width:100%;height:100%;display:block}
     a { color: inherit; text-decoration: none; }
@@ -527,6 +527,12 @@
     clearFilter.hidden = true;
   }
 
+  function syncBackgroundOffset(){
+    const header = document.querySelector("header");
+    const headerHeight = header ? header.offsetHeight : 0;
+    document.documentElement.style.setProperty("--bg-offset", `${headerHeight}px`);
+  }
+
   function clearSelectedZone(){
     if(!selectedZoneElement) return;
     selectedZoneElement.classList.remove("selected-zone");
@@ -603,6 +609,7 @@
 
   window.addEventListener("load", async () => {
     try {
+      syncBackgroundOffset();
       renderVendorCards();
       clearFilter.addEventListener("click", () => {
         showAllVendorCards();
@@ -617,6 +624,8 @@
       console.error(error);
     }
   });
+
+  window.addEventListener("resize", syncBackgroundOffset);
 </script>
 </body>
 </html>
