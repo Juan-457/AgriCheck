@@ -553,6 +553,11 @@
     const svgText = await response.text();
     mapContainer.innerHTML = svgText;
 
+    const backgroundSvg = mapContainer.querySelector("svg");
+    if(backgroundSvg){
+      backgroundSvg.setAttribute("preserveAspectRatio", "xMidYMid slice");
+    }
+
     mapContainer.querySelectorAll("path[title], polygon[title]").forEach(zone => {
       zone.classList.add("zone");
       zone.dataset.zone = zone.getAttribute("title")?.trim() || "";
