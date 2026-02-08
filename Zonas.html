@@ -567,9 +567,9 @@
     zones.forEach(z => {
       const name = (z.dataset.zone || "").trim();
       const s = getSeller(name) || {};
-      const baseFill = s.fill || "rgba(245, 208, 80, 0.32)";
-      const hoverFill = s.hover || "rgba(245, 208, 80, 0.42)";
-      const stroke = s.stroke || "#f9d84c";
+      const baseFill = "rgba(0, 0, 0, 0.52)";
+      const hoverFill = "rgba(0, 0, 0, 0.68)";
+      const stroke = "rgba(255, 255, 255, 0.42)";
 
       z.style.fill = baseFill;
       z.style.stroke = stroke;
