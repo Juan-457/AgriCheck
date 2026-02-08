@@ -198,9 +198,16 @@
       .brandLogo{position:static;transform:none;margin-right:auto}
       .navlinks{gap:6px;padding:5px}
       .navlinks a{padding:8px 12px;font-size:14px}
-      .heroLayout{grid-template-columns:1fr;grid-template-areas:"copy" "map" "panel";gap:14px}
-      #mapWrap{min-height:430px}
-      #panel{max-height:none;align-self:stretch}
+      #bgMapLayer{display:none}
+      .heroLayout{display:block}
+      .heroCopy,
+      #mapWrap{display:none}
+      .vendorColumn{padding-top:0}
+      #panel{max-height:none;align-self:stretch;max-width:none;padding:0;border:none;background:transparent;box-shadow:none}
+      #panel > .pill,
+      #panel > #defaultPanel,
+      #panel > #sellerPanel{display:none !important}
+      #panel > .panelSection{margin-top:0}
       .productShowcase{max-width:none;margin:0 auto}
       .showcaseMedia{min-height:200px}
     }
