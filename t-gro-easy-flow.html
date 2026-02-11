@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T-Gro Easy Flow – AgriCheck | Inocular y Lubricar en un Solo Paso</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #F8F9F7;
+            /* Light gray-green background */
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), url('https://storage.googleapis.com/gemini-generative-ai-public-data/images/b8017325-a135-4d66-8566-f3883f314f33');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .section-title {
+            color: #1A361E;
+            /* Dark Green */
+        }
+
+        .cta-button,
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover,
+        .tab-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefit-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #ffffff;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(46, 91, 58, 0.15);
+        }
+
+        .tab-button {
+            background-color: #f3f4f6;
+            color: #4b5563;
+        }
+
+        .tab-button.active {
+            background-color: #166534;
+            /* dark-green-700 */
+            color: #ffffff;
+        }
+
+        /* Gallery Styles */
+        .gallery-container {
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-container:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Modal (Lightbox) Styles */
+        #imageModal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            align-items: center;
+            justify-content: center;
+        }
+
+        #modalImage {
+            margin: auto;
+            display: block;
+            max-width: 80%;
+            max-height: 80%;
+            transition: transform 0.3s ease;
+            cursor: zoom-in;
+        }
+
+        #modalImage.zoomed {
+            transform: scale(1.5);
+            cursor: zoom-out;
+        }
+
+        .modal-nav {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 30px;
+            transition: 0.3s ease;
+            user-select: none;
+        }
+
+        .modal-nav.prev {
+            left: 10px;
+        }
+
+        .modal-nav.next {
+            right: 10px;
+        }
+
+        .modal-nav:hover {
+            color: #bbb;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s ease;
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: #bbb;
+        }
+    </style>
+</head>
+
+<body class="text-slate-800">
+
+    <!-- Header -->
+    <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center max-w-7xl">
+            <a href="index.html">
+                <img src="https://www.agrichecksrl.com/img/logo-agricheck.png" alt="Logo de T-Gro Easy Flow"
+                    class="h-10 w-auto">
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#beneficios"
+                    class="font-semibold text-slate-600 hover:text-green-700 transition">Beneficios</a>
+                <a href="#resultados"
+                    class="font-semibold text-slate-600 hover:text-green-700 transition">Resultados</a>
+                <a href="#como-funciona" class="font-semibold text-slate-600 hover:text-green-700 transition">¿Cómo
+                    Funciona?</a>
+                <a href="#aplicacion"
+                    class="font-semibold text-slate-600 hover:text-green-700 transition">Aplicación</a>
+                <a href="#especificaciones"
+                    class="font-semibold text-slate-600 hover:text-green-700 transition">Especificaciones</a>
+                <a href="#contacto"
+                    class="cta-button bg-green-600 text-white font-bold py-2 px-5 rounded-full hover:bg-green-700">
+                    Contactar
+                </a>
+            </div>
+            <div class="md:hidden">
+                <a href="#contacto"
+                    class="cta-button bg-green-600 text-white font-bold py-2 px-4 rounded-full hover:bg-green-700">
+                    Contacto
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg text-white">
+            <div class="container mx-auto px-6 py-24 md:py-32 text-center md:text-left max-w-7xl">
+                <div class="md:w-3/5">
+                    <span class="font-bold text-green-300 tracking-widest">EL PRIMER INOCULANTE PARA MAÍZ</span>
+                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight my-4">
+                        Inocular y Lubricar en un Solo Paso.
+                    </h1>
+                    <p class="text-lg md:text-xl mb-8 max-w-2xl text-green-100">
+                        T-Gro Easy Flow revoluciona la inoculación del Maíz con su tecnología exclusiva que fusiona un
+                        potente inoculante biológico con un lubricante de alto rendimiento. Directo en la sembradora,
+                        sin complicaciones.
+                    </p>
+                    <a href="#contacto"
+                        class="cta-button inline-block bg-white text-green-700 font-bold text-lg py-4 px-8 rounded-full hover:bg-green-50">
+                        Solicitar Asesoramiento
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Beneficios Clave -->
+        <section id="beneficios" class="py-20 bg-white">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold section-title">Optimice su Siembra. Potencie su Cosecha.</h2>
+                    <p class="mt-4 text-lg max-w-3xl mx-auto text-slate-600">T-Gro Easy Flow es una herramienta integral
+                        que mejora la eficiencia en el campo y la salud de sus cultivos desde el día uno.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="benefit-card p-8 rounded-xl border border-gray-200 text-center">
+                        <div
+                            class="flex items-center justify-center h-16 w-16 rounded-full bg-green-100 text-green-600 mx-auto mb-5 text-3xl">
+                            🌱</div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Mejor Emergencia y Stand</h3>
+                        <p class="text-slate-600">Asegura una densidad de plantación uniforme, contribuyendo a alcanzar
+                            el potencial óptimo de las plantas.</p>
+                    </div>
+                    <div class="benefit-card p-8 rounded-xl border border-gray-200 text-center">
+                        <div
+                            class="flex items-center justify-center h-16 w-16 rounded-full bg-green-100 text-green-600 mx-auto mb-5 text-3xl">
+                            ✨</div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Inocular y Lubricar en 1 Paso</h3>
+                        <p class="text-slate-600">Nuestra tecnología única en talco y grafito combina la inoculación con
+                            la lubricación, ahorrando tiempo y simplificando la siembra.</p>
+                    </div>
+                    <div class="benefit-card p-8 rounded-xl border border-gray-200 text-center">
+                        <div
+                            class="flex items-center justify-center h-16 w-16 rounded-full bg-green-100 text-green-600 mx-auto mb-5 text-3xl">
+                            🛡️</div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Protección Radicular</h3>
+                        <p class="text-slate-600">Coloniza la rizosfera, protegiendo las raíces de patógenos del suelo y
+                            mejorando la tolerancia al estrés.</p>
+                    </div>
+                    <div class="benefit-card p-8 rounded-xl border border-gray-200 text-center">
+                        <div
+                            class="flex items-center justify-center h-16 w-16 rounded-full bg-green-100 text-green-600 mx-auto mb-5 text-3xl">
+                            📈</div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Aumento de Rinde</h3>
+                        <p class="text-slate-600">Plantas más sanas, con un sistema radicular superior y resilientes al
+                            estrés se traducen en un mayor potencial de rendimiento.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resultados en Campo -->
+        <section id="resultados" class="py-20">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold section-title">Resultados Comprobados en Maíz</h2>
+                    <p class="mt-4 text-lg max-w-3xl mx-auto text-slate-600">Vea el impacto directo de T-Gro Easy Flow
+                        en el rendimiento de Maíz. Mas de 20 ensayos en diferentes regiones han comprobado los aumentos
+                        consistentes en la productividad.</p>
+                </div>
+                <div id="tab-buttons" class="flex flex-wrap justify-center gap-2 md:gap-4 mb-8">
+                    <button class="tab-button active font-bold py-2 px-5 rounded-full"
+                        data-crop="maiz_23_24_vertico">Maíz 23-24 (Vertico)</button>
+                    <button class="tab-button font-bold py-2 px-5 rounded-full" data-crop="maiz_23_24_barrow">Maíz 23-24
+                        (Barrow)</button>
+                    <button class="tab-button font-bold py-2 px-5 rounded-full" data-crop="maiz_23_24_pergamino">Maíz
+                        23-24 (Pergamino)</button>
+                    <button class="tab-button font-bold py-2 px-5 rounded-full" data-crop="maiz_24_25_barrow">Maíz 24-25
+                        (Barrow)</button>
+                    <button class="tab-button font-bold py-2 px-5 rounded-full" data-crop="maiz_24_25_pergamino">Maíz
+                        24-25 (Pergamino)</button>
+                </div>
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-200 max-w-4xl mx-auto">
+                    <div class="h-80 md:h-96">
+                        <canvas id="resultsChart"></canvas>
+                    </div>
+                    <p id="chart-footer" class="text-center text-slate-500 mt-4 font-medium"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cómo Funciona -->
+        <section id="como-funciona" class="py-20 bg-white">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold section-title">La Ciencia Detrás de T-Gro Easy Flow</h2>
+                    <p class="mt-4 text-lg max-w-3xl mx-auto text-slate-600">El ingrediente activo es la <strong>cepa
+                            exclusiva kd</strong> de <i>Trichoderma asperellum</i>, seleccionada rigurosamente tras un
+                        screening de más de 1000 cepas por su excepcional capacidad de colonización y promoción del
+                        crecimiento. Este hongo benéfico forma una relación simbiótica con las raíces, ofreciendo
+                        múltiples beneficios de protección y crecimiento.</p>
+                </div>
+                <div
+                    class="bg-gray-50 p-8 md:p-12 rounded-xl shadow-inner border border-gray-200 max-w-5xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12">
+                    <div>
+                        <h3 class="text-2xl font-bold text-green-800 mb-3">Competencia y Parasitismo</h3>
+                        <p class="text-slate-600"><i>T. asperellum</i> es un colonizador agresivo. Crece rápidamente y
+                            ocupa espacio en la zona de las raíces, superando a los hongos patógenos en la competencia
+                            por nutrientes. Además, parasita a otros hongos dañinos: se enrosca alrededor de sus hifas,
+                            secreta enzimas que penetran sus paredes celulares y finalmente los destruye.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-green-800 mb-3">Resistencia Sistémica (SAR)</h3>
+                        <p class="text-slate-600">La presencia de <i>T. asperellum</i> activa la Resistencia Sistémica
+                            Adquirida (SAR) de la planta. Esto es como una vacuna: la planta entra en un estado de
+                            inmunidad mejorada. En respuesta al hongo benéfico, produce sustancias que fortalecen las
+                            defensas en toda la planta, haciéndola más resistente a futuras infecciones.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guía de Aplicación -->
+        <section id="aplicacion" class="py-20">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div id="gallery-trigger" class="text-center">
+                        <div class="gallery-container inline-block shadow-lg">
+                            <img src="https://placehold.co/500x400/F0FDF4/166534?text=Tolva+de+Sembradora"
+                                alt="Aplicación en sembradora" class="rounded-lg w-full">
+                            <div class="gallery-overlay">
+                                <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-green-600 font-bold">APLICACIÓN SIMPLE Y EFECTIVA</span>
+                        <h2 class="text-4xl font-extrabold section-title mt-2 mb-6">Directo en la Tolva. Sin
+                            Complicaciones.</h2>
+                        <p class="text-lg text-slate-600 mb-4">T-Gro Easy Flow se añade simplemente a la tolva de
+                            semillas. A medida que el tractor se mueve, la agitación de la tolva garantiza una
+                            distribución uniforme del polvo por toda la tolva, cubriendo las semillas de manera
+                            eficiente.</p>
+                        <p class="text-lg text-slate-600">La dosis recomendada es de <strong>2 gramos por kg de
+                                semilla</strong>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Especificaciones Técnicas -->
+        <section id="especificaciones" class="py-20 bg-white">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold section-title">Especificaciones Técnicas</h2>
+                </div>
+                <div
+                    class="overflow-x-auto bg-gray-50 p-6 rounded-xl shadow-inner border border-gray-200 max-w-4xl mx-auto">
+                    <table class="w-full text-left">
+                        <tbody class="divide-y divide-gray-200">
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-slate-700">Ingrediente Activo</td>
+                                <td class="p-4 text-slate-600">Hongo benéfico <i>Trichoderma asperellum</i> (cepa
+                                    exclusiva kd)</td>
+                            </tr>
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-slate-700">Concentración</td>
+                                <td class="p-4 text-slate-600">> 1,2 × 10⁹ esporas por gramo</td>
+                            </tr>
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-slate-700">Formulación</td>
+                                <td class="p-4 text-slate-600">Polvo seco a base de grafito y talco (Inoculante +
+                                    Lubricante)</td>
+                            </tr>
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-slate-700">Dosis Recomendada</td>
+                                <td class="p-4 text-slate-600">2 gramos por kg de semilla de Maíz</td>
+                            </tr>
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-slate-700">Cultivos</td>
+                                <td class="p-4 text-slate-600">Maíz y otros.</td>
+                            </tr>
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-slate-700">Presentación</td>
+                                <td class="p-4 text-slate-600">Bolsa de 1Kg</td>
+                            </tr>
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-slate-700">Almacenamiento</td>
+                                <td class="p-4 text-slate-600">2 años a temperatura de heladera (4-10°C), 6 meses a
+                                    temperatura ambiente.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Confianza Andermatt -->
+        <section id="confianza" class="py-20">
+            <div class="container mx-auto px-6 max-w-4xl text-center">
+                <img src="https://placehold.co/150x50/cccccc/888888?text=Andermatt+Logo" alt="Logo Andermatt"
+                    class="mx-auto mb-6">
+                <h2 class="text-4xl font-extrabold section-title mb-4">Un Producto de Confianza</h2>
+                <p class="text-lg text-slate-600 mb-8 max-w-3xl mx-auto">T-Gro Easy Flow es desarrollado por Andermatt,
+                    líder en soluciones biológicas para la agricultura con sede en Suiza y el mayor productor mundial de
+                    insecticidas a base de virus. Un portfolio de soluciones compatibles con la producción orgánica que
+                    garantizan calidad y resultados.</p>
+                <a href="https://www.andermatt.com" target="_blank" rel="noopener noreferrer"
+                    class="cta-button inline-block bg-green-600 text-white font-bold text-lg py-3 px-6 rounded-full hover:bg-green-700">
+                    Conocer más sobre Andermatt
+                </a>
+            </div>
+        </section>
+
+        <!-- Contacto / CTA Final -->
+        <section id="contacto" class="bg-green-800 text-white">
+            <div class="container mx-auto px-6 py-20 max-w-4xl text-center">
+                <h2 class="text-4xl font-extrabold mb-4">¿Listo para Ver la Diferencia?</h2>
+                <p class="text-lg text-green-200 mb-8 max-w-2xl mx-auto">Nuestro equipo de expertos está listo para
+                    ayudarle a diseñar un plan de aplicación a la medida de sus necesidades. Contáctenos hoy y dé el
+                    primer paso hacia una cosecha más eficiente y rentable.</p>
+                <a href="mailto:ventas@agricheck.com"
+                    class="cta-button inline-block bg-white text-green-700 font-bold text-lg py-4 px-8 rounded-full hover:bg-green-50">
+                    Contactar a un Experto
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-300">
+        <div class="container mx-auto px-6 py-8 max-w-7xl text-center">
+            <p>&copy; 2025 T-Gro Easy Flow – AgriCheck. Todos los derechos reservados.</p>
+            <p class="text-sm mt-2">Potenciando la agricultura del futuro, hoy.</p>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="flex">
+        <span class="close-modal">&times;</span>
+        <span class="modal-nav prev">&#10094;</span>
+        <img id="modalImage">
+        <span class="modal-nav next">&#10095;</span>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Chart.js functionality
+            Chart.register(ChartDataLabels);
+            const chartData = {
+                maiz_23_24_vertico: { labels: ['Testigo', 'T-Gro EF 1gr/kg', 'T-Gro EF 2gr/kg'], data: [5149, 5816, 6232], dataLabels: ['ab', '12,95% bc\n+667Kg', '21,03% c\n+1083Kg'], label: 'Rinde (Kg/ha)', footer: 'Vertico SRL. Entre Ríos' },
+                maiz_23_24_barrow: { labels: ['Testigo', 'T-Gro EF 1gr/kg', 'T-Gro EF 2gr/kg'], data: [4463, 4693, 4995], dataLabels: ['b', '5,2% b\n+230Kg', '11,9% a\n+532Kg'], label: 'Rinde (Kg/ha)', footer: 'Ch. Experimental Barrow - INTA Tres Arroyos. Ing Agr (MSc) Martín Zamora' },
+                maiz_23_24_pergamino: { labels: ['Testigo', 'T-Gro EF 1gr/kg', 'T-Gro EF 2gr/kg'], data: [9792, 10154, 10881], dataLabels: ['b', '3,7% b\n+362Kg', '11,1% a\n+1089Kg'], label: 'Rinde (Kg/ha)', footer: 'INTA Pergamino - Gustavo N. Ferraris' },
+                maiz_24_25_barrow: { labels: ['Testigo', 'T-Gro EF 1gr/kg', 'T-Gro EF 2gr/kg'], data: [8591, 9390, 9874], dataLabels: ['b', '9,3% b\n+799Kg', '14,93% a\n+1283Kg'], label: 'Rinde (Kg/ha)', footer: 'Ch. Experimental Barrow - INTA Tres Arroyos. Ing Agr (MSc) Martín Zamora' },
+                maiz_24_25_pergamino: { labels: ['Testigo', 'T-Gro EF 1gr/kg', 'T-Gro EF 2gr/kg'], data: [8939, 9216, 10231], dataLabels: ['c', '3,10% b\n+277Kg', '14,45% a\n+1292Kg'], label: 'Rinde (Kg/ha)', footer: 'INTA Pergamino - Gustavo N. Ferrari' }
+            };
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const chartFooter = document.getElementById('chart-footer');
+            const ctx = document.getElementById('resultsChart').getContext('2d');
+            let resultsChart = null;
+
+            function updateChart(crop) {
+                const data = chartData[crop];
+                if (!data) return;
+                if (resultsChart) { resultsChart.destroy(); }
+                const maxValue = Math.max(...data.data);
+                const newYMax = Math.ceil((maxValue + 1000) / 1000) * 1000;
+                resultsChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: { labels: data.labels, datasets: [{ label: data.label, data: data.data, backgroundColor: ['rgba(107, 114, 128, 0.6)', 'rgba(22, 163, 74, 0.6)', 'rgba(34, 197, 94, 0.6)'], borderColor: ['rgba(107, 114, 128, 1)', 'rgba(22, 163, 74, 1)', 'rgba(34, 197, 94, 1)'], borderWidth: 2, borderRadius: 5 }] },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: (context) => `${context.dataset.label}: ${context.parsed.y} kg/ha` } }, datalabels: { color: '#1f2937', font: { weight: 'bold', size: 14 }, anchor: 'end', align: 'top', offset: 5, formatter: (value, context) => data.dataLabels[context.dataIndex], textAlign: 'center' } }, scales: { y: { beginAtZero: true, max: newYMax, grid: { color: '#e5e7eb' }, ticks: { color: '#374151' } }, x: { grid: { display: false }, ticks: { color: '#374151', font: { size: 12, weight: 'bold' } } } } }
+                });
+                chartFooter.textContent = data.footer;
+            }
+            tabButtons.forEach(button => { button.addEventListener('click', () => { tabButtons.forEach(btn => btn.classList.remove('active')); button.classList.add('active'); const crop = button.dataset.crop; updateChart(crop); }); });
+            updateChart('maiz_23_24_vertico');
+
+            // Gallery functionality
+            const galleryImages = [
+                { src: 'https://placehold.co/1200x800/F0FDF4/166534?text=1.+Producto+en+Tolva' },
+                { src: 'https://placehold.co/1200x800/E0F2F1/00796B?text=2.+Semilla+Tratada' },
+                { src: 'https://placehold.co/1200x800/E3F2FD/1E88E5?text=3.+Siembra+en+Campo' },
+                { src: 'https://placehold.co/1200x800/F1F8E9/689F38?text=4.+Planta+Emergiendo' }
+            ];
+            let currentImageIndex = 0;
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const galleryTrigger = document.getElementById('gallery-trigger');
+
+            function openModal(index) {
+                currentImageIndex = index;
+                modalImg.src = galleryImages[currentImageIndex].src;
+                modal.style.display = 'flex';
+                modalImg.classList.remove('zoomed');
+            }
+
+            function closeModal() {
+                modal.style.display = 'none';
+            }
+
+            function changeImage(direction) {
+                currentImageIndex += direction;
+                if (currentImageIndex >= galleryImages.length) {
+                    currentImageIndex = 0;
+                } else if (currentImageIndex < 0) {
+                    currentImageIndex = galleryImages.length - 1;
+                }
+                modalImg.src = galleryImages[currentImageIndex].src;
+                modalImg.classList.remove('zoomed');
+            }
+
+            galleryTrigger.addEventListener('click', () => openModal(0));
+            document.querySelector('.close-modal').addEventListener('click', closeModal);
+            document.querySelector('.modal-nav.prev').addEventListener('click', () => changeImage(-1));
+            document.querySelector('.modal-nav.next').addEventListener('click', () => changeImage(1));
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) { // Close if clicking on the background
+                    closeModal();
+                }
+            });
+            modalImg.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent modal from closing when clicking image
+                modalImg.classList.toggle('zoomed');
+            });
+        });
+    </script>
+</body>
+
+</html>

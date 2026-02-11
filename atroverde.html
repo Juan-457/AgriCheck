@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atroverde - AgriCheck | Especialista en Botrytis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        green: {
+                            check: '#89C444',
+                            dark: '#1A361E',
+                            light: '#F0F9E8',
+                        },
+                        brown: {
+                            check: '#9A7A4E',
+                        },
+                        slate: {
+                            dark: '#4B4B4D',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-bg {
+            /* Vineyard background to align with Vid focus */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1596716768393-27ccf4c7d03a?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+
+<body class="font-sans text-slate-dark antialiased">
+
+    <!-- 1. Header -->
+    <header class="bg-white/95 backdrop-blur-sm shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center max-w-7xl">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <span class="text-2xl font-bold text-slate-800">Agri<span class="text-green-check">Check</span></span>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#beneficios"
+                    class="text-sm font-semibold text-slate-600 hover:text-green-check transition">Beneficios</a>
+                <a href="#ciencia"
+                    class="text-sm font-semibold text-slate-600 hover:text-green-check transition">Ciencia</a>
+                <a href="#resultados"
+                    class="text-sm font-semibold text-slate-600 hover:text-green-check transition">Eficacia</a>
+                <a href="#especificaciones"
+                    class="text-sm font-semibold text-slate-600 hover:text-green-check transition">Ficha Técnica</a>
+                <a href="#contacto"
+                    class="bg-green-check text-white px-5 py-2.5 rounded-full font-bold hover:bg-green-600 transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                    Contacto
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 2. Hero Section -->
+    <section class="hero-bg min-h-[85vh] flex items-center relative overflow-hidden">
+        <div class="container mx-auto px-6 py-12 max-w-7xl relative z-10">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+
+                <!-- Text Content -->
+                <div class="md:w-1/2 text-white">
+                    <div
+                        class="inline-block bg-green-check/20 backdrop-blur-md border border-green-check/30 px-4 py-1.5 rounded-full mb-6">
+                        <span class="font-bold text-green-check tracking-wide uppercase text-xs md:text-sm">Especialista
+                            en Botrytis</span>
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6">
+                        Protección Aérea <br>
+                        <span class="text-green-check">Superior.</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-200 mb-8 font-light max-w-lg">
+                        <i>Trichoderma atroviride</i> cepa 77B. <br>
+                        <span class="text-base font-normal text-gray-300 mt-2 block">Aislada de vid para dominar en vid
+                            y tomate.</span>
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contacto"
+                            class="bg-green-check text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-green-600 transition shadow-lg text-center">
+                            Solicitar Asesoría
+                        </a>
+                        <a href="#especificaciones"
+                            class="bg-white/10 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition text-center">
+                            Ver Formulación
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product Image - TALL & ANIMATED -->
+                <div class="md:w-1/2 flex justify-center md:justify-end mt-12 md:mt-0">
+                    <div class="relative group">
+                        <!-- Glow effect -->
+                        <div
+                            class="absolute inset-0 bg-green-check/20 blur-3xl rounded-full transform scale-75 group-hover:scale-100 transition duration-700">
+                        </div>
+
+                        <!-- Main Image -->
+                        <img src="atroverde-packaging.png" alt="Atroverde Packaging"
+                            class="relative z-20 w-auto h-auto max-h-[650px] object-contain drop-shadow-2xl transform hover:scale-105 transition duration-500 ease-in-out">
+
+                        <!-- Badges -->
+                        <div class="absolute -left-8 top-1/4 z-30 bg-white/95 backdrop-blur text-slate-800 p-4 rounded-xl shadow-xl border border-gray-100 hidden md:block animate-bounce"
+                            style="animation-duration: 3.5s;">
+                            <p class="font-bold text-center text-xs uppercase tracking-wider text-green-800">Cepa Única
+                            </p>
+                            <p class="text-2xl font-black text-slate-800">77B</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Beneficios -->
+    <section id="beneficios" class="py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-green-check font-bold tracking-widest uppercase text-sm">¿Por qué Cepa 77B?</span>
+                <h2 class="text-4xl font-bold text-slate-800 mt-2 mb-6">Adaptabilidad Única al Tejido Aéreo</h2>
+                <p class="text-lg text-slate-600">
+                    A diferencia de otras trichodermas de suelo, la 77B fue aislada de la parte aérea de la vid en un
+                    monte convencional, otorgándole una resistencia superior a la desecación y radiación UV.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div
+                    class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition duration-300 group">
+                    <div
+                        class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-6 text-3xl group-hover:bg-green-check group-hover:text-white transition">
+                        🍇
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">Especialista en Vid y Tomate</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Desarrollada específicamente para proteger racimos y frutos en cultivos de alto valor donde la
+                        sanidad es crítica.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition duration-300 group">
+                    <div
+                        class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-6 text-3xl group-hover:bg-green-check group-hover:text-white transition">
+                        🦠
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">Control de <i>Botrytis</i></h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Acción contundente contra la podredumbre gris (<i>Botrytis cinerea</i>), ocupando los sitios de
+                        infección antes que el patógeno.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition duration-300 group">
+                    <div
+                        class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-6 text-3xl group-hover:bg-green-check group-hover:text-white transition">
+                        💎
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">Calidad de Formulación</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Formulación sólida (Polvo) que garantiza mayor estabilidad, viabilidad de esporas y vida útil
+                        comparado con líquidos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Ciencia / Mecanismo -->
+    <section id="ciencia" class="py-24 bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-green-900/20 skew-x-12"></div>
+
+        <div class="container mx-auto px-6 max-w-7xl relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2">
+                    <span class="text-green-check font-bold tracking-widest uppercase text-sm">Mecanismo de
+                        Acción</span>
+                    <h2 class="text-4xl font-bold mt-2 mb-6">La Inteligencia de la Cepa 77B</h2>
+                    <p class="text-gray-300 mb-8 text-lg">
+                        Su origen aéreo le permite colonizar heridas de poda y órganos florales más rápido que otras
+                        cepas.
+                    </p>
+                    <div class="space-y-8">
+                        <div class="flex gap-4">
+                            <div
+                                class="shrink-0 w-12 h-12 rounded-full bg-green-check flex items-center justify-center font-bold text-white text-xl">
+                                1</div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-2">Competencia por Espacio</h4>
+                                <p class="text-gray-400">Crea una barrera física viva sobre hojas y racimos, impidiendo
+                                    la entrada de <i>Botrytis</i>.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div
+                                class="shrink-0 w-12 h-12 rounded-full bg-green-check flex items-center justify-center font-bold text-white text-xl">
+                                2</div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-2">Micoparasitismo</h4>
+                                <p class="text-gray-400">Detecta y destruye activamente las hifas del hongo patógeno
+                                    mediante enzimas líticas.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div
+                                class="shrink-0 w-12 h-12 rounded-full bg-green-check flex items-center justify-center font-bold text-white text-xl">
+                                3</div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-2">Persistencia Aérea</h4>
+                                <p class="text-gray-400">Gracias a su aislamiento original en vid, tolera condiciones de
+                                    estrés hídrico y UV mejor que cepas de suelo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Science Visual Placeholder -->
+                <div class="lg:w-1/2">
+                    <div
+                        class="rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative bg-slate-800 aspect-video flex items-center justify-center group">
+                        <!-- Simulate Microscopic View -->
+                        <div class="text-center p-8 opacity-60 group-hover:opacity-100 transition">
+                            <p class="text-6xl mb-4">🔬</p>
+                            <p class="text-xl text-gray-300 font-bold">Colonización de Heridas de Poda</p>
+                            <p class="text-sm text-gray-500 mt-2">Protección preventiva eficaz</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Resultados/Eficacia -->
+    <section id="resultados" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6 max-w-7xl text-center">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-green-check font-bold tracking-widest uppercase text-sm">Objetivo Principal</span>
+                <h2 class="text-4xl font-bold text-slate-800 mt-2 mb-6">Control de Botrytis</h2>
+                <p class="text-lg text-slate-600">
+                    Atroverde es una herramienta clave para reducir la carga química en programas de exportación de uva
+                    de mesa y vino.
+                </p>
+            </div>
+
+            <div class="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-gray-100 max-w-4xl mx-auto">
+                <div
+                    class="py-12 bg-gray-100 rounded-xl border-dashed border-2 border-green-200 flex flex-col items-center justify-center text-gray-500">
+                    <svg class="w-16 h-16 mb-4 text-green-check" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                        </path>
+                    </svg>
+                    <span class="font-bold text-lg text-slate-700">Eficacia en Vid vs Botrytis</span>
+                    <span class="text-sm mt-2 max-w-md">"Atroverde muestra niveles de control estadísticamente iguales a
+                        fungicidas convencionales en ensayos de campo."</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Especificaciones Técnicas -->
+    <section id="especificaciones" class="py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <h2 class="text-3xl font-bold text-slate-800 mb-10 text-center">Ficha Técnica</h2>
+
+            <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+                <table class="w-full text-left border-collapse">
+                    <tbody class="divide-y divide-gray-100">
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="p-6 font-semibold text-slate-700 w-1/3 bg-gray-50/50">Cepa</td>
+                            <td class="p-6 text-slate-600"><i>Trichoderma atroviride</i> cepa 77B (Aislada de Vid)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="p-6 font-semibold text-slate-700 w-1/3 bg-gray-50/50">Concentración</td>
+                            <td class="p-6 text-slate-600">2 x 10<sup>9</sup> ufc/g</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="p-6 font-semibold text-slate-700 w-1/3 bg-gray-50/50">Formulación</td>
+                            <td class="p-6 text-slate-600 font-bold text-green-700">Gránulos Dispersables (WG) - Polvo
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="p-6 font-semibold text-slate-700 w-1/3 bg-gray-50/50">Cultivos Objetivo</td>
+                            <td class="p-6 text-slate-600">Vid, Tomate (Solanáceas), Berries, Frutales.</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="p-6 font-semibold text-slate-700 w-1/3 bg-gray-50/50">Target Principal</td>
+                            <td class="p-6 text-slate-600"><i>Botrytis cinerea</i>, enfermedades de madera, patógenos de
+                                suelo.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Downloads -->
+            <div class="grid md:grid-cols-2 gap-6 mt-12">
+                <a href="#"
+                    class="flex items-center p-6 border border-gray-200 rounded-xl hover:border-green-check hover:bg-green-50 transition group cursor-not-allowed opacity-70">
+                    <div
+                        class="w-12 h-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center mr-4 group-hover:bg-red-200">
+                        📄
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-800">Ficha Técnica</h4>
+                        <p class="text-sm text-slate-500">Descargar PDF</p>
+                    </div>
+                </a>
+                <a href="#"
+                    class="flex items-center p-6 border border-gray-200 rounded-xl hover:border-green-check hover:bg-green-50 transition group cursor-not-allowed opacity-70">
+                    <div
+                        class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mr-4 group-hover:bg-blue-200">
+                        🛡️
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-800">Hoja de Seguridad</h4>
+                        <p class="text-sm text-slate-500">Descargar MSDS</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Origen (Mandatory) -->
+    <section class="py-20 bg-gray-50 border-t border-gray-200">
+        <div class="container mx-auto px-6 max-w-4xl text-center">
+            <h3 class="text-xl font-semibold text-slate-500 mb-8 uppercase tracking-widest">Respaldo Internacional</h3>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-12 mb-10">
+                <div class="opacity-70 hover:opacity-100 transition flex flex-col items-center">
+                    <span class="text-3xl font-black text-slate-800">Andermatt</span>
+                    <span class="text-xs font-bold text-slate-400 mt-1">SWITZERLAND</span>
+                </div>
+                <div class="h-12 w-px bg-gray-300 hidden md:block"></div>
+                <div class="opacity-70 hover:opacity-100 transition flex flex-col items-center">
+                    <span class="text-2xl font-bold text-slate-800">AgriCheck</span>
+                    <span class="text-xs font-bold text-slate-400 mt-1">DISTRIBUIDOR OFICIAL</span>
+                </div>
+            </div>
+            <p class="text-lg text-slate-600 italic leading-relaxed">
+                "Calidad Suiza formulada para la agricultura global. Atroverde es un producto del Grupo Andermatt."
+            </p>
+        </div>
+    </section>
+
+    <!-- 8. CTA Final -->
+    <section id="contacto" class="bg-slate-900 py-24 relative overflow-hidden">
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-green-check/10 rounded-full blur-[120px]">
+        </div>
+
+        <div class="container mx-auto px-6 max-w-3xl text-center relative z-10">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6">Proteja su inversión desde hoy</h2>
+            <p class="text-xl text-gray-300 mb-10">
+                Contacte a nuestro equipo técnico para diseñar un programa de aplicaciones a medida para su viñedo o
+                cultivo.
+            </p>
+            <a href="mailto:ventas@agricheck.com"
+                class="inline-block bg-green-check text-white font-bold text-xl py-5 px-10 rounded-full hover:bg-green-500 transition shadow-2xl hover:shadow-green-500/20 hover:-translate-y-1">
+                Contactar a Ventas
+            </a>
+        </div>
+    </section>
+
+    <!-- 9. Footer -->
+    <footer class="bg-black text-gray-400 py-12 border-t border-gray-900">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-6">
+                <span class="text-xl font-bold text-white">Agri<span class="text-green-check">Check</span></span>
+            </div>
+            <div class="flex justify-center space-x-6 mb-8 text-sm">
+                <a href="index.html" class="hover:text-white transition">Inicio</a>
+                <a href="#" class="hover:text-white transition">Productos</a>
+                <a href="#" class="hover:text-white transition">Nosotros</a>
+                <a href="#contacto" class="hover:text-white transition">Contacto</a>
+            </div>
+            <p class="text-sm">© 2025 AgriCheck. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

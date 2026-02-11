@@ -1,0 +1,871 @@
+﻿<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phosbac â€“ AgriCheck | El Solubilizador de FÃ³sforo Definitivo</title>
+    <meta name="description"
+        content="Phosbac (Bacillus velezensis FZB45) es el solubilizador de fÃ³sforo mÃ¡s estudiado y eficaz. Supere a las Pseudomonas con la estabilidad de las endosporas.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Paleta de Colores Premium AgriCheck & Phosbac */
+        :root {
+            --brand-primary: #89C444;
+            /* Verde AgriCheck */
+            --brand-secondary: #0F172A;
+            /* Slate 900 - Dark Premium */
+            --brand-accent: #F59E0B;
+            /* Amber - EnergÃ­a/FÃ³sforo */
+            --brand-light: #F8F9F7;
+            /* Fondo AgriCheck Oficial */
+            --glass-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--brand-light);
+            color: #334155;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.7)), url('hero-soja.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            color: white;
+            /* Removed min-height: 90vh to match Nexula's sizing */
+        }
+
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%232e3a4e" fill-opacity="0.2"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+        }
+
+        .highlight-text {
+            color: var(--brand-primary);
+        }
+
+        .gradient-text {
+            background: linear-gradient(120deg, var(--brand-primary), #a3e635);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Scientific Cards */
+        .science-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--brand-primary);
+        }
+
+        .science-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1.5rem;
+            text-align: left;
+        }
+
+        .comparison-table thead {
+            background-color: var(--brand-secondary);
+            color: white;
+        }
+
+        .comparison-table tbody tr:nth-child(even) {
+            background-color: #f1f5f9;
+        }
+
+        .comparison-table tbody tr:nth-child(odd) {
+            background-color: white;
+        }
+
+        .check-icon {
+            color: var(--brand-primary);
+            font-weight: bold;
+        }
+
+        .cross-icon {
+            color: #EF4444;
+            font-weight: bold;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(90deg, var(--brand-primary) 0%, #76a93a 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 10px 15px -3px rgba(137, 196, 68, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 25px -5px rgba(137, 196, 68, 0.5);
+        }
+
+        /* Floating Molecule Animation */
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.1;
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: translateY(0px) rotate(360deg);
+                opacity: 0.1;
+            }
+        }
+
+        .molecule {
+            position: absolute;
+            background: var(--brand-primary);
+            border-radius: 50%;
+            filter: blur(40px);
+            z-index: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center max-w-7xl">
+            <a href="https://www.agrichecksrl.com" class="flex items-center gap-2">
+                <img src="https://www.agrichecksrl.com/img/logo-agricheck.png" alt="AgriCheck" class="h-10 w-auto">
+                <span class="font-bold text-xl tracking-tight text-slate-800 hidden sm:block">| Phosbac</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#ciencia" class="font-medium text-slate-600 hover:text-green-600 transition">La Ciencia</a>
+                <a href="#resultados" class="font-medium text-slate-600 hover:text-green-600 transition">Resultados</a>
+                <a href="#especificaciones"
+                    class="font-medium text-slate-600 hover:text-green-600 transition">Especificaciones</a>
+                <a href="#diferencial" class="font-medium text-slate-600 hover:text-green-600 transition">Â¿Por quÃ©
+                    Phosbac?</a>
+                <a href="#contacto" class="btn-primary py-2 px-6 text-sm">Pedir CotizaciÃ³n</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-slate-800 focus:outline-none" id="mobile-menu-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div class="md:hidden hidden bg-white border-t border-slate-100" id="mobile-menu">
+            <div class="flex flex-col space-y-4 px-6 py-6">
+                <a href="#ciencia" class="mobile-link font-medium text-slate-600 hover:text-green-600 transition">La
+                    Ciencia</a>
+                <a href="#resultados"
+                    class="mobile-link font-medium text-slate-600 hover:text-green-600 transition">Resultados</a>
+                <a href="#especificaciones"
+                    class="mobile-link font-medium text-slate-600 hover:text-green-600 transition">Especificaciones</a>
+                <a href="#diferencial"
+                    class="mobile-link font-medium text-slate-600 hover:text-green-600 transition">Â¿Por
+                    quÃ© Phosbac?</a>
+                <a href="#contacto" class="btn-primary w-full text-center py-3">Pedir CotizaciÃ³n</a>
+            </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-pattern"></div>
+            <!-- Decorative blurred orbs -->
+            <div class="molecule w-64 h-64 top-20 left-10" style="background: #89C444;"></div>
+            <div class="molecule w-96 h-96 bottom-10 right-10" style="background: #0F172A;"></div>
+
+            <div
+                class="container mx-auto px-6 py-24 md:py-32 relative z-10 grid md:grid-cols-2 gap-12 items-center max-w-7xl">
+                <div class="space-y-6 animate-fade-in-up">
+                    <div class="flex flex-wrap gap-3">
+                        <div
+                            class="inline-flex items-center gap-2 bg-slate-800/80 backdrop-blur border border-slate-600/50 rounded-full px-4 py-1.5">
+                            <span class="text-lg">ðŸ‡©ðŸ‡ª</span>
+                            <span class="text-slate-200 text-xs font-bold tracking-wider uppercase">Formulado en
+                                Alemania</span>
+                        </div>
+                        <div
+                            class="inline-flex items-center bg-green-900/50 backdrop-blur border border-green-500/30 rounded-full px-4 py-1.5">
+                            <span class="text-green-400 font-bold text-xs tracking-wider uppercase">EstÃ¡ndar de
+                                Oro</span>
+                        </div>
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-black leading-tight">
+                        <span class="block text-white">Libera el</span>
+                        <span class="gradient-text">FÃ³sforo Oculto</span>
+                        <span class="block text-white">de tu Suelo.</span>
+                    </h1>
+                    <p class="text-xl text-slate-300 max-w-lg leading-relaxed">
+                        No apliques mÃ¡s. Aprovecha lo que ya tienes.
+                        <strong>Phosbac</strong> (<i>Bacillus velezensis</i> FZB45) transforma el fÃ³sforo bloqueado en
+                        nutrientes asimilables con una eficacia cientÃ­ficamente superior.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <a href="#ciencia" class="btn-primary text-center">
+                            Ver la Evidencia CientÃ­fica
+                        </a>
+                        <a href="#comparativa"
+                            class="px-8 py-4 rounded-full border border-slate-600 font-bold text-white hover:bg-white/10 transition text-center">
+                            Â¿Por quÃ© es superior?
+                        </a>
+                    </div>
+                </div>
+                <div class="flex justify-center relative">
+                    <!-- Placeholder for Hero Image - 3D Soil/Root concept or Product Bottle -->
+                    <div class="relative w-full max-w-md">
+                        <div class="absolute inset-0 bg-green-500 blur-3xl opacity-20 rounded-full"></div>
+                        <img src="../img/phosbac-botella.png" alt="Phosbac Botella Premium"
+                            class="relative z-10 w-full drop-shadow-2xl hover:scale-105 transition duration-500">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Key Benefits Section -->
+        <section class="py-16 bg-white border-b border-slate-100">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="grid md:grid-cols-4 gap-8 text-center">
+                    <div class="p-6 rounded-xl hover:bg-slate-50 transition duration-300">
+                        <div
+                            class="w-16 h-16 mx-auto bg-green-100 rounded-full flex items-center justify-center text-3xl mb-4">
+                            ðŸŒ±</div>
+                        <h3 class="font-bold text-slate-800 mb-2">MÃ¡s RaÃ­ces</h3>
+                        <p class="text-slate-600 text-sm">Estimula el crecimiento radicular mediante la producciÃ³n de
+                            fitohormonas (auxinas).</p>
+                    </div>
+                    <div class="p-6 rounded-xl hover:bg-slate-50 transition duration-300">
+                        <div
+                            class="w-16 h-16 mx-auto bg-amber-100 rounded-full flex items-center justify-center text-3xl mb-4">
+                            ðŸ”“</div>
+                        <h3 class="font-bold text-slate-800 mb-2">FÃ³sforo Disponible</h3>
+                        <p class="text-slate-600 text-sm">Libera el fÃ³sforo atrapado en el suelo, dejÃ¡ndolo listo para
+                            ser absorbido.</p>
+                    </div>
+                    <div class="p-6 rounded-xl hover:bg-slate-50 transition duration-300">
+                        <div
+                            class="w-16 h-16 mx-auto bg-blue-100 rounded-full flex items-center justify-center text-3xl mb-4">
+                            ðŸ›¡ï¸</div>
+                        <h3 class="font-bold text-slate-800 mb-2">Sanidad Vegetal</h3>
+                        <p class="text-slate-600 text-sm">Activa las defensas naturales de la planta frente a estrÃ©s
+                            biÃ³tico y abiÃ³tico.</p>
+                    </div>
+                    <div class="p-6 rounded-xl hover:bg-slate-50 transition duration-300">
+                        <div
+                            class="w-16 h-16 mx-auto bg-green-100 rounded-full flex items-center justify-center text-3xl mb-4">
+                            ðŸ“ˆ</div>
+                        <h3 class="font-bold text-slate-800 mb-2">MÃ¡s Rendimiento</h3>
+                        <p class="text-slate-600 text-sm">La nutriciÃ³n balanceada y el vigor inicial se traducen en mÃ¡s
+                            quintales por hectÃ¡rea.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="ciencia" class="py-24 bg-white relative overflow-hidden">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-4xl font-extrabold text-slate-900 mb-4">La QuÃ­mica de la SolubilizaciÃ³n</h2>
+                    <p class="text-lg text-slate-600">
+                        Phosbac no es magia, es bioquÃ­mica avanzada. La cepa FZB45 despliega un arsenal enzimÃ¡tico y de
+                        Ã¡cidos orgÃ¡nicos para minar el fÃ³sforo del suelo.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Mechanism 1 -->
+                    <div class="science-card p-8">
+                        <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center mb-6 text-2xl">ðŸ§ª
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">ProducciÃ³n de Ãcidos OrgÃ¡nicos</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Libera Ã¡cidos glucÃ³nico, 2-cetoglucÃ³nico y cÃ­trico. Estos Ã¡cidos <strong>acidifican el
+                                microambiente</strong> de la raÃ­z y actÃºan como agentes quelantes, "secuestrando" el
+                            Calcio, Hierro o Aluminio que retienen al fÃ³sforo, liberÃ¡ndolo inmediatamente.
+                        </p>
+                        <div class="text-xs text-slate-400 border-t pt-3 italic">
+                            Ref: Idriss et al., 2002; Chen et al., 2006.
+                        </div>
+                    </div>
+
+                    <!-- Mechanism 2 -->
+                    <div class="science-card p-8">
+                        <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6 text-2xl">ðŸ§¬
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Enzimas Fosfatasas</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Sintetiza fosfatasas Ã¡cidas y alcalinas (genes <i>phoD</i>, <i>phoC</i>). Estas enzimas
+                            rompen los enlaces de fÃ³sforo orgÃ¡nico en la materia orgÃ¡nica del suelo, mineralizÃ¡ndolo
+                            para la planta.
+                        </p>
+                        <div class="text-xs text-slate-400 border-t pt-3 italic">
+                            Ref: Idriss et al., 2002.
+                        </div>
+                    </div>
+
+                    <!-- Mechanism 3 -->
+                    <div class="science-card p-8">
+                        <div class="w-14 h-14 bg-amber-100 rounded-lg flex items-center justify-center mb-6 text-2xl">ðŸŒ¾
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Fitasa EspecÃ­fica</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Ãšnico por su alta producciÃ³n de fitasas, enzimas capaces de degradar fitatos, una forma de
+                            fÃ³sforo orgÃ¡nico muy comÃºn pero difÃ­cilmente accesible para las plantas sin ayuda
+                            microbiana.
+                        </p>
+                        <div class="text-xs text-slate-400 border-t pt-3 italic">
+                            Ref: Richardson et al., 2001 (General Phytase activity).
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scientific Results Section -->
+        <section id="resultados" class="py-24 bg-white">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold text-slate-900 mb-4">Resultados Comprobados</h2>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                        MÃ¡s de 40 aÃ±os de investigaciÃ³n respaldan a la cepa FZB45. AquÃ­ presentamos datos de ensayos de
+                        campo y laboratorio.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Graph Placeholder 1 -->
+                    <div class="border border-slate-200 rounded-xl p-6 bg-slate-50">
+                        <h4 class="font-bold text-lg mb-4 text-center">SolubilizaciÃ³n de FÃ³sforo In vitro</h4>
+                        <div
+                            class="aspect-video bg-white rounded-lg shadow-inner flex items-center justify-center border border-dashed border-slate-300">
+                            <div class="text-center p-8">
+                                <span class="text-4xl block mb-2">ðŸ“Š</span>
+                                <p class="text-slate-400 font-medium">GrÃ¡fico de SolubilizaciÃ³n (mg/L)</p>
+                                <p class="text-xs text-slate-400 mt-2">FZB45 vs Control vs Otros</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-500 mt-4 text-center">
+                            Phosbac demuestra una capacidad superior de liberaciÃ³n de ortofosfatos a partir de fosfato
+                            tricÃ¡lcico.
+                        </p>
+                    </div>
+
+                    <!-- Graph Placeholder 2 -->
+                    <div class="border border-slate-200 rounded-xl p-6 bg-slate-50">
+                        <h4 class="font-bold text-lg mb-4 text-center">Incremento de Rendimiento en MaÃ­z</h4>
+                        <div
+                            class="aspect-video bg-white rounded-lg shadow-inner flex items-center justify-center border border-dashed border-slate-300">
+                            <div class="text-center p-8">
+                                <span class="text-4xl block mb-2">ðŸ“ˆ</span>
+                                <p class="text-slate-400 font-medium">Rendimiento (kg/ha)</p>
+                                <p class="text-xs text-slate-400 mt-2">+12% vs Testigo QuÃ­mico</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-500 mt-4 text-center">
+                            Ensayos de campo muestran consistencia en el aumento de rendimiento gracias a una mejor
+                            nutriciÃ³n fosfatada.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Specifications & Application Section -->
+        <section id="especificaciones" class="py-24 bg-white border-t border-slate-100">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="grid md:grid-cols-2 gap-16">
+                    <!-- Left Column: Application & Compatibility -->
+                    <div>
+                        <h3 class="text-3xl font-extrabold text-slate-900 mb-6">AplicaciÃ³n y Compatibilidad</h3>
+                        <div class="space-y-8">
+
+                            <div class="flex gap-4">
+                                <div
+                                    class="flex-shrink-0 w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-2xl">
+                                    ðŸ›¡ï¸</div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-slate-800 mb-2">Viabilidad en Semilla > 300 DÃ­as
+                                    </h4>
+                                    <p class="text-slate-600 leading-relaxed">
+                                        Gracias a la tecnologÃ­a de endosporas, Phosbac puede aplicarse en el tratamiento
+                                        profesional de semillas (TPS) y <strong>mantenerse viable por mÃ¡s de 300
+                                            dÃ­as</strong> sobre la semilla tratada, sin perder eficacia.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-4">
+                                <div
+                                    class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-2xl">
+                                    ðŸ¤</div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-slate-800 mb-2">Compatibilidad Total</h4>
+                                    <p class="text-slate-600 leading-relaxed">
+                                        100% compatible con fungicidas, insecticidas y otros terÃ¡picos de semilla
+                                        convencionales. No requiere tanque separado ni condiciones especiales de mezcla.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-4">
+                                <div
+                                    class="flex-shrink-0 w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center text-2xl">
+                                    ðŸšœ</div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-slate-800 mb-2">Flexibilidad de AplicaciÃ³n</h4>
+                                    <p class="text-slate-600 leading-relaxed">
+                                        Puede aplicarse tanto en tratamiento de semillas como en surco (chorro). Su
+                                        formulaciÃ³n lÃ­quida SC (SuspensiÃ³n Concentrada) facilita la dosificaciÃ³n y no
+                                        obstruye filtros.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Technical Specifications -->
+                    <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-6 border-b border-slate-200 pb-4">
+                            Especificaciones TÃ©cnicas</h3>
+                        <ul class="space-y-4">
+                            <li class="flex justify-between items-start">
+                                <span class="font-semibold text-slate-600">Principio Activo:</span>
+                                <span class="text-slate-900 text-right font-bold"><i>Bacillus velezensis</i> (Cepa
+                                    FZB45)</span>
+                            </li>
+                            <li class="flex justify-between items-start">
+                                <span class="font-semibold text-slate-600">ConcentraciÃ³n:</span>
+                                <span class="text-slate-900 text-right">MÃ­nimo 2,5x10Â¹â° UFC/ml</span>
+                            </li>
+                            <li class="flex justify-between items-start">
+                                <span class="font-semibold text-slate-600">FormulaciÃ³n:</span>
+                                <span class="text-slate-900 text-right">SuspensiÃ³n Concentrada (SC)</span>
+                            </li>
+                            <li class="flex justify-between items-start">
+                                <span class="font-semibold text-slate-600">Registro SENASA:</span>
+                                <span class="text-slate-900 text-right font-medium bg-slate-200 px-2 rounded">En TrÃ¡mite
+                                    / Consultar</span>
+                            </li>
+                            <li class="flex justify-between items-start">
+                                <span class="font-semibold text-slate-600">Origen:</span>
+                                <div class="text-right">
+                                    <span class="block text-slate-900">ABiTEP GmbH (Alemania) ðŸ‡©ðŸ‡ª</span>
+                                    <span class="text-xs text-slate-500">Propiedad de Andermatt Group</span>
+                                </div>
+                            </li>
+                            <li class="flex justify-between items-start">
+                                <span class="font-semibold text-slate-600">Almacenamiento:</span>
+                                <span class="text-slate-900 text-right">2 aÃ±os a temperatura ambiente (< 25Â°C)</span>
+                            </li>
+                        </ul>
+                        <div class="mt-8 pt-6 border-t border-slate-200">
+                            <a href="../fichas/Ficha_Phosbac.pdf"
+                                class="flex items-center justify-center gap-2 text-green-700 font-bold hover:text-green-800 transition">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                                Descargar Ficha TÃ©cnica
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phosbac Difference Section (Tabs) -->
+        <section id="diferencial" class="py-24 bg-slate-50 relative overflow-hidden">
+            <!-- Background Elements -->
+            <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                <div class="absolute top-[10%] left-[5%] w-96 h-96 bg-green-200/20 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-[10%] right-[5%] w-96 h-96 bg-blue-200/20 rounded-full blur-3xl"></div>
+            </div>
+
+            <div class="container mx-auto px-6 max-w-7xl relative z-10">
+                <div class="text-center mb-12">
+                    <span class="text-green-600 font-bold tracking-widest uppercase text-sm">La Diferencia
+                        Phosbac</span>
+                    <h2 class="text-4xl font-extrabold text-slate-900 mt-2 mb-6">Calidad vs Cantidad</h2>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                        Descubra por quÃ© Phosbac es superior tanto en biologÃ­a como en concentraciÃ³n.
+                    </p>
+                </div>
+
+                <!-- Tab Navigation -->
+                <div class="flex flex-wrap justify-center gap-4 mb-12">
+                    <button onclick="switchTab('calidad')" id="btn-calidad"
+                        class="tab-btn active px-8 py-3 rounded-full font-bold text-lg transition-all duration-300 shadow-sm border border-slate-200 bg-white text-slate-600 hover:bg-slate-50">
+                        ðŸ§¬ Calidad BiolÃ³gica
+                    </button>
+                    <button onclick="switchTab('cantidad')" id="btn-cantidad"
+                        class="tab-btn px-8 py-3 rounded-full font-bold text-lg transition-all duration-300 shadow-sm border border-slate-200 bg-white text-slate-600 hover:bg-slate-50">
+                        ðŸ§ª Potencia Concentrada
+                    </button>
+                </div>
+
+                <!-- Tab Content: Quality (Bacillus vs Pseudomonas) -->
+                <div id="tab-calidad" class="tab-content transition-opacity duration-500">
+                    <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100">
+                        <div class="grid lg:grid-cols-5">
+                            <!-- Story Side -->
+                            <div
+                                class="lg:col-span-2 p-10 bg-gradient-to-br from-slate-900 to-slate-800 text-white flex flex-col justify-center">
+                                <h3 class="text-3xl font-extrabold mb-6">Endosporas: El Escudo de la Vida</h3>
+                                <p class="text-slate-300 mb-6 leading-relaxed">
+                                    En la naturaleza, la supervivencia lo es todo. Phosbac (<i>Bacillus velezensis</i>)
+                                    forma <strong>endosporas</strong>, estructuras blindadas que protegen a la bacteria
+                                    del calor, la sequÃ­a y los quÃ­micos.
+                                </p>
+                                <p class="text-slate-300 mb-8 leading-relaxed">
+                                    A diferencia de las frÃ¡giles <i>Pseudomonas</i>, Phosbac espera pacientemente en el
+                                    envase y en el suelo hasta que las condiciones son ideales, garantizando que lo que
+                                    compras es lo que llega a la raÃ­z.
+                                </p>
+                                <div class="mt-auto">
+                                    <div class="flex items-center gap-3 text-green-400 font-bold">
+                                        <span class="text-2xl">âœ“</span>
+                                        <span>Viabilidad Garantizada > 2 AÃ±os</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Table Side -->
+                            <div class="lg:col-span-3 p-8 lg:p-12">
+                                <h4 class="text-xl font-bold text-slate-800 mb-6 text-center">Bacillus vs Pseudomonas
+                                </h4>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-left border-collapse">
+                                        <thead>
+                                            <tr>
+                                                <th
+                                                    class="p-4 border-b-2 border-slate-100 text-slate-500 font-semibold text-sm">
+                                                    CaracterÃ­stica</th>
+                                                <th
+                                                    class="p-4 border-b-2 border-green-100 text-green-700 font-bold text-center bg-green-50/50 rounded-t-xl">
+                                                    Phosbac</th>
+                                                <th
+                                                    class="p-4 border-b-2 border-slate-100 text-slate-400 font-medium text-center">
+                                                    Competencia (Pseudomonas)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-sm md:text-base">
+                                            <tr>
+                                                <td class="p-4 border-b border-slate-100 font-semibold text-slate-700">
+                                                    Resistencia</td>
+                                                <td
+                                                    class="p-4 border-b border-green-50 text-center font-bold text-green-700 bg-green-50/30">
+                                                    Endosporas (Blindaje)</td>
+                                                <td class="p-4 border-b border-slate-100 text-center text-slate-500">
+                                                    CÃ©lula Vegetativa (FrÃ¡gil)</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-4 border-b border-slate-100 font-semibold text-slate-700">
+                                                    Vida Ãštil</td>
+                                                <td
+                                                    class="p-4 border-b border-green-50 text-center font-bold text-green-700 bg-green-50/30">
+                                                    Min. 2 AÃ±os</td>
+                                                <td class="p-4 border-b border-slate-100 text-center text-slate-500">3-6
+                                                    Meses (Requiere frÃ­o)</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-4 border-b border-slate-100 font-semibold text-slate-700">
+                                                    Temp. MÃ¡xima</td>
+                                                <td
+                                                    class="p-4 border-b border-green-50 text-center text-slate-700 bg-green-50/30">
+                                                    Alta (> 60Â°C)</td>
+                                                <td class="p-4 border-b border-slate-100 text-center text-slate-500">
+                                                    Baja (< 40Â°C)</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-4 font-semibold text-slate-700">Compatibilidad</td>
+                                                <td
+                                                    class="p-4 text-center font-bold text-green-700 bg-green-50/30 rounded-b-xl">
+                                                    Total (QuÃ­micos)</td>
+                                                <td class="p-4 text-center text-slate-500">Limitada</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Quantity (Calculator) -->
+                <div id="tab-cantidad" class="tab-content hidden transition-opacity duration-500">
+                    <div
+                        class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100 max-w-5xl mx-auto">
+                        <div class="p-8 md:p-12">
+                            <div class="text-center mb-10">
+                                <h3 class="text-2xl font-bold text-slate-900">Calculadora de Equivalencia</h3>
+                                <p class="text-slate-600 mt-2">
+                                    Phosbac tiene una concentraciÃ³n ultra-alta de <strong>2,5 x 10Â¹â° UFC/ml</strong>.
+                                    <br>Calcule cuÃ¡nto producto de la competencia necesita para igualar nuestra dosis.
+                                </p>
+                            </div>
+
+                            <div class="grid md:grid-cols-2 gap-12 items-center">
+                                <!-- Inputs -->
+                                <div class="space-y-6 bg-slate-50 p-8 rounded-2xl border border-slate-200">
+                                    <h4 class="font-bold text-slate-700 border-b border-slate-200 pb-2 mb-4">Datos del
+                                        Competidor</h4>
+
+                                    <div>
+                                        <label
+                                            class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">ConcentraciÃ³n
+                                            Base</label>
+                                        <div class="flex items-center gap-2">
+                                            <input type="number" id="compBase" value="1"
+                                                class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 outline-none font-mono text-center"
+                                                placeholder="1">
+                                            <span class="text-slate-400 font-bold">x 10</span>
+                                            <input type="number" id="compExp" value="9"
+                                                class="w-20 p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 outline-none font-mono text-center"
+                                                placeholder="9">
+                                        </div>
+                                        <p class="text-xs text-slate-400 mt-2 text-center">Ej: 1 x 10â¹ UFC/ml</p>
+                                    </div>
+
+                                    <div>
+                                        <label
+                                            class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Dosis
+                                            Recomendada (ml)</label>
+                                        <input type="number" id="compDose" value="200"
+                                            class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 outline-none font-mono text-center">
+                                    </div>
+
+                                    <button onclick="calculatePhosbac()"
+                                        class="w-full btn-primary font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 mt-2">
+                                        Calcular Ahora
+                                    </button>
+                                </div>
+
+                                <!-- Results -->
+                                <div class="text-center relative">
+                                    <div
+                                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-green-100 rounded-full blur-3xl -z-10">
+                                    </div>
+
+                                    <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">Dosis
+                                        Equivalente Phosbac</h3>
+
+                                    <div class="relative inline-block mb-4">
+                                        <span id="resultDose"
+                                            class="text-8xl font-black text-slate-800 tracking-tighter">8.0</span>
+                                        <div
+                                            class="absolute -right-16 top-2 text-xl font-bold text-slate-500 rotate-90 origin-bottom-left">
+                                            ml/ha</div>
+                                    </div>
+
+                                    <p class="text-slate-500 mb-8">Para igualar la carga biolÃ³gica bacteriana.</p>
+
+                                    <div id="savingsMsg"
+                                        class="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-full font-bold shadow-lg shadow-green-600/30 transform hover:scale-105 transition duration-300 opacity-0">
+                                        <span>ðŸš€</span>
+                                        <span>Â¡Es <span id="factorX">25</span> veces menos producto!</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            // Tab Switching Logic
+            function switchTab(tabName) {
+                // Hide all tab contents
+                document.querySelectorAll('.tab-content').forEach(tab => {
+                    tab.classList.add('hidden');
+                });
+
+                // Show selected tab content
+                document.getElementById('tab-' + tabName).classList.remove('hidden');
+
+                // Update Button Styles
+                document.querySelectorAll('.tab-btn').forEach(btn => {
+                    btn.classList.remove('bg-green-600', 'text-white', 'shadow-lg', 'border-transparent');
+                    btn.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
+                });
+
+                // Highlight active button
+                const activeBtn = document.getElementById('btn-' + tabName);
+                activeBtn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
+                activeBtn.classList.add('bg-green-600', 'text-white', 'shadow-lg', 'border-transparent');
+            }
+
+            // Init Tabs
+            document.addEventListener('DOMContentLoaded', () => {
+                switchTab('calidad');
+            });
+
+            // Calculator Logic
+            function calculatePhosbac() {
+                const compBase = parseFloat(document.getElementById('compBase').value);
+                const compExp = parseFloat(document.getElementById('compExp').value);
+                const compDose = parseFloat(document.getElementById('compDose').value);
+
+                const phosBase = 2.5;
+                const phosExp = 10;
+                const phosConc = phosBase * Math.pow(10, phosExp);
+                const compConc = compBase * Math.pow(10, compExp);
+
+                if (isNaN(compBase) || isNaN(compExp) || isNaN(compDose)) return;
+
+                const equivalentDose = (compConc * compDose) / phosConc;
+                const resultElement = document.getElementById('resultDose');
+
+                let start = parseFloat(resultElement.innerText);
+                const end = equivalentDose;
+                const duration = 500;
+                const startTime = performance.now();
+
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const ease = 1 - Math.pow(1 - progress, 4);
+                    const currentVal = start + (end - start) * ease;
+                    resultElement.innerText = currentVal.toFixed(1);
+                    if (progress < 1) requestAnimationFrame(update);
+                }
+                requestAnimationFrame(update);
+
+                const factor = compDose / equivalentDose;
+                const savingsMsg = document.getElementById('savingsMsg');
+                if (factor > 1.1) {
+                    document.getElementById('factorX').innerText = factor.toFixed(1);
+                    savingsMsg.style.opacity = '1';
+                } else {
+                    savingsMsg.style.opacity = '0';
+                }
+            }
+
+            // Mobile Menu Logic
+            document.addEventListener('DOMContentLoaded', () => {
+                const btn = document.getElementById('mobile-menu-btn');
+                const menu = document.getElementById('mobile-menu');
+                const links = document.querySelectorAll('.mobile-link');
+
+                if (btn && menu) {
+                    btn.addEventListener('click', () => {
+                        menu.classList.toggle('hidden');
+                    });
+
+                    // Close menu when a link is clicked
+                    links.forEach(link => {
+                        link.addEventListener('click', () => {
+                            menu.classList.add('hidden');
+                        });
+                    });
+                }
+            });
+        </script>
+
+        <!-- Trust Section: Origin & Quality -->
+        <section class="py-20 bg-slate-50 border-t border-slate-200">
+            <div class="container mx-auto px-6 max-w-5xl text-center">
+                <div
+                    class="flex flex-col md:flex-row justify-center items-center gap-8 mb-8 opacity-80 hover:opacity-100 transition duration-500">
+                    <!-- Logo ABiTEP Placeholder/Text if image not available -->
+                    <div class="h-16 flex items-center">
+                        <span class="text-3xl font-black text-slate-800 tracking-tighter">ABiTEP<span
+                                class="text-green-600">.</span></span>
+                    </div>
+                    <div class="hidden md:block h-12 w-px bg-slate-300"></div>
+                    <img src="https://www.agrichecksrl.com/img/../img/andermatt-clasico.png" alt="Andermatt"
+                        class="h-12 w-auto grayscalehover:grayscale-0 transition">
+                </div>
+
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Origen AlemÃ¡n. Confianza Suiza.</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-black via-red-600 to-yellow-500 mx-auto mb-6 rounded-full">
+                </div>
+
+                <p class="text-lg text-slate-600 mb-8 leading-relaxed max-w-3xl mx-auto">
+                    La tecnologÃ­a detrÃ¡s de <strong>Phosbac</strong> proviene de <strong>ABiTEP GmbH</strong> en BerlÃ­n,
+                    Alemania, pioneros en el desarrollo de bioestimulantes a base de <i>Bacillus</i>.
+                    ABiTEP GmbH es propiedad del grupo <strong>Andermatt</strong>, lÃ­der suizo en soluciones biolÃ³gicas,
+                    garantizando los mÃ¡s altos estÃ¡ndares de calidad y resultados a campo.
+                </p>
+
+                <a href="https://www.andermatt.com" target="_blank"
+                    class="inline-flex items-center text-green-700 font-bold hover:text-green-800 hover:underline transition">
+                    Conocer mÃ¡s sobre Andermatt <span class="ml-1">â†’</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section id="contacto" class="py-24 bg-gradient-to-br from-slate-900 to-slate-800 text-white text-center">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <h2 class="text-4xl font-bold mb-6">Lleva la eficiencia de tu fÃ³sforo al siguiente nivel</h2>
+                <p class="text-xl text-slate-300 mb-10">
+                    No dejes que tu fertilizante se quede bloqueado en el suelo. ActÃ­valo con la ciencia de Phosbac.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="mailto:ventas@agricheck.com"
+                        class="btn-primary text-xl px-10 py-4 shadow-xl shadow-green-900/50">
+                        Contactar con un Especialista
+                    </a>
+                    <a href="https://wa.me/5491112345678"
+                        class="bg-transparent border-2 border-white/20 hover:bg-white/10 text-white font-bold py-4 px-10 rounded-full transition">
+                        Chat WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-900">
+        <div class="container mx-auto px-6 text-center">
+            <div
+                class="flex justify-center items-center gap-4 mb-8 grayscale hover:grayscale-0 transition opacity-50 hover:opacity-100">
+                <img src="https://www.agrichecksrl.com/img/logo-agricheck.png" alt="AgriCheck" class="h-8">
+                <span class="text-slate-600 text-2xl">Ã—</span>
+                <span class="font-bold text-xl text-white">Andermatt</span>
+            </div>
+            <p>&copy; 2025 AgriCheck S.R.L. | InnovaciÃ³n BiolÃ³gica.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

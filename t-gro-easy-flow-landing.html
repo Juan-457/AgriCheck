@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T-Gro Easy Flow - Agri Check S.R.L.</title>
+    <meta name="description"
+        content="T-Gro Easy Flow: Inoculante y Lubricante para Maíz en un solo paso. Tecnología Trichoderma asperellum de Andermatt.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandGreen: '#89C444',
+                        brandBrown: '#9A7A4E',
+                        brandDark: '#4B4B4D',
+                        brandBg: '#F8F9F7',
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        headers: ['Koblenz', 'Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F8F9F7;
+            color: #4B4B4D;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Koblenz', 'Lato', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -0.025em;
+        }
+
+        .btn-primary {
+            background-color: #89C444;
+            color: white;
+            border-radius: 9999px;
+            font-weight: 700;
+            transition: all 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(137, 196, 68, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(137, 196, 68, 0.5);
+            background-color: #7ab638;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-header::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #89C444;
+            margin: 1rem 0 2rem 0;
+            border-radius: 2px;
+        }
+
+        .section-header-center::after {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(75, 75, 77, 0.95) 0%, rgba(137, 196, 68, 0.3) 100%);
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center max-w-7xl">
+            <a href="#"
+                class="text-2xl font-black text-brandDark tracking-tighter hover:opacity-80 transition-opacity">AGRI
+                CHECK <span class="text-brandGreen">S.R.L.</span></a>
+            <nav class="hidden md:flex space-x-8 font-bold text-sm text-brandDark tracking-widest uppercase">
+                <a href="#beneficios" class="hover:text-brandGreen transition-colors">Beneficios</a>
+                <a href="#tecnologia" class="hover:text-brandGreen transition-colors">Tecnología</a>
+                <a href="#resultados" class="hover:text-brandGreen transition-colors">Ensayos</a>
+                <a href="#ficha" class="hover:text-brandGreen transition-colors">Ficha</a>
+            </nav>
+            <a href="#contacto" class="btn-primary py-2 px-6 text-sm uppercase tracking-wide">Asesoría Técnica</a>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <div class="relative bg-brandDark text-white overflow-hidden min-h-[90vh] flex items-center">
+        <div class="absolute inset-0 z-0">
+            <!-- Placeholder for Maize Hero -->
+            <div class="absolute inset-0 bg-gray-900"></div>
+            <img src="https://storage.googleapis.com/gemini-generative-ai-public-data/images/b8017325-a135-4d66-8566-f3883f314f33"
+                class="w-full h-full object-cover opacity-40" alt="">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <div
+            class="relative z-10 container mx-auto px-6 py-12 max-w-7xl flex flex-col-reverse md:flex-row items-center gap-16">
+            <div class="md:w-3/5 text-center md:text-left">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6">
+                    <span class="w-2 h-2 rounded-full bg-brandGreen"></span>
+                    <span class="text-xs font-bold tracking-widest uppercase text-white">Inoculante + Lubricante</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-black leading-[1.1] mb-6">
+                    MAÍZ LISTO <br /> <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-brandGreen to-lime-300">EN UN SOLO
+                        PASO</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-200 font-light mb-10 max-w-2xl leading-relaxed">
+                    <strong>T-Gro Easy Flow</strong> incula biológicamente y lubrica mecánicamente su sembradora al
+                    mismo tiempo. Tecnología 100% seca.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-5 justify-center md:justify-start">
+                    <a href="#contacto" class="btn-primary py-4 px-8 text-lg flex items-center justify-center gap-2">
+                        Solicitar Dosis
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 13l-5 5m0 0l-5-5m5 5V6"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="md:w-2/5 flex justify-center relative group">
+                <div class="absolute inset-0 bg-brandGreen/30 blur-[100px] rounded-full transform scale-75"></div>
+                <!-- Image Placeholder if original not available, assuming filename based on previous file -->
+                <img src="../Andermatt/T-Gro Easy Flow/T-Gro Easy Flow.png" alt="T-Gro Easy Flow Pack"
+                    class="relative w-72 md:w-96 drop-shadow-2xl z-10 transform group-hover:scale-105 transition-transform duration-500">
+            </div>
+        </div>
+    </div>
+
+    <!-- Benefits -->
+    <section id="beneficios" class="py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-black text-brandDark section-header section-header-center inline-block">
+                    Eficiencia Operativa Total
+                </h2>
+                <p class="text-lg text-gray-500 max-w-3xl mx-auto">
+                    Elimine pasos innecesarios. T-Gro Easy Flow combina la potencia biológica de <i>Trichoderma</i> con
+                    grafito de alta pureza.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-brandBg border border-gray-100 p-10 rounded-[2.5rem] card-hover group">
+                    <div class="text-5xl mb-6 grayscale group-hover:grayscale-0 transition-all">✨</div>
+                    <h3 class="text-2xl font-black text-brandDark mb-4">Lubricación Superior</h3>
+                    <p class="text-gray-600">Reemplaza el grafito/talco convencional. Mejora la fluidez en la sembradora
+                        neumática o mecánica.</p>
+                </div>
+                <!-- Card 2 -->
+                <div
+                    class="bg-brandDark p-10 rounded-[2.5rem] card-hover shadow-2xl ring-4 ring-brandGreen/20 text-white relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 text-9xl opacity-10">🛡️</div>
+                    <h3 class="text-2xl font-black mb-4 relative z-10">Protección Radicular</h3>
+                    <p class="text-gray-300 relative z-10"><i>Trichoderma asperellum</i> coloniza la raíz agresivamente,
+                        desplazando patógenos y estimulando defensas (SAR).</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-brandBg border border-gray-100 p-10 rounded-[2.5rem] card-hover group">
+                    <div class="text-5xl mb-6 grayscale group-hover:grayscale-0 transition-all">🚀</div>
+                    <h3 class="text-2xl font-black text-brandDark mb-4">Logística Simple</h3>
+                    <p class="text-gray-600">Olvide el curado húmedo a último momento. Vierta directo en la tolva y
+                        siembre. Sin agua, sin barro.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Authority / Tech -->
+    <section id="tecnologia" class="py-24 bg-brandBg">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div
+                class="bg-white rounded-[3rem] p-12 shadow-xl flex flex-col md:flex-row items-center gap-16 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brandGreen/10 rounded-full blur-3xl"></div>
+
+                <div class="md:w-1/3 flex justify-center">
+                    <div
+                        class="w-48 h-48 bg-brandBg rounded-full flex items-center justify-center border-4 border-white shadow-inner">
+                        <span class="text-6xl">🧬</span>
+                    </div>
+                </div>
+                <div class="md:w-2/3 relative z-10">
+                    <span class="text-brandBrown font-bold uppercase tracking-widest text-xs">El Corazón del
+                        Producto</span>
+                    <h2 class="text-3xl font-black text-brandDark mt-2 mb-6">CEPA Exclusiva 'kd'</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Seleccionada entre más de 1000 aislamientos por Andermatt. La cepa <i>kd</i> no solo protege:
+                        bioestimula. Produce auxinas y sideróforos que solubilizan nutrientes bloqueados en el suelo.
+                    </p>
+                    <div class="flex gap-4">
+                        <span
+                            class="px-4 py-2 bg-brandBg rounded-lg text-sm font-bold text-brandDark border border-gray-200">Alta
+                            Concentración (>1x10^9)</span>
+                        <span
+                            class="px-4 py-2 bg-brandBg rounded-lg text-sm font-bold text-brandDark border border-gray-200">Larga
+                            Vida Útil</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section id="resultados" class="py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black text-brandDark section-header section-header-center inline-block">
+                    Resultados en Maíz
+                </h2>
+                <p class="text-gray-500">Más de 20 ensayos en zonas núcleo.</p>
+            </div>
+
+            <!-- Tabs -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12" id="tab-buttons">
+                <!-- Generated dynamically via JS or hardcoded for layout -->
+                <button data-crop="maiz_23_24_vertico"
+                    class="tab-button active px-6 py-2 rounded-full font-bold text-sm bg-brandGreen text-white shadow-md">Entre
+                    Ríos (Vertico)</button>
+                <button data-crop="maiz_23_24_barrow"
+                    class="tab-button px-6 py-2 rounded-full font-bold text-sm bg-gray-100 text-gray-500 hover:bg-gray-200">Barrow
+                    23/24</button>
+                <button data-crop="maiz_23_24_pergamino"
+                    class="tab-button px-6 py-2 rounded-full font-bold text-sm bg-gray-100 text-gray-500 hover:bg-gray-200">Pergamino
+                    23/24</button>
+                <button data-crop="maiz_24_25_pergamino"
+                    class="tab-button px-6 py-2 rounded-full font-bold text-sm bg-gray-100 text-gray-500 hover:bg-gray-200">Pergamino
+                    24/25</button>
+            </div>
+
+            <div class="bg-white border border-gray-100 p-8 md:p-12 rounded-[2.5rem] shadow-xl max-w-5xl mx-auto">
+                <div class="h-[400px]">
+                    <canvas id="resultsChart"></canvas>
+                </div>
+                <div class="text-center mt-6 pt-6 border-t border-gray-50">
+                    <p id="chart-footer"
+                        class="text-xs font-bold text-brandBrown bg-brandBrown/5 inline-block px-3 py-1 rounded"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specs -->
+    <section id="ficha" class="py-24 bg-brandBg">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <h2 class="text-3xl font-black text-brandDark text-center mb-12">Especificaciones</h2>
+            <div class="bg-white rounded-[2rem] shadow-lg overflow-hidden">
+                <table class="w-full text-left">
+                    <tbody class="divide-y divide-gray-100">
+                        <tr>
+                            <td class="p-6 font-bold text-brandDark bg-gray-50 w-1/3">Composición</td>
+                            <td class="p-6 text-gray-600">Talco + Grafito + <i>Trichoderma asperellum</i></td>
+                        </tr>
+                        <tr>
+                            <td class="p-6 font-bold text-brandDark bg-gray-50">Dosis</td>
+                            <td class="p-6 text-gray-600">2g por Kg de semilla (Bolsa de 1kg trata 20 has aprox a
+                                25kg/ha)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-6 font-bold text-brandDark bg-gray-50">Compatibilidad</td>
+                            <td class="p-6 text-gray-600">Apto para mezclar con terápicos de semilla secos.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-6 font-bold text-brandDark bg-gray-50">Almacenamiento</td>
+                            <td class="p-6 text-gray-600">Refrigerado (4-10°C) para 2 años vida útil.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / CTA -->
+    <section id="contacto" class="py-24 bg-brandDark text-white relative">
+        <div class="container mx-auto px-6 text-center max-w-4xl relative z-10">
+            <h2 class="text-5xl font-black mb-6">SIMPLIFIQUE SU SIEMBRA</h2>
+            <p class="text-xl text-gray-400 mb-10">Pida T-Gro Easy Flow en su agronomía de confianza.</p>
+            <a href="mailto:ventas@agricheck.com" class="btn-primary py-4 px-10 text-lg shadow-2xl">Contactar Ventas</a>
+
+            <div
+                class="mt-20 pt-10 border-t border-gray-800 flex justify-center items-center gap-10 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+                <div class="text-center">
+                    <a href="https://www.andermatt.com" target="_blank"
+                        class="block hover:opacity-80 transition-opacity">
+                        <div class="text-2xl font-black text-white">Andermatt</div>
+                        <div class="text-[0.6rem] tracking-widest uppercase text-gray-500">Switzerland</div>
+                    </a>
+                </div>
+                <div class="h-8 w-px bg-gray-700"></div>
+                <div class="text-center">
+                    <a href="https://www.agrichecksrl.com" target="_blank"
+                        class="block hover:opacity-80 transition-opacity">
+                        <div class="text-2xl font-black text-brandGreen">Agri Check</div>
+                        <div class="text-[0.6rem] tracking-widest uppercase text-gray-500">Argentina</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Chart.register(ChartDataLabels);
+            const brandGreen = '#89C444';
+            const brandDark = '#4B4B4D';
+
+            const chartData = {
+                maiz_23_24_vertico: { labels: ['Testigo', 'T-Gro 1g', 'T-Gro 2g'], data: [5149, 5816, 6232], dataLabels: ['', '+12.9%', '+21%'], label: 'Rinde (Kg/ha)', footer: 'Fuente: Vertico SRL, Entre Ríos' },
+                maiz_23_24_barrow: { labels: ['Testigo', 'T-Gro 1g', 'T-Gro 2g'], data: [4463, 4693, 4995], dataLabels: ['', '+5.2%', '+11.9%'], label: 'Rinde (Kg/ha)', footer: 'Fuente: INTA Barrow - Martín Zamora' },
+                maiz_23_24_pergamino: { labels: ['Testigo', 'T-Gro 1g', 'T-Gro 2g'], data: [9792, 10154, 10881], dataLabels: ['', '+3.7%', '+11.1%'], label: 'Rinde (Kg/ha)', footer: 'Fuente: INTA Pergamino - G. Ferraris' },
+                maiz_24_25_pergamino: { labels: ['Testigo', 'T-Gro 1g', 'T-Gro 2g'], data: [8939, 9216, 10231], dataLabels: ['', '+3.1%', '+14.4%'], label: 'Rinde (Kg/ha)', footer: 'Fuente: INTA Pergamino - G. Ferraris' }
+            };
+
+            const ctx = document.getElementById('resultsChart').getContext('2d');
+            let resultsChart = null;
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const footerEl = document.getElementById('chart-footer');
+
+            function updateChart(key) {
+                const data = chartData[key];
+                if (resultsChart) resultsChart.destroy();
+
+                const bgColors = data.data.map((_, i) => i === 0 ? '#E5E7EB' : brandGreen);
+
+                resultsChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.labels,
+                        datasets: [{
+                            data: data.data,
+                            backgroundColor: bgColors,
+                            borderRadius: 10,
+                            barThickness: 50
+                        }]
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            datalabels: {
+                                color: brandDark,
+                                font: { family: 'Lato', weight: '900', size: 14 },
+                                anchor: 'end', align: 'top', offset: 4,
+                                formatter: (val, ctx) => data.dataLabels[ctx.dataIndex]
+                            },
+                            tooltip: {
+                                callbacks: { label: (ctx) => `${ctx.raw} kg/ha` }
+                            }
+                        },
+                        scales: {
+                            y: { beginAtZero: false, min: Math.min(...data.data) * 0.8, grid: { color: '#F3F4F6' } },
+                            x: { grid: { display: false }, ticks: { font: { family: 'Lato', weight: 'bold' } } }
+                        }
+                    }
+                });
+                footerEl.textContent = data.footer;
+            }
+
+            tabButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    tabButtons.forEach(b => b.className = 'tab-button px-6 py-2 rounded-full font-bold text-sm bg-gray-100 text-gray-500 hover:bg-gray-200 transition-all');
+                    btn.className = 'tab-button active px-6 py-2 rounded-full font-bold text-sm bg-brandGreen text-white shadow-md ring-2 ring-brandGreen ring-offset-2 transition-all';
+                    updateChart(btn.dataset.crop);
+                });
+            });
+
+            updateChart('maiz_23_24_vertico');
+        });
+    </script>
+</body>
+
+</html>

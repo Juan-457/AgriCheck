@@ -1,0 +1,330 @@
+﻿<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madex â€“ AgriCheck | Insecticida biolÃ³gico para Carpocapsa</title>
+    <meta name="description"
+        content="Madex es un bioinsecticida viral (granulovirus) altamente especÃ­fico para el control de Cydia pomonella (Carpocapsa), protegiendo sus pomÃ¡ceas y nogales de forma sostenible.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Paleta de Colores de Marca AgriCheck */
+        :root {
+            --brand-green: #89C444;
+            --brand-brown: #9A7A4E;
+            --brand-dark-gray: #4B4B4D;
+            --brand-background: #F8F9F7;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--brand-background);
+            color: var(--brand-dark-gray);
+        }
+
+        .hero-bg {
+            /* Imagen de un cultivo de pomÃ¡ceas (manzanos) */
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1591735156384-13310f36f3c4?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .section-title {
+            color: var(--brand-dark-gray);
+        }
+
+        .brand-text {
+            color: var(--brand-green);
+        }
+
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .reason-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .reason-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(137, 196, 68, 0.2);
+        }
+
+        .reason-card-icon {
+            background-color: rgba(137, 196, 68, 0.15);
+            color: var(--brand-green);
+        }
+
+        .btn-primary {
+            background-color: var(--brand-green);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #76a93a;
+            /* Un tono mÃ¡s oscuro de verde para el hover */
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--brand-green);
+        }
+
+        .btn-secondary:hover {
+            background-color: #f0fdf4;
+            /* Un verde muy claro para el hover */
+        }
+
+        .footer-bg {
+            background-color: var(--brand-dark-gray);
+        }
+
+        .final-cta-bg {
+            background-color: var(--brand-brown);
+        }
+    </style>
+</head>
+
+<body class="text-slate-800">
+
+    <!-- Header -->
+    <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center max-w-7xl">
+            <a href="index.html">
+                <img src="https://www.agrichecksrl.com/img/logo-agricheck.png" alt="Logo de AgriCheck"
+                    class="h-12 w-auto">
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#que-es" class="font-semibold text-gray-600 hover:text-green-500 transition">Modo de AcciÃ³n</a>
+                <a href="#beneficios" class="font-semibold text-gray-600 hover:text-green-500 transition">Ventajas
+                    Ãšnicas</a>
+                <a href="zimbili.html" class="font-semibold text-gray-600 hover:text-green-500 transition">Zimbili</a>
+                <a href="t-gro-5x.html" class="font-semibold text-gray-600 hover:text-green-500 transition">T-Gro 5X</a>
+                <a href="nexula.html" class="font-semibold text-gray-600 hover:text-green-500 transition">Nexula</a>
+                <a href="amyprotec.html" class="font-semibold text-gray-600 hover:text-green-500 transition">Amyprotec
+                    42</a>
+                <a href="tundrabac.html"
+                    class="font-semibold text-gray-600 hover:text-green-500 transition">Tundrabac</a>
+                <a href="#especificaciones"
+                    class="font-semibold text-gray-600 hover:text-green-500 transition">Especificaciones</a>
+                <a href="#contacto" class="cta-button btn-primary font-bold py-2 px-5 rounded-full">
+                    Contactar
+                </a>
+            </div>
+            <div class="md:hidden">
+                <a href="#contacto" class="cta-button btn-primary font-bold py-2 px-4 rounded-full">
+                    Contacto
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg text-white">
+            <div class="container mx-auto px-6 py-24 md:py-32 text-center md:text-left max-w-7xl">
+                <div class="md:w-3/5">
+                    <span class="font-bold tracking-widest" style="color: var(--brand-green);">INSECTICIDA VIRAL
+                        ESPECÃFICO</span>
+                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight my-4">
+                        Control biolÃ³gico de alta eficacia para Carpocapsa.
+                    </h1>
+                    <p class="text-lg md:text-xl mb-8 max-w-2xl text-gray-200">
+                        Madex es un bioinsecticida a base de granulovirus altamente especÃ­fico para el control eficaz de
+                        <i>Cydia pomonella</i>, protegiendo tus cultivos de pomÃ¡ceas y nogales de forma natural y
+                        sostenible.
+                    </p>
+                    <a href="#contacto"
+                        class="cta-button inline-block btn-secondary font-bold text-lg py-4 px-8 rounded-full">
+                        Solicitar Asesoramiento
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slogan Section -->
+        <section id="que-es" class="py-20 bg-white">
+            <div class="container mx-auto px-6 max-w-4xl text-center">
+                <span class="font-bold brand-text">MECANISMO VIRAL ÃšNICO</span>
+                <h2 class="text-4xl font-extrabold section-title mt-2 mb-4">Un Biocontrol EspecÃ­fico y Sostenible.</h2>
+                <p class="text-xl text-gray-700 font-semibold mb-6 max-w-3xl mx-auto">Formulado por Andermatt, lÃ­der
+                    mundial en producciÃ³n de bioinsecticidas a base de virus.</p>
+                <p class="text-lg text-gray-600 mb-4 max-w-3xl mx-auto">Madex es un insecticida biolÃ³gico cuyo
+                    ingrediente activo es un <strong>granulovirus (CpGV) altamente especÃ­fico</strong> para <i>Cydia
+                        pomonella</i>. Las larvas ingieren el virus al alimentarse del cultivo tratado. Una vez dentro,
+                    el virus se replica, causando la muerte del insecto.</p>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">A diferencia de los insecticidas quÃ­micos, Madex
+                    actÃºa con precisiÃ³n quirÃºrgica, sin afectar a la fauna benÃ©fica ni al medio ambiente, siendo una
+                    herramienta clave para el Manejo Integrado de Plagas (MIP).</p>
+            </div>
+        </section>
+
+        <!-- Beneficios -->
+        <section id="beneficios" class="py-20" style="background-color: var(--brand-background);">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold section-title">Ventajas Inigualables de Madex</h2>
+                    <p class="mt-4 text-lg max-w-4xl mx-auto text-gray-600">Descubre el poder de un biocontrol diseÃ±ado
+                        para la sostenibilidad y la mÃ¡xima eficacia contra <i>Cydia pomonella</i>.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- RazÃ³n 1 -->
+                    <div class="reason-card p-8 rounded-xl border border-gray-200">
+                        <div
+                            class="flex items-center justify-center h-16 w-16 rounded-full reason-card-icon mx-auto mb-5 text-3xl">
+                            ðŸŽ¯</div>
+                        <h3 class="text-xl font-bold mb-2 text-center">MÃ¡xima Especificidad</h3>
+                        <p class="text-gray-600 flex-grow">Ataca exclusivamente a <i>Cydia pomonella</i>. No afecta
+                            insectos benÃ©ficos, polinizadores, Ã¡caros depredadores ni otros organismos.</p>
+                    </div>
+                    <!-- RazÃ³n 2 -->
+                    <div class="reason-card p-8 rounded-xl border border-gray-200">
+                        <div
+                            class="flex items-center justify-center h-16 w-16 rounded-full reason-card-icon mx-auto mb-5 text-3xl">
+                            ðŸ§©</div>
+                        <h3 class="text-xl font-bold mb-2 text-center">Ideal para Manejo de Resistencia</h3>
+                        <p class="text-gray-600 flex-grow">Su modo de acciÃ³n Ãºnico (Grupo 31 IRAC) es ideal para rotar o
+                            co-aplicar con otros productos, previniendo la resistencia.</p>
+                    </div>
+                    <!-- RazÃ³n 3 -->
+                    <div class="reason-card p-8 rounded-xl border border-gray-200">
+                        <div
+                            class="flex items-center justify-center h-16 w-16 rounded-full reason-card-icon mx-auto mb-5 text-3xl">
+                            ðŸ†</div>
+                        <h3 class="text-xl font-bold mb-2 text-center">El Hito. Confianza Global.</h3>
+                        <p class="text-gray-600 flex-grow">Fue el primer insecticida a base de virus registrado en el
+                            mundo, desarrollado por Martin Andermatt. Un hito que marcÃ³ dÃ©cadas de eficacia comprobada.
+                        </p>
+                    </div>
+                    <!-- RazÃ³n 4 -->
+                    <div class="reason-card p-8 rounded-xl border border-gray-200">
+                        <div
+                            class="flex items-center justify-center h-16 w-16 rounded-full reason-card-icon mx-auto mb-5 text-3xl">
+                            ðŸŒ¿</div>
+                        <h3 class="text-xl font-bold mb-2 text-center">Sin Carencia ni LMR</h3>
+                        <p class="text-gray-600 flex-grow">Permite cosechar sin espera. No deja residuos (LMR=0), siendo
+                            una herramienta ideal para mercados de exportaciÃ³n exigentes.</p>
+                    </div>
+                    <!-- RazÃ³n 5 -->
+                    <div class="reason-card p-8 rounded-xl border border-gray-200">
+                        <div
+                            class="flex items-center justify-center h-16 w-16 rounded-full reason-card-icon mx-auto mb-5 text-3xl">
+                            ðŸŒ§ï¸</div>
+                        <h3 class="text-xl font-bold mb-2 text-center">Alta Resistencia a la Lluvia</h3>
+                        <p class="text-gray-600 flex-grow">La formulaciÃ³n se adhiere a la hoja, asegurando eficacia
+                            comprobada incluso despuÃ©s de lluvias acumuladas de hasta 80mm.</p>
+                    </div>
+                    <!-- RazÃ³n 6 -->
+                    <div class="reason-card p-8 rounded-xl border border-gray-200">
+                        <div
+                            class="flex items-center justify-center h-16 w-16 rounded-full reason-card-icon mx-auto mb-5 text-3xl">
+                            ðŸ“ˆ</div>
+                        <h3 class="text-xl font-bold mb-2 text-center">Apto para ProducciÃ³n OrgÃ¡nica</h3>
+                        <p class="text-gray-600 flex-grow">Certificado para su uso en agricultura orgÃ¡nica, cumpliendo
+                            con las normativas mÃ¡s estrictas a nivel global.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Especificaciones TÃ©cnicas -->
+        <section id="especificaciones" class="py-20" style="background-color: var(--brand-background);">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold section-title">Especificaciones TÃ©cnicas</h2>
+                    <p class="mt-4 text-lg max-w-2xl mx-auto text-gray-600">Conozca los detalles de la formulaciÃ³n
+                        avanzada de Madex.</p>
+                </div>
+                <div class="bg-white rounded-lg p-8 border border-gray-200 max-w-2xl mx-auto shadow-sm">
+                    <ul class="space-y-4 text-lg">
+                        <li class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4">
+                            <span class="font-semibold text-gray-700">Ingrediente Activo:</span>
+                            <span class="text-gray-900 text-left sm:text-right">Granulovirus de <i>Cydia pomonella</i>
+                                (CpGV)</span>
+                        </li>
+                        <li
+                            class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-t border-gray-200 pt-4 pb-4">
+                            <span class="font-semibold text-gray-700">ConcentraciÃ³n:</span>
+                            <span class="text-gray-900 text-left sm:text-right">3 x 10Â¹Â³ grÃ¡nulos/L</span>
+                        </li>
+                        <li
+                            class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-t border-gray-200 pt-4 pb-4">
+                            <span class="font-semibold text-gray-700">FormulaciÃ³n:</span>
+                            <span class="text-gray-900 text-left sm:text-right">SuspensiÃ³n Concentrada (SC)</span>
+                        </li>
+                        <li
+                            class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-t border-gray-200 pt-4 pb-4">
+                            <span class="font-semibold text-gray-700">Origen:</span>
+                            <span class="text-gray-900 text-left sm:text-right">Suiza</span>
+                        </li>
+                        <li
+                            class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-t border-gray-200 pt-4 pb-4">
+                            <span class="font-semibold text-gray-700">PresentaciÃ³n:</span>
+                            <span class="text-gray-900 text-left sm:text-right">Botella de 100 ml / 500 ml</span>
+                        </li>
+                        <li
+                            class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-t border-gray-200 pt-4">
+                            <span class="font-semibold text-gray-700">Periodo de Carencia y LMR:</span>
+                            <span class="text-gray-900 text-left sm:text-right">No requiere</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Confianza Andermatt -->
+        <section id="confianza" class="py-20 bg-white">
+            <div class="container mx-auto px-6 max-w-4xl text-center">
+                <img src="https://www.agrichecksrl.com/img/../img/andermatt-clasico.png" alt="Logo Andermatt"
+                    class="mx-auto mb-6 h-16">
+                <h2 class="text-4xl font-extrabold section-title mb-4">Un Producto de Confianza Global</h2>
+                <p class="text-lg text-gray-600 mb-8 max-w-3xl mx-auto">Madex es desarrollado por Andermatt, lÃ­der en
+                    soluciones biolÃ³gicas para la agricultura con sede en Suiza y el mayor productor mundial de
+                    insecticidas a base de virus. Un portfolio de soluciones compatibles con la producciÃ³n orgÃ¡nica que
+                    garantizan calidad y resultados.</p>
+                <a href="https://www.andermatt.com/es" target="_blank" rel="noopener noreferrer"
+                    class="cta-button inline-block btn-primary font-bold text-lg py-3 px-6 rounded-full">
+                    Conocer mÃ¡s sobre Andermatt
+                </a>
+            </div>
+        </section>
+
+        <!-- Contacto / CTA Final -->
+        <section id="contacto" class="final-cta-bg text-white">
+            <div class="container mx-auto px-6 py-20 max-w-4xl text-center">
+                <h2 class="text-4xl font-extrabold mb-4">Â¿Listo para Proteger tus Cultivos con Madex?</h2>
+                <p class="text-lg text-gray-200 mb-8 max-w-2xl mx-auto">Nuestro equipo de expertos estÃ¡ listo para
+                    ayudarte a integrar Madex en tu programa de manejo de plagas. ContÃ¡ctanos hoy y da el primer paso
+                    hacia una protecciÃ³n inteligente y sostenible.</p>
+                <a href="mailto:ventas@agricheck.com"
+                    class="cta-button inline-block btn-secondary font-bold text-lg py-4 px-8 rounded-full">
+                    Contactar a un Experto
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-bg text-gray-300">
+        <div class="container mx-auto px-6 py-8 max-w-7xl text-center">
+            <p>&copy; 2025 AgriCheck S.R.L. Todos los derechos reservados.</p>
+            <p class="text-sm mt-2">Potenciando la agricultura del futuro, hoy.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

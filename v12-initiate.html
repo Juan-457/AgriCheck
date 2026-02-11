@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V12 Initiate – AgriCheck | Arquitectura de Raíz</title>
+    <meta name="description"
+        content="V12 Initiate: La primera Suspensión Concentrada que fusiona Silicio, Calcio y Bioestimulantes para blindar tu cultivo desde la semilla.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-green: #1A361E;
+            /* Verde profundo AgriCheck */
+            --brand-green-light: #89C444;
+            /* Verde brillante acento */
+            --brand-gold: #D4AF37;
+            /* Dorado sutil */
+            --brand-slate: #475569;
+            --brand-bg: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--brand-bg);
+            color: var(--brand-slate);
+        }
+
+        .hero-bg {
+            /* Imagen abstracta de células vegetales/raíces o fondo tecnológico limpio */
+            background-image: linear-gradient(to bottom right, rgba(26, 54, 30, 0.9), rgba(26, 54, 30, 0.7)), url('https://images.unsplash.com/photo-1628352081506-83c43123ed6d?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .section-title {
+            color: var(--brand-green);
+        }
+
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(137, 196, 68, 0.3);
+        }
+
+        .tech-card {
+            background-color: white;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+            border-color: var(--brand-green-light);
+        }
+
+        /* Tabla minimalista */
+        .data-table th {
+            text-align: left;
+            padding: 1rem;
+            color: var(--brand-green);
+            border-bottom: 2px solid #E2E8F0;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #F1F5F9;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body class="text-slate-800 antialiased">
+
+    <!-- Header -->
+    <header class="bg-white/95 backdrop-blur-sm sticky top-0 z-50 border-b border-slate-100">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center max-w-7xl">
+            <a href="index.html">
+                <img src="https://www.agrichecksrl.com/img/logo-agricheck.png" alt="Logo AgriCheck" class="h-10 w-auto">
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#comparativa" class="text-sm font-medium text-slate-600 hover:text-green-700 transition">Por
+                    qué V12</a>
+                <a href="#tecnologia"
+                    class="text-sm font-medium text-slate-600 hover:text-green-700 transition">Tecnología</a>
+                <a href="#composicion"
+                    class="text-sm font-medium text-slate-600 hover:text-green-700 transition">Composición</a>
+                <a href="#dosis" class="text-sm font-medium text-slate-600 hover:text-green-700 transition">Uso</a>
+                <a href="#contacto"
+                    class="cta-button bg-green-700 text-white font-bold py-2 px-6 rounded-full hover:bg-green-800 text-sm">
+                    Contactar
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg text-white min-h-[90vh] flex items-center">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-8 animate-fade-in-up">
+                        <span
+                            class="inline-block px-4 py-1 rounded-full bg-green-500/20 text-green-300 border border-green-500/30 text-xs font-bold tracking-widest uppercase">
+                            Ingeniería de Rizósfera
+                        </span>
+                        <h1 class="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight">
+                            No es solo un Arrancador.<br>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-yellow-200">Es
+                                Arquitectura de Raíz.</span>
+                        </h1>
+                        <p class="text-xl text-slate-200 leading-relaxed max-w-xl font-light">
+                            V12 Initiate: La primera Suspensión Concentrada que fusiona <strong>Silicio</strong>,
+                            <strong>Calcio</strong> y <strong>Bioestimulantes</strong> para blindar tu cultivo desde la
+                            semilla.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                            <a href="#contacto"
+                                class="cta-button inline-flex justify-center items-center bg-white text-green-900 font-bold text-lg py-4 px-8 rounded-full hover:bg-slate-100">
+                                Solicitar Ficha Técnica
+                            </a>
+                            <a href="#tecnologia"
+                                class="inline-flex justify-center items-center text-white border border-white/30 font-semibold text-lg py-4 px-8 rounded-full hover:bg-white/10 transition">
+                                Ver Tecnología
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hidden md:block relative">
+                        <!-- Placeholder para botella V12 -->
+                        <div class="relative z-10 mx-auto w-2/3">
+                            <img src="../Andermatt/Madumbi/V12 Initiate/v12-bottle-mockup.png"
+                                onerror="this.src='https://placehold.co/400x600/e2e8f0/1a361e?text=V12+Initiate+Bidon'"
+                                alt="V12 Initiate Bidón"
+                                class="drop-shadow-2xl hover:scale-105 transition duration-500">
+                        </div>
+                        <!-- Elementos decorativos de fondo (células abstractas) -->
+                        <div
+                            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-green-500/10 rounded-full blur-3xl -z-0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- El Problema vs Solución -->
+        <section id="comparativa" class="py-24 bg-slate-50">
+            <div class="container mx-auto px-6 max-w-6xl">
+                <div class="text-center mb-16 max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6 tracking-tight">El N-P-K tradicional
+                        ya no alcanza</h2>
+                    <p class="text-lg text-slate-600">
+                        En un contexto climático adverso y suelos degradados, dar solo "comida" (NPK) deja a la planta
+                        vulnerable. Necesitamos construir resistencia.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Card Tradicional -->
+                    <div
+                        class="bg-white p-10 rounded-3xl shadow-sm border border-slate-100 opacity-60 hover:opacity-100 transition duration-300">
+                        <div class="h-12 w-12 bg-slate-100 rounded-2xl flex items-center justify-center mb-6 text-2xl">
+                            ⚠️</div>
+                        <h3 class="text-2xl font-bold text-slate-700 mb-4">Fertilizante Común</h3>
+                        <ul class="space-y-4 text-slate-600">
+                            <li class="flex items-start">
+                                <span class="text-red-400 mr-2">✕</span> Solo aporta nutrición básica.
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-400 mr-2">✕</span> Crecimiento "blando", susceptible a
+                                enfermedades.
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-400 mr-2">✕</span> Sin protección contra estrés abiótico.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Card V12 -->
+                    <div
+                        class="bg-white p-10 rounded-3xl shadow-xl border border-green-500/20 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-green-500/10 rounded-bl-full -mr-4 -mt-4"></div>
+                        <div
+                            class="h-12 w-12 bg-green-100 rounded-2xl flex items-center justify-center mb-6 text-2xl text-green-700">
+                            🛡️</div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-4">V12 Initiate</h3>
+                        <p class="text-green-600 font-medium mb-6 uppercase text-xs tracking-wider">Arquitectura Celular
+                        </p>
+                        <ul class="space-y-4 text-slate-700">
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2">✓</span> <strong>Crea Cimientos:</strong> Paredes
+                                celulares fortificadas (Si + Ca).
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2">✓</span> <strong>Sistema Inmune:</strong> Activa
+                                defensas naturales.
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2">✓</span> <strong>Sinergia:</strong> Ca, Si y B inician
+                                el ciclo nutricional.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tecnología Bunker -->
+        <section id="tecnologia" class="py-24 bg-white relative">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="mb-20">
+                    <span class="text-green-600 font-bold tracking-wider uppercase text-sm">Tecnología "Bunker"</span>
+                    <h2 class="text-4xl font-extrabold text-slate-900 mt-2 mb-6">4 Pilares de Blindaje</h2>
+                    <p class="text-lg text-slate-600 max-w-2xl">
+                        Una formulación única diseñada para la máxima biodisponibilidad y sinergia.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Pilar 1 -->
+                    <div class="tech-card p-8 rounded-2xl border border-slate-100">
+                        <div class="text-4xl mb-6">🔬</div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-3">Escudo de Silicio</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Proveniente de <strong>tierra de diatomeas</strong>. Se deposita en la epidermis,
+                            fortaleciendo la pared celular contra sequía, insectos y patógenos fúngicos.
+                        </p>
+                    </div>
+
+                    <!-- Pilar 2 -->
+                    <div class="tech-card p-8 rounded-2xl border border-slate-100">
+                        <div class="text-4xl mb-6">🦴</div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-3">Estructura de Calcio</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Derivado de <strong>Yeso Líquido Micronizado</strong>. Aporta calcio estructural estable y
+                            azufre, sin elevar el índice salino como los nitratos.
+                        </p>
+                    </div>
+
+                    <!-- Pilar 3 -->
+                    <div class="tech-card p-8 rounded-2xl border border-slate-100">
+                        <div class="text-4xl mb-6">⚡</div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-3">Motor Hormonal</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            <strong>Kelp + Zinc + Manganeso</strong>. El Zinc impulsa las auxinas naturales y las algas
+                            estimulan una explosión radicular temprana.
+                        </p>
+                    </div>
+
+                    <!-- Pilar 4 -->
+                    <div class="tech-card p-8 rounded-2xl border border-slate-100">
+                        <div class="text-4xl mb-6">🤝</div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-3">Bio-Friendly</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Formulación de pH neutro. Base ideal de carbono (lignosulfonatos) que alimenta a microbios
+                            benéficos. Ideal para mezclar con <i>Trichoderma</i> o <i>Bacillus</i>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Composición -->
+        <section id="composicion" class="py-24 bg-green-50/50">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="bg-white rounded-3xl shadow-lg border border-slate-100 overflow-hidden">
+                    <div class="p-8 md:p-12">
+                        <h2 class="text-3xl font-bold text-slate-900 mb-8">Composición Garantizada</h2>
+                        <div class="overflow-x-auto">
+                            <table class="w-full data-table text-slate-700">
+                                <thead>
+                                    <tr>
+                                        <th class="w-1/2">Nutriente</th>
+                                        <th class="w-1/2">Concentración</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="font-semibold">Calcio (Ca)</td>
+                                        <td class="font-mono">74.8 g/kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-semibold">Silicio (Si)</td>
+                                        <td class="font-mono">69.7 g/kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-semibold">Azufre (S)</td>
+                                        <td class="font-mono">63.8 g/kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-semibold">Zinc (Zn)</td>
+                                        <td class="font-mono">23,150 mg/kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-semibold">Manganeso (Mn)</td>
+                                        <td class="font-mono">18,360 mg/kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-semibold">Boro (B)</td>
+                                        <td class="font-mono">4,040 mg/kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-semibold text-slate-500">Otros Micros</td>
+                                        <td class="text-slate-500 text-sm">Hierro, Cobre, Molibdeno</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-semibold text-green-700 bg-green-50">Aditivos Clave</td>
+                                        <td class="text-green-700 bg-green-50 text-sm italic">Ácidos Fúlvicos, Extracto
+                                            de Kelp, Lignosulfonatos</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div
+                            class="mt-6 p-4 bg-yellow-50 rounded-xl border border-yellow-100 text-sm text-yellow-800 flex items-start">
+                            <span class="text-xl mr-3">💡</span>
+                            <p>El ácido fúlvico potencia la absorción del silicio. Los lignosulfonatos actúan como
+                                fuente de carbono para la microbiología del suelo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dosis -->
+        <section id="dosis" class="py-24 bg-white">
+            <div class="container mx-auto px-6 max-w-5xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-slate-900">Estrategia de Aplicación</h2>
+                    <p class="mt-4 text-slate-600">Asegure su stand de plantas desde el inicio.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="border border-slate-200 rounded-2xl p-8 hover:border-green-400 transition">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center">
+                            <span
+                                class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-700 mr-3 text-sm">1</span>
+                            Cultivos Extensivos
+                        </h3>
+                        <p class="text-slate-600 mb-4">Soja, Maíz, Trigo, Girasol.</p>
+                        <div class="text-3xl font-bold text-green-700 mb-2">3 - 5 kg/ha</div>
+                        <p class="text-sm text-slate-500">(5 - 8 ml por litro de agua)</p>
+                    </div>
+
+                    <div class="border border-slate-200 rounded-2xl p-8 hover:border-green-400 transition">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center">
+                            <span
+                                class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-700 mr-3 text-sm">2</span>
+                            Frutales y Huerta
+                        </h3>
+                        <p class="text-slate-600 mb-4">Manzana, Pera, Vid, Hortalizas.</p>
+                        <div class="text-3xl font-bold text-green-700 mb-2">5 - 7 kg/ha</div>
+                        <p class="text-sm text-slate-500">Aplicación dirigida al suelo/raíz.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="mt-12 bg-slate-900 text-white p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between">
+                    <div class="mb-6 md:mb-0 md:mr-8">
+                        <h4 class="font-bold text-lg mb-2">Nota Técnica Importante</h4>
+                        <p class="text-slate-300 text-sm">Es una Suspensión Concentrada de alta carga. Requiere
+                            agitación constante en el tanque.</p>
+                    </div>
+                    <div class="bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/20">
+                        <p class="text-green-300 font-bold text-sm mb-1 uppercase tracking-wide">Tip de Manejo</p>
+                        <p class="text-xs text-white">Excelente sinergia en programas con <span
+                                class="font-semibold text-white">Bacillus, Trichoderma y Zimbili</span>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <section id="contacto" class="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
+            <div class="container mx-auto px-6 max-w-4xl text-center">
+                <h2 class="text-3xl font-bold mb-8">Construya cultivos resilientes hoy.</h2>
+                <div class="flex flex-col sm:flex-row justify-center gap-6 mb-12">
+                    <a href="mailto:info@agrichecksrl.com"
+                        class="cta-button bg-green-600 text-white font-bold py-4 px-10 rounded-full hover:bg-green-500 shadow-lg shadow-green-900/50">
+                        Consultar con un Asesor
+                    </a>
+                </div>
+
+                <div
+                    class="border-t border-slate-700 pt-10 flex flex-col md:flex-row justify-between items-center opacity-60 text-sm">
+                    <p>&copy; 2025 AgriCheck S.R.L.</p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <span>EcoCert Inputs</span>
+                        <span>Organic Farming Compatible</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <script>
+        // Simple fade-in animation observing
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    }
+                });
+            });
+
+            document.querySelectorAll('.tech-card, .data-table').forEach((el) => {
+                el.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700');
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+
+</html>

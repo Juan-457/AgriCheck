@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioLure – AgriCheck | Monitoreo de Precisión</title>
+    <meta name="description"
+        content="BioLure de Suterra ofrece los cebos de feromonas más consistentes y duraderos para el monitoreo de plagas agrícolas como Cydia pomonella y Moscas de la Fruta.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-green: #89C444;
+            --brand-brown: #9A7A4E;
+            --brand-dark-gray: #4B4B4D;
+            --brand-background: #F8F9F7;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--brand-background);
+            color: var(--brand-dark-gray);
+        }
+
+        .hero-bg {
+            /* Imagen de monitoreo/trampas o primer plano de hoja */
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1543254929-e58f0007559d?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .section-title {
+            color: var(--brand-dark-gray);
+        }
+
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card {
+            background-color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(137, 196, 68, 0.15);
+        }
+    </style>
+</head>
+
+<body class="text-slate-800">
+
+    <!-- Header -->
+    <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center max-w-7xl">
+            <a href="index.html">
+                <img src="https://www.agrichecksrl.com/img/logo-agricheck.png" alt="Logo AgriCheck" class="h-10 w-auto">
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#tecnologia" class="font-semibold text-gray-600 hover:text-green-500 transition">Tecnología</a>
+                <a href="#beneficios" class="font-semibold text-gray-600 hover:text-green-500 transition">Beneficios</a>
+                <a href="#especificaciones"
+                    class="font-semibold text-gray-600 hover:text-green-500 transition">Especificaciones</a>
+                <a href="#contacto"
+                    class="cta-button bg-green-600 text-white font-bold py-2 px-5 rounded-full hover:bg-green-700">
+                    Contactar
+                </a>
+            </div>
+            <div class="md:hidden">
+                <a href="#contacto"
+                    class="cta-button bg-green-600 text-white font-bold py-2 px-4 rounded-full hover:bg-green-700">
+                    Contacto
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg text-white">
+            <div class="container mx-auto px-6 py-24 md:py-32 max-w-7xl">
+                <div class="md:w-3/5">
+                    <span class="font-bold tracking-widest text-green-400">MONITOREO PROFESIONAL</span>
+                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight my-4">
+                        Información Confiable para Decisiones Críticas.
+                    </h1>
+                    <p class="text-lg md:text-xl mb-8 max-w-2xl text-gray-200">
+                        Los cebos BioLure son el estándar mundial para el monitoreo de plagas. Datos precisos de vuelo
+                        para optimizar sus tratamientos.
+                    </p>
+                    <a href="#contacto"
+                        class="cta-button inline-block bg-white text-green-700 font-bold text-lg py-4 px-8 rounded-full hover:bg-green-50">
+                        Solicitar Asesoramiento
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tecnología -->
+        <section id="tecnologia" class="py-20 bg-white">
+            <div class="container mx-auto px-6 max-w-5xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold section-title">Tecnología de Liberación Pasiva</h2>
+                    <p class="mt-4 text-xl text-green-700 font-bold">Consistencia Imbatible</p>
+                    <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                        BioLure no es un simple caucho impregnado. Es un sistema de membrana tecnológico que libera la
+                        feromona a una tasa constante desde el primero hasta el último día, sin picos ni caídas
+                        engañosas.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <img src="../Suterra/BioLure/biolure-packs.png" alt="BioLure Packs"
+                            class="rounded-xl shadow-lg mx-auto md:w-2/3 object-contain">
+                        <!-- Update image path as needed -->
+                    </div>
+                    <div>
+                        <ul class="space-y-8">
+                            <li class="flex items-start">
+                                <div
+                                    class="flex-shrink-0 h-10 w-10 rounded-full bg-green-100 flex items-center justify-center text-2xl mr-4">
+                                    📊</div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800">Datos Reales</h3>
+                                    <p class="text-gray-600 mt-2">Evite falsos negativos. La atracción constante asegura
+                                        que las capturas reflejen la población real en el campo.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div
+                                    class="flex-shrink-0 h-10 w-10 rounded-full bg-green-100 flex items-center justify-center text-2xl mr-4">
+                                    ⏱️</div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800">Larga Duración</h3>
+                                    <p class="text-gray-600 mt-2">Duran mucho más que los septos de goma convencionales,
+                                        reduciendo la frecuencia de recambio y el costo operativo.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div
+                                    class="flex-shrink-0 h-10 w-10 rounded-full bg-green-100 flex items-center justify-center text-2xl mr-4">
+                                    🛡️</div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800">Protección UV</h3>
+                                    <p class="text-gray-600 mt-2">El diseño protege la feromona de la degradación solar
+                                        y oxidación, garantizando su pureza y atractivo.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Beneficios -->
+        <section id="beneficios" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-extrabold section-title">¿Por qué Elegir BioLure?</h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="feature-card p-8 rounded-xl border border-gray-100 text-center">
+                        <div class="text-4xl mb-4">🖐️</div>
+                        <h3 class="text-xl font-bold mb-3">Fácil de Usar</h3>
+                        <p class="text-gray-600">Sistema "Peel-off". Solo retire la cubierta y péguelo en la trampa. Sin
+                            contacto directo con el ingrediente activo.</p>
+                    </div>
+                    <div class="feature-card p-8 rounded-xl border border-gray-100 text-center">
+                        <div class="text-4xl mb-4">🎯</div>
+                        <h3 class="text-xl font-bold mb-3">Amplio Espectro</h3>
+                        <p class="text-gray-600">Disponible para Carpocapsa (1x, 10x, Combo), Grafolita, Moscas de la
+                            Fruta y muchas más.</p>
+                    </div>
+                    <div class="feature-card p-8 rounded-xl border border-gray-100 text-center">
+                        <div class="text-4xl mb-4">🔍</div>
+                        <h3 class="text-xl font-bold mb-3">Manejo Integrado</h3>
+                        <p class="text-gray-600">La herramienta esencial para determinar el "Biofix" y el momento óptimo
+                            de aplicación de insecticidas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Especificaciones -->
+        <section id="especificaciones" class="py-20 bg-white">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="bg-green-50 p-8 rounded-2xl border border-green-100">
+                    <h2 class="text-2xl font-bold text-green-800 mb-6 text-center">Datos Técnicos</h2>
+                    <ul class="space-y-4">
+                        <li class="flex justify-between border-b border-green-200 pb-3">
+                            <span class="font-semibold text-gray-700">Producto</span>
+                            <span class="text-gray-900">BioLure®</span>
+                        </li>
+                        <li class="flex justify-between border-b border-green-200 pb-3">
+                            <span class="font-semibold text-gray-700">Tipo</span>
+                            <span class="text-gray-900">Cebo de Feromona/Atrayente de Liberación Controlada</span>
+                        </li>
+                        <li class="flex justify-between border-b border-green-200 pb-3">
+                            <span class="font-semibold text-gray-700">Plagas Disponibles</span>
+                            <span class="text-gray-900">Carpocapsa, Grafolita, Mosquita de la Nuez, Moscas de la Fruta
+                                (Varios)</span>
+                        </li>
+                        <li class="flex justify-between border-b border-green-200 pb-3">
+                            <span class="font-semibold text-gray-700">Duración</span>
+                            <span class="text-gray-900">Variable según producto (de 8 a 16 semanas)</span>
+                        </li>
+                        <li class="flex justify-between pt-3">
+                            <span class="font-semibold text-gray-700">Fabricante</span>
+                            <span class="text-gray-900">Suterra</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacto -->
+        <section id="contacto" class="bg-slate-900 text-white">
+            <div class="container mx-auto px-6 py-20 max-w-4xl text-center">
+                <h2 class="text-3xl font-bold mb-6">Monitoree con Precisión</h2>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="mailto:info@agrichecksrl.com"
+                        class="cta-button inline-block bg-green-600 text-white font-bold text-lg py-4 px-10 rounded-full hover:bg-green-700">
+                        Consultar sobre BioLure
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-950 text-slate-400 py-10 text-center">
+        <div class="container mx-auto px-6">
+            <p>&copy; 2025 AgriCheck S.R.L.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

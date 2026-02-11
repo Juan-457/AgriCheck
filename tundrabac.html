@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tundrabac – Bioestimulante para Semillas de Invierno</title>
+    <meta name="description"
+        content="Tundrabac con Bacillus atrophaeus cepa abi05, el bioestimulante patentado que activa la germinación desde 8°C para un arranque superior en trigo y cebada.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #F8F9F7;
+            /* Fondo gris-verdoso claro */
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(to right, rgba(10, 28, 54, 0.8), rgba(10, 28, 54, 0.4)), url('Andermatt/Tundrabac/hero_bg.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .section-title {
+            color: #1A361E;
+            /* Verde Oscuro */
+        }
+
+        .cta-button,
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover,
+        .tab-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefit-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #ffffff;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(46, 91, 58, 0.15);
+        }
+
+        .tab-button {
+            background-color: #f3f4f6;
+            color: #4b5563;
+        }
+
+        .tab-button.active {
+            background-color: #166534;
+            /* dark-green-700 */
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body class="text-slate-800">
+
+    <!-- Header -->
+    <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center max-w-7xl">
+            <a href="index.html">
+                <img src="https://placehold.co/180x40/1A361E/FFFFFF?text=Tundrabac" alt="Logo de Tundrabac"
+                    class="h-10 w-auto">
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#beneficios"
+                    class="font-semibold text-slate-600 hover:text-green-700 transition">Beneficios</a>
+                <a href="#patente" class="font-semibold text-slate-600 hover:text-green-700 transition">Patente</a>
+                <a href="#resultados"
+                    class="font-semibold text-slate-600 hover:text-green-700 transition">Resultados</a>
+                <a href="#aplicacion"
+                    class="font-semibold text-slate-600 hover:text-green-700 transition">Especificaciones</a>
+                <a href="#contacto"
+                    class="cta-button bg-green-600 text-white font-bold py-2 px-5 rounded-full hover:bg-green-700">
+                    Contactar
+                </a>
+            </div>
+            <div class="md:hidden">
+                <a href="#contacto"
+                    class="cta-button bg-green-600 text-white font-bold py-2 px-4 rounded-full hover:bg-green-700">
+                    Contacto
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Sección Hero -->
+        <section class="hero-bg text-white">
+            <div class="container mx-auto px-6 py-24 md:py-32 max-w-7xl">
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-3/5 text-center md:text-left">
+                        <span class="font-bold text-sky-300 tracking-widest">EL BIOLÓGICO PARA CULTIVOS DE INVIERNO
+                        </span>
+                        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight my-4">
+                            El Único Bioestimulante que Despierta sus Cereales de Invierno.
+                        </h1>
+                        <p class="text-lg md:text-xl mb-8 max-w-2xl text-slate-200">
+                            Tundrabac es un estimulante biológico microbiano a base de <i>Bacillus atrophaeus</i> cepa
+                            ABi05, patentado por activar el vigor de la semilla desde los 8°C, asegurando un
+                            establecimiento superior y uniforme en siembras de trigo y cebada.
+                        </p>
+                        <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                            <a href="#contacto"
+                                class="cta-button inline-block bg-white text-green-700 font-bold text-lg py-4 px-8 rounded-full hover:bg-green-50">
+                                Solicitar Asesoramiento
+                            </a>
+                        </div>
+                    </div>
+                    <div class="md:w-2/5 flex justify-center mt-8 md:mt-0">
+                        <img src="../Andermatt/Tundrabac/Tundrabac.png" alt="Botella del producto Tundrabac"
+                            class="max-w-xs md:max-w-sm h-auto object-contain">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Beneficios Clave -->
+        <section id="beneficios" class="py-20 bg-white">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold section-title">Arranque Superior en Condiciones de Frío.</h2>
+                    <p class="mt-4 text-lg max-w-3xl mx-auto text-slate-600">Tundrabac le da a su cultivo de invierno la
+                        ventaja decisiva para un desarrollo inicial robusto y un mayor potencial de rendimiento.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="benefit-card p-8 rounded-xl border border-gray-200 text-center">
+                        <div
+                            class="flex items-center justify-center h-16 w-16 rounded-full bg-sky-100 text-sky-600 mx-auto mb-5 text-3xl">
+                            ❄️</div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Activación a 8°C</h3>
+                        <p class="text-slate-600">Su cepa coloniza la raíz a bajas temperaturas, cuando otros
+                            inoculantes aún están inactivos.</p>
+                    </div>
+                    <div class="benefit-card p-8 rounded-xl border border-gray-200 text-center">
+                        <div
+                            class="flex items-center justify-center h-16 w-16 rounded-full bg-green-100 text-green-600 mx-auto mb-5 text-3xl">
+                            🌱</div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Emergencia Uniforme</h3>
+                        <p class="text-slate-600">Promueve una germinación más rápida y pareja, logrando un mayor stand
+                            de plantas y un cultivo homogéneo desde el inicio.</p>
+                    </div>
+                    <div class="benefit-card p-8 rounded-xl border border-gray-200 text-center">
+                        <div
+                            class="flex items-center justify-center h-16 w-16 rounded-full bg-green-100 text-green-600 mx-auto mb-5 text-3xl">
+                            💪</div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Máximo Desarrollo Radicular</h3>
+                        <p class="text-slate-600">Bioestimula la producción de raíces más fuertes, mejorando la
+                            captación de agua y nutrientes clave para el macollaje.</p>
+                    </div>
+                    <div class="benefit-card p-8 rounded-xl border border-gray-200 text-center">
+                        <div
+                            class="flex items-center justify-center h-16 w-16 rounded-full bg-green-100 text-green-600 mx-auto mb-5 text-3xl">
+                            📈</div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Más Potencial de Rinde</h3>
+                        <p class="text-slate-600">Un mejor establecimiento y una nutrición eficiente se traducen en
+                            plantas más resilientes con mayor capacidad productiva.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Respaldo Científico y Patente -->
+        <section id="patente" class="py-20">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold section-title">Tecnología Patentada para el Frío</h2>
+                    <p class="mt-4 text-lg max-w-3xl mx-auto text-slate-600">La eficacia de Tundrabac se basa en la cepa
+                        <i>Bacillus atrophaeus</i> ABi05, aislada originalmente del Tíbet y seleccionada por su
+                        capacidad única de prosperar a bajas temperaturas, una característica protegida por patente.
+                    </p>
+                </div>
+                <div
+                    class="max-w-5xl mx-auto bg-gray-50 p-8 md:p-12 rounded-xl shadow-inner border border-gray-200 flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/3 text-center">
+                        <img src="https://placehold.co/200x200/e0f2fe/0ea5e9?text=PATENT" alt="Icono de Patente"
+                            class="mx-auto rounded-full">
+                    </div>
+                    <div class="md:w-2/3">
+                        <h3 class="text-2xl font-bold text-green-800 mb-3">Patente Europea N° EP3283030</h3>
+                        <p class="text-slate-600 mb-4">La patente confirma la novedad de la cepa ABi05 por su capacidad
+                            de germinar y colonizar las raíces a temperaturas tan bajas como 8°C. Esto le confiere una
+                            ventaja decisiva en cultivos de invierno, donde las temperaturas del suelo limitan la
+                            actividad de otros microorganismos.</p>
+                        <a href="https://patents.google.com/patent/WO2016165685A1/en" target="_blank"
+                            rel="noopener noreferrer"
+                            class="font-semibold text-green-600 hover:text-green-800 transition">
+                            Ver patente en Google Patents &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resultados en Campo -->
+        <section id="resultados" class="py-20 bg-white">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold section-title">Resultados en Cereales de Invierno</h2>
+                    <p class="mt-4 text-lg max-w-3xl mx-auto text-slate-600">Ensayos a campo demuestran cómo Tundrabac
+                        protege y aumenta el potencial de rinde en trigo y cebada.</p>
+                </div>
+                <div id="tab-buttons" class="flex flex-wrap justify-center gap-2 md:gap-4 mb-8">
+                    <button class="tab-button active font-bold py-2 px-5 rounded-full"
+                        data-crop="trigo_pergamino_ensayo">Trigo - Pergamino</button>
+                    <button class="tab-button font-bold py-2 px-5 rounded-full"
+                        data-crop="trigo_tres_arroyos_ensayo">Trigo - Tres Arroyos</button>
+                    <button class="tab-button font-bold py-2 px-5 rounded-full"
+                        data-crop="cebada_pergamino_ensayo">Cebada - Pergamino</button>
+                    <button class="tab-button font-bold py-2 px-5 rounded-full"
+                        data-crop="cebada_tres_arroyos_ensayo">Cebada - Tres Arroyos</button>
+                </div>
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-200 max-w-4xl mx-auto">
+                    <div class="h-80 md:h-96">
+                        <canvas id="resultsChart"></canvas>
+                    </div>
+                    <p id="chart-footer" class="text-center text-slate-500 mt-4 font-medium"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Especificaciones -->
+        <section id="aplicacion" class="py-20">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold section-title">Especificaciones</h2>
+                </div>
+                <div
+                    class="overflow-x-auto bg-gray-50 p-6 rounded-xl shadow-inner border border-gray-200 max-w-4xl mx-auto">
+                    <table class="w-full text-left">
+                        <tbody class="divide-y divide-gray-200">
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-slate-700">Ingrediente Activo</td>
+                                <td class="p-4 text-slate-600"><i>Bacillus atrophaeus</i> Cepa ABi05</td>
+                            </tr>
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-slate-700">Formulación</td>
+                                <td class="p-4 text-slate-600">Suspensión concentrada de endosporas</td>
+                            </tr>
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-slate-700">Dosis Recomendada</td>
+                                <td class="p-4 text-slate-600">0,25 - 0,5 ml por kg de semilla</td>
+                            </tr>
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-slate-700">Cultivos</td>
+                                <td class="p-4 text-slate-600">Trigo, Cebada</td>
+                            </tr>
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-slate-700">Almacenamiento</td>
+                                <td class="p-4 text-slate-600">2 años a temperatura ambiente</td>
+                            </tr>
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-slate-700">Registro SENASA</td>
+                                <td class="p-4 text-slate-600">N° 60.971-BIO</td>
+                            </tr>
+                            <tr class="divide-x divide-gray-200">
+                                <td class="p-4 font-semibold text-slate-700">Compatibilidad</td>
+                                <td class="p-4 text-slate-600">Alta compatibilidad con fungicidas e insecticidas de
+                                    tratamiento de semillas. Consulte a su asesor.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Origen y Confianza -->
+        <section id="confianza" class="py-20 bg-white">
+            <div class="container mx-auto px-6 max-w-4xl text-center">
+                <div
+                    class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-12 mb-8">
+                    <img src="https://placehold.co/150x50/cccccc/888888?text=ABiTEP+GmbH" alt="Logo ABiTEP"
+                        class="h-12">
+                    <img src="https://placehold.co/150x50/cccccc/888888?text=Andermatt+Logo" alt="Logo Andermatt"
+                        class="h-12">
+                </div>
+                <h2 class="text-4xl font-extrabold section-title mb-4">Origen Alemán. Confianza Suiza.</h2>
+                <p class="text-lg text-slate-600 mb-8 max-w-3xl mx-auto">La tecnología detrás de Tundrabac proviene de
+                    <strong>ABiTEP GmbH</strong> en Berlín, Alemania, pioneros en el desarrollo de bioestimulantes a
+                    base de <i>Bacillus</i>. ABiTEP GmbH es propiedad del grupo <strong>Andermatt</strong>, líder suizo
+                    en soluciones biológicas, garantizando los más altos estándares de calidad y resultados a campo.
+                </p>
+                <a href="https://www.andermatt.com" target="_blank" rel="noopener noreferrer"
+                    class="cta-button inline-block bg-green-600 text-white font-bold text-lg py-3 px-6 rounded-full hover:bg-green-700">
+                    Conocer más sobre Andermatt
+                </a>
+            </div>
+        </section>
+
+        <!-- Contacto / CTA Final -->
+        <section id="contacto" class="bg-green-800 text-white">
+            <div class="container mx-auto px-6 py-20 max-w-4xl text-center">
+                <h2 class="text-4xl font-extrabold mb-4">¿Listo para un Arranque Invernal Superior?</h2>
+                <p class="text-lg text-green-200 mb-8 max-w-2xl mx-auto">Contacte a nuestro equipo técnico para
+                    incorporar Tundrabac a su programa de tratamiento de semillas y asegure el máximo potencial para su
+                    trigo y cebada.</p>
+                <a href="mailto:ventas@agricheck.com"
+                    class="cta-button inline-block bg-white text-green-700 font-bold text-lg py-4 px-8 rounded-full hover:bg-green-50">
+                    Contactar a un Experto
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-800 text-slate-300">
+        <div class="container mx-auto px-6 py-8 max-w-7xl text-center">
+            <p>&copy; 2025 Tundrabac. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Chart.register(ChartDataLabels);
+
+            const chartData = {
+                trigo_pergamino_ensayo: {
+                    labels: ['Testigo', 'Tundrabac 0,25 ml/kg', 'Tundrabac 0,5 ml/kg'],
+                    data: [5248, 5851, 5757],
+                    dataLabels: ['', '+11.5%\n+603Kg', '+9.7%\n+509Kg'],
+                    label: 'Rinde (Kg/ha)',
+                    footer: 'Trigo - INTA EEA Pergamino - Ing. Agr. Gustavo Néstor Ferraris.'
+                },
+                trigo_tres_arroyos_ensayo: {
+                    labels: ['Testigo', 'Tundrabac 0,25 ml/kg', 'Tundrabac 0,5 ml/kg'],
+                    data: [3190, 3451, 3612],
+                    dataLabels: ['', '+8.2%\n+261Kg', '+13.2%\n+422Kg'],
+                    label: 'Rinde (Kg/ha)',
+                    footer: 'Trigo - Chacra Experimental Integrada Barrow, Tres Arroyos, Buenos Aires. 2024.'
+                },
+                cebada_pergamino_ensayo: {
+                    labels: ['Testigo', 'Tundrabac 0,25 ml/kg', 'Tundrabac 0,5 ml/kg'],
+                    data: [4545, 4939, 4767],
+                    dataLabels: ['', '+8.7%\n+394Kg', '+4.9%\n+222Kg'],
+                    label: 'Rinde (Kg/ha)',
+                    footer: 'Cebada - INTA EEA Pergamino - Ing. Agr. Gustavo Néstor Ferraris. 2024.'
+                },
+                cebada_tres_arroyos_ensayo: {
+                    labels: ['Testigo', 'Tundrabac 0,25 ml/kg', 'Tundrabac 0,5 ml/kg'],
+                    data: [3522, 3776, 3820],
+                    dataLabels: ['', '+7.2%\n+254Kg', '+8.5%\n+298Kg'],
+                    label: 'Rinde (Kg/ha)',
+                    footer: 'Cebada - Chacra Experimental Integrada Barrow, Tres Arroyos, Buenos Aires. 2024.'
+                }
+            };
+
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const chartFooter = document.getElementById('chart-footer');
+            const ctx = document.getElementById('resultsChart').getContext('2d');
+            let resultsChart = null;
+
+            function updateChart(crop) {
+                const data = chartData[crop];
+                if (!data) return;
+
+                if (resultsChart) {
+                    resultsChart.destroy();
+                }
+
+                const backgroundColors = data.data.map((_, index) => index === 0 ? 'rgba(107, 114, 128, 0.6)' : 'rgba(22, 163, 74, 0.6)');
+                const borderColors = data.data.map((_, index) => index === 0 ? 'rgba(107, 114, 128, 1)' : 'rgba(22, 163, 74, 1)');
+
+                resultsChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.labels,
+                        datasets: [{
+                            label: data.label,
+                            data: data.data,
+                            backgroundColor: backgroundColors,
+                            borderColor: borderColors,
+                            borderWidth: 2,
+                            borderRadius: 5,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: function (context) {
+                                        return `${context.dataset.label}: ${context.parsed.y} kg/ha`;
+                                    }
+                                }
+                            },
+                            datalabels: {
+                                color: '#1f2937',
+                                font: { weight: 'bold', size: 13 },
+                                anchor: 'end',
+                                align: 'top',
+                                offset: 5,
+                                formatter: function (value, context) {
+                                    return data.dataLabels[context.dataIndex];
+                                },
+                                textAlign: 'center'
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                grid: { color: '#e5e7eb' },
+                                ticks: {
+                                    color: '#374151',
+                                    precision: 0 // Forzar números enteros
+                                }
+                            },
+                            x: {
+                                grid: { display: false },
+                                ticks: {
+                                    color: '#374151',
+                                    font: { size: 11, weight: 'bold' }
+                                }
+                            }
+                        }
+                    }
+                });
+
+                const dataMax = Math.max(...data.data);
+                const dataMin = Math.min(...data.data);
+                const targetMax = dataMax + 600;
+                resultsChart.options.scales.y.max = Math.ceil(targetMax / 10) * 10;
+                const targetMin = dataMin * 0.85;
+                resultsChart.options.scales.y.min = Math.floor(targetMin / 10) * 10;
+                resultsChart.update();
+                chartFooter.textContent = data.footer;
+            }
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    updateChart(button.dataset.crop);
+                });
+            });
+
+            updateChart('trigo_pergamino_ensayo');
+        });
+    </script>
+</body>
+
+</html>
