@@ -351,6 +351,50 @@
       text-align: center;
     }
 
+
+    .moreProducts {
+      margin: 28px 0 40px;
+      padding: 20px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .moreProducts h2 {
+      margin: 0 0 8px;
+      font-size: clamp(22px, 3vw, 28px);
+      letter-spacing: -0.02em;
+    }
+
+    .moreProducts p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .moreProductsGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+    }
+
+    .moreProductsGrid a {
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      background: rgba(15, 23, 42, 0.03);
+      font-weight: 700;
+      color: #334155;
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+    }
+
+    .moreProductsGrid a:hover {
+      background: rgba(137, 196, 68, 0.14);
+      border-color: rgba(115, 174, 55, 0.45);
+      transform: translateY(-1px);
+    }
+
     footer {
       background: rgba(15, 23, 42, 0.62);
       backdrop-filter: blur(10px);
@@ -505,7 +549,7 @@
           <span class="tag">Frutales</span>
           <span class="tag">Plagas</span>
         </div>
-        <a class="cta" href="Producto-Beauvisan.html">
+        <a class="cta" href="beauvisan.html">
           <span>Ver ficha completa →</span>
         </a>
       </article>
@@ -546,7 +590,7 @@
           <span class="tag">Girasol</span>
           <span class="tag">Nutrición</span>
         </div>
-        <a class="cta" href="Producto-nexula.html">
+        <a class="cta" href="nexula.html">
           <span>Ver ficha completa →</span>
         </a>
       </article>
@@ -567,7 +611,7 @@
           <span class="tag">Hongos del suelo</span>
           <span class="tag">Estrés</span>
         </div>
-        <a class="cta" href="Producto-t-gro-easy-flow.html">
+        <a class="cta" href="t-gro-easy-flow.html">
           <span>Ver ficha completa →</span>
         </a>
       </article>
@@ -601,7 +645,7 @@
           <span class="tag">Phytium</span>
           <span class="tag">Rhizoctonia</span>
         </div>
-        <a class="cta" href="Producto-t-gro-wp.html">
+        <a class="cta" href="t-gro.html">
           <span>Ver ficha completa →</span>
         </a>
       </article>
@@ -622,7 +666,7 @@
           <span class="tag">Cebada</span>
           <span class="tag">Arranque en frío</span>
         </div>
-        <a class="cta" href="Producto-tundrabac.html">
+        <a class="cta" href="tundrabac.html">
           <span>Ver ficha completa →</span>
         </a>
       </article>
@@ -646,7 +690,7 @@
           <span class="tag">Cuaje</span>
           <span class="tag">Rendimiento</span>
         </div>
-        <a class="cta" href="Producto-superfifty-prime.html">
+        <a class="cta" href="superfifty-prime.html">
           <span>Ver ficha completa →</span>
         </a>
       </article>
@@ -670,7 +714,7 @@
           <span class="tag">Cracking</span>
           <span class="tag">Asoleado</span>
         </div>
-        <a class="cta" href="Producto-Parka.html">
+        <a class="cta" href="parka.html">
           <span>Ver ficha completa →</span>
         </a>
       </article>
@@ -679,6 +723,34 @@
     <div class="empty" id="emptyState">
       No encontramos productos con esos filtros. Probá limpiar o ajustar la búsqueda.
     </div>
+
+    <section class="moreProducts" aria-label="Más soluciones">
+      <h2>Más productos disponibles</h2>
+      <p>Sumamos nuevos HTML de productos y actualizamos enlaces para que encuentres toda la línea técnica en un solo lugar.</p>
+      <div class="moreProductsGrid">
+        <a href="amyprotec-42.html">Amyprotec 42</a>
+        <a href="atroverde.html">Atroverde</a>
+        <a href="biolure.html">BioLure</a>
+        <a href="biomagnet.html">BioMagnet</a>
+        <a href="celada.html">Celada VMB</a>
+        <a href="checkmate-cm-f.html">CheckMate CM-F</a>
+        <a href="checkmate-crs.html">CheckMate CRS</a>
+        <a href="checkmate-ofm-f.html">CheckMate OFM-F</a>
+        <a href="checkmate-vmb-xl.html">CheckMate VMB-XL</a>
+        <a href="madex.html">Madex</a>
+        <a href="madex-twin.html">Madex Twin</a>
+        <a href="magnet.html">Magnet MED</a>
+        <a href="pack-soja.html">Pack Soja</a>
+        <a href="phosbac.html">Phosbac</a>
+        <a href="plutex.html">Plutex</a>
+        <a href="puffer-cm.html">Puffer CM</a>
+        <a href="subvert.html">Subvert</a>
+        <a href="t-gro-5x.html">T-Gro 5X</a>
+        <a href="tutavir.html">Tutavir</a>
+        <a href="v12-initiate.html">V12 Initiate</a>
+        <a href="zimbili.html">Zimbili</a>
+      </div>
+    </section>
   </main>
 
   <footer>
