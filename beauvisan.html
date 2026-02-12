@@ -1,17 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-  <link rel="shortcut icon" href="favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png" />
-  <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png" />
-<title>Beauvisan – AgriCheck | Bioinsecticida de Amplio Espectro</title>
+    <title>Beauvisan – AgriCheck | Bioinsecticida de Amplio Espectro</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +17,7 @@
         }
 
         .hero-bg {
-            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)), url('https://images.unsplash.com/photo-1588392382834-a891154bca4d?q=80&w=2070&auto=format&fit=crop');
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('../img/beauvisan-hero.png');
             background-size: cover;
             background-position: center;
         }
@@ -60,9 +53,9 @@
     <!-- Header -->
     <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-md">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center max-w-7xl">
-            <a href="#">
+            <a href="../../index.html">
                 <!-- Logo de AgriCheck -->
-                <img src="agrichecklogo.png" alt="Logo de AgriCheck"
+                <img src="https://www.agrichecksrl.com/img/logo-agricheck.png" alt="Logo de AgriCheck"
                     class="h-12 w-auto">
             </a>
             <div class="hidden md:flex items-center space-x-8">
@@ -75,13 +68,13 @@
                 <a href="#espectro" class="font-semibold text-slate-600 hover:text-green-700 transition">Usos</a>
                 <a href="#especificaciones"
                     class="font-semibold text-slate-600 hover:text-green-700 transition">Especificaciones</a>
-                <a href="zonas.html"
+                <a href="#contacto"
                     class="cta-button bg-green-600 text-white font-bold py-2 px-5 rounded-full hover:bg-green-700">
                     Contactar
                 </a>
             </div>
             <div class="md:hidden">
-                <a href="zonas.html"
+                <a href="#contacto"
                     class="cta-button bg-green-600 text-white font-bold py-2 px-4 rounded-full hover:bg-green-700">
                     Contacto
                 </a>
@@ -92,27 +85,26 @@
     <main>
         <!-- Hero Section -->
         <section class="hero-bg text-white">
-            <div class="container mx-auto px-6 py-24 md:py-32 text-center md:text-left max-w-7xl">
-                <div class="grid md:grid-cols-2 gap-10 items-center">
-                    <div>
-                        <span class="font-bold text-green-300 tracking-widest">BIOINSECTICIDA A BASE DE BEAUVERIA
-                            BASSIANA</span>
-                        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight my-4">
-                            Control Biológico de Plagas, Naturalmente Efectivo.
-                        </h1>
-                        <p class="text-lg md:text-xl mb-8 max-w-2xl text-green-100">
-                            Beauvisan es un concentrado en polvo de la cepa exclusiva R444 de <i>Beauveria bassiana</i>,
-                            para el control de un amplio espectro de insectos y ácaros, sin residuos ni período de carencia.
-                        </p>
-                        <a href="zonas.html"
-                            class="cta-button inline-block bg-white text-green-700 font-bold text-lg py-4 px-8 rounded-full hover:bg-green-50">
-                            Solicitar Asesoramiento
-                        </a>
-                    </div>
-                    <div class="flex justify-center md:justify-end">
-                        <img src="Beavisan%201Kg.webp" alt="Presentación de Beauvisan 1 Kg"
-                            class="w-full max-w-sm md:max-w-md drop-shadow-2xl" decoding="async">
-                    </div>
+            <div class="container mx-auto px-6 py-24 md:py-32 max-w-7xl flex flex-col md:flex-row items-center">
+                <div class="md:w-3/5 text-center md:text-left z-10">
+                    <span class="font-bold text-green-300 tracking-widest">BIOINSECTICIDA A BASE DE BEAUVERIA
+                        BASSIANA</span>
+                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight my-4">
+                        Control Biológico de Plagas, Naturalmente Efectivo.
+                    </h1>
+                    <p class="text-lg md:text-xl mb-8 max-w-2xl text-green-100">
+                        Beauvisan es un concentrado en polvo de la cepa exclusiva R444 de <i>Beauveria bassiana</i>,
+                        para el control de un amplio espectro de insectos y ácaros, sin residuos ni período de carencia.
+                    </p>
+                    <a href="#contacto"
+                        class="cta-button inline-block bg-white text-green-700 font-bold text-lg py-4 px-8 rounded-full hover:bg-green-50">
+                        Solicitar Asesoramiento
+                    </a>
+                </div>
+                <!-- Imagen del Producto -->
+                <div class="md:w-2/5 mt-12 md:mt-0 flex justify-center z-10 w-full">
+                    <img src="../img/beauvisan-packaging.png" alt="Beauvisan Presentación"
+                        class="max-h-[500px] w-auto drop-shadow-2xl hover:scale-105 transition-transform duration-500 animate-fade-in-up">
                 </div>
             </div>
         </section>
@@ -125,7 +117,7 @@
                     <p class="mt-4 text-lg max-w-3xl mx-auto text-slate-600">Beauvisan ofrece una solución eficaz y
                         respetuosa con el medio ambiente para el manejo integrado de plagas.</p>
                 </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid md:grid-cols-2 gap-8">
                     <div class="benefit-card p-8 rounded-xl border border-gray-200 text-center">
                         <div
                             class="flex items-center justify-center h-16 w-16 rounded-full bg-green-100 text-green-600 mx-auto mb-5 text-3xl">
@@ -145,10 +137,18 @@
                     <div class="benefit-card p-8 rounded-xl border border-gray-200 text-center">
                         <div
                             class="flex items-center justify-center h-16 w-16 rounded-full bg-green-100 text-green-600 mx-auto mb-5 text-3xl">
-                            ♻</div>
+                            ♻️</div>
                         <h3 class="text-xl font-bold text-slate-800 mb-2">Ideal para Manejo Integrado</h3>
                         <p class="text-slate-600">Libre de residuos y sin período de carencia, es la herramienta
                             perfecta para programas de MIP y agricultura orgánica.</p>
+                    </div>
+                    <div class="benefit-card p-8 rounded-xl border border-gray-200 text-center">
+                        <div
+                            class="flex items-center justify-center h-16 w-16 rounded-full bg-green-100 text-green-600 mx-auto mb-5 text-3xl">
+                            🦠</div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Modo de Acción Único</h3>
+                        <p class="text-slate-600">Las esporas se adhieren, germinan y penetran en el insecto,
+                            multiplicándose en su interior y causando su muerte en pocos días.</p>
                     </div>
                 </div>
             </div>
@@ -168,8 +168,10 @@
                             class="flex items-center justify-center h-16 w-16 rounded-full bg-green-100 text-green-600 mb-5 text-3xl">
                             🧪</div>
                         <h3 class="text-xl font-bold text-slate-800 mb-2">1. Formulación en Polvo Única</h3>
-                        <p class="text-slate-600">Las esporas están recubiertas de aceite, lo que evita que se sequen,
-                            aumenta su tolerancia a los rayos UV y mejora la penetración e infección de la plaga.</p>
+                        <p class="text-slate-600">Las esporas están recubiertas de aceite, lo que evita que se
+                            sequen,
+                            aumenta su tolerancia a los rayos UV y mejora la penetración e infección de la plaga.
+                        </p>
                     </div>
                     <div class="benefit-card p-8 rounded-xl border border-gray-200">
                         <div
@@ -206,7 +208,7 @@
                     <div class="benefit-card p-8 rounded-xl border border-gray-200">
                         <div
                             class="flex items-center justify-center h-16 w-16 rounded-full bg-green-100 text-green-600 mb-5 text-3xl">
-                            🕒</div>
+                            🕰️</div>
                         <h3 class="text-xl font-bold text-slate-800 mb-2">6. ¡Sin Período de Carencia!</h3>
                         <p class="text-slate-600">Permite aplicar el producto y cosechar inmediatamente después,
                             simplificando la planificación y eliminando el riesgo de residuos.</p>
@@ -215,146 +217,250 @@
             </div>
         </section>
 
-        <!-- Cómo Funciona -->
-        <section id="como-funciona" class="py-20 bg-white">
+
+
+        <!-- Calidad de Formulación -->
+        <section id="como-funciona" class="py-20 bg-gray-50">
             <div class="container mx-auto px-6 max-w-7xl">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl font-extrabold section-title">La Ciencia de la Naturaleza en Acción</h2>
-                    <p class="mt-4 text-lg max-w-3xl mx-auto text-slate-600">Beauvisan utiliza el poder de la cepa
-                        exclusiva R444 de <i>Beauveria bassiana</i>. Aislada en un clima extremo de Sudáfrica, esta cepa
-                        es especialmente robusta y eficaz en un rango superior de condiciones climáticas, controlando
-                        las plagas de forma natural y efectiva.</p>
+                    <h2 class="text-4xl font-extrabold section-title">Tecnología de Formulación Superior</h2>
+                    <p class="mt-4 text-lg max-w-3xl mx-auto text-slate-600">La diferencia entre R444 y otros productos
+                        del mercado radica en su avanzada tecnología de formulación y calidad de cepa.</p>
                 </div>
-                <div
-                    class="bg-gray-50 p-8 md:p-12 rounded-xl shadow-inner border border-gray-200 max-w-5xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-                    <div>
-                        <h3 class="text-2xl font-bold text-green-800 mb-3">Modo de Acción</h3>
-                        <p class="text-slate-600">Las esporas de <i>Beauveria bassiana</i> se adhieren a la cutícula del
-                            insecto. Al germinar, penetran en su interior y se multiplican, causando la muerte de la
-                            plaga en pocos días. Este proceso es específico para insectos y seguro para otros
-                            organismos.</p>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-green-800 mb-3">Formulación Exclusiva</h3>
-                        <p class="text-slate-600">La formulación en polvo mojable evita la sedimentación de esporas
-                            común en productos líquidos. Esto concentra las esporas en el punto de contacto con el
-                            insecto, mejorando la penetración y la eficacia del producto gracias al "efecto quórum".</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Espectro de Control -->
-        <section id="espectro" class="py-20">
-            <div class="container mx-auto px-6 max-w-7xl">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="text-center">
-                        <!-- Imagen de plagas o cultivos afectados -->
-                        <img src="https://placehold.co/500x400/F0FDF4/166534?text=Plagas+Controladas"
-                            alt="Ejemplo de plagas que controla Beauvisan" class="rounded-lg inline-block shadow-lg">
-                    </div>
-                    <div>
-                        <span class="text-green-600 font-bold">AMPLIO ESPECTRO</span>
-                        <h2 class="text-4xl font-extrabold section-title mt-2 mb-6">Control Eficaz de Plagas Clave</h2>
-                        <p class="text-lg text-slate-600 mb-4">Beauvisan ha demostrado una alta eficacia en el control
-                            de una gran variedad de insectos y ácaros que afectan a cultivos de alto valor, entre
-                            ellos*:</p>
-                        <ul class="list-disc list-inside space-y-2 text-slate-600">
-                            <li>Arañuela roja</li>
-                            <li>Mosca blanca</li>
-                            <li>Cochinillas</li>
-                            <li>Lobesia botrana</li>
-                            <li>Trips</li>
-                            <li>Chicharrita del maíz</li>
+                <!-- Comparativa -->
+                <div class="grid md:grid-cols-2 gap-12 mb-16 items-center">
+                    <div class="order-2 md:order-1">
+                        <h3 class="text-2xl font-bold text-green-800 mb-4">Polvo Mojable (WP) vs. Líquido</h3>
+                        <ul class="space-y-4 text-slate-700 text-lg">
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 text-xl">✓</span>
+                                <div>
+                                    <strong>Mayor Estabilidad:</strong> Las esporas en polvo se mantienen en latencia
+                                    perfecta hasta su hidratación, garantizando una viabilidad mucho mayor que en
+                                    suspensiones líquidas.
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 text-xl">✓</span>
+                                <div>
+                                    <strong>Sin Sedimentación:</strong> A diferencia de los líquidos donde las esporas
+                                    decantan y se aglomeran en el fondo, el WP asegura una dispersión uniforme.
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 text-xl">✓</span>
+                                <div>
+                                    <strong>Protección UV:</strong> El recubrimiento de aceite protege a las esporas de
+                                    la radiación solar y la desecación tras la aplicación.
+                                </div>
+                            </li>
                         </ul>
-                        <p class="text-sm italic text-slate-500 mt-4">*Consultar marbete por usos registrados en
-                            Argentina.</p>
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <img src="../img/beauvisan-polvo.png" alt="Calidad de Formulación Polvo Mojable"
+                            class="rounded-xl shadow-lg w-full object-cover h-64 md:h-80">
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Especificaciones Técnicas -->
-        <section id="especificaciones" class="py-20 bg-gray-50">
-            <div class="container mx-auto px-6 max-w-7xl">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-extrabold section-title">Especificaciones Técnicas</h2>
-                    <p class="mt-4 text-lg max-w-3xl mx-auto text-slate-600">El expertis de Andermatt para un amplio
-                        conocimiento del producto</p>
+                <!-- Multiespora -->
+                <div class="grid md:grid-cols-2 gap-12 mb-16 items-center">
+                    <div>
+                        <img src="../img/beauvisan-microscopio.png" alt="Grupos Multiespora al Microscopio"
+                            class="rounded-xl shadow-lg w-full object-cover h-64 md:h-80 border border-gray-200">
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-green-800 mb-4">Cepa Robusta y Grupos Multiespora</h3>
+                        <p class="text-slate-700 text-lg mb-4">
+                            <strong>Origen Extremo:</strong> Aislada en un clima extremo de Sudáfrica, la cepa R444 es
+                            especialmente robusta y eficaz en un rango superior de condiciones climáticas.
+                        </p>
+                        <p class="text-slate-700 text-lg mb-4">
+                            Al microscopio, la diferencia es clara. Beauvisan no contiene esporas aisladas y débiles,
+                            sino <strong>grupos multiespora</strong> robustos.
+                        </p>
+                        <p class="text-slate-700 text-lg mb-4">
+                            Esta agrupación natural permite que, al contactar con la plaga, se inicie una infección
+                            masiva ("Efecto Quórum"), superando las defensas del insecto mucho más rápido que las
+                            esporas individuales de formulaciones convencionales.
+                        </p>
+
+                    </div>
                 </div>
-                <div class="bg-white p-8 md:p-12 rounded-xl shadow-lg border border-gray-200 max-w-3xl mx-auto">
-                    <div class="space-y-6">
-                        <div class="flex flex-col sm:flex-row border-b pb-4">
-                            <dt class="sm:w-1/3 text-slate-600 font-semibold">Ingrediente Activo</dt>
-                            <dd class="sm:w-2/3 text-slate-800"><i>Beauveria bassiana</i>, cepa R444</dd>
+
+                <!-- Video -->
+                <div class="max-w-4xl mx-auto text-center">
+                    <h3 class="text-2xl font-bold text-green-800 mb-8">Facilidad de Disolución y Uso</h3>
+                    <div class="relative pb-[56.25%] h-0 overflow-hidden rounded-xl shadow-2xl">
+                        <iframe class="absolute top-0 left-0 w-full h-full"
+                            src="https://www.youtube.com/embed/Ubeu6CO9p74" title="Prueba de Disolución Beauvisan"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
+                    <p class="text-slate-500 mt-4 italic">Vea cómo Beauvisan se integra instantáneamente en agua, sin
+                        grumos ni residuos.</p>
+                </div>
+
+            </div>
+
+            <!-- Espectro de Control -->
+            <section id="espectro" class="py-20">
+                <div class="container mx-auto px-6 max-w-7xl">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="relative group">
+                            <!-- Carousel Container -->
+                            <div id="pest-carousel"
+                                class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 scrollbar-hide"
+                                style="scrollbar-width: none; -ms-overflow-style: none;">
+                                <!-- Item 1: Arañuela -->
+                                <div class="snap-center shrink-0 w-full">
+                                    <img src="../img/beauvisan-aranuelas.png" alt="Arañuelas controladas por Beauvisan"
+                                        class="rounded-xl shadow-lg w-full h-64 md:h-80 object-cover">
+                                    <p class="text-sm text-slate-500 mt-2 italic">Control en Arañuela roja</p>
+                                </div>
+                                <!-- Item 2: Cochinilla -->
+                                <div class="snap-center shrink-0 w-full">
+                                    <img src="../img/beauvisan-planococcus.png" alt="Planococcus citri infectado"
+                                        class="rounded-xl shadow-lg w-full h-64 md:h-80 object-cover">
+                                    <p class="text-sm text-slate-500 mt-2 italic">Efecto sobre <i>Planococcus citri</i>
+                                    </p>
+                                </div>
+                                <!-- Item 3: Nezara -->
+                                <div class="snap-center shrink-0 w-full">
+                                    <img src="../img/beauvisan-nezara.png" alt="Nezara viridula infectada"
+                                        class="rounded-xl shadow-lg w-full h-64 md:h-80 object-cover">
+                                    <p class="text-sm text-slate-500 mt-2 italic">Control de <i>Nezara viridula</i></p>
+                                </div>
+                            </div>
+
+                            <!-- Navigation Buttons -->
+                            <button
+                                onclick="var c = document.getElementById('pest-carousel'); c.scrollBy({left: -c.offsetWidth, behavior: 'smooth'})"
+                                class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-green-800 p-3 rounded-full shadow-lg transition-all z-10 focus:outline-none focus:ring-2 focus:ring-green-500"
+                                aria-label="Anterior">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </button>
+                            <button
+                                onclick="var c = document.getElementById('pest-carousel'); c.scrollBy({left: c.offsetWidth, behavior: 'smooth'})"
+                                class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-green-800 p-3 rounded-full shadow-lg transition-all z-10 focus:outline-none focus:ring-2 focus:ring-green-500"
+                                aria-label="Siguiente">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
                         </div>
-                        <div class="flex flex-col sm:flex-row border-b pb-4">
-                            <dt class="sm:w-1/3 text-slate-600 font-semibold">Concentración</dt>
-                            <dd class="sm:w-2/3 text-slate-800">2 x 10<sup>9</sup> conidios/gr = 1 x 10<sup>8</sup>
-                                UFC/gr</dd>
-                        </div>
-                        <div class="flex flex-col sm:flex-row border-b pb-4">
-                            <dt class="sm:w-1/3 text-slate-600 font-semibold">Formulación</dt>
-                            <dd class="sm:w-2/3 text-slate-800">Polvo mojable (WP)</dd>
-                        </div>
-                        <div class="flex flex-col sm:flex-row border-b pb-4">
-                            <dt class="sm:w-1/3 text-slate-600 font-semibold">Presentación</dt>
-                            <dd class="sm:w-2/3 text-slate-800">Sobres aluminizados de 50gr, 300gr, 1Kg, 4Kg.</dd>
-                        </div>
-                        <div class="flex flex-col sm:flex-row border-b pb-4">
-                            <dt class="sm:w-1/3 text-slate-600 font-semibold">Período de Carencia</dt>
-                            <dd class="sm:w-2/3 text-slate-800">No tiene</dd>
-                        </div>
-                        <div class="flex flex-col sm:flex-row border-b pb-4">
-                            <dt class="sm:w-1/3 text-slate-600 font-semibold">Compatibilidad</dt>
-                            <dd class="sm:w-2/3 text-slate-800">Compatible con diversos insecticidas, fertilizantes y
-                                otros formulados. Consultenos por compatibilidad de mezclas.</dd>
-                        </div>
-                        <div class="flex flex-col sm:flex-row">
-                            <dt class="sm:w-1/3 text-slate-600 font-semibold">Almacenamiento</dt>
-                            <dd class="sm:w-2/3 text-slate-800">2 años en refrigerador</dd>
+                        <div>
+                            <span class="text-green-600 font-bold">AMPLIO ESPECTRO</span>
+                            <h2 class="text-4xl font-extrabold section-title mt-2 mb-6">Control Eficaz de Plagas Clave
+                            </h2>
+                            <p class="text-lg text-slate-600 mb-4">Beauvisan ha demostrado una alta eficacia en el
+                                control
+                                de una gran variedad de insectos y ácaros que afectan a cultivos de alto valor, entre
+                                ellos*:</p>
+                            <ul class="list-disc list-inside space-y-2 text-slate-600">
+                                <li>Arañuela roja</li>
+                                <li>Mosca blanca</li>
+                                <li>Cochinillas</li>
+                                <li>Lobesia botrana</li>
+                                <li>Trips</li>
+                                <li>Chicharrita del maíz</li>
+                            </ul>
+                            <p class="text-sm italic text-slate-500 mt-4">*Consultar marbete por usos registrados en
+                                Argentina.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Confianza Andermatt -->
-        <section id="confianza" class="py-20 bg-white">
-            <div class="container mx-auto px-6 max-w-4xl text-center">
-                <img src="andermatt.png" alt="Logo Andermatt"
-                    class="mx-auto mb-6 h-16">
-                <h2 class="text-4xl font-extrabold section-title mb-4">Un Producto de Confianza Global</h2>
-                <p class="text-lg text-slate-600 mb-8 max-w-3xl mx-auto">Beauvisan es desarrollado por Andermatt, líder
-                    en soluciones biológicas para la agricultura con sede en Suiza y el mayor productor mundial de
-                    insecticidas a base de virus. Un portfolio de soluciones compatibles con la producción orgánica que
-                    garantizan calidad y resultados.</p>
-                <a href="https://www.andermatt.com/es" target="_blank" rel="noopener noreferrer"
-                    class="cta-button inline-block bg-green-600 text-white font-bold text-lg py-3 px-6 rounded-full hover:bg-green-700">
-                    Conocer más sobre Andermatt
-                </a>
-            </div>
-        </section>
+            <!-- Especificaciones Técnicas -->
+            <section id="especificaciones" class="py-20 bg-gray-50">
+                <div class="container mx-auto px-6 max-w-7xl">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl font-extrabold section-title">Especificaciones Técnicas</h2>
+                        <p class="mt-4 text-lg max-w-3xl mx-auto text-slate-600">El expertis de Andermatt para un amplio
+                            conocimiento del producto</p>
+                    </div>
+                    <div class="bg-white p-8 md:p-12 rounded-xl shadow-lg border border-gray-200 max-w-3xl mx-auto">
+                        <div class="space-y-6">
+                            <div class="flex flex-col sm:flex-row border-b pb-4">
+                                <dt class="sm:w-1/3 text-slate-600 font-semibold">Ingrediente Activo</dt>
+                                <dd class="sm:w-2/3 text-slate-800"><i>Beauveria bassiana</i>, cepa R444</dd>
+                            </div>
+                            <div class="flex flex-col sm:flex-row border-b pb-4">
+                                <dt class="sm:w-1/3 text-slate-600 font-semibold">Concentración</dt>
+                                <dd class="sm:w-2/3 text-slate-800">2 x 10<sup>9</sup> conidios/gr = 1 x 10<sup>8</sup>
+                                    UFC/gr</dd>
+                            </div>
+                            <div class="flex flex-col sm:flex-row border-b pb-4">
+                                <dt class="sm:w-1/3 text-slate-600 font-semibold">Formulación</dt>
+                                <dd class="sm:w-2/3 text-slate-800">Polvo mojable (WP)</dd>
+                            </div>
+                            <div class="flex flex-col sm:flex-row border-b pb-4">
+                                <dt class="sm:w-1/3 text-slate-600 font-semibold">Presentación</dt>
+                                <dd class="sm:w-2/3 text-slate-800">Sobres aluminizados de 50gr, 300gr, 1Kg, 4Kg.</dd>
+                            </div>
+                            <div class="flex flex-col sm:flex-row border-b pb-4">
+                                <dt class="sm:w-1/3 text-slate-600 font-semibold">Período de Carencia</dt>
+                                <dd class="sm:w-2/3 text-slate-800">No tiene</dd>
+                            </div>
+                            <div class="flex flex-col sm:flex-row border-b pb-4">
+                                <dt class="sm:w-1/3 text-slate-600 font-semibold">Compatibilidad</dt>
+                                <dd class="sm:w-2/3 text-slate-800">Compatible con diversos insecticidas, fertilizantes
+                                    y
+                                    otros formulados. Consultenos por compatibilidad de mezclas.</dd>
+                            </div>
+                            <div class="flex flex-col sm:flex-row">
+                                <dt class="sm:w-1/3 text-slate-600 font-semibold">Almacenamiento</dt>
+                                <dd class="sm:w-2/3 text-slate-800">2 años en refrigerador</dd>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-        <!-- Contacto / CTA Final -->
-        <section id="contacto" class="bg-green-800 text-white">
-            <div class="container mx-auto px-6 py-20 max-w-4xl text-center">
-                <h2 class="text-4xl font-extrabold mb-4">¿Listo para Implementar el Control Biológico?</h2>
-                <p class="text-lg text-green-200 mb-8 max-w-2xl mx-auto">Nuestro equipo de expertos está listo para
-                    ayudarle a integrar Beauvisan en su programa de manejo de plagas. Contáctenos hoy y dé el primer
-                    paso hacia una cosecha más sana y sostenible.</p>
-                <a href="mailto:ventas@agricheck.com"
-                    class="cta-button inline-block bg-white text-green-700 font-bold text-lg py-4 px-8 rounded-full hover:bg-green-50">
-                    Contactar a un Experto
-                </a>
-            </div>
-        </section>
+            <!-- Confianza Andermatt -->
+            <section id="confianza" class="py-20 bg-white">
+                <div class="container mx-auto px-6 max-w-4xl text-center">
+                    <img src="../img/andermatt-clasico.png" alt="Logo Andermatt" class="mx-auto mb-6 h-16">
+                    <h2 class="text-4xl font-extrabold section-title mb-4">Un Producto de Confianza Global</h2>
+                    <p class="text-lg text-slate-600 mb-8 max-w-3xl mx-auto">Beauvisan es desarrollado por Andermatt,
+                        líder
+                        en soluciones biológicas para la agricultura con sede en Suiza y el mayor productor mundial de
+                        insecticidas a base de virus. Un portfolio de soluciones compatibles con la producción orgánica
+                        que
+                        garantizan calidad y resultados.</p>
+                    <a href="https://www.andermatt.com/es" target="_blank" rel="noopener noreferrer"
+                        class="cta-button inline-block bg-green-600 text-white font-bold text-lg py-3 px-6 rounded-full hover:bg-green-700">
+                        Conocer más sobre Andermatt
+                    </a>
+                </div>
+            </section>
+
+            <!-- Contacto / CTA Final -->
+            <section id="contacto" class="bg-green-800 text-white">
+                <div class="container mx-auto px-6 py-20 max-w-4xl text-center">
+                    <h2 class="text-4xl font-extrabold mb-4">¿Listo para Implementar el Control Biológico?</h2>
+                    <p class="text-lg text-green-200 mb-8 max-w-2xl mx-auto">Nuestro equipo de expertos está listo para
+                        ayudarle a integrar Beauvisan en su programa de manejo de plagas. Contáctenos hoy y dé el primer
+                        paso hacia una cosecha más sana y sostenible.</p>
+                    <a href="mailto:ventas@agricheck.com"
+                        class="cta-button inline-block bg-white text-green-700 font-bold text-lg py-4 px-8 rounded-full hover:bg-green-50">
+                        Contactar a un Experto
+                    </a>
+                </div>
+            </section>
     </main>
 
     <!-- Footer -->
     <footer class="bg-slate-800 text-slate-300">
         <div class="container mx-auto px-6 py-8 max-w-7xl text-center">
-            <img src="andermatt.png" alt="Logo Andermatt" class="mx-auto mb-5 h-10 w-auto object-contain" loading="lazy" decoding="async">
             <p>&copy; 2025 AgriCheck S.R.L. Todos los derechos reservados.</p>
             <p class="text-sm mt-2">Potenciando la agricultura del futuro, hoy.</p>
         </div>
@@ -363,3 +469,4 @@
 </body>
 
 </html>
+
