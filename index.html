@@ -644,91 +644,33 @@
       padding:18px;
     }
 
-    /* ================= INSTAGRAM: CARROUSEL AUTOMÁTICO ================= */
-    .igCarousel{margin-top:16px; position:relative;}
-    .igTrack{
-      display:flex;
+    /* ================= INSTAGRAM: EMBEDS OFICIALES ================= */
+    .igEmbeds{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
       gap:14px;
-      overflow-x:auto;
-      scroll-snap-type:x mandatory;
-      padding: 2px 2px 10px;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: thin;
+      justify-items:center;
+      align-items:start;
     }
-    .igTrack::-webkit-scrollbar{height:10px}
-    .igTrack::-webkit-scrollbar-thumb{background: rgba(15,23,42,.18); border-radius: 999px;}
-
-    .igItem{
-      scroll-snap-align:start;
-      flex: 0 0 calc((100% - 28px) / 3);
+    .igEmbedItem{
+      width:100%;
+      max-width:360px;
       background: rgba(255,255,255,.72);
       border: 1px solid rgba(137,196,68,.28);
       box-shadow: 0 14px 26px rgba(0,0,0,.10);
       border-radius: calc(var(--radius) - 2px);
-      padding:14px;
-      display:flex;
-      flex-direction:column;
-      align-items:stretch;
-      gap:12px;
+      padding:12px;
       overflow:hidden;
-      min-width: 260px;
-    }
-
-    .igPreview{
-      position:relative;
-      width:100%;
-      border-radius:14px;
-      border:1px solid rgba(0,0,0,.06);
-      background: rgba(255,255,255,.88);
-      overflow:hidden;
-      box-shadow: 0 10px 18px rgba(0,0,0,.08);
-    }
-    .igPreview::before{content:"";display:block;padding-top:177.78%}
-    .igPreview iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff}
-
-    .igPreviewLink{
-      position:absolute; inset:0; z-index:3;
-      display:block; border-radius:14px; background: transparent;
-    }
-    .igPreviewLink:focus{outline:3px solid rgba(137,196,68,.65); outline-offset:2px}
-
-    .igFallback{
-      display:none;
-      font-size:13px;
-      color:rgba(15,23,42,.78);
-      line-height:1.45;
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px dashed rgba(15,23,42,.18);
-      background: rgba(255,255,255,.78);
-    }
-    .igFallback a{font-weight:900;color: var(--brand-green-dark)}
-    .igFallback a:hover{ text-decoration:underline; }
-
-    .igNavBtn{
-      position:absolute;
-      top:50%;
-      transform:translateY(-50%);
-      z-index:5;
-      width:42px;
-      height:42px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.35);
-      background: linear-gradient(135deg, rgba(255,255,255,.58), rgba(255,255,255,.28));
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 14px 30px rgba(0,0,0,.16);
-      cursor:pointer;
       display:flex;
-      align-items:center;
       justify-content:center;
-      color: rgba(15,23,42,.92);
     }
-    .igNavBtn:hover{transform:translateY(-50%) translateY(-1px)}
-    .igNavBtn:focus{outline:3px solid rgba(137,196,68,.65); outline-offset:2px}
-    .igPrev{left:-6px}
-    .igNext{right:-6px}
-    .igNavBtn svg{width:18px;height:18px}
+    .igEmbedItem .instagram-media{
+      margin:0 !important;
+      min-width: 0 !important;
+      width:100% !important;
+      max-width:100% !important;
+    }
 
     /* Contacto */
     .contactGrid{
@@ -819,11 +761,14 @@
       }
       .heroLogo img{height:125px}
 
-      .igItem{flex: 0 0 92%;}
-      .igPrev{left:6px}
-      .igNext{right:6px}
+      .igEmbeds{grid-template-columns:repeat(2,minmax(0,1fr));}
 
       .contactGrid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:640px){
+      .igEmbeds{grid-template-columns:1fr;}
+      .igEmbedItem{max-width:420px;}
     }
   </style>
 </head>
@@ -1050,94 +995,30 @@
   <div class="container">
     <div class="card" style="padding:22px">
       <div class="center">
-        <h2 class="sectionTitle">Seguinos en Instagram</h2>
+        <h2 class="sectionTitle">Novedades en Instagram</h2>
         <p class="muted sectionLead">
           Sumate a la comunidad: mirá el día a día en el campo, lanzamientos y videos cortos con tips prácticos.
         </p>
 
-        <div class="igCarousel" aria-label="Carrousel de reels de Instagram">
-          <button class="igNavBtn igPrev" type="button" aria-label="Anterior">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M15.5 19.1 8.4 12l7.1-7.1 1.4 1.4L11.2 12l5.7 5.7z"/></svg>
-          </button>
-
-          <div class="igTrack" id="igTrack" aria-label="Reels de Instagram" data-ig-token="" data-ig-limit="8">
-            <!-- (tu contenido IG igual) -->
-            <div class="igItem" data-ig="https://www.instagram.com/reel/DTQ5c7gDBnF/">
-              <div class="igPreview">
-                <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DTQ5c7gDBnF/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                <a class="igPreviewLink" href="https://www.instagram.com/reel/DTQ5c7gDBnF/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-              </div>
-              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DTQ5c7gDBnF/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-            </div>
-
-            <div class="igItem" data-ig="https://www.instagram.com/p/DTTgSQzEtRs/">
-              <div class="igPreview">
-                <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DTTgSQzEtRs/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                <a class="igPreviewLink" href="https://www.instagram.com/p/DTTgSQzEtRs/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-              </div>
-              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/p/DTTgSQzEtRs/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-            </div>
-
-            <div class="igItem" data-ig="https://www.instagram.com/p/DS7yeHCDQkX/">
-              <div class="igPreview">
-                <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DS7yeHCDQkX/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                <a class="igPreviewLink" href="https://www.instagram.com/p/DS7yeHCDQkX/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-              </div>
-              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/p/DS7yeHCDQkX/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-            </div>
-
-            <div class="igItem" data-ig="https://www.instagram.com/reel/DSLSnStAoCV/">
-              <div class="igPreview">
-                <iframe title="Previsualización Reel" src="https://www.instagram.com/reel/DSLSnStAoCV/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                <a class="igPreviewLink" href="https://www.instagram.com/reel/DSLSnStAoCV/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-              </div>
-              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/reel/DSLSnStAoCV/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-            </div>
-
-            <div class="igItem" data-ig="https://www.instagram.com/p/DTi6ySzD_K-/">
-              <div class="igPreview">
-                <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DTi6ySzD_K-/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                <a class="igPreviewLink" href="https://www.instagram.com/p/DTi6ySzD_K-/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-              </div>
-              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/p/DTi6ySzD_K-/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-            </div>
-
-            <div class="igItem" data-ig="https://www.instagram.com/p/DTyYxSekgLJ/">
-              <div class="igPreview">
-                <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DTyYxSekgLJ/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                <a class="igPreviewLink" href="https://www.instagram.com/p/DTyYxSekgLJ/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-              </div>
-              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/p/DTyYxSekgLJ/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-            </div>
-
-            <div class="igItem" data-ig="https://www.instagram.com/p/DT_RU91AFU5/">
-              <div class="igPreview">
-                <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DT_RU91AFU5/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                <a class="igPreviewLink" href="https://www.instagram.com/p/DT_RU91AFU5/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-              </div>
-              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/p/DT_RU91AFU5/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-            </div>
-
-            <div class="igItem" data-ig="https://www.instagram.com/p/DUG8UxUkQqh/">
-              <div class="igPreview">
-                <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DUG8UxUkQqh/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                <a class="igPreviewLink" href="https://www.instagram.com/p/DUG8UxUkQqh/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-              </div>
-              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/p/DUG8UxUkQqh/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-            </div>
-
-            <div class="igItem" data-ig="https://www.instagram.com/p/DUJiGiniTnm/">
-              <div class="igPreview">
-                <iframe title="Previsualización Reel" src="https://www.instagram.com/p/DUJiGiniTnm/embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                <a class="igPreviewLink" href="https://www.instagram.com/p/DUJiGiniTnm/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-              </div>
-              <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="https://www.instagram.com/p/DUJiGiniTnm/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-            </div>
+        <div class="igEmbeds" aria-label="Publicaciones de Instagram de AgriCheck">
+          <div class="igEmbedItem">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DTQ5c7gDBnF/" data-instgrm-version="14"></blockquote>
           </div>
-
-          <button class="igNavBtn igNext" type="button" aria-label="Siguiente">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8.5 19.1 7.1 17.7 12.8 12 7.1 6.3l1.4-1.4L15.6 12z"/></svg>
-          </button>
+          <div class="igEmbedItem">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DTTgSQzEtRs/" data-instgrm-version="14"></blockquote>
+          </div>
+          <div class="igEmbedItem">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DS7yeHCDQkX/" data-instgrm-version="14"></blockquote>
+          </div>
+          <div class="igEmbedItem">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DSLSnStAoCV/" data-instgrm-version="14"></blockquote>
+          </div>
+          <div class="igEmbedItem">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DTi6ySzD_K-/" data-instgrm-version="14"></blockquote>
+          </div>
+          <div class="igEmbedItem">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DTyYxSekgLJ/" data-instgrm-version="14"></blockquote>
+          </div>
         </div>
 
         <div style="margin-top:16px">
@@ -1405,125 +1286,21 @@
     });
   })();
 
-  // ✅ Instagram: feed automático (con token) + fallback + carrousel auto
+  // ✅ Instagram embeds oficiales
   (function(){
-    const track = document.getElementById('igTrack');
-    if(!track) return;
+    const igSection = document.getElementById('instagram');
+    if(!igSection) return;
 
-    const igToken = (track.dataset.igToken || '').trim();
-    const igLimit = Number(track.dataset.igLimit || 8) || 8;
-
-    const createIgItem = (permalink) => {
-      const cleanUrl = permalink.endsWith('/') ? permalink.slice(0, -1) : permalink;
-      const embedUrl = `${cleanUrl}/embed`;
-      const wrapper = document.createElement('div');
-      wrapper.className = 'igItem';
-      wrapper.dataset.ig = permalink;
-      wrapper.innerHTML = `
-        <div class="igPreview">
-          <iframe title="Previsualización Reel" src="${embedUrl}" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-          <a class="igPreviewLink" href="${permalink}/" target="_blank" rel="noopener" aria-label="Abrir reel en Instagram"></a>
-        </div>
-        <div class="igFallback" aria-live="polite">No se pudo cargar la previsualización en este navegador. <a href="${permalink}/" target="_blank" rel="noopener">Abrir en Instagram</a>.</div>
-      `;
-      return wrapper;
-    };
-
-    const hydrateWithApi = async () => {
-      if(!igToken) return false;
-      const apiUrl = `https://graph.instagram.com/me/media?fields=id,permalink,media_type,thumbnail_url,media_url,caption&limit=${igLimit}&access_token=${encodeURIComponent(igToken)}`;
-      try{
-        const res = await fetch(apiUrl);
-        if(!res.ok) throw new Error('Respuesta no OK');
-        const data = await res.json();
-        if(!data || !Array.isArray(data.data)) throw new Error('Sin data válida');
-
-        const items = data.data
-          .filter((item) => item.permalink)
-          .map((item) => item.permalink)
-          .slice(0, igLimit)
-          .map(createIgItem);
-
-        if(items.length){
-          track.innerHTML = '';
-          items.forEach((node) => track.appendChild(node));
-          return true;
-        }
-      }catch(err){
-        console.warn('Instagram feed automático no disponible:', err);
-      }
-      return false;
-    };
-
-    const setupCarousel = () => {
-      const items = track.querySelectorAll('.igItem');
-      items.forEach((item) => {
-        const iframe = item.querySelector('iframe');
-        const fallback = item.querySelector('.igFallback');
-        if(!iframe || !fallback) return;
-
-        let loaded = false;
-
-        iframe.addEventListener('load', () => {
-          loaded = true;
-          fallback.style.display = 'none';
-        });
-
-        setTimeout(() => {
-          if(!loaded){
-            fallback.style.display = 'block';
-          }
-        }, 2200);
-      });
-
-      const prevBtn = document.querySelector('#instagram .igPrev');
-      const nextBtn = document.querySelector('#instagram .igNext');
-
-      const getStep = () => {
-        const first = track.querySelector('.igItem');
-        if(!first) return 320;
-        const rect = first.getBoundingClientRect();
-        const gap = 14;
-        return Math.max(260, rect.width + gap);
-      };
-
-      const scrollByStep = (dir) => {
-        const step = getStep();
-        track.scrollBy({ left: dir * step, behavior: 'smooth' });
-      };
-
-      prevBtn && prevBtn.addEventListener('click', () => scrollByStep(-1));
-      nextBtn && nextBtn.addEventListener('click', () => scrollByStep(1));
-
-      let timer = null;
-      const start = () => {
-        if(timer) return;
-        timer = setInterval(() => {
-          const step = getStep();
-          const max = track.scrollWidth - track.clientWidth;
-          const next = Math.min(max, track.scrollLeft + step);
-          if(track.scrollLeft >= max - 4){
-            track.scrollTo({ left: 0, behavior: 'smooth' });
-          }else{
-            track.scrollTo({ left: next, behavior: 'smooth' });
-          }
-        }, 4200);
-      };
-      const stop = () => {
-        if(timer){ clearInterval(timer); timer = null; }
-      };
-
-      start();
-      track.addEventListener('mouseenter', stop);
-      track.addEventListener('mouseleave', start);
-      track.addEventListener('focusin', stop);
-      track.addEventListener('focusout', start);
-      document.addEventListener('visibilitychange', () => {
-        if(document.hidden) stop(); else start();
-      });
-    };
-
-    hydrateWithApi().finally(setupCarousel);
+    if(!document.querySelector('script[data-instgrm-embed="true"]')){
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.instagram.com/embed.js';
+      script.setAttribute('data-instgrm-embed', 'true');
+      script.onload = () => window.instgrm?.Embeds?.process();
+      document.body.appendChild(script);
+    }else{
+      window.instgrm?.Embeds?.process();
+    }
   })();
 
   // ✅ Menú hamburguesa (mobile)
