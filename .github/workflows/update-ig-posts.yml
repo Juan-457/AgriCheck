@@ -21,6 +21,12 @@ jobs:
         with:
           node-version: 20
 
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
       - name: Refresh Instagram permalinks JSON
         run: node scripts/update-ig-posts.mjs
 

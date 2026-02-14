@@ -1,0 +1,12 @@
+{
+  "name": "agricheck",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static site tooling for AgriCheck",
+  "scripts": {
+    "update:ig-posts": "node scripts/update-ig-posts.mjs"
+  },
+  "dependencies": {
+    "playwright": "^1.51.0"
+  }
+}
