@@ -117,7 +117,8 @@
       background:#111;color:#fff;padding:10px 12px;border-radius:12px;
       font-size:13px;gap:10px;align-items:center
     }
-    .tooltip img{width:34px;height:34px;border-radius:50%;object-fit:cover;background:#333}
+    .tooltipImgs{display:flex;align-items:center;gap:6px}
+    .tooltipImgs img{width:34px;height:34px;border-radius:50%;object-fit:cover;background:#333;border:1px solid rgba(255,255,255,.55)}
     .pill{display:inline-block;background:#13263A;border:1px solid #223046;border-radius:999px;padding:6px 10px;font-size:12px;color:#C9D3DD}
     .panelSection + .panelSection{margin-top:14px}
     .sectionTitle{margin:12px 0 8px;font-size:13px;letter-spacing:.04em;color:#9FB0C1;text-transform:uppercase}
@@ -128,6 +129,7 @@
     .companyData a{color:#fff;text-decoration:underline}
     .contactCard{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:14px;background:#13263A;border:1px solid #223046;transition:background .15s ease}
     .contactCard:hover{background:#16314A}
+    .contactPhotos{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
     .contactCard img{width:62px !important;height:62px !important;border-radius:14px}
     .contactMain{display:flex;flex-direction:column;gap:2px;min-width:0}
     .contactMain strong{font-size:17px;line-height:1.2}
@@ -273,7 +275,7 @@
           <div id="mapHint" class="mapHint" role="status" aria-live="polite">Seleccioná una zona en el mapa de fondo para habilitar contacto directo con tu asesor.</div>
 
           <div id="tt" class="tooltip">
-            <img id="ttImg" alt="">
+            <div id="ttImgs" class="tooltipImgs"></div>
             <div>
               <div id="ttName" style="font-weight:700"></div>
               <div id="ttMeta" style="opacity:.85;font-size:12px"></div>
@@ -300,7 +302,7 @@
             <div id="sellerPanel" class="panelSection" hidden>
               <h2 id="pName" style="margin:10px 0 6px">Seleccioná una zona</h2>
               <div class="contactCard">
-                <img id="pImg" alt="">
+                <div id="pImgs" class="contactPhotos"></div>
                 <div class="contactMain">
                   <strong id="pMainName"></strong>
                   <span id="pMeta"></span>
@@ -342,18 +344,18 @@
       contacts:[{name:"Miguel Utrera", phone:"549372515563", email:"miguel.utrera@agrichecksrl.com"}]
     },
     "Evelyn Riveros y Daiana Gonzalez": {
-      fill:"rgba(245, 232, 255, 0.45)", hover:"rgba(235, 214, 253, 0.56)", stroke:"#c7a5ef", img:"Daiana González. RTV Cuyo.webp", meta:"RTV Cuyo", displayName:"Daiana González",
+      fill:"rgba(245, 232, 255, 0.45)", hover:"rgba(235, 214, 253, 0.56)", stroke:"#c7a5ef", img:"Daiana González. RTV Cuyo.webp", imgs:["Daiana González. RTV Cuyo.webp", "Diana.webp"], meta:"RTV Cuyo", displayName:"Daiana González",
       contacts:[
         {name:"Evelyn Riveros", phone:"5492616076080", email:"evelyn.riveros@agrichecksrl.com"},
         {name:"Daiana González", phone:"5492617648050", email:"daiana.gonzalez@agrichecksrl.com"}
       ]
     },
     "Andres Perez": {
-      fill:"rgba(255, 233, 236, 0.45)", hover:"rgba(254, 209, 216, 0.56)", stroke:"#f2a8b3", img:"Andres.jpg", meta:"Zona Nucleo",
+      fill:"rgba(255, 233, 236, 0.45)", hover:"rgba(254, 209, 216, 0.56)", stroke:"#f2a8b3", img:"Andres.jpg", meta:"RTV Buenos Aires",
       contacts:[{name:"Andrés Perez", phone:"5492494151210", email:"andres.perez@agrichecksrl.com"}]
     },
     "Victoria Vianna": {
-      fill:"rgba(255, 244, 224, 0.45)", hover:"rgba(255, 233, 196, 0.56)", stroke:"#f2c588", img:"Victoria Vianna.webp", meta:"Zona Andina",
+      fill:"rgba(255, 244, 224, 0.45)", hover:"rgba(255, 233, 196, 0.56)", stroke:"#f2c588", img:"Victoria Vianna.webp", meta:"RTV Oste de Valle R.N y Nqn",
       contacts:[{name:"Victoria Vianna", phone:"5492984308032", email:"victoria.vianna@agrichecksrl.com"}]
     },
     "Anibal Epullan": {
@@ -375,12 +377,12 @@
   );
 
   const tt = document.getElementById("tt");
-  const ttImg = document.getElementById("ttImg");
+  const ttImgs = document.getElementById("ttImgs");
   const ttName = document.getElementById("ttName");
   const ttMeta = document.getElementById("ttMeta");
 
   const pName = document.getElementById("pName");
-  const pImg = document.getElementById("pImg");
+  const pImgs = document.getElementById("pImgs");
   const pMeta = document.getElementById("pMeta");
   const pMainName = document.getElementById("pMainName");
   const pWa = document.getElementById("pWa");
@@ -433,6 +435,18 @@
 
   function getSeller(name){
     return sellers[name] || sellersByNormalizedName[normalizeZoneName(name)];
+  }
+
+
+  function renderPhotos(container, imageList, altText){
+    if(!container) return;
+    container.innerHTML = "";
+    (imageList || []).filter(Boolean).forEach((src) => {
+      const image = document.createElement("img");
+      image.src = src;
+      image.alt = altText || "Foto";
+      container.appendChild(image);
+    });
   }
 
   function formatPhone(phone){
@@ -488,7 +502,8 @@
     defaultPanel.hidden = true;
     sellerPanel.hidden = false;
     pName.textContent = displayName;
-    pImg.src = s.img;
+    const zoneImages = s.imgs || [s.img];
+    renderPhotos(pImgs, zoneImages, displayName);
     pMainName.textContent = (s.contacts && s.contacts[0]?.name) || displayName;
     pMeta.textContent = s.meta || "";
     salesForce.innerHTML = "";
@@ -647,7 +662,8 @@
         z.style.opacity = "1";
         ttName.textContent = s.displayName || name;
         ttMeta.textContent = s?.meta ?? "Sin datos";
-        ttImg.src = s?.img ?? "";
+        const zoneImages = (s?.imgs && s.imgs.length) ? s.imgs : [s?.img];
+        renderPhotos(ttImgs, zoneImages, s.displayName || name);
         tt.style.display = "flex";
         moveTooltip(e);
       });
