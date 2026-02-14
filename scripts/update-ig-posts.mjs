@@ -5,9 +5,9 @@ import { chromium } from 'playwright';
 const PROFILE_URL = 'https://www.instagram.com/agricheck.srl/';
 const OUTPUT_PATH = 'assets/ig-posts.json';
 const LIMIT = Number.parseInt(process.env.IG_POSTS_LIMIT ?? '12', 10);
-const TIMEOUT_MS = 30_000;
+const TIMEOUT_MS = 60_000;
 const USER_AGENT =
-  'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36';
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36';
 
 const normalizePermalink = (href) => {
   if (typeof href !== 'string') return null;
@@ -41,21 +41,31 @@ const extractPermalinksWithPlaywright = async () => {
     const page = await context.newPage();
 
     await page.goto(PROFILE_URL, {
-      waitUntil: 'domcontentloaded',
+      waitUntil: 'networkidle',
       timeout: TIMEOUT_MS
     });
 
-    await page.waitForSelector('a[href*="/p/"], a[href*="/reel/"]', {
-      timeout: TIMEOUT_MS
+    await page.waitForTimeout(3000);
+    await page.mouse.wheel(0, 2000);
+    await page.waitForTimeout(2000);
+    await page.mouse.wheel(0, 2000);
+    await page.waitForTimeout(2000);
+
+    const links = await page.evaluate(() => {
+      return Array.from(document.querySelectorAll('a'))
+        .map((a) => a.getAttribute('href'))
+        .filter((href) => href && (href.includes('/p/') || href.includes('/reel/')));
     });
 
-    const hrefs = await page.$$eval('a[href*="/p/"], a[href*="/reel/"]', (anchors) =>
-      anchors
-        .map((anchor) => anchor.getAttribute('href'))
-        .filter((href) => Boolean(href))
+    const permalinks = dedupePreserveOrder(
+      links.map((href) => normalizePermalink(href)).filter(Boolean)
     );
 
-    return dedupePreserveOrder(hrefs.map((href) => normalizePermalink(href)).filter(Boolean));
+    if (permalinks.length === 0) {
+      throw new Error('Instagram grid did not load: no /p/ or /reel/ links found after scroll.');
+    }
+
+    return permalinks;
   } finally {
     await browser.close();
   }
