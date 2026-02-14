@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 import { chromium } from 'playwright';
 
 const INSTAGRAM_HOME_URL = 'https://www.instagram.com/';
@@ -7,6 +7,7 @@ const PROFILE_URL = 'https://www.instagram.com/agricheck.srl/?hl=en';
 const USERNAME = 'agricheck.srl';
 const OUTPUT_PATH = 'assets/ig-posts.json';
 const LIMIT = Number.parseInt(process.env.IG_POSTS_LIMIT ?? '12', 10);
+const STRICT_MODE = ['1', 'true', 'yes'].includes((process.env.IG_POSTS_STRICT ?? '').toLowerCase());
 const TIMEOUT_MS = 60_000;
 const USER_AGENT =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36';
@@ -16,7 +17,6 @@ const DEBUG_HTML_MAX_CHARS = 200_000;
 const POST_HREF_SELECTOR = 'a[href*="/p/"], a[href*="/reel/"], a[href*="instagram.com/p/"], a[href*="instagram.com/reel/"]';
 const IG_APP_ID = '936619743392459';
 const WEB_PROFILE_API_URL = `https://i.instagram.com/api/v1/users/web_profile_info/?username=${encodeURIComponent(USERNAME)}`;
-
 const randomBetween = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 const humanDelay = async (page, minMs, maxMs) => {
   await page.waitForTimeout(randomBetween(minMs, maxMs));
@@ -57,6 +57,11 @@ const dedupePreserveOrder = (items) => {
 
   return unique;
 };
+
+const BASE_PERMALINKS = dedupePreserveOrder([
+  'https://www.instagram.com/p/DUrI-shEs80/?img_index=1',
+  'https://www.instagram.com/p/DUJiGiniTnm/'
+].map((href) => normalizePermalink(href)).filter(Boolean));
 
 const extractPermalinksFromText = (text) => {
   if (typeof text !== 'string' || text.length === 0) return [];
@@ -272,14 +277,47 @@ const extractPermalinksWithPlaywright = async () => {
 };
 
 const run = async () => {
-  const permalinks = await extractPermalinks();
+  try {
+    const permalinks = await extractPermalinks();
 
-  if (permalinks.length === 0) {
-    throw new Error('No se extrajeron enlaces /p/ o /reel/ del perfil de Instagram usando Playwright.');
+    if (permalinks.length === 0) {
+      throw new Error('No se extrajeron enlaces /p/ o /reel/ del perfil de Instagram usando Playwright.');
+    }
+
+    await writeFile(OUTPUT_PATH, `${JSON.stringify(permalinks, null, 2)}\n`, 'utf8');
+    console.log(`Actualizado ${OUTPUT_PATH} con ${permalinks.length} publicaciones.`);
+  } catch (error) {
+    if (STRICT_MODE) {
+      throw error;
+    }
+
+    const existing = await readFile(OUTPUT_PATH, 'utf8').catch(() => null);
+
+    if (existing) {
+      try {
+        const parsed = JSON.parse(existing);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          console.warn(
+            `No se pudo refrescar Instagram (${error.message}). Se conserva ${OUTPUT_PATH} con ${parsed.length} enlaces previos. ` +
+              'Define IG_POSTS_STRICT=true para forzar fallo del job.'
+          );
+          return;
+        }
+      } catch {
+        // If existing file is corrupted, continue and try base permalinks below.
+      }
+    }
+
+    if (BASE_PERMALINKS.length > 0) {
+      await writeFile(OUTPUT_PATH, `${JSON.stringify(BASE_PERMALINKS, null, 2)}\n`, 'utf8');
+      console.warn(
+        `No se pudo refrescar Instagram (${error.message}). Se generó ${OUTPUT_PATH} con ${BASE_PERMALINKS.length} enlaces base.`
+      );
+      return;
+    }
+
+    throw error;
   }
-
-  await writeFile(OUTPUT_PATH, `${JSON.stringify(permalinks, null, 2)}\n`, 'utf8');
-  console.log(`Actualizado ${OUTPUT_PATH} con ${permalinks.length} publicaciones.`);
 };
 
 run().catch((error) => {
