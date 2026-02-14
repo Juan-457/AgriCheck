@@ -28,8 +28,6 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Refresh Instagram permalinks JSON
-        env:
-          IG_POSTS_STRICT: "true"
         run: node scripts/update-ig-posts.mjs
 
       - name: Commit and push if changed
