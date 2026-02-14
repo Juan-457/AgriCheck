@@ -8,9 +8,7 @@ const USERNAME = 'agricheck.srl';
 const OUTPUT_PATH = 'assets/ig-posts.json';
 const LIMIT = Number.parseInt(process.env.IG_POSTS_LIMIT ?? '12', 10);
 const explicitStrict = (process.env.IG_POSTS_STRICT ?? '').toLowerCase();
-const isCiEnvironment = ['1', 'true', 'yes'].includes((process.env.CI ?? '').toLowerCase()) ||
-  ['1', 'true', 'yes'].includes((process.env.GITHUB_ACTIONS ?? '').toLowerCase());
-const STRICT_MODE = ['1', 'true', 'yes'].includes(explicitStrict) || (explicitStrict === '' && isCiEnvironment);
+const STRICT_MODE = ['1', 'true', 'yes'].includes(explicitStrict);
 const TIMEOUT_MS = 60_000;
 const USER_AGENT =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36';
