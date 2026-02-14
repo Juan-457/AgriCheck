@@ -1000,26 +1000,7 @@
           Sumate a la comunidad: mirá el día a día en el campo, lanzamientos y videos cortos con tips prácticos.
         </p>
 
-        <div class="igEmbeds" aria-label="Publicaciones de Instagram de AgriCheck">
-          <div class="igEmbedItem">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DTQ5c7gDBnF/" data-instgrm-version="14"></blockquote>
-          </div>
-          <div class="igEmbedItem">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DTTgSQzEtRs/" data-instgrm-version="14"></blockquote>
-          </div>
-          <div class="igEmbedItem">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DS7yeHCDQkX/" data-instgrm-version="14"></blockquote>
-          </div>
-          <div class="igEmbedItem">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DSLSnStAoCV/" data-instgrm-version="14"></blockquote>
-          </div>
-          <div class="igEmbedItem">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DTi6ySzD_K-/" data-instgrm-version="14"></blockquote>
-          </div>
-          <div class="igEmbedItem">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DTyYxSekgLJ/" data-instgrm-version="14"></blockquote>
-          </div>
-        </div>
+        <div class="igEmbeds" aria-label="Publicaciones de Instagram de AgriCheck"></div>
 
         <div style="margin-top:16px">
           <a class="btn btnPrimary" href="https://www.instagram.com/agricheck.srl/" target="_blank" rel="noopener" aria-label="Ver Instagram de AgriCheck">
@@ -1287,19 +1268,66 @@
   })();
 
   // ✅ Instagram embeds oficiales
-  (function(){
+  (async function(){
     const igSection = document.getElementById('instagram');
     if(!igSection) return;
 
-    if(!document.querySelector('script[data-instgrm-embed="true"]')){
+    const igContainer = igSection.querySelector('.igEmbeds');
+    if(!igContainer) return;
+
+    const ensureInstagramScript = () => new Promise((resolve) => {
+      const existingScript = document.querySelector('script[data-instgrm-embed="true"]');
+      if(existingScript){
+        if(window.instgrm?.Embeds){
+          resolve();
+          return;
+        }
+        existingScript.addEventListener('load', resolve, { once: true });
+        return;
+      }
+
       const script = document.createElement('script');
       script.async = true;
       script.src = 'https://www.instagram.com/embed.js';
       script.setAttribute('data-instgrm-embed', 'true');
-      script.onload = () => window.instgrm?.Embeds?.process();
+      script.onload = resolve;
       document.body.appendChild(script);
-    }else{
+    });
+
+    const buildEmbedItem = (permalink) => {
+      const item = document.createElement('div');
+      item.className = 'igEmbedItem';
+
+      const blockquote = document.createElement('blockquote');
+      blockquote.className = 'instagram-media';
+      blockquote.setAttribute('data-instgrm-permalink', permalink);
+      blockquote.setAttribute('data-instgrm-version', '14');
+
+      item.appendChild(blockquote);
+      return item;
+    };
+
+    try{
+      const response = await fetch('/assets/ig-posts.json', { cache: 'no-store' });
+      if(!response.ok) throw new Error(`No se pudo cargar ig-posts.json (${response.status})`);
+
+      const permalinks = await response.json();
+      if(!Array.isArray(permalinks)) throw new Error('Formato inválido de ig-posts.json');
+
+      const validPermalinks = permalinks
+        .filter((url) => typeof url === 'string' && /^https:\/\/(www\.)?instagram\.com\/(p|reel)\/[A-Za-z0-9_-]+\/?$/i.test(url));
+
+      igContainer.innerHTML = '';
+      validPermalinks.forEach((permalink) => {
+        igContainer.appendChild(buildEmbedItem(permalink));
+      });
+
+      if(validPermalinks.length === 0) return;
+
+      await ensureInstagramScript();
       window.instgrm?.Embeds?.process();
+    }catch(error){
+      console.warn('No se pudieron actualizar los embeds de Instagram:', error);
     }
   })();
 
