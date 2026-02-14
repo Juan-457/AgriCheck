@@ -12,6 +12,7 @@ const USER_AGENT =
 const DEBUG_SCREENSHOT_PATH = 'debug-grid.png';
 const DEBUG_HTML_PATH = 'debug-grid.html';
 const DEBUG_HTML_MAX_CHARS = 200_000;
+const POST_HREF_SELECTOR = 'a[href*="/p/"], a[href*="/reel/"], a[href*="instagram.com/p/"], a[href*="instagram.com/reel/"]';
 
 const randomBetween = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 const humanDelay = async (page, minMs, maxMs) => {
@@ -20,10 +21,21 @@ const humanDelay = async (page, minMs, maxMs) => {
 
 const normalizePermalink = (href) => {
   if (typeof href !== 'string') return null;
-  const trimmed = href.trim();
-  const match = trimmed.match(/^\/(p|reel)\/([A-Za-z0-9_-]+)\/?/i);
-  if (!match) return null;
-  return `https://www.instagram.com/${match[1].toLowerCase()}/${match[2]}/`;
+
+  const trimmed = href.trim().replaceAll('\\u002F', '/');
+  if (!trimmed) return null;
+
+  const absoluteMatch = trimmed.match(/^https?:\/\/(?:www\.)?instagram\.com\/(p|reel)\/([A-Za-z0-9_-]+)\/?/i);
+  if (absoluteMatch) {
+    return `https://www.instagram.com/${absoluteMatch[1].toLowerCase()}/${absoluteMatch[2]}/`;
+  }
+
+  const relativeMatch = trimmed.match(/^\/(p|reel)\/([A-Za-z0-9_-]+)\/?/i);
+  if (relativeMatch) {
+    return `https://www.instagram.com/${relativeMatch[1].toLowerCase()}/${relativeMatch[2]}/`;
+  }
+
+  return null;
 };
 
 const dedupePreserveOrder = (items) => {
@@ -41,6 +53,27 @@ const dedupePreserveOrder = (items) => {
   }
 
   return unique;
+};
+
+const extractPermalinksFromText = (text) => {
+  if (typeof text !== 'string' || text.length === 0) return [];
+
+  const candidates = [];
+  const patterns = [
+    /https?:\/\/(?:www\.)?instagram\.com\/(?:p|reel)\/[A-Za-z0-9_-]+\/?/gi,
+    /\/(?:p|reel)\/[A-Za-z0-9_-]+\/?/gi,
+    /\\u002F(?:p|reel)\\u002F[A-Za-z0-9_-]+(?:\\u002F)?/gi
+  ];
+
+  for (const pattern of patterns) {
+    for (const match of text.matchAll(pattern)) {
+      const raw = match?.[0];
+      if (!raw) continue;
+      candidates.push(raw.replaceAll('\\u002F', '/'));
+    }
+  }
+
+  return dedupePreserveOrder(candidates.map((href) => normalizePermalink(href)).filter(Boolean));
 };
 
 const extractPermalinksWithPlaywright = async () => {
@@ -97,10 +130,19 @@ const extractPermalinksWithPlaywright = async () => {
 
     await humanDelay(page, 1000, 1800);
 
+    await page.waitForSelector(POST_HREF_SELECTOR, { timeout: 12_000 }).catch(() => null);
+
     const links = await page.evaluate(() => {
       return Array.from(document.querySelectorAll('a[href]'))
         .map((a) => a.getAttribute('href'))
-        .filter((href) => href && (href.includes('/p/') || href.includes('/reel/')));
+        .filter(
+          (href) =>
+            href &&
+            (href.includes('/p/') ||
+              href.includes('/reel/') ||
+              href.includes('instagram.com/p/') ||
+              href.includes('instagram.com/reel/'))
+        );
     });
 
     const permalinks = dedupePreserveOrder(
@@ -109,10 +151,37 @@ const extractPermalinksWithPlaywright = async () => {
         .filter(Boolean)
     );
 
+    if (permalinks.length > 0) {
+      return permalinks;
+    }
+
+    const htmlContent = await page.content();
+    const htmlPermalinks = extractPermalinksFromText(htmlContent);
+
+    if (htmlPermalinks.length > 0) {
+      return htmlPermalinks;
+    }
+
+    const currentUrl = page.url().toLowerCase();
+    if (!currentUrl.includes('/reels/')) {
+      await page.goto(`${PROFILE_URL.replace(/\/?\?hl=en$/, '')}reels/`, {
+        waitUntil: 'domcontentloaded',
+        timeout: TIMEOUT_MS
+      });
+      await humanDelay(page, 1200, 2200);
+      await page.waitForSelector(POST_HREF_SELECTOR, { timeout: 10_000 }).catch(() => null);
+
+      const reelsHtml = await page.content();
+      const reelsPermalinks = extractPermalinksFromText(reelsHtml);
+      if (reelsPermalinks.length > 0) {
+        return reelsPermalinks;
+      }
+    }
+
     if (permalinks.length === 0) {
       await page.screenshot({ path: DEBUG_SCREENSHOT_PATH, fullPage: true });
-      const htmlContent = await page.content();
-      const truncatedHtml = htmlContent.slice(0, DEBUG_HTML_MAX_CHARS);
+      const latestHtml = await page.content();
+      const truncatedHtml = latestHtml.slice(0, DEBUG_HTML_MAX_CHARS);
       await writeFile(DEBUG_HTML_PATH, truncatedHtml, 'utf8');
       throw new Error(
         `Grid not visible - no /p/ or /reel/ links found. Saved debug artifacts: ${DEBUG_SCREENSHOT_PATH}, ${DEBUG_HTML_PATH}`
