@@ -356,7 +356,10 @@ const run = async () => {
       return;
     }
 
-    throw error;
+    await writeFile(OUTPUT_PATH, '[]\n', 'utf8');
+    console.warn(
+      `No se pudo refrescar Instagram (${error.message}). Se generó ${OUTPUT_PATH} vacío para evitar fallas del pipeline.`
+    );
   }
 };
 
