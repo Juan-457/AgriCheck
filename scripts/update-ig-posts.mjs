@@ -4,6 +4,7 @@ import { chromium } from 'playwright';
 
 const INSTAGRAM_HOME_URL = 'https://www.instagram.com/';
 const PROFILE_URL = 'https://www.instagram.com/agricheck.srl/?hl=en';
+const USERNAME = 'agricheck.srl';
 const OUTPUT_PATH = 'assets/ig-posts.json';
 const LIMIT = Number.parseInt(process.env.IG_POSTS_LIMIT ?? '12', 10);
 const TIMEOUT_MS = 60_000;
@@ -13,6 +14,8 @@ const DEBUG_SCREENSHOT_PATH = 'debug-grid.png';
 const DEBUG_HTML_PATH = 'debug-grid.html';
 const DEBUG_HTML_MAX_CHARS = 200_000;
 const POST_HREF_SELECTOR = 'a[href*="/p/"], a[href*="/reel/"], a[href*="instagram.com/p/"], a[href*="instagram.com/reel/"]';
+const IG_APP_ID = '936619743392459';
+const WEB_PROFILE_API_URL = `https://i.instagram.com/api/v1/users/web_profile_info/?username=${encodeURIComponent(USERNAME)}`;
 
 const randomBetween = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 const humanDelay = async (page, minMs, maxMs) => {
@@ -74,6 +77,80 @@ const extractPermalinksFromText = (text) => {
   }
 
   return dedupePreserveOrder(candidates.map((href) => normalizePermalink(href)).filter(Boolean));
+};
+
+const extractPermalinksFromApiPayload = (payload) => {
+  if (!payload || typeof payload !== 'object') return [];
+
+  const candidateShortcodes = [
+    payload?.data?.user?.edge_owner_to_timeline_media?.edges,
+    payload?.data?.user?.edge_felix_video_timeline?.edges,
+    payload?.graphql?.user?.edge_owner_to_timeline_media?.edges,
+    payload?.items
+  ];
+
+  const shortcodes = [];
+  for (const nodes of candidateShortcodes) {
+    if (!Array.isArray(nodes)) continue;
+
+    for (const item of nodes) {
+      const node = item?.node ?? item?.media ?? item;
+      const shortcode = node?.shortcode;
+      if (typeof shortcode === 'string' && shortcode.length > 0) {
+        shortcodes.push(`https://www.instagram.com/p/${shortcode}/`);
+      }
+
+      const permalink = normalizePermalink(node?.permalink ?? node?.code ?? node?.url);
+      if (permalink) {
+        shortcodes.push(permalink);
+      }
+    }
+  }
+
+  return dedupePreserveOrder(shortcodes.map((href) => normalizePermalink(href)).filter(Boolean));
+};
+
+const extractPermalinksFromWebApi = async () => {
+  const response = await fetch(WEB_PROFILE_API_URL, {
+    headers: {
+      Accept: 'application/json',
+      Referer: PROFILE_URL,
+      'User-Agent': USER_AGENT,
+      'X-IG-App-ID': IG_APP_ID,
+      'X-Requested-With': 'XMLHttpRequest'
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error(`Instagram API responded with ${response.status}`);
+  }
+
+  const payload = await response.json();
+  return extractPermalinksFromApiPayload(payload);
+};
+
+const extractPermalinks = async () => {
+  const strategies = [
+    { name: 'playwright', run: extractPermalinksWithPlaywright },
+    { name: 'web-api', run: extractPermalinksFromWebApi }
+  ];
+
+  const errors = [];
+
+  for (const strategy of strategies) {
+    try {
+      const permalinks = await strategy.run();
+      if (permalinks.length > 0) {
+        console.log(`Permalinks obtained using ${strategy.name}.`);
+        return permalinks;
+      }
+      errors.push(`${strategy.name}: returned 0 permalinks`);
+    } catch (error) {
+      errors.push(`${strategy.name}: ${error.message}`);
+    }
+  }
+
+  throw new Error(`No se pudieron extraer permalinks de Instagram. Intentos: ${errors.join(' | ')}`);
 };
 
 const extractPermalinksWithPlaywright = async () => {
@@ -195,7 +272,7 @@ const extractPermalinksWithPlaywright = async () => {
 };
 
 const run = async () => {
-  const permalinks = await extractPermalinksWithPlaywright();
+  const permalinks = await extractPermalinks();
 
   if (permalinks.length === 0) {
     throw new Error('No se extrajeron enlaces /p/ o /reel/ del perfil de Instagram usando Playwright.');
