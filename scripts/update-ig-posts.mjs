@@ -2,12 +2,21 @@
 import { writeFile } from 'node:fs/promises';
 import { chromium } from 'playwright';
 
+const INSTAGRAM_HOME_URL = 'https://www.instagram.com/';
 const PROFILE_URL = 'https://www.instagram.com/agricheck.srl/?hl=en';
 const OUTPUT_PATH = 'assets/ig-posts.json';
 const LIMIT = Number.parseInt(process.env.IG_POSTS_LIMIT ?? '12', 10);
 const TIMEOUT_MS = 60_000;
 const USER_AGENT =
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36';
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36';
+const DEBUG_SCREENSHOT_PATH = 'debug-grid.png';
+const DEBUG_HTML_PATH = 'debug-grid.html';
+const DEBUG_HTML_MAX_CHARS = 200_000;
+
+const randomBetween = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+const humanDelay = async (page, minMs, maxMs) => {
+  await page.waitForTimeout(randomBetween(minMs, maxMs));
+};
 
 const normalizePermalink = (href) => {
   if (typeof href !== 'string') return null;
@@ -35,30 +44,58 @@ const dedupePreserveOrder = (items) => {
 };
 
 const extractPermalinksWithPlaywright = async () => {
-  const browser = await chromium.launch({
-    headless: true,
-    args: [
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
-      '--disable-blink-features=AutomationControlled'
-    ]
-  });
+  let browser;
 
   try {
-    const context = await browser.newContext({ userAgent: USER_AGENT });
+    browser = await chromium.launch({
+      headless: false,
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-blink-features=AutomationControlled'
+      ]
+    });
+  } catch {
+    browser = await chromium.launch({
+      headless: true,
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-blink-features=AutomationControlled'
+      ]
+    });
+  }
+
+  try {
+    const context = await browser.newContext({
+      locale: 'en-US',
+      timezoneId: 'America/New_York',
+      viewport: { width: 1366, height: 768 },
+      userAgent: USER_AGENT
+    });
     const page = await context.newPage();
+
+    await page.goto(INSTAGRAM_HOME_URL, {
+      waitUntil: 'domcontentloaded',
+      timeout: TIMEOUT_MS
+    });
+
+    await humanDelay(page, 3000, 5000);
 
     await page.goto(PROFILE_URL, {
       waitUntil: 'domcontentloaded',
       timeout: TIMEOUT_MS
     });
 
-    await page.waitForTimeout(4000);
+    await humanDelay(page, 1500, 3000);
 
-    for (let i = 0; i < 5; i += 1) {
-      await page.mouse.wheel(0, 1500);
-      await page.waitForTimeout(1500);
+    const scrollCount = randomBetween(8, 10);
+    for (let i = 0; i < scrollCount; i += 1) {
+      await page.mouse.wheel(0, randomBetween(700, 1200));
+      await humanDelay(page, 700, 1400);
     }
+
+    await humanDelay(page, 1000, 1800);
 
     const links = await page.evaluate(() => {
       return Array.from(document.querySelectorAll('a[href]'))
@@ -73,8 +110,13 @@ const extractPermalinksWithPlaywright = async () => {
     );
 
     if (permalinks.length === 0) {
-      await page.screenshot({ path: 'debug-grid.png', fullPage: true });
-      throw new Error('Grid not visible – likely blocked by Instagram');
+      await page.screenshot({ path: DEBUG_SCREENSHOT_PATH, fullPage: true });
+      const htmlContent = await page.content();
+      const truncatedHtml = htmlContent.slice(0, DEBUG_HTML_MAX_CHARS);
+      await writeFile(DEBUG_HTML_PATH, truncatedHtml, 'utf8');
+      throw new Error(
+        `Grid not visible - no /p/ or /reel/ links found. Saved debug artifacts: ${DEBUG_SCREENSHOT_PATH}, ${DEBUG_HTML_PATH}`
+      );
     }
 
     return permalinks;
