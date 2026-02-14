@@ -2,7 +2,7 @@
 import { writeFile } from 'node:fs/promises';
 import { chromium } from 'playwright';
 
-const PROFILE_URL = 'https://www.instagram.com/agricheck.srl/';
+const PROFILE_URL = 'https://www.instagram.com/agricheck.srl/?hl=en';
 const OUTPUT_PATH = 'assets/ig-posts.json';
 const LIMIT = Number.parseInt(process.env.IG_POSTS_LIMIT ?? '12', 10);
 const TIMEOUT_MS = 60_000;
@@ -11,7 +11,8 @@ const USER_AGENT =
 
 const normalizePermalink = (href) => {
   if (typeof href !== 'string') return null;
-  const match = href.match(/^\/(p|reel)\/([A-Za-z0-9_-]+)\/?/i);
+  const trimmed = href.trim();
+  const match = trimmed.match(/^\/(p|reel)\/([A-Za-z0-9_-]+)\/?/i);
   if (!match) return null;
   return `https://www.instagram.com/${match[1].toLowerCase()}/${match[2]}/`;
 };
@@ -34,35 +35,46 @@ const dedupePreserveOrder = (items) => {
 };
 
 const extractPermalinksWithPlaywright = async () => {
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({
+    headless: true,
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-blink-features=AutomationControlled'
+    ]
+  });
 
   try {
     const context = await browser.newContext({ userAgent: USER_AGENT });
     const page = await context.newPage();
 
     await page.goto(PROFILE_URL, {
-      waitUntil: 'networkidle',
+      waitUntil: 'domcontentloaded',
       timeout: TIMEOUT_MS
     });
 
-    await page.waitForTimeout(3000);
-    await page.mouse.wheel(0, 2000);
-    await page.waitForTimeout(2000);
-    await page.mouse.wheel(0, 2000);
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(4000);
+
+    for (let i = 0; i < 5; i += 1) {
+      await page.mouse.wheel(0, 1500);
+      await page.waitForTimeout(1500);
+    }
 
     const links = await page.evaluate(() => {
-      return Array.from(document.querySelectorAll('a'))
+      return Array.from(document.querySelectorAll('a[href]'))
         .map((a) => a.getAttribute('href'))
         .filter((href) => href && (href.includes('/p/') || href.includes('/reel/')));
     });
 
     const permalinks = dedupePreserveOrder(
-      links.map((href) => normalizePermalink(href)).filter(Boolean)
+      links
+        .map((href) => normalizePermalink(href))
+        .filter(Boolean)
     );
 
     if (permalinks.length === 0) {
-      throw new Error('Instagram grid did not load: no /p/ or /reel/ links found after scroll.');
+      await page.screenshot({ path: 'debug-grid.png', fullPage: true });
+      throw new Error('Grid not visible – likely blocked by Instagram');
     }
 
     return permalinks;
