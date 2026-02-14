@@ -17,10 +17,13 @@ const DEBUG_HTML_MAX_CHARS = 200_000;
 const POST_HREF_SELECTOR = 'a[href*="/p/"], a[href*="/reel/"], a[href*="instagram.com/p/"], a[href*="instagram.com/reel/"]';
 const IG_APP_ID = '936619743392459';
 const WEB_PROFILE_API_URL = `https://i.instagram.com/api/v1/users/web_profile_info/?username=${encodeURIComponent(USERNAME)}`;
+const STRATEGY_MAX_ATTEMPTS = Math.max(1, Number.parseInt(process.env.IG_STRATEGY_MAX_ATTEMPTS ?? '3', 10));
+const RETRY_BASE_MS = Math.max(500, Number.parseInt(process.env.IG_RETRY_BASE_MS ?? '2000', 10));
 const randomBetween = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 const humanDelay = async (page, minMs, maxMs) => {
   await page.waitForTimeout(randomBetween(minMs, maxMs));
 };
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const normalizePermalink = (href) => {
   if (typeof href !== 'string') return null;
@@ -142,16 +145,52 @@ const extractPermalinks = async () => {
 
   const errors = [];
 
+  const isRetryableError = (error) => {
+    const message = String(error?.message ?? '').toLowerCase();
+    return (
+      message.includes('429') ||
+      message.includes('timed out') ||
+      message.includes('timeout') ||
+      message.includes('econnreset') ||
+      message.includes('enotfound') ||
+      message.includes('network')
+    );
+  };
+
   for (const strategy of strategies) {
-    try {
-      const permalinks = await strategy.run();
-      if (permalinks.length > 0) {
-        console.log(`Permalinks obtained using ${strategy.name}.`);
-        return permalinks;
+    for (let attempt = 1; attempt <= STRATEGY_MAX_ATTEMPTS; attempt += 1) {
+      try {
+        const permalinks = await strategy.run();
+        if (permalinks.length > 0) {
+          console.log(`Permalinks obtained using ${strategy.name} (attempt ${attempt}/${STRATEGY_MAX_ATTEMPTS}).`);
+          return permalinks;
+        }
+
+        const emptyError = new Error('returned 0 permalinks');
+        if (attempt < STRATEGY_MAX_ATTEMPTS) {
+          const waitMs = RETRY_BASE_MS * attempt;
+          console.warn(
+            `${strategy.name}: intento ${attempt}/${STRATEGY_MAX_ATTEMPTS} sin resultados. Reintento en ${waitMs} ms.`
+          );
+          await sleep(waitMs);
+          continue;
+        }
+
+        errors.push(`${strategy.name}: ${emptyError.message}`);
+        break;
+      } catch (error) {
+        if (attempt < STRATEGY_MAX_ATTEMPTS && isRetryableError(error)) {
+          const waitMs = RETRY_BASE_MS * attempt;
+          console.warn(
+            `${strategy.name}: intento ${attempt}/${STRATEGY_MAX_ATTEMPTS} falló (${error.message}). Reintento en ${waitMs} ms.`
+          );
+          await sleep(waitMs);
+          continue;
+        }
+
+        errors.push(`${strategy.name}: ${error.message}`);
+        break;
       }
-      errors.push(`${strategy.name}: returned 0 permalinks`);
-    } catch (error) {
-      errors.push(`${strategy.name}: ${error.message}`);
     }
   }
 

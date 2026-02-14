@@ -671,6 +671,26 @@
       width:100% !important;
       max-width:100% !important;
     }
+    .igFallbackMsg{
+      margin: 12px auto 0;
+      max-width: 760px;
+      color: rgba(15,23,42,.78);
+      font-size: 14px;
+      text-align:center;
+    }
+    .igFallbackLink{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:100%;
+      min-height:68px;
+      border-radius:14px;
+      font-weight:900;
+      color: rgba(15,23,42,.9);
+      background: rgba(255,255,255,.78);
+      border:1px solid rgba(15,23,42,.12);
+      padding: 10px 12px;
+    }
 
     /* Contacto */
     .contactGrid{
@@ -1001,6 +1021,7 @@
         </p>
 
         <div class="igEmbeds" aria-label="Publicaciones de Instagram de AgriCheck"></div>
+        <p class="igFallbackMsg" hidden></p>
 
         <div style="margin-top:16px">
           <a class="btn btnPrimary" href="https://www.instagram.com/agricheck.srl/" target="_blank" rel="noopener" aria-label="Ver Instagram de AgriCheck">
@@ -1273,6 +1294,7 @@
     if(!igSection) return;
 
     const igContainer = igSection.querySelector('.igEmbeds');
+    const igFallbackMsg = igSection.querySelector('.igFallbackMsg');
     if(!igContainer) return;
 
     const ensureInstagramScript = () => new Promise((resolve) => {
@@ -1307,8 +1329,36 @@
       return item;
     };
 
+    const buildFallbackItem = (permalink) => {
+      const item = document.createElement('div');
+      item.className = 'igEmbedItem';
+
+      const link = document.createElement('a');
+      link.className = 'igFallbackLink';
+      link.href = permalink;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.textContent = 'Ver publicación en Instagram';
+      link.setAttribute('aria-label', `Abrir publicación de Instagram: ${permalink}`);
+
+      item.appendChild(link);
+      return item;
+    };
+
+    const renderFallback = (permalinks, message) => {
+      igContainer.innerHTML = '';
+      permalinks.forEach((permalink) => {
+        igContainer.appendChild(buildFallbackItem(permalink));
+      });
+
+      if(igFallbackMsg){
+        igFallbackMsg.hidden = !message;
+        igFallbackMsg.textContent = message ?? '';
+      }
+    };
+
     try{
-      const response = await fetch('/assets/ig-posts.json', { cache: 'no-store' });
+      const response = await fetch(new URL('assets/ig-posts.json', document.baseURI), { cache: 'no-store' });
       if(!response.ok) throw new Error(`No se pudo cargar ig-posts.json (${response.status})`);
 
       const permalinks = await response.json();
@@ -1317,17 +1367,28 @@
       const validPermalinks = permalinks
         .filter((url) => typeof url === 'string' && /^https:\/\/(www\.)?instagram\.com\/(p|reel)\/[A-Za-z0-9_-]+\/?$/i.test(url));
 
+      if(validPermalinks.length === 0){
+        renderFallback([], 'Todavía no hay publicaciones disponibles para mostrar.');
+        return;
+      }
+
       igContainer.innerHTML = '';
       validPermalinks.forEach((permalink) => {
         igContainer.appendChild(buildEmbedItem(permalink));
       });
 
-      if(validPermalinks.length === 0) return;
+      if(igFallbackMsg){
+        igFallbackMsg.hidden = true;
+        igFallbackMsg.textContent = '';
+      }
 
       await ensureInstagramScript();
       window.instgrm?.Embeds?.process();
     }catch(error){
       console.warn('No se pudieron actualizar los embeds de Instagram:', error);
+      renderFallback([
+        'https://www.instagram.com/agricheck.srl/'
+      ], 'No se pudieron cargar los embeds ahora. Podés abrir Instagram desde este enlace.');
     }
   })();
 
