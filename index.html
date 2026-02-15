@@ -1361,13 +1361,26 @@
       const response = await fetch(new URL('assets/ig-posts.json', document.baseURI), { cache: 'no-store' });
       if(!response.ok) throw new Error(`No se pudo cargar ig-posts.json (${response.status})`);
 
-      const permalinks = await response.json();
+      const payload = await response.json();
+      const permalinks = Array.isArray(payload)
+        ? payload
+        : Array.isArray(payload?.posts)
+          ? payload.posts.map((post) => typeof post === 'string' ? post : post?.permalink)
+          : null;
+
       if(!Array.isArray(permalinks)) throw new Error('Formato inválido de ig-posts.json');
 
       const validPermalinks = permalinks
         .filter((url) => typeof url === 'string' && /^https:\/\/(www\.)?instagram\.com\/(p|reel)\/[A-Za-z0-9_-]+\/?$/i.test(url));
 
       if(validPermalinks.length === 0){
+        if(igContainer.children.length > 0){
+          if(igFallbackMsg){
+            igFallbackMsg.hidden = false;
+            igFallbackMsg.textContent = 'No se pudieron actualizar las publicaciones, se muestran las anteriores.';
+          }
+          return;
+        }
         renderFallback([], 'Todavía no hay publicaciones disponibles para mostrar.');
         return;
       }
@@ -1386,6 +1399,13 @@
       window.instgrm?.Embeds?.process();
     }catch(error){
       console.warn('No se pudieron actualizar los embeds de Instagram:', error);
+      if(igContainer.children.length > 0){
+        if(igFallbackMsg){
+          igFallbackMsg.hidden = false;
+          igFallbackMsg.textContent = 'No se pudieron actualizar las publicaciones, se muestran las anteriores.';
+        }
+        return;
+      }
       renderFallback([
         'https://www.instagram.com/agricheck.srl/'
       ], 'No se pudieron cargar los embeds ahora. Podés abrir Instagram desde este enlace.');
