@@ -33,3 +33,15 @@ Luego visita `http://localhost:8000/index.html` si usás el servidor.
 - HTML5 + CSS embebido.
 - Fuentes servidas desde Google Fonts.
 - Recursos estáticos locales para imágenes y videos.
+
+
+## Actualización automática de Instagram (RSS.app)
+
+El repositorio actualiza `assets/ig-posts.json` desde un feed RSS mediante el workflow `.github/workflows/update-ig.yml` (cada 6 horas y manual).
+
+Requisitos:
+
+1. Crear el secret `IG_RSS_URL` en `Settings → Secrets and variables → Actions` (ejemplo: `https://rss.app/feeds/...xml`).
+2. Habilitar `Settings → Actions → General → Workflow permissions → Read and write permissions` para permitir el commit automático del JSON.
+
+Si `IG_RSS_URL` no está configurado, el workflow muestra un warning y omite la actualización.

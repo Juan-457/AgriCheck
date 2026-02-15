@@ -1,0 +1,59 @@
+name: Update IG posts from RSS
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  update-ig-posts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check IG_RSS_URL secret
+        id: check-secret
+        env:
+          IG_RSS_URL: ${{ secrets.IG_RSS_URL }}
+        run: |
+          if [ -z "${IG_RSS_URL}" ]; then
+            echo "has_secret=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Missing secret IG_RSS_URL. Configure Settings > Secrets and variables > Actions and add IG_RSS_URL."
+          else
+            echo "has_secret=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install fast-xml-parser
+        if: steps.check-secret.outputs.has_secret == 'true'
+        run: npm i fast-xml-parser
+
+      - name: Generate assets/ig-posts.json from RSS
+        if: steps.check-secret.outputs.has_secret == 'true'
+        env:
+          IG_RSS_URL: ${{ secrets.IG_RSS_URL }}
+        run: node scripts/rss-to-ig-json.mjs
+
+      - name: Commit and push if changed
+        if: steps.check-secret.outputs.has_secret == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if git diff --quiet assets/ig-posts.json; then
+            echo "No changes in assets/ig-posts.json"
+            exit 0
+          fi
+
+          git add assets/ig-posts.json
+          git commit -m "chore: update ig-posts.json"
+          git push

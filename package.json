@@ -4,9 +4,9 @@
   "private": true,
   "description": "Static site tooling for AgriCheck",
   "scripts": {
-    "update:ig-posts": "node scripts/update-ig-posts.mjs"
+    "update:ig-posts": "node scripts/rss-to-ig-json.mjs"
   },
   "dependencies": {
-    "playwright": "^1.51.0"
+    "fast-xml-parser": "^4.5.0"
   }
 }
