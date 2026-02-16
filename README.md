@@ -45,3 +45,29 @@ Requisitos:
 2. Habilitar `Settings → Actions → General → Workflow permissions → Read and write permissions` para permitir el commit automático del JSON.
 
 Si `IG_RSS_URL` no está configurado, el workflow muestra un warning y omite la actualización.
+
+
+## Fuente JSON para RAG de productos
+
+Se incluye un generador de conocimiento en `assets/rag-products.json` con datos normalizados del catálogo (`nuestros-productos.html`) y del sitio institucional (`index.html`).
+
+Incluye:
+
+- por cada producto: nombre, descripción, cultivos, problemáticas, tags de búsqueda,
+- **link relativo y absoluto al sitio** (`relative_url` y `absolute_url`),
+- metadatos básicos de la página del producto,
+- bloque `company` con información de AgriCheck (historia, resumen institucional, contacto, redes y marcas representadas),
+- bloque `sellers` con vendedores por zona (región, contactos, teléfonos, email y link de WhatsApp).
+
+Para regenerarlo:
+
+```bash
+node scripts/build-rag-products.mjs
+# opcional: definir dominio base para links absolutos
+AGRICHECK_BASE_URL="https://tu-dominio.com" node scripts/build-rag-products.mjs
+```
+
+### Frecuencia de actualización
+
+- Manual: cuando se ejecuta el script localmente.
+- Automática (GitHub Actions): todos los días a las **03:00 AM de Argentina (ART)** mediante `.github/workflows/update-rag-products.yml` (cron UTC: `0 6 * * *`).
