@@ -56,37 +56,159 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(46, 91, 58, 0.15);
         }
+    
+
+        header{
+            position:sticky;
+            top:0;
+            z-index:60;
+            padding: 10px 0;
+            background: rgba(255,255,255,.92);
+            border-bottom: 1px solid rgba(15, 23, 42, .08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+        }
+
+        .navWrap{
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 18px;
+        }
+        .topbar{
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            position:relative;
+            min-height: 44px;
+            padding-left: 140px;
+            padding-right: 60px;
+        }
+        .brandLogo img{ height:44px; width:auto; display:block; }
+        .brandLogo{
+            position:absolute;
+            left:0;
+            top:50%;
+            transform:translateY(-50%);
+            padding:6px 12px;
+            border-radius:14px;
+            background:#ffffff;
+            border:1px solid rgba(15, 23, 42, .08);
+            box-shadow:0 10px 22px rgba(15, 23, 42, .08);
+        }
+        .navlinks{
+            display:flex;
+            gap: 10px;
+            padding: 6px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, .04);
+            border: 1px solid rgba(15, 23, 42, .08);
+            box-shadow: 0 10px 26px rgba(15, 23, 42, .08);
+        }
+        .navlinks a{
+            padding: 10px 16px;
+            border-radius: 999px;
+            font-weight: 800;
+            color: #475569;
+            letter-spacing: -.01em;
+            transition: background .15s ease, transform .15s ease, color .15s ease;
+        }
+        .navlinks a:hover{ background: rgba(22, 163, 74, .12); transform: translateY(-1px); color: #6aa334; }
+
+        .burger{
+            position:absolute;
+            right: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px; height: 44px;
+            border-radius: 14px;
+            border: 1px solid rgba(15, 23, 42, .12);
+            background: rgba(255,255,255,.86);
+            display:none;
+            align-items:center;
+            justify-content:center;
+            cursor:pointer;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 10px 24px rgba(15, 23, 42, .12);
+        }
+        .burger:focus{ outline: 3px solid rgba(137,196,68,.65); outline-offset: 2px; }
+        .burgerLines{ width: 18px; height: 12px; position:relative; display:block; }
+        .burgerLines span{
+            position:absolute; left:0; width:100%; height:2px; background: #1f2937;
+            border-radius: 999px;
+            transition: transform .18s ease, top .18s ease, opacity .18s ease;
+        }
+        .burgerLines span:nth-child(1){ top:0 }
+        .burgerLines span:nth-child(2){ top:5px }
+        .burgerLines span:nth-child(3){ top:10px }
+
+        .mobileMenu{
+            display:none;
+            padding: 10px 0 14px;
+            background: rgba(255,255,255,.98);
+            border-top: 1px solid rgba(15, 23, 42, .08);
+        }
+        .mobileMenu .navWrap{
+            display:flex;
+            flex-direction:column;
+            gap:10px;
+        }
+        .mobileMenu a{
+            padding: 12px 14px;
+            border-radius: 16px;
+            font-weight: 900;
+            color: #475569;
+            background: rgba(15, 23, 42, .04);
+            border: 1px solid rgba(15, 23, 42, .08);
+        }
+
+        body.menuOpen .mobileMenu{ display:block; }
+        body.menuOpen .burgerLines span:nth-child(1){ top:5px; transform: rotate(45deg); }
+        body.menuOpen .burgerLines span:nth-child(2){ opacity:0; }
+        body.menuOpen .burgerLines span:nth-child(3){ top:5px; transform: rotate(-45deg); }
+
+        @media(max-width:900px){
+            .topbar{padding-left:0; padding-right:0;}
+            .navlinks{display:none}
+            .burger{display:flex}
+            .brandLogo{left:12px;}
+        }
+
     </style>
 </head>
 
 <body class="text-slate-800">
 
     <!-- Header -->
-    <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-md">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center max-w-7xl">
-            <a href="index.html">
-                <img src="agrichecklogo.png" alt="Logo AgriCheck" class="h-10 w-auto">
-            </a>
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#beneficios"
-                    class="font-semibold text-slate-600 hover:text-green-700 transition">Beneficios</a>
-                <a href="#resultados"
-                    class="font-semibold text-slate-600 hover:text-green-700 transition">Resultados</a>
-                <a href="#ciencia" class="font-semibold text-slate-600 hover:text-green-700 transition">Ciencia</a>
-                <a href="#aplicacion"
-                    class="font-semibold text-slate-600 hover:text-green-700 transition">Aplicación</a>
-                <a href="zonas.html"
-                    class="cta-button bg-green-600 text-white font-bold py-2 px-5 rounded-full hover:bg-green-700">
-                    Contactar
+    <header>
+        <div class="navWrap">
+            <div class="topbar">
+                <a class="brandLogo" href="index.html" aria-label="Volver al inicio de AgriCheck">
+                    <img src="agrichecklogo.png" alt="AgriCheck" />
                 </a>
+
+                <nav class="navlinks" aria-label="Navegación principal">
+                    <a href="nuestros-productos.html">Nuestros Productos</a>
+                    <a href="#beneficios">Beneficios</a>
+                    <a href="#aplicacion">Aplicación</a>
+                    <a href="zonas.html">Contacto</a>
+                </nav>
+
+                <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+                    <span class="burgerLines" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
             </div>
-            <div class="md:hidden">
-                <a href="zonas.html"
-                    class="cta-button bg-green-600 text-white font-bold py-2 px-4 rounded-full hover:bg-green-700">
-                    Contacto
-                </a>
+        </div>
+
+        <div class="mobileMenu" id="mobileMenu" aria-label="Menú mobile">
+            <div class="navWrap">
+                <a href="nuestros-productos.html" data-close-menu>Nuestros Productos</a>
+                <a href="#beneficios" data-close-menu>Beneficios</a>
+                <a href="#aplicacion" data-close-menu>Aplicación</a>
+                <a href="zonas.html" data-close-menu>Contacto</a>
             </div>
-        </nav>
+        </div>
     </header>
 
     <main>
@@ -483,6 +605,28 @@
             <img src="logo-andermatt.webp" alt="Logo Andermatt" class="mx-auto mt-6 h-10 w-auto opacity-90">
         </div>
     </footer>
+
+
+<script>
+        (() => {
+            const burger = document.querySelector('.burger');
+            const menu = document.getElementById('mobileMenu');
+            const closeLinks = document.querySelectorAll('[data-close-menu]');
+            if (!burger || !menu) return;
+            const closeMenu = () => {
+                document.body.classList.remove('menuOpen');
+                burger.setAttribute('aria-expanded', 'false');
+            };
+            burger.addEventListener('click', () => {
+                const isOpen = document.body.classList.toggle('menuOpen');
+                burger.setAttribute('aria-expanded', String(isOpen));
+            });
+            closeLinks.forEach(link => link.addEventListener('click', closeMenu));
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 900) closeMenu();
+            });
+        })();
+    </script>
 
 </body>
 
