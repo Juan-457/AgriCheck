@@ -442,50 +442,6 @@
       }
     },
     {
-      "id": "zimbili",
-      "name": "Zimbili",
-      "description": "Bioestimulante radicular con L-triptófano, L-metionina y Ecklonia maxima para potenciar arranque y vigor.",
-      "relative_url": "zimbili.html",
-      "absolute_url": "https://www.agrichecksrl.com/zimbili.html",
-      "image": "Zimbili.webp",
-      "crops": [
-        "soja",
-        "maiz",
-        "trigo",
-        "cebada",
-        "girasol",
-        "hortalizas",
-        "frutales"
-      ],
-      "issues": [
-        "estres",
-        "arranque",
-        "raiz"
-      ],
-      "search_terms": [
-        "zimbili",
-        "bioestimulante",
-        "raices",
-        "ecklonia",
-        "triptofano",
-        "metionina"
-      ],
-      "tags": [
-        "Soja",
-        "Maíz",
-        "Trigo",
-        "Cebada",
-        "Raíces"
-      ],
-      "page_metadata": {
-        "title": "Zimbili – AgriCheck | Biofertilizante Premium",
-        "meta_description": "Zimbili: Raíces Fuertes, Cultivos Sanos. Bioestimulante avanzado con L-triptófano, L-metionina y Ecklonia maxima.",
-        "has_meta_description": true,
-        "file_exists": true,
-        "intro_paragraph": "Zimbili combina la potencia de precursores hormonales y extractos marinos para revolucionar el sistema radicular y maximizar la absorción de nutrientes."
-      }
-    },
-    {
       "id": "amyprotec-42",
       "name": "Amyprotec 42",
       "description": "Fungicida biológico para tratamiento de semillas con protección prolongada desde la siembra.",
@@ -1071,22 +1027,10 @@
       "absolute_url": "https://www.agrichecksrl.com/pack-soja.html"
     },
     {
-      "id": "t-gro-5x",
-      "name": "T-Gro 5X",
-      "relative_url": "t-gro-5x.html",
-      "absolute_url": "https://www.agrichecksrl.com/t-gro-5x.html"
-    },
-    {
       "id": "tutavir",
       "name": "Tutavir",
       "relative_url": "tutavir.html",
       "absolute_url": "https://www.agrichecksrl.com/tutavir.html"
-    },
-    {
-      "id": "v12-initiate",
-      "name": "V12 Initiate",
-      "relative_url": "v12-initiate.html",
-      "absolute_url": "https://www.agrichecksrl.com/v12-initiate.html"
     }
   ]
 }
