@@ -483,7 +483,8 @@
     .searchWrap button:hover{background: rgba(255,255,255,.28)}
 
     section:not(.hero){padding: var(--section-pad) 0}
-    #agroinsumos{padding-bottom: var(--section-pad)}
+    #agroinsumos{padding-bottom: calc(var(--section-pad) / 2)}
+    #proveedores{padding-top: calc(var(--section-pad) / 2)}
 
     .card{
       background: linear-gradient(135deg, rgba(236, 252, 242, .94), rgba(245, 255, 248, .94));
@@ -949,7 +950,13 @@
         </div>
       </div>
 
-      <div class="card card-agro" id="proveedores" style="padding:22px; margin-top:18px;">
+    </div>
+  </div>
+</section>
+
+<section id="proveedores">
+  <div class="container">
+      <div class="card card-agro" style="padding:22px;">
         <div class="center">
           <h2 class="sectionTitle">Representaciones exclusivas en Argentina</h2>
           <p class="muted sectionLead">
@@ -975,8 +982,6 @@
           <button class="logoNav logoNext" type="button" aria-label="Logo siguiente">›</button>
         </div>
       </div>
-
-    </div>
   </div>
 </section>
 
