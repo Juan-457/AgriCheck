@@ -935,8 +935,7 @@
 
 <section class="heroBelow" id="agroinsumos">
   <div class="container sectionStack">
-    <div class="card sectionCard">
-      <div class="card agroCard">
+    <div class="card sectionCard agroCard">
         <div>
           <div class="center">
             <h2 class="agroTitle">Nuestra Historia</h2>
@@ -951,7 +950,6 @@
         <div class="agroMedia">
           <img src="equipo.jpeg" alt="Agroinsumos especiales" loading="lazy" />
         </div>
-      </div>
     </div>
 
     <div class="card card-agro sectionCard" id="proveedores">
@@ -1158,14 +1156,16 @@
     const nextBtn = carousel.querySelector('.logoNext');
     if (!viewport || !track) return;
 
-    const originals = Array.from(track.children).map(n => n.cloneNode(true));
+    const originals = Array.from(track.children).map((node) => node.cloneNode(true));
     if (!originals.length) return;
 
     let baseWidth = 0;
     let rafId = null;
     let lastTs = null;
 
-    const SPEED = 0.045; // px/ms (~45px/s)
+    const SPEED = 0.05; // px/ms (~50px/s)
+    const RESUME_DELAY = 1800;
+    let resumeTimer = null;
 
     const getGap = () => {
       const cs = getComputedStyle(track);
@@ -1182,33 +1182,40 @@
       }, 0);
     };
 
+    const normalizeScroll = () => {
+      if (!baseWidth || baseWidth <= 0) return;
+      if (viewport.scrollLeft >= baseWidth) {
+        viewport.scrollLeft -= baseWidth;
+      } else if (viewport.scrollLeft < 0) {
+        viewport.scrollLeft += baseWidth;
+      }
+    };
+
     const rebuild = () => {
       const prevScroll = viewport.scrollLeft;
       track.innerHTML = '';
 
-      const addSet = () => originals.forEach(n => track.appendChild(n.cloneNode(true)));
+      const addSet = () => originals.forEach((node) => track.appendChild(node.cloneNode(true)));
 
       addSet();
       baseWidth = measureBaseWidth();
 
-      // Evita bucles infinitos cuando el layout aún no tiene ancho medible
       if (!Number.isFinite(baseWidth) || baseWidth <= 0) {
         viewport.scrollLeft = 0;
         return;
       }
 
-      const targetWidth = viewport.clientWidth + baseWidth;
-      let safety = 0;
-      while (track.scrollWidth < targetWidth && safety < 20) {
+      while (track.scrollWidth < viewport.clientWidth + baseWidth) {
         addSet();
-        safety++;
       }
-      if (track.scrollWidth < baseWidth * 2 && safety < 40) {
+
+      if (track.children.length < originals.length * 2) {
         addSet();
       }
 
       baseWidth = measureBaseWidth();
       viewport.scrollLeft = baseWidth ? (prevScroll % baseWidth) : 0;
+      normalizeScroll();
     };
 
     const stop = () => {
@@ -1226,10 +1233,18 @@
       if (!baseWidth || baseWidth <= 0) { stop(); return; }
 
       let next = viewport.scrollLeft + delta * SPEED;
-      if (next >= baseWidth) next %= baseWidth;
+      if (next >= baseWidth) next -= baseWidth;
 
       viewport.scrollLeft = next;
       rafId = requestAnimationFrame(tick);
+    };
+
+    const scheduleResume = () => {
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(() => {
+        viewport.classList.add('is-animating');
+        start();
+      }, RESUME_DELAY);
     };
 
     const start = () => {
@@ -1254,13 +1269,21 @@
       viewport.classList.remove('is-animating'); // snap ON
       viewport.style.scrollBehavior = 'smooth';
       viewport.scrollLeft = (viewport.scrollLeft - stepSize() + baseWidth) % baseWidth;
+      scheduleResume();
     });
 
     nextBtn?.addEventListener('click', () => {
       viewport.classList.remove('is-animating'); // snap ON
       viewport.style.scrollBehavior = 'smooth';
       viewport.scrollLeft = (viewport.scrollLeft + stepSize()) % baseWidth;
+      scheduleResume();
     });
+
+    viewport.addEventListener('scroll', normalizeScroll);
+    viewport.addEventListener('mouseenter', stop);
+    viewport.addEventListener('mouseleave', start);
+    viewport.addEventListener('focusin', stop);
+    viewport.addEventListener('focusout', start);
 
     // Init
     rebuild();
