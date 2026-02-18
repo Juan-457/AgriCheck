@@ -492,6 +492,7 @@
       background: linear-gradient(135deg, rgba(236, 252, 242, .94), rgba(245, 255, 248, .94));
       border-radius:var(--radius);
       border:1px solid rgba(137,196,68,.30);
+      min-width:0;
       box-shadow:
         0 20px 40px rgba(0,0,0,.08),
         inset 0 0 0 1px rgba(255,255,255,.65);
@@ -511,7 +512,7 @@
 
     .agroCard{
       display:grid;
-      grid-template-columns:1.35fr .65fr;
+      grid-template-columns:1.1fr .9fr;
       gap:18px;
       align-items:center;
     }
@@ -522,9 +523,14 @@
       border-radius:14px;
       border:1px solid rgba(0,0,0,.06);
     }
+    .agroMedia--wide img{
+      height:320px;
+      margin-top:14px;
+    }
     @media(max-width:900px){
       .agroCard{grid-template-columns:1fr}
       .agroMedia img{height:220px}
+      .agroMedia--wide img{height:220px}
     }
 
     /* ======================
@@ -534,12 +540,15 @@
       margin-top:18px;
       position:relative;
       padding:0 36px;
+      max-width:100%;
+      min-width:0;
     }
 
     .logoViewport{
       overflow-x:auto;
       overflow-y:hidden;
       padding:6px 0 0;
+      max-width:100%;
       scroll-snap-type:x mandatory;   /* ✅ snap manual */
       scroll-behavior:smooth;         /* ✅ botones / scroll manual */
       -webkit-overflow-scrolling: touch;
@@ -935,21 +944,20 @@
 
 <section class="heroBelow" id="agroinsumos">
   <div class="container sectionStack">
-    <div class="card sectionCard agroCard">
-        <div>
-          <div class="center">
-            <h2 class="agroTitle">Nuestra Historia</h2>
-          </div>
-
-          <p class="muted agroLead" style="margin-top:10px">
+    <div class="card card-agro sectionCard">
+      <div class="center">
+        <div class="sectionHead">
+          <h2 class="sectionTitle">Nuestra Historia</h2>
+          <p class="muted sectionLead">
             Desarrollamos y distribuimos soluciones de especialidad para una agricultura sustentable y eficiente. Con más de 25 años de trayectoria, hemos consolidado un portafolio referente en el mercado, gracias a la representación de compañías líderes a nivel mundial en Argentina.
             Nuestra integración al grupo suizo Andermatt Group en 2025 nos permite seguir acercando al productor argentino las últimas innovaciones globales, alineados bajo un mismo propósito: alimentos saludables y un medio ambiente sano para todos.
           </p>
         </div>
+      </div>
 
-        <div class="agroMedia">
-          <img src="equipo.jpeg" alt="Agroinsumos especiales" loading="lazy" />
-        </div>
+      <div class="agroMedia agroMedia--wide">
+        <img src="equipo.jpeg" alt="Agroinsumos especiales" loading="lazy" />
+      </div>
     </div>
 
     <div class="card card-agro sectionCard" id="proveedores">
@@ -1205,11 +1213,19 @@
         return;
       }
 
-      while (track.scrollWidth < viewport.clientWidth + baseWidth) {
+      const targetWidth = viewport.clientWidth + baseWidth;
+      let safety = 0;
+      let prevWidth = track.scrollWidth;
+      while (track.scrollWidth < targetWidth && safety < 24) {
         addSet();
+        safety += 1;
+
+        const nextWidth = track.scrollWidth;
+        if (nextWidth <= prevWidth) break;
+        prevWidth = nextWidth;
       }
 
-      if (track.children.length < originals.length * 2) {
+      if (track.children.length < originals.length * 2 && safety < 40) {
         addSet();
       }
 
@@ -1220,6 +1236,7 @@
 
     const stop = () => {
       if (rafId) cancelAnimationFrame(rafId);
+      clearTimeout(resumeTimer);
       rafId = null;
       lastTs = null;
       viewport.classList.remove('is-animating'); // ✅ vuelve snap para manual
