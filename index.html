@@ -17,6 +17,7 @@
 
       gtag('config', 'G-RNTX5NWFB5');
     </script>
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="llm-friendly" content="true" />
@@ -482,17 +483,12 @@
     .searchWrap button:hover{background: rgba(255,255,255,.28)}
 
     section:not(.hero){padding: var(--section-pad) 0}
-
-    .sectionStack{
-      display:grid;
-      gap:var(--section-pad);
-    }
+    #agroinsumos{padding-bottom: var(--section-pad)}
 
     .card{
       background: linear-gradient(135deg, rgba(236, 252, 242, .94), rgba(245, 255, 248, .94));
       border-radius:var(--radius);
       border:1px solid rgba(137,196,68,.30);
-      min-width:0;
       box-shadow:
         0 20px 40px rgba(0,0,0,.08),
         inset 0 0 0 1px rgba(255,255,255,.65);
@@ -512,7 +508,7 @@
 
     .agroCard{
       display:grid;
-      grid-template-columns:1.1fr .9fr;
+      grid-template-columns:1.35fr .65fr;
       gap:18px;
       align-items:center;
     }
@@ -523,14 +519,9 @@
       border-radius:14px;
       border:1px solid rgba(0,0,0,.06);
     }
-    .agroMedia--wide img{
-      height:320px;
-      margin-top:14px;
-    }
     @media(max-width:900px){
       .agroCard{grid-template-columns:1fr}
       .agroMedia img{height:220px}
-      .agroMedia--wide img{height:220px}
     }
 
     /* ======================
@@ -540,15 +531,12 @@
       margin-top:18px;
       position:relative;
       padding:0 36px;
-      max-width:100%;
-      min-width:0;
     }
 
     .logoViewport{
       overflow-x:auto;
       overflow-y:hidden;
       padding:6px 0 0;
-      max-width:100%;
       scroll-snap-type:x mandatory;   /* ✅ snap manual */
       scroll-behavior:smooth;         /* ✅ botones / scroll manual */
       -webkit-overflow-scrolling: touch;
@@ -850,7 +838,6 @@
             <a href="biomagnet.html" role="listitem">BioMagnet</a>
             <a href="celada.html" role="listitem">Celada VMB</a>
             <a href="checkmate-cm-f.html" role="listitem">CheckMate CM-F</a>
-            <a href="checkmate-vmb-xl.html" role="listitem">CheckMate VMB-XL</a>
             <a href="checkmate-ofm-f.html" role="listitem">CheckMate OFM-F</a>
             <a href="checkmate-crs.html" role="listitem">CheckMate CRS</a>
             <a href="puffer-cm.html" role="listitem">Puffer CM</a>
@@ -897,7 +884,6 @@
         <a href="biomagnet.html" data-close-menu>BioMagnet</a>
         <a href="celada.html" data-close-menu>Celada VMB</a>
         <a href="checkmate-cm-f.html" data-close-menu>CheckMate CM-F</a>
-        <a href="checkmate-vmb-xl.html" data-close-menu>CheckMate VMB-XL</a>
         <a href="checkmate-ofm-f.html" data-close-menu>CheckMate OFM-F</a>
         <a href="checkmate-crs.html" data-close-menu>CheckMate CRS</a>
         <a href="puffer-cm.html" data-close-menu>Puffer CM</a>
@@ -943,48 +929,53 @@
 </section>
 
 <section class="heroBelow" id="agroinsumos">
-  <div class="container sectionStack">
-    <div class="card card-agro sectionCard">
-      <div class="center">
-        <div class="sectionHead">
-          <h2 class="sectionTitle">Nuestra Historia</h2>
-          <p class="muted sectionLead">
+  <div class="container">
+    <div class="card sectionCard">
+
+      <div class="card agroCard">
+        <div>
+          <div class="center">
+            <h2 class="agroTitle">Nuestra Historia</h2>
+          </div>
+
+          <p class="muted agroLead" style="margin-top:10px">
             Desarrollamos y distribuimos soluciones de especialidad para una agricultura sustentable y eficiente. Con más de 25 años de trayectoria, hemos consolidado un portafolio referente en el mercado, gracias a la representación de compañías líderes a nivel mundial en Argentina.
             Nuestra integración al grupo suizo Andermatt Group en 2025 nos permite seguir acercando al productor argentino las últimas innovaciones globales, alineados bajo un mismo propósito: alimentos saludables y un medio ambiente sano para todos.
           </p>
         </div>
-      </div>
 
-      <div class="agroMedia agroMedia--wide">
-        <img src="equipo.jpeg" alt="Agroinsumos especiales" loading="lazy" />
-      </div>
-    </div>
-
-    <div class="card card-agro sectionCard" id="proveedores">
-      <div class="center">
-        <h2 class="sectionTitle">Representaciones exclusivas en Argentina</h2>
-        <p class="muted sectionLead">
-          Incorporamos representaciones de proveedores líderes mundiales para ofrecer uno de los portafolios más amplios
-          de soluciones sustentables en Argentina.
-        </p>
-      </div>
-
-      <div class="logoCarousel" data-logo-carousel aria-label="Logos de proveedores">
-        <button class="logoNav logoPrev" type="button" aria-label="Logo anterior">‹</button>
-        <div class="logoViewport" tabindex="0">
-          <div class="logoTrack">
-            <div class="logoItem"><img src="suterra.png" alt="Suterra" loading="lazy" /></div>
-            <div class="logoItem">
-              <a href="tundrabac.html" aria-label="Ver Tundrabac de Andermatt">
-                <img src="andermatt.png" alt="Andermatt" loading="lazy" />
-              </a>
-            </div>
-            <div class="logoItem"><img src="BioAtlantis.png" alt="BioAtlantis" loading="lazy" /></div>
-            <div class="logoItem"><img src="cultiva-1.png" alt="Cultiva" loading="lazy" /></div>
-          </div>
+        <div class="agroMedia">
+          <img src="equipo.jpeg" alt="Agroinsumos especiales" loading="lazy" />
         </div>
-        <button class="logoNav logoNext" type="button" aria-label="Logo siguiente">›</button>
       </div>
+
+      <div class="card card-agro" id="proveedores" style="padding:22px; margin-top:18px;">
+        <div class="center">
+          <h2 class="sectionTitle">Representaciones exclusivas en Argentina</h2>
+          <p class="muted sectionLead">
+            Incorporamos representaciones de proveedores líderes mundiales para ofrecer uno de los portafolios más amplios
+            de soluciones sustentables en Argentina.
+          </p>
+        </div>
+
+        <div class="logoCarousel" data-logo-carousel aria-label="Logos de proveedores">
+          <button class="logoNav logoPrev" type="button" aria-label="Logo anterior">‹</button>
+          <div class="logoViewport" tabindex="0">
+            <div class="logoTrack">
+              <div class="logoItem"><img src="suterra.png" alt="Suterra" loading="lazy" /></div>
+              <div class="logoItem">
+                <a href="tundrabac.html" aria-label="Ver Tundrabac de Andermatt">
+                  <img src="andermatt.png" alt="Andermatt" loading="lazy" />
+                </a>
+              </div>
+              <div class="logoItem"><img src="BioAtlantis.png" alt="BioAtlantis" loading="lazy" /></div>
+              <div class="logoItem"><img src="cultiva-1.png" alt="Cultiva" loading="lazy" /></div>
+            </div>
+          </div>
+          <button class="logoNav logoNext" type="button" aria-label="Logo siguiente">›</button>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1164,16 +1155,14 @@
     const nextBtn = carousel.querySelector('.logoNext');
     if (!viewport || !track) return;
 
-    const originals = Array.from(track.children).map((node) => node.cloneNode(true));
+    const originals = Array.from(track.children).map(n => n.cloneNode(true));
     if (!originals.length) return;
 
     let baseWidth = 0;
     let rafId = null;
     let lastTs = null;
 
-    const SPEED = 0.05; // px/ms (~50px/s)
-    const RESUME_DELAY = 1800;
-    let resumeTimer = null;
+    const SPEED = 0.045; // px/ms (~45px/s)
 
     const getGap = () => {
       const cs = getComputedStyle(track);
@@ -1190,53 +1179,24 @@
       }, 0);
     };
 
-    const normalizeScroll = () => {
-      if (!baseWidth || baseWidth <= 0) return;
-      if (viewport.scrollLeft >= baseWidth) {
-        viewport.scrollLeft -= baseWidth;
-      } else if (viewport.scrollLeft < 0) {
-        viewport.scrollLeft += baseWidth;
-      }
-    };
-
     const rebuild = () => {
       const prevScroll = viewport.scrollLeft;
       track.innerHTML = '';
 
-      const addSet = () => originals.forEach((node) => track.appendChild(node.cloneNode(true)));
+      const addSet = () => originals.forEach(n => track.appendChild(n.cloneNode(true)));
 
       addSet();
       baseWidth = measureBaseWidth();
 
-      if (!Number.isFinite(baseWidth) || baseWidth <= 0) {
-        viewport.scrollLeft = 0;
-        return;
-      }
-
-      const targetWidth = viewport.clientWidth + baseWidth;
-      let safety = 0;
-      let prevWidth = track.scrollWidth;
-      while (track.scrollWidth < targetWidth && safety < 24) {
-        addSet();
-        safety += 1;
-
-        const nextWidth = track.scrollWidth;
-        if (nextWidth <= prevWidth) break;
-        prevWidth = nextWidth;
-      }
-
-      if (track.children.length < originals.length * 2 && safety < 40) {
-        addSet();
-      }
+      while (track.scrollWidth < viewport.clientWidth + baseWidth) addSet();
+      if (track.scrollWidth < baseWidth * 2) addSet();
 
       baseWidth = measureBaseWidth();
       viewport.scrollLeft = baseWidth ? (prevScroll % baseWidth) : 0;
-      normalizeScroll();
     };
 
     const stop = () => {
       if (rafId) cancelAnimationFrame(rafId);
-      clearTimeout(resumeTimer);
       rafId = null;
       lastTs = null;
       viewport.classList.remove('is-animating'); // ✅ vuelve snap para manual
@@ -1250,18 +1210,10 @@
       if (!baseWidth || baseWidth <= 0) { stop(); return; }
 
       let next = viewport.scrollLeft + delta * SPEED;
-      if (next >= baseWidth) next -= baseWidth;
+      if (next >= baseWidth) next %= baseWidth;
 
       viewport.scrollLeft = next;
       rafId = requestAnimationFrame(tick);
-    };
-
-    const scheduleResume = () => {
-      clearTimeout(resumeTimer);
-      resumeTimer = setTimeout(() => {
-        viewport.classList.add('is-animating');
-        start();
-      }, RESUME_DELAY);
     };
 
     const start = () => {
@@ -1286,21 +1238,13 @@
       viewport.classList.remove('is-animating'); // snap ON
       viewport.style.scrollBehavior = 'smooth';
       viewport.scrollLeft = (viewport.scrollLeft - stepSize() + baseWidth) % baseWidth;
-      scheduleResume();
     });
 
     nextBtn?.addEventListener('click', () => {
       viewport.classList.remove('is-animating'); // snap ON
       viewport.style.scrollBehavior = 'smooth';
       viewport.scrollLeft = (viewport.scrollLeft + stepSize()) % baseWidth;
-      scheduleResume();
     });
-
-    viewport.addEventListener('scroll', normalizeScroll);
-    viewport.addEventListener('mouseenter', stop);
-    viewport.addEventListener('mouseleave', start);
-    viewport.addEventListener('focusin', stop);
-    viewport.addEventListener('focusout', start);
 
     // Init
     rebuild();
