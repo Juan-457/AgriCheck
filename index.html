@@ -483,7 +483,11 @@
     .searchWrap button:hover{background: rgba(255,255,255,.28)}
 
     section:not(.hero){padding: var(--section-pad) 0}
-    #agroinsumos{padding-bottom: var(--section-pad)}
+
+    .sectionStack{
+      display:grid;
+      gap:var(--section-pad);
+    }
 
     .card{
       background: linear-gradient(135deg, rgba(236, 252, 242, .94), rgba(245, 255, 248, .94));
@@ -929,9 +933,8 @@
 </section>
 
 <section class="heroBelow" id="agroinsumos">
-  <div class="container">
+  <div class="container sectionStack">
     <div class="card sectionCard">
-
       <div class="card agroCard">
         <div>
           <div class="center">
@@ -948,34 +951,33 @@
           <img src="equipo.jpeg" alt="Agroinsumos especiales" loading="lazy" />
         </div>
       </div>
+    </div>
 
-      <div class="card card-agro" id="proveedores" style="padding:22px; margin-top:18px;">
-        <div class="center">
-          <h2 class="sectionTitle">Representaciones exclusivas en Argentina</h2>
-          <p class="muted sectionLead">
-            Incorporamos representaciones de proveedores líderes mundiales para ofrecer uno de los portafolios más amplios
-            de soluciones sustentables en Argentina.
-          </p>
-        </div>
-
-        <div class="logoCarousel" data-logo-carousel aria-label="Logos de proveedores">
-          <button class="logoNav logoPrev" type="button" aria-label="Logo anterior">‹</button>
-          <div class="logoViewport" tabindex="0">
-            <div class="logoTrack">
-              <div class="logoItem"><img src="suterra.png" alt="Suterra" loading="lazy" /></div>
-              <div class="logoItem">
-                <a href="tundrabac.html" aria-label="Ver Tundrabac de Andermatt">
-                  <img src="andermatt.png" alt="Andermatt" loading="lazy" />
-                </a>
-              </div>
-              <div class="logoItem"><img src="BioAtlantis.png" alt="BioAtlantis" loading="lazy" /></div>
-              <div class="logoItem"><img src="cultiva-1.png" alt="Cultiva" loading="lazy" /></div>
-            </div>
-          </div>
-          <button class="logoNav logoNext" type="button" aria-label="Logo siguiente">›</button>
-        </div>
+    <div class="card card-agro sectionCard" id="proveedores">
+      <div class="center">
+        <h2 class="sectionTitle">Representaciones exclusivas en Argentina</h2>
+        <p class="muted sectionLead">
+          Incorporamos representaciones de proveedores líderes mundiales para ofrecer uno de los portafolios más amplios
+          de soluciones sustentables en Argentina.
+        </p>
       </div>
 
+      <div class="logoCarousel" data-logo-carousel aria-label="Logos de proveedores">
+        <button class="logoNav logoPrev" type="button" aria-label="Logo anterior">‹</button>
+        <div class="logoViewport" tabindex="0">
+          <div class="logoTrack">
+            <div class="logoItem"><img src="suterra.png" alt="Suterra" loading="lazy" /></div>
+            <div class="logoItem">
+              <a href="tundrabac.html" aria-label="Ver Tundrabac de Andermatt">
+                <img src="andermatt.png" alt="Andermatt" loading="lazy" />
+              </a>
+            </div>
+            <div class="logoItem"><img src="BioAtlantis.png" alt="BioAtlantis" loading="lazy" /></div>
+            <div class="logoItem"><img src="cultiva-1.png" alt="Cultiva" loading="lazy" /></div>
+          </div>
+        </div>
+        <button class="logoNav logoNext" type="button" aria-label="Logo siguiente">›</button>
+      </div>
     </div>
   </div>
 </section>
