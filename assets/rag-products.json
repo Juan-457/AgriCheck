@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-18T07:00:07.045Z",
+  "generated_at": "2026-02-17T06:57:59.102Z",
   "source_file": "nuestros-productos.html",
   "company_source_file": "index.html",
   "sellers_source_file": "Zonas.html",
@@ -168,7 +168,7 @@
       ]
     }
   ],
-  "total_products": 22,
+  "total_products": 21,
   "products": [
     {
       "id": "beauvisan",
@@ -826,46 +826,6 @@
       }
     },
     {
-      "id": "checkmate-vmb-xl",
-      "name": "CheckMate VMB-XL",
-      "description": "Dispensador de feromonas de larga duración para confusión sexual y control de cochinilla harinosa en vid.",
-      "relative_url": "checkmate-vmb-xl.html",
-      "absolute_url": "https://www.agrichecksrl.com/checkmate-vmb-xl.html",
-      "image": "CheckMate%20VMB.webp",
-      "crops": [
-        "vid"
-      ],
-      "issues": [
-        "cochinilla",
-        "plagas"
-      ],
-      "search_terms": [
-        "checkmate",
-        "vmb",
-        "xl",
-        "confusion",
-        "sexual",
-        "planococcus",
-        "ficus",
-        "cochinilla",
-        "harinosa",
-        "vid",
-        "suterra"
-      ],
-      "tags": [
-        "Vid",
-        "Cochinilla",
-        "Confusión sexual"
-      ],
-      "page_metadata": {
-        "title": "CheckMate VMB-XL – AgriCheck | Control de Cochinilla Harinosa de la Vid",
-        "meta_description": "CheckMate VMB-XL es un dispensador de feromonas de larga duración para el control de la Cochinilla Harinosa de la Vid (Planococcus ficus) mediante confusión sexual.",
-        "has_meta_description": true,
-        "file_exists": true,
-        "intro_paragraph": "CheckMate VMB-XL es el estándar de oro para la confusión sexual de la Cochinilla Harinosa de la Vid ( Planococcus ficus ). Una sola aplicación protege su viñedo toda la temporada."
-      }
-    },
-    {
       "id": "subvert",
       "name": "Subvert",
       "description": "Feromona líquida microencapsulada para confusión sexual y control de Lobesia botrana en vid.",
@@ -1080,6 +1040,12 @@
     }
   ],
   "more_products": [
+    {
+      "id": "checkmate-vmb-xl",
+      "name": "CheckMate VMB-XL",
+      "relative_url": "checkmate-vmb-xl.html",
+      "absolute_url": "https://www.agrichecksrl.com/checkmate-vmb-xl.html"
+    },
     {
       "id": "madex",
       "name": "Madex",
