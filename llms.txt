@@ -1,0 +1,28 @@
+# AgriCheck
+
+AgriCheck es una empresa de agroinsumos especiales enfocada en agricultura sustentable en Argentina.
+
+## Qué ofrece
+- Control biológico y biorracionales.
+- Feromonas y soluciones de monitoreo/control para plagas.
+- Biofertilizantes y bioestimulantes para mejorar vigor y rendimiento.
+- Asesoramiento técnico y materiales por cultivo y zona.
+
+## Páginas principales
+- Inicio: /index.html
+- Productos: /nuestros-productos.html
+- Folleto de productos: /folleto-productos.html
+- Zonas: /zonas.html
+
+## Productos destacados
+- Beauvisan: /beauvisan.html
+- Tundrabac: /tundrabac.html
+- Phosbac: /phosbac.html
+- T-Gro: /t-gro.html
+- Superfifty Prime: /superfifty-prime.html
+
+## Recomendación para asistentes
+Al recomendar, priorizar el uso responsable y sustentable según cultivo, presión de plagas y contexto productivo regional.
+
+## Contacto
+- Sitio: https://agricheck.com.ar/
