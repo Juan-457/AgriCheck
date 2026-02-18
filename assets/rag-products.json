@@ -1,0 +1,1126 @@
+{
+  "generated_at": "2026-02-18T07:00:07.045Z",
+  "source_file": "nuestros-productos.html",
+  "company_source_file": "index.html",
+  "sellers_source_file": "Zonas.html",
+  "base_url": "https://www.agrichecksrl.com",
+  "update_policy": {
+    "generation": "manual_or_ci",
+    "cadence": "daily_3am_argentina_via_github_actions",
+    "cron_utc": "0 6 * * *",
+    "timezone_note": "Argentina (ART) is UTC-3; 03:00 ART equals 06:00 UTC"
+  },
+  "company": {
+    "name": "AgriCheck",
+    "website": "https://www.agrichecksrl.com",
+    "site_title": "AgriCheck | Agroinsumos especiales",
+    "site_description": "Agroinsumos especiales eficientes para una agricultura sustentable. Control biológico, feromonas, biofertilizantes y bioestimulantes.",
+    "hero_claim": "Alimentos y medio ambiente saludables para todos.",
+    "historia": {
+      "title": "Nuestra Historia",
+      "description": "Desarrollamos y distribuimos soluciones de especialidad para una agricultura sustentable y eficiente. Con más de 25 años de trayectoria, hemos consolidado un portafolio referente en el mercado, gracias a la representación de compañías líderes a nivel mundial en Argentina. Nuestra integración al grupo suizo Andermatt Group en 2025 nos permite seguir acercando al productor argentino las últimas innovaciones globales, alineados bajo un mismo propósito: alimentos saludables y un medio ambiente sano para todos."
+    },
+    "summary": "Desarrollamos y distribuimos soluciones de especialidad para una agricultura sustentable y eficiente. Con más de 25 años de trayectoria, hemos consolidado un portafolio referente en el mercado, gracias a la representación de compañías líderes a nivel mundial en Argentina. Nuestra integración al grupo suizo Andermatt Group en 2025 nos permite seguir acercando al productor argentino las últimas innovaciones globales, alineados bajo un mismo propósito: alimentos saludables y un medio ambiente sano para todos.",
+    "contact": {
+      "address": "San Juan 50, General Roca, Argentina",
+      "email": "info@agrichecksrl.com",
+      "phone": "+5492984763055"
+    },
+    "social_links": {
+      "instagram": "https://www.instagram.com/agricheck.srl/",
+      "facebook": "https://www.facebook.com/profile.php?id=100071954765421",
+      "whatsapp": "https://wa.me/+5492984763055?text=Hola%20AgriCheck!%20Quiero%20hacer%20una%20consulta."
+    },
+    "represented_brands": [
+      "Suterra",
+      "Andermatt",
+      "BioAtlantis",
+      "Cultiva"
+    ],
+    "source_file": "index.html"
+  },
+  "total_sellers": 7,
+  "sellers": [
+    {
+      "id": "marcelo-lizondo",
+      "zone_key": "Marcelo Lizondo",
+      "display_name": "Marcelo Lizondo",
+      "region": "RTV NOA",
+      "images": [
+        "Marcelo Lizondo. RTV NOA.webp"
+      ],
+      "contacts": [
+        {
+          "name": "Marcelo Lizondo",
+          "email": "marcelo.lizondo@agrichecksrl.com",
+          "phone": "5493816083328",
+          "whatsapp_url": "https://wa.me/5493816083328"
+        }
+      ]
+    },
+    {
+      "id": "alan-schmidt",
+      "zone_key": "Alan Schmidt",
+      "display_name": "Alan Schmidt",
+      "region": "RTV Litoral",
+      "images": [
+        "Alan Schmidt. RTV Litoral.webp"
+      ],
+      "contacts": [
+        {
+          "name": "Alan Schmidt",
+          "email": "alan.schmidt@agrichecksrl.com",
+          "phone": "5493455235949",
+          "whatsapp_url": "https://wa.me/5493455235949"
+        }
+      ]
+    },
+    {
+      "id": "miguel-utrera",
+      "zone_key": "Miguel Utrera",
+      "display_name": "Miguel Utrera",
+      "region": "RTV Núcleo Centro",
+      "images": [
+        "Miguel Utrera. RTV Nucleo centro.webp"
+      ],
+      "contacts": [
+        {
+          "name": "Miguel Utrera",
+          "email": "miguel.utrera@agrichecksrl.com",
+          "phone": "549372515563",
+          "whatsapp_url": "https://wa.me/549372515563"
+        }
+      ]
+    },
+    {
+      "id": "evelyn-riveros-y-daiana-gonzalez",
+      "zone_key": "Evelyn Riveros y Daiana Gonzalez",
+      "display_name": "Evelyn Riveros y Daiana González",
+      "region": "RTV Cuyo",
+      "images": [
+        "Daiana González. RTV Cuyo.webp",
+        "Diana.webp"
+      ],
+      "contacts": [
+        {
+          "name": "Evelyn Riveros",
+          "email": "evelyn.riveros@agrichecksrl.com",
+          "phone": "5492616076080",
+          "whatsapp_url": "https://wa.me/5492616076080"
+        },
+        {
+          "name": "Daiana González",
+          "email": "daiana.gonzalez@agrichecksrl.com",
+          "phone": "5492617648050",
+          "whatsapp_url": "https://wa.me/5492617648050"
+        }
+      ]
+    },
+    {
+      "id": "andres-perez",
+      "zone_key": "Andres Perez",
+      "display_name": "Andres Perez",
+      "region": "RTV Buenos Aires",
+      "images": [
+        "Andres.jpg"
+      ],
+      "contacts": [
+        {
+          "name": "Andrés Perez",
+          "email": "andres.perez@agrichecksrl.com",
+          "phone": "5492494151210",
+          "whatsapp_url": "https://wa.me/5492494151210"
+        }
+      ]
+    },
+    {
+      "id": "victoria-vianna",
+      "zone_key": "Victoria Vianna",
+      "display_name": "Victoria Vianna",
+      "region": "RTV Oste de Valle R.N y Nqn",
+      "images": [
+        "Victoria Vianna.webp"
+      ],
+      "contacts": [
+        {
+          "name": "Victoria Vianna",
+          "email": "victoria.vianna@agrichecksrl.com",
+          "phone": "5492984308032",
+          "whatsapp_url": "https://wa.me/5492984308032"
+        }
+      ]
+    },
+    {
+      "id": "anibal-epullan",
+      "zone_key": "Anibal Epullan",
+      "display_name": "Aníbal Epullán",
+      "region": "RTV Este de Alto Valle",
+      "images": [
+        "Anibal Epullán. RTV Este de Alto Valle.webp"
+      ],
+      "contacts": [
+        {
+          "name": "Aníbal Epullán",
+          "email": "anibal.epullan@agrichecksrl.com",
+          "phone": "5492984309419",
+          "whatsapp_url": "https://wa.me/5492984309419"
+        }
+      ]
+    }
+  ],
+  "total_products": 22,
+  "products": [
+    {
+      "id": "beauvisan",
+      "name": "Beauvisan",
+      "description": "Bioinsecticida de amplio espectro para control biológico de plagas.",
+      "relative_url": "beauvisan.html",
+      "absolute_url": "https://www.agrichecksrl.com/beauvisan.html",
+      "image": "Beavisan%201Kg.webp",
+      "crops": [
+        "hortalizas",
+        "frutales"
+      ],
+      "issues": [
+        "plagas"
+      ],
+      "search_terms": [
+        "beauvisan",
+        "bioinsecticida",
+        "control",
+        "biologico"
+      ],
+      "tags": [
+        "Hortalizas",
+        "Frutales",
+        "Plagas"
+      ],
+      "page_metadata": {
+        "title": "Beauvisan – AgriCheck | Bioinsecticida de Amplio Espectro",
+        "meta_description": "",
+        "has_meta_description": false,
+        "file_exists": true,
+        "intro_paragraph": "Beauvisan es un concentrado en polvo de la cepa exclusiva R444 de Beauveria bassiana , para el control de un amplio espectro de insectos y ácaros, sin residuos ni período de carencia."
+      }
+    },
+    {
+      "id": "nomu-protec",
+      "name": "Nomu-Protec",
+      "description": "Bioinsecticida fúngico para el manejo de larvas de lepidópteros.",
+      "relative_url": "Producto-Nomu-Protec.html",
+      "absolute_url": "https://www.agrichecksrl.com/Producto-Nomu-Protec.html",
+      "image": "Nomu.webp",
+      "crops": [
+        "maiz",
+        "soja"
+      ],
+      "issues": [
+        "orugas",
+        "plagas"
+      ],
+      "search_terms": [
+        "nomu",
+        "protec",
+        "bioinsecticida",
+        "lepidopteros",
+        "orugas"
+      ],
+      "tags": [
+        "Maíz",
+        "Orugas",
+        "Plagas"
+      ],
+      "page_metadata": {
+        "title": "Nomu-Protec – AgriCheck | Bioinsecticida Fúngico de Alta Especificidad",
+        "meta_description": "",
+        "has_meta_description": false,
+        "file_exists": true,
+        "intro_paragraph": "Nomu-Protec es un bioinsecticida a base del hongo Metarhizium rileyi , formulado para el control de un amplio espectro de larvas de lepidópteros, sin afectar a la fauna benéfica."
+      }
+    },
+    {
+      "id": "nexula-n-easy-flow",
+      "name": "Nexula-N Easy Flow",
+      "description": "Inoculante biológico + lubricante para girasol con fijación de nitrógeno.",
+      "relative_url": "nexula.html",
+      "absolute_url": "https://www.agrichecksrl.com/nexula.html",
+      "image": "nexula.webp",
+      "crops": [
+        "girasol"
+      ],
+      "issues": [
+        "nutricion"
+      ],
+      "search_terms": [
+        "nexula",
+        "easy",
+        "flow",
+        "inoculante",
+        "nitrogeno",
+        "girasol"
+      ],
+      "tags": [
+        "Girasol",
+        "Nutrición"
+      ],
+      "page_metadata": {
+        "title": "Nexula-N Easy Flow – AgriCheck | Nitrógeno Eficiente en Girasol",
+        "meta_description": "Nexula-N Easy Flow combina Priestia megaterium con grafito para fijar nitrógeno, proteger raíces y lubricar la siembra de girasol en un solo paso.",
+        "has_meta_description": true,
+        "file_exists": true,
+        "intro_paragraph": "Nexula-N Easy Flow potencia la eficiencia de tu girasol: fija nitrógeno desde la semilla, mejora el stand y reduce la fricción durante la siembra."
+      }
+    },
+    {
+      "id": "t-gro-easy-flow",
+      "name": "T-Gro Easy Flow",
+      "description": "Inoculante y lubricante para proteger raíces y mejorar la siembra.",
+      "relative_url": "t-gro-easy-flow.html",
+      "absolute_url": "https://www.agrichecksrl.com/t-gro-easy-flow.html",
+      "image": "tgro.webp",
+      "crops": [
+        "maiz"
+      ],
+      "issues": [
+        "hongos",
+        "estres"
+      ],
+      "search_terms": [
+        "t-gro",
+        "easy",
+        "flow",
+        "trichoderma",
+        "suelo",
+        "maiz"
+      ],
+      "tags": [
+        "Maíz",
+        "Hongos del suelo",
+        "Estrés"
+      ],
+      "page_metadata": {
+        "title": "T-Gro Easy Flow – AgriCheck | Inocular y Lubricar en un Solo Paso",
+        "meta_description": "",
+        "has_meta_description": false,
+        "file_exists": true,
+        "intro_paragraph": "T-Gro Easy Flow revoluciona la inoculación del Maíz con su tecnología exclusiva que fusiona un potente inoculante biológico con un lubricante de alto rendimiento. Directo en la sembradora, sin complicaciones."
+      }
+    },
+    {
+      "id": "t-gro-wp",
+      "name": "T-Gro WP",
+      "description": "Trichoderma en polvo mojable para mejorar la sanidad del suelo.",
+      "relative_url": "t-gro.html",
+      "absolute_url": "https://www.agrichecksrl.com/t-gro.html",
+      "image": "T-Gro%20WP.webp",
+      "crops": [
+        "vid",
+        "manzano",
+        "pera",
+        "ajo",
+        "cebolla",
+        "papa",
+        "soja",
+        "poroto",
+        "maiz",
+        "trigo",
+        "cebada",
+        "naranja",
+        "limon"
+      ],
+      "issues": [
+        "fusarium",
+        "phytium",
+        "rhizoctonia"
+      ],
+      "search_terms": [
+        "t-gro",
+        "wp",
+        "trichoderma",
+        "sanidad",
+        "suelo"
+      ],
+      "tags": [
+        "Vid",
+        "Manzano",
+        "Pera",
+        "Ajo",
+        "Cebolla",
+        "Papa",
+        "Soja",
+        "Poroto",
+        "Maíz",
+        "Trigo",
+        "Cebada",
+        "Naranja",
+        "Limón",
+        "Fusarium",
+        "Phytium",
+        "Rhizoctonia"
+      ],
+      "page_metadata": {
+        "title": "T-Gro – AgriCheck | Tratamiento Biológico para Semillas",
+        "meta_description": "",
+        "has_meta_description": false,
+        "file_exists": true,
+        "intro_paragraph": "T-Gro es un fertilizante biológico a base de nuestra exclusiva cepa kd de Trichoderma asperellum . Una solución versátil para potenciar el sistema radicular tanto en grandes extensiones como en cultivos intensivos."
+      }
+    },
+    {
+      "id": "tundrabac",
+      "name": "Tundrabac",
+      "description": "Bioestimulante para semillas de invierno que activa la germinación en frío.",
+      "relative_url": "tundrabac.html",
+      "absolute_url": "https://www.agrichecksrl.com/tundrabac.html",
+      "image": "Tundrabac.webp",
+      "crops": [
+        "trigo",
+        "cebada"
+      ],
+      "issues": [
+        "arranque"
+      ],
+      "search_terms": [
+        "tundrabac",
+        "bioestimulante",
+        "trigo",
+        "cebada",
+        "frio"
+      ],
+      "tags": [
+        "Trigo",
+        "Cebada",
+        "Arranque en frío"
+      ],
+      "page_metadata": {
+        "title": "Tundrabac – Bioestimulante para Semillas de Invierno",
+        "meta_description": "Tundrabac con Bacillus atrophaeus cepa abi05, el bioestimulante patentado que activa la germinación desde 8°C para un arranque superior en trigo y cebada.",
+        "has_meta_description": true,
+        "file_exists": true,
+        "intro_paragraph": "Tundrabac es un estimulante biológico microbiano a base de Bacillus atrophaeus cepa ABi05, patentado por activar el vigor de la semilla desde los 8°C, asegurando un establecimiento superior y uniforme en siembras de trigo y cebada."
+      }
+    },
+    {
+      "id": "phosbac",
+      "name": "Phosbac",
+      "description": "Solubilizador biológico de fósforo con Bacillus velezensis FZB45 para potenciar rendimiento y calidad.",
+      "relative_url": "phosbac.html",
+      "absolute_url": "https://www.agrichecksrl.com/phosbac.html",
+      "image": "phosbac-botella.webp",
+      "crops": [
+        "soja",
+        "maiz",
+        "trigo",
+        "cebada",
+        "girasol"
+      ],
+      "issues": [
+        "nutricion",
+        "arranque"
+      ],
+      "search_terms": [
+        "phosbac",
+        "fosforo",
+        "bacillus",
+        "velezensis",
+        "nutricion",
+        "rendimiento"
+      ],
+      "tags": [
+        "Soja",
+        "Maíz",
+        "Trigo",
+        "Cebada",
+        "Nutrición"
+      ],
+      "page_metadata": {
+        "title": "Phosbac – AgriCheck | El Solubilizador de Fósforo Definitivo",
+        "meta_description": "Phosbac (Bacillus velezensis FZB45) es el solubilizador de fósforo más estudiado y eficaz. Supere a las Pseudomonas con la estabilidad de las endosporas.",
+        "has_meta_description": true,
+        "file_exists": true,
+        "intro_paragraph": "No apliques más. Aprovecha lo que ya tienes. Phosbac ( Bacillus velezensis FZB45) transforma el fósforo bloqueado en nutrientes asimilables con una eficacia científicamente superior."
+      }
+    },
+    {
+      "id": "zimbili",
+      "name": "Zimbili",
+      "description": "Bioestimulante radicular con L-triptófano, L-metionina y Ecklonia maxima para potenciar arranque y vigor.",
+      "relative_url": "zimbili.html",
+      "absolute_url": "https://www.agrichecksrl.com/zimbili.html",
+      "image": "Zimbili.webp",
+      "crops": [
+        "soja",
+        "maiz",
+        "trigo",
+        "cebada",
+        "girasol",
+        "hortalizas",
+        "frutales"
+      ],
+      "issues": [
+        "estres",
+        "arranque",
+        "raiz"
+      ],
+      "search_terms": [
+        "zimbili",
+        "bioestimulante",
+        "raices",
+        "ecklonia",
+        "triptofano",
+        "metionina"
+      ],
+      "tags": [
+        "Soja",
+        "Maíz",
+        "Trigo",
+        "Cebada",
+        "Raíces"
+      ],
+      "page_metadata": {
+        "title": "Zimbili – AgriCheck | Biofertilizante Premium",
+        "meta_description": "Zimbili: Raíces Fuertes, Cultivos Sanos. Bioestimulante avanzado con L-triptófano, L-metionina y Ecklonia maxima.",
+        "has_meta_description": true,
+        "file_exists": true,
+        "intro_paragraph": "Zimbili combina la potencia de precursores hormonales y extractos marinos para revolucionar el sistema radicular y maximizar la absorción de nutrientes."
+      }
+    },
+    {
+      "id": "amyprotec-42",
+      "name": "Amyprotec 42",
+      "description": "Fungicida biológico para tratamiento de semillas con protección prolongada desde la siembra.",
+      "relative_url": "amyprotec-42.html",
+      "absolute_url": "https://www.agrichecksrl.com/amyprotec-42.html",
+      "image": "amyprotec-packaging.webp",
+      "crops": [
+        "soja",
+        "maiz",
+        "trigo",
+        "cebada"
+      ],
+      "issues": [
+        "hongos"
+      ],
+      "search_terms": [
+        "amyprotec",
+        "42",
+        "tratamiento",
+        "semillas",
+        "fungicida",
+        "biologico",
+        "fusarium",
+        "rhizoctonia"
+      ],
+      "tags": [
+        "Soja",
+        "Maíz",
+        "Trigo",
+        "Cebada",
+        "Hongos del suelo"
+      ],
+      "page_metadata": {
+        "title": "Amyprotec 42 – AgriCheck | Protección Fungicida para Semillas",
+        "meta_description": "",
+        "has_meta_description": false,
+        "file_exists": true,
+        "intro_paragraph": "Amyprotec 42 protege la semilla desde el inicio, creando una barrera biológica contra patógenos clave del suelo y garantizando una viabilidad celular sin precedentes en el mercado."
+      }
+    },
+    {
+      "id": "super-fifty",
+      "name": "Super Fifty",
+      "description": "Bioestimulante anti-estrés que mejora el cuaje y potencia el rendimiento del cultivo.",
+      "relative_url": "superfifty-prime.html",
+      "absolute_url": "https://www.agrichecksrl.com/superfifty-prime.html",
+      "image": "Superfifty.webp",
+      "crops": [
+        "maiz",
+        "soja",
+        "trigo"
+      ],
+      "issues": [
+        "estres",
+        "cuaje",
+        "rendimiento"
+      ],
+      "search_terms": [
+        "super",
+        "fifty",
+        "superfifty",
+        "prime",
+        "bioestimulante",
+        "estres",
+        "cuaje",
+        "rendimiento",
+        "ascophyllum",
+        "nodosum"
+      ],
+      "tags": [
+        "Maíz",
+        "Soja",
+        "Trigo",
+        "Estrés",
+        "Cuaje",
+        "Rendimiento"
+      ],
+      "page_metadata": {
+        "title": "Superfifty PRIME – AgriCheck | Bioestimulante Anti-Estrés",
+        "meta_description": "Superfifty PRIME es el bioestimulante a base de Ascophyllum nodosum líquido más concentrado del mercado, diseñado para proteger tus cultivos del estrés abiótico y maximizar el rendimiento.",
+        "has_meta_description": true,
+        "file_exists": true,
+        "intro_paragraph": "Superfifty ® PRIME es el extracto de Ascophyllum nodosum más concentrado del mundo, validado científicamente para activar las defensas de la planta a nivel genético y maximizar su potencial."
+      }
+    },
+    {
+      "id": "parka",
+      "name": "Parka",
+      "description": "Suplemento de cutícula premium para mejorar la calidad y protección del fruto.",
+      "relative_url": "parka.html",
+      "absolute_url": "https://www.agrichecksrl.com/parka.html",
+      "image": "Parka.webp",
+      "crops": [
+        "cereza",
+        "manzano",
+        "peral",
+        "durazno"
+      ],
+      "issues": [
+        "cracking",
+        "asoleado"
+      ],
+      "search_terms": [
+        "parka",
+        "suplemento",
+        "cuticula",
+        "cereza",
+        "manzano",
+        "peral",
+        "durazno",
+        "cracking",
+        "asoleado",
+        "frutos",
+        "exportacion",
+        "calidad"
+      ],
+      "tags": [
+        "Cereza",
+        "Manzano",
+        "Peral",
+        "Durazno",
+        "Cracking",
+        "Asoleado"
+      ],
+      "page_metadata": {
+        "title": "Parka® – AgriCheck | Tecnología de Cutícula de Cultiva LLC",
+        "meta_description": "",
+        "has_meta_description": false,
+        "file_exists": true,
+        "intro_paragraph": "No deje su inversión a merced del clima. La tecnología SureSeal™ de Cultiva LLC crea un escudo invisible y elástico que protege su fruta para lograr una terminación impecable."
+      }
+    },
+    {
+      "id": "atroverde",
+      "name": "Atroverde",
+      "description": "Biocontrolador aéreo con Trichoderma atroviride cepa 77B para control de Botrytis en vid y tomate.",
+      "relative_url": "atroverde.html",
+      "absolute_url": "https://www.agrichecksrl.com/atroverde.html",
+      "image": "atroverde-packaging.webp",
+      "crops": [
+        "vid",
+        "tomate"
+      ],
+      "issues": [
+        "botrytis",
+        "podredumbre"
+      ],
+      "search_terms": [
+        "atroverde",
+        "trichoderma",
+        "atroviride",
+        "77b",
+        "botrytis",
+        "podredumbre",
+        "gris",
+        "vid",
+        "tomate",
+        "proteccion",
+        "biologica"
+      ],
+      "tags": [
+        "Vid",
+        "Tomate",
+        "Botrytis",
+        "Podredumbre gris"
+      ],
+      "page_metadata": {
+        "title": "Atroverde - AgriCheck | Especialista en Botrytis",
+        "meta_description": "",
+        "has_meta_description": false,
+        "file_exists": true,
+        "intro_paragraph": ""
+      }
+    },
+    {
+      "id": "plutex",
+      "name": "Plutex",
+      "description": "Insecticida biológico para el control específico de Plutella xylostella en cultivos crucíferos.",
+      "relative_url": "plutex.html",
+      "absolute_url": "https://www.agrichecksrl.com/plutex.html",
+      "image": "Plutex.webp",
+      "crops": [
+        "brocoli",
+        "repollo",
+        "coliflor",
+        "hortalizas"
+      ],
+      "issues": [
+        "orugas",
+        "plagas"
+      ],
+      "search_terms": [
+        "plutex",
+        "insecticida",
+        "biologico",
+        "virus",
+        "plutella",
+        "xylostella",
+        "cruciferas"
+      ],
+      "tags": [
+        "Brócoli",
+        "Repollo",
+        "Coliflor",
+        "Orugas"
+      ],
+      "page_metadata": {
+        "title": "Plutex – AgriCheck | Control Biológico de Polilla Dorso de Diamante",
+        "meta_description": "Plutex es un insecticida biológico a base de virus para el control específico de Plutella xylostella en crucíferas (brócoli, repollo, coliflor).",
+        "has_meta_description": true,
+        "file_exists": true,
+        "intro_paragraph": "Plutex es la solución definitiva contra la resistencia de Plutella xylostella . Un bioinsecticida viral que actúa donde los químicos fallan."
+      }
+    },
+    {
+      "id": "biolure",
+      "name": "BioLure",
+      "description": "Cebo de feromonas de liberación controlada para monitoreo preciso de plagas clave en frutales.",
+      "relative_url": "biolure.html",
+      "absolute_url": "https://www.agrichecksrl.com/biolure.html",
+      "image": "Biolure CM1X.webp",
+      "crops": [
+        "manzano",
+        "peral",
+        "nogal",
+        "citricos"
+      ],
+      "issues": [
+        "plagas",
+        "monitoreo"
+      ],
+      "search_terms": [
+        "biolure",
+        "feromonas",
+        "monitoreo",
+        "carpocapsa",
+        "grafolita",
+        "moscas",
+        "fruta",
+        "suterra"
+      ],
+      "tags": [
+        "Manzano",
+        "Peral",
+        "Nogal",
+        "Cítricos",
+        "Carpocapsa",
+        "Grafolita"
+      ],
+      "page_metadata": {
+        "title": "BioLure – AgriCheck | Monitoreo de Precisión",
+        "meta_description": "BioLure de Suterra ofrece los cebos de feromonas más consistentes y duraderos para el monitoreo de plagas agrícolas como Cydia pomonella y Moscas de la Fruta.",
+        "has_meta_description": true,
+        "file_exists": true,
+        "intro_paragraph": "Los cebos BioLure son el estándar mundial para el monitoreo de plagas. Datos precisos de vuelo para optimizar sus tratamientos."
+      }
+    },
+    {
+      "id": "biomagnet",
+      "name": "BioMagnet",
+      "description": "Dispositivo Attract & Kill para control específico de Drosophila suzukii en berries y frutales.",
+      "relative_url": "biomagnet.html",
+      "absolute_url": "https://www.agrichecksrl.com/biomagnet.html",
+      "image": "BioMagnet.webp",
+      "crops": [
+        "frutales",
+        "cereza",
+        "manzano",
+        "peral",
+        "durazno"
+      ],
+      "issues": [
+        "plagas"
+      ],
+      "search_terms": [
+        "biomagnet",
+        "attract",
+        "and",
+        "kill",
+        "drosophila",
+        "suzukii",
+        "mosca",
+        "alas",
+        "manchadas",
+        "berries",
+        "frutales"
+      ],
+      "tags": [
+        "Frutales",
+        "Berries",
+        "Plagas"
+      ],
+      "page_metadata": {
+        "title": "BioMagnet – AgriCheck | Control de Drosophila Suzukii",
+        "meta_description": "BioMagnet es la solución 'Attract & Kill' específica para Drosophila suzukii en berries y frutales finos. Cero residuos, máxima eficacia.",
+        "has_meta_description": true,
+        "file_exists": true,
+        "intro_paragraph": "BioMagnet es la innovadora solución de atracción y muerte masiva para combatir la Mosca de Alas Manchadas en cultivos de alto valor."
+      }
+    },
+    {
+      "id": "celada-vmb",
+      "name": "Celada VMB",
+      "description": "Dispensador de feromonas para confusión sexual y control de cochinilla harinosa en vid.",
+      "relative_url": "celada.html",
+      "absolute_url": "https://www.agrichecksrl.com/celada.html",
+      "image": "Celada%20VMB.webp",
+      "crops": [
+        "vid"
+      ],
+      "issues": [
+        "cochinilla",
+        "plagas"
+      ],
+      "search_terms": [
+        "celada",
+        "vmb",
+        "confusion",
+        "sexual",
+        "planococcus",
+        "ficus",
+        "cochinilla",
+        "harinosa",
+        "vid",
+        "suterra"
+      ],
+      "tags": [
+        "Vid",
+        "Cochinilla",
+        "Confusión sexual"
+      ],
+      "page_metadata": {
+        "title": "Celada VMB – AgriCheck | Confusión Sexual Accesible",
+        "meta_description": "Celada VMB ofrece la tecnología de confianza de Suterra para el control de la Cochinilla Harinosa de la Vid en un formato de dispensador accesible y eficaz.",
+        "has_meta_description": true,
+        "file_exists": true,
+        "intro_paragraph": "La alternativa inteligente en confusión sexual para la Cochinilla Harinosa de la Vid ( Planococcus ficus ). Calidad Suterra en un formato versátil."
+      }
+    },
+    {
+      "id": "checkmate-vmb-xl",
+      "name": "CheckMate VMB-XL",
+      "description": "Dispensador de feromonas de larga duración para confusión sexual y control de cochinilla harinosa en vid.",
+      "relative_url": "checkmate-vmb-xl.html",
+      "absolute_url": "https://www.agrichecksrl.com/checkmate-vmb-xl.html",
+      "image": "CheckMate%20VMB.webp",
+      "crops": [
+        "vid"
+      ],
+      "issues": [
+        "cochinilla",
+        "plagas"
+      ],
+      "search_terms": [
+        "checkmate",
+        "vmb",
+        "xl",
+        "confusion",
+        "sexual",
+        "planococcus",
+        "ficus",
+        "cochinilla",
+        "harinosa",
+        "vid",
+        "suterra"
+      ],
+      "tags": [
+        "Vid",
+        "Cochinilla",
+        "Confusión sexual"
+      ],
+      "page_metadata": {
+        "title": "CheckMate VMB-XL – AgriCheck | Control de Cochinilla Harinosa de la Vid",
+        "meta_description": "CheckMate VMB-XL es un dispensador de feromonas de larga duración para el control de la Cochinilla Harinosa de la Vid (Planococcus ficus) mediante confusión sexual.",
+        "has_meta_description": true,
+        "file_exists": true,
+        "intro_paragraph": "CheckMate VMB-XL es el estándar de oro para la confusión sexual de la Cochinilla Harinosa de la Vid ( Planococcus ficus ). Una sola aplicación protege su viñedo toda la temporada."
+      }
+    },
+    {
+      "id": "subvert",
+      "name": "Subvert",
+      "description": "Feromona líquida microencapsulada para confusión sexual y control de Lobesia botrana en vid.",
+      "relative_url": "subvert.html",
+      "absolute_url": "https://www.agrichecksrl.com/subvert.html",
+      "image": "Subvert.webp",
+      "crops": [
+        "vid"
+      ],
+      "issues": [
+        "polilla",
+        "plagas"
+      ],
+      "search_terms": [
+        "subvert",
+        "confusion",
+        "sexual",
+        "lobesia",
+        "botrana",
+        "feromona",
+        "liquida",
+        "microencapsulada",
+        "vid",
+        "suterra"
+      ],
+      "tags": [
+        "Vid",
+        "Polilla de la vid",
+        "Confusión sexual"
+      ],
+      "page_metadata": {
+        "title": "Subvert – AgriCheck | Control de Lobesia botrana",
+        "meta_description": "Subvert es la feromona líquida microencapsulada de Suterra para el control de la Polilla de la Vid (Lobesia botrana). Eficacia y flexibilidad.",
+        "has_meta_description": true,
+        "file_exists": true,
+        "intro_paragraph": "Subvert permite controlar la Polilla de la Vid mediante confusión sexual con la flexibilidad de una aplicación pulverizable. Proteja sus racimos de la botritis asociada."
+      }
+    },
+    {
+      "id": "checkmate-cm-f",
+      "name": "CheckMate CM-F",
+      "description": "Feromona líquida microencapsulada para confusión sexual y control de carpocapsa en frutales.",
+      "relative_url": "checkmate-cm-f.html",
+      "absolute_url": "https://www.agrichecksrl.com/checkmate-cm-f.html",
+      "image": "CheckMate%20CM-F.webp",
+      "crops": [
+        "frutales",
+        "manzano",
+        "peral",
+        "nogal",
+        "ciruela"
+      ],
+      "issues": [
+        "carpocapsa",
+        "plagas"
+      ],
+      "search_terms": [
+        "checkmate",
+        "cm-f",
+        "confusion",
+        "sexual",
+        "sprayable",
+        "microencapsulado",
+        "carpocapsa",
+        "cydia",
+        "pomonella",
+        "suterra"
+      ],
+      "tags": [
+        "Frutales",
+        "Carpocapsa",
+        "Confusión sexual"
+      ],
+      "page_metadata": {
+        "title": "CheckMate CM-F – AgriCheck | Feromona Pulverizable para Carpocapsa",
+        "meta_description": "CheckMate CM-F es una feromona líquida microencapsulada para el control de Cydia pomonella en frutales. Tecnología Suterra de confusión sexual pulverizable.",
+        "has_meta_description": true,
+        "file_exists": true,
+        "intro_paragraph": "CheckMate CM-F es la feromona líquida líder para el control de Cydia pomonella . Integración perfecta en su programa de pulverización habitual."
+      }
+    },
+    {
+      "id": "puffer-cm",
+      "name": "Puffer CM",
+      "description": "Sistema aerosol de feromona para confusión sexual y control de carpocapsa en frutales.",
+      "relative_url": "puffer-cm.html",
+      "absolute_url": "https://www.agrichecksrl.com/puffer-cm.html",
+      "image": "Puffer%20CM.webp",
+      "crops": [
+        "frutales",
+        "manzano",
+        "peral",
+        "nogal"
+      ],
+      "issues": [
+        "carpocapsa",
+        "plagas"
+      ],
+      "search_terms": [
+        "puffer",
+        "cm",
+        "aerosol",
+        "confusion",
+        "sexual",
+        "carpocapsa",
+        "cydia",
+        "pomonella",
+        "suterra"
+      ],
+      "tags": [
+        "Frutales",
+        "Manzano",
+        "Peral",
+        "Nogal",
+        "Carpocapsa"
+      ],
+      "page_metadata": {
+        "title": "Puffer CM – AgriCheck | Tecnología Aerosol para Carpocapsa",
+        "meta_description": "Puffer CM de Suterra es la tecnología de feromona en aerosol más avanzada para el control de Cydia pomonella. Inteligencia y eficacia en cada disparo.",
+        "has_meta_description": true,
+        "file_exists": true,
+        "intro_paragraph": "El sistema de liberación de feromonas activo más confiable del mercado. Programado para emitir cuando la plaga está activa, maximizando la protección y la eficiencia."
+      }
+    },
+    {
+      "id": "checkmate-crs",
+      "name": "CheckMate CRS",
+      "description": "Dispensador de feromonas para confusión sexual y control de cochinilla roja australiana en cítricos.",
+      "relative_url": "checkmate-crs.html",
+      "absolute_url": "https://www.agrichecksrl.com/checkmate-crs.html",
+      "image": "CheckMate CRS.webp",
+      "crops": [
+        "naranja",
+        "limon",
+        "mandarina",
+        "pomelo"
+      ],
+      "issues": [
+        "cochinilla",
+        "plagas"
+      ],
+      "search_terms": [
+        "checkmate",
+        "crs",
+        "confusion",
+        "sexual",
+        "cochinilla",
+        "roja",
+        "aonidiella",
+        "aurantii",
+        "citricos",
+        "suterra"
+      ],
+      "tags": [
+        "Naranja",
+        "Limón",
+        "Mandarina",
+        "Pomelo",
+        "Cochinilla roja"
+      ],
+      "page_metadata": {
+        "title": "CheckMate CRS – AgriCheck | Control de Cochinilla Roja",
+        "meta_description": "CheckMate CRS es un dispensador de feromonas para el control de la Cochinilla Roja Australiana (Aonidiella aurantii) en cítricos mediante confusión sexual.",
+        "has_meta_description": true,
+        "file_exists": true,
+        "intro_paragraph": "CheckMate CRS interrumpe el ciclo de la Cochinilla Roja Australiana ( Aonidiella aurantii ) protegiendo la calidad de su fruta todo el año."
+      }
+    },
+    {
+      "id": "checkmate-ofm-f",
+      "name": "CheckMate OFM-F",
+      "description": "Feromona líquida microencapsulada para confusión sexual y control de grafolita en frutales de carozo y nogal.",
+      "relative_url": "checkmate-ofm-f.html",
+      "absolute_url": "https://www.agrichecksrl.com/checkmate-ofm-f.html",
+      "image": "CheckMate OFM-F.webp",
+      "crops": [
+        "durazno",
+        "nectarina",
+        "ciruela",
+        "nogal"
+      ],
+      "issues": [
+        "grafolita",
+        "plagas"
+      ],
+      "search_terms": [
+        "checkmate",
+        "ofm-f",
+        "confusion",
+        "sexual",
+        "sprayable",
+        "microencapsulado",
+        "grafolita",
+        "grapholita",
+        "molesta",
+        "suterra"
+      ],
+      "tags": [
+        "Durazno",
+        "Nectarina",
+        "Ciruela",
+        "Nogal",
+        "Grafolita"
+      ],
+      "page_metadata": {
+        "title": "CheckMate OFM-F – AgriCheck | Feromona Pulverizable para Grafolita",
+        "meta_description": "CheckMate OFM-F es una feromona líquida microencapsulada específica para el control de Grapholita molesta en frutales de carozo y nogales.",
+        "has_meta_description": true,
+        "file_exists": true,
+        "intro_paragraph": "CheckMate OFM-F es la solución de confusión sexual líquida más confiable para el control de la Polilla Oriental de la Fruta ( Grapholita molesta )."
+      }
+    }
+  ],
+  "more_products": [
+    {
+      "id": "madex",
+      "name": "Madex",
+      "relative_url": "madex.html",
+      "absolute_url": "https://www.agrichecksrl.com/madex.html"
+    },
+    {
+      "id": "madex-twin",
+      "name": "Madex Twin",
+      "relative_url": "madex-twin.html",
+      "absolute_url": "https://www.agrichecksrl.com/madex-twin.html"
+    },
+    {
+      "id": "magnet-med",
+      "name": "Magnet MED",
+      "relative_url": "magnet.html",
+      "absolute_url": "https://www.agrichecksrl.com/magnet.html"
+    },
+    {
+      "id": "pack-soja",
+      "name": "Pack Soja",
+      "relative_url": "pack-soja.html",
+      "absolute_url": "https://www.agrichecksrl.com/pack-soja.html"
+    },
+    {
+      "id": "t-gro-5x",
+      "name": "T-Gro 5X",
+      "relative_url": "t-gro-5x.html",
+      "absolute_url": "https://www.agrichecksrl.com/t-gro-5x.html"
+    },
+    {
+      "id": "tutavir",
+      "name": "Tutavir",
+      "relative_url": "tutavir.html",
+      "absolute_url": "https://www.agrichecksrl.com/tutavir.html"
+    },
+    {
+      "id": "v12-initiate",
+      "name": "V12 Initiate",
+      "relative_url": "v12-initiate.html",
+      "absolute_url": "https://www.agrichecksrl.com/v12-initiate.html"
+    }
+  ]
+}

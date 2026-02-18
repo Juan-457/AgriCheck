@@ -17,7 +17,6 @@
 
       gtag('config', 'G-RNTX5NWFB5');
     </script>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="llm-friendly" content="true" />
@@ -1192,8 +1191,21 @@
       addSet();
       baseWidth = measureBaseWidth();
 
-      while (track.scrollWidth < viewport.clientWidth + baseWidth) addSet();
-      if (track.scrollWidth < baseWidth * 2) addSet();
+      // Evita bucles infinitos cuando el layout aún no tiene ancho medible
+      if (!Number.isFinite(baseWidth) || baseWidth <= 0) {
+        viewport.scrollLeft = 0;
+        return;
+      }
+
+      const targetWidth = viewport.clientWidth + baseWidth;
+      let safety = 0;
+      while (track.scrollWidth < targetWidth && safety < 20) {
+        addSet();
+        safety++;
+      }
+      if (track.scrollWidth < baseWidth * 2 && safety < 40) {
+        addSet();
+      }
 
       baseWidth = measureBaseWidth();
       viewport.scrollLeft = baseWidth ? (prevScroll % baseWidth) : 0;
