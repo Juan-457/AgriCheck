@@ -758,28 +758,6 @@
       gap:6px;
       font-size:14px;
     }
-
-    .whatsapp-float{
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      width:62px;
-      height:62px;
-      background:#25D366;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow:0 8px 22px rgba(0,0,0,.28);
-      z-index:999;
-      transition:transform .2s ease, box-shadow .2s ease;
-      animation:whatsapp-pop-in .6s ease-out .2s both;
-    }
-    .whatsapp-float img{width:30px;height:30px;display:block}
-    .whatsapp-float:hover{transform:translateY(-2px); box-shadow:0 12px 30px rgba(0,0,0,.32)}
-
-    @keyframes whatsapp-pop-in{
-      0%{transform:translateY(12px) scale(.92)}
       55%{transform:translateY(-4px) scale(1.03)}
       100%{transform:translateY(0) scale(1)}
     }
@@ -1140,18 +1118,6 @@
   </div>
 </footer>
 
-<a
-  class="whatsapp-float"
-  href="https://wa.me/+5492984763055?text=Hola%20AgriCheck!%20Quiero%20hacer%20una%20consulta."
-  target="_blank"
-  rel="noopener"
-  aria-label="Contactar por WhatsApp"
->
-  <img
-    src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-    alt="WhatsApp"
-  />
-</a>
 
 <script>
   // Año automático
@@ -1507,5 +1473,6 @@
   })();
 </script>
 
+  <script src="assets/whatsapp-float.js" defer></script>
 </body>
 </html>
