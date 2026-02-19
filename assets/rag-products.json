@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-17T06:57:59.102Z",
+  "generated_at": "2026-02-19T01:58:55.670Z",
   "source_file": "nuestros-productos.html",
   "company_source_file": "index.html",
   "sellers_source_file": "Zonas.html",
@@ -31,12 +31,7 @@
       "facebook": "https://www.facebook.com/profile.php?id=100071954765421",
       "whatsapp": "https://wa.me/+5492984763055?text=Hola%20AgriCheck!%20Quiero%20hacer%20una%20consulta."
     },
-    "represented_brands": [
-      "Suterra",
-      "Andermatt",
-      "BioAtlantis",
-      "Cultiva"
-    ],
+    "represented_brands": [],
     "source_file": "index.html"
   },
   "total_sellers": 7,
@@ -168,7 +163,7 @@
       ]
     }
   ],
-  "total_products": 21,
+  "total_products": 25,
   "products": [
     {
       "id": "beauvisan",
@@ -442,6 +437,44 @@
       }
     },
     {
+      "id": "zimbili",
+      "name": "Zimbili",
+      "description": "Bioestimulante radicular con L-triptófano, L-metionina y Ecklonia maxima para potenciar arranque y vigor.",
+      "relative_url": "",
+      "absolute_url": "",
+      "image": "Zimbili.webp",
+      "crops": [
+        "soja",
+        "maiz",
+        "trigo",
+        "cebada",
+        "girasol",
+        "hortalizas",
+        "frutales"
+      ],
+      "issues": [
+        "estres",
+        "arranque",
+        "raiz"
+      ],
+      "search_terms": [
+        "zimbili",
+        "bioestimulante",
+        "raices",
+        "ecklonia",
+        "triptofano",
+        "metionina"
+      ],
+      "tags": [
+        "Soja",
+        "Maíz",
+        "Trigo",
+        "Cebada",
+        "Raíces"
+      ],
+      "page_metadata": {}
+    },
+    {
       "id": "amyprotec-42",
       "name": "Amyprotec 42",
       "description": "Fungicida biológico para tratamiento de semillas con protección prolongada desde la siembra.",
@@ -617,6 +650,44 @@
       }
     },
     {
+      "id": "tutavir-sc",
+      "name": "Tutavir SC",
+      "description": "Bioinsecticida viral específico para el control de Tuta absoluta en tomate.",
+      "relative_url": "tutavir.html",
+      "absolute_url": "https://www.agrichecksrl.com/tutavir.html",
+      "image": "TUTAVIR SC.webp",
+      "crops": [
+        "tomate"
+      ],
+      "issues": [
+        "orugas",
+        "plagas"
+      ],
+      "search_terms": [
+        "tutavir",
+        "sc",
+        "insecticida",
+        "biologico",
+        "viral",
+        "tuta",
+        "absoluta",
+        "tomate"
+      ],
+      "tags": [
+        "Tomate",
+        "Tuta absoluta",
+        "Orugas",
+        "Control biológico"
+      ],
+      "page_metadata": {
+        "title": "Tutavir – AgriCheck | Control Biológico de Tuta absoluta",
+        "meta_description": "Tutavir es un bioinsecticida viral específico para el control de Tuta absoluta en tomate. Actúa por ingestión y ofrece un control poblacional único.",
+        "has_meta_description": true,
+        "file_exists": true,
+        "intro_paragraph": "Tutavir es un bioinsecticida viral selectivo que convierte a la plaga en su propio enemigo. Control eficaz, sin residuos y compatible con fauna auxiliar."
+      }
+    },
+    {
       "id": "plutex",
       "name": "Plutex",
       "description": "Insecticida biológico para el control específico de Plutella xylostella en cultivos crucíferos.",
@@ -654,6 +725,45 @@
         "has_meta_description": true,
         "file_exists": true,
         "intro_paragraph": "Plutex es la solución definitiva contra la resistencia de Plutella xylostella . Un bioinsecticida viral que actúa donde los químicos fallan."
+      }
+    },
+    {
+      "id": "vitisan",
+      "name": "Vitisan",
+      "description": "Fungicida y bactericida de contacto para fortalecer estrategias preventivas en cultivos intensivos.",
+      "relative_url": "vitisan.html",
+      "absolute_url": "https://www.agrichecksrl.com/vitisan.html",
+      "image": "Vitisan.webp",
+      "crops": [
+        "vid",
+        "frutales",
+        "hortalizas"
+      ],
+      "issues": [
+        "oidio",
+        "mildiu",
+        "bacteriosis"
+      ],
+      "search_terms": [
+        "vitisan",
+        "fungicida",
+        "bactericida",
+        "contacto",
+        "sanitario",
+        "preventivo"
+      ],
+      "tags": [
+        "Vid",
+        "Frutales",
+        "Hortalizas",
+        "Sanidad preventiva"
+      ],
+      "page_metadata": {
+        "title": "Vitisan – AgriCheck | Fungicida y Bactericida de Contacto",
+        "meta_description": "Vitisan es una solución de contacto para manejo preventivo de enfermedades fúngicas y bacterianas, ideal para integrar en programas de producción sustentable.",
+        "has_meta_description": true,
+        "file_exists": true,
+        "intro_paragraph": "Herramienta de contacto para programas preventivos de sanidad vegetal, compatible con manejo integrado y esquemas de producción sustentable."
       }
     },
     {
@@ -740,6 +850,46 @@
         "has_meta_description": true,
         "file_exists": true,
         "intro_paragraph": "BioMagnet es la innovadora solución de atracción y muerte masiva para combatir la Mosca de Alas Manchadas en cultivos de alto valor."
+      }
+    },
+    {
+      "id": "magnet-med",
+      "name": "Magnet MED",
+      "description": "Dispositivo Attract & Kill para control eficaz de la mosca del Mediterráneo en frutales y cítricos.",
+      "relative_url": "magnet.html",
+      "absolute_url": "https://www.agrichecksrl.com/magnet.html",
+      "image": "magnet.webp",
+      "crops": [
+        "citricos",
+        "frutales",
+        "uva"
+      ],
+      "issues": [
+        "mosca",
+        "plagas"
+      ],
+      "search_terms": [
+        "magnet",
+        "med",
+        "attract",
+        "and",
+        "kill",
+        "ceratitis",
+        "capitata",
+        "mosca",
+        "mediterraneo"
+      ],
+      "tags": [
+        "Cítricos",
+        "Frutales",
+        "Mosca del Mediterráneo"
+      ],
+      "page_metadata": {
+        "title": "Magnet MED – AgriCheck | Atraer y Matar Mosca del Mediterráneo",
+        "meta_description": "Magnet MED es la solución definitiva de 'Attract & Kill' para la Mosca del Mediterráneo (Ceratitis capitata). Protección eficaz por hasta 6 meses.",
+        "has_meta_description": true,
+        "file_exists": true,
+        "intro_paragraph": "Magnet MED revoluciona el control de Ceratitis capitata con su tecnología \"Attract & Kill\". Protección continua sin necesidad de pulverizaciones masivas."
       }
     },
     {
@@ -993,44 +1143,60 @@
         "file_exists": true,
         "intro_paragraph": "CheckMate OFM-F es la solución de confusión sexual líquida más confiable para el control de la Polilla Oriental de la Fruta ( Grapholita molesta )."
       }
+    },
+    {
+      "id": "checkmate-vmb-xl",
+      "name": "CheckMate VMB-XL",
+      "description": "Dispensador de feromonas de larga duración para confusión sexual y control de cochinilla harinosa en vid.",
+      "relative_url": "checkmate-vmb-xl.html",
+      "absolute_url": "https://www.agrichecksrl.com/checkmate-vmb-xl.html",
+      "image": "CheckMate%20VMB.webp",
+      "crops": [
+        "vid"
+      ],
+      "issues": [
+        "cochinilla",
+        "plagas"
+      ],
+      "search_terms": [
+        "checkmate",
+        "vmb",
+        "xl",
+        "confusion",
+        "sexual",
+        "planococcus",
+        "ficus",
+        "cochinilla",
+        "harinosa",
+        "vid",
+        "suterra"
+      ],
+      "tags": [
+        "Vid",
+        "Cochinilla",
+        "Confusión sexual"
+      ],
+      "page_metadata": {
+        "title": "CheckMate VMB-XL – AgriCheck | Control de Cochinilla Harinosa de la Vid",
+        "meta_description": "CheckMate VMB-XL es un dispensador de feromonas de larga duración para el control de la Cochinilla Harinosa de la Vid (Planococcus ficus) mediante confusión sexual.",
+        "has_meta_description": true,
+        "file_exists": true,
+        "intro_paragraph": "CheckMate VMB-XL es el estándar de oro para la confusión sexual de la Cochinilla Harinosa de la Vid ( Planococcus ficus ). Una sola aplicación protege su viñedo toda la temporada."
+      }
     }
   ],
   "more_products": [
     {
-      "id": "checkmate-vmb-xl",
-      "name": "CheckMate VMB-XL",
-      "relative_url": "checkmate-vmb-xl.html",
-      "absolute_url": "https://www.agrichecksrl.com/checkmate-vmb-xl.html"
-    },
-    {
-      "id": "madex",
-      "name": "Madex",
+      "id": "ir-a-ficha-de-madex",
+      "name": "Ir a ficha de Madex",
       "relative_url": "madex.html",
       "absolute_url": "https://www.agrichecksrl.com/madex.html"
     },
     {
-      "id": "madex-twin",
-      "name": "Madex Twin",
+      "id": "ir-a-ficha-de-madex-twin",
+      "name": "Ir a ficha de Madex Twin",
       "relative_url": "madex-twin.html",
       "absolute_url": "https://www.agrichecksrl.com/madex-twin.html"
-    },
-    {
-      "id": "magnet-med",
-      "name": "Magnet MED",
-      "relative_url": "magnet.html",
-      "absolute_url": "https://www.agrichecksrl.com/magnet.html"
-    },
-    {
-      "id": "pack-soja",
-      "name": "Pack Soja",
-      "relative_url": "pack-soja.html",
-      "absolute_url": "https://www.agrichecksrl.com/pack-soja.html"
-    },
-    {
-      "id": "tutavir",
-      "name": "Tutavir",
-      "relative_url": "tutavir.html",
-      "absolute_url": "https://www.agrichecksrl.com/tutavir.html"
     }
   ]
 }
