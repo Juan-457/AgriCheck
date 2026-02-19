@@ -42,7 +42,7 @@
         }
 
         body { font-family: 'Lato', sans-serif; background-color: var(--brand-background); color: var(--brand-dark-gray); }
-        .hero-bg { background-image: linear-gradient(to right, rgba(0,0,0,.72), rgba(0,0,0,.35)), url('manzanas.webp'); background-size: cover; background-position: center; }
+        .hero-bg { background: linear-gradient(135deg, #eef8e2 0%, #f8f9f7 60%, #ffffff 100%); }
         .cta-button { transition: all .3s ease; }
         .cta-button:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 15px rgba(0,0,0,.1); }
         .feature-card { background-color:white; transition: transform .3s ease; }
@@ -91,21 +91,26 @@
     </header>
 
     <main>
-      <section class="hero-bg text-white py-24 md:py-32">
-        <div class="container mx-auto px-6 text-center">
-          <span class="bg-green-500 text-white text-sm font-bold px-4 py-1 rounded-full uppercase">Fungicida / bactericida de contacto</span>
-          <h1 class="text-4xl md:text-6xl font-black mt-4 mb-3">Vitisan</h1>
-          <p class="max-w-3xl mx-auto text-lg md:text-xl text-slate-100">Herramienta de contacto para programas preventivos de sanidad vegetal, compatible con manejo integrado y esquemas de producción sustentable.</p>
-          <a href="#contacto" class="cta-button inline-block mt-8 bg-lime-400 hover:bg-lime-300 text-slate-900 font-black py-3 px-8 rounded-full text-lg">Solicitar asesoramiento</a>
+      <section class="hero-bg py-20 md:py-28">
+        <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-10 items-center">
+          <div class="flex justify-center lg:justify-start">
+            <img src="Vitisan.webp" alt="Envase del producto VitiSan" class="w-40 md:w-52 h-auto object-contain drop-shadow-xl" loading="eager" decoding="async"/>
+          </div>
+          <div class="text-right">
+            <span class="bg-green-600 text-white text-sm font-bold px-4 py-1 rounded-full uppercase">Fungicida de contacto de amplio espectro libre de residuos</span>
+            <h1 class="text-4xl md:text-6xl font-black mt-4 mb-3 text-slate-800">VitiSan<sup>®</sup></h1>
+            <p class="max-w-2xl ml-auto text-lg md:text-xl text-slate-700">VitiSan es un fungicida a base de bicarbonato de potasio con certificación para uso en cultivos orgánicos. Tiene efectos preventivos y curativos contra una amplia gama de enfermedades fúngicas.</p>
+            <a href="#contacto" class="cta-button inline-block mt-8 bg-lime-500 hover:bg-lime-400 text-slate-900 font-black py-3 px-8 rounded-full text-lg">Contactanos por este producto</a>
+          </div>
         </div>
       </section>
 
       <section class="py-16 md:py-24">
         <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 class="text-3xl md:text-4xl font-black mb-5">¿Qué es Vitisan?</h2>
-            <p class="text-lg leading-relaxed mb-4">Vitisan es una formulación de acción por contacto desarrollada para el manejo preventivo y la reducción de presión de enfermedades causadas por hongos y bacterias.</p>
-            <p class="text-lg leading-relaxed">Su perfil permite integrarlo dentro de estrategias de rotación y programas de control biológico, ayudando a proteger la calidad de los cultivos y la producción.</p>
+            <h2 class="text-3xl md:text-4xl font-black mb-5">VitiSan – una herramienta valiosa contra las enfermedades fúngicas</h2>
+            <p class="text-lg leading-relaxed mb-4">VitiSan es un fungicida de contacto con efecto preventivo y curativo contra una amplia gama de enfermedades fúngicas.</p>
+            <p class="text-lg leading-relaxed">Está formulado a base de bicarbonato de potasio, siendo muy eficaz en el control de oídio y botritis en diversos cultivos, así como sarna y manchas de fumaginas en frutales de pepita.</p>
           </div>
           <div class="bg-white rounded-2xl shadow-xl p-8 flex justify-center">
             <img src="Vitisan.webp" alt="Envase del producto Vitisan" class="max-h-[430px] w-auto object-contain" loading="lazy" decoding="async"/>
@@ -115,20 +120,46 @@
 
       <section class="bg-white py-16 md:py-24">
         <div class="container mx-auto px-6">
-          <h2 class="text-3xl md:text-4xl font-black text-center mb-12">Beneficios principales</h2>
+          <h2 class="text-3xl md:text-4xl font-black text-center mb-12">Beneficios</h2>
           <div class="grid md:grid-cols-3 gap-8">
             <div class="feature-card rounded-2xl p-8 border border-slate-100">
-              <h3 class="font-black text-xl mb-3">Modo de acción por contacto</h3>
-              <p>Actúa en superficie, acompañando estrategias preventivas en momentos de mayor riesgo sanitario.</p>
+              <h3 class="font-black text-xl mb-3">Protección eficaz</h3>
+              <p>Control confiable contra un amplio espectro de enfermedades fúngicas con efecto preventivo y curativo.</p>
             </div>
             <div class="feature-card rounded-2xl p-8 border border-slate-100">
-              <h3 class="font-black text-xl mb-3">Complementa programas integrados</h3>
-              <p>Se adapta a esquemas de manejo integrado y rotación de herramientas para mejorar la sustentabilidad.</p>
+              <h3 class="font-black text-xl mb-3">Libre de residuos</h3>
+              <p>Periodo de carencia mínimo, ideal para programas de pulverización sin residuos y esquemas de MIP.</p>
             </div>
             <div class="feature-card rounded-2xl p-8 border border-slate-100">
-              <h3 class="font-black text-xl mb-3">Versátil para cultivos intensivos</h3>
-              <p>Alternativa útil para cuidar sanidad y calidad en frutales, vid y hortalizas de alto valor.</p>
+              <h3 class="font-black text-xl mb-3">Sin riesgo de resistencia</h3>
+              <p>Modo de acción múltiple: aprobado para producción orgánica y compatible con procesos de vinificación.</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12">
+          <div>
+            <h2 class="text-3xl font-black mb-4">Modo de acción</h2>
+            <p class="text-lg leading-relaxed mb-4">VitiSan tiene un principio de funcionamiento múltiple, que actúa mediante una combinación de varios efectos: cambios en el valor de pH sobre la superficie de la hoja, presión osmótica y efectos específicos del ion bicarbonato (efecto choque).</p>
+            <p class="text-lg leading-relaxed">Las hifas estallan y se secan por el retraso en la formación del micelio. Finalmente, causa un colapso total de esporas y micelio de hongos susceptibles. Al actuar mediante un MAM, no hay riesgo de resistencia incluso en aplicaciones frecuentes.</p>
+          </div>
+          <div>
+            <h2 class="text-3xl font-black mb-4">Un producto de Andermatt</h2>
+            <p class="text-lg leading-relaxed mb-4">Andermatt, líder en soluciones biológicas para la agricultura con sede en Suiza, es el mayor productor mundial de insecticidas a base de virus.</p>
+            <p class="text-lg leading-relaxed">Su amplio portfolio incluye productos de variada naturaleza: virus, hongos, bacterias y otras soluciones compatibles con la producción orgánica.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white py-16 md:py-24">
+        <div class="container mx-auto px-6 max-w-4xl">
+          <h2 class="text-3xl md:text-4xl font-black mb-6 text-center">Resultados</h2>
+          <div class="rounded-2xl border border-slate-200 p-8 bg-slate-50">
+            <p class="text-lg font-bold">Control de Oídio</p>
+            <p class="text-lg mt-2">Alto Valle de Río Negro y Neuquén · Temporada 17-18</p>
+            <p class="text-lg mt-2">Manzana var. Gala · 3 aplicaciones a partir de estado fenológico botón rosado.</p>
           </div>
         </div>
       </section>
