@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NVHFPWQJ');</script>
+    <!-- End Google Tag Manager -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RNTX5NWFB5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RNTX5NWFB5');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="llm-friendly" content="true" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png" />
+    <title>Vitisan – AgriCheck | Fungicida y Bactericida de Contacto</title>
+    <meta name="description" content="Vitisan es una solución de contacto para manejo preventivo de enfermedades fúngicas y bacterianas, ideal para integrar en programas de producción sustentable.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-green: #89C444;
+            --brand-brown: #9A7A4E;
+            --brand-dark-gray: #4B4B4D;
+            --brand-background: #F8F9F7;
+        }
+
+        body { font-family: 'Lato', sans-serif; background-color: var(--brand-background); color: var(--brand-dark-gray); }
+        .hero-bg { background-image: linear-gradient(to right, rgba(0,0,0,.72), rgba(0,0,0,.35)), url('manzanas.webp'); background-size: cover; background-position: center; }
+        .cta-button { transition: all .3s ease; }
+        .cta-button:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 15px rgba(0,0,0,.1); }
+        .feature-card { background-color:white; transition: transform .3s ease; }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(137,196,68,.15); }
+
+        header{ position:sticky; top:0; z-index:60; padding:10px 0; background:rgba(255,255,255,.92); border-bottom:1px solid rgba(15,23,42,.08); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); box-shadow:0 8px 24px rgba(15,23,42,.08); }
+        .navWrap{ max-width:1100px; margin:0 auto; padding:0 18px; }
+        .topbar{ display:flex; align-items:center; justify-content:center; position:relative; min-height:44px; padding-left:140px; padding-right:60px; }
+        .brandLogo{ position:absolute; left:0; top:50%; transform:translateY(-50%); padding:6px 12px; border-radius:14px; background:#fff; border:1px solid rgba(15,23,42,.08); box-shadow:0 10px 22px rgba(15,23,42,.08); }
+        .brandLogo img{ height:44px; width:auto; display:block; }
+        .navlinks{ display:flex; gap:10px; padding:6px; border-radius:999px; background:rgba(15,23,42,.04); border:1px solid rgba(15,23,42,.08); box-shadow:0 10px 26px rgba(15,23,42,.08); }
+        .navlinks a{ padding:10px 16px; border-radius:999px; font-weight:800; color:#475569; letter-spacing:-.01em; transition: background .15s ease, transform .15s ease, color .15s ease; }
+        .navlinks a:hover{ background:rgba(22,163,74,.12); transform:translateY(-1px); color:#6aa334; }
+        .burger{ position:absolute; right:4px; top:50%; transform:translateY(-50%); width:44px; height:44px; border-radius:14px; border:1px solid rgba(15,23,42,.12); background:rgba(255,255,255,.86); display:none; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 10px 24px rgba(15,23,42,.12); }
+        .burgerLines{ width:18px; height:12px; position:relative; display:block; }
+        .burgerLines span{ position:absolute; left:0; width:100%; height:2px; background:#1f2937; border-radius:999px; transition: transform .18s ease, top .18s ease, opacity .18s ease; }
+        .burgerLines span:nth-child(1){ top:0 } .burgerLines span:nth-child(2){ top:5px } .burgerLines span:nth-child(3){ top:10px }
+        .mobileMenu{ display:none; padding:10px 0 14px; background:rgba(255,255,255,.98); border-top:1px solid rgba(15,23,42,.08); }
+        .mobileMenu .navWrap{ display:flex; flex-direction:column; gap:10px; }
+        .mobileMenu a{ padding:12px 14px; border-radius:16px; font-weight:900; color:#475569; background:rgba(15,23,42,.04); border:1px solid rgba(15,23,42,.08); }
+        body.menuOpen .mobileMenu{ display:block; }
+        body.menuOpen .burgerLines span:nth-child(1){ top:5px; transform:rotate(45deg); }
+        body.menuOpen .burgerLines span:nth-child(2){ opacity:0; }
+        body.menuOpen .burgerLines span:nth-child(3){ top:5px; transform:rotate(-45deg); }
+        @media(max-width:900px){ .topbar{padding-left:0;padding-right:0;} .navlinks{display:none;} .burger{display:flex;} .brandLogo{left:12px;} }
+    </style>
+    <script defer src="assets/llm-signals.js"></script>
+</head>
+
+<body class="text-slate-800">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVHFPWQJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <header>
+      <div class="navWrap">
+        <div class="topbar">
+          <a class="brandLogo" href="index.html" aria-label="Volver al inicio de AgriCheck"><img src="agrichecklogo.png" alt="AgriCheck" /></a>
+          <nav class="navlinks" aria-label="Navegación principal">
+            <a href="nuestros-productos.html">Nuestros Productos</a>
+            <a href="index.html#historia">Nuestra Historia</a>
+            <a href="index.html#contacto">Contacto</a>
+          </nav>
+          <button class="burger" id="burgerBtn" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menú"><span class="burgerLines"><span></span><span></span><span></span></span></button>
+        </div>
+      </div>
+      <div class="mobileMenu" id="mobileMenu"><div class="navWrap"><a href="nuestros-productos.html">Nuestros Productos</a><a href="index.html#historia">Nuestra Historia</a><a href="index.html#contacto">Contacto</a></div></div>
+    </header>
+
+    <main>
+      <section class="hero-bg text-white py-24 md:py-32">
+        <div class="container mx-auto px-6 text-center">
+          <span class="bg-green-500 text-white text-sm font-bold px-4 py-1 rounded-full uppercase">Fungicida / bactericida de contacto</span>
+          <h1 class="text-4xl md:text-6xl font-black mt-4 mb-3">Vitisan</h1>
+          <p class="max-w-3xl mx-auto text-lg md:text-xl text-slate-100">Herramienta de contacto para programas preventivos de sanidad vegetal, compatible con manejo integrado y esquemas de producción sustentable.</p>
+          <a href="#contacto" class="cta-button inline-block mt-8 bg-lime-400 hover:bg-lime-300 text-slate-900 font-black py-3 px-8 rounded-full text-lg">Solicitar asesoramiento</a>
+        </div>
+      </section>
+
+      <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-black mb-5">¿Qué es Vitisan?</h2>
+            <p class="text-lg leading-relaxed mb-4">Vitisan es una formulación de acción por contacto desarrollada para el manejo preventivo y la reducción de presión de enfermedades causadas por hongos y bacterias.</p>
+            <p class="text-lg leading-relaxed">Su perfil permite integrarlo dentro de estrategias de rotación y programas de control biológico, ayudando a proteger la calidad de los cultivos y la producción.</p>
+          </div>
+          <div class="bg-white rounded-2xl shadow-xl p-8 flex justify-center">
+            <img src="Vitisan.webp" alt="Envase del producto Vitisan" class="max-h-[430px] w-auto object-contain" loading="lazy" decoding="async"/>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white py-16 md:py-24">
+        <div class="container mx-auto px-6">
+          <h2 class="text-3xl md:text-4xl font-black text-center mb-12">Beneficios principales</h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="feature-card rounded-2xl p-8 border border-slate-100">
+              <h3 class="font-black text-xl mb-3">Modo de acción por contacto</h3>
+              <p>Actúa en superficie, acompañando estrategias preventivas en momentos de mayor riesgo sanitario.</p>
+            </div>
+            <div class="feature-card rounded-2xl p-8 border border-slate-100">
+              <h3 class="font-black text-xl mb-3">Complementa programas integrados</h3>
+              <p>Se adapta a esquemas de manejo integrado y rotación de herramientas para mejorar la sustentabilidad.</p>
+            </div>
+            <div class="feature-card rounded-2xl p-8 border border-slate-100">
+              <h3 class="font-black text-xl mb-3">Versátil para cultivos intensivos</h3>
+              <p>Alternativa útil para cuidar sanidad y calidad en frutales, vid y hortalizas de alto valor.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacto" class="py-16 md:py-24 bg-lime-50">
+        <div class="container mx-auto px-6 text-center max-w-3xl">
+          <h2 class="text-3xl md:text-4xl font-black mb-4">¿Querés sumar Vitisan a tu programa?</h2>
+          <p class="text-lg mb-8">Contactanos y te ayudamos a definir dosis, momentos de aplicación y complementariedad con el resto del programa sanitario.</p>
+          <a href="https://wa.me/5492984763055?text=Hola%20AgriCheck!%20Quiero%20consultar%20por%20Vitisan." class="cta-button inline-block bg-green-600 hover:bg-green-700 text-white font-black py-4 px-10 rounded-full text-lg">Hablar por WhatsApp</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-slate-900 text-white py-8">
+      <div class="container mx-auto px-6 text-center">
+        <p class="font-bold">AgriCheck SRL</p>
+        <p class="text-slate-300 text-sm mt-1">San Juan 50, General Roca, Río Negro · info@agrichecksrl.com</p>
+      </div>
+    </footer>
+
+    <script>
+      const burgerBtn = document.getElementById('burgerBtn');
+      if (burgerBtn) {
+        burgerBtn.addEventListener('click', () => {
+          const open = document.body.classList.toggle('menuOpen');
+          burgerBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      }
+    </script>
+</body>
+</html>
