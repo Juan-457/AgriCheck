@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flujo Bot WhatsApp | AgriCheck</title>
+  <style>
+    :root{
+      --bg:#0f172a;
+      --card:#111827;
+      --muted:#94a3b8;
+      --text:#e5e7eb;
+      --accent:#22c55e;
+      --accent2:#38bdf8;
+      --line:#1f2937;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background: radial-gradient(1200px 600px at 85% -10%, #1d4ed8 0%, transparent 55%), var(--bg);
+      color:var(--text);
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      padding:24px;
+    }
+    .wrap{width:min(1120px,100%)}
+    h1{margin:0 0 6px;font-size:clamp(1.5rem,4vw,2.2rem)}
+    .sub{color:var(--muted);margin:0 0 18px}
+    .panel{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#0b1220 0%, #0b1220cc 100%);
+      border-radius:18px;
+      padding:14px;
+      backdrop-filter: blur(6px);
+      display:grid;
+      grid-template-columns: minmax(0,1fr) 320px;
+      gap:14px;
+      align-items:start;
+    }
+    .timeline{display:grid;gap:10px;}
+    .step{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px 14px;
+      background:var(--card);
+      opacity:.45;
+      transform:translateY(6px);
+      transition:.35s ease;
+      cursor:pointer;
+    }
+    .step.active{opacity:1; transform:translateY(0); border-color:color-mix(in srgb, var(--accent2), #fff 8%);}
+    .top{display:flex;align-items:center;gap:10px}
+    .n{
+      width:26px;height:26px;border-radius:999px;display:grid;place-items:center;
+      font-size:.82rem;font-weight:700;background:#0b2035;color:#7dd3fc;border:1px solid #1d4ed8;
+      flex:none;
+    }
+    .step.active .n{background:#072d1a;color:#86efac;border-color:#16a34a}
+    .title{font-weight:700}
+    .desc{color:#cbd5e1;margin-top:8px;display:none}
+    .step.active .desc{display:block}
+    .controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    button{
+      border:1px solid #1e293b;background:#111827;color:var(--text);
+      padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:600;
+    }
+    button:hover{border-color:#334155}
+    .play{background:linear-gradient(90deg,#16a34a,#0ea5e9);border:0}
+    .progress{
+      height:7px;border-radius:999px;background:#0b1220;border:1px solid var(--line);margin:14px 2px 0;
+      overflow:hidden;
+    }
+    .bar{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:.35s ease}
+
+    .phone-wrap{display:flex;justify-content:center;}
+    .phone{
+      width:280px;
+      border:1px solid #334155;
+      border-radius:28px;
+      padding:10px;
+      background:#020617;
+      box-shadow:0 20px 40px rgba(0,0,0,.35);
+      display:none;
+    }
+    .phone.active{display:block}
+    .phone-head{
+      height:26px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      color:#94a3b8;
+      font-size:.8rem;
+      border-bottom:1px solid #1f2937;
+      margin-bottom:8px;
+    }
+    .chat{background:#0b141a;border-radius:18px;padding:10px;min-height:420px}
+    .bubble{
+      max-width:85%;
+      margin:8px 0;
+      padding:10px 12px;
+      border-radius:12px;
+      line-height:1.35;
+      font-size:.92rem;
+    }
+    .from-client{margin-left:auto;background:#005c4b;color:#e8fffa}
+    .from-bot{margin-right:auto;background:#202c33;color:#e2e8f0}
+
+    @media (max-width: 980px){
+      .panel{grid-template-columns:1fr}
+      .phone-wrap{order:-1}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>Flujo del Bot de WhatsApp</h1>
+    <p class="sub">Versión minimalista + dinámica para presentar al cliente.</p>
+
+    <section class="panel">
+      <div>
+        <div id="timeline" class="timeline"></div>
+
+        <div class="controls">
+          <button id="prev">← Anterior</button>
+          <button id="next">Siguiente →</button>
+          <button id="auto" class="play">▶ Auto demo</button>
+          <button id="add">＋ Agregar paso (preview)</button>
+        </div>
+
+        <div class="progress"><div id="bar" class="bar"></div></div>
+        <p class="sub" style="margin:10px 2px 0; font-size:.92rem">Tip: usa "Agregar paso" para probar ideas durante la demo.</p>
+      </div>
+
+      <aside class="phone-wrap">
+        <div id="phone" class="phone" aria-label="Preview chat de WhatsApp">
+          <div class="phone-head">WhatsApp • Inicio</div>
+          <div class="chat">
+            <div class="bubble from-client">Hola 👋</div>
+            <div class="bubble from-bot">¡Hola! Soy AgriCheck Bot. ¿Cómo te ayudo hoy?<br><br>1) Consultar producto<br>2) Diagnosticar problema<br>3) Hablar con asesor<br>4) Precios y disponibilidad</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    const data = [
+      { t:'Inicio', d:'El cliente escribe al WhatsApp y recibe saludo + menú rápido.' },
+      { t:'Intención', d:'El bot detecta si busca producto, diagnóstico, precios o asesor.' },
+      { t:'Datos mínimos', d:'Pide cultivo, zona, síntoma y (si aplica) foto.' },
+      { t:'Procesamiento', d:'Motor IA/RAG consulta base de conocimiento y contexto.' },
+      { t:'Respuesta', d:'Entrega recomendación breve, producto sugerido y próximo paso.' },
+      { t:'Escalamiento', d:'Si hay dudas o riesgo, deriva a asesor humano.' },
+      { t:'Cierre', d:'Confirma resolución y registra para seguimiento.' }
+    ];
+
+    const timeline = document.getElementById('timeline');
+    const bar = document.getElementById('bar');
+    const phone = document.getElementById('phone');
+    let i = 0, timer = null;
+
+    function draw(){
+      timeline.innerHTML = data.map((s,idx)=>`
+        <article class="step ${idx===i?'active':''}" data-i="${idx}">
+          <div class="top">
+            <div class="n">${idx+1}</div>
+            <div class="title">${s.t}</div>
+          </div>
+          <div class="desc">${s.d}</div>
+        </article>
+      `).join('');
+      bar.style.width = `${((i+1)/data.length)*100}%`;
+      phone.classList.toggle('active', i === 0);
+      timeline.querySelectorAll('.step').forEach(el=>el.onclick=()=>{ i=+el.dataset.i; draw(); stopAuto(); });
+    }
+
+    function next(){ i = (i+1)%data.length; draw(); }
+    function prev(){ i = (i-1+data.length)%data.length; draw(); }
+
+    function startAuto(){
+      if(timer) return;
+      timer = setInterval(next, 1400);
+      document.getElementById('auto').textContent = '⏸ Pausar demo';
+    }
+    function stopAuto(){
+      clearInterval(timer); timer = null;
+      document.getElementById('auto').textContent = '▶ Auto demo';
+    }
+
+    document.getElementById('next').onclick = ()=>{ next(); stopAuto(); };
+    document.getElementById('prev').onclick = ()=>{ prev(); stopAuto(); };
+    function addStep(){
+      const t = prompt('Título del nuevo paso:');
+      if(!t) return;
+      const d = prompt('Descripción corta:') || 'Pendiente de completar.';
+      data.push({t,d});
+      i = data.length - 1;
+      draw();
+      stopAuto();
+    }
+
+    document.getElementById('auto').onclick = ()=> timer ? stopAuto() : startAuto();
+    document.getElementById('add').onclick = addStep;
+
+    draw();
+  </script>
+</body>
+</html>
