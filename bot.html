@@ -25,7 +25,7 @@
       place-items:center;
       padding:24px;
     }
-    .wrap{width:min(920px,100%)}
+    .wrap{width:min(1150px,100%)}
     h1{margin:0 0 6px;font-size:clamp(1.5rem,4vw,2.2rem)}
     .sub{color:var(--muted);margin:0 0 18px}
     .panel{
@@ -35,6 +35,7 @@
       padding:14px;
       backdrop-filter: blur(6px);
     }
+    .layout{display:grid;grid-template-columns:1.1fr .9fr;gap:14px;align-items:start}
     .timeline{
       display:grid;
       gap:10px;
@@ -72,6 +73,31 @@
       overflow:hidden;
     }
     .bar{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:.35s ease}
+    .phone{
+      border:1px solid #334155;
+      border-radius:24px;
+      background:#020617;
+      padding:12px;
+      max-width:380px;
+      margin-inline:auto;
+      box-shadow:0 18px 40px #0008;
+    }
+    .notch{height:20px;width:120px;background:#0b1220;border-radius:0 0 14px 14px;margin:0 auto 8px}
+    .wa{
+      border:1px solid #1e293b;
+      border-radius:16px;
+      overflow:hidden;
+      background:#0f172a;
+    }
+    .wa-top{padding:10px 12px;background:#0b2239;border-bottom:1px solid #1e293b;font-size:.92rem;font-weight:700;display:flex;align-items:center;gap:8px}
+    .wa-avatar{width:28px;height:28px;border-radius:999px;overflow:hidden;border:1px solid #1d4ed8;background:#fff;flex:none;display:grid;place-items:center}
+    .wa-avatar img{width:100%;height:100%;object-fit:cover}
+    .wa-chat{padding:12px;background:linear-gradient(180deg,#0f172a,#111827);display:grid;gap:8px;min-height:380px}
+    .msg{max-width:82%;padding:9px 10px;border-radius:10px;font-size:.92rem;line-height:1.35;border:1px solid transparent}
+    .in{justify-self:start;background:#111827;border-color:#1f2937}
+    .out{justify-self:end;background:#052e1f;border-color:#166534}
+    .hint{color:#94a3b8;font-size:.83rem;margin:10px 4px 0}
+    @media (max-width:900px){.layout{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -80,32 +106,111 @@
     <p class="sub">Versión minimalista + dinámica para presentar al cliente.</p>
 
     <section class="panel">
-      <div id="timeline" class="timeline"></div>
+      <div class="layout">
+        <div>
+          <div id="timeline" class="timeline"></div>
 
-      <div class="controls">
-        <button id="prev">← Anterior</button>
-        <button id="next">Siguiente →</button>
-        <button id="auto" class="play">▶ Auto demo</button>
-        <button id="add">＋ Agregar paso (preview)</button>
+          <div class="controls">
+            <button id="prev">← Anterior</button>
+            <button id="next">Siguiente →</button>
+            <button id="auto" class="play">▶ Auto demo</button>
+          </div>
+
+          <div class="progress"><div id="bar" class="bar"></div></div>
+          <p class="sub" style="margin:10px 2px 0; font-size:.92rem">Ejemplos tomados del prompt operativo de n8n.</p>
+        </div>
+
+        <aside class="phone" aria-label="Simulación WhatsApp">
+          <div class="notch"></div>
+          <div class="wa">
+            <div class="wa-top"><span class="wa-avatar"><img src="agrichecklogo.png" alt="Logo AgriCheck"/></span><span>AgriBot · WhatsApp</span></div>
+            <div id="chat" class="wa-chat"></div>
+          </div>
+          <p id="hint" class="hint"></p>
+        </aside>
       </div>
-
-      <div class="progress"><div id="bar" class="bar"></div></div>
-      <p class="sub" style="margin:10px 2px 0; font-size:.92rem">Tip: usa "Agregar paso" para probar ideas durante la demo.</p>
     </section>
   </main>
 
   <script>
     const data = [
-      { t:'Inicio', d:'El cliente escribe al WhatsApp y recibe saludo + menú rápido.' },
-      { t:'Intención', d:'El bot detecta si busca producto, diagnóstico, precios o asesor.' },
-      { t:'Datos mínimos', d:'Pide cultivo, zona, síntoma y (si aplica) foto.' },
-      { t:'Procesamiento', d:'Motor IA/RAG consulta base de conocimiento y contexto.' },
-      { t:'Respuesta', d:'Entrega recomendación breve, producto sugerido y próximo paso.' },
-      { t:'Escalamiento', d:'Si hay dudas o riesgo, deriva a asesor humano.' },
-      { t:'Cierre', d:'Confirma resolución y registra para seguimiento.' }
+      {
+        t:'Saludo inicial obligatorio',
+        d:'Si el usuario saluda, el bot debe responder exactamente el saludo de AgriBot y pedir nombre, provincia y cultivo.',
+        h:'Regla: nunca dejar un saludo sin respuesta.',
+        m:[
+          {k:'in',tx:'Hola, buen día'},
+          {k:'out',tx:'Hola 👋 Soy AgriBot de AgriCheck.'},
+          {k:'out',tx:'Puedo brindarte información básica de nuestros productos y derivarte con el asesor de tu zona.'},
+          {k:'out',tx:'¿Me compartís tu nombre, provincia y cultivo?'}
+        ]
+      },
+      {
+        t:'Consulta de productos',
+        d:'Cuando preguntan catálogo, responder listado básico y cerrar con opción de derivación.',
+        h:'Máximo una línea por producto; sin detalle técnico.',
+        m:[
+          {k:'in',tx:'¿Qué productos tienen para insectos?'},
+          {k:'out',tx:'Trabajamos soluciones biológicas y especiales como Beauvisan, Nomu-Protec, T-Gro, Nexula-N, Tundrabac y Phosbac.'},
+          {k:'out',tx:'Podés ver el detalle completo acá: https://www.agrichecksrl.com/nuestros-productos.html'},
+          {k:'out',tx:'¿Querés que te conecte con el asesor de tu zona?'}
+        ]
+      },
+      {
+        t:'Regla cero invento',
+        d:'Si piden recomendación técnica, no diagnosticar ni dar dosis: derivar en una frase exacta.',
+        h:'No recomendaciones agronómicas por WhatsApp bot.',
+        m:[
+          {k:'in',tx:'¿Qué dosis uso en tomate con trips?'},
+          {k:'out',tx:'Para una recomendación técnica, te derivo con el asesor de tu zona.'}
+        ]
+      },
+      {
+        t:'Captura obligatoria antes del asesor',
+        d:'Si falta nombre o cultivo, se pide ese dato. El teléfono se toma desde metadata de WhatsApp.',
+        h:'No mostrar asesor antes de completar captura mínima.',
+        m:[
+          {k:'in',tx:'Me interesa, soy de Córdoba'},
+          {k:'out',tx:'Perfecto ✅ Ya puedo asignarte el asesor de tu zona. ¿Me decís tu nombre?'},
+          {k:'in',tx:'Soy Lucía'},
+          {k:'out',tx:'Gracias Lucía ✅ ¿Qué cultivo trabajás?'}
+        ]
+      },
+      {
+        t:'Disparo HTTP y resultado',
+        d:'Con nombre + teléfono + cultivo, ejecutar Capture lead (HTTP) y recién después continuar.',
+        h:'Aunque falle HTTP, igual se deriva al asesor.',
+        m:[
+          {k:'in',tx:'Trabajo maíz'},
+          {k:'out',tx:'Listo ✅ Ya quedó enviado. En breve te contactan.'},
+          {k:'out',tx:'Perfecto ✅ Por tu zona te corresponde:'}
+        ]
+      },
+      {
+        t:'Derivación por zona',
+        d:'Se muestra asesor asignado según provincia/localidad; en Cuyo se muestran dos asesoras.',
+        h:'Solo después del intento de captura HTTP.',
+        m:[
+          {k:'out',tx:'Asesor: Miguel Utrera'},
+          {k:'out',tx:'Región: Núcleo Centro'},
+          {k:'out',tx:'WhatsApp: [LINK]'}
+        ]
+      },
+      {
+        t:'Anti-loop y salida segura',
+        d:'Si no quiere dar datos, ofrecer WhatsApp general y no insistir más de una vez.',
+        h:'Mantener mensaje corto, profesional y directo.',
+        m:[
+          {k:'in',tx:'Prefiero no pasar mis datos'},
+          {k:'out',tx:'Puedo pasarte el WhatsApp general de AgriCheck. Sin esos datos puede demorar un poco más la asignación.'},
+          {k:'out',tx:'+54 9 2984 76-3055'}
+        ]
+      }
     ];
 
     const timeline = document.getElementById('timeline');
+    const chat = document.getElementById('chat');
+    const hint = document.getElementById('hint');
     const bar = document.getElementById('bar');
     let i = 0, timer = null;
 
@@ -119,6 +224,8 @@
           <div class="desc">${s.d}</div>
         </article>
       `).join('');
+      chat.innerHTML = data[i].m.map(msg=>`<div class="msg ${msg.k}">${msg.tx}</div>`).join('');
+      hint.textContent = data[i].h;
       bar.style.width = `${((i+1)/data.length)*100}%`;
       timeline.querySelectorAll('.step').forEach(el=>el.onclick=()=>{ i=+el.dataset.i; draw(); stopAuto(); });
     }
@@ -138,18 +245,7 @@
 
     document.getElementById('next').onclick = ()=>{ next(); stopAuto(); };
     document.getElementById('prev').onclick = ()=>{ prev(); stopAuto(); };
-    function addStep(){
-      const t = prompt('Título del nuevo paso:');
-      if(!t) return;
-      const d = prompt('Descripción corta:') || 'Pendiente de completar.';
-      data.push({t,d});
-      i = data.length - 1;
-      draw();
-      stopAuto();
-    }
-
     document.getElementById('auto').onclick = ()=> timer ? stopAuto() : startAuto();
-    document.getElementById('add').onclick = addStep;
 
     draw();
   </script>
