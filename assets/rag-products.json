@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-19T07:09:00.351Z",
+  "generated_at": "2026-02-20T07:05:09.476Z",
   "source_file": "nuestros-productos.html",
   "company_source_file": "index.html",
   "sellers_source_file": "Zonas.html",
@@ -163,7 +163,7 @@
       ]
     }
   ],
-  "total_products": 25,
+  "total_products": 27,
   "products": [
     {
       "id": "beauvisan",
@@ -437,6 +437,44 @@
       }
     },
     {
+      "id": "nembac-42",
+      "name": "Nembac 42®",
+      "description": "Bionematicida biológico con cepa FZB42 para protección de raíces y manejo sustentable de nematodos.",
+      "relative_url": "nembac42.html",
+      "absolute_url": "https://www.agrichecksrl.com/nembac42.html",
+      "image": "nembac42-packaging.webp",
+      "crops": [
+        "hortalizas",
+        "frutales",
+        "tabaco"
+      ],
+      "issues": [
+        "nematodos",
+        "suelo"
+      ],
+      "search_terms": [
+        "nembac",
+        "42",
+        "bionematicida",
+        "bacillus",
+        "velezensis",
+        "fzb42",
+        "meloidogyne"
+      ],
+      "tags": [
+        "Hortalizas",
+        "Frutales",
+        "Nematodos"
+      ],
+      "page_metadata": {
+        "title": "Nembac 42® – AgriCheck | Bionematicida biológico",
+        "meta_description": "Nembac 42® es un bionematicida biológico líquido con cepa FZB42 de Bacillus velezensis para manejo de nematodos en programas sustentables.",
+        "has_meta_description": true,
+        "file_exists": true,
+        "intro_paragraph": "Protección efectiva contra nematodos agalladores y de lesiones con la cepa FZB42 de Bacillus velezensis , en línea con programas de agricultura sustentable."
+      }
+    },
+    {
       "id": "zimbili",
       "name": "Zimbili",
       "description": "Bioestimulante radicular con L-triptófano, L-metionina y Ecklonia maxima para potenciar arranque y vigor.",
@@ -473,6 +511,50 @@
         "Raíces"
       ],
       "page_metadata": {}
+    },
+    {
+      "id": "zumsil",
+      "name": "Zumsil",
+      "description": "Aporte de silicio biodisponible para fortalecer la planta y mejorar su respuesta frente al estrés.",
+      "relative_url": "zumsil.html",
+      "absolute_url": "https://www.agrichecksrl.com/zumsil.html",
+      "image": "Zumsil.webp",
+      "crops": [
+        "soja",
+        "maiz",
+        "trigo",
+        "cebada",
+        "girasol",
+        "hortalizas",
+        "frutales"
+      ],
+      "issues": [
+        "estres",
+        "rendimiento",
+        "nutricion"
+      ],
+      "search_terms": [
+        "zumsil",
+        "silicio",
+        "acido",
+        "ortosilicico",
+        "monosilicico",
+        "biodisponible"
+      ],
+      "tags": [
+        "Soja",
+        "Maíz",
+        "Trigo",
+        "Cebada",
+        "Estrés"
+      ],
+      "page_metadata": {
+        "title": "Zumsil® – AgriCheck | Silicio biodisponible para cultivos",
+        "meta_description": "Zumsil® aporta ácido ortosilícico/monosilícico para fortalecer paredes celulares, mejorar resistencia a estrés y potenciar rendimiento y calidad de los cultivos.",
+        "has_meta_description": true,
+        "file_exists": true,
+        "intro_paragraph": "Ácido ortosilícico/monosilícico de alta disponibilidad para fortalecer la estructura de la planta y acompañar programas de manejo nutricional, sanitario y de estrés abiótico."
+      }
     },
     {
       "id": "amyprotec-42",
