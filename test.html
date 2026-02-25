@@ -128,8 +128,8 @@
       position:fixed; inset:0 0 auto 0;
       z-index:60;
       padding: 10px 0;
-      background: linear-gradient(180deg, rgba(10, 21, 56, .78), rgba(10, 21, 56, .55));
-      border-bottom: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(245, 248, 255, .92), rgba(233, 240, 251, .72));
+      border-bottom: 1px solid rgba(148,163,184,.30);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
     }
@@ -147,19 +147,19 @@
       gap: 6px;
       padding: 6px;
       border-radius: 999px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.10);
-      box-shadow: 0 10px 26px rgba(0,0,0,.18);
+      background: rgba(255,255,255,.42);
+      border: 1px solid rgba(148,163,184,.35);
+      box-shadow: 0 10px 26px rgba(15,23,42,.12);
     }
     .navlinks a{
       padding: 10px 14px;
       border-radius: 999px;
       font-weight: 800;
-      color: rgba(226,232,240,.95);
+      color: rgba(15,23,42,.85);
       letter-spacing: -.01em;
       transition: background .15s ease, transform .15s ease;
     }
-    .navlinks a:hover{ background: rgba(255,255,255,.12); transform: translateY(-1px); }
+    .navlinks a:hover{ background: rgba(255,255,255,.66); transform: translateY(-1px); }
 
     .navGroup{
       display:flex;
@@ -167,17 +167,17 @@
       gap: 8px;
       padding: 8px 10px;
       border-radius: 18px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.40);
+      border: 1px solid rgba(148,163,184,.35);
       position: relative;
     }
     .navGroup.is-open{
-      background: linear-gradient(180deg, rgba(10, 21, 56, .90), rgba(10, 21, 56, .78));
-      border-color: rgba(255,255,255,.22);
-      box-shadow: 0 12px 28px rgba(0,0,0,.26);
+      background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(233,240,251,.84));
+      border-color: rgba(148,163,184,.45);
+      box-shadow: 0 12px 28px rgba(15,23,42,.16);
     }
     .navGroupToggle{
-      color: rgba(226,232,240,.85);
+      color: rgba(15,23,42,.75);
       font-weight: 900;
       letter-spacing: -.01em;
       white-space: nowrap;
@@ -195,7 +195,7 @@
       content: '';
       width: 10px;
       height: 6px;
-      background: rgba(226,232,240,.85);
+      background: rgba(15,23,42,.75);
       mask: conic-gradient(from 135deg at 50% 40%, #000 0 90deg, transparent 0 360deg);
       mask-size: 10px 6px;
       transition: transform .15s ease;
@@ -210,28 +210,28 @@
       top: calc(100% + 10px);
       padding: 12px;
       border-radius: 16px;
-      background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.18);
-      box-shadow: 0 18px 36px rgba(0,0,0,.28);
+      background: rgba(255,255,255,.80);
+      border: 1px solid rgba(148,163,184,.35);
+      box-shadow: 0 18px 36px rgba(15,23,42,.16);
       min-width: 210px;
       z-index: 70;
     }
     .navGroup.is-open .navGroupLinks{
-      background: linear-gradient(180deg, rgba(10, 21, 56, .92), rgba(10, 21, 56, .82));
-      border-color: rgba(255,255,255,.26);
-      box-shadow: 0 16px 32px rgba(0,0,0,.32);
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(241,245,252,.88));
+      border-color: rgba(148,163,184,.40);
+      box-shadow: 0 16px 32px rgba(15,23,42,.18);
     }
     .navGroup.is-open .navGroupLinks{ display:flex; }
     .navGroupLinks a{
       padding: 8px 12px;
       border-radius: 14px;
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.74);
+      border: 1px solid rgba(148,163,184,.28);
       font-weight: 800;
-      color: rgba(226,232,240,.95);
+      color: rgba(15,23,42,.82);
       transition: background .15s ease, transform .15s ease;
     }
-    .navGroupLinks a:hover{ background: rgba(255,255,255,.16); transform: translateY(-1px); }
+    .navGroupLinks a:hover{ background: rgba(255,255,255,.95); transform: translateY(-1px); }
 
     /* burger */
     .burger{
@@ -241,20 +241,20 @@
       transform: translateY(-50%);
       width: 44px; height: 44px;
       border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(148,163,184,.35);
+      background: rgba(255,255,255,.70);
       display:none;
       align-items:center;
       justify-content:center;
       cursor:pointer;
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
-      box-shadow: 0 10px 24px rgba(0,0,0,.18);
+      box-shadow: 0 10px 24px rgba(15,23,42,.14);
     }
     .burger:focus{ outline: 3px solid rgba(137,196,68,.65); outline-offset: 2px; }
     .burgerLines{ width: 18px; height: 12px; position:relative; display:block; }
     .burgerLines span{
-      position:absolute; left:0; width:100%; height:2px; background: rgba(226,232,240,.95);
+      position:absolute; left:0; width:100%; height:2px; background: rgba(15,23,42,.78);
       border-radius: 999px;
       transition: transform .18s ease, top .18s ease, opacity .18s ease;
     }
