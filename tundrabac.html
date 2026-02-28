@@ -225,10 +225,11 @@
                 </a>
 
                 <nav class="navlinks" aria-label="Navegación principal">
-                    <a href="nuestros-productos.html">Nuestros Productos</a>
                     <a href="#beneficios">Beneficios</a>
-                    <a href="#aplicacion">Aplicación</a>
-                    <a href="zonas.html">Contacto</a>
+                    <a href="#patente">Patente</a>
+                    <a href="#resultados">Resultados</a>
+                    <a href="#aplicacion">Especificaciones</a>
+                    <a href="#contacto">Contactar</a>
                 </nav>
 
                 <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
@@ -239,10 +240,11 @@
 
         <div class="mobileMenu" id="mobileMenu" aria-label="Menú mobile">
             <div class="navWrap">
-                <a href="nuestros-productos.html" data-close-menu>Nuestros Productos</a>
                 <a href="#beneficios" data-close-menu>Beneficios</a>
-                <a href="#aplicacion" data-close-menu>Aplicación</a>
-                <a href="zonas.html" data-close-menu>Contacto</a>
+                <a href="#patente" data-close-menu>Patente</a>
+                <a href="#resultados" data-close-menu>Resultados</a>
+                <a href="#aplicacion" data-close-menu>Especificaciones</a>
+                <a href="#contacto" data-close-menu>Contacto</a>
             </div>
         </div>
     </header>
@@ -264,15 +266,19 @@
                             establecimiento superior y uniforme en siembras de trigo y cebada.
                         </p>
                         <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                            <a href="zonas.html"
+                            <a href="#contacto"
                                 class="cta-button inline-block bg-white text-green-700 font-bold text-lg py-4 px-8 rounded-full hover:bg-green-50">
                                 Solicitar Asesoramiento
                             </a>
                         </div>
                     </div>
-                    <div class="md:w-2/5 flex justify-center mt-8 md:mt-0">
+                    <div class="md:w-2/5 flex justify-center relative group mt-8 md:mt-0">
+                        <!-- Halos decorativos en background -->
+                        <div
+                            class="absolute inset-0 bg-white/20 blur-3xl rounded-full scale-125 transition-transform duration-700 group-hover:scale-150">
+                        </div>
                         <img src="Tundrabac.webp" alt="Botella del producto Tundrabac"
-                            class="max-w-xs md:max-w-sm h-auto object-contain">
+                            class="relative w-full h-80 md:h-[450px] object-contain transform hover:scale-105 transition duration-500 drop-shadow-2xl z-10">
                     </div>
                 </div>
             </div>
@@ -340,7 +346,7 @@
                             class="mx-auto rounded-full">
                     </div>
                     <div class="md:w-2/3">
-                        <h3 class="text-2xl font-bold text-green-800 mb-3">Patente Europea N° EP3283030</h3>
+                        <h3 class="text-2xl font-bold text-green-800 mb-3">Patente Mundial N° WO2016165685A1</h3>
                         <p class="text-slate-600 mb-4">La patente confirma la novedad de la cepa ABi05 por su capacidad
                             de germinar y colonizar las raíces a temperaturas tan bajas como 8°C. Esto le confiere una
                             ventaja decisiva en cultivos de invierno, donde las temperaturas del suelo limitan la
