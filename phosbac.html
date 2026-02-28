@@ -181,6 +181,33 @@
             filter: blur(40px);
             z-index: 0;
         }
+
+        .badge-flag-de {
+            width: 1.25rem;
+            height: 0.85rem;
+            border-radius: 2px;
+            overflow: hidden;
+            display: inline-flex;
+            flex-direction: column;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25);
+        }
+
+        .badge-flag-de span {
+            flex: 1;
+            display: block;
+        }
+
+        .badge-flag-de .black {
+            background: #000;
+        }
+
+        .badge-flag-de .red {
+            background: #dd0000;
+        }
+
+        .badge-flag-de .gold {
+            background: #ffce00;
+        }
     </style>
   <script defer src="assets/llm-signals.js"></script>
 </head>
@@ -247,7 +274,11 @@
                     <div class="flex flex-wrap gap-3">
                         <div
                             class="inline-flex items-center gap-2 bg-slate-800/80 backdrop-blur border border-slate-600/50 rounded-full px-4 py-1.5">
-                            <span class="text-lg">🇩🇪</span>
+                            <span class="badge-flag-de" aria-hidden="true">
+                                <span class="black"></span>
+                                <span class="red"></span>
+                                <span class="gold"></span>
+                            </span>
                             <span class="text-slate-200 text-xs font-bold tracking-wider uppercase">Formulado en
                                 Alemania</span>
                         </div>
