@@ -1,1530 +1,886 @@
 <!DOCTYPE html>
-<html lang="es-AR">
+<html lang="es" class="scroll-smooth">
+
 <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-NVHFPWQJ');</script>
-    <!-- End Google Tag Manager -->
-<!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RNTX5NWFB5"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phosbac – AgriCheck | El Solubilizador de Fósforo Definitivo</title>
+    <meta name="description"
+        content="Phosbac (Bacillus velezensis FZB45) es el solubilizador de fósforo más estudiado y eficaz. Supere a las Pseudomonas con la estabilidad de las endosporas.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Paleta de Colores Premium AgriCheck & Phosbac */
+        :root {
+            --brand-primary: #89C444;
+            /* Verde AgriCheck */
+            --brand-secondary: #0F172A;
+            /* Slate 900 - Dark Premium */
+            --brand-accent: #F59E0B;
+            /* Amber - Energía/Fósforo */
+            --brand-light: #F8F9F7;
+            /* Fondo AgriCheck Oficial */
+            --glass-bg: rgba(255, 255, 255, 0.95);
+        }
 
-      gtag('config', 'G-RNTX5NWFB5');
-    </script>
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="llm-friendly" content="true" />
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--brand-light);
+            color: #334155;
+            overflow-x: hidden;
+        }
 
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-  <link rel="shortcut icon" href="favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png" />
-  <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png" />
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.7)), url('hero-soja.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            color: white;
+            /* Removed min-height: 90vh to match Nexula's sizing */
+        }
 
-  <title>AgriCheck | Agroinsumos especiales</title>
-  <meta name="description" content="Agroinsumos especiales eficientes para una agricultura sustentable. Control biológico, feromonas, biofertilizantes y bioestimulantes." />
-  <meta name="robots" content="index,follow,max-image-preview:large" />
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%232e3a4e" fill-opacity="0.2"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+        }
 
-  <link rel="canonical" href="https://TU-DOMINIO-O-GITHUB-PAGES-URL/" />
+        .highlight-text {
+            color: var(--brand-primary);
+        }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet" />
+        .gradient-text {
+            background: linear-gradient(120deg, var(--brand-primary), #a3e635);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-  <style>
-    :root{
-      --brand-green:#89C444;
-      --brand-green-dark:#76b033;
-      --brand-dark:#1f2937;
-      --bg:#F8F9F7;
-      --card:#ffffff;
-      --border:#e5e7eb;
-      --shadow:0 10px 25px rgba(0,0,0,.08);
-      --max:1200px;
-      --radius:18px;
+        /* Scientific Cards */
+        .science-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--brand-primary);
+        }
 
-      /* ✅ Hero glass (espejado) */
-      --glass-bg: rgba(255,255,255,.30);
-      --glass-bg-strong: rgba(255,255,255,.38);
-      --glass-border: rgba(255,255,255,.40);
-      --glass-shadow: 0 18px 40px rgba(0,0,0,.22);
-      --glass-text: rgba(15, 23, 42, .92);
-      --glass-muted: rgba(15, 23, 42, .70);
+        .science-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
 
-      /* ✅ Separación consistente entre secciones */
-      --section-pad: 44px;
-      --panel-outer: rgba(15, 23, 42, .62);
-      --panel-inner: rgba(15, 23, 42, .72);
-    }
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
 
-    *{box-sizing:border-box}
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1.5rem;
+            text-align: left;
+        }
 
-    body{
-      margin:0;
-      font-family:Lato, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: url("maiz.webp") center top / cover no-repeat fixed;
-      color:var(--brand-dark);
-    }
+        .comparison-table thead {
+            background-color: var(--brand-secondary);
+            color: white;
+        }
 
-    a{text-decoration:none;color:inherit}
-    .container{max-width:var(--max);margin:0 auto;padding:0 18px}
-    .center{text-align:center}
-    p,
-    li{
-      text-align: justify;
-      text-align-last: left;
-    }
+        .comparison-table tbody tr:nth-child(even) {
+            background-color: #f1f5f9;
+        }
 
-    .kicker{
-      font-weight:900;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      font-size:12px;
-      color:rgba(15, 23, 42, .72);
-    }
-    .muted{
-      color:rgba(15, 23, 42, .74);
-      line-height:1.75;
-      font-size:16px;
-    }
-    .agroTitle{
-      margin:10px 0 8px;
-      font-size: clamp(28px, 3.6vw, 44px);
-      letter-spacing:-0.02em;
-      line-height:1.1;
-      color:rgba(15, 23, 42, .95);
-    }
-    .agroLead{margin:0 auto; max-width:820px}
+        .comparison-table tbody tr:nth-child(odd) {
+            background-color: white;
+        }
 
-    .pill{
-      display:inline-flex;align-items:center;justify-content:center;
-      height:54px;width:54px;border-radius:999px;
-      background:#f0f7ea;border:1px solid rgba(0,0,0,.06);
-      font-weight:900;margin-bottom:10px;color:#1b3d10;
-    }
-    .benefit{padding:18px}
-    .benefit h3{margin:6px 0 8px;font-size:16px}
-    .benefit p{
-      margin:0;
-      color:rgba(31,41,55,.70);
-      line-height:1.55;
-      text-align:left;
-      text-align-last:left;
-    }
-    .prod{padding:18px}
-    .prod h3{margin:0 0 10px}
-    .prod ul{margin:0 0 14px;padding-left:18px;color:rgba(31,41,55,.78);line-height:1.6}
-    .smallCta{display:inline-flex;align-items:center;gap:10px;font-weight:900;color:var(--brand-green-dark)}
-    .smallCta:hover{text-decoration:underline}
+        .check-icon {
+            color: var(--brand-primary);
+            font-weight: bold;
+        }
 
-    /* ================= HEADER ================= */
-    header{
-      position:fixed; inset:0 0 auto 0;
-      z-index:60;
-      padding: 10px 0;
-      background: linear-gradient(180deg, rgba(245, 248, 255, .92), rgba(233, 240, 251, .72));
-      border-bottom: 1px solid rgba(148,163,184,.30);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
+        .cross-icon {
+            color: #EF4444;
+            font-weight: bold;
+        }
 
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      position:relative;
-      min-height: 44px;
-    }
-    .navlinks{
-      display:flex;
-      align-items:center;
-      gap: 6px;
-      padding: 6px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.42);
-      border: 1px solid rgba(148,163,184,.35);
-      box-shadow: 0 10px 26px rgba(15,23,42,.12);
-    }
-    .navlinks a{
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-weight: 800;
-      color: rgba(15,23,42,.85);
-      letter-spacing: -.01em;
-      transition: background .15s ease, transform .15s ease;
-    }
-    .navlinks a:hover{ background: rgba(255,255,255,.66); transform: translateY(-1px); }
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(90deg, var(--brand-primary) 0%, #76a93a 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 10px 15px -3px rgba(137, 196, 68, 0.4);
+        }
 
-    .navGroup{
-      display:flex;
-      align-items:center;
-      gap: 8px;
-      padding: 8px 10px;
-      border-radius: 18px;
-      background: rgba(255,255,255,.40);
-      border: 1px solid rgba(148,163,184,.35);
-      position: relative;
-    }
-    .navGroup.is-open{
-      background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(233,240,251,.84));
-      border-color: rgba(148,163,184,.45);
-      box-shadow: 0 12px 28px rgba(15,23,42,.16);
-    }
-    .navGroupToggle{
-      color: rgba(15,23,42,.75);
-      font-weight: 900;
-      letter-spacing: -.01em;
-      white-space: nowrap;
-      background: none;
-      border: none;
-      padding: 0;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      font-family: inherit;
-    }
-    .navGroupToggle:focus{ outline: 3px solid rgba(137,196,68,.65); outline-offset: 2px; }
-    .navGroupToggle::after{
-      content: '';
-      width: 10px;
-      height: 6px;
-      background: rgba(15,23,42,.75);
-      mask: conic-gradient(from 135deg at 50% 40%, #000 0 90deg, transparent 0 360deg);
-      mask-size: 10px 6px;
-      transition: transform .15s ease;
-    }
-    .navGroup.is-open .navGroupToggle::after{ transform: rotate(180deg); }
-    .navGroupLinks{
-      display:none;
-      flex-direction: column;
-      gap:8px;
-      position: absolute;
-      left: 0;
-      top: calc(100% + 10px);
-      padding: 12px;
-      border-radius: 16px;
-      background: rgba(255,255,255,.80);
-      border: 1px solid rgba(148,163,184,.35);
-      box-shadow: 0 18px 36px rgba(15,23,42,.16);
-      min-width: 210px;
-      z-index: 70;
-    }
-    .navGroup.is-open .navGroupLinks{
-      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(241,245,252,.88));
-      border-color: rgba(148,163,184,.40);
-      box-shadow: 0 16px 32px rgba(15,23,42,.18);
-    }
-    .navGroup.is-open .navGroupLinks{ display:flex; }
-    .navGroupLinks a{
-      padding: 8px 12px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.74);
-      border: 1px solid rgba(148,163,184,.28);
-      font-weight: 800;
-      color: rgba(15,23,42,.82);
-      transition: background .15s ease, transform .15s ease;
-    }
-    .navGroupLinks a:hover{ background: rgba(255,255,255,.95); transform: translateY(-1px); }
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 25px -5px rgba(137, 196, 68, 0.5);
+        }
 
-    /* burger */
-    .burger{
-      position:absolute;
-      right: 4px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 44px; height: 44px;
-      border-radius: 14px;
-      border: 1px solid rgba(148,163,184,.35);
-      background: rgba(255,255,255,.70);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      cursor:pointer;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      box-shadow: 0 10px 24px rgba(15,23,42,.14);
-    }
-    .burger:focus{ outline: 3px solid rgba(137,196,68,.65); outline-offset: 2px; }
-    .burgerLines{ width: 18px; height: 12px; position:relative; display:block; }
-    .burgerLines span{
-      position:absolute; left:0; width:100%; height:2px; background: rgba(15,23,42,.78);
-      border-radius: 999px;
-      transition: transform .18s ease, top .18s ease, opacity .18s ease;
-    }
-    .burgerLines span:nth-child(1){ top:0 }
-    .burgerLines span:nth-child(2){ top:5px }
-    .burgerLines span:nth-child(3){ top:10px }
+        /* Floating Molecule Animation */
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.1;
+            }
 
-    .mobileMenu{
-      display:none;
-      padding: 10px 0 14px;
-      background: linear-gradient(180deg, rgba(10, 21, 56, .70), rgba(10, 21, 56, .86));
-      border-top: 1px solid rgba(255,255,255,.10);
-      max-height: calc(100vh - 74px);
-      max-height: calc(100dvh - 74px);
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      overscroll-behavior: contain;
-    }
-    .mobileMenu .container{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-    }
-    .mobileMenu a{
-      padding: 12px 14px;
-      border-radius: 16px;
-      font-weight: 900;
-      color: rgba(226,232,240,.95);
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.14);
-    }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 0.3;
+            }
 
-    .mobileSubnav{
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-    }
-    .mobileSubnavLabel{
-      color: rgba(226,232,240,.82);
-      font-weight: 800;
-      letter-spacing: -.01em;
-    }
+            100% {
+                transform: translateY(0px) rotate(360deg);
+                opacity: 0.1;
+            }
+        }
 
-    body.menuOpen .mobileMenu{ display:block; }
-    body.menuOpen .burgerLines span:nth-child(1){ top:5px; transform: rotate(45deg); }
-    body.menuOpen .burgerLines span:nth-child(2){ opacity:0; }
-    body.menuOpen .burgerLines span:nth-child(3){ top:5px; transform: rotate(-45deg); }
-
-    /* ================= HERO ================= */
-    .hero{
-      position:relative;
-      height:100vh;
-      display:flex;
-      align-items:flex-end;
-      padding-top:64px;
-      overflow:hidden;
-      background:#000;
-    }
-    .hero video{
-      position:absolute; inset:0;
-      width:100%; height:100%;
-      object-fit:cover;
-      z-index:0;
-    }
-    .hero::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.25));
-      z-index:1;
-      pointer-events:none;
-    }
-    .heroContent{position:relative; z-index:2; width:100%; padding:64px 0;}
-
-    /* ✅ Logo en hero */
-    .heroLogo{
-      position:absolute;
-      left:14px;
-      top: calc(64px + 14px);
-      z-index:4;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:0;
-      background:transparent;
-      border:none;
-      box-shadow:none;
-      opacity:.95;
-      transition: opacity .2s ease, transform .2s ease;
-    }
-    .heroLogo:hover{opacity:1; transform: translateY(-1px)}
-    .heroLogo img{
-      height:178px;
-      width:auto;
-      display:block;
-    }
-
-    .badge{
-      background: linear-gradient(135deg, var(--glass-bg), var(--glass-bg-strong));
-      border: 1px solid var(--glass-border);
-      box-shadow: var(--glass-shadow);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      padding:10px 16px;
-      border-radius:999px;
-      color: rgba(255, 255, 255, .98);
-      font-weight:800;
-      display:inline-block;
-      text-shadow: 0 2px 8px rgba(0,0,0,.25);
-    }
-
-    .heroBadges{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      align-items:flex-start;
-      justify-content:flex-start;
-      max-width:980px;
-      margin-top:48px;
-    }
-
-    .badgeTitle{
-      font-size: clamp(28px, 3.8vw, 42px);
-      font-weight:900;
-      padding:14px 22px;
-      line-height:1.15;
-      letter-spacing:-0.01em;
-      width:fit-content;
-      white-space:nowrap;
-    }
-
-    .badgeSub{
-      font-size: 15px;
-      font-weight:700;
-      padding:10px 18px;
-      opacity:.96;
-      width:fit-content;
-      white-space:normal;
-    }
-
-    @media (max-width: 640px){
-      .badgeTitle{
-        white-space:normal;
-        width:100%;
-      }
-      .badgeSub{
-        width:100%;
-      }
-    }
-
-    .heroActions{
-      margin-top:16px;
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      padding:12px 18px;
-      border-radius:999px;
-      font-weight:900;
-      border:1px solid rgba(255,255,255,.2);
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow: 0 14px 30px rgba(0,0,0,.18);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      gap:10px;
-    }
-    .btnIcon{width:18px;height:18px;display:inline-block;flex:0 0 auto}
-    .btnPrimary{
-      background:var(--brand-green);
-      color:#0b1a08;
-      border-color: rgba(0,0,0,.10);
-      box-shadow: 0 14px 30px rgba(0,0,0,.20);
-    }
-    .btnInstagram{
-      background: linear-gradient(135deg, #f58529, #dd2a7b 48%, #8134af 74%, #515bd4);
-      color:#fff;
-      border-color: rgba(255,255,255,.26);
-    }
-    .btnGhost{
-      background: linear-gradient(135deg, var(--glass-bg), var(--glass-bg-strong));
-      color: rgba(255, 255, 255, .98);
-      border-color: var(--glass-border);
-      text-shadow: 0 2px 8px rgba(0,0,0,.25);
-    }
-
-    .searchWrap{
-      margin-top:18px;
-      max-width:820px;
-      display:flex;
-      gap:10px;
-      padding:10px;
-      border-radius:16px;
-      background: linear-gradient(135deg, var(--glass-bg), var(--glass-bg-strong));
-      border:1px solid var(--glass-border);
-      box-shadow: var(--glass-shadow);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-    }
-    .searchWrap input{
-      flex:1;
-      background: transparent;
-      border:0;
-      color: rgba(255, 255, 255, .98);
-      font-size:16px;
-      padding:10px;
-      outline:none;
-    }
-    .searchWrap input + input{
-      border-left:1px solid rgba(255,255,255,.28);
-      padding-left:18px;
-    }
-    .searchWrap input::placeholder{color: rgba(255, 255, 255, .75)}
-    .searchWrap button{
-      border:1px solid rgba(96,165,250,.85);
-      background: rgba(255,255,255,.20);
-      color: rgba(255,255,255,.98);
-      font-weight:900;
-      padding:10px 16px;
-      border-radius:12px;
-      cursor:pointer;
-      box-shadow: 0 10px 18px rgba(0,0,0,.16);
-    }
-    .searchWrap button:hover{background: rgba(255,255,255,.28)}
-
-    section:not(.hero){padding: var(--section-pad) 0}
-    #agroinsumos{padding-bottom: calc(var(--section-pad) / 2)}
-    #proveedores{padding-top: calc(var(--section-pad) / 2)}
-
-    .card{
-      background: var(--panel-outer);
-      border-radius:var(--radius);
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow:
-        0 20px 40px rgba(15,23,42,.24),
-        inset 0 0 0 1px rgba(255,255,255,.08);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      padding:22px;
-      color: rgba(255,255,255,.92);
-    }
-
-    .card-agro{
-      background: var(--panel-outer);
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow:
-        0 20px 40px rgba(15,23,42,.24),
-        inset 0 0 0 1px rgba(255,255,255,.08);
-    }
-    .card .muted,
-    .card .sectionTitle,
-    .card .kicker,
-    .card .agroTitle,
-    .card .benefit p,
-    .card .prod ul{color: rgba(255,255,255,.9)}
-    .card .smallCta{color:#b7f57a}
-
-    .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-
-    .agroCard{
-      display:grid;
-      grid-template-columns:1.35fr .65fr;
-      gap:18px;
-      align-items:center;
-    }
-    .agroMedia img{
-      width:100%;
-      height:260px;
-      object-fit:cover;
-      border-radius:14px;
-      border:1px solid rgba(0,0,0,.06);
-    }
-    @media(max-width:900px){
-      .agroCard{grid-template-columns:1fr}
-      .agroMedia img{height:220px}
-    }
-
-    /* ======================
-       ✅ LOGO CAROUSEL (ACTUALIZADO)
-       ====================== */
-    .logoCarousel{
-      margin-top:18px;
-      position:relative;
-      padding:0 36px;
-    }
-
-    .logoViewport{
-      overflow-x:auto;
-      overflow-y:hidden;
-      padding:6px 0 0;
-      scroll-snap-type:x mandatory;   /* ✅ snap manual */
-      scroll-behavior:smooth;         /* ✅ botones / scroll manual */
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width:none;
-    }
-    .logoViewport::-webkit-scrollbar{ display:none; }
-
-    /* ✅ Mientras el autoplay corre, apagamos el snap */
-    .logoViewport.is-animating{
-      scroll-snap-type:none !important;
-      scroll-behavior:auto !important;
-    }
-    /* ✅ Mientras el autoplay corre, evitamos snap por item */
-    .logoViewport.is-animating .logoItem{
-      scroll-snap-align:none !important;
-    }
-
-    .logoTrack{
-      display:flex;
-      align-items:center;
-      gap:16px;
-      padding:2px;
-      min-width:max-content;
-    }
-    .logoItem{
-      flex:0 0 auto;
-      width:456px;
-      height:224px;
-      background:var(--panel-inner);
-      border-radius:12px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      border:1px solid rgba(0,0,0,.06);
-      box-shadow:0 12px 24px rgba(0,0,0,.06);
-      scroll-snap-align:center; /* ✅ snap manual */
-      transition:transform .18s ease, box-shadow .18s ease;
-    }
-    .logoItem:hover{
-      transform:translateY(-2px) scale(1.02);
-      box-shadow:0 16px 30px rgba(0,0,0,.10);
-    }
-    .logoItem img{
-      max-width:356px;
-      max-height:136px;
-      width:auto;
-      height:auto;
-      object-fit:contain;
-      filter:saturate(1.05);
-    }
-    .logoNav{
-      position:absolute;
-      top:50%;
-      transform:translateY(-50%);
-      width:36px;
-      height:36px;
-      border-radius:999px;
-      border:1px solid rgba(15,23,42,.12);
-      background:rgba(255,255,255,.92);
-      box-shadow:0 12px 26px rgba(0,0,0,.10);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:900;
-      color:rgba(31,41,55,.90);
-      cursor:pointer;
-      transition: transform .14s ease, box-shadow .14s ease, background .14s ease;
-    }
-    .logoNav:hover{
-      transform:translateY(-50%) translateY(-1px);
-      box-shadow:0 16px 32px rgba(0,0,0,.14);
-      background:#fff;
-    }
-    .logoNav:focus{ outline:3px solid rgba(137,196,68,.55); outline-offset:2px; }
-    .logoNav.logoPrev{ left:4px; }
-    .logoNav.logoNext{ right:4px; }
-    @media(max-width:800px){
-      .logoCarousel{ padding:0 12px; }
-      .logoNav{ display:none; }
-      .logoItem{ width:406px; }
-    }
-
-    .sectionHead{
-      display:inline-block;
-      text-align:center;
-      padding:14px 18px;
-      border-radius:16px;
-      background:rgba(255,255,255,.62);
-      border:1px solid rgba(15,23,42,.10);
-      box-shadow:0 14px 30px rgba(0,0,0,.10);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      max-width:920px;
-    }
-    .sectionTitle{
-      margin:0;
-      font-size: clamp(22px, 2.8vw, 34px);
-      letter-spacing:-0.02em;
-      line-height:1.15;
-      color:rgba(15, 23, 42, .96);
-      text-shadow: 0 1px 0 rgba(255,255,255,.25);
-    }
-    .sectionHead .kicker{display:block; margin-bottom:6px;}
-    .sectionLead{margin:10px auto 0; max-width:820px}
-
-    .sectionCard{padding:26px}
-    .sectionCard .sectionHead{
-      display:block;
-      background:transparent;
-      border:0;
-      box-shadow:none;
-      backdrop-filter:none;
-      -webkit-backdrop-filter:none;
-      padding:0;
-      max-width:none;
-    }
-    .subCard{
-      background: var(--panel-inner);
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: 0 14px 26px rgba(15,23,42,.24);
-      border-radius: calc(var(--radius) - 2px);
-      padding:18px;
-    }
-
-    #contacto .subCard{
-      background: var(--panel-inner);
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: 0 14px 26px rgba(15,23,42,.24);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-    }
-    #contacto .card{
-      background: var(--panel-outer);
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow:
-        0 20px 40px rgba(15,23,42,.24),
-        inset 0 0 0 1px rgba(255,255,255,.08);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-    #contacto .sectionTitle,
-    #contacto .sectionLead{color: rgba(255,255,255,.92)}
-    #contacto .subCard h3,
-    #contacto .subCard p,
-    #contacto .subCard li{
-      color: rgba(255,255,255,.92);
-    }
-
-    /* ================= INSTAGRAM: EMBEDS OFICIALES ================= */
-    .igEmbeds{
-      margin-top:18px;
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:14px;
-      justify-items:center;
-      align-items:start;
-    }
-    .igEmbedItem{
-      width:100%;
-      max-width:360px;
-      background: var(--panel-inner);
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: 0 14px 26px rgba(15,23,42,.24);
-      border-radius: calc(var(--radius) - 2px);
-      padding:12px;
-      overflow:hidden;
-      display:flex;
-      justify-content:center;
-    }
-    .igEmbedItem .instagram-media{
-      margin:0 !important;
-      min-width: 0 !important;
-      width:100% !important;
-      max-width:100% !important;
-    }
-    .igFallbackMsg{
-      margin: 12px auto 0;
-      max-width: 760px;
-      color: rgba(15,23,42,.78);
-      font-size: 14px;
-      text-align:center;
-    }
-    .igFallbackLink{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:100%;
-      min-height:68px;
-      border-radius:14px;
-      font-weight:900;
-      color: rgba(15,23,42,.9);
-      background: rgba(255,255,255,.78);
-      border:1px solid rgba(15,23,42,.12);
-      padding: 10px 12px;
-    }
-
-    /* Contacto */
-    .contactGrid{
-      margin-top:18px;
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:16px;
-      align-items:start;
-    }
-    .contactList{
-      margin:0;
-      padding-left:18px;
-      color:rgba(31,41,55,.78);
-      line-height:1.75;
-    }
-    .contactRow{display:flex;flex-direction:column;gap:10px}
-    .contactActions{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
-    .contactLink{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      font-weight:900;
-      color: rgba(255,255,255,.96);
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.22);
-      box-shadow: 0 10px 18px rgba(0,0,0,.16);
-    }
-    .contactLink:hover{transform: translateY(-1px)}
-    .contactLink .btnIcon{width:18px;height:18px}
-    .contactLink--instagram{background: linear-gradient(135deg, #f58529 0%, #dd2a7b 48%, #8134af 74%, #515bd4 100%)}
-    .contactLink--facebook{background: #1877f2}
-    .contactLink--whatsapp{background: #25d366; color:#103b22}
-
-    footer{
-      background: rgba(15, 23, 42, .62);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      color: rgba(255,255,255,.88);
-      padding: 14px 0;
-      text-align:center;
-      border-top: 1px solid rgba(255,255,255,.10);
-    }
-    footer a{color:rgba(255,255,255,.88)}
-    footer a:hover{color:#89C444}
-    .footGrid{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      gap:6px;
-      font-size:14px;
-    }
-      55%{transform:translateY(-4px) scale(1.03)}
-      100%{transform:translateY(0) scale(1)}
-    }
-
-    /* ================= RESPONSIVE ================= */
-    @media(max-width:980px){
-      .heroLogo img{height:149px}
-    }
-
-    @media(max-width:900px){
-      .grid4{grid-template-columns:repeat(2,1fr)}
-      .grid3{grid-template-columns:1fr}
-      .navlinks{display:none} /* ✅ se ocultan links y se usa el menú hamburguesa */
-      .burger{display:flex}  /* ✅ se ve bien el botón */
-      .sectionCard{padding:20px}
-
-      .heroBadges{margin-top:56px;}
-
-      .heroLogo{
-        left:12px;
-        top: calc(64px + 8px);
-      }
-      .heroLogo img{height:125px}
-
-      .igEmbeds{grid-template-columns:repeat(2,minmax(0,1fr));}
-
-      .contactGrid{grid-template-columns:1fr}
-    }
-
-    @media(max-width:640px){
-      .igEmbeds{grid-template-columns:1fr;}
-      .igEmbedItem{max-width:420px;}
-    }
-  </style>
-  <script defer src="assets/llm-signals.js"></script>
+        .molecule {
+            position: absolute;
+            background: var(--brand-primary);
+            border-radius: 50%;
+            filter: blur(40px);
+            z-index: 0;
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVHFPWQJ"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-<header>
-  <div class="container">
-    <div class="topbar">
-      <nav class="navlinks" aria-label="Navegación principal">
-        <a href="#inicio">Inicio</a>
-        <a href="nuestros-productos.html">Nuestros Productos</a>
-        <a href="#instagram">Instagram</a>
-        <a href="#contacto">Contacto</a>
-        <div class="navGroup" aria-label="Rendimiento y calidad" data-nav-dropdown>
-          <button class="navGroupToggle" type="button" aria-expanded="false">Rendimiento y calidad</button>
-          <div class="navGroupLinks" role="list">
-            <a href="tundrabac.html" role="listitem">Tundrabac</a>
-            <a href="t-gro.html" role="listitem">T-Gro WP</a>
-            <a href="parka.html" role="listitem">Parka</a>
-            <a href="superfifty-prime.html" role="listitem">Super Fifty</a>
-            <a href="phosbac.html" role="listitem">Phosbac</a>
-          </div>
-        </div>
-        <div class="navGroup" aria-label="Tratamientos de semillas" data-nav-dropdown>
-          <button class="navGroupToggle" type="button" aria-expanded="false">Tratamientos de semillas</button>
-          <div class="navGroupLinks" role="list">
-            <a href="nexula.html" role="listitem">Nexula</a>
-            <a href="t-gro-easy-flow.html" role="listitem">T-Gro Easy Flow</a>
-            <a href="amyprotec-42.html" role="listitem">Amyprotec 42</a>
-          </div>
-        </div>
-        <div class="navGroup" aria-label="Protección de cultivos" data-nav-dropdown>
-          <button class="navGroupToggle" type="button" aria-expanded="false">Protección de cultivos</button>
-          <div class="navGroupLinks" role="list">
-            <a href="beauvisan.html" role="listitem">Beauvisan</a>
-            <a href="Producto-Nomu-Protec.html" role="listitem">Nomu-Protec</a>
-            <a href="atroverde.html" role="listitem">Atroverde</a>
-            <a href="biolure.html" role="listitem">BioLure</a>
-            <a href="biomagnet.html" role="listitem">BioMagnet</a>
-            <a href="celada.html" role="listitem">Celada VMB</a>
-            <a href="checkmate-cm-f.html" role="listitem">CheckMate CM-F</a>
-            <a href="checkmate-ofm-f.html" role="listitem">CheckMate OFM-F</a>
-            <a href="checkmate-crs.html" role="listitem">CheckMate CRS</a>
-            <a href="checkmate-vmb-xl.html" role="listitem">CheckMate VMB-XL</a>
-            <a href="puffer-cm.html" role="listitem">Puffer CM</a>
-            <a href="subvert.html" role="listitem">Subvert</a>
-            <a href="plutex.html" role="listitem">Plutex</a>
-            <a href="madex.html" role="listitem">Madex</a>
-            <a href="madex-twin.html" role="listitem">Madex Twin</a>
-          </div>
-        </div>
-      </nav>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center max-w-7xl">
+            <a href="https://www.agrichecksrl.com" class="flex items-center gap-2">
+                <img src="https://www.agrichecksrl.com/img/logo-agricheck.png" alt="AgriCheck" class="h-10 w-auto">
+                <span class="font-bold text-xl tracking-tight text-slate-800 hidden sm:block">| Phosbac</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#ciencia" class="font-medium text-slate-600 hover:text-green-600 transition">La Ciencia</a>
+                <!-- <a href="#resultados" class="font-medium text-slate-600 hover:text-green-600 transition">Resultados</a> -->
+                <a href="#especificaciones"
+                    class="font-medium text-slate-600 hover:text-green-600 transition">Especificaciones</a>
+                <a href="#diferencial" class="font-medium text-slate-600 hover:text-green-600 transition">¿Por qué
+                    Phosbac?</a>
+                <a href="#contacto" class="btn-primary py-2 px-6 text-sm">Pedir Cotización</a>
+            </div>
 
-      <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
-        <span class="burgerLines" aria-hidden="true"><span></span><span></span><span></span></span>
-      </button>
-    </div>
-  </div>
-
-  <div class="mobileMenu" id="mobileMenu" aria-label="Menú mobile">
-    <div class="container">
-      <a href="#inicio" data-close-menu>Inicio</a>
-      <a href="nuestros-productos.html" data-close-menu>Nuestros Productos</a>
-      <a href="#instagram" data-close-menu>Instagram</a>
-      <a href="#contacto" data-close-menu>Contacto</a>
-      <div class="mobileSubnav" aria-label="Rendimiento y calidad">
-        <div class="mobileSubnavLabel">Rendimiento y calidad</div>
-        <a href="tundrabac.html" data-close-menu>Tundrabac</a>
-        <a href="t-gro.html" data-close-menu>T-Gro WP</a>
-        <a href="parka.html" data-close-menu>Parka</a>
-        <a href="superfifty-prime.html" data-close-menu>Super Fifty</a>
-        <a href="phosbac.html" data-close-menu>Phosbac</a>
-      </div>
-      <div class="mobileSubnav" aria-label="Tratamientos de semillas">
-        <div class="mobileSubnavLabel">Tratamientos de semillas</div>
-        <a href="nexula.html" data-close-menu>Nexula</a>
-        <a href="t-gro-easy-flow.html" data-close-menu>T-Gro Easy Flow</a>
-        <a href="amyprotec-42.html" data-close-menu>Amyprotec 42</a>
-      </div>
-      <div class="mobileSubnav" aria-label="Protección de cultivos">
-        <div class="mobileSubnavLabel">Protección de cultivos</div>
-        <a href="beauvisan.html" data-close-menu>Beauvisan</a>
-        <a href="Producto-Nomu-Protec.html" data-close-menu>Nomu-Protec</a>
-        <a href="atroverde.html" data-close-menu>Atroverde</a>
-        <a href="biolure.html" data-close-menu>BioLure</a>
-        <a href="biomagnet.html" data-close-menu>BioMagnet</a>
-        <a href="celada.html" data-close-menu>Celada VMB</a>
-        <a href="checkmate-cm-f.html" data-close-menu>CheckMate CM-F</a>
-        <a href="checkmate-ofm-f.html" data-close-menu>CheckMate OFM-F</a>
-        <a href="checkmate-crs.html" data-close-menu>CheckMate CRS</a>
-        <a href="checkmate-vmb-xl.html" data-close-menu>CheckMate VMB-XL</a>
-        <a href="puffer-cm.html" data-close-menu>Puffer CM</a>
-        <a href="subvert.html" data-close-menu>Subvert</a>
-        <a href="plutex.html" data-close-menu>Plutex</a>
-        <a href="madex.html" data-close-menu>Madex</a>
-        <a href="madex-twin.html" data-close-menu>Madex Twin</a>
-      </div>
-      <!-- TODO: si querés sumar un CTA extra en mobile, lo agregamos acá -->
-    </div>
-  </div>
-</header>
-
-<section class="hero" id="inicio">
-  <video autoplay muted loop playsinline>
-    <source src="hero.mp4" type="video/mp4">
-  </video>
-
-  <a class="heroLogo" href="#inicio" aria-label="Ir al inicio">
-    <img src="Agricheck white.png" alt="AgriCheck" />
-  </a>
-
-  <div class="heroContent">
-    <div class="container">
-
-      <div class="heroBadges">
-        <div class="badge badgeTitle">LÍDERES EN ESPECIALIDADES</div>
-        <div class="badge badgeSub">Alimentos y medio ambiente saludables para todos.</div>
-      </div>
-
-      <div class="heroActions">
-        <a class="btn btnPrimary" href="Zonas.html">Hablar con un asesor</a>
-        <a class="btn btnGhost" href="nuestros-productos.html">Ver productos</a>
-      </div>
-
-      <form class="searchWrap" onsubmit="return false;">
-        <input id="cropQuery" type="search" placeholder="Cultivo (ej: Maíz, trigo)">
-        <input id="issueQuery" type="search" placeholder="Problemática (ej: plagas, hongos)">
-        <button type="button" onclick="window.__search && window.__search()">Buscar</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<section class="heroBelow" id="agroinsumos">
-  <div class="container">
-    <div class="card sectionCard">
-
-      <div class="card agroCard">
-        <div>
-          <div class="center">
-            <h2 class="agroTitle">Nuestra Historia</h2>
-          </div>
-
-          <p class="muted agroLead" style="margin-top:10px">
-            Desarrollamos y distribuimos soluciones de especialidad para una agricultura sustentable y eficiente. Con más de 25 años de trayectoria, hemos consolidado un portafolio referente en el mercado, gracias a la representación de compañías líderes a nivel mundial en Argentina.
-            Nuestra integración al grupo suizo Andermatt Group en 2025 nos permite seguir acercando al productor argentino las últimas innovaciones globales, alineados bajo un mismo propósito: alimentos saludables y un medio ambiente sano para todos.
-          </p>
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-slate-800 focus:outline-none" id="mobile-menu-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
         </div>
 
-        <div class="agroMedia">
-          <img src="equipo.jpeg" alt="Agroinsumos especiales" loading="lazy" />
-        </div>
-      </div>
+        <!-- Mobile Menu Dropdown -->
+        <div class="md:hidden hidden bg-white border-t border-slate-100" id="mobile-menu">
+            <div class="flex flex-col space-y-4 px-6 py-6">
+                <a href="#ciencia" class="mobile-link font-medium text-slate-600 hover:text-green-600 transition">La
+                    Ciencia</a>
+                <!-- <a href="#resultados"
+                    class="mobile-link font-medium text-slate-600 hover:text-green-600 transition">Resultados</a> -->
+                <a href="#especificaciones"
+                    class="mobile-link font-medium text-slate-600 hover:text-green-600 transition">Especificaciones</a>
+                <a href="#diferencial"
+                    class="mobile-link font-medium text-slate-600 hover:text-green-600 transition">¿Por
+                    qué Phosbac?</a>
+                <a href="#contacto" class="btn-primary w-full text-center py-3">Pedir Cotización</a>
+            </div>
+    </nav>
 
-    </div>
-  </div>
-</section>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-pattern"></div>
+            <!-- Decorative blurred orbs -->
+            <div class="molecule w-64 h-64 top-20 left-10" style="background: #89C444;"></div>
+            <div class="molecule w-96 h-96 bottom-10 right-10" style="background: #0F172A;"></div>
 
-<section id="proveedores">
-  <div class="container">
-      <div class="card card-agro" style="padding:22px;">
-        <div class="center">
-          <h2 class="sectionTitle">Representaciones exclusivas en Argentina</h2>
-          <p class="muted sectionLead">
-            Incorporamos representaciones de proveedores líderes mundiales para ofrecer uno de los portafolios más amplios
-            de soluciones sustentables en Argentina.
-          </p>
-        </div>
+            <div
+                class="container mx-auto px-6 py-24 md:py-32 relative z-10 flex flex-col md:flex-row gap-12 items-center max-w-7xl">
+                <div class="md:w-3/5 space-y-6 animate-fade-in-up">
+                    <div class="flex flex-wrap gap-3">
+                        <div
+                            class="inline-flex items-center gap-2 bg-slate-800/80 backdrop-blur border border-slate-600/50 rounded-full px-4 py-1.5">
+                            <span class="text-lg">🇩🇪</span>
+                            <span class="text-slate-200 text-xs font-bold tracking-wider uppercase">Formulado en
+                                Alemania</span>
+                        </div>
+                        <div
+                            class="inline-flex items-center bg-green-900/50 backdrop-blur border border-green-500/30 rounded-full px-4 py-1.5">
+                            <span class="text-green-400 font-bold text-xs tracking-wider uppercase">Estándar de
+                                Oro</span>
+                        </div>
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-black leading-tight">
+                        <span class="block text-white">Libera el</span>
+                        <span class="gradient-text">Fósforo Oculto</span>
+                        <span class="block text-white">de tu Suelo.</span>
+                    </h1>
+                    <p class="text-xl text-slate-300 max-w-lg leading-relaxed">
+                        No apliques más. Aprovecha lo que ya tienes.
+                        <strong>Phosbac</strong> (<i>Bacillus velezensis</i> FZB45) transforma el fósforo bloqueado en
+                        nutrientes asimilables con una eficacia científicamente superior.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <a href="#ciencia" class="btn-primary text-center">
+                            Ver la Evidencia Científica
+                        </a>
+                        <a href="#comparativa"
+                            class="px-8 py-4 rounded-full border border-slate-600 font-bold text-white hover:bg-white/10 transition text-center">
+                            ¿Por qué es superior?
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-2/5 flex justify-center relative">
+                    <!-- Placeholder for Hero Image - 3D Soil/Root concept or Product Bottle -->
+                    <div class="relative w-full">
+                        <div class="absolute inset-0 bg-green-500 blur-3xl opacity-20 rounded-full"></div>
+                        <img src="../Andermatt/Phosbac/Phosbac%20packaging.png" alt="Phosbac Packaging"
+                            class="relative z-10 w-full h-80 md:h-[450px] object-contain drop-shadow-2xl hover:scale-105 transition duration-500">
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="logoCarousel" data-logo-carousel aria-label="Logos de proveedores">
-          <button class="logoNav logoPrev" type="button" aria-label="Logo anterior">‹</button>
-          <div class="logoViewport" tabindex="0">
-            <div class="logoTrack">
-              <div class="logoItem"><img src="suterra.png" alt="Suterra" loading="lazy" /></div>
-              <div class="logoItem">
-                <a href="tundrabac.html" aria-label="Ver Tundrabac de Andermatt">
-                  <img src="andermatt.png" alt="Andermatt" loading="lazy" />
+
+        <!-- Key Benefits Section -->
+        <section class="py-20 bg-white border-b border-slate-100">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="grid md:grid-cols-4 gap-8 text-center">
+                    <div class="p-6 rounded-xl hover:bg-slate-50 transition duration-300">
+                        <div
+                            class="w-16 h-16 mx-auto bg-green-100 rounded-full flex items-center justify-center text-3xl mb-4">
+                            🌱</div>
+                        <h3 class="font-bold text-slate-800 mb-2">Más Raíces</h3>
+                        <p class="text-slate-600 text-sm">Estimula el crecimiento radicular mediante la producción de
+                            fitohormonas (auxinas).</p>
+                    </div>
+                    <div class="p-6 rounded-xl hover:bg-slate-50 transition duration-300">
+                        <div
+                            class="w-16 h-16 mx-auto bg-amber-100 rounded-full flex items-center justify-center text-3xl mb-4">
+                            🔓</div>
+                        <h3 class="font-bold text-slate-800 mb-2">Fósforo Disponible</h3>
+                        <p class="text-slate-600 text-sm">Libera el fósforo atrapado en el suelo, dejándolo listo para
+                            ser absorbido.</p>
+                    </div>
+                    <div class="p-6 rounded-xl hover:bg-slate-50 transition duration-300">
+                        <div
+                            class="w-16 h-16 mx-auto bg-blue-100 rounded-full flex items-center justify-center text-3xl mb-4">
+                            🛡️</div>
+                        <h3 class="font-bold text-slate-800 mb-2">Sanidad Vegetal</h3>
+                        <p class="text-slate-600 text-sm">Activa las defensas naturales de la planta frente a estrés
+                            biótico y abiótico.</p>
+                    </div>
+                    <div class="p-6 rounded-xl hover:bg-slate-50 transition duration-300">
+                        <div
+                            class="w-16 h-16 mx-auto bg-green-100 rounded-full flex items-center justify-center text-3xl mb-4">
+                            📈</div>
+                        <h3 class="font-bold text-slate-800 mb-2">Más Rendimiento</h3>
+                        <p class="text-slate-600 text-sm">La nutrición balanceada y el vigor inicial se traducen en
+                            más
+                            quintales por hectárea.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="ciencia" class="py-24 bg-white relative overflow-hidden">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-4xl font-extrabold text-slate-900 mb-4">La Química de la Solubilización</h2>
+                    <p class="text-lg text-slate-600">
+                        Phosbac no es magia, es bioquímica avanzada. La cepa FZB45 despliega un arsenal enzimático y
+                        de
+                        ácidos orgánicos para minar el fósforo del suelo.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Mechanism 1 -->
+                    <div class="science-card p-8">
+                        <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center mb-6 text-2xl">
+                            🧪
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Producción de Ácidos Orgánicos</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Libera ácidos glucónico, 2-cetoglucónico y cítrico. Estos ácidos <strong>acidifican el
+                                microambiente</strong> de la raíz y actúan como agentes quelantes, "secuestrando" el
+                            Calcio, Hierro o Aluminio que retienen al fósforo, liberándolo inmediatamente.
+                        </p>
+                        <div class="text-xs text-slate-400 border-t pt-3 italic">
+                            Ref: Idriss et al., 2002; Chen et al., 2006.
+                        </div>
+                    </div>
+
+                    <!-- Mechanism 2 -->
+                    <div class="science-card p-8">
+                        <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6 text-2xl">
+                            🧬
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Enzimas Fosfatasas</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Sintetiza fosfatasas ácidas y alcalinas (genes <i>phoD</i>, <i>phoC</i>). Estas enzimas
+                            rompen los enlaces de fósforo orgánico en la materia orgánica del suelo, mineralizándolo
+                            para la planta.
+                        </p>
+                        <div class="text-xs text-slate-400 border-t pt-3 italic">
+                            Ref: Idriss et al., 2002.
+                        </div>
+                    </div>
+
+                    <!-- Mechanism 3 -->
+                    <div class="science-card p-8">
+                        <div class="w-14 h-14 bg-amber-100 rounded-lg flex items-center justify-center mb-6 text-2xl">
+                            🌾
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Fitasa Específica</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Único por su alta producción de fitasas, enzimas capaces de degradar fitatos, una forma de
+                            fósforo orgánico muy común pero difícilmente accesible para las plantas sin ayuda
+                            microbiana.
+                        </p>
+                        <div class="text-xs text-slate-400 border-t pt-3 italic">
+                            Ref: Richardson et al., 2001 (General Phytase activity).
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scientific Results Section -->
+        <section id="resultados" class="py-24 bg-white hidden">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold text-slate-900 mb-4">Resultados Comprobados</h2>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                        Más de 40 años de investigación respaldan a la cepa FZB45. Aquí presentamos datos de ensayos
+                        de
+                        campo y laboratorio.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Graph Placeholder 1 -->
+                    <div class="border border-slate-200 rounded-xl p-6 bg-slate-50">
+                        <h4 class="font-bold text-lg mb-4 text-center">Solubilización de Fósforo In vitro</h4>
+                        <div
+                            class="aspect-video bg-white rounded-lg shadow-inner flex items-center justify-center border border-dashed border-slate-300">
+                            <div class="text-center p-8">
+                                <span class="text-4xl block mb-2">📊</span>
+                                <p class="text-slate-400 font-medium">Gráfico de Solubilización (mg/L)</p>
+                                <p class="text-xs text-slate-400 mt-2">FZB45 vs Control vs Otros</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-500 mt-4 text-center">
+                            Phosbac demuestra una capacidad superior de liberación de ortofosfatos a partir de fosfato
+                            tricálcico.
+                        </p>
+                    </div>
+
+                    <!-- Graph Placeholder 2 -->
+                    <div class="border border-slate-200 rounded-xl p-6 bg-slate-50">
+                        <h4 class="font-bold text-lg mb-4 text-center">Incremento de Rendimiento en Maíz</h4>
+                        <div
+                            class="aspect-video bg-white rounded-lg shadow-inner flex items-center justify-center border border-dashed border-slate-300">
+                            <div class="text-center p-8">
+                                <span class="text-4xl block mb-2">📈</span>
+                                <p class="text-slate-400 font-medium">Rendimiento (kg/ha)</p>
+                                <p class="text-xs text-slate-400 mt-2">+12% vs Testigo Químico</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-500 mt-4 text-center">
+                            Ensayos de campo muestran consistencia en el aumento de rendimiento gracias a una mejor
+                            nutrición fosfatada.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Specifications & Application Section -->
+        <section id="especificaciones" class="py-24 bg-white border-t border-slate-100">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="grid md:grid-cols-2 gap-16">
+                    <!-- Left Column: Application & Compatibility -->
+                    <div>
+                        <h3 class="text-3xl font-extrabold text-slate-900 mb-6">Aplicación y Compatibilidad</h3>
+                        <div class="space-y-8">
+
+                            <div class="flex gap-4">
+                                <div
+                                    class="flex-shrink-0 w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-2xl">
+                                    🛡️</div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-slate-800 mb-2">Viabilidad en Semilla > 300 Días
+                                    </h4>
+                                    <p class="text-slate-600 leading-relaxed">
+                                        Gracias a la tecnología de endosporas, Phosbac puede aplicarse en el
+                                        tratamiento
+                                        profesional de semillas (TPS) y <strong>mantenerse viable por más de 300
+                                            días</strong> sobre la semilla tratada, sin perder eficacia.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-4">
+                                <div
+                                    class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-2xl">
+                                    🤝</div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-slate-800 mb-2">Compatibilidad Total</h4>
+                                    <p class="text-slate-600 leading-relaxed">
+                                        100% compatible con fungicidas, insecticidas y otros terápicos de semilla
+                                        convencionales. No requiere tanque separado ni condiciones especiales de mezcla.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-4">
+                                <div
+                                    class="flex-shrink-0 w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center text-2xl">
+                                    🚜</div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-slate-800 mb-2">Flexibilidad de Aplicación</h4>
+                                    <p class="text-slate-600 leading-relaxed">
+                                        Puede aplicarse tanto en tratamiento de semillas como en surco (chorro). Su
+                                        formulación líquida SC (Suspensión Concentrada) facilita la dosificación y
+                                        no
+                                        obstruye filtros.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Technical Specifications -->
+                    <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-6 border-b border-slate-200 pb-4">
+                            Especificaciones Técnicas</h3>
+                        <ul class="space-y-4">
+                            <li class="flex justify-between items-start">
+                                <span class="font-semibold text-slate-600">Principio Activo:</span>
+                                <span class="text-slate-900 text-right font-bold"><i>Bacillus velezensis</i> (Cepa
+                                    FZB45)</span>
+                            </li>
+                            <li class="flex justify-between items-start">
+                                <span class="font-semibold text-slate-600">Concentración:</span>
+                                <span class="text-slate-900 text-right">Mínimo 2,5x10¹⁰ UFC/ml</span>
+                            </li>
+                            <li class="flex justify-between items-start">
+                                <span class="font-semibold text-slate-600">Formulación:</span>
+                                <span class="text-slate-900 text-right">Suspensión Concentrada (SC)</span>
+                            </li>
+                            <li class="flex justify-between items-start">
+                                <span class="font-semibold text-slate-600">Registro SENASA:</span>
+                                <span
+                                    class="text-slate-900 text-right font-medium bg-slate-200 px-2 rounded">21.597</span>
+                            </li>
+                            <li class="flex justify-between items-start">
+                                <span class="font-semibold text-slate-600">Origen:</span>
+                                <div class="text-right">
+                                    <span class="block text-slate-900">ABiTEP GmbH (Alemania) 🇩🇪</span>
+                                    <span class="text-xs text-slate-500">Propiedad de Andermatt Group</span>
+                                </div>
+                            </li>
+                            <li class="flex justify-between items-start">
+                                <span class="font-semibold text-slate-600">Almacenamiento:</span>
+                                <span class="text-slate-900 text-right">2 años a temperatura ambiente (< 25°C)</span>
+                            </li>
+                        </ul>
+                        <div class="mt-8 pt-6 border-t border-slate-200">
+                            <a href="../Andermatt/Phosbac/Phosbac.pdf"
+                                class="flex items-center justify-center gap-2 text-green-700 font-bold hover:text-green-800 transition">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                                Descargar Ficha Técnica
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phosbac Difference Section (Tabs) -->
+        <section id="diferencial" class="py-24 bg-slate-50 relative overflow-hidden">
+            <!-- Background Elements -->
+            <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                <div class="absolute top-[10%] left-[5%] w-96 h-96 bg-green-200/20 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-[10%] right-[5%] w-96 h-96 bg-blue-200/20 rounded-full blur-3xl"></div>
+            </div>
+
+            <div class="container mx-auto px-6 max-w-7xl relative z-10">
+                <div class="text-center mb-12">
+                    <span class="text-green-600 font-bold tracking-widest uppercase text-sm">La Diferencia
+                        Phosbac</span>
+                    <h2 class="text-4xl font-extrabold text-slate-900 mt-2 mb-6">Calidad vs Cantidad</h2>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                        Descubra por qué Phosbac es superior tanto en biología como en concentración.
+                    </p>
+                </div>
+
+                <!-- Tab Navigation -->
+                <div class="flex flex-wrap justify-center gap-4 mb-12">
+                    <button onclick="switchTab('calidad')" id="btn-calidad"
+                        class="tab-btn active px-8 py-3 rounded-full font-bold text-lg transition-all duration-300 shadow-sm border border-slate-200 bg-white text-slate-600 hover:bg-slate-50">
+                        🧬 Calidad Biológica
+                    </button>
+                    <button onclick="switchTab('cantidad')" id="btn-cantidad"
+                        class="tab-btn px-8 py-3 rounded-full font-bold text-lg transition-all duration-300 shadow-sm border border-slate-200 bg-white text-slate-600 hover:bg-slate-50">
+                        🧪 Potencia Concentrada
+                    </button>
+                </div>
+
+                <!-- Tab Content: Quality (Bacillus vs Pseudomonas) -->
+                <div id="tab-calidad" class="tab-content transition-opacity duration-500">
+                    <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100">
+                        <div class="grid lg:grid-cols-5">
+                            <!-- Story Side -->
+                            <div
+                                class="lg:col-span-2 p-10 bg-gradient-to-br from-slate-900 to-slate-800 text-white flex flex-col justify-center">
+                                <h3 class="text-3xl font-extrabold mb-6">Endosporas: El Escudo de la Vida</h3>
+                                <p class="text-slate-300 mb-6 leading-relaxed">
+                                    En la naturaleza, la supervivencia lo es todo. Phosbac (<i>Bacillus velezensis</i>)
+                                    forma <strong>endosporas</strong>, estructuras blindadas que protegen a la bacteria
+                                    del calor, la sequía y los químicos.
+                                </p>
+                                <p class="text-slate-300 mb-8 leading-relaxed">
+                                    A diferencia de las frágiles <i>Pseudomonas</i>, Phosbac espera pacientemente en el
+                                    envase y en el suelo hasta que las condiciones son ideales, garantizando que lo que
+                                    compras es lo que llega a la raíz.
+                                </p>
+                                <div class="mt-auto">
+                                    <div class="flex items-center gap-3 text-green-400 font-bold">
+                                        <span class="text-2xl">✓</span>
+                                        <span>Viabilidad Garantizada > 2 Años</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Table Side -->
+                            <div class="lg:col-span-3 p-8 lg:p-12">
+                                <h4 class="text-xl font-bold text-slate-800 mb-6 text-center">Bacillus vs Pseudomonas
+                                </h4>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-left border-collapse">
+                                        <thead>
+                                            <tr>
+                                                <th
+                                                    class="p-4 border-b-2 border-slate-100 text-slate-500 font-semibold text-sm">
+                                                    Característica</th>
+                                                <th
+                                                    class="p-4 border-b-2 border-green-100 text-green-700 font-bold text-center bg-green-50/50 rounded-t-xl">
+                                                    Phosbac</th>
+                                                <th
+                                                    class="p-4 border-b-2 border-slate-100 text-slate-400 font-medium text-center">
+                                                    Competencia (Pseudomonas)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-sm md:text-base">
+                                            <tr>
+                                                <td class="p-4 border-b border-slate-100 font-semibold text-slate-700">
+                                                    Resistencia</td>
+                                                <td
+                                                    class="p-4 border-b border-green-50 text-center font-bold text-green-700 bg-green-50/30">
+                                                    Endosporas (Blindaje)</td>
+                                                <td class="p-4 border-b border-slate-100 text-center text-slate-500">
+                                                    Célula Vegetativa (Frágil)</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-4 border-b border-slate-100 font-semibold text-slate-700">
+                                                    Vida Útil</td>
+                                                <td
+                                                    class="p-4 border-b border-green-50 text-center font-bold text-green-700 bg-green-50/30">
+                                                    Min. 2 Años</td>
+                                                <td class="p-4 border-b border-slate-100 text-center text-slate-500">3-6
+                                                    Meses (Requiere frío)</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-4 border-b border-slate-100 font-semibold text-slate-700">
+                                                    Temp. Máxima</td>
+                                                <td
+                                                    class="p-4 border-b border-green-50 text-center text-slate-700 bg-green-50/30">
+                                                    Alta (> 60°C)</td>
+                                                <td class="p-4 border-b border-slate-100 text-center text-slate-500">
+                                                    Baja (< 40°C)</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-4 font-semibold text-slate-700">Compatibilidad</td>
+                                                <td
+                                                    class="p-4 text-center font-bold text-green-700 bg-green-50/30 rounded-b-xl">
+                                                    Total (Químicos)</td>
+                                                <td class="p-4 text-center text-slate-500">Limitada</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Quantity (Calculator) -->
+                <div id="tab-cantidad" class="tab-content hidden transition-opacity duration-500">
+                    <div
+                        class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100 max-w-5xl mx-auto">
+                        <div class="p-8 md:p-12">
+                            <div class="text-center mb-10">
+                                <h3 class="text-2xl font-bold text-slate-900">Calculadora de Concentración</h3>
+                                <p class="text-slate-600 mt-2">
+                                    Phosbac tiene una concentración ultra-alta de <strong>2,5 x 10¹⁰ UFC/ml</strong>.
+                                    <br>Calcule cuántos litros de otro producto necesita para igualar 1 Litro de
+                                    Phosbac.
+                                </p>
+                            </div>
+
+                            <div class="grid md:grid-cols-2 gap-12 items-center">
+                                <!-- Inputs -->
+                                <div class="space-y-6 bg-slate-50 p-8 rounded-2xl border border-slate-200">
+                                    <h4 class="font-bold text-slate-700 border-b border-slate-200 pb-2 mb-4">
+                                        Concentración a Comparar</h4>
+
+                                    <div>
+                                        <label
+                                            class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Concentración
+                                            (UFC/ml)</label>
+                                        <div class="flex items-center gap-2">
+                                            <input type="number" id="compBase" value="1"
+                                                class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 outline-none font-mono text-center"
+                                                placeholder="1">
+                                            <span class="text-slate-400 font-bold">x 10</span>
+                                            <input type="number" id="compExp" value="9"
+                                                class="w-20 p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 outline-none font-mono text-center"
+                                                placeholder="9">
+                                        </div>
+                                        <p class="text-xs text-slate-400 mt-2 text-center">Ej: 1 x 10⁹ UFC/ml</p>
+                                    </div>
+
+                                    <button onclick="calculateBottles()"
+                                        class="w-full btn-primary font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 mt-2">
+                                        Calcular Equivalencia
+                                    </button>
+                                </div>
+
+                                <!-- Results -->
+                                <div class="text-center relative">
+                                    <div
+                                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-green-100 rounded-full blur-3xl -z-10">
+                                    </div>
+
+                                    <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-6">
+                                        Equivalencia de Volumen</h3>
+
+                                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
+                                        <div class="flex flex-col items-center">
+                                            <img src="../Andermatt/Phosbac/Phosbac%20packaging.png" alt="Phosbac 1L"
+                                                class="h-32 w-auto object-contain drop-shadow-lg mb-2">
+                                            <div class="text-xl font-bold text-green-700">1 Litro</div>
+                                            <p class="text-xs font-bold text-slate-500">Phosbac</p>
+                                        </div>
+
+                                        <div class="text-2xl font-black text-slate-300">=</div>
+
+                                        <div class="flex flex-col items-center">
+                                            <div class="relative flex items-center justify-center h-32">
+                                                <span id="resultBottles"
+                                                    class="text-6xl sm:text-7xl font-black text-slate-800 tracking-tighter">25</span>
+                                                <span class="text-3xl font-bold text-slate-400 ml-1">x</span>
+                                            </div>
+                                            <div class="text-xl font-bold text-slate-600">Litros</div>
+                                            <p class="text-xs text-slate-500">Otro Producto</p>
+                                        </div>
+                                    </div>
+
+                                    <div id="savingsMsg"
+                                        class="mt-6 inline-flex items-center gap-2 bg-slate-800 text-white px-5 py-2 rounded-full text-sm font-bold shadow-lg transform hover:scale-105 transition duration-300 opacity-100">
+                                        <span>🚛</span>
+                                        <span>Menos volumen, menos logística</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            // Tab Switching Logic
+            function switchTab(tabName) {
+                // Hide all tab contents
+                document.querySelectorAll('.tab-content').forEach(tab => {
+                    tab.classList.add('hidden');
+                });
+
+                // Show selected tab content
+                document.getElementById('tab-' + tabName).classList.remove('hidden');
+
+                // Update Button Styles
+                document.querySelectorAll('.tab-btn').forEach(btn => {
+                    btn.classList.remove('bg-green-600', 'text-white', 'shadow-lg', 'border-transparent');
+                    btn.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
+                });
+
+                // Highlight active button
+                const activeBtn = document.getElementById('btn-' + tabName);
+                activeBtn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
+                activeBtn.classList.add('bg-green-600', 'text-white', 'shadow-lg', 'border-transparent');
+            }
+
+            // Init Tabs
+            document.addEventListener('DOMContentLoaded', () => {
+                switchTab('calidad');
+            });
+
+            // Calculator Logic
+            function calculateBottles() {
+                const compBase = parseFloat(document.getElementById('compBase').value);
+                const compExp = parseFloat(document.getElementById('compExp').value);
+
+                const phosBase = 2.5;
+                const phosExp = 10;
+
+                if (isNaN(compBase) || isNaN(compExp)) return;
+
+                const phosConc = phosBase * Math.pow(10, phosExp);
+                const compConc = compBase * Math.pow(10, compExp);
+
+                // For every 1 liter of Phosbac, we have phosConc.
+                // To get the same in comp, we need phosConc / compConc liters of comp.
+                const equivalentBottles = phosConc / compConc;
+
+                const resultElement = document.getElementById('resultBottles');
+
+                let start = parseFloat(resultElement.innerText);
+                const end = equivalentBottles;
+                const duration = 500;
+                const startTime = performance.now();
+
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const ease = 1 - Math.pow(1 - progress, 4);
+                    const currentVal = start + (end - start) * ease;
+                    resultElement.innerText = currentVal >= 100 ? Math.round(currentVal) : currentVal.toFixed(1).replace('.0', '');
+                    if (progress < 1) requestAnimationFrame(update);
+                }
+                requestAnimationFrame(update);
+
+                const savingsMsg = document.getElementById('savingsMsg');
+                if (equivalentBottles > 1.1) {
+                    savingsMsg.style.opacity = '1';
+                } else {
+                    savingsMsg.style.opacity = '0';
+                }
+            }
+
+            // Mobile Menu Logic
+            document.addEventListener('DOMContentLoaded', () => {
+                const btn = document.getElementById('mobile-menu-btn');
+                const menu = document.getElementById('mobile-menu');
+                const links = document.querySelectorAll('.mobile-link');
+
+                if (btn && menu) {
+                    btn.addEventListener('click', () => {
+                        menu.classList.toggle('hidden');
+                    });
+
+                    // Close menu when a link is clicked
+                    links.forEach(link => {
+                        link.addEventListener('click', () => {
+                            menu.classList.add('hidden');
+                        });
+                    });
+                }
+            });
+        </script>
+
+        <!-- Trust Section: Origin & Quality -->
+        <section class="py-20 bg-slate-50 border-t border-slate-200">
+            <div class="container mx-auto px-6 max-w-5xl text-center">
+                <div
+                    class="flex flex-col md:flex-row justify-center items-center gap-8 mb-8 opacity-80 hover:opacity-100 transition duration-500">
+                    <!-- Logo ABiTEP Placeholder/Text if image not available -->
+                    <div class="h-16 flex items-center">
+                        <span class="text-3xl font-black text-slate-800 tracking-tighter">ABiTEP<span
+                                class="text-green-600">.</span></span>
+                    </div>
+                    <div class="hidden md:block h-12 w-px bg-slate-300"></div>
+                    <img src="https://www.agrichecksrl.com/img/../img/andermatt-clasico.png" alt="Andermatt"
+                        class="h-12 w-auto grayscalehover:grayscale-0 transition">
+                </div>
+
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Origen Alemán. Confianza Suiza.</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-black via-red-600 to-yellow-500 mx-auto mb-6 rounded-full">
+                </div>
+
+                <p class="text-lg text-slate-600 mb-8 leading-relaxed max-w-3xl mx-auto">
+                    La tecnología detrás de <strong>Phosbac</strong> proviene de <strong>ABiTEP GmbH</strong> en
+                    Berlín,
+                    Alemania, pioneros en el desarrollo de bioestimulantes a base de <i>Bacillus</i>.
+                    ABiTEP GmbH es propiedad del grupo <strong>Andermatt</strong>, líder suizo en soluciones
+                    biológicas,
+                    garantizando los más altos estándares de calidad y resultados a campo.
+                </p>
+
+                <a href="https://www.andermatt.com" target="_blank"
+                    class="inline-flex items-center text-green-700 font-bold hover:text-green-800 hover:underline transition">
+                    Conocer más sobre Andermatt <span class="ml-1">→</span>
                 </a>
-              </div>
-              <div class="logoItem"><img src="BioAtlantis.png" alt="BioAtlantis" loading="lazy" /></div>
-              <div class="logoItem"><img src="cultiva-1.png" alt="Cultiva" loading="lazy" /></div>
             </div>
-          </div>
-          <button class="logoNav logoNext" type="button" aria-label="Logo siguiente">›</button>
-        </div>
-      </div>
-  </div>
-</section>
+        </section>
 
-<section id="beneficios">
-  <div class="container">
-    <div class="card sectionCard">
-      <div class="center">
-        <div class="sectionHead">
-          <h2 class="sectionTitle">Beneficios</h2>
-          <p class="muted sectionLead">
-            Enfoque técnico-comercial claro, soluciones sustentables y asesoramiento para implementar tecnologías sin fricción.
-          </p>
-        </div>
-      </div>
-
-      <div class="grid4" style="margin-top:18px">
-        <div class="subCard benefit">
-          <div class="pill">✓</div>
-          <h3>Agricultura sustentable</h3>
-          <p>Soluciones eficientes orientadas a sistemas productivos más responsables.</p>
-        </div>
-        <div class="subCard benefit">
-          <div class="pill">🔬</div>
-          <h3>Soporte técnico</h3>
-          <p>Acompañamiento en adopción, uso y mejores prácticas en campo.</p>
-        </div>
-        <div class="subCard benefit">
-          <div class="pill">🌱</div>
-          <h3>Biológicos</h3>
-          <p>Microorganismos benéficos, biofertilizantes y bioestimulantes.</p>
-        </div>
-        <div class="subCard benefit">
-          <div class="pill">🧩</div>
-          <h3>Portafolio amplio</h3>
-          <p>Control de plagas, enfermedades y promotores de rendimiento.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="instagram">
-  <div class="container">
-    <div class="card" style="padding:22px">
-      <div class="center">
-        <h2 class="sectionTitle">Novedades en Instagram</h2>
-        <p class="muted sectionLead">
-          Sumate a la comunidad: mirá el día a día en el campo, lanzamientos y videos cortos con tips prácticos.
-        </p>
-
-        <div class="igEmbeds" aria-label="Publicaciones de Instagram de AgriCheck"></div>
-        <p class="igFallbackMsg" hidden></p>
-
-        <div style="margin-top:16px">
-          <a class="btn btnPrimary btnInstagram" href="https://www.instagram.com/agricheck.srl/" target="_blank" rel="noopener" aria-label="Ver Instagram de AgriCheck">
-            <svg class="btnIcon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM18 6.2a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-            </svg>
-            Ver Instagram
-          </a>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contacto">
-  <div class="container">
-    <div class="card sectionCard">
-      <div class="center">
-        <div class="sectionHead">
-          <h2 class="sectionTitle">Contacto</h2>
-          <p class="muted sectionLead">
-            Desarrollamos y distribuimos soluciones de especialidad para una agricultura sustentable y eficiente. Con más de 25 años de trayectoria, hemos consolidado un portafolio referente en el mercado, gracias a la representación de compañías líderes a nivel mundial en Argentina.
-            Nuestra integración al grupo suizo Andermatt Group en 2025 nos permite seguir acercando al productor argentino las últimas innovaciones globales, alineados bajo un mismo propósito: alimentos saludables y un medio ambiente sano para todos.
-          </p>
-        </div>
-      </div>
-
-      <div class="contactGrid">
-        <div class="subCard">
-          <h3 style="margin:0 0 10px">Datos</h3>
-          <ul class="contactList">
-            <li><strong>Dirección:</strong> San Juan 50, General Roca, Argentina</li>
-            <li><strong>Email:</strong> <a href="mailto:info@agrichecksrl.com">info@agrichecksrl.com</a></li>
-            <li><strong>Teléfono:</strong> <a href="tel:+5492984763055">+54 9 2984 76-3055</a></li>
-          </ul>
-        </div>
-
-        <div class="subCard">
-          <h3 style="margin:0 0 10px">Redes</h3>
-          <div class="contactRow">
-            <div class="contactActions">
-              <a class="contactLink contactLink--instagram" href="https://www.instagram.com/agricheck.srl/" target="_blank" rel="noopener" aria-label="Abrir Instagram de AgriCheck">
-                <svg class="btnIcon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM18 6.2a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                </svg>
-                Instagram
-              </a>
-
-              <a class="contactLink contactLink--facebook" href="https://www.facebook.com/profile.php?id=100071954765421" target="_blank" rel="noopener" aria-label="Abrir Facebook de AgriCheck">
-                <svg class="btnIcon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <path fill="currentColor" d="M13.5 22v-8h2.7l.4-3h-3.1V9.2c0-.9.2-1.5 1.6-1.5h1.7V5.1c-.3 0-1.4-.1-2.7-.1-2.7 0-4.5 1.6-4.5 4.6V11H7v3h2.9v8h3.6z"/>
-                </svg>
-                Facebook
-              </a>
-
-              <a class="contactLink contactLink--whatsapp" href="https://wa.me/+5492984763055?text=Hola%20AgriCheck!%20Quiero%20hacer%20una%20consulta." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
-                <svg class="btnIcon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <path fill="currentColor" d="M12 2a9.7 9.7 0 0 0-8.5 14.4L2 22l5.8-1.5A9.7 9.7 0 1 0 12 2zm0 2a7.7 7.7 0 0 1 0 15.4c-1.4 0-2.7-.4-3.9-1l-.3-.2-3.4.9.9-3.3-.2-.3A7.7 7.7 0 0 1 12 4zm4.2 9.6c-.2-.1-1.2-.6-1.4-.7-.2-.1-.4-.1-.6.1-.2.2-.7.7-.8.9-.1.1-.3.2-.5.1-.2-.1-.9-.3-1.7-1.1-.6-.5-1-1.2-1.1-1.4-.1-.2 0-.4.1-.5l.4-.4c.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5 0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.4-.2.3-1 1-1 2.4 0 1.4 1 2.7 1.2 2.9.1.2 2 3 4.9 4.2.7.3 1.2.4 1.6.5.7.2 1.4.2 1.9.1.6-.1 1.2-.5 1.4-.9.2-.4.2-.8.1-.9 0-.1-.2-.2-.4-.3z"/>
-                </svg>
-                WhatsApp
-              </a>
+        <!-- Final CTA -->
+        <section id="contacto" class="py-24 bg-gradient-to-br from-slate-900 to-slate-800 text-white text-center">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <h2 class="text-4xl font-bold mb-6">Lleva la eficiencia de tu fósforo al siguiente nivel</h2>
+                <p class="text-xl text-slate-300 mb-10">
+                    No dejes que tu fertilizante se quede bloqueado en el suelo. Actívalo con la ciencia de Phosbac.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="mailto:ventas@agricheck.com"
+                        class="btn-primary text-xl px-10 py-4 shadow-xl shadow-green-900/50">
+                        Contactar con un Especialista
+                    </a>
+                    <a href="https://wa.me/5491112345678"
+                        class="bg-transparent border-2 border-white/20 hover:bg-white/10 text-white font-bold py-4 px-10 rounded-full transition">
+                        Chat WhatsApp
+                    </a>
+                </div>
             </div>
+        </section>
+    </main>
 
-            <div class="muted" style="font-size:14px; margin-top:2px">
-              Seguinos para ver novedades, recorridas a campo y contenido técnico.
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-900">
+        <div class="container mx-auto px-6 text-center">
+            <div
+                class="flex justify-center items-center gap-4 mb-8 grayscale hover:grayscale-0 transition opacity-50 hover:opacity-100">
+                <img src="https://www.agrichecksrl.com/img/logo-agricheck.png" alt="AgriCheck" class="h-8">
+                <span class="text-slate-600 text-2xl">×</span>
+                <span class="font-bold text-xl text-white">Andermatt</span>
             </div>
-          </div>
+            <p>&copy; 2025 AgriCheck S.R.L. | Innovación Biológica.</p>
         </div>
-      </div>
+    </footer>
 
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="container">
-    <div class="footGrid">
-      <div>Copyright © Agricheck <span id="year"></span>.</div>
-      <div class="footer-designed">
-        <p style="display:flex; justify-content:center; align-items:center; gap:6px; margin:0;">
-          Diseñado por UmanoAI
-          <a href="https://umanoai.com.ar" target="_blank" rel="noopener" style="display:inline-block;">
-            <img src="umanoai.png" alt="UmanoAI" style="height:18px;">
-          </a>
-        </p>
-      </div>
-    </div>
-  </div>
-</footer>
-
-
-<script>
-  // Año automático
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Buscador por cultivo y problemática
-  window.__search = () => {
-    const crop = (document.getElementById('cropQuery')?.value || "").trim();
-    const issue = (document.getElementById('issueQuery')?.value || "").trim();
-
-    if (!crop && !issue) {
-      alert("Escribí un cultivo o una problemática para buscar.");
-      return;
-    }
-
-    const params = new URLSearchParams();
-    if (crop) params.set("crop", crop);
-    if (issue) params.set("issue", issue);
-
-    window.location.href = `nuestros-productos.html?${params.toString()}`;
-  };
-
-  /* =========================================================
-     ✅ Carrusel de logos – marquee infinito (snap OFF al animar)
-     ========================================================= */
-  (function () {
-    const carousel = document.querySelector('[data-logo-carousel]');
-    if (!carousel) return;
-
-    const viewport = carousel.querySelector('.logoViewport');
-    const track = carousel.querySelector('.logoTrack');
-    const prevBtn = carousel.querySelector('.logoPrev');
-    const nextBtn = carousel.querySelector('.logoNext');
-    if (!viewport || !track) return;
-
-    const originals = Array.from(track.children).map(n => n.cloneNode(true));
-    if (!originals.length) return;
-
-    let baseWidth = 0;
-    let rafId = null;
-    let lastTs = null;
-
-    const SPEED = 0.045; // px/ms (~45px/s)
-
-    const getGap = () => {
-      const cs = getComputedStyle(track);
-      return parseFloat(cs.gap || cs.columnGap || 16) || 16;
-    };
-
-    const measureBaseWidth = () => {
-      const items = Array.from(track.children).slice(0, originals.length);
-      if (!items.length) return 0;
-      const gap = getGap();
-      return items.reduce((acc, el, i) => {
-        const w = el.getBoundingClientRect().width;
-        return acc + w + (i < items.length - 1 ? gap : 0);
-      }, 0);
-    };
-
-    const rebuild = () => {
-      const prevScroll = viewport.scrollLeft;
-      track.innerHTML = '';
-
-      const addSet = () => originals.forEach(n => track.appendChild(n.cloneNode(true)));
-
-      addSet();
-      baseWidth = measureBaseWidth();
-
-      while (track.scrollWidth < viewport.clientWidth + baseWidth) addSet();
-      if (track.scrollWidth < baseWidth * 2) addSet();
-
-      baseWidth = measureBaseWidth();
-      viewport.scrollLeft = baseWidth ? (prevScroll % baseWidth) : 0;
-    };
-
-    const stop = () => {
-      if (rafId) cancelAnimationFrame(rafId);
-      rafId = null;
-      lastTs = null;
-      viewport.classList.remove('is-animating'); // ✅ vuelve snap para manual
-    };
-
-    const tick = (ts) => {
-      if (lastTs == null) lastTs = ts;
-      const delta = ts - lastTs;
-      lastTs = ts;
-
-      if (!baseWidth || baseWidth <= 0) { stop(); return; }
-
-      let next = viewport.scrollLeft + delta * SPEED;
-      if (next >= baseWidth) next %= baseWidth;
-
-      viewport.scrollLeft = next;
-      rafId = requestAnimationFrame(tick);
-    };
-
-    const start = () => {
-      if (rafId) return;
-
-      // ✅ durante autoplay: snap OFF
-      viewport.classList.add('is-animating');
-      viewport.style.scrollBehavior = 'auto';
-
-      lastTs = null;
-      rafId = requestAnimationFrame(tick);
-    };
-
-    // Botones (acá sí queremos smooth)
-    const stepSize = () => {
-      const first = track.querySelector('.logoItem');
-      if (!first) return 180;
-      return first.getBoundingClientRect().width + getGap();
-    };
-
-    prevBtn?.addEventListener('click', () => {
-      viewport.classList.remove('is-animating'); // snap ON
-      viewport.style.scrollBehavior = 'smooth';
-      viewport.scrollLeft = (viewport.scrollLeft - stepSize() + baseWidth) % baseWidth;
-    });
-
-    nextBtn?.addEventListener('click', () => {
-      viewport.classList.remove('is-animating'); // snap ON
-      viewport.style.scrollBehavior = 'smooth';
-      viewport.scrollLeft = (viewport.scrollLeft + stepSize()) % baseWidth;
-    });
-
-    // Init
-    rebuild();
-    start();
-
-    // Rebuild cuando cargan imágenes (clave)
-    const imgs = track.querySelectorAll('img');
-    let pending = 0;
-    imgs.forEach(img => {
-      if (!img.complete || img.naturalWidth === 0) {
-        pending++;
-        img.addEventListener('load', () => {
-          pending--;
-          if (pending === 0) {
-            rebuild();
-            start();
-          }
-        }, { once: true });
-      }
-    });
-
-    // Resize
-    let rT;
-    window.addEventListener('resize', () => {
-      clearTimeout(rT);
-      rT = setTimeout(() => {
-        rebuild();
-        start();
-      }, 150);
-    });
-
-    // Visibilidad
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) stop();
-      else start();
-    });
-  })();
-
-  // ✅ Instagram embeds oficiales
-  (async function(){
-    const igSection = document.getElementById('instagram');
-    if(!igSection) return;
-
-    const igContainer = igSection.querySelector('.igEmbeds');
-    const igFallbackMsg = igSection.querySelector('.igFallbackMsg');
-    if(!igContainer) return;
-
-    const ensureInstagramScript = () => new Promise((resolve) => {
-      const existingScript = document.querySelector('script[data-instgrm-embed="true"]');
-      if(existingScript){
-        if(window.instgrm?.Embeds){
-          resolve();
-          return;
-        }
-        existingScript.addEventListener('load', resolve, { once: true });
-        return;
-      }
-
-      const script = document.createElement('script');
-      script.async = true;
-      script.src = 'https://www.instagram.com/embed.js';
-      script.setAttribute('data-instgrm-embed', 'true');
-      script.onload = resolve;
-      document.body.appendChild(script);
-    });
-
-    const buildEmbedItem = (permalink) => {
-      const item = document.createElement('div');
-      item.className = 'igEmbedItem';
-
-      const blockquote = document.createElement('blockquote');
-      blockquote.className = 'instagram-media';
-      blockquote.setAttribute('data-instgrm-permalink', permalink);
-      blockquote.setAttribute('data-instgrm-version', '14');
-
-      item.appendChild(blockquote);
-      return item;
-    };
-
-    const buildFallbackItem = (permalink) => {
-      const item = document.createElement('div');
-      item.className = 'igEmbedItem';
-
-      const link = document.createElement('a');
-      link.className = 'igFallbackLink';
-      link.href = permalink;
-      link.target = '_blank';
-      link.rel = 'noopener';
-      link.textContent = 'Ver publicación en Instagram';
-      link.setAttribute('aria-label', `Abrir publicación de Instagram: ${permalink}`);
-
-      item.appendChild(link);
-      return item;
-    };
-
-    const renderFallback = (permalinks, message) => {
-      igContainer.innerHTML = '';
-      permalinks.forEach((permalink) => {
-        igContainer.appendChild(buildFallbackItem(permalink));
-      });
-
-      if(igFallbackMsg){
-        igFallbackMsg.hidden = !message;
-        igFallbackMsg.textContent = message ?? '';
-      }
-    };
-
-    try{
-      const response = await fetch(new URL('assets/ig-posts.json', document.baseURI), { cache: 'no-store' });
-      if(!response.ok) throw new Error(`No se pudo cargar ig-posts.json (${response.status})`);
-
-      const payload = await response.json();
-      const permalinks = Array.isArray(payload)
-        ? payload
-        : Array.isArray(payload?.posts)
-          ? payload.posts.map((post) => typeof post === 'string' ? post : post?.permalink)
-          : null;
-
-      if(!Array.isArray(permalinks)) throw new Error('Formato inválido de ig-posts.json');
-
-      const validPermalinks = permalinks
-        .filter((url) => typeof url === 'string' && /^https:\/\/(www\.)?instagram\.com\/(p|reel)\/[A-Za-z0-9_-]+\/?$/i.test(url));
-
-      if(validPermalinks.length === 0){
-        if(igContainer.children.length > 0){
-          if(igFallbackMsg){
-            igFallbackMsg.hidden = false;
-            igFallbackMsg.textContent = 'No se pudieron actualizar las publicaciones, se muestran las anteriores.';
-          }
-          return;
-        }
-        renderFallback([], 'Todavía no hay publicaciones disponibles para mostrar.');
-        return;
-      }
-
-      igContainer.innerHTML = '';
-      validPermalinks.forEach((permalink) => {
-        igContainer.appendChild(buildEmbedItem(permalink));
-      });
-
-      if(igFallbackMsg){
-        igFallbackMsg.hidden = true;
-        igFallbackMsg.textContent = '';
-      }
-
-      await ensureInstagramScript();
-      window.instgrm?.Embeds?.process();
-    }catch(error){
-      console.warn('No se pudieron actualizar los embeds de Instagram:', error);
-      if(igContainer.children.length > 0){
-        if(igFallbackMsg){
-          igFallbackMsg.hidden = false;
-          igFallbackMsg.textContent = 'No se pudieron actualizar las publicaciones, se muestran las anteriores.';
-        }
-        return;
-      }
-      renderFallback([
-        'https://www.instagram.com/agricheck.srl/'
-      ], 'No se pudieron cargar los embeds ahora. Podés abrir Instagram desde este enlace.');
-    }
-  })();
-
-  // ✅ Menú hamburguesa (mobile)
-  (function(){
-    const burger = document.querySelector('.burger');
-    const menu = document.getElementById('mobileMenu');
-    if(!burger || !menu) return;
-
-    const setOpen = (open) => {
-      document.body.classList.toggle('menuOpen', open);
-      burger.setAttribute('aria-expanded', String(open));
-      burger.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
-    };
-
-    burger.addEventListener('click', () => {
-      const open = !document.body.classList.contains('menuOpen');
-      setOpen(open);
-    });
-
-    // Cerrar al hacer click en links
-    menu.querySelectorAll('[data-close-menu]').forEach((a) => {
-      a.addEventListener('click', () => setOpen(false));
-    });
-
-    // Cerrar con ESC
-    document.addEventListener('keydown', (e) => {
-      if(e.key === 'Escape') setOpen(false);
-    });
-
-    // Cerrar si se agranda a desktop
-    const mq = window.matchMedia('(min-width: 901px)');
-    const onChange = () => { if(mq.matches) setOpen(false); };
-    mq.addEventListener ? mq.addEventListener('change', onChange) : mq.addListener(onChange);
-  })();
-
-  // ✅ Dropdowns de categorías en desktop
-  (function(){
-    const navGroups = document.querySelectorAll('[data-nav-dropdown]');
-    if(!navGroups.length) return;
-
-    navGroups.forEach((navGroup) => {
-      const toggle = navGroup.querySelector('.navGroupToggle');
-      const links = navGroup.querySelector('.navGroupLinks');
-      if(!toggle || !links) return;
-
-      const setOpen = (open) => {
-        navGroup.classList.toggle('is-open', open);
-        toggle.setAttribute('aria-expanded', String(open));
-      };
-
-      toggle.addEventListener('click', () => {
-        const nextState = !navGroup.classList.contains('is-open');
-        setOpen(nextState);
-      });
-
-      document.addEventListener('click', (e) => {
-        if(!navGroup.contains(e.target)) setOpen(false);
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if(e.key === 'Escape') setOpen(false);
-      });
-
-      links.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', () => setOpen(false));
-      });
-    });
-  })();
-</script>
-
-  <script src="assets/whatsapp-float.js" defer></script>
 </body>
+
 </html>
