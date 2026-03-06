@@ -133,17 +133,6 @@ Zonas patagónicas:
 Al oeste de General Roca (incluye Neuquén y oeste de Río Negro) → Victoria Vianna
 Al este de General Roca (Río Negro) → Aníbal Epullán
 
-Regla específica Cuyo:
-
-Si la provincia es de Cuyo (Mendoza, San Juan o San Luis), preguntar antes de derivar:
-
-¿Tu cultivo es frutal u hortícola?
-
-Asignación Cuyo:
-
-Frutales → Evelyn Riveros
-Hortícola y otros cultivos → Daiana González
-
 Si zona no clara:
 
 ¿Me confirmás localidad exacta?
