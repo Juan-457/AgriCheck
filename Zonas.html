@@ -145,18 +145,20 @@
     .companyData{margin:10px 0;color:#C9D3DD;line-height:1.55}
     .companyData p{margin:0 0 6px}
     .companyData a{color:#fff;text-decoration:underline}
-    .sellerHeader{display:flex;align-items:center;gap:10px;margin-top:8px;padding:2px 0}
-    .contactPhotos{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-    .sellerHeader img{width:52px !important;height:52px !important;border-radius:12px}
+    .sellerHeader{display:flex;align-items:flex-start;gap:10px;margin-top:8px;padding:2px 0}
     .sellerHeaderInfo{display:flex;flex-direction:column;gap:2px;min-width:0}
     .sellerHeaderInfo strong{font-size:19px;line-height:1.2}
     .sellerHeaderInfo span{color:#9FB0C1;font-size:14px}
     .contactList{display:flex;flex-direction:column;gap:8px;margin-top:8px}
-    .contactItem{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;padding:12px 14px;border-radius:12px;background:#13263A;border:1px solid #223046;transition:background .15s ease}
+    .contactItem{display:flex;flex-direction:column;gap:10px;padding:12px 14px;border-radius:12px;background:#13263A;border:1px solid #223046;transition:background .15s ease}
     .contactItem:hover{background:#16314A}
     .contactInfo{min-width:0;flex:1}
     .contactItem p{margin:0;line-height:1.35}
-    .contactLinks{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;margin-left:auto;align-items:flex-start}
+    .contactActionRow{display:flex;align-items:stretch;gap:8px;min-height:58px}
+    .contactPhotoWrap{display:flex;flex:0 0 auto}
+    .contactPhoto{width:58px !important;height:58px !important;border-radius:12px !important;object-fit:cover;background:#0f172a;border:1px solid #2A3B55}
+    .contactLinks{display:flex;flex-direction:column;gap:6px;flex:1;min-height:58px}
+    .contactLinks .miniBtn{flex:1;padding:0 11px;min-height:26px}
     .miniBtn{display:inline-flex;align-items:center;justify-content:center;padding:7px 11px;border-radius:999px;border:1px solid #2A3B55;background:#122033;color:#fff;font-weight:700;font-size:12px;white-space:nowrap;transition:background .15s ease, box-shadow .15s ease}
     .miniBtn:hover{background:#16314A;box-shadow:0 8px 20px rgba(0,0,0,.25)}
     .vendorsGrid{display:flex;flex-direction:column;gap:8px}
@@ -324,7 +326,6 @@
             <div id="sellerPanel" class="panelSection" hidden>
               <h2 id="pName" style="margin:10px 0 6px">Seleccioná una zona</h2>
               <div class="sellerHeader">
-                <div id="pImgs" class="contactPhotos"></div>
                 <div class="sellerHeaderInfo">
                   <strong id="pMainName"></strong>
                   <span id="pMeta"></span>
@@ -404,7 +405,6 @@
   const ttMeta = document.getElementById("ttMeta");
 
   const pName = document.getElementById("pName");
-  const pImgs = document.getElementById("pImgs");
   const pMeta = document.getElementById("pMeta");
   const pMainName = document.getElementById("pMainName");
   const pWa = document.getElementById("pWa");
@@ -442,7 +442,6 @@
   let typingTimeout;
   let cycleInterval;
   let selectedPrimaryContact = null;
-  let selectedDisplayName = "";
   let selectedZoneElement = null;
 
   defaultWa.addEventListener("click", () => {
@@ -482,6 +481,17 @@
   function formatPhone(phone){
     if(!phone) return "";
     return `+${phone}`;
+  }
+
+  function getContactImage(sellerInfo, contact, index){
+    if(contact?.img) return contact.img;
+    if(Array.isArray(sellerInfo?.imgs) && sellerInfo.imgs[index]) return sellerInfo.imgs[index];
+    return sellerInfo?.img || "";
+  }
+
+  function shouldShowContactName(displayName, contactName, totalContacts){
+    if(totalContacts > 1) return true;
+    return normalizeZoneName(displayName) !== normalizeZoneName(contactName);
   }
 
   function typeProductName(text, speed = 72){
@@ -526,31 +536,34 @@
     const s = getSeller(name);
     if(!s) return;
     const displayName = s.displayName || name;
-    selectedDisplayName = displayName;
     selectedPrimaryContact = (s.contacts && s.contacts[0]) || null;
     mapHint.classList.remove("visible");
     defaultPanel.hidden = true;
     sellerPanel.hidden = false;
     pName.textContent = displayName;
-    const zoneImages = s.imgs || [s.img];
-    renderPhotos(pImgs, zoneImages, displayName);
-    pMainName.textContent = (s.contacts && s.contacts[0]?.name) || displayName;
+    pMainName.textContent = (s.contacts?.length || 0) > 1 ? "Equipo comercial" : "Asesor comercial";
     pMeta.textContent = s.meta || "";
     salesForce.innerHTML = "";
 
-    (s.contacts || []).forEach((contact) => {
+    const totalContacts = (s.contacts || []).length;
+    (s.contacts || []).forEach((contact, index) => {
       const phone = formatPhone(contact.phone);
+      const contactImage = getContactImage(s, contact, index);
+      const showName = shouldShowContactName(displayName, contact.name || "", totalContacts);
       const item = document.createElement("div");
       item.className = "contactItem";
       item.innerHTML = `
         <div class="contactInfo">
-          <p><strong>${contact.name}</strong></p>
+          ${showName ? `<p><strong>${contact.name}</strong></p>` : ""}
           <p>${phone || "Sin teléfono"}</p>
           <p><a href="mailto:${contact.email}">${contact.email}</a></p>
         </div>
-        <div class="contactLinks">
-          ${contact.phone ? `<a class="miniBtn" href="https://wa.me/${contact.phone}" target="_blank" rel="noopener noreferrer">WhatsApp</a>` : ""}
-          <a class="miniBtn" href="mailto:${contact.email}">Email</a>
+        <div class="contactActionRow">
+          ${contactImage ? `<div class="contactPhotoWrap"><img class="contactPhoto" src="${contactImage}" alt="${contact.name || displayName}"></div>` : ""}
+          <div class="contactLinks">
+            ${contact.phone ? `<a class="miniBtn" href="https://wa.me/${contact.phone}" target="_blank" rel="noopener noreferrer">WhatsApp</a>` : ""}
+            <a class="miniBtn" href="mailto:${contact.email}">Email</a>
+          </div>
         </div>
       `;
       salesForce.appendChild(item);
@@ -573,11 +586,12 @@
       card.className = "vendorCard";
       card.dataset.seller = sellerName;
 
-      const contactsMarkup = (info.contacts || []).map((contact) => {
+      const contactsMarkup = (info.contacts || []).map((contact, index, contacts) => {
         const phone = formatPhone(contact.phone);
+        const showName = shouldShowContactName(info.displayName || sellerName, contact.name || "", contacts.length);
         return `
           <div class="vendorContactItem">
-            <p><strong>${contact.name}</strong></p>
+            ${showName ? `<p><strong>${contact.name}</strong></p>` : ""}
             <p>${phone || "Sin teléfono"}</p>
             <p><a href="mailto:${contact.email}">${contact.email}</a></p>
             ${contact.phone ? `<a class="vendorWaBtn" href="https://wa.me/${contact.phone}" target="_blank" rel="noopener noreferrer">WhatsApp</a>` : ""}
