@@ -128,8 +128,10 @@ Litoral → Alan Schmidt
 Núcleo Centro → Miguel Utrera
 Cuyo → Evelyn Riveros + Daiana González
 Buenos Aires + CABA → Andrés Perez
-Neuquén + Río Negro (Oeste Valle) → Victoria Vianna
-Río Negro (Este Alto Valle) → Aníbal Epullán
+Zonas patagónicas:
+
+Al oeste de General Roca (incluye Neuquén y oeste de Río Negro) → Victoria Vianna
+Al este de General Roca (Río Negro) → Aníbal Epullán
 
 Si zona no clara:
 
