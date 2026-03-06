@@ -145,19 +145,18 @@
     .companyData{margin:10px 0;color:#C9D3DD;line-height:1.55}
     .companyData p{margin:0 0 6px}
     .companyData a{color:#fff;text-decoration:underline}
-    .contactCard{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:14px;background:#13263A;border:1px solid #223046;transition:background .15s ease}
-    .contactCard:hover{background:#16314A}
+    .sellerHeader{display:flex;align-items:center;gap:10px;margin-top:8px;padding:2px 0}
     .contactPhotos{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-    .contactCard img{width:62px !important;height:62px !important;border-radius:14px}
-    .contactMain{display:flex;flex-direction:column;gap:2px;min-width:0}
-    .contactMain strong{font-size:17px;line-height:1.2}
-    .contactMain span{color:#9FB0C1}
+    .sellerHeader img{width:52px !important;height:52px !important;border-radius:12px}
+    .sellerHeaderInfo{display:flex;flex-direction:column;gap:2px;min-width:0}
+    .sellerHeaderInfo strong{font-size:19px;line-height:1.2}
+    .sellerHeaderInfo span{color:#9FB0C1;font-size:14px}
     .contactList{display:flex;flex-direction:column;gap:8px;margin-top:8px}
-    .contactItem{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;padding:12px 14px;border-radius:12px;background:#13263A;border:1px solid #223046;transition:background .15s ease}
+    .contactItem{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;padding:12px 14px;border-radius:12px;background:#13263A;border:1px solid #223046;transition:background .15s ease}
     .contactItem:hover{background:#16314A}
     .contactInfo{min-width:0;flex:1}
     .contactItem p{margin:0;line-height:1.35}
-    .contactLinks{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;margin-left:auto}
+    .contactLinks{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;margin-left:auto;align-items:flex-start}
     .miniBtn{display:inline-flex;align-items:center;justify-content:center;padding:7px 11px;border-radius:999px;border:1px solid #2A3B55;background:#122033;color:#fff;font-weight:700;font-size:12px;white-space:nowrap;transition:background .15s ease, box-shadow .15s ease}
     .miniBtn:hover{background:#16314A;box-shadow:0 8px 20px rgba(0,0,0,.25)}
     .vendorsGrid{display:flex;flex-direction:column;gap:8px}
@@ -324,9 +323,9 @@
 
             <div id="sellerPanel" class="panelSection" hidden>
               <h2 id="pName" style="margin:10px 0 6px">Seleccioná una zona</h2>
-              <div class="contactCard">
+              <div class="sellerHeader">
                 <div id="pImgs" class="contactPhotos"></div>
-                <div class="contactMain">
+                <div class="sellerHeaderInfo">
                   <strong id="pMainName"></strong>
                   <span id="pMeta"></span>
                 </div>
@@ -546,11 +545,11 @@
       item.innerHTML = `
         <div class="contactInfo">
           <p><strong>${contact.name}</strong></p>
-          <p>${phone}</p>
+          <p>${phone || "Sin teléfono"}</p>
           <p><a href="mailto:${contact.email}">${contact.email}</a></p>
         </div>
         <div class="contactLinks">
-          <a class="miniBtn" href="https://wa.me/${contact.phone}" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          ${contact.phone ? `<a class="miniBtn" href="https://wa.me/${contact.phone}" target="_blank" rel="noopener noreferrer">WhatsApp</a>` : ""}
           <a class="miniBtn" href="mailto:${contact.email}">Email</a>
         </div>
       `;
