@@ -123,6 +123,134 @@
     .smallCta{display:inline-flex;align-items:center;gap:10px;font-weight:900;color:var(--brand-green-dark)}
     .smallCta:hover{text-decoration:underline}
 
+    .expoPopup{
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(137,196,68,.35), transparent 48%),
+        radial-gradient(circle at 80% 80%, rgba(249,115,22,.30), transparent 40%),
+        rgba(4,10,27,.78);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .expoPopup.is-visible{ display:flex; }
+    .expoPopupCard{
+      width:min(680px, 100%);
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 30px 70px rgba(0,0,0,.42);
+      border: 1px solid rgba(255,255,255,.22);
+      background: linear-gradient(170deg, rgba(10,21,56,.96), rgba(10,21,56,.83));
+      transform: translateY(24px) scale(.96);
+      opacity: 0;
+      transition: transform .42s ease, opacity .42s ease;
+    }
+    .expoPopup.is-visible .expoPopupCard{
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    .expoPopupGlow{
+      position:absolute;
+      inset:-20% -15% auto;
+      height:230px;
+      background: radial-gradient(circle, rgba(137,196,68,.45), transparent 60%);
+      pointer-events:none;
+      animation: expoPulse 2.8s ease-in-out infinite;
+    }
+    @keyframes expoPulse{
+      0%,100%{ transform: scale(1); opacity:.75; }
+      50%{ transform: scale(1.1); opacity:1; }
+    }
+    .expoPopupClose{
+      position:absolute;
+      top:12px;
+      right:12px;
+      width:42px;
+      height:42px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.36);
+      background: rgba(0,0,0,.38);
+      color:#fff;
+      font-size:26px;
+      line-height:1;
+      cursor:pointer;
+      z-index: 2;
+    }
+    .expoPopupVisual{ position:relative; overflow:hidden; }
+    .expoPopupVisual::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background: linear-gradient(180deg, rgba(10,21,56,0) 44%, rgba(10,21,56,.72) 100%);
+      pointer-events:none;
+    }
+    .expoPopupVisual img{
+      display:block;
+      width:100%;
+      height:auto;
+      animation: expoZoom 7s ease-in-out infinite alternate;
+    }
+    @keyframes expoZoom{
+      from{ transform: scale(1); }
+      to{ transform: scale(1.06); }
+    }
+    .expoPopupText{
+      padding: 20px 24px 26px;
+      color: rgba(241,245,249,.95);
+      position: relative;
+      z-index: 1;
+    }
+    .expoPopupTag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #e2f6cb;
+      background: rgba(137,196,68,.22);
+      border: 1px solid rgba(137,196,68,.54);
+    }
+    .expoPopupText h3{
+      margin: 12px 0 8px;
+      font-size: clamp(24px, 4vw, 34px);
+      line-height: 1.05;
+      color:#fff;
+    }
+    .expoPopupText p{
+      margin:0;
+      text-align:left;
+      color: rgba(226,232,240,.9);
+    }
+    .expoPopupActions{ margin-top: 16px; display:flex; gap:10px; flex-wrap:wrap; }
+    .expoPopupActions a,
+    .expoPopupActions button{
+      border:none;
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-weight: 900;
+      font-family: inherit;
+      cursor: pointer;
+    }
+    .expoPopupCta{
+      background: linear-gradient(90deg, #89C444, #9adf48);
+      color:#17310b;
+    }
+    .expoPopupGhost{
+      background: rgba(255,255,255,.1);
+      color: #f8fafc;
+      border: 1px solid rgba(255,255,255,.3) !important;
+    }
+
     /* ================= HEADER ================= */
     header{
       position:fixed; inset:0 0 auto 0;
@@ -1166,10 +1294,70 @@
   </div>
 </footer>
 
+<div class="expoPopup" id="expoPopup" aria-hidden="true">
+  <div class="expoPopupCard" role="dialog" aria-modal="true" aria-label="Novedad ExpoAgro">
+    <div class="expoPopupGlow"></div>
+    <button class="expoPopupClose" id="expoPopupClose" type="button" aria-label="Cerrar pop-up">×</button>
+    <div class="expoPopupVisual">
+      <img src="ExpoAgro.webp" alt="ExpoAgro en AgriCheck" loading="lazy" />
+    </div>
+    <div class="expoPopupText">
+      <span class="expoPopupTag">Experiencia AgriCheck</span>
+      <h3>¡Viví ExpoAgro con nosotros!</h3>
+      <p>Conocé nuestras soluciones para una agricultura más eficiente y sustentable. Hacé clic para explorar productos destacados.</p>
+      <div class="expoPopupActions">
+        <a class="expoPopupCta" href="nuestros-productos.html">Ver productos</a>
+        <button class="expoPopupGhost" id="expoPopupLater" type="button">Lo veo luego</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <script>
   // Año automático
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Pop-up creativo ExpoAgro
+  (function(){
+    const popup = document.getElementById('expoPopup');
+    const closeBtn = document.getElementById('expoPopupClose');
+    const laterBtn = document.getElementById('expoPopupLater');
+    if(!popup || !closeBtn || !laterBtn) return;
+
+    const POPUP_KEY = 'expoagro-popup-dismissed';
+
+    const closePopup = () => {
+      popup.classList.remove('is-visible');
+      popup.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+
+    const openPopup = () => {
+      popup.classList.add('is-visible');
+      popup.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+
+    if(sessionStorage.getItem(POPUP_KEY) !== '1'){
+      window.setTimeout(openPopup, 950);
+    }
+
+    const dismiss = () => {
+      sessionStorage.setItem(POPUP_KEY, '1');
+      closePopup();
+    };
+
+    closeBtn.addEventListener('click', dismiss);
+    laterBtn.addEventListener('click', dismiss);
+    popup.addEventListener('click', (event) => {
+      if(event.target === popup) dismiss();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if(event.key === 'Escape' && popup.classList.contains('is-visible')) dismiss();
+    });
+  })();
 
   // Buscador por cultivo y problemática
   window.__search = () => {
