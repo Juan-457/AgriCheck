@@ -338,7 +338,7 @@
               <button id="pWa" disabled>Enviar WhatsApp principal</button>
             </div>
 
-            <div class="panelSection">
+            <div id="vendorListSection" class="panelSection">
               <div class="sectionTitle">Vendedores por zona</div>
               <div class="filterActions">
                 <button id="clearFilter" class="ghostBtn" hidden>Mostrar todas las zonas</button>
@@ -417,6 +417,7 @@
   const mapHint = document.getElementById("mapHint");
   const vendorCards = document.getElementById("vendorCards");
   const clearFilter = document.getElementById("clearFilter");
+  const vendorListSection = document.getElementById("vendorListSection");
 
   const companyWhatsapp = "5492984763055";
   const productImage = document.getElementById("productImage");
@@ -548,6 +549,7 @@
     mapHint.classList.remove("visible");
     defaultPanel.hidden = true;
     sellerPanel.hidden = false;
+    vendorListSection.hidden = true;
     pName.textContent = displayName;
     pMainName.textContent = (s.contacts?.length || 0) > 1 ? "Equipo comercial" : "Asesor comercial";
     pMeta.textContent = s.meta || "";
@@ -647,6 +649,7 @@
   function showAllVendorCards(){
     vendorCards.querySelectorAll(".vendorCard").forEach((card) => card.classList.remove("is-hidden"));
     clearFilter.hidden = true;
+    vendorListSection.hidden = false;
   }
 
   function syncBackgroundOffset(){
