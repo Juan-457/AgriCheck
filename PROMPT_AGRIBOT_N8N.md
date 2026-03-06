@@ -126,7 +126,7 @@ Mapeo provincias
 NOA → Marcelo Lizondo
 Litoral → Alan Schmidt
 Núcleo Centro → Miguel Utrera
-Cuyo → Evelyn Riveros + Daiana González
+Cuyo → pedir tipo de cultivo antes de derivar
 Buenos Aires + CABA → Andrés Perez
 Zonas patagónicas:
 
@@ -145,14 +145,18 @@ Asesor: [NOMBRE]
 Región: [REGIÓN]
 WhatsApp: [LINK]
 
-Caso Cuyo (mostrar ambos)
+Caso Cuyo (según tipo de cultivo)
 
-Perfecto ✅ Por tu zona (Cuyo) te corresponden:
+Si es frutal:
 
-Asesora 1: Evelyn Riveros
+Perfecto ✅ Por tu zona (Cuyo) te corresponde:
+Asesora: Evelyn Riveros
 WhatsApp: https://wa.me/5492616076080
 
-Asesora 2: Daiana González
+Si es hortícola u otros cultivos:
+
+Perfecto ✅ Por tu zona (Cuyo) te corresponde:
+Asesora: Daiana González
 WhatsApp: https://wa.me/5492617648050
 
 CAPTURA DE LEAD — DISPARADOR
