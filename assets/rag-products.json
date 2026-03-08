@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-07T06:51:53.634Z",
+  "generated_at": "2026-03-08T06:53:47.892Z",
   "source_file": "nuestros-productos.html",
   "company_source_file": "index.html",
   "sellers_source_file": "Zonas.html",
@@ -192,8 +192,8 @@
       ],
       "page_metadata": {
         "title": "Beauvisan – AgriCheck | Bioinsecticida de Amplio Espectro",
-        "meta_description": "",
-        "has_meta_description": false,
+        "meta_description": "Conocé Beauvisan – AgriCheck en AgriCheck. Soluciones de agricultura sustentable, asesoramiento técnico y contacto directo por WhatsApp.",
+        "has_meta_description": true,
         "file_exists": true,
         "intro_paragraph": "Beauvisan es un concentrado en polvo de la cepa exclusiva R444 de Beauveria bassiana , para el control de un amplio espectro de insectos y ácaros, sin residuos ni período de carencia."
       }
@@ -227,8 +227,8 @@
       ],
       "page_metadata": {
         "title": "Nomu-Protec – AgriCheck | Bioinsecticida Fúngico de Alta Especificidad",
-        "meta_description": "",
-        "has_meta_description": false,
+        "meta_description": "Conocé Nomu-Protec – AgriCheck en AgriCheck. Soluciones de agricultura sustentable, asesoramiento técnico y contacto directo por WhatsApp.",
+        "has_meta_description": true,
         "file_exists": true,
         "intro_paragraph": "Nomu-Protec es un bioinsecticida a base del hongo Metarhizium rileyi , formulado para el control de un amplio espectro de larvas de lepidópteros, sin afectar a la fauna benéfica."
       }
@@ -295,8 +295,8 @@
       ],
       "page_metadata": {
         "title": "T-Gro Easy Flow – AgriCheck | Inocular y Lubricar en un Solo Paso",
-        "meta_description": "",
-        "has_meta_description": false,
+        "meta_description": "Conocé T-Gro Easy Flow – AgriCheck en AgriCheck. Soluciones de agricultura sustentable, asesoramiento técnico y contacto directo por WhatsApp.",
+        "has_meta_description": true,
         "file_exists": true,
         "intro_paragraph": "T-Gro Easy Flow revoluciona la inoculación del Maíz con su tecnología exclusiva que fusiona un potente inoculante biológico con un lubricante de alto rendimiento. Directo en la sembradora, sin complicaciones."
       }
@@ -355,8 +355,8 @@
       ],
       "page_metadata": {
         "title": "T-Gro – AgriCheck | Tratamiento Biológico para Semillas",
-        "meta_description": "",
-        "has_meta_description": false,
+        "meta_description": "Conocé T-Gro – AgriCheck en AgriCheck. Soluciones de agricultura sustentable, asesoramiento técnico y contacto directo por WhatsApp.",
+        "has_meta_description": true,
         "file_exists": true,
         "intro_paragraph": "T-Gro es un fertilizante biológico a base de nuestra exclusiva cepa kd de Trichoderma asperellum . Una solución versátil para potenciar el sistema radicular tanto en grandes extensiones como en cultivos intensivos."
       }
@@ -478,8 +478,8 @@
       "id": "zimbili",
       "name": "Zimbili",
       "description": "Bioestimulante radicular con L-triptófano, L-metionina y Ecklonia maxima para potenciar arranque y vigor.",
-      "relative_url": "",
-      "absolute_url": "",
+      "relative_url": "zimbili.html",
+      "absolute_url": "https://www.agrichecksrl.com/zimbili.html",
       "image": "Zimbili.webp",
       "crops": [
         "soja",
@@ -510,7 +510,13 @@
         "Cebada",
         "Raíces"
       ],
-      "page_metadata": {}
+      "page_metadata": {
+        "title": "Zimbili – AgriCheck | Biofertilizante Premium",
+        "meta_description": "Zimbili: Raíces Fuertes, Cultivos Sanos. Bioestimulante avanzado con L-triptófano, L-metionina y Ecklonia maxima.",
+        "has_meta_description": true,
+        "file_exists": true,
+        "intro_paragraph": "Zimbili combina la potencia de precursores hormonales y extractos marinos para revolucionar el sistema radicular y maximizar la absorción de nutrientes."
+      }
     },
     {
       "id": "zumsil",
@@ -591,8 +597,8 @@
       ],
       "page_metadata": {
         "title": "Amyprotec 42 – AgriCheck | Protección Fungicida para Semillas",
-        "meta_description": "",
-        "has_meta_description": false,
+        "meta_description": "Conocé Amyprotec 42 – AgriCheck en AgriCheck. Soluciones de agricultura sustentable, asesoramiento técnico y contacto directo por WhatsApp.",
+        "has_meta_description": true,
         "file_exists": true,
         "intro_paragraph": "Amyprotec 42 protege la semilla desde el inicio, creando una barrera biológica contra patógenos clave del suelo y garantizando una viabilidad celular sin precedentes en el mercado."
       }
@@ -683,8 +689,8 @@
       ],
       "page_metadata": {
         "title": "Parka® – AgriCheck | Tecnología de Cutícula de Cultiva LLC",
-        "meta_description": "",
-        "has_meta_description": false,
+        "meta_description": "Conocé Parka® – AgriCheck en AgriCheck. Soluciones de agricultura sustentable, asesoramiento técnico y contacto directo por WhatsApp.",
+        "has_meta_description": true,
         "file_exists": true,
         "intro_paragraph": "No deje su inversión a merced del clima. La tecnología SureSeal™ de Cultiva LLC crea un escudo invisible y elástico que protege su fruta para lograr una terminación impecable."
       }
@@ -725,8 +731,8 @@
       ],
       "page_metadata": {
         "title": "Atroverde - AgriCheck | Especialista en Botrytis",
-        "meta_description": "",
-        "has_meta_description": false,
+        "meta_description": "Conocé Atroverde - AgriCheck en AgriCheck. Soluciones de agricultura sustentable, asesoramiento técnico y contacto directo por WhatsApp.",
+        "has_meta_description": true,
         "file_exists": true,
         "intro_paragraph": ""
       }
