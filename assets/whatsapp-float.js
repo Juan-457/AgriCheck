@@ -2,7 +2,7 @@
   if (window.__agricheckWhatsappFloatLoaded) return;
   window.__agricheckWhatsappFloatLoaded = true;
 
-  var WHATSAPP_URL = 'https://wa.me/+5492984763055?text=Hola%20AgriCheck!%20Quiero%20hacer%20una%20consulta.';
+  var WHATSAPP_URL = 'https://wa.me/5492984763055?text=Hola%20AgriCheck!%20Quiero%20hacer%20una%20consulta.';
   var EVENT_NAME = 'whatsapp_bubble_click';
 
   var style = document.createElement('style');
