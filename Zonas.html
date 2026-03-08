@@ -338,7 +338,6 @@
               </div>
               <div class="sectionTitle">Fuerza de ventas</div>
               <div id="salesForce" class="contactList"></div>
-              <button id="pWa" disabled>Enviar WhatsApp principal</button>
             </div>
 
             <div id="vendorListSection" class="panelSection">
@@ -412,7 +411,6 @@
   const pName = document.getElementById("pName");
   const pMeta = document.getElementById("pMeta");
   const pMainName = document.getElementById("pMainName");
-  const pWa = document.getElementById("pWa");
   const salesForce = document.getElementById("salesForce");
   const defaultPanel = document.getElementById("defaultPanel");
   const sellerPanel = document.getElementById("sellerPanel");
@@ -447,7 +445,6 @@
   let productIndex = 0;
   let typingTimeout;
   let cycleInterval;
-  let selectedPrimaryContact = null;
   let selectedZoneElement = null;
 
   defaultWa.addEventListener("click", () => {
@@ -548,7 +545,6 @@
     const s = getSeller(name);
     if(!s) return;
     const displayName = s.displayName || name;
-    selectedPrimaryContact = (s.contacts && s.contacts[0]) || null;
     mapHint.classList.remove("visible");
     defaultPanel.hidden = true;
     sellerPanel.hidden = false;
@@ -582,13 +578,6 @@
       salesForce.appendChild(item);
     });
 
-    const primary = selectedPrimaryContact;
-    pWa.disabled = !primary?.phone;
-    pWa.onclick = () => {
-      if(!primary?.phone) return;
-      const msg = encodeURIComponent(`Hola ${displayName}, te contacto por tu zona.`);
-      window.open(`https://wa.me/${primary.phone}?text=${msg}`, "_blank");
-    };
   }
 
 
