@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-16T07:40:43.683Z",
+  "generated_at": "2026-03-17T07:13:08.868Z",
   "source_file": "nuestros-productos.html",
   "company_source_file": "index.html",
   "sellers_source_file": "Zonas.html",
@@ -202,8 +202,8 @@
       "id": "nomu-protec",
       "name": "Nomu-Protec",
       "description": "Bioinsecticida fúngico para el manejo de larvas de lepidópteros.",
-      "relative_url": "Producto-Nomu-Protec.html",
-      "absolute_url": "https://www.agrichecksrl.com/Producto-Nomu-Protec.html",
+      "relative_url": "",
+      "absolute_url": "",
       "image": "Nomu.webp",
       "crops": [
         "maiz",
@@ -225,13 +225,7 @@
         "Orugas",
         "Plagas"
       ],
-      "page_metadata": {
-        "title": "Nomu-Protec – AgriCheck | Bioinsecticida Fúngico de Alta Especificidad",
-        "meta_description": "Conocé Nomu-Protec – AgriCheck en AgriCheck. Soluciones de agricultura sustentable, asesoramiento técnico y contacto directo por WhatsApp.",
-        "has_meta_description": true,
-        "file_exists": true,
-        "intro_paragraph": "Nomu-Protec es un bioinsecticida a base del hongo Metarhizium rileyi , formulado para el control de un amplio espectro de larvas de lepidópteros, sin afectar a la fauna benéfica."
-      }
+      "page_metadata": {}
     },
     {
       "id": "nexula-n-easy-flow",
@@ -699,8 +693,8 @@
       "id": "atroverde",
       "name": "Atroverde",
       "description": "Biocontrolador aéreo con Trichoderma atroviride cepa 77B para control de Botrytis en vid y tomate.",
-      "relative_url": "atroverde.html",
-      "absolute_url": "https://www.agrichecksrl.com/atroverde.html",
+      "relative_url": "",
+      "absolute_url": "",
       "image": "atroverde-packaging.webp",
       "crops": [
         "vid",
@@ -729,13 +723,7 @@
         "Botrytis",
         "Podredumbre gris"
       ],
-      "page_metadata": {
-        "title": "Atroverde - AgriCheck | Especialista en Botrytis",
-        "meta_description": "Conocé Atroverde - AgriCheck en AgriCheck. Soluciones de agricultura sustentable, asesoramiento técnico y contacto directo por WhatsApp.",
-        "has_meta_description": true,
-        "file_exists": true,
-        "intro_paragraph": ""
-      }
+      "page_metadata": {}
     },
     {
       "id": "tutavir-sc",
@@ -779,8 +767,8 @@
       "id": "plutex",
       "name": "Plutex",
       "description": "Insecticida biológico para el control específico de Plutella xylostella en cultivos crucíferos.",
-      "relative_url": "plutex.html",
-      "absolute_url": "https://www.agrichecksrl.com/plutex.html",
+      "relative_url": "",
+      "absolute_url": "",
       "image": "Plutex.webp",
       "crops": [
         "brocoli",
@@ -807,13 +795,7 @@
         "Coliflor",
         "Orugas"
       ],
-      "page_metadata": {
-        "title": "Plutex – AgriCheck | Control Biológico de Polilla Dorso de Diamante",
-        "meta_description": "Plutex es un insecticida biológico a base de virus para el control específico de Plutella xylostella en crucíferas (brócoli, repollo, coliflor).",
-        "has_meta_description": true,
-        "file_exists": true,
-        "intro_paragraph": "Plutex es la solución definitiva contra la resistencia de Plutella xylostella . Un bioinsecticida viral que actúa donde los químicos fallan."
-      }
+      "page_metadata": {}
     },
     {
       "id": "vitisan",
@@ -901,8 +883,8 @@
       "id": "biomagnet",
       "name": "BioMagnet",
       "description": "Dispositivo Attract & Kill para control específico de Drosophila suzukii en berries y frutales.",
-      "relative_url": "biomagnet.html",
-      "absolute_url": "https://www.agrichecksrl.com/biomagnet.html",
+      "relative_url": "",
+      "absolute_url": "",
       "image": "BioMagnet.webp",
       "crops": [
         "frutales",
@@ -932,13 +914,7 @@
         "Berries",
         "Plagas"
       ],
-      "page_metadata": {
-        "title": "BioMagnet – AgriCheck | Control de Drosophila Suzukii",
-        "meta_description": "BioMagnet es la solución 'Attract & Kill' específica para Drosophila suzukii en berries y frutales finos. Cero residuos, máxima eficacia.",
-        "has_meta_description": true,
-        "file_exists": true,
-        "intro_paragraph": "BioMagnet es la innovadora solución de atracción y muerte masiva para combatir la Mosca de Alas Manchadas en cultivos de alto valor."
-      }
+      "page_metadata": {}
     },
     {
       "id": "magnet-med",
@@ -984,8 +960,8 @@
       "id": "celada-vmb",
       "name": "Celada VMB",
       "description": "Dispensador de feromonas para confusión sexual y control de cochinilla harinosa en vid.",
-      "relative_url": "celada.html",
-      "absolute_url": "https://www.agrichecksrl.com/celada.html",
+      "relative_url": "",
+      "absolute_url": "",
       "image": "Celada%20VMB.webp",
       "crops": [
         "vid"
@@ -1011,13 +987,7 @@
         "Cochinilla",
         "Confusión sexual"
       ],
-      "page_metadata": {
-        "title": "Celada VMB – AgriCheck | Confusión Sexual Accesible",
-        "meta_description": "Celada VMB ofrece la tecnología de confianza de Suterra para el control de la Cochinilla Harinosa de la Vid en un formato de dispensador accesible y eficaz.",
-        "has_meta_description": true,
-        "file_exists": true,
-        "intro_paragraph": "La alternativa inteligente en confusión sexual para la Cochinilla Harinosa de la Vid ( Planococcus ficus ). Calidad Suterra en un formato versátil."
-      }
+      "page_metadata": {}
     },
     {
       "id": "subvert",
