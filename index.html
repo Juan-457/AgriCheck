@@ -266,6 +266,45 @@
       background: linear-gradient(90deg, rgba(250,204,21,.18), rgba(255,255,255,.14));
       box-shadow: 0 0 0 1px rgba(250,204,21,.18) inset;
     }
+    .navSubcategory{
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .navSubcategoryToggle{
+      width: 100%;
+      margin: 0;
+      padding: 8px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.14);
+      color: rgba(137,196,68,.95);
+      font-size: .78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      list-style: none;
+      cursor: pointer;
+    }
+    .navSubcategoryToggle::-webkit-details-marker{ display:none; }
+    .navSubcategoryToggle::after{
+      content: '';
+      float: right;
+      margin-top: 3px;
+      width: 10px;
+      height: 6px;
+      background: currentColor;
+      mask: conic-gradient(from 135deg at 50% 40%, #000 0 90deg, transparent 0 360deg);
+      mask-size: 10px 6px;
+      transition: transform .15s ease;
+    }
+    .navSubcategory[open] .navSubcategoryToggle::after{ transform: rotate(180deg); }
+    .navSubcategoryItems{
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-left: 10px;
+    }
     /* burger */
     .burger{
       position:absolute;
@@ -369,6 +408,45 @@
       text-transform: uppercase;
       color: rgba(226,232,240,.70);
       font-weight: 700;
+    }
+    .mobileSubcategory{
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .mobileSubcategoryToggle{
+      width: 100%;
+      margin: 0;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.14);
+      color: rgba(137,196,68,.95);
+      font-size: .78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      list-style: none;
+      cursor: pointer;
+    }
+    .mobileSubcategoryToggle::-webkit-details-marker{ display:none; }
+    .mobileSubcategoryToggle::after{
+      content: '';
+      float: right;
+      margin-top: 4px;
+      width: 10px;
+      height: 6px;
+      background: currentColor;
+      mask: conic-gradient(from 135deg at 50% 40%, #000 0 90deg, transparent 0 360deg);
+      mask-size: 10px 6px;
+      transition: transform .15s ease;
+    }
+    .mobileSubcategory[open] .mobileSubcategoryToggle::after{ transform: rotate(180deg); }
+    .mobileSubcategoryItems{
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-left: 10px;
     }
     body.menuOpen .mobileMenu{ display:block; }
     body.menuOpen .burgerLines span:nth-child(1){ top:5px; transform: rotate(45deg); }
@@ -904,29 +982,45 @@
         </div>
         <div class="navGroup" aria-label="Protección de cultivos" data-nav-dropdown>
           <button class="navGroupToggle" type="button" aria-expanded="false">Protección de cultivos</button>
-          <div class="navGroupLinks" role="list">
-            <div class="navSubgroupLabel">Feromonas</div>
-            <a class="navSubgroupItem" href="biolure.html" role="listitem">BioLure</a>
-            <a class="navSubgroupItem" href="checkmate-cm-f.html" role="listitem">CheckMate CM-F</a>
-            <a class="navSubgroupItem" href="checkmate-ofm-f.html" role="listitem">CheckMate OFM-F</a>
-            <a class="navSubgroupItem" href="checkmate-crs.html" role="listitem">CheckMate CRS</a>
-            <a class="navSubgroupItem" href="checkmate-vmb-xl.html" role="listitem">CheckMate VMB-XL</a>
-            <a class="navSubgroupItem" href="puffer-cm.html" role="listitem">Puffer CM</a>
+          <div class="navGroupLinks" role="list" data-subcategory-accordion>
+            <details class="navSubcategory">
+              <summary class="navSubcategoryToggle">Feromonas</summary>
+              <div class="navSubcategoryItems">
+                <a class="navSubgroupItem" href="biolure.html" role="listitem">BioLure</a>
+                <a class="navSubgroupItem" href="checkmate-cm-f.html" role="listitem">CheckMate CM-F</a>
+                <a class="navSubgroupItem" href="checkmate-ofm-f.html" role="listitem">CheckMate OFM-F</a>
+                <a class="navSubgroupItem" href="checkmate-crs.html" role="listitem">CheckMate CRS</a>
+                <a class="navSubgroupItem" href="checkmate-vmb-xl.html" role="listitem">CheckMate VMB-XL</a>
+                <a class="navSubgroupItem" href="puffer-cm.html" role="listitem">Puffer CM</a>
+              </div>
+            </details>
 
-            <div class="navSubgroupLabel">Trampas</div>
-            <span class="navSubgroupItem navSubgroupItemDisabled" role="listitem" aria-disabled="true">Biomagnet <small class="itemSoon">Próximamente</small></span>
+            <details class="navSubcategory">
+              <summary class="navSubcategoryToggle">Trampas</summary>
+              <div class="navSubcategoryItems">
+                <span class="navSubgroupItem navSubgroupItemDisabled" role="listitem" aria-disabled="true">Biomagnet <small class="itemSoon">Próximamente</small></span>
+              </div>
+            </details>
 
-            <div class="navSubgroupLabel">BioInsecticidas</div>
-            <a class="navSubgroupItem" href="beauvisan.html" role="listitem">Beauvisan</a>
-            <a class="navSubgroupItem" href="subvert.html" role="listitem">Subvert</a>
-            <a class="navSubgroupItem" href="madex.html" role="listitem">Madex</a>
-            <a class="navSubgroupItem" href="madex-twin.html" role="listitem">Madex Twin</a>
-            <span class="navSubgroupItem navSubgroupItemDisabled" role="listitem" aria-disabled="true">Nomu-Protec <small class="itemSoon">Próximamente</small></span>
-            <span class="navSubgroupItem navSubgroupItemDisabled" role="listitem" aria-disabled="true">Atroverde <small class="itemSoon">Próximamente</small></span>
-            <span class="navSubgroupItem navSubgroupItemDisabled" role="listitem" aria-disabled="true">Plutex <small class="itemSoon">Próximamente</small></span>
+            <details class="navSubcategory">
+              <summary class="navSubcategoryToggle">BioInsecticidas</summary>
+              <div class="navSubcategoryItems">
+                <a class="navSubgroupItem" href="beauvisan.html" role="listitem">Beauvisan</a>
+                <a class="navSubgroupItem" href="subvert.html" role="listitem">Subvert</a>
+                <a class="navSubgroupItem" href="madex.html" role="listitem">Madex</a>
+                <a class="navSubgroupItem" href="madex-twin.html" role="listitem">Madex Twin</a>
+                <span class="navSubgroupItem navSubgroupItemDisabled" role="listitem" aria-disabled="true">Nomu-Protec <small class="itemSoon">Próximamente</small></span>
+                <span class="navSubgroupItem navSubgroupItemDisabled" role="listitem" aria-disabled="true">Atroverde <small class="itemSoon">Próximamente</small></span>
+                <span class="navSubgroupItem navSubgroupItemDisabled" role="listitem" aria-disabled="true">Plutex <small class="itemSoon">Próximamente</small></span>
+              </div>
+            </details>
 
-            <div class="navSubgroupLabel">BioNematicidas</div>
-            <span class="navSubgroupItem navSubgroupItemDisabled" role="listitem" aria-disabled="true">Nembac 42 <small class="itemSoon">Próximamente</small></span>
+            <details class="navSubcategory">
+              <summary class="navSubcategoryToggle">BioNematicidas</summary>
+              <div class="navSubcategoryItems">
+                <span class="navSubgroupItem navSubgroupItemDisabled" role="listitem" aria-disabled="true">Nembac 42 <small class="itemSoon">Próximamente</small></span>
+              </div>
+            </details>
           </div>
         </div>
       </nav>
@@ -962,30 +1056,46 @@
         <a class="mobileSubgroupItem" href="tundrabac.html" data-close-menu>Tundrabac</a>
         <a class="mobileSubgroupItem" href="t-gro.html" data-close-menu>T-Gro WP</a>
       </div>
-      <div class="mobileSubnav" aria-label="Protección de cultivos">
+      <div class="mobileSubnav" aria-label="Protección de cultivos" data-subcategory-accordion>
         <div class="mobileSubnavLabel">Protección de cultivos</div>
-        <div class="mobileSubgroupLabel">Feromonas</div>
-        <a class="mobileSubgroupItem" href="biolure.html" data-close-menu>BioLure</a>
-        <a class="mobileSubgroupItem" href="checkmate-cm-f.html" data-close-menu>CheckMate CM-F</a>
-        <a class="mobileSubgroupItem" href="checkmate-ofm-f.html" data-close-menu>CheckMate OFM-F</a>
-        <a class="mobileSubgroupItem" href="checkmate-crs.html" data-close-menu>CheckMate CRS</a>
-        <a class="mobileSubgroupItem" href="checkmate-vmb-xl.html" data-close-menu>CheckMate VMB-XL</a>
-        <a class="mobileSubgroupItem" href="puffer-cm.html" data-close-menu>Puffer CM</a>
+        <details class="mobileSubcategory">
+          <summary class="mobileSubcategoryToggle">Feromonas</summary>
+          <div class="mobileSubcategoryItems">
+            <a class="mobileSubgroupItem" href="biolure.html" data-close-menu>BioLure</a>
+            <a class="mobileSubgroupItem" href="checkmate-cm-f.html" data-close-menu>CheckMate CM-F</a>
+            <a class="mobileSubgroupItem" href="checkmate-ofm-f.html" data-close-menu>CheckMate OFM-F</a>
+            <a class="mobileSubgroupItem" href="checkmate-crs.html" data-close-menu>CheckMate CRS</a>
+            <a class="mobileSubgroupItem" href="checkmate-vmb-xl.html" data-close-menu>CheckMate VMB-XL</a>
+            <a class="mobileSubgroupItem" href="puffer-cm.html" data-close-menu>Puffer CM</a>
+          </div>
+        </details>
 
-        <div class="mobileSubgroupLabel">Trampas</div>
-        <span class="mobileSubgroupItemDisabled" aria-disabled="true">Biomagnet <small class="itemSoon">Próximamente</small></span>
+        <details class="mobileSubcategory">
+          <summary class="mobileSubcategoryToggle">Trampas</summary>
+          <div class="mobileSubcategoryItems">
+            <span class="mobileSubgroupItemDisabled" aria-disabled="true">Biomagnet <small class="itemSoon">Próximamente</small></span>
+          </div>
+        </details>
 
-        <div class="mobileSubgroupLabel">BioInsecticidas</div>
-        <a class="mobileSubgroupItem" href="beauvisan.html" data-close-menu>Beauvisan</a>
-        <a class="mobileSubgroupItem" href="subvert.html" data-close-menu>Subvert</a>
-        <a class="mobileSubgroupItem" href="madex.html" data-close-menu>Madex</a>
-        <a class="mobileSubgroupItem" href="madex-twin.html" data-close-menu>Madex Twin</a>
-        <span class="mobileSubgroupItemDisabled" aria-disabled="true">Nomu-Protec <small class="itemSoon">Próximamente</small></span>
-        <span class="mobileSubgroupItemDisabled" aria-disabled="true">Atroverde <small class="itemSoon">Próximamente</small></span>
-        <span class="mobileSubgroupItemDisabled" aria-disabled="true">Plutex <small class="itemSoon">Próximamente</small></span>
+        <details class="mobileSubcategory">
+          <summary class="mobileSubcategoryToggle">BioInsecticidas</summary>
+          <div class="mobileSubcategoryItems">
+            <a class="mobileSubgroupItem" href="beauvisan.html" data-close-menu>Beauvisan</a>
+            <a class="mobileSubgroupItem" href="subvert.html" data-close-menu>Subvert</a>
+            <a class="mobileSubgroupItem" href="madex.html" data-close-menu>Madex</a>
+            <a class="mobileSubgroupItem" href="madex-twin.html" data-close-menu>Madex Twin</a>
+            <span class="mobileSubgroupItemDisabled" aria-disabled="true">Nomu-Protec <small class="itemSoon">Próximamente</small></span>
+            <span class="mobileSubgroupItemDisabled" aria-disabled="true">Atroverde <small class="itemSoon">Próximamente</small></span>
+            <span class="mobileSubgroupItemDisabled" aria-disabled="true">Plutex <small class="itemSoon">Próximamente</small></span>
+          </div>
+        </details>
 
-        <div class="mobileSubgroupLabel">BioNematicidas</div>
-        <span class="mobileSubgroupItemDisabled" aria-disabled="true">Nembac 42 <small class="itemSoon">Próximamente</small></span>
+        <details class="mobileSubcategory">
+          <summary class="mobileSubcategoryToggle">BioNematicidas</summary>
+          <div class="mobileSubcategoryItems">
+            <span class="mobileSubgroupItemDisabled" aria-disabled="true">Nembac 42 <small class="itemSoon">Próximamente</small></span>
+          </div>
+        </details>
       </div>
       <!-- TODO: si querés sumar un CTA extra en mobile, lo agregamos acá -->
     </div>
@@ -1621,6 +1731,22 @@
         }
       });
     }
+  })();
+
+  // ✅ Acordeones de subcategorías (desktop + mobile)
+  (function(){
+    const containers = document.querySelectorAll('[data-subcategory-accordion]');
+    containers.forEach((container) => {
+      const details = container.querySelectorAll('details');
+      details.forEach((item) => {
+        item.addEventListener('toggle', () => {
+          if(!item.open) return;
+          details.forEach((other) => {
+            if(other !== item) other.open = false;
+          });
+        });
+      });
+    });
   })();
 </script>
 
