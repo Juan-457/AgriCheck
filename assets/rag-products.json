@@ -957,39 +957,6 @@
       }
     },
     {
-      "id": "celada-vmb",
-      "name": "Celada VMB",
-      "description": "Dispensador de feromonas para confusión sexual y control de cochinilla harinosa en vid.",
-      "relative_url": "",
-      "absolute_url": "",
-      "image": "Celada%20VMB.webp",
-      "crops": [
-        "vid"
-      ],
-      "issues": [
-        "cochinilla",
-        "plagas"
-      ],
-      "search_terms": [
-        "celada",
-        "vmb",
-        "confusion",
-        "sexual",
-        "planococcus",
-        "ficus",
-        "cochinilla",
-        "harinosa",
-        "vid",
-        "suterra"
-      ],
-      "tags": [
-        "Vid",
-        "Cochinilla",
-        "Confusión sexual"
-      ],
-      "page_metadata": {}
-    },
-    {
       "id": "subvert",
       "name": "Subvert",
       "description": "Feromona líquida microencapsulada para confusión sexual y control de Lobesia botrana en vid.",
