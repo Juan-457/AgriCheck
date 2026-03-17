@@ -34,8 +34,6 @@
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://agrichecksrl.com/amyprotec-42.html" />
 <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -55,13 +53,11 @@
             color: #1A361E;
         }
 
-        .cta-button,
-        .tab-button {
+        .cta-button {
             transition: all 0.3s ease;
         }
 
-        .cta-button:hover,
-        .tab-button:hover {
+        .cta-button:hover {
             transform: translateY(-3px) scale(1.05);
             box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
         }
@@ -75,17 +71,6 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(46, 91, 58, 0.15);
         }
-
-        .tab-button {
-            background-color: #f3f4f6;
-            color: #4b5563;
-        }
-
-        .tab-button.active {
-            background-color: #166534;
-            color: #ffffff;
-        }
-    
 
         header{
             position:sticky;
@@ -386,33 +371,6 @@
             </div>
         </section>
 
-        <!-- Resultados en Campo -->
-        <section id="resultados" class="py-20 bg-white">
-            <div class="container mx-auto px-6 max-w-7xl">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-extrabold section-title">Resultados Comprobados</h2>
-                    <p class="mt-4 text-lg max-w-3xl mx-auto text-slate-600">Ensayos a campo demuestran cómo Amyprotec
-                        42 protege el potencial de rinde de manera consistente en cultivos clave.</p>
-                </div>
-                <div id="tab-buttons" class="flex flex-wrap justify-center gap-2 md:gap-4 mb-8">
-                    <button class="tab-button active font-bold py-2 px-5 rounded-full" data-crop="soja_ensayo_1">Soja
-                        (Balcarce)</button>
-                    <button class="tab-button font-bold py-2 px-5 rounded-full" data-crop="trigo_ensayo_1">Trigo
-                        (Pergamino)</button>
-                    <button class="tab-button font-bold py-2 px-5 rounded-full" data-crop="maiz_ensayo_1">Maíz (Venado
-                        Tuerto)</button>
-                </div>
-                <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-200 max-w-4xl mx-auto">
-                    <div class="h-80 md:h-96">
-                        <canvas id="resultsChart"></canvas>
-                    </div>
-                    <p id="chart-footer" class="text-center text-slate-500 mt-4 font-medium"></p>
-                </div>
-            </div>
-        </section>
-
-
-
         <!-- Guía de Aplicación -->
         <section id="aplicacion" class="py-20 bg-white">
             <div class="container mx-auto px-6 max-w-7xl">
@@ -523,100 +481,6 @@
             <p class="text-sm mt-2">Tecnología alemana para la agricultura del futuro.</p>
         </div>
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            Chart.register(ChartDataLabels);
-
-            const chartData = {
-                soja_ensayo_1: {
-                    labels: ['Testigo Químico', 'Amyprotec 42 + Químico'],
-                    data: [3560, 3810],
-                    dataLabels: ['', '+7.0%\n+250Kg'],
-                    label: 'Rinde (Kg/ha)',
-                    footer: 'Ensayo en Soja - Balcarce. Campaña 23/24.'
-                },
-                trigo_ensayo_1: {
-                    labels: ['Testigo', 'Amyprotec 42'],
-                    data: [4820, 5150],
-                    dataLabels: ['', '+6.8%\n+330Kg'],
-                    label: 'Rinde (Kg/ha)',
-                    footer: 'Ensayo en Trigo - Pergamino. Campaña 24/25.'
-                },
-                maiz_ensayo_1: {
-                    labels: ['Testigo Químico', 'Amyprotec 42 + Químico'],
-                    data: [9150, 9720],
-                    dataLabels: ['', '+6.2%\n+570Kg'],
-                    label: 'Rinde (Kg/ha)',
-                    footer: 'Ensayo en Maíz - Venado Tuerto. Campaña 23/24.'
-                }
-            };
-
-            const tabButtons = document.querySelectorAll('.tab-button');
-            const chartFooter = document.getElementById('chart-footer');
-            const ctx = document.getElementById('resultsChart').getContext('2d');
-            let resultsChart = null;
-
-            function updateChart(crop) {
-                const data = chartData[crop];
-                if (!data) return;
-
-                if (resultsChart) {
-                    resultsChart.destroy();
-                }
-
-                resultsChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: data.labels,
-                        datasets: [{
-                            label: data.label,
-                            data: data.data,
-                            backgroundColor: ['rgba(107, 114, 128, 0.6)', 'rgba(22, 163, 74, 0.6)'],
-                            borderColor: ['rgba(107, 114, 128, 1)', 'rgba(22, 163, 74, 1)'],
-                            borderWidth: 2,
-                            borderRadius: 5,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { display: false },
-                            datalabels: {
-                                color: '#1f2937',
-                                font: { weight: 'bold', size: 14 },
-                                anchor: 'end',
-                                align: 'top',
-                                offset: 5,
-                                formatter: (val, ctx) => data.dataLabels[ctx.dataIndex],
-                                textAlign: 'center'
-                            }
-                        },
-                        scales: {
-                            y: { beginAtZero: false, ticks: { color: '#374151' } },
-                            x: { ticks: { color: '#374151', font: { weight: 'bold' } } }
-                        }
-                    }
-                });
-
-                const dataMin = Math.min(...data.data);
-                resultsChart.options.scales.y.min = Math.floor(dataMin * 0.95);
-                resultsChart.update();
-                chartFooter.textContent = data.footer;
-            }
-
-            tabButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                    updateChart(button.dataset.crop);
-                });
-            });
-
-            updateChart('soja_ensayo_1');
-        });
-    </script>
 
 <script>
         (() => {
