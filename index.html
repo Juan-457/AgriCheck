@@ -222,7 +222,8 @@
       box-shadow: 0 16px 32px rgba(0,0,0,.32);
     }
     .navGroup.is-open .navGroupLinks{ display:flex; }
-    .navGroupLinks a{
+    .navGroupLinks a,
+    .navGroupLinks .navSubgroupItemDisabled{
       padding: 8px 12px;
       border-radius: 14px;
       background: rgba(255,255,255,.10);
@@ -230,8 +231,25 @@
       font-weight: 800;
       color: rgba(226,232,240,.95);
       transition: background .15s ease, transform .15s ease;
+      display: block;
     }
     .navGroupLinks a:hover{ background: rgba(255,255,255,.16); transform: translateY(-1px); }
+    .navGroupLinks .navSubgroupItemDisabled{
+      opacity: .82;
+      cursor: not-allowed;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .navGroupLinks .navSubgroupItemDisabled .itemSoon{
+      font-size: .62rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: rgba(226,232,240,.72);
+      font-weight: 700;
+    }
     .navGroupLinks .navSubgroupLabel{
       margin: 6px 2px 0;
       font-size: .78rem;
@@ -324,12 +342,33 @@
       text-transform: uppercase;
       letter-spacing: .06em;
     }
-    .mobileSubnav .mobileSubgroupItem{ margin-left: 10px; }
+    .mobileSubnav .mobileSubgroupItem,
+    .mobileSubnav .mobileSubgroupItemDisabled{ margin-left: 10px; }
     .mobileSubnav .mobileSubgroupLabelLubricantes{ color: #facc15; }
     .mobileSubnav .mobileSubgroupItemLubricante{
       border-color: rgba(250,204,21,.5);
       background: linear-gradient(90deg, rgba(250,204,21,.2), rgba(255,255,255,.14));
       box-shadow: 0 0 0 1px rgba(250,204,21,.18) inset;
+    }
+    .mobileSubnav .mobileSubgroupItemDisabled{
+      padding: 12px 14px;
+      border-radius: 16px;
+      font-weight: 900;
+      color: rgba(226,232,240,.78);
+      background: rgba(255,255,255,.08);
+      border: 1px dashed rgba(255,255,255,.18);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .mobileSubnav .mobileSubgroupItemDisabled .itemSoon{
+      font-size: .62rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: rgba(226,232,240,.70);
+      font-weight: 700;
     }
     body.menuOpen .mobileMenu{ display:block; }
     body.menuOpen .burgerLines span:nth-child(1){ top:5px; transform: rotate(45deg); }
@@ -874,11 +913,18 @@
             <a class="navSubgroupItem" href="checkmate-vmb-xl.html" role="listitem">CheckMate VMB-XL</a>
             <a class="navSubgroupItem" href="puffer-cm.html" role="listitem">Puffer CM</a>
 
+            <div class="navSubgroupLabel">Trampas</div>
+            <span class="navSubgroupItem navSubgroupItemDisabled" role="listitem" aria-disabled="true">Biomagnet <small class="itemSoon">Próximamente</small></span>
+            <span class="navSubgroupItem navSubgroupItemDisabled" role="listitem" aria-disabled="true">Celada VMB <small class="itemSoon">Próximamente</small></span>
+
             <div class="navSubgroupLabel">BioInsecticidas</div>
             <a class="navSubgroupItem" href="beauvisan.html" role="listitem">Beauvisan</a>
             <a class="navSubgroupItem" href="subvert.html" role="listitem">Subvert</a>
             <a class="navSubgroupItem" href="madex.html" role="listitem">Madex</a>
             <a class="navSubgroupItem" href="madex-twin.html" role="listitem">Madex Twin</a>
+            <span class="navSubgroupItem navSubgroupItemDisabled" role="listitem" aria-disabled="true">Nomu-Protec <small class="itemSoon">Próximamente</small></span>
+            <span class="navSubgroupItem navSubgroupItemDisabled" role="listitem" aria-disabled="true">Atroverde <small class="itemSoon">Próximamente</small></span>
+            <span class="navSubgroupItem navSubgroupItemDisabled" role="listitem" aria-disabled="true">Plutex <small class="itemSoon">Próximamente</small></span>
 
             <div class="navSubgroupLabel">BioNematicidas</div>
             <a class="navSubgroupItem" href="nembac42.html" role="listitem">Nembac 42</a>
@@ -927,11 +973,18 @@
         <a class="mobileSubgroupItem" href="checkmate-vmb-xl.html" data-close-menu>CheckMate VMB-XL</a>
         <a class="mobileSubgroupItem" href="puffer-cm.html" data-close-menu>Puffer CM</a>
 
+        <div class="mobileSubgroupLabel">Trampas</div>
+        <span class="mobileSubgroupItemDisabled" aria-disabled="true">Biomagnet <small class="itemSoon">Próximamente</small></span>
+        <span class="mobileSubgroupItemDisabled" aria-disabled="true">Celada VMB <small class="itemSoon">Próximamente</small></span>
+
         <div class="mobileSubgroupLabel">BioInsecticidas</div>
         <a class="mobileSubgroupItem" href="beauvisan.html" data-close-menu>Beauvisan</a>
         <a class="mobileSubgroupItem" href="subvert.html" data-close-menu>Subvert</a>
         <a class="mobileSubgroupItem" href="madex.html" data-close-menu>Madex</a>
         <a class="mobileSubgroupItem" href="madex-twin.html" data-close-menu>Madex Twin</a>
+        <span class="mobileSubgroupItemDisabled" aria-disabled="true">Nomu-Protec <small class="itemSoon">Próximamente</small></span>
+        <span class="mobileSubgroupItemDisabled" aria-disabled="true">Atroverde <small class="itemSoon">Próximamente</small></span>
+        <span class="mobileSubgroupItemDisabled" aria-disabled="true">Plutex <small class="itemSoon">Próximamente</small></span>
 
         <div class="mobileSubgroupLabel">BioNematicidas</div>
         <a class="mobileSubgroupItem" href="nembac42.html" data-close-menu>Nembac 42</a>
