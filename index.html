@@ -1543,15 +1543,48 @@
   (function(){
     const navGroups = document.querySelectorAll('[data-nav-dropdown]');
     if(!navGroups.length) return;
+    const STORAGE_KEY = 'agricheck:desktop-nav-open-group';
+
+    const closeAll = () => {
+      navGroups.forEach((group) => {
+        group.classList.remove('is-open');
+        const button = group.querySelector('.navGroupToggle');
+        if(button) button.setAttribute('aria-expanded', 'false');
+      });
+    };
+
+    const findGroupId = (group) => {
+      const toggle = group.querySelector('.navGroupToggle');
+      return toggle?.textContent?.trim() || group.getAttribute('aria-label') || '';
+    };
+
+    const persistGroup = (groupId) => {
+      try {
+        if(groupId) localStorage.setItem(STORAGE_KEY, groupId);
+        else localStorage.removeItem(STORAGE_KEY);
+      } catch(_error){
+        // no-op: localStorage puede estar bloqueado
+      }
+    };
+
+    const restoreGroup = () => {
+      try {
+        return localStorage.getItem(STORAGE_KEY);
+      } catch(_error){
+        return null;
+      }
+    };
 
     navGroups.forEach((navGroup) => {
       const toggle = navGroup.querySelector('.navGroupToggle');
       const links = navGroup.querySelector('.navGroupLinks');
       if(!toggle || !links) return;
 
-      const setOpen = (open) => {
+      const setOpen = (open, { persist = true } = {}) => {
+        if(open) closeAll();
         navGroup.classList.toggle('is-open', open);
         toggle.setAttribute('aria-expanded', String(open));
+        if(persist) persistGroup(open ? findGroupId(navGroup) : '');
       };
 
       toggle.addEventListener('click', () => {
@@ -1568,9 +1601,26 @@
       });
 
       links.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', () => setOpen(false));
+        link.addEventListener('click', () => {
+          persistGroup(findGroupId(navGroup));
+          setOpen(false, { persist: false });
+        });
       });
     });
+
+    const restoredGroupId = restoreGroup();
+    if(restoredGroupId){
+      navGroups.forEach((navGroup) => {
+        if(findGroupId(navGroup) === restoredGroupId){
+          const toggle = navGroup.querySelector('.navGroupToggle');
+          if(toggle){
+            closeAll();
+            navGroup.classList.add('is-open');
+            toggle.setAttribute('aria-expanded', 'true');
+          }
+        }
+      });
+    }
   })();
 </script>
 
