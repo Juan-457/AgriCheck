@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-17T07:13:08.868Z",
+  "generated_at": "2026-03-18T07:11:07.419Z",
   "source_file": "nuestros-productos.html",
   "company_source_file": "index.html",
   "sellers_source_file": "Zonas.html",
@@ -163,7 +163,7 @@
       ]
     }
   ],
-  "total_products": 27,
+  "total_products": 26,
   "products": [
     {
       "id": "beauvisan",
@@ -434,8 +434,8 @@
       "id": "nembac-42",
       "name": "Nembac 42®",
       "description": "Bionematicida biológico con cepa FZB42 para protección de raíces y manejo sustentable de nematodos.",
-      "relative_url": "nembac42.html",
-      "absolute_url": "https://www.agrichecksrl.com/nembac42.html",
+      "relative_url": "",
+      "absolute_url": "",
       "image": "nembac42-packaging.webp",
       "crops": [
         "hortalizas",
@@ -460,13 +460,7 @@
         "Frutales",
         "Nematodos"
       ],
-      "page_metadata": {
-        "title": "Nembac 42® – AgriCheck | Bionematicida biológico",
-        "meta_description": "Nembac 42® es un bionematicida biológico líquido con cepa FZB42 de Bacillus velezensis para manejo de nematodos en programas sustentables.",
-        "has_meta_description": true,
-        "file_exists": true,
-        "intro_paragraph": "Protección efectiva contra nematodos agalladores y de lesiones con la cepa FZB42 de Bacillus velezensis , en línea con programas de agricultura sustentable."
-      }
+      "page_metadata": {}
     },
     {
       "id": "zimbili",
