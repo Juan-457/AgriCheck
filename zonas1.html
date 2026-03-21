@@ -45,7 +45,7 @@
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      background: radial-gradient(circle at 20% 20%, #12315f 0%, #0b1f3f 48%, #08162d 100%);
+      background: url("campo.webp") center top / cover no-repeat fixed;
       color:#1f2937;
     }
     #bgMapLayer{position:fixed;top:var(--bg-offset, 72px);left:0;right:0;height:100vh;z-index:1;display:grid;place-items:start center;pointer-events:auto;overflow:hidden}
@@ -359,34 +359,34 @@
   // ✅ Datos (editá a gusto). Las "keys" deben matchear el title del SVG (normalizado)
   const sellers = {
     "Marcelo Lizondo": {
-      fill:"rgba(255, 238, 188, 0.45)", hover:"rgba(255, 225, 156, 0.56)", stroke:"#f5d684", img:"Marcelo Lizondo. RTV NOA.webp", meta:"RTV NOA",
+      fill:"rgb(255, 238, 188)", hover:"rgb(255, 225, 156)", stroke:"#f5d684", img:"Marcelo Lizondo. RTV NOA.webp", meta:"RTV NOA",
       contacts:[{name:"Marcelo Lizondo", phone:"5493816083328", email:"marcelo.lizondo@agrichecksrl.com"}]
     },
     "Alan Schmidt": {
-      fill:"rgba(221, 241, 255, 0.45)", hover:"rgba(197, 231, 255, 0.56)", stroke:"#93c5f6", img:"Alan Schmidt. RTV Litoral.webp", meta:"RTV Litoral",
+      fill:"rgb(221, 241, 255)", hover:"rgb(197, 231, 255)", stroke:"#93c5f6", img:"Alan Schmidt. RTV Litoral.webp", meta:"RTV Litoral",
       contacts:[{name:"Alan Schmidt", phone:"5493455235949", email:"alan.schmidt@agrichecksrl.com"}]
     },
     "Miguel Utrera": {
-      fill:"rgba(225, 246, 238, 0.45)", hover:"rgba(198, 237, 222, 0.56)", stroke:"#86d1bb", img:"Miguel Utrera. RTV Nucleo centro.webp", meta:"RTV Núcleo Centro",
+      fill:"rgb(225, 246, 238)", hover:"rgb(198, 237, 222)", stroke:"#86d1bb", img:"Miguel Utrera. RTV Nucleo centro.webp", meta:"RTV Núcleo Centro",
       contacts:[{name:"Miguel Utrera", phone:"549372515563", email:"miguel.utrera@agrichecksrl.com"}]
     },
     "Evelyn Riveros y Daiana Gonzalez": {
-      fill:"rgba(245, 232, 255, 0.45)", hover:"rgba(235, 214, 253, 0.56)", stroke:"#c7a5ef", img:"Daiana González. RTV Cuyo.webp", imgs:["Daiana González. RTV Cuyo.webp", "Diana.webp"], meta:"RTV Cuyo", displayName:"Evelyn Riveros y Daiana González",
+      fill:"rgb(245, 232, 255)", hover:"rgb(235, 214, 253)", stroke:"#c7a5ef", img:"Daiana González. RTV Cuyo.webp", imgs:["Daiana González. RTV Cuyo.webp", "Diana.webp"], meta:"RTV Cuyo", displayName:"Evelyn Riveros y Daiana González",
       contacts:[
         {name:"Evelyn Riveros", phone:"5492616076080", email:"evelyn.riveros@agrichecksrl.com", legend:"Frutales"},
         {name:"Daiana González", phone:"5492617648050", email:"daiana.gonzalez@agrichecksrl.com", legend:"Hortícolas y Otros"}
       ]
     },
     "Andres Perez": {
-      fill:"rgba(255, 233, 236, 0.45)", hover:"rgba(254, 209, 216, 0.56)", stroke:"#f2a8b3", img:"Andres.jpg", meta:"RTV Buenos Aires",
+      fill:"rgb(255, 233, 236)", hover:"rgb(254, 209, 216)", stroke:"#f2a8b3", img:"Andres.jpg", meta:"RTV Buenos Aires",
       contacts:[{name:"Andrés Perez", phone:"5492494511210", email:"andres.perez@agrichecksrl.com"}]
     },
     "Victoria Vianna": {
-      fill:"rgba(255, 244, 224, 0.45)", hover:"rgba(255, 233, 196, 0.56)", stroke:"#f2c588", img:"Victoria Vianna.webp", meta:"RTV Oste de Valle R.N y Nqn",
+      fill:"rgb(255, 244, 224)", hover:"rgb(255, 233, 196)", stroke:"#f2c588", img:"Victoria Vianna.webp", meta:"RTV Oste de Valle R.N y Nqn",
       contacts:[{name:"Victoria Vianna", phone:"5492984308032", email:"victoria.vianna@agrichecksrl.com"}]
     },
     "Anibal Epullan": {
-      fill:"rgba(235, 240, 255, 0.45)", hover:"rgba(214, 224, 253, 0.56)", stroke:"#9cb0ef", img:"Anibal Epullán. RTV Este de Alto Valle.webp", meta:"RTV Este de Alto Valle", displayName:"Aníbal Epullán",
+      fill:"rgb(235, 240, 255)", hover:"rgb(214, 224, 253)", stroke:"#9cb0ef", img:"Anibal Epullán. RTV Este de Alto Valle.webp", meta:"RTV Este de Alto Valle", displayName:"Aníbal Epullán",
       contacts:[{name:"Aníbal Epullán", phone:"5492984309419", email:"anibal.epullan@agrichecksrl.com"}]
     }
   };
@@ -653,7 +653,7 @@
     if(!selectedZoneElement) return;
     selectedZoneElement.classList.remove("selected-zone");
     selectedZoneElement.style.strokeWidth = "2";
-    selectedZoneElement.style.opacity = "0.88";
+    selectedZoneElement.style.opacity = "1";
     selectedZoneElement = null;
   }
 
@@ -694,14 +694,14 @@
     zones.forEach(z => {
       const name = (z.dataset.zone || "").trim();
       const s = getSeller(name) || {};
-      const baseFill = "rgba(0, 0, 0, 0.52)";
-      const hoverFill = "rgba(0, 0, 0, 0.68)";
-      const stroke = "rgba(255, 255, 255, 0.42)";
+      const baseFill = s.fill || "rgb(15, 23, 42)";
+      const hoverFill = s.hover || baseFill;
+      const stroke = s.stroke || "rgba(255, 255, 255, 0.72)";
 
       z.style.fill = baseFill;
       z.style.stroke = stroke;
       z.style.strokeWidth = "2";
-      z.style.opacity = "0.88";
+      z.style.opacity = "1";
 
       z.addEventListener("mouseenter", (e)=>{
         z.style.fill = hoverFill;
@@ -716,7 +716,7 @@
       z.addEventListener("mousemove", moveTooltip);
       z.addEventListener("mouseleave", ()=> {
         z.style.fill = baseFill;
-        z.style.opacity = "0.88";
+        z.style.opacity = "1";
         tt.style.display = "none";
       });
       z.addEventListener("click", ()=> setSelectedZone(z, name));
