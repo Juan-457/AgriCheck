@@ -115,9 +115,9 @@
     .pageFlow{display:flex;flex-direction:column;gap:0;min-height:100%;pointer-events:none}
     .heroLayout{
       display:grid;
-      grid-template-columns:minmax(280px,360px) minmax(460px,560px) minmax(280px,360px);
-      column-gap:clamp(32px, 5vw, 96px);
-      row-gap:16px;
+      grid-template-columns:minmax(260px, 320px) minmax(320px, 1fr) minmax(280px, 340px);
+      column-gap:clamp(20px, 3vw, 56px);
+      row-gap:20px;
       align-items:start;
       justify-content:center;
       margin-top:0.5cm;
@@ -143,9 +143,9 @@
     #mapWrap{position:relative;display:flex;flex-direction:column;gap:10px;min-height:380px;max-width:780px;margin:0 auto;padding:8px 8px 10px;overflow:hidden;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border-color:transparent;box-shadow:none;pointer-events:none}
     .mapHint{display:none;font-size:13px;color:#fde68a}
     .mapHint.visible{display:block}
-    .vendorColumn{display:flex;align-items:flex-start;justify-content:center;padding-top:24px;pointer-events:auto}
+    .vendorColumn{display:flex;align-items:flex-start;justify-content:center;padding-top:24px;pointer-events:auto;min-width:0}
     .vendorColumn *{pointer-events:auto}
-    #panel{height:auto;max-height:100%;overflow:auto;padding:20px;align-self:flex-start;width:100%;max-width:380px}
+    #panel{height:auto;max-height:100%;overflow:auto;padding:20px;align-self:flex-start;width:100%;max-width:100%}
     .zone{cursor:pointer;transition:fill .2s ease,opacity .15s}
     .tooltip{
       position:fixed;display:none;pointer-events:none;
@@ -181,8 +181,9 @@
     .miniBtn{display:inline-flex;align-items:center;justify-content:center;padding:7px 11px;border-radius:999px;border:1px solid #2A3B55;background:#122033;color:#fff;font-weight:700;font-size:12px;white-space:nowrap;transition:background .15s ease, box-shadow .15s ease}
     .miniBtn:hover{background:#16314A;box-shadow:0 8px 20px rgba(0,0,0,.25)}
     .vendorsGrid{display:flex;flex-direction:column;gap:8px}
-    .vendorCard{padding:12px 14px;border-radius:12px;background:#13263A;border:1px solid #223046;transition:background .15s ease}
+    .vendorCard{padding:12px 14px;border-radius:12px;background:#13263A;border:1px solid #223046;transition:background .15s ease, border-color .15s ease, box-shadow .15s ease}
     .vendorCard:hover{background:#16314A}
+    .vendorCard.is-active{border-color:#86d1bb;box-shadow:0 0 0 1px rgba(134,209,187,.35), 0 12px 24px rgba(0,0,0,.22);background:#16314A}
     .vendorCard h3{margin:0 0 4px;font-size:14px;line-height:1.3}
     @media (min-width: 961px){
       .vendorCard h3.is-clickable{cursor:pointer}
@@ -197,7 +198,6 @@
     .vendorContactItem a{color:#fff;text-decoration:underline}
     .vendorWaBtn{display:inline-flex;align-items:center;justify-content:center;margin-top:6px;padding:7px 11px;border-radius:999px;border:1px solid #2A3B55;background:#122033;color:#fff;font-weight:700;font-size:12px;transition:background .15s ease, box-shadow .15s ease}
     .vendorWaBtn:hover{background:#16314A;box-shadow:0 8px 20px rgba(0,0,0,.25)}
-    .vendorCard.is-hidden{display:none}
     .filterActions{display:flex;justify-content:flex-end;margin-bottom:8px}
     .ghostBtn{width:auto;padding:8px 12px;border-radius:999px;border:1px solid #2A3B55;background:#122033;color:#fff;font-size:12px;transition:background .15s ease, box-shadow .15s ease}
     .ghostBtn:hover{background:#16314A;box-shadow:0 8px 20px rgba(0,0,0,.25)}
@@ -227,22 +227,29 @@
       main.container{padding:0 clamp(24px, 4vw, 72px) 8px}
       .pageFlow{min-height:calc(100vh - 86px)}
       #hero.heroLayout{
-        grid-template-columns:minmax(280px,360px) minmax(480px,560px) minmax(280px,360px);
+        grid-template-columns:minmax(260px, 320px) minmax(320px, 1fr) minmax(280px, 340px);
         grid-template-areas:"copy map panel";
-        column-gap:clamp(40px, 6vw, 120px);
+        column-gap:clamp(20px, 3vw, 56px);
         height:100%;
       }
-      .heroCopy{grid-area:copy;display:flex;width:100%;max-width:360px;justify-self:end}
-      .vendorColumn{grid-area:panel;display:flex;padding-top:0;align-items:stretch;width:100%;max-width:360px;justify-self:start}
+      .heroCopy{grid-area:copy;display:flex;width:100%;max-width:320px;justify-self:end}
+      .vendorColumn{grid-area:panel;display:flex;padding-top:0;align-items:stretch;width:100%;max-width:340px;justify-self:start}
       #panel{align-self:stretch;max-height:none}
-      #mapWrap{grid-area:map;min-height:0;height:auto;max-height:640px;padding:12px;align-self:start;justify-self:center;width:100%}
+      #mapWrap{grid-area:map;min-height:0;height:auto;max-height:640px;padding:12px;align-self:start;justify-self:center;width:min(100%, 620px)}
+    }
+
+    @media (max-width: 1400px){
+      .heroLayout{grid-template-columns:minmax(0,1fr) minmax(280px, 340px);grid-template-areas:"copy copy" "map panel";align-items:start}
+      .heroCopy{grid-area:copy;max-width:none;justify-self:stretch}
+      #mapWrap{grid-area:map;min-height:360px;max-width:none;width:100%}
+      .vendorColumn{grid-area:panel;max-width:none;width:100%}
     }
 
     @media (max-width: 1100px){
-      .heroLayout{grid-template-columns:minmax(0,.95fr) minmax(220px,.72fr);grid-template-areas:"copy copy" "map panel";align-items:start}
+      .heroLayout{grid-template-columns:minmax(0,1fr);grid-template-areas:"copy" "map" "panel";align-items:start}
       .heroCopy{grid-area:copy}
-      #mapWrap{grid-area:map;min-height:360px;max-width:700px}
-      .vendorColumn{grid-area:panel}
+      #mapWrap{grid-area:map;min-height:320px;max-width:none}
+      .vendorColumn{grid-area:panel;padding-top:0}
     }
 
     @media (max-width: 960px){
@@ -263,6 +270,7 @@
       #panel > #defaultPanel,
       #panel > #sellerPanel{display:none !important}
       #panel > .panelSection{margin-top:0}
+      .filterActions{display:none}
       .productShowcase{max-width:none;margin:0 auto}
       .showcaseMedia{min-height:200px}
       .vendorContactList{display:block;margin-top:4px}
@@ -562,7 +570,7 @@
     mapHint.classList.remove("visible");
     defaultPanel.hidden = true;
     sellerPanel.hidden = false;
-    vendorListSection.hidden = true;
+    vendorListSection.hidden = false;
     pName.textContent = displayName;
     pMainName.textContent = (s.contacts?.length || 0) > 1 ? "Equipo comercial" : "Asesor comercial";
     pMeta.textContent = s.meta || "";
@@ -636,24 +644,29 @@
         }
 
         openPanel(sellerName);
-        filterVendorCards(sellerName);
+        setActiveVendorCard(sellerName);
       });
 
       vendorCards.appendChild(card);
     });
   }
 
-  function filterVendorCards(name){
+  function setActiveVendorCard(name){
     const normalized = normalizeZoneName(name);
+    let activeCard = null;
+
     vendorCards.querySelectorAll(".vendorCard").forEach((card) => {
-      const visible = normalizeZoneName(card.dataset.seller) === normalized;
-      card.classList.toggle("is-hidden", !visible);
+      const isActive = normalizeZoneName(card.dataset.seller) === normalized;
+      card.classList.toggle("is-active", isActive);
+      if(isActive) activeCard = card;
     });
-    clearFilter.hidden = false;
+
+    clearFilter.hidden = !activeCard;
+    activeCard?.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 
   function showAllVendorCards(){
-    vendorCards.querySelectorAll(".vendorCard").forEach((card) => card.classList.remove("is-hidden"));
+    vendorCards.querySelectorAll(".vendorCard").forEach((card) => card.classList.remove("is-active"));
     clearFilter.hidden = true;
     vendorListSection.hidden = false;
   }
@@ -679,7 +692,7 @@
     zoneEl.style.strokeWidth = "3";
     zoneEl.style.opacity = "1";
     openPanel(name);
-    filterVendorCards(name);
+    setActiveVendorCard(name);
   }
 
   async function loadMap(){
