@@ -109,7 +109,7 @@
 
     main{position:relative;z-index:5;padding:22px 0 24px;flex:1;overflow:visible;pointer-events:none}
     .pageFlow{display:flex;flex-direction:column;gap:0;min-height:100%;pointer-events:none}
-    .heroLayout{display:grid;grid-template-columns:minmax(260px,.9fr) minmax(540px,1.55fr) minmax(250px,.68fr);gap:16px;align-items:start;margin-top:0.5cm;pointer-events:none}
+    .heroLayout{display:grid;grid-template-columns:minmax(280px,360px) minmax(460px,560px) minmax(280px,360px);column-gap:24px;row-gap:16px;align-items:start;justify-content:center;margin-top:0.5cm;pointer-events:none}
     .card{
       border:1px solid #223046;
       border-radius:18px;
@@ -213,14 +213,15 @@
       main.container{padding:0 8px 8px}
       .pageFlow{min-height:calc(100vh - 86px)}
       #hero.heroLayout{
-        grid-template-columns:minmax(250px,.85fr) minmax(520px,1.5fr) minmax(240px,.75fr);
+        grid-template-columns:minmax(280px,360px) minmax(480px,560px) minmax(280px,360px);
         grid-template-areas:"copy map panel";
+        column-gap:28px;
         height:100%;
       }
-      .heroCopy{grid-area:copy;display:flex}
-      .vendorColumn{grid-area:panel;display:flex;padding-top:0;align-items:stretch}
+      .heroCopy{grid-area:copy;display:flex;width:100%;max-width:360px;justify-self:end}
+      .vendorColumn{grid-area:panel;display:flex;padding-top:0;align-items:stretch;width:100%;max-width:360px;justify-self:start}
       #panel{align-self:stretch;max-height:none}
-      #mapWrap{grid-area:map;min-height:0;height:auto;max-height:640px;padding:12px;align-self:start}
+      #mapWrap{grid-area:map;min-height:0;height:auto;max-height:640px;padding:12px;align-self:start;justify-self:center;width:100%}
     }
 
     @media (max-width: 1100px){
