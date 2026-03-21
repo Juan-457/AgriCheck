@@ -658,15 +658,20 @@
     vendorCards.querySelectorAll(".vendorCard").forEach((card) => {
       const isActive = normalizeZoneName(card.dataset.seller) === normalized;
       card.classList.toggle("is-active", isActive);
+      card.hidden = !isActive;
       if(isActive) activeCard = card;
     });
 
     clearFilter.hidden = !activeCard;
+    vendorListSection.hidden = false;
     activeCard?.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 
   function showAllVendorCards(){
-    vendorCards.querySelectorAll(".vendorCard").forEach((card) => card.classList.remove("is-active"));
+    vendorCards.querySelectorAll(".vendorCard").forEach((card) => {
+      card.classList.remove("is-active");
+      card.hidden = false;
+    });
     clearFilter.hidden = true;
     vendorListSection.hidden = false;
   }
