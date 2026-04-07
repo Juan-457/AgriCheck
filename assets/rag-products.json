@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-06T07:54:24.101Z",
+  "generated_at": "2026-04-07T07:41:19.702Z",
   "source_file": "nuestros-productos.html",
   "company_source_file": "index.html",
   "sellers_source_file": "Zonas.html",
@@ -34,7 +34,7 @@
     "represented_brands": [],
     "source_file": "index.html"
   },
-  "total_sellers": 7,
+  "total_sellers": 8,
   "sellers": [
     {
       "id": "marcelo-lizondo",
@@ -82,8 +82,8 @@
         {
           "name": "Miguel Utrera",
           "email": "miguel.utrera@agrichecksrl.com",
-          "phone": "549372515563",
-          "whatsapp_url": "https://wa.me/549372515563"
+          "phone": "5493472515563",
+          "whatsapp_url": "https://wa.me/5493472515563"
         }
       ]
     },
@@ -159,6 +159,21 @@
           "email": "anibal.epullan@agrichecksrl.com",
           "phone": "5492984309419",
           "whatsapp_url": "https://wa.me/5492984309419"
+        }
+      ]
+    },
+    {
+      "id": "guillermo-peruzzi",
+      "zone_key": "Guillermo Peruzzi",
+      "display_name": "Guillermo Peruzzi",
+      "region": "RTV Zona La Plata",
+      "images": [],
+      "contacts": [
+        {
+          "name": "Guillermo Peruzzi",
+          "email": "",
+          "phone": "5492215053101",
+          "whatsapp_url": "https://wa.me/5492215053101"
         }
       ]
     }
