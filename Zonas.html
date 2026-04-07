@@ -411,6 +411,10 @@
     "Anibal Epullan": {
       fill:"rgb(235, 240, 255)", hover:"rgb(214, 224, 253)", stroke:"#9cb0ef", img:"Anibal Epullán. RTV Este de Alto Valle.webp", meta:"RTV Este de Alto Valle", displayName:"Aníbal Epullán",
       contacts:[{name:"Aníbal Epullán", phone:"5492984309419", email:"anibal.epullan@agrichecksrl.com"}]
+    },
+    "Guillermo Peruzzi": {
+      fill:"rgb(227, 234, 255)", hover:"rgb(208, 220, 255)", stroke:"#9cb0ef", meta:"RTV Zona La Plata",
+      contacts:[{name:"Guillermo Peruzzi", phone:"5492215053101"}]
     }
   };
 
@@ -587,13 +591,13 @@
         <div class="contactInfo">
           ${showName ? `<p>${formatContactName(contact)}</p>` : ""}
           <p>${phone || "Sin teléfono"}</p>
-          <p><a href="mailto:${contact.email}">${contact.email}</a></p>
+          ${contact.email ? `<p><a href="mailto:${contact.email}">${contact.email}</a></p>` : ""}
         </div>
         <div class="contactActionRow">
           ${contactImage ? `<div class="contactPhotoWrap"><img class="contactPhoto" src="${contactImage}" alt="${contact.name || displayName}"></div>` : ""}
           <div class="contactLinks">
             ${contact.phone ? `<a class="miniBtn" href="https://wa.me/${contact.phone}" target="_blank" rel="noopener noreferrer">WhatsApp</a>` : ""}
-            <a class="miniBtn" href="mailto:${contact.email}">Email</a>
+            ${contact.email ? `<a class="miniBtn" href="mailto:${contact.email}">Email</a>` : ""}
           </div>
         </div>
       `;
@@ -617,7 +621,7 @@
           <div class="vendorContactItem">
             ${showName ? `<p>${formatContactName(contact)}</p>` : ""}
             <p>${phone || "Sin teléfono"}</p>
-            <p><a href="mailto:${contact.email}">${contact.email}</a></p>
+            ${contact.email ? `<p><a href="mailto:${contact.email}">${contact.email}</a></p>` : ""}
             ${contact.phone ? `<a class="vendorWaBtn" href="https://wa.me/${contact.phone}" target="_blank" rel="noopener noreferrer">WhatsApp</a>` : ""}
           </div>
         `;
