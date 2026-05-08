@@ -253,27 +253,50 @@
     }
 
     @media (max-width: 960px){
-      body{display:block;min-height:100dvh;overflow-y:auto}
+      body{display:block;min-height:100dvh;overflow-y:auto;background-attachment:scroll}
+      main.container{width:100%;padding:14px 14px 24px;box-sizing:border-box}
       main{padding:10px 0 12px;overflow:visible;flex:0 0 auto;pointer-events:auto}
       .pageFlow{min-height:0;pointer-events:auto}
       .topbar{justify-content:flex-end}
       .brandLogo{position:static;transform:none;margin-right:auto}
+      .brandLogo img{height:38px}
       .navlinks{gap:6px;padding:5px}
       .navlinks a{padding:8px 12px;font-size:14px}
       #bgMapLayer{display:none}
       .heroLayout{display:block}
       .heroCopy,
       #mapWrap{display:none}
-      .vendorColumn{padding-top:0}
+      .vendorColumn{padding-top:0;max-width:680px;margin:0 auto}
       #panel{max-height:none;overflow:visible;align-self:stretch;max-width:none;padding:0;border:none;background:transparent;box-shadow:none}
       #panel > .pill,
       #panel > #defaultPanel,
       #panel > #sellerPanel{display:none !important}
       #panel > .panelSection{margin-top:0}
       .filterActions{display:none}
+      #vendorListSection{padding:16px;border:1px solid #223046;border-radius:18px;background:rgba(14,27,42,.94);box-shadow:0 16px 40px rgba(0,0,0,.38)}
+      #vendorListSection .sectionTitle{margin:0 0 12px;font-size:12px}
+      .vendorsGrid{gap:10px}
+      .vendorCard{padding:14px;border-radius:14px}
+      .vendorCard h3{font-size:16px;line-height:1.25}
+      .vendorCard p{font-size:13px;overflow-wrap:anywhere}
+      .vendorContactList{display:grid;gap:8px;margin-top:10px}
+      .vendorContactItem{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;padding:10px 0}
+      .vendorContactItem p{font-size:12px;overflow-wrap:anywhere}
+      .vendorContactItem .vendorWaBtn{grid-column:2;grid-row:1 / span 3;margin:0;min-height:40px;border-radius:12px;white-space:nowrap}
       .productShowcase{max-width:none;margin:0 auto}
       .showcaseMedia{min-height:200px}
-      .vendorContactList{display:block;margin-top:4px}
+    }
+
+    @media (max-width: 520px){
+      main.container{padding-inline:10px}
+      .topbar{padding:0 10px}
+      .brandLogo{padding:7px 10px}
+      .brandLogo img{height:32px}
+      .navlinks a{padding:8px 9px;font-size:13px}
+      #vendorListSection{padding:12px;border-radius:14px}
+      .vendorCard{padding:12px}
+      .vendorContactItem{grid-template-columns:1fr}
+      .vendorContactItem .vendorWaBtn{grid-column:auto;grid-row:auto;width:100%;margin-top:6px}
     }
 
   </style>
@@ -385,9 +408,9 @@
       fill:"rgb(255, 238, 188)", hover:"rgb(255, 225, 156)", stroke:"#f5d684", img:"Marcelo Lizondo. RTV NOA.webp", meta:"RTV NOA",
       contacts:[{name:"Marcelo Lizondo", phone:"5493816083328", email:"marcelo.lizondo@agrichecksrl.com"}]
     },
-    "Alan Schmidt": {
-      fill:"#93c5f6", hover:"#93c5f6", stroke:"#93c5f6", img:"Alan Schmidt. RTV Litoral.webp", meta:"RTV Litoral",
-      contacts:[{name:"Alan Schmidt", phone:"5493455235949", email:"alan.schmidt@agrichecksrl.com"}]
+    "Zona Litoral": {
+      fill:"#93c5f6", hover:"#93c5f6", stroke:"#93c5f6", img:"agrichecklogo.png", meta:"RTV Litoral", displayName:"Zona Litoral",
+      contacts:[{name:"AgriCheck", phone:"5492984763055", email:"info@agrichecksrl.com", legend:"Contacto provisorio"}]
     },
     "Miguel Utrera": {
       fill:"rgb(225, 246, 238)", hover:"rgb(198, 237, 222)", stroke:"#86d1bb", img:"Miguel Utrera. RTV Nucleo centro.webp", meta:"RTV Núcleo Centro",

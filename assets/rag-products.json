@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-08T07:49:13.813Z",
+  "generated_at": "2026-05-08T17:48:36.398Z",
   "source_file": "nuestros-productos.html",
   "company_source_file": "index.html",
   "sellers_source_file": "Zonas.html",
@@ -54,19 +54,19 @@
       ]
     },
     {
-      "id": "alan-schmidt",
-      "zone_key": "Alan Schmidt",
-      "display_name": "Alan Schmidt",
+      "id": "zona-litoral",
+      "zone_key": "Zona Litoral",
+      "display_name": "Zona Litoral",
       "region": "RTV Litoral",
       "images": [
-        "Alan Schmidt. RTV Litoral.webp"
+        "agrichecklogo.png"
       ],
       "contacts": [
         {
-          "name": "Alan Schmidt",
-          "email": "alan.schmidt@agrichecksrl.com",
-          "phone": "5493455235949",
-          "whatsapp_url": "https://wa.me/5493455235949"
+          "name": "AgriCheck",
+          "email": "info@agrichecksrl.com",
+          "phone": "5492984763055",
+          "whatsapp_url": "https://wa.me/5492984763055"
         }
       ]
     },

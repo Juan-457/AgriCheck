@@ -124,7 +124,7 @@ DERIVACIÓN POR ZONA
 Mapeo provincias
 
 NOA → Marcelo Lizondo
-Litoral → Alan Schmidt
+Litoral → WhatsApp general de AgriCheck (contacto provisorio)
 Núcleo Centro → Miguel Utrera
 Cuyo → pedir tipo de cultivo antes de derivar
 Buenos Aires + CABA → Andrés Perez
