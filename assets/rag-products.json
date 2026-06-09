@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-08T11:08:38.790Z",
+  "generated_at": "2026-06-09T09:55:46.003Z",
   "source_file": "nuestros-productos.html",
   "company_source_file": "index.html",
   "sellers_source_file": "Zonas.html",
@@ -54,19 +54,19 @@
       ]
     },
     {
-      "id": "zona-litoral",
+      "id": "paula-otero",
       "zone_key": "Zona Litoral",
-      "display_name": "Zona Litoral",
+      "display_name": "Paula Otero",
       "region": "RTV Litoral",
       "images": [
-        "agrichecklogo.png"
+        "Paula Otero.webp"
       ],
       "contacts": [
         {
-          "name": "AgriCheck",
-          "email": "info@agrichecksrl.com",
-          "phone": "5492984763055",
-          "whatsapp_url": "https://wa.me/5492984763055"
+          "name": "Paula Otero",
+          "email": "paula.otero@agrichecksrl.com",
+          "phone": "5493435069971",
+          "whatsapp_url": "https://wa.me/5493435069971"
         }
       ]
     },
