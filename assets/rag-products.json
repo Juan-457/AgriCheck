@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-23T09:54:24.042Z",
+  "generated_at": "2026-06-23T15:26:17.197Z",
   "source_file": "nuestros-productos.html",
   "company_source_file": "index.html",
   "sellers_source_file": "Zonas.html",
@@ -34,7 +34,7 @@
     "represented_brands": [],
     "source_file": "index.html"
   },
-  "total_sellers": 8,
+  "total_sellers": 7,
   "sellers": [
     {
       "id": "marcelo-lizondo",
@@ -112,23 +112,6 @@
       ]
     },
     {
-      "id": "andres-perez",
-      "zone_key": "Andres Perez",
-      "display_name": "Andres Perez",
-      "region": "RTV Buenos Aires",
-      "images": [
-        "Andres.jpg"
-      ],
-      "contacts": [
-        {
-          "name": "Andrés Perez",
-          "email": "andres.perez@agrichecksrl.com",
-          "phone": "5492494511210",
-          "whatsapp_url": "https://wa.me/5492494511210"
-        }
-      ]
-    },
-    {
       "id": "victoria-vianna",
       "zone_key": "Victoria Vianna",
       "display_name": "Victoria Vianna",
@@ -166,7 +149,7 @@
       "id": "guillermo-peruzzi",
       "zone_key": "Guillermo Peruzzi",
       "display_name": "Guillermo Peruzzi",
-      "region": "RTV Zona La Plata",
+      "region": "RTV Buenos Aires y Zona La Plata",
       "images": [],
       "contacts": [
         {

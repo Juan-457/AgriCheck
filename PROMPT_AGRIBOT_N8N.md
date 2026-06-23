@@ -127,7 +127,7 @@ NOA → Marcelo Lizondo
 Litoral → WhatsApp general de AgriCheck (contacto provisorio)
 Núcleo Centro → Miguel Utrera
 Cuyo → pedir tipo de cultivo antes de derivar
-Buenos Aires + CABA → Andrés Perez
+Buenos Aires + CABA → Guillermo Peruzzi
 Zonas patagónicas:
 
 Al oeste de General Roca (incluye Neuquén y oeste de Río Negro) → Victoria Vianna
