@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-17T15:46:51.722Z",
+  "generated_at": "2026-11-18T15:26:45.266Z",
   "source_file": "nuestros-productos.html",
   "company_source_file": "index.html",
   "sellers_source_file": "Zonas.html",
@@ -37,17 +37,15 @@
   "total_sellers": 7,
   "sellers": [
     {
-      "id": "marcelo-lizondo",
-      "zone_key": "Marcelo Lizondo",
-      "display_name": "Marcelo Lizondo",
+      "id": "noel-marin",
+      "zone_key": "Noel Marin",
+      "display_name": "Noel Marin",
       "region": "RTV NOA",
-      "images": [
-        "Marcelo Lizondo. RTV NOA.webp"
-      ],
+      "images": [],
       "contacts": [
         {
-          "name": "Marcelo Lizondo",
-          "email": "marcelo.lizondo@agrichecksrl.com",
+          "name": "Noel Marin",
+          "email": "noel.marin@agrichecksrl.com",
           "phone": "5493816083328",
           "whatsapp_url": "https://wa.me/5493816083328"
         }
@@ -112,27 +110,10 @@
       ]
     },
     {
-      "id": "victoria-vianna",
-      "zone_key": "Victoria Vianna",
-      "display_name": "Victoria Vianna",
-      "region": "RTV Oste de Valle R.N y Nqn",
-      "images": [
-        "Victoria Vianna.webp"
-      ],
-      "contacts": [
-        {
-          "name": "Victoria Vianna",
-          "email": "victoria.vianna@agrichecksrl.com",
-          "phone": "5492984308032",
-          "whatsapp_url": "https://wa.me/5492984308032"
-        }
-      ]
-    },
-    {
       "id": "anibal-epullan",
       "zone_key": "Anibal Epullan",
       "display_name": "Aníbal Epullán",
-      "region": "RTV Este de Alto Valle",
+      "region": "RTV Alto Valle de Río Negro y Neuquén",
       "images": [
         "Anibal Epullán. RTV Este de Alto Valle.webp"
       ],
@@ -142,6 +123,21 @@
           "email": "anibal.epullan@agrichecksrl.com",
           "phone": "5492984309419",
           "whatsapp_url": "https://wa.me/5492984309419"
+        }
+      ]
+    },
+    {
+      "id": "mariano-grassi",
+      "zone_key": "Mariano Grassi",
+      "display_name": "Mariano Grassi",
+      "region": "RTV Sur de Buenos Aires",
+      "images": [],
+      "contacts": [
+        {
+          "name": "Mariano Grassi",
+          "email": "ng.marianograssi@gmail.com",
+          "phone": "5492915098407",
+          "whatsapp_url": "https://wa.me/5492915098407"
         }
       ]
     },
